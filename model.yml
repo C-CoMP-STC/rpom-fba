@@ -1,0 +1,5097 @@
+!!omap
+- metabolites:
+  - !!omap
+    - id: 13dpg_c
+    - name: 3-Phospho-D-glyceroyl phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C3H4O10P2
+    - annotation: !!omap
+      - bigg.metabolite: 13dpg
+      - biocyc: META:DPG
+      - chebi:
+        - CHEBI:11881
+        - CHEBI:16001
+        - CHEBI:1658
+        - CHEBI:20189
+        - CHEBI:57604
+      - hmdb: HMDB62758
+      - kegg.compound: C00236
+      - metanetx.chemical: MNXM261
+      - seed.compound: cpd00203
+  - !!omap
+    - id: 2pg_c
+    - name: D-Glycerate 2-phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C3H4O7P
+    - annotation: !!omap
+      - bigg.metabolite: 2pg
+      - biocyc: META:2-PG
+      - chebi:
+        - CHEBI:11651
+        - CHEBI:1267
+        - CHEBI:12986
+        - CHEBI:17835
+        - CHEBI:21028
+        - CHEBI:24344
+        - CHEBI:39868
+        - CHEBI:58289
+        - CHEBI:88350
+      - hmdb:
+        - HMDB03391
+        - HMDB62707
+      - kegg.compound: C00631
+      - metanetx.chemical: MNXM275
+      - seed.compound: cpd00482
+  - !!omap
+    - id: 3pg_c
+    - name: 3-Phospho-D-glycerate
+    - compartment: c
+    - charge: 0
+    - formula: C3H4O7P
+    - annotation: !!omap
+      - bigg.metabolite: 3pg
+      - biocyc: META:G3P
+      - chebi:
+        - CHEBI:11879
+        - CHEBI:11880
+        - CHEBI:12987
+        - CHEBI:1657
+        - CHEBI:17794
+        - CHEBI:21029
+        - CHEBI:58272
+      - kegg.compound: C00197
+      - metanetx.chemical: MNXM126
+      - seed.compound: cpd00169
+  - !!omap
+    - id: 6pgc_c
+    - name: 6-Phospho-D-gluconate
+    - compartment: c
+    - charge: 0
+    - formula: C6H10O10P
+    - annotation: !!omap
+      - bigg.metabolite: 6pgc
+      - biocyc: META:CPD-2961
+      - chebi:
+        - CHEBI:12232
+        - CHEBI:16863
+        - CHEBI:2231
+        - CHEBI:33851
+        - CHEBI:40282
+        - CHEBI:48928
+        - CHEBI:58759
+      - hmdb:
+        - HMDB01316
+        - HMDB62800
+      - kegg.compound: C00345
+      - metanetx.chemical: MNXM325
+      - seed.compound: cpd00284
+  - !!omap
+    - id: 6pgl_c
+    - name: 6-phospho-D-glucono-1,5-lactone
+    - compartment: c
+    - charge: 0
+    - formula: C6H9O9P
+    - annotation: !!omap
+      - bigg.metabolite: 6pgl
+      - biocyc: META:D-6-P-GLUCONO-DELTA-LACTONE
+      - chebi:
+        - CHEBI:12233
+        - CHEBI:12958
+        - CHEBI:16938
+        - CHEBI:20989
+        - CHEBI:4160
+        - CHEBI:57955
+      - hmdb: HMDB62628
+      - kegg.compound: C01236
+      - metanetx.chemical: MNXM429
+      - seed.compound: cpd00911
+  - !!omap
+    - id: ac_c
+    - name: Acetate
+    - compartment: c
+    - charge: 0
+    - formula: C2H3O2
+    - annotation: !!omap
+      - bigg.metabolite: ac
+      - biocyc: META:ACET
+      - chebi:
+        - CHEBI:13704
+        - CHEBI:15366
+        - CHEBI:22165
+        - CHEBI:22169
+        - CHEBI:2387
+        - CHEBI:30089
+        - CHEBI:40480
+        - CHEBI:40486
+      - hmdb: HMDB00042
+      - kegg.compound: C00033
+      - kegg.drug: D00010
+      - lipidmaps: LMFA01010002
+      - metanetx.chemical: MNXM26
+      - seed.compound: cpd00029
+  - !!omap
+    - id: ac_e
+    - name: Acetate
+    - compartment: e
+    - charge: 0
+    - formula: C2H3O2
+    - annotation: !!omap
+      - bigg.metabolite: ac
+      - biocyc: META:ACET
+      - chebi:
+        - CHEBI:13704
+        - CHEBI:15366
+        - CHEBI:22165
+        - CHEBI:22169
+        - CHEBI:2387
+        - CHEBI:30089
+        - CHEBI:40480
+        - CHEBI:40486
+      - hmdb: HMDB00042
+      - kegg.compound: C00033
+      - kegg.drug: D00010
+      - lipidmaps: LMFA01010002
+      - metanetx.chemical: MNXM26
+      - seed.compound: cpd00029
+  - !!omap
+    - id: acald_c
+    - name: Acetaldehyde
+    - compartment: c
+    - charge: 0
+    - formula: C2H4O
+    - annotation: !!omap
+      - bigg.metabolite: acald
+      - biocyc: META:ACETALD
+      - chebi:
+        - CHEBI:13703
+        - CHEBI:15343
+        - CHEBI:22158
+        - CHEBI:2383
+        - CHEBI:40533
+      - hmdb: HMDB00990
+      - kegg.compound: C00084
+      - metanetx.chemical: MNXM75
+      - seed.compound: cpd00071
+  - !!omap
+    - id: acald_e
+    - name: Acetaldehyde
+    - compartment: e
+    - charge: 0
+    - formula: C2H4O
+    - annotation: !!omap
+      - bigg.metabolite: acald
+      - biocyc: META:ACETALD
+      - chebi:
+        - CHEBI:13703
+        - CHEBI:15343
+        - CHEBI:22158
+        - CHEBI:2383
+        - CHEBI:40533
+      - hmdb: HMDB00990
+      - kegg.compound: C00084
+      - metanetx.chemical: MNXM75
+      - seed.compound: cpd00071
+  - !!omap
+    - id: accoa_c
+    - name: Acetyl-CoA
+    - compartment: c
+    - charge: 0
+    - formula: C23H34N7O17P3S
+    - annotation: !!omap
+      - bigg.metabolite: accoa
+      - biocyc: META:ACETYL-COA
+      - chebi:
+        - CHEBI:13712
+        - CHEBI:15351
+        - CHEBI:22192
+        - CHEBI:2408
+        - CHEBI:40470
+        - CHEBI:57288
+      - hmdb: HMDB01206
+      - kegg.compound: C00024
+      - lipidmaps:
+        - LMFA07050029
+        - LMFA07050281
+      - metanetx.chemical: MNXM21
+      - seed.compound: cpd00022
+  - !!omap
+    - id: acon_C_c
+    - name: Cis-Aconitate
+    - compartment: c
+    - charge: 0
+    - formula: C6H3O6
+    - annotation: !!omap
+      - bigg.metabolite: acon_C
+      - biocyc: META:CIS-ACONITATE
+      - chebi:
+        - CHEBI:10482
+        - CHEBI:12798
+        - CHEBI:16383
+        - CHEBI:23306
+        - CHEBI:23308
+        - CHEBI:32805
+      - hmdb:
+        - HMDB00072
+        - HMDB00461
+      - kegg.compound: C00417
+      - metanetx.chemical: MNXM813
+      - seed.compound: cpd00331
+  - !!omap
+    - id: actp_c
+    - name: Acetyl phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C2H3O5P
+    - annotation: !!omap
+      - bigg.metabolite: actp
+      - biocyc: META:ACETYL-P
+      - chebi:
+        - CHEBI:13711
+        - CHEBI:15350
+        - CHEBI:22191
+        - CHEBI:2407
+        - CHEBI:46262
+      - hmdb: HMDB01494
+      - kegg.compound: C00227
+      - metanetx.chemical: MNXM280
+      - seed.compound: cpd00196
+  - !!omap
+    - id: adp_c
+    - name: ADP C10H12N5O10P2
+    - compartment: c
+    - charge: 0
+    - formula: C10H12N5O10P2
+    - annotation: !!omap
+      - bigg.metabolite: adp
+      - biocyc:
+        - META:ADP
+        - META:CPD0-1651
+      - chebi:
+        - CHEBI:13222
+        - CHEBI:16761
+        - CHEBI:22244
+        - CHEBI:2342
+        - CHEBI:40553
+        - CHEBI:456216
+        - CHEBI:87518
+      - hmdb: HMDB01341
+      - kegg.compound: C00008
+      - kegg.glycan: G11113
+      - metanetx.chemical: MNXM7
+      - seed.compound: cpd00008
+  - !!omap
+    - id: akg_c
+    - name: 2-Oxoglutarate
+    - compartment: c
+    - charge: 0
+    - formula: C5H4O5
+    - annotation: !!omap
+      - bigg.metabolite: akg
+      - biocyc:
+        - META:2-KETOGLUTARATE
+        - META:CPD-16852
+      - chebi:
+        - CHEBI:11638
+        - CHEBI:1253
+        - CHEBI:16810
+        - CHEBI:19748
+        - CHEBI:19749
+        - CHEBI:30915
+        - CHEBI:30916
+        - CHEBI:40661
+      - hmdb: HMDB62781
+      - kegg.compound: C00026
+      - metanetx.chemical: MNXM20
+      - seed.compound: cpd00024
+  - !!omap
+    - id: akg_e
+    - name: 2-Oxoglutarate
+    - compartment: e
+    - charge: 0
+    - formula: C5H4O5
+    - annotation: !!omap
+      - bigg.metabolite: akg
+      - biocyc:
+        - META:2-KETOGLUTARATE
+        - META:CPD-16852
+      - chebi:
+        - CHEBI:11638
+        - CHEBI:1253
+        - CHEBI:16810
+        - CHEBI:19748
+        - CHEBI:19749
+        - CHEBI:30915
+        - CHEBI:30916
+        - CHEBI:40661
+      - hmdb: HMDB62781
+      - kegg.compound: C00026
+      - metanetx.chemical: MNXM20
+      - seed.compound: cpd00024
+  - !!omap
+    - id: amp_c
+    - name: AMP C10H12N5O7P
+    - compartment: c
+    - charge: 0
+    - formula: C10H12N5O7P
+    - annotation: !!omap
+      - bigg.metabolite: amp
+      - biocyc:
+        - META:AMP
+        - META:AMP-GROUP
+      - chebi:
+        - CHEBI:12056
+        - CHEBI:13234
+        - CHEBI:13235
+        - CHEBI:13736
+        - CHEBI:13740
+        - CHEBI:16027
+        - CHEBI:22242
+        - CHEBI:22245
+        - CHEBI:2356
+        - CHEBI:40510
+        - CHEBI:40721
+        - CHEBI:40726
+        - CHEBI:40786
+        - CHEBI:40826
+        - CHEBI:456215
+        - CHEBI:47222
+      - kegg.compound: C00020
+      - kegg.drug: D02769
+      - metanetx.chemical: MNXM14
+      - seed.compound:
+        - cpd00018
+        - cpd22272
+  - !!omap
+    - id: atp_c
+    - name: ATP C10H12N5O13P3
+    - compartment: c
+    - charge: 0
+    - formula: C10H12N5O13P3
+    - annotation: !!omap
+      - bigg.metabolite: atp
+      - biocyc:
+        - META:ATP
+        - META:CPD0-1634
+      - chebi:
+        - CHEBI:10789
+        - CHEBI:10841
+        - CHEBI:13236
+        - CHEBI:15422
+        - CHEBI:22249
+        - CHEBI:2359
+        - CHEBI:237958
+        - CHEBI:30616
+        - CHEBI:40938
+        - CHEBI:57299
+      - kegg.compound: C00002
+      - kegg.drug: D08646
+      - metanetx.chemical: MNXM3
+      - seed.compound: cpd00002
+  - !!omap
+    - id: cit_c
+    - name: Citrate
+    - compartment: c
+    - charge: 0
+    - formula: C6H5O7
+    - annotation: !!omap
+      - bigg.metabolite: cit
+      - biocyc: META:CIT
+      - chebi:
+        - CHEBI:132362
+        - CHEBI:133748
+        - CHEBI:13999
+        - CHEBI:16947
+        - CHEBI:23321
+        - CHEBI:23322
+        - CHEBI:30769
+        - CHEBI:35802
+        - CHEBI:35804
+        - CHEBI:35806
+        - CHEBI:35808
+        - CHEBI:35809
+        - CHEBI:35810
+        - CHEBI:3727
+        - CHEBI:41523
+        - CHEBI:42563
+        - CHEBI:76049
+        - CHEBI:79399
+      - hmdb: HMDB00094
+      - kegg.compound:
+        - C00158
+        - C13660
+      - kegg.drug: D00037
+      - metanetx.chemical: MNXM131
+      - seed.compound: cpd00137
+  - !!omap
+    - id: co2_c
+    - name: CO2 CO2
+    - compartment: c
+    - charge: 0
+    - formula: CO2
+    - annotation: !!omap
+      - bigg.metabolite: co2
+      - biocyc: META:CARBON-DIOXIDE
+      - chebi:
+        - CHEBI:13282
+        - CHEBI:13283
+        - CHEBI:13284
+        - CHEBI:13285
+        - CHEBI:16526
+        - CHEBI:23011
+        - CHEBI:3283
+        - CHEBI:48829
+      - hmdb: HMDB01967
+      - kegg.compound: C00011
+      - kegg.drug: D00004
+      - metanetx.chemical: MNXM13
+      - seed.compound: cpd00011
+  - !!omap
+    - id: co2_e
+    - name: CO2 CO2
+    - compartment: e
+    - charge: 0
+    - formula: CO2
+    - annotation: !!omap
+      - bigg.metabolite: co2
+      - biocyc: META:CARBON-DIOXIDE
+      - chebi:
+        - CHEBI:13282
+        - CHEBI:13283
+        - CHEBI:13284
+        - CHEBI:13285
+        - CHEBI:16526
+        - CHEBI:23011
+        - CHEBI:3283
+        - CHEBI:48829
+      - hmdb: HMDB01967
+      - kegg.compound: C00011
+      - kegg.drug: D00004
+      - metanetx.chemical: MNXM13
+      - seed.compound: cpd00011
+  - !!omap
+    - id: coa_c
+    - name: Coenzyme A
+    - compartment: c
+    - charge: 0
+    - formula: C21H32N7O16P3S
+    - annotation: !!omap
+      - bigg.metabolite: coa
+      - biocyc:
+        - META:CO-A
+        - META:COA-GROUP
+      - chebi:
+        - CHEBI:13294
+        - CHEBI:13295
+        - CHEBI:13298
+        - CHEBI:15346
+        - CHEBI:23355
+        - CHEBI:3771
+        - CHEBI:41597
+        - CHEBI:41631
+        - CHEBI:57287
+        - CHEBI:741566
+      - hmdb: HMDB01423
+      - kegg.compound: C00010
+      - metanetx.chemical: MNXM12
+      - seed.compound:
+        - cpd00010
+        - cpd22528
+  - !!omap
+    - id: dhap_c
+    - name: Dihydroxyacetone phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C3H5O6P
+    - annotation: !!omap
+      - bigg.metabolite: dhap
+      - biocyc: META:DIHYDROXY-ACETONE-PHOSPHATE
+      - chebi:
+        - CHEBI:14341
+        - CHEBI:14342
+        - CHEBI:16108
+        - CHEBI:24355
+        - CHEBI:39571
+        - CHEBI:5454
+        - CHEBI:57642
+      - hmdb:
+        - HMDB01473
+        - HMDB11735
+      - kegg.compound: C00111
+      - metanetx.chemical: MNXM77
+      - seed.compound: cpd00095
+  - !!omap
+    - id: e4p_c
+    - name: D-Erythrose 4-phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C4H7O7P
+    - annotation: !!omap
+      - bigg.metabolite: e4p
+      - biocyc: META:ERYTHROSE-4P
+      - chebi:
+        - CHEBI:12921
+        - CHEBI:16897
+        - CHEBI:20927
+        - CHEBI:4114
+        - CHEBI:42349
+        - CHEBI:48153
+      - hmdb: HMDB01321
+      - kegg.compound: C00279
+      - metanetx.chemical: MNXM258
+      - seed.compound: cpd00236
+  - !!omap
+    - id: etoh_c
+    - name: Ethanol
+    - compartment: c
+    - charge: 0
+    - formula: C2H6O
+    - annotation: !!omap
+      - bigg.metabolite: etoh
+      - biocyc: META:ETOH
+      - chebi:
+        - CHEBI:14222
+        - CHEBI:16236
+        - CHEBI:23978
+        - CHEBI:30878
+        - CHEBI:30880
+        - CHEBI:42377
+        - CHEBI:44594
+        - CHEBI:4879
+        - CHEBI:52092
+      - hmdb: HMDB00108
+      - kegg.compound: C00469
+      - kegg.drug:
+        - D00068
+        - D02798
+        - D04855
+        - D06542
+      - metanetx.chemical: MNXM303
+      - seed.compound: cpd00363
+  - !!omap
+    - id: etoh_e
+    - name: Ethanol
+    - compartment: e
+    - charge: 0
+    - formula: C2H6O
+    - annotation: !!omap
+      - bigg.metabolite: etoh
+      - biocyc: META:ETOH
+      - chebi:
+        - CHEBI:14222
+        - CHEBI:16236
+        - CHEBI:23978
+        - CHEBI:30878
+        - CHEBI:30880
+        - CHEBI:42377
+        - CHEBI:44594
+        - CHEBI:4879
+        - CHEBI:52092
+      - hmdb: HMDB00108
+      - kegg.compound: C00469
+      - kegg.drug:
+        - D00068
+        - D02798
+        - D04855
+        - D06542
+      - metanetx.chemical: MNXM303
+      - seed.compound: cpd00363
+  - !!omap
+    - id: f6p_c
+    - name: D-Fructose 6-phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C6H11O9P
+    - annotation: !!omap
+      - bigg.metabolite: f6p
+      - biocyc: META:FRUCTOSE-6P
+      - chebi:
+        - CHEBI:10375
+        - CHEBI:12352
+        - CHEBI:16084
+        - CHEBI:22768
+        - CHEBI:42378
+        - CHEBI:57634
+      - hmdb: HMDB03971
+      - kegg.compound: C05345
+      - metanetx.chemical: MNXM89621
+      - seed.compound: cpd19035
+  - !!omap
+    - id: fdp_c
+    - name: D-Fructose 1,6-bisphosphate
+    - compartment: c
+    - charge: 0
+    - formula: C6H10O12P2
+    - annotation: !!omap
+      - bigg.metabolite: fdp
+      - chebi:
+        - CHEBI:37736
+        - CHEBI:49299
+      - kegg.compound: C00354
+      - metanetx.chemical: MNXM417
+      - seed.compound: cpd00290
+  - !!omap
+    - id: for_c
+    - name: Formate
+    - compartment: c
+    - charge: 0
+    - formula: CH1O2
+    - annotation: !!omap
+      - bigg.metabolite: for
+      - biocyc:
+        - META:CARBOXYL-GROUP
+        - META:CPD-9845
+        - META:CPD1G-1532
+        - META:CPD1G-1533
+        - META:CPD1G-1534
+        - META:CPD1G-1535
+        - META:FORMATE
+      - chebi:
+        - CHEBI:14276
+        - CHEBI:15740
+        - CHEBI:24081
+        - CHEBI:24082
+        - CHEBI:30751
+        - CHEBI:42460
+        - CHEBI:5145
+      - hmdb: HMDB00142
+      - kegg.compound: C00058
+      - metanetx.chemical: MNXM39
+      - seed.compound:
+        - cpd00047
+        - cpd22511
+  - !!omap
+    - id: for_e
+    - name: Formate
+    - compartment: e
+    - charge: 0
+    - formula: CH1O2
+    - annotation: !!omap
+      - bigg.metabolite: for
+      - biocyc:
+        - META:CARBOXYL-GROUP
+        - META:CPD-9845
+        - META:CPD1G-1532
+        - META:CPD1G-1533
+        - META:CPD1G-1534
+        - META:CPD1G-1535
+        - META:FORMATE
+      - chebi:
+        - CHEBI:14276
+        - CHEBI:15740
+        - CHEBI:24081
+        - CHEBI:24082
+        - CHEBI:30751
+        - CHEBI:42460
+        - CHEBI:5145
+      - hmdb: HMDB00142
+      - kegg.compound: C00058
+      - metanetx.chemical: MNXM39
+      - seed.compound:
+        - cpd00047
+        - cpd22511
+  - !!omap
+    - id: fru_e
+    - name: D-Fructose
+    - compartment: e
+    - charge: 0
+    - formula: C6H12O6
+    - annotation: !!omap
+      - bigg.metabolite: fru
+      - biocyc:
+        - META:CPD-15382
+        - META:D-Fructopyranose
+        - META:FRU
+        - META:Fructofuranose
+      - chebi:
+        - CHEBI:12923
+        - CHEBI:15824
+        - CHEBI:20929
+        - CHEBI:24104
+        - CHEBI:24110
+        - CHEBI:28757
+        - CHEBI:37714
+        - CHEBI:37721
+        - CHEBI:4118
+        - CHEBI:4119
+        - CHEBI:47424
+        - CHEBI:48095
+        - CHEBI:5172
+      - hmdb: HMDB62538
+      - kegg.compound:
+        - C00095
+        - C01496
+        - C05003
+        - C10906
+      - kegg.drug: D00114
+      - metanetx.chemical: MNXM175
+      - seed.compound:
+        - cpd00082
+        - cpd19015
+        - cpd27040
+  - !!omap
+    - id: fum_c
+    - name: Fumarate
+    - compartment: c
+    - charge: 0
+    - formula: C4H2O4
+    - annotation: !!omap
+      - bigg.metabolite: fum
+      - biocyc: META:FUM
+      - chebi:
+        - CHEBI:14284
+        - CHEBI:18012
+        - CHEBI:22956
+        - CHEBI:22957
+        - CHEBI:22958
+        - CHEBI:24122
+        - CHEBI:24124
+        - CHEBI:29806
+        - CHEBI:36180
+        - CHEBI:37154
+        - CHEBI:37155
+        - CHEBI:42511
+        - CHEBI:42743
+        - CHEBI:5190
+      - hmdb: HMDB00134
+      - kegg.compound: C00122
+      - kegg.drug: D02308
+      - metanetx.chemical: MNXM93
+      - seed.compound: cpd00106
+  - !!omap
+    - id: fum_e
+    - name: Fumarate
+    - compartment: e
+    - charge: 0
+    - formula: C4H2O4
+    - annotation: !!omap
+      - bigg.metabolite: fum
+      - biocyc: META:FUM
+      - chebi:
+        - CHEBI:14284
+        - CHEBI:18012
+        - CHEBI:22956
+        - CHEBI:22957
+        - CHEBI:22958
+        - CHEBI:24122
+        - CHEBI:24124
+        - CHEBI:29806
+        - CHEBI:36180
+        - CHEBI:37154
+        - CHEBI:37155
+        - CHEBI:42511
+        - CHEBI:42743
+        - CHEBI:5190
+      - hmdb: HMDB00134
+      - kegg.compound: C00122
+      - kegg.drug: D02308
+      - metanetx.chemical: MNXM93
+      - seed.compound: cpd00106
+  - !!omap
+    - id: g3p_c
+    - name: Glyceraldehyde 3-phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C3H5O6P
+    - annotation: !!omap
+      - bigg.metabolite: g3p
+      - biocyc: META:GAP
+      - chebi:
+        - CHEBI:12983
+        - CHEBI:12984
+        - CHEBI:14333
+        - CHEBI:17138
+        - CHEBI:181
+        - CHEBI:18324
+        - CHEBI:21026
+        - CHEBI:29052
+        - CHEBI:5446
+        - CHEBI:58027
+        - CHEBI:59776
+      - hmdb: HMDB01112
+      - kegg.compound:
+        - C00118
+        - C00661
+      - metanetx.chemical: MNXM74
+      - seed.compound:
+        - cpd00102
+        - cpd19005
+  - !!omap
+    - id: g6p_c
+    - name: D-Glucose 6-phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C6H11O9P
+    - annotation: !!omap
+      - bigg.metabolite: g6p
+      - biocyc: META:D-glucopyranose-6-phosphate
+      - chebi:
+        - CHEBI:14314
+        - CHEBI:4170
+        - CHEBI:61548
+      - hmdb:
+        - HMDB01401
+        - HMDB01549
+        - HMDB06793
+      - kegg.compound: C00092
+      - metanetx.chemical: MNXM160
+      - seed.compound:
+        - cpd00079
+        - cpd26836
+  - !!omap
+    - id: glc__D_e
+    - name: D-Glucose
+    - compartment: e
+    - charge: 0
+    - formula: C6H12O6
+    - annotation: !!omap
+      - bigg.metabolite: glc__D
+      - biocyc: META:Glucopyranose
+      - chebi:
+        - CHEBI:12965
+        - CHEBI:17634
+        - CHEBI:20999
+        - CHEBI:4167
+      - hmdb:
+        - HMDB00122
+        - HMDB06564
+      - kegg.compound: C00031
+      - kegg.drug: D00009
+      - metanetx.chemical: MNXM41
+      - seed.compound:
+        - cpd00027
+        - cpd26821
+  - !!omap
+    - id: gln__L_c
+    - name: L-Glutamine
+    - compartment: c
+    - charge: 0
+    - formula: C5H10N2O3
+    - annotation: !!omap
+      - bigg.metabolite: gln__L
+      - biocyc: META:GLN
+      - chebi:
+        - CHEBI:13110
+        - CHEBI:18050
+        - CHEBI:21308
+        - CHEBI:24316
+        - CHEBI:28300
+        - CHEBI:32665
+        - CHEBI:32666
+        - CHEBI:32678
+        - CHEBI:32679
+        - CHEBI:42812
+        - CHEBI:42814
+        - CHEBI:42899
+        - CHEBI:42943
+        - CHEBI:5432
+        - CHEBI:58359
+        - CHEBI:6227
+      - hmdb: HMDB00641
+      - kegg.compound:
+        - C00064
+        - C00303
+      - kegg.drug: D00015
+      - metanetx.chemical: MNXM37
+      - seed.compound:
+        - cpd00053
+        - cpd00253
+  - !!omap
+    - id: gln__L_e
+    - name: L-Glutamine
+    - compartment: e
+    - charge: 0
+    - formula: C5H10N2O3
+    - annotation: !!omap
+      - bigg.metabolite: gln__L
+      - biocyc: META:GLN
+      - chebi:
+        - CHEBI:13110
+        - CHEBI:18050
+        - CHEBI:21308
+        - CHEBI:24316
+        - CHEBI:28300
+        - CHEBI:32665
+        - CHEBI:32666
+        - CHEBI:32678
+        - CHEBI:32679
+        - CHEBI:42812
+        - CHEBI:42814
+        - CHEBI:42899
+        - CHEBI:42943
+        - CHEBI:5432
+        - CHEBI:58359
+        - CHEBI:6227
+      - hmdb: HMDB00641
+      - kegg.compound:
+        - C00064
+        - C00303
+      - kegg.drug: D00015
+      - metanetx.chemical: MNXM37
+      - seed.compound:
+        - cpd00053
+        - cpd00253
+  - !!omap
+    - id: glu__L_c
+    - name: L-Glutamate
+    - compartment: c
+    - charge: 0
+    - formula: C5H8NO4
+    - annotation: !!omap
+      - bigg.metabolite: glu__L
+      - biocyc:
+        - META:GLT
+        - META:Glutamates
+      - chebi:
+        - CHEBI:13107
+        - CHEBI:14321
+        - CHEBI:16015
+        - CHEBI:18237
+        - CHEBI:21301
+        - CHEBI:21304
+        - CHEBI:24314
+        - CHEBI:29985
+        - CHEBI:29987
+        - CHEBI:29988
+        - CHEBI:42825
+        - CHEBI:5431
+        - CHEBI:6224
+        - CHEBI:76051
+      - hmdb:
+        - HMDB00148
+        - HMDB60475
+      - kegg.compound:
+        - C00025
+        - C00302
+      - kegg.drug:
+        - D00007
+        - D04341
+      - metanetx.chemical: MNXM89557
+      - seed.compound:
+        - cpd00023
+        - cpd19002
+        - cpd27177
+  - !!omap
+    - id: glu__L_e
+    - name: L-Glutamate
+    - compartment: e
+    - charge: 0
+    - formula: C5H8NO4
+    - annotation: !!omap
+      - bigg.metabolite: glu__L
+      - biocyc:
+        - META:GLT
+        - META:Glutamates
+      - chebi:
+        - CHEBI:13107
+        - CHEBI:14321
+        - CHEBI:16015
+        - CHEBI:18237
+        - CHEBI:21301
+        - CHEBI:21304
+        - CHEBI:24314
+        - CHEBI:29985
+        - CHEBI:29987
+        - CHEBI:29988
+        - CHEBI:42825
+        - CHEBI:5431
+        - CHEBI:6224
+        - CHEBI:76051
+      - hmdb:
+        - HMDB00148
+        - HMDB60475
+      - kegg.compound:
+        - C00025
+        - C00302
+      - kegg.drug:
+        - D00007
+        - D04341
+      - metanetx.chemical: MNXM89557
+      - seed.compound:
+        - cpd00023
+        - cpd19002
+        - cpd27177
+  - !!omap
+    - id: glx_c
+    - name: Glyoxylate
+    - compartment: c
+    - charge: 0
+    - formula: C2H1O3
+    - annotation: !!omap
+      - bigg.metabolite: glx
+      - biocyc: META:GLYOX
+      - chebi:
+        - CHEBI:14368
+        - CHEBI:16891
+        - CHEBI:24420
+        - CHEBI:24421
+        - CHEBI:35977
+        - CHEBI:36655
+        - CHEBI:42767
+        - CHEBI:5509
+      - hmdb: HMDB00119
+      - kegg.compound: C00048
+      - metanetx.chemical: MNXM69
+      - seed.compound: cpd00040
+  - !!omap
+    - id: h2o_c
+    - name: H2O H2O
+    - compartment: c
+    - charge: 0
+    - formula: H2O
+    - annotation: !!omap
+      - bigg.metabolite: h2o
+      - biocyc:
+        - META:CPD-15815
+        - META:HYDROXYL-GROUP
+        - META:OH
+        - META:OXONIUM
+        - META:WATER
+      - chebi:
+        - CHEBI:10743
+        - CHEBI:13352
+        - CHEBI:13365
+        - CHEBI:13419
+        - CHEBI:15377
+        - CHEBI:16234
+        - CHEBI:27313
+        - CHEBI:29356
+        - CHEBI:29373
+        - CHEBI:29374
+        - CHEBI:29375
+        - CHEBI:29412
+        - CHEBI:30490
+        - CHEBI:33806
+        - CHEBI:33811
+        - CHEBI:33813
+        - CHEBI:41979
+        - CHEBI:41981
+        - CHEBI:42043
+        - CHEBI:42857
+        - CHEBI:43228
+        - CHEBI:44292
+        - CHEBI:44641
+        - CHEBI:44701
+        - CHEBI:44819
+        - CHEBI:5585
+        - CHEBI:5594
+      - hmdb: HMDB02111
+      - kegg.compound:
+        - C00001
+        - C01328
+        - C18714
+      - kegg.drug:
+        - D00001
+        - D03703
+        - D06322
+      - metanetx.chemical: MNXM2
+      - seed.compound:
+        - cpd00001
+        - cpd15275
+        - cpd27222
+  - !!omap
+    - id: h2o_e
+    - name: H2O H2O
+    - compartment: e
+    - charge: 0
+    - formula: H2O
+    - annotation: !!omap
+      - bigg.metabolite: h2o
+      - biocyc:
+        - META:CPD-15815
+        - META:HYDROXYL-GROUP
+        - META:OH
+        - META:OXONIUM
+        - META:WATER
+      - chebi:
+        - CHEBI:10743
+        - CHEBI:13352
+        - CHEBI:13365
+        - CHEBI:13419
+        - CHEBI:15377
+        - CHEBI:16234
+        - CHEBI:27313
+        - CHEBI:29356
+        - CHEBI:29373
+        - CHEBI:29374
+        - CHEBI:29375
+        - CHEBI:29412
+        - CHEBI:30490
+        - CHEBI:33806
+        - CHEBI:33811
+        - CHEBI:33813
+        - CHEBI:41979
+        - CHEBI:41981
+        - CHEBI:42043
+        - CHEBI:42857
+        - CHEBI:43228
+        - CHEBI:44292
+        - CHEBI:44641
+        - CHEBI:44701
+        - CHEBI:44819
+        - CHEBI:5585
+        - CHEBI:5594
+      - hmdb: HMDB02111
+      - kegg.compound:
+        - C00001
+        - C01328
+        - C18714
+      - kegg.drug:
+        - D00001
+        - D03703
+        - D06322
+      - metanetx.chemical: MNXM2
+      - seed.compound:
+        - cpd00001
+        - cpd15275
+        - cpd27222
+  - !!omap
+    - id: h_c
+    - name: H+
+    - compartment: c
+    - charge: 0
+    - formula: H
+    - annotation: !!omap
+      - bigg.metabolite: h
+      - biocyc: META:PROTON
+      - chebi:
+        - CHEBI:10744
+        - CHEBI:13357
+        - CHEBI:15378
+        - CHEBI:24636
+        - CHEBI:29233
+        - CHEBI:29234
+        - CHEBI:5584
+      - hmdb: HMDB59597
+      - kegg.compound: C00080
+      - metanetx.chemical: MNXM1
+      - seed.compound: cpd00067
+  - !!omap
+    - id: h_e
+    - name: H+
+    - compartment: e
+    - charge: 0
+    - formula: H
+    - annotation: !!omap
+      - bigg.metabolite: h
+      - biocyc: META:PROTON
+      - chebi:
+        - CHEBI:10744
+        - CHEBI:13357
+        - CHEBI:15378
+        - CHEBI:24636
+        - CHEBI:29233
+        - CHEBI:29234
+        - CHEBI:5584
+      - hmdb: HMDB59597
+      - kegg.compound: C00080
+      - metanetx.chemical: MNXM1
+      - seed.compound: cpd00067
+  - !!omap
+    - id: icit_c
+    - name: Isocitrate
+    - compartment: c
+    - charge: 0
+    - formula: C6H5O7
+    - annotation: !!omap
+      - bigg.metabolite: icit
+      - chebi:
+        - CHEBI:14465
+        - CHEBI:16087
+        - CHEBI:24884
+        - CHEBI:24886
+        - CHEBI:30887
+        - CHEBI:36453
+        - CHEBI:36454
+        - CHEBI:5998
+      - hmdb: HMDB00193
+      - kegg.compound: C00311
+      - metanetx.chemical: MNXM89661
+      - seed.compound: cpd00260
+  - !!omap
+    - id: lac__D_c
+    - name: D-Lactate
+    - compartment: c
+    - charge: 0
+    - formula: C3H5O3
+    - annotation: !!omap
+      - bigg.metabolite: lac__D
+      - biocyc: META:D-LACTATE
+      - chebi:
+        - CHEBI:11001
+        - CHEBI:16004
+        - CHEBI:18684
+        - CHEBI:341
+        - CHEBI:42105
+        - CHEBI:42111
+        - CHEBI:43701
+      - hmdb:
+        - HMDB00171
+        - HMDB01311
+      - kegg.compound: C00256
+      - metanetx.chemical: MNXM285
+      - seed.compound: cpd00221
+  - !!omap
+    - id: lac__D_e
+    - name: D-Lactate
+    - compartment: e
+    - charge: 0
+    - formula: C3H5O3
+    - annotation: !!omap
+      - bigg.metabolite: lac__D
+      - biocyc: META:D-LACTATE
+      - chebi:
+        - CHEBI:11001
+        - CHEBI:16004
+        - CHEBI:18684
+        - CHEBI:341
+        - CHEBI:42105
+        - CHEBI:42111
+        - CHEBI:43701
+      - hmdb:
+        - HMDB00171
+        - HMDB01311
+      - kegg.compound: C00256
+      - metanetx.chemical: MNXM285
+      - seed.compound: cpd00221
+  - !!omap
+    - id: mal__L_c
+    - name: L-Malate
+    - compartment: c
+    - charge: 0
+    - formula: C4H4O5
+    - annotation: !!omap
+      - bigg.metabolite: mal__L
+      - biocyc: META:MAL
+      - chebi:
+        - CHEBI:11066
+        - CHEBI:13140
+        - CHEBI:15589
+        - CHEBI:18784
+        - CHEBI:18785
+        - CHEBI:30797
+        - CHEBI:423
+      - hmdb: HMDB00156
+      - kegg.compound: C00149
+      - metanetx.chemical: MNXM98
+      - seed.compound: cpd00130
+  - !!omap
+    - id: mal__L_e
+    - name: L-Malate
+    - compartment: e
+    - charge: 0
+    - formula: C4H4O5
+    - annotation: !!omap
+      - bigg.metabolite: mal__L
+      - biocyc: META:MAL
+      - chebi:
+        - CHEBI:11066
+        - CHEBI:13140
+        - CHEBI:15589
+        - CHEBI:18784
+        - CHEBI:18785
+        - CHEBI:30797
+        - CHEBI:423
+      - hmdb: HMDB00156
+      - kegg.compound: C00149
+      - metanetx.chemical: MNXM98
+      - seed.compound: cpd00130
+  - !!omap
+    - id: nad_c
+    - name: Nicotinamide adenine dinucleotide
+    - compartment: c
+    - charge: 0
+    - formula: C21H26N7O14P2
+    - annotation: !!omap
+      - bigg.metabolite: nad
+      - biocyc: META:NAD
+      - chebi:
+        - CHEBI:13393
+        - CHEBI:13394
+        - CHEBI:15846
+        - CHEBI:21901
+        - CHEBI:29867
+        - CHEBI:44214
+        - CHEBI:44215
+        - CHEBI:44281
+        - CHEBI:57540
+        - CHEBI:7422
+      - kegg.compound: C00003
+      - kegg.drug: D00002
+      - metanetx.chemical: MNXM8
+      - seed.compound: cpd00003
+  - !!omap
+    - id: nadh_c
+    - name: Nicotinamide adenine dinucleotide - reduced
+    - compartment: c
+    - charge: 0
+    - formula: C21H27N7O14P2
+    - annotation: !!omap
+      - bigg.metabolite: nadh
+      - biocyc: META:NADH
+      - chebi:
+        - CHEBI:13395
+        - CHEBI:13396
+        - CHEBI:16908
+        - CHEBI:21902
+        - CHEBI:44216
+        - CHEBI:57945
+        - CHEBI:7423
+      - hmdb: HMDB01487
+      - kegg.compound: C00004
+      - metanetx.chemical: MNXM10
+      - seed.compound: cpd00004
+  - !!omap
+    - id: nadp_c
+    - name: Nicotinamide adenine dinucleotide phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C21H25N7O17P3
+    - annotation: !!omap
+      - bigg.metabolite: nadp
+      - biocyc: META:NADP
+      - chebi:
+        - CHEBI:13397
+        - CHEBI:13398
+        - CHEBI:18009
+        - CHEBI:21903
+        - CHEBI:25523
+        - CHEBI:29868
+        - CHEBI:44405
+        - CHEBI:44409
+        - CHEBI:58349
+        - CHEBI:7424
+      - kegg.compound: C00006
+      - metanetx.chemical: MNXM5
+      - seed.compound: cpd00006
+  - !!omap
+    - id: nadph_c
+    - name: Nicotinamide adenine dinucleotide phosphate - reduced
+    - compartment: c
+    - charge: 0
+    - formula: C21H26N7O17P3
+    - annotation: !!omap
+      - bigg.metabolite: nadph
+      - biocyc: META:NADPH
+      - chebi:
+        - CHEBI:13399
+        - CHEBI:13400
+        - CHEBI:16474
+        - CHEBI:21904
+        - CHEBI:44286
+        - CHEBI:57783
+        - CHEBI:7425
+      - hmdb:
+        - HMDB00221
+        - HMDB00799
+        - HMDB06341
+      - kegg.compound: C00005
+      - metanetx.chemical: MNXM6
+      - seed.compound: cpd00005
+  - !!omap
+    - id: nh4_c
+    - name: Ammonium
+    - compartment: c
+    - charge: 0
+    - formula: H4N
+    - annotation: !!omap
+      - bigg.metabolite: nh4
+      - biocyc:
+        - META:AMMONIA
+        - META:AMMONIUM
+      - chebi:
+        - CHEBI:13405
+        - CHEBI:13406
+        - CHEBI:13407
+        - CHEBI:135980
+        - CHEBI:13771
+        - CHEBI:16134
+        - CHEBI:22533
+        - CHEBI:22534
+        - CHEBI:28938
+        - CHEBI:29337
+        - CHEBI:29340
+        - CHEBI:44269
+        - CHEBI:44284
+        - CHEBI:44404
+        - CHEBI:49783
+        - CHEBI:7434
+        - CHEBI:7435
+      - hmdb:
+        - HMDB00051
+        - HMDB41827
+      - kegg.compound:
+        - C00014
+        - C01342
+      - kegg.drug:
+        - D02915
+        - D02916
+      - metanetx.chemical: MNXM15
+      - seed.compound:
+        - cpd00013
+        - cpd19013
+  - !!omap
+    - id: nh4_e
+    - name: Ammonium
+    - compartment: e
+    - charge: 0
+    - formula: H4N
+    - annotation: !!omap
+      - bigg.metabolite: nh4
+      - biocyc:
+        - META:AMMONIA
+        - META:AMMONIUM
+      - chebi:
+        - CHEBI:13405
+        - CHEBI:13406
+        - CHEBI:13407
+        - CHEBI:135980
+        - CHEBI:13771
+        - CHEBI:16134
+        - CHEBI:22533
+        - CHEBI:22534
+        - CHEBI:28938
+        - CHEBI:29337
+        - CHEBI:29340
+        - CHEBI:44269
+        - CHEBI:44284
+        - CHEBI:44404
+        - CHEBI:49783
+        - CHEBI:7434
+        - CHEBI:7435
+      - hmdb:
+        - HMDB00051
+        - HMDB41827
+      - kegg.compound:
+        - C00014
+        - C01342
+      - kegg.drug:
+        - D02915
+        - D02916
+      - metanetx.chemical: MNXM15
+      - seed.compound:
+        - cpd00013
+        - cpd19013
+  - !!omap
+    - id: o2_c
+    - name: O2 O2
+    - compartment: c
+    - charge: 0
+    - formula: O2
+    - annotation: !!omap
+      - bigg.metabolite: o2
+      - biocyc: META:OXYGEN-MOLECULE
+      - chebi:
+        - CHEBI:10745
+        - CHEBI:13416
+        - CHEBI:15379
+        - CHEBI:23833
+        - CHEBI:25366
+        - CHEBI:26689
+        - CHEBI:27140
+        - CHEBI:29097
+        - CHEBI:29793
+        - CHEBI:30491
+        - CHEBI:44742
+        - CHEBI:7860
+      - hmdb: HMDB01377
+      - kegg.compound: C00007
+      - kegg.drug: D00003
+      - metanetx.chemical: MNXM4
+      - seed.compound: cpd00007
+  - !!omap
+    - id: o2_e
+    - name: O2 O2
+    - compartment: e
+    - charge: 0
+    - formula: O2
+    - annotation: !!omap
+      - bigg.metabolite: o2
+      - biocyc: META:OXYGEN-MOLECULE
+      - chebi:
+        - CHEBI:10745
+        - CHEBI:13416
+        - CHEBI:15379
+        - CHEBI:23833
+        - CHEBI:25366
+        - CHEBI:26689
+        - CHEBI:27140
+        - CHEBI:29097
+        - CHEBI:29793
+        - CHEBI:30491
+        - CHEBI:44742
+        - CHEBI:7860
+      - hmdb: HMDB01377
+      - kegg.compound: C00007
+      - kegg.drug: D00003
+      - metanetx.chemical: MNXM4
+      - seed.compound: cpd00007
+  - !!omap
+    - id: oaa_c
+    - name: Oxaloacetate
+    - compartment: c
+    - charge: 0
+    - formula: C4H2O5
+    - annotation: !!omap
+      - bigg.metabolite: oaa
+      - biocyc:
+        - META:ENOL-OXALOACETATE
+        - META:OXALACETIC_ACID
+      - chebi:
+        - CHEBI:12820
+        - CHEBI:14703
+        - CHEBI:16452
+        - CHEBI:24958
+        - CHEBI:24959
+        - CHEBI:25731
+        - CHEBI:25734
+        - CHEBI:29049
+        - CHEBI:30744
+        - CHEBI:7812
+      - hmdb: HMDB00223
+      - kegg.compound:
+        - C00036
+        - C03981
+      - lipidmaps:
+        - LMFA01170061
+        - LMFA01170120
+      - metanetx.chemical: MNXM46
+      - seed.compound:
+        - cpd00032
+        - cpd02469
+  - !!omap
+    - id: pep_c
+    - name: Phosphoenolpyruvate
+    - compartment: c
+    - charge: 0
+    - formula: C3H2O6P
+    - annotation: !!omap
+      - bigg.metabolite: pep
+      - biocyc: META:PHOSPHO-ENOL-PYRUVATE
+      - chebi:
+        - CHEBI:14812
+        - CHEBI:18021
+        - CHEBI:26054
+        - CHEBI:26055
+        - CHEBI:44894
+        - CHEBI:44897
+        - CHEBI:58702
+        - CHEBI:8147
+      - hmdb: HMDB00263
+      - kegg.compound: C00074
+      - metanetx.chemical: MNXM73
+      - seed.compound: cpd00061
+  - !!omap
+    - id: pi_c
+    - name: Phosphate
+    - compartment: c
+    - charge: 0
+    - formula: HO4P
+    - annotation: !!omap
+      - bigg.metabolite: pi
+      - biocyc:
+        - META:CPD-16459
+        - META:CPD-9010
+        - META:PHOSPHATE-GROUP
+        - META:Pi
+      - chebi:
+        - CHEBI:14791
+        - CHEBI:18367
+        - CHEBI:26078
+        - CHEBI:29137
+        - CHEBI:29139
+        - CHEBI:35780
+        - CHEBI:39739
+        - CHEBI:39745
+        - CHEBI:43470
+        - CHEBI:43474
+        - CHEBI:45024
+        - CHEBI:7793
+      - hmdb:
+        - HMDB00973
+        - HMDB01429
+        - HMDB02105
+        - HMDB02142
+        - HMDB05947
+      - kegg.compound:
+        - C00009
+        - C13558
+      - kegg.drug: D05467
+      - metanetx.chemical: MNXM9
+      - seed.compound:
+        - cpd00009
+        - cpd27787
+  - !!omap
+    - id: pi_e
+    - name: Phosphate
+    - compartment: e
+    - charge: 0
+    - formula: HO4P
+    - annotation: !!omap
+      - bigg.metabolite: pi
+      - biocyc:
+        - META:CPD-16459
+        - META:CPD-9010
+        - META:PHOSPHATE-GROUP
+        - META:Pi
+      - chebi:
+        - CHEBI:14791
+        - CHEBI:18367
+        - CHEBI:26078
+        - CHEBI:29137
+        - CHEBI:29139
+        - CHEBI:35780
+        - CHEBI:39739
+        - CHEBI:39745
+        - CHEBI:43470
+        - CHEBI:43474
+        - CHEBI:45024
+        - CHEBI:7793
+      - hmdb:
+        - HMDB00973
+        - HMDB01429
+        - HMDB02105
+        - HMDB02142
+        - HMDB05947
+      - kegg.compound:
+        - C00009
+        - C13558
+      - kegg.drug: D05467
+      - metanetx.chemical: MNXM9
+      - seed.compound:
+        - cpd00009
+        - cpd27787
+  - !!omap
+    - id: pyr_c
+    - name: Pyruvate
+    - compartment: c
+    - charge: 0
+    - formula: C3H3O3
+    - annotation: !!omap
+      - bigg.metabolite: pyr
+      - biocyc: META:PYRUVATE
+      - chebi:
+        - CHEBI:14987
+        - CHEBI:15361
+        - CHEBI:26462
+        - CHEBI:26466
+        - CHEBI:32816
+        - CHEBI:45253
+        - CHEBI:86354
+        - CHEBI:8685
+      - hmdb:
+        - HMDB00243
+        - HMDB62676
+      - kegg.compound: C00022
+      - lipidmaps: LMFA01060077
+      - metanetx.chemical: MNXM23
+      - seed.compound: cpd00020
+  - !!omap
+    - id: pyr_e
+    - name: Pyruvate
+    - compartment: e
+    - charge: 0
+    - formula: C3H3O3
+    - annotation: !!omap
+      - bigg.metabolite: pyr
+      - biocyc: META:PYRUVATE
+      - chebi:
+        - CHEBI:14987
+        - CHEBI:15361
+        - CHEBI:26462
+        - CHEBI:26466
+        - CHEBI:32816
+        - CHEBI:45253
+        - CHEBI:86354
+        - CHEBI:8685
+      - hmdb:
+        - HMDB00243
+        - HMDB62676
+      - kegg.compound: C00022
+      - lipidmaps: LMFA01060077
+      - metanetx.chemical: MNXM23
+      - seed.compound: cpd00020
+  - !!omap
+    - id: q8_c
+    - name: Ubiquinone-8
+    - compartment: c
+    - charge: 0
+    - formula: C49H74O4
+    - annotation: !!omap
+      - bigg.metabolite: q8
+      - biocyc: META:UBIQUINONE-8
+      - chebi: CHEBI:61683
+      - kegg.compound: C17569
+      - lipidmaps: LMPR02010005
+      - metanetx.chemical: MNXM232
+      - seed.compound: cpd15560
+  - !!omap
+    - id: q8h2_c
+    - name: Ubiquinol-8
+    - compartment: c
+    - charge: 0
+    - formula: C49H76O4
+    - annotation: !!omap
+      - bigg.metabolite: q8h2
+      - biocyc: META:CPD-9956
+      - chebi: CHEBI:61682
+      - hmdb: HMDB01060
+      - metanetx.chemical: MNXM191
+      - seed.compound:
+        - cpd15561
+        - cpd29608
+  - !!omap
+    - id: r5p_c
+    - name: Alpha-D-Ribose 5-phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C5H9O8P
+    - annotation: !!omap
+      - bigg.metabolite: r5p
+      - biocyc: META:CPD-15318
+      - chebi:
+        - CHEBI:10270
+        - CHEBI:12331
+        - CHEBI:18189
+        - CHEBI:22413
+      - kegg.compound: C03736
+      - metanetx.chemical: MNXM15900
+      - seed.compound: cpd19028
+  - !!omap
+    - id: ru5p__D_c
+    - name: D-Ribulose 5-phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C5H9O8P
+    - annotation: !!omap
+      - bigg.metabolite: ru5p__D
+      - biocyc: META:RIBULOSE-5P
+      - chebi:
+        - CHEBI:13018
+        - CHEBI:13040
+        - CHEBI:17363
+        - CHEBI:21088
+        - CHEBI:26572
+        - CHEBI:37455
+        - CHEBI:40192
+        - CHEBI:4243
+        - CHEBI:58121
+      - hmdb:
+        - HMDB00618
+        - HMDB02033
+        - HMDB02694
+      - kegg.compound: C00199
+      - metanetx.chemical: MNXM145
+      - seed.compound: cpd00171
+  - !!omap
+    - id: s7p_c
+    - name: Sedoheptulose 7-phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C7H13O10P
+    - annotation: !!omap
+      - bigg.metabolite: s7p
+      - biocyc: META:D-SEDOHEPTULOSE-7-P
+      - chebi:
+        - CHEBI:15073
+        - CHEBI:15074
+        - CHEBI:15721
+        - CHEBI:26621
+        - CHEBI:4244
+        - CHEBI:57483
+        - CHEBI:9083
+      - hmdb:
+        - HMDB01068
+        - HMDB62754
+      - kegg.compound: C05382
+      - metanetx.chemical: MNXM271
+      - seed.compound: cpd00238
+  - !!omap
+    - id: succ_c
+    - name: Succinate
+    - compartment: c
+    - charge: 0
+    - formula: C4H4O4
+    - annotation: !!omap
+      - bigg.metabolite: succ
+      - biocyc: META:SUC
+      - chebi:
+        - CHEBI:132287
+        - CHEBI:15125
+        - CHEBI:15741
+        - CHEBI:22941
+        - CHEBI:22943
+        - CHEBI:26803
+        - CHEBI:26807
+        - CHEBI:30031
+        - CHEBI:30779
+        - CHEBI:45639
+        - CHEBI:90372
+        - CHEBI:9304
+      - hmdb: HMDB00254
+      - kegg.compound: C00042
+      - lipidmaps: LMFA01170043
+      - metanetx.chemical: MNXM25
+      - seed.compound: cpd00036
+  - !!omap
+    - id: succ_e
+    - name: Succinate
+    - compartment: e
+    - charge: 0
+    - formula: C4H4O4
+    - annotation: !!omap
+      - bigg.metabolite: succ
+      - biocyc: META:SUC
+      - chebi:
+        - CHEBI:132287
+        - CHEBI:15125
+        - CHEBI:15741
+        - CHEBI:22941
+        - CHEBI:22943
+        - CHEBI:26803
+        - CHEBI:26807
+        - CHEBI:30031
+        - CHEBI:30779
+        - CHEBI:45639
+        - CHEBI:90372
+        - CHEBI:9304
+      - hmdb: HMDB00254
+      - kegg.compound: C00042
+      - lipidmaps: LMFA01170043
+      - metanetx.chemical: MNXM25
+      - seed.compound: cpd00036
+  - !!omap
+    - id: succoa_c
+    - name: Succinyl-CoA
+    - compartment: c
+    - charge: 0
+    - formula: C25H35N7O19P3S
+    - annotation: !!omap
+      - bigg.metabolite: succoa
+      - biocyc: META:SUC-COA
+      - chebi:
+        - CHEBI:10746
+        - CHEBI:15127
+        - CHEBI:15380
+        - CHEBI:26811
+        - CHEBI:45541
+        - CHEBI:57292
+        - CHEBI:9310
+      - hmdb: HMDB01022
+      - kegg.compound: C00091
+      - lipidmaps: LMFA07050370
+      - metanetx.chemical: MNXM92
+      - seed.compound: cpd00078
+  - !!omap
+    - id: xu5p__D_c
+    - name: D-Xylulose 5-phosphate
+    - compartment: c
+    - charge: 0
+    - formula: C5H9O8P
+    - annotation: !!omap
+      - bigg.metabolite: xu5p__D
+      - biocyc: META:XYLULOSE-5-PHOSPHATE
+      - chebi:
+        - CHEBI:13036
+        - CHEBI:16332
+        - CHEBI:21121
+        - CHEBI:27354
+        - CHEBI:4269
+        - CHEBI:57737
+      - hmdb:
+        - HMDB00868
+        - HMDB06212
+      - kegg.compound: C00231
+      - metanetx.chemical: MNXM186
+      - seed.compound: cpd00198
+- reactions:
+  - !!omap
+    - id: ACALD
+    - name: Acetaldehyde dehydrogenase (acetylating)
+    - metabolites: !!omap
+      - acald_c: -1.0
+      - accoa_c: 1.0
+      - coa_c: -1.0
+      - h_c: 1.0
+      - nad_c: -1.0
+      - nadh_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0351 or b1241
+    - annotation: !!omap
+      - bigg.reaction: ACALD
+      - biocyc: META:ACETALD-DEHYDROG-RXN
+      - ec-code: 1.2.1.10
+      - kegg.reaction: R00228
+      - metanetx.reaction: MNXR95210
+      - rhea:
+        - '23288'
+        - '23289'
+        - '23290'
+        - '23291'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ACALDt
+    - name: Acetaldehyde reversible transport
+    - metabolites: !!omap
+      - acald_c: 1.0
+      - acald_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: s0001
+    - annotation: !!omap
+      - bigg.reaction: ACALDt
+      - metanetx.reaction: MNXR95212
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ACKr
+    - name: Acetate kinase
+    - metabolites: !!omap
+      - ac_c: -1.0
+      - actp_c: 1.0
+      - adp_c: 1.0
+      - atp_c: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2296 or b3115 or b1849
+    - annotation: !!omap
+      - bigg.reaction: ACKr
+      - biocyc: META:ACETATEKIN-RXN
+      - ec-code:
+        - 2.7.2.1
+        - 2.7.2.15
+      - kegg.reaction: R00315
+      - metanetx.reaction: MNXR95269
+      - rhea:
+        - '11352'
+        - '11353'
+        - '11354'
+        - '11355'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ACONTa
+    - name: Aconitase (half-reaction A, Citrate hydro-lyase)
+    - metabolites: !!omap
+      - acon_C_c: 1.0
+      - cit_c: -1.0
+      - h2o_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0118 or b1276
+    - annotation: !!omap
+      - bigg.reaction: ACONTa
+      - biocyc: META:ACONITATEDEHYDR-RXN
+      - ec-code: 4.2.1.3
+      - kegg.reaction: R01325
+      - metanetx.reaction: MNXR95386
+      - rhea:
+        - '10228'
+        - '10229'
+        - '10230'
+        - '10231'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ACONTb
+    - name: Aconitase (half-reaction B, Isocitrate hydro-lyase)
+    - metabolites: !!omap
+      - acon_C_c: -1.0
+      - h2o_c: -1.0
+      - icit_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0118 or b1276
+    - annotation: !!omap
+      - bigg.reaction: ACONTb
+      - ec-code: 4.2.1.3
+      - kegg.reaction: R01900
+      - metanetx.reaction: MNXR95387
+      - rhea:
+        - '22144'
+        - '22145'
+        - '22146'
+        - '22147'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ACt2r
+    - name: Acetate reversible transport via proton symport
+    - metabolites: !!omap
+      - ac_c: 1.0
+      - ac_e: -1.0
+      - h_c: 1.0
+      - h_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: ACt2r
+      - biocyc: META:TRANS-RXN0-571
+      - metanetx.reaction: MNXR95429
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ADK1
+    - name: Adenylate kinase
+    - metabolites: !!omap
+      - adp_c: 2.0
+      - amp_c: -1.0
+      - atp_c: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0474
+    - annotation: !!omap
+      - bigg.reaction: ADK1
+      - biocyc: META:ADENYL-KIN-RXN
+      - ec-code: 2.7.4.3
+      - kegg.reaction: R00127
+      - metanetx.reaction: MNXR95450
+      - rhea:
+        - '12973'
+        - '12974'
+        - '12975'
+        - '12976'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: AKGDH
+    - name: 2-Oxogluterate dehydrogenase
+    - metabolites: !!omap
+      - akg_c: -1.0
+      - co2_c: 1.0
+      - coa_c: -1.0
+      - nad_c: -1.0
+      - nadh_c: 1.0
+      - succoa_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0726 and b0116 and b0727
+    - annotation: !!omap
+      - bigg.reaction: AKGDH
+      - biocyc: META:2OXOGLUTARATEDEH-RXN
+      - ec-code:
+        - 1.2.1.52
+        - 1.2.4.2
+        - 1.8.1.4
+        - 2.3.1.61
+      - kegg.reaction: R08549
+      - metanetx.reaction: MNXR95655
+      - rhea:
+        - '27786'
+        - '27787'
+        - '27788'
+        - '27789'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: AKGt2r
+    - name: 2 oxoglutarate reversible transport via symport
+    - metabolites: !!omap
+      - akg_c: 1.0
+      - akg_e: -1.0
+      - h_c: 1.0
+      - h_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2587
+    - annotation: !!omap
+      - bigg.reaction: AKGt2r
+      - biocyc: META:TRANS-RXN-23
+      - metanetx.reaction: MNXR95661
+      - rhea:
+        - '29011'
+        - '29012'
+        - '29013'
+        - '29014'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ALCD2x
+    - name: Alcohol dehydrogenase (ethanol)
+    - metabolites: !!omap
+      - acald_c: 1.0
+      - etoh_c: -1.0
+      - h_c: 1.0
+      - nad_c: -1.0
+      - nadh_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b1478 or b0356 or b1241
+    - annotation: !!omap
+      - bigg.reaction: ALCD2x
+      - biocyc: META:ALCOHOL-DEHYDROG-RXN
+      - ec-code:
+        - 1.1.1.1
+        - 1.1.1.71
+      - kegg.reaction: R00754
+      - metanetx.reaction: MNXR95725
+      - rhea:
+        - '25290'
+        - '25291'
+        - '25292'
+        - '25293'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ATPM
+    - name: ATP maintenance requirement
+    - metabolites: !!omap
+      - adp_c: 1.0
+      - atp_c: -1.0
+      - h2o_c: -1.0
+      - h_c: 1.0
+      - pi_c: 1.0
+    - lower_bound: 8.39
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: ATPM
+      - biocyc: META:ATPASE-RXN
+      - ec-code:
+        - 3.6.1.15
+        - 3.6.1.3
+        - 3.6.1.5
+        - 3.6.1.8
+        - 3.6.3.1
+        - 3.6.3.10
+        - 3.6.3.11
+        - 3.6.3.12
+        - 3.6.3.14
+        - 3.6.3.15
+        - 3.6.3.16
+        - 3.6.3.17
+        - 3.6.3.18
+        - 3.6.3.19
+        - 3.6.3.2
+        - 3.6.3.20
+        - 3.6.3.21
+        - 3.6.3.22
+        - 3.6.3.23
+        - 3.6.3.24
+        - 3.6.3.25
+        - 3.6.3.26
+        - 3.6.3.27
+        - 3.6.3.28
+        - 3.6.3.29
+        - 3.6.3.3
+        - 3.6.3.30
+        - 3.6.3.31
+        - 3.6.3.32
+        - 3.6.3.33
+        - 3.6.3.34
+        - 3.6.3.35
+        - 3.6.3.36
+        - 3.6.3.37
+        - 3.6.3.38
+        - 3.6.3.39
+        - 3.6.3.4
+        - 3.6.3.40
+        - 3.6.3.41
+        - 3.6.3.42
+        - 3.6.3.43
+        - 3.6.3.44
+        - 3.6.3.46
+        - 3.6.3.47
+        - 3.6.3.48
+        - 3.6.3.49
+        - 3.6.3.5
+        - 3.6.3.50
+        - 3.6.3.51
+        - 3.6.3.52
+        - 3.6.3.53
+        - 3.6.3.54
+        - 3.6.3.6
+        - 3.6.3.7
+        - 3.6.3.8
+        - 3.6.3.9
+        - 3.6.4.1
+        - 3.6.4.10
+        - 3.6.4.11
+        - 3.6.4.12
+        - 3.6.4.13
+        - 3.6.4.2
+        - 3.6.4.3
+        - 3.6.4.4
+        - 3.6.4.5
+        - 3.6.4.6
+        - 3.6.4.7
+        - 3.6.4.8
+        - 3.6.4.9
+      - kegg.reaction: R00086
+      - metanetx.reaction: MNXR96131
+      - rhea:
+        - '13065'
+        - '13066'
+        - '13067'
+        - '13068'
+      - sbo: SBO:0000630
+  - !!omap
+    - id: ATPS4r
+    - name: ATP synthase (four protons for one ATP)
+    - metabolites: !!omap
+      - adp_c: -1.0
+      - atp_c: 1.0
+      - h2o_c: 1.0
+      - h_c: 3.0
+      - h_e: -4.0
+      - pi_c: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: (b3738 and b3736 and b3737 and b3735 and b3733 and b3731
+        and b3732 and b3734) or (b3734 and b3732 and b3731 and b3733 and b3735 and
+        b3737 and b3736 and b3738 and b3739)
+    - annotation: !!omap
+      - bigg.reaction: ATPS4r
+      - biocyc: META:ATPSYN-RXN
+      - ec-code: 3.6.3.14
+      - metanetx.reaction: MNXR96136
+      - sbo: SBO:0000375
+  - !!omap
+    - id: BIOMASS_Ecoli_core_w_GAM
+    - name: Biomass Objective Function with GAM
+    - metabolites: !!omap
+      - 3pg_c: -1.496
+      - accoa_c: -3.7478
+      - adp_c: 59.81
+      - akg_c: 4.1182
+      - atp_c: -59.81
+      - coa_c: 3.7478
+      - e4p_c: -0.361
+      - f6p_c: -0.0709
+      - g3p_c: -0.129
+      - g6p_c: -0.205
+      - gln__L_c: -0.2557
+      - glu__L_c: -4.9414
+      - h2o_c: -59.81
+      - h_c: 59.81
+      - nad_c: -3.547
+      - nadh_c: 3.547
+      - nadp_c: 13.0279
+      - nadph_c: -13.0279
+      - oaa_c: -1.7867
+      - pep_c: -0.5191
+      - pi_c: 59.81
+      - pyr_c: -2.8328
+      - r5p_c: -0.8977
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - objective_coefficient: 1.0
+    - annotation: !!omap
+      - bigg.reaction: Ecoli_core_w_GAM
+      - sbo: SBO:0000629
+  - !!omap
+    - id: CO2t
+    - name: CO2 transporter via diffusion
+    - metabolites: !!omap
+      - co2_c: 1.0
+      - co2_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: s0001
+    - annotation: !!omap
+      - bigg.reaction: CO2t
+      - biocyc: META:TRANS-RXN0-545
+      - metanetx.reaction: MNXR96810
+      - sbo: SBO:0000375
+  - !!omap
+    - id: CS
+    - name: Citrate synthase
+    - metabolites: !!omap
+      - accoa_c: -1.0
+      - cit_c: 1.0
+      - coa_c: 1.0
+      - h2o_c: -1.0
+      - h_c: 1.0
+      - oaa_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0720
+    - annotation: !!omap
+      - bigg.reaction: CS
+      - biocyc:
+        - META:CITSYN-RXN
+        - META:RXN-14905
+      - ec-code:
+        - 2.3.3.1
+        - 2.3.3.16
+        - 2.3.3.3
+      - kegg.reaction: R00351
+      - metanetx.reaction: MNXR96920
+      - rhea:
+        - '16845'
+        - '16846'
+        - '16847'
+        - '16848'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: CYTBD
+    - name: 'Cytochrome oxidase bd (ubiquinol-8: 2 protons)'
+    - metabolites: !!omap
+      - h2o_c: 1.0
+      - h_c: -2.0
+      - h_e: 2.0
+      - o2_c: -0.5
+      - q8_c: 1.0
+      - q8h2_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: (b0978 and b0979) or (b0733 and b0734)
+    - annotation: !!omap
+      - bigg.reaction: CYTBD
+      - metanetx.reaction: MNXR97031
+      - sbo: SBO:0000375
+  - !!omap
+    - id: D_LACt2
+    - name: D lactate transport via proton symport
+    - metabolites: !!omap
+      - h_c: 1.0
+      - h_e: -1.0
+      - lac__D_c: 1.0
+      - lac__D_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2975 or b3603
+    - annotation: !!omap
+      - bigg.reaction: D_LACt2
+      - biocyc: META:TRANS-RXN0-515
+      - metanetx.reaction: MNXR97838
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ENO
+    - name: Enolase
+    - metabolites: !!omap
+      - 2pg_c: -1.0
+      - h2o_c: 1.0
+      - pep_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2779
+    - annotation: !!omap
+      - bigg.reaction: ENO
+      - biocyc: META:2PGADEHYDRAT-RXN
+      - ec-code: 4.2.1.11
+      - kegg.reaction: R00658
+      - metanetx.reaction: MNXR97932
+      - rhea:
+        - '10164'
+        - '10165'
+        - '10166'
+        - '10167'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ETOHt2r
+    - name: Ethanol reversible transport via proton symport
+    - metabolites: !!omap
+      - etoh_c: 1.0
+      - etoh_e: -1.0
+      - h_c: 1.0
+      - h_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: ETOHt2r
+      - metanetx.reaction: MNXR97981
+      - sbo: SBO:0000375
+  - !!omap
+    - id: EX_ac_e
+    - name: Acetate exchange
+    - metabolites: !!omap
+      - ac_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: ac
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_acald_e
+    - name: Acetaldehyde exchange
+    - metabolites: !!omap
+      - acald_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: acald
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_akg_e
+    - name: 2-Oxoglutarate exchange
+    - metabolites: !!omap
+      - akg_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: akg
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_co2_e
+    - name: CO2 exchange
+    - metabolites: !!omap
+      - co2_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: co2
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_etoh_e
+    - name: Ethanol exchange
+    - metabolites: !!omap
+      - etoh_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: etoh
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_for_e
+    - name: Formate exchange
+    - metabolites: !!omap
+      - for_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: for
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_fru_e
+    - name: D-Fructose exchange
+    - metabolites: !!omap
+      - fru_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: fru
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_fum_e
+    - name: Fumarate exchange
+    - metabolites: !!omap
+      - fum_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: fum
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_glc__D_e
+    - name: D-Glucose exchange
+    - metabolites: !!omap
+      - glc__D_e: -1.0
+    - lower_bound: -10.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: glc__D
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_gln__L_e
+    - name: L-Glutamine exchange
+    - metabolites: !!omap
+      - gln__L_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: gln__L
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_glu__L_e
+    - name: L-Glutamate exchange
+    - metabolites: !!omap
+      - glu__L_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: glu__L
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_h2o_e
+    - name: H2O exchange
+    - metabolites: !!omap
+      - h2o_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: h2o
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_h_e
+    - name: H+ exchange
+    - metabolites: !!omap
+      - h_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: h
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_lac__D_e
+    - name: D-lactate exchange
+    - metabolites: !!omap
+      - lac__D_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: lac__D
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_mal__L_e
+    - name: L-Malate exchange
+    - metabolites: !!omap
+      - mal__L_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: mal__L
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_nh4_e
+    - name: Ammonia exchange
+    - metabolites: !!omap
+      - nh4_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: nh4
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_o2_e
+    - name: O2 exchange
+    - metabolites: !!omap
+      - o2_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: o2
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_pi_e
+    - name: Phosphate exchange
+    - metabolites: !!omap
+      - pi_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: pi
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_pyr_e
+    - name: Pyruvate exchange
+    - metabolites: !!omap
+      - pyr_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: pyr
+      - sbo: SBO:0000627
+  - !!omap
+    - id: EX_succ_e
+    - name: Succinate exchange
+    - metabolites: !!omap
+      - succ_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: succ
+      - sbo: SBO:0000627
+  - !!omap
+    - id: FBA
+    - name: Fructose-bisphosphate aldolase
+    - metabolites: !!omap
+      - dhap_c: 1.0
+      - fdp_c: -1.0
+      - g3p_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b1773 or b2097 or b2925
+    - annotation: !!omap
+      - bigg.reaction: FBA
+      - ec-code: 4.1.2.13
+      - kegg.reaction: R01068
+      - metanetx.reaction: MNXR99459
+      - rhea:
+        - '14729'
+        - '14730'
+        - '14731'
+        - '14732'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: FBP
+    - name: Fructose-bisphosphatase
+    - metabolites: !!omap
+      - f6p_c: 1.0
+      - fdp_c: -1.0
+      - h2o_c: -1.0
+      - pi_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3925 or b4232
+    - annotation: !!omap
+      - bigg.reaction: FBP
+      - ec-code: 3.1.3.11
+      - metanetx.reaction: MNXR99465
+      - rhea:
+        - '11064'
+        - '11065'
+        - '11066'
+        - '11067'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: FORt
+    - name: Formate transport via diffusion
+    - metabolites: !!omap
+      - for_c: 1.0
+      - for_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 0.0
+    - gene_reaction_rule: b0904 or b2492
+    - annotation: !!omap
+      - bigg.reaction: FORt
+      - biocyc: META:TRANS-RXN-1
+      - metanetx.reaction: MNXR99620
+      - rhea:
+        - '29679'
+        - '29680'
+        - '29681'
+        - '29682'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: FORt2
+    - name: Formate transport in via proton symport
+    - metabolites: !!omap
+      - for_c: 1.0
+      - for_e: -1.0
+      - h_c: 1.0
+      - h_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0904 or b2492
+    - annotation: !!omap
+      - bigg.reaction: FORt2
+      - metanetx.reaction: MNXR99621
+      - sbo: SBO:0000375
+  - !!omap
+    - id: FRD7
+    - name: Fumarate reductase
+    - metabolites: !!omap
+      - fum_c: -1.0
+      - q8_c: 1.0
+      - q8h2_c: -1.0
+      - succ_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b4153 and b4151 and b4152 and b4154
+    - annotation: !!omap
+      - bigg.reaction: FRD7
+      - metanetx.reaction: MNXR99641
+      - rhea:
+        - '29187'
+        - '29188'
+        - '29189'
+        - '29190'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: FRUpts2
+    - name: Fructose transport via PEP:Pyr PTS (f6p generating)
+    - metabolites: !!omap
+      - f6p_c: 1.0
+      - fru_e: -1.0
+      - pep_c: -1.0
+      - pyr_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2415 and b1818 and b1817 and b1819 and b2416
+    - annotation: !!omap
+      - bigg.reaction: FRUpts2
+      - metanetx.reaction: MNXR99662
+      - sbo: SBO:0000375
+  - !!omap
+    - id: FUM
+    - name: Fumarase
+    - metabolites: !!omap
+      - fum_c: -1.0
+      - h2o_c: -1.0
+      - mal__L_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b4122 or b1612 or b1611
+    - annotation: !!omap
+      - bigg.reaction: FUM
+      - biocyc: META:FUMHYDR-RXN
+      - ec-code: 4.2.1.2
+      - kegg.reaction: R01082
+      - metanetx.reaction: MNXR99705
+      - rhea:
+        - '12460'
+        - '12461'
+        - '12462'
+        - '12463'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: FUMt2_2
+    - name: Fumarate transport via proton symport (2 H)
+    - metabolites: !!omap
+      - fum_c: 1.0
+      - fum_e: -1.0
+      - h_c: 2.0
+      - h_e: -2.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3528
+    - annotation: !!omap
+      - bigg.reaction: FUMt2_2
+      - biocyc: META:TRANS-RXN-121B
+      - metanetx.reaction: MNXR99711
+      - rhea:
+        - '29331'
+        - '29332'
+        - '29333'
+        - '29334'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: G6PDH2r
+    - name: Glucose 6-phosphate dehydrogenase
+    - metabolites: !!omap
+      - 6pgl_c: 1.0
+      - g6p_c: -1.0
+      - h_c: 1.0
+      - nadp_c: -1.0
+      - nadph_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b1852
+    - annotation: !!omap
+      - bigg.reaction: G6PDH2r
+      - biocyc: META:GLU6PDEHYDROG-RXN
+      - ec-code:
+        - 1.1.1.363
+        - 1.1.1.49
+      - kegg.reaction: R00835
+      - metanetx.reaction: MNXR99907
+      - rhea:
+        - '15841'
+        - '15842'
+        - '15843'
+        - '15844'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: GAPD
+    - name: Glyceraldehyde-3-phosphate dehydrogenase
+    - metabolites: !!omap
+      - 13dpg_c: 1.0
+      - g3p_c: -1.0
+      - h_c: 1.0
+      - nad_c: -1.0
+      - nadh_c: 1.0
+      - pi_c: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b1779
+    - annotation: !!omap
+      - bigg.reaction: GAPD
+      - biocyc: META:GAPOXNPHOSPHN-RXN
+      - ec-code:
+        - 1.2.1.12
+        - 1.2.1.59
+      - kegg.reaction: R01061
+      - metanetx.reaction: MNXR100040
+      - rhea:
+        - '10300'
+        - '10301'
+        - '10302'
+        - '10303'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: GLCpts
+    - name: D-glucose transport via PEP:Pyr PTS
+    - metabolites: !!omap
+      - g6p_c: 1.0
+      - glc__D_e: -1.0
+      - pep_c: -1.0
+      - pyr_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: (b2415 and b1818 and b1817 and b1819 and b2416) or (b2415
+        and b2417 and b1101 and b2416) or (b2415 and b2417 and b1621 and b2416)
+    - annotation: !!omap
+      - bigg.reaction: GLCpts
+      - metanetx.reaction: MNXR100237
+      - sbo: SBO:0000375
+  - !!omap
+    - id: GLNS
+    - name: Glutamine synthetase
+    - metabolites: !!omap
+      - adp_c: 1.0
+      - atp_c: -1.0
+      - gln__L_c: 1.0
+      - glu__L_c: -1.0
+      - h_c: 1.0
+      - nh4_c: -1.0
+      - pi_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3870 or b1297
+    - annotation: !!omap
+      - bigg.reaction: GLNS
+      - biocyc: META:GLUTAMINESYN-RXN
+      - ec-code: 6.3.1.2
+      - kegg.reaction: R00253
+      - metanetx.reaction: MNXR100024
+      - rhea:
+        - '16169'
+        - '16170'
+        - '16171'
+        - '16172'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: GLNabc
+    - name: L-glutamine transport via ABC system
+    - metabolites: !!omap
+      - adp_c: 1.0
+      - atp_c: -1.0
+      - gln__L_c: 1.0
+      - gln__L_e: -1.0
+      - h2o_c: -1.0
+      - h_c: 1.0
+      - pi_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0810 and b0811 and b0809
+    - annotation: !!omap
+      - bigg.reaction: GLNabc
+      - biocyc: META:ABC-12-RXN
+      - ec-code: 3.6.3.21
+      - metanetx.reaction: MNXR100258
+      - rhea:
+        - 29895#1
+        - 29896#1
+        - 29897#1
+        - 29898#1
+      - sbo: SBO:0000375
+  - !!omap
+    - id: GLUDy
+    - name: Glutamate dehydrogenase (NADP)
+    - metabolites: !!omap
+      - akg_c: 1.0
+      - glu__L_c: -1.0
+      - h2o_c: -1.0
+      - h_c: 1.0
+      - nadp_c: -1.0
+      - nadph_c: 1.0
+      - nh4_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b1761
+    - annotation: !!omap
+      - bigg.reaction: GLUDy
+      - biocyc: META:GLUTDEHYD-RXN
+      - ec-code:
+        - 1.4.1.13
+        - 1.4.1.3
+        - 1.4.1.4
+      - kegg.reaction: R00248
+      - metanetx.reaction: MNXR100086
+      - rhea:
+        - '11612'
+        - '11613'
+        - '11614'
+        - '11615'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: GLUN
+    - name: Glutaminase
+    - metabolites: !!omap
+      - gln__L_c: -1.0
+      - glu__L_c: 1.0
+      - h2o_c: -1.0
+      - nh4_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0485 or b1812 or b1524
+    - annotation: !!omap
+      - bigg.reaction: GLUN
+      - biocyc: META:GLUTAMIN-RXN
+      - ec-code:
+        - 1.4.1.13
+        - 1.4.7.1
+        - 3.5.1.2
+        - 3.5.1.38
+        - 4.3.3.6
+        - 6.3.4.2
+        - 6.3.5.2
+        - 6.3.5.4
+        - 6.3.5.5
+      - kegg.reaction: R00256
+      - metanetx.reaction: MNXR100030
+      - rhea:
+        - '15889'
+        - '15890'
+        - '15891'
+        - '15892'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: GLUSy
+    - name: Glutamate synthase (NADPH)
+    - metabolites: !!omap
+      - akg_c: -1.0
+      - gln__L_c: -1.0
+      - glu__L_c: 2.0
+      - h_c: -1.0
+      - nadp_c: 1.0
+      - nadph_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3212 and b3213
+    - annotation: !!omap
+      - bigg.reaction: GLUSy
+      - biocyc: META:GLUTAMATESYN-RXN
+      - ec-code: 1.4.1.13
+      - kegg.reaction: R00114
+      - metanetx.reaction: MNXR100291
+      - rhea:
+        - '15501'
+        - '15502'
+        - '15503'
+        - '15504'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: GLUt2r
+    - name: L glutamate transport via proton symport  reversible
+    - metabolites: !!omap
+      - glu__L_c: 1.0
+      - glu__L_e: -1.0
+      - h_c: 1.0
+      - h_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b4077
+    - annotation: !!omap
+      - bigg.reaction: GLUt2r
+      - metanetx.reaction: MNXR100300
+      - sbo: SBO:0000375
+  - !!omap
+    - id: GND
+    - name: Phosphogluconate dehydrogenase
+    - metabolites: !!omap
+      - 6pgc_c: -1.0
+      - co2_c: 1.0
+      - nadp_c: -1.0
+      - nadph_c: 1.0
+      - ru5p__D_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2029
+    - annotation: !!omap
+      - bigg.reaction: GND
+      - biocyc: META:RXN-9952
+      - ec-code:
+        - 1.1.1.351
+        - 1.1.1.44
+      - kegg.reaction: R01528
+      - metanetx.reaction: MNXR100389
+      - rhea:
+        - '10116'
+        - '10117'
+        - '10118'
+        - '10119'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: H2Ot
+    - name: H2O transport via diffusion
+    - metabolites: !!omap
+      - h2o_c: 1.0
+      - h2o_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0875 or s0001
+    - annotation: !!omap
+      - bigg.reaction: H2Ot
+      - biocyc:
+        - META:TRANS-RXN-145
+        - META:TRANS-RXN0-547
+      - metanetx.reaction: MNXR98641
+      - rhea:
+        - '29667'
+        - '29668'
+        - '29669'
+        - '29670'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ICDHyr
+    - name: Isocitrate dehydrogenase (NADP)
+    - metabolites: !!omap
+      - akg_c: 1.0
+      - co2_c: 1.0
+      - icit_c: -1.0
+      - nadp_c: -1.0
+      - nadph_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b1136
+    - annotation: !!omap
+      - bigg.reaction: ICDHyr
+      - ec-code: 1.1.1.42
+      - kegg.reaction: R00267
+      - metanetx.reaction: MNXR100781
+      - rhea:
+        - '19629'
+        - '19630'
+        - '19631'
+        - '19632'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ICL
+    - name: Isocitrate lyase
+    - metabolites: !!omap
+      - glx_c: 1.0
+      - icit_c: -1.0
+      - succ_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b4015
+    - annotation: !!omap
+      - bigg.reaction: ICL
+      - ec-code: 4.1.3.1
+      - kegg.reaction: R00479
+      - metanetx.reaction: MNXR100789
+      - rhea:
+        - '13245'
+        - '13246'
+        - '13247'
+        - '13248'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: LDH_D
+    - name: D-lactate dehydrogenase
+    - metabolites: !!omap
+      - h_c: 1.0
+      - lac__D_c: -1.0
+      - nad_c: -1.0
+      - nadh_c: 1.0
+      - pyr_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2133 or b1380
+    - annotation: !!omap
+      - bigg.reaction: LDH_D
+      - biocyc: META:DLACTDEHYDROGNAD-RXN
+      - ec-code: 1.1.1.28
+      - kegg.reaction: R00704
+      - metanetx.reaction: MNXR101037
+      - rhea:
+        - '16369'
+        - '16370'
+        - '16371'
+        - '16372'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: MALS
+    - name: Malate synthase
+    - metabolites: !!omap
+      - accoa_c: -1.0
+      - coa_c: 1.0
+      - glx_c: -1.0
+      - h2o_c: -1.0
+      - h_c: 1.0
+      - mal__L_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b4014 or b2976
+    - annotation: !!omap
+      - bigg.reaction: MALS
+      - biocyc: META:MALSYN-RXN
+      - ec-code: 2.3.3.9
+      - kegg.reaction: R00472
+      - metanetx.reaction: MNXR101347
+      - rhea:
+        - '18181'
+        - '18182'
+        - '18183'
+        - '18184'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: MALt2_2
+    - name: Malate transport via proton symport (2 H)
+    - metabolites: !!omap
+      - h_c: 2.0
+      - h_e: -2.0
+      - mal__L_c: 1.0
+      - mal__L_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3528
+    - annotation: !!omap
+      - bigg.reaction: MALt2_2
+      - biocyc: META:TRANS-RXN-121A
+      - metanetx.reaction: MNXR101370
+      - rhea:
+        - '29339'
+        - '29340'
+        - '29341'
+        - '29342'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: MDH
+    - name: Malate dehydrogenase
+    - metabolites: !!omap
+      - h_c: 1.0
+      - mal__L_c: -1.0
+      - nad_c: -1.0
+      - nadh_c: 1.0
+      - oaa_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3236
+    - annotation: !!omap
+      - bigg.reaction: MDH
+      - biocyc: META:MALATE-DEH-RXN
+      - ec-code:
+        - 1.1.1.299
+        - 1.1.1.37
+      - kegg.reaction: R00342
+      - metanetx.reaction: MNXR101439
+      - rhea:
+        - '21432'
+        - '21433'
+        - '21434'
+        - '21435'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ME1
+    - name: Malic enzyme (NAD)
+    - metabolites: !!omap
+      - co2_c: 1.0
+      - mal__L_c: -1.0
+      - nad_c: -1.0
+      - nadh_c: 1.0
+      - pyr_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b1479
+    - annotation: !!omap
+      - bigg.reaction: ME1
+      - biocyc: META:1.1.1.39-RXN
+      - ec-code:
+        - 1.1.1.38
+        - 1.1.1.39
+      - kegg.reaction: R00214
+      - metanetx.reaction: MNXR101446
+      - rhea:
+        - '12653'
+        - '12654'
+        - '12655'
+        - '12656'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: ME2
+    - name: Malic enzyme (NADP)
+    - metabolites: !!omap
+      - co2_c: 1.0
+      - mal__L_c: -1.0
+      - nadp_c: -1.0
+      - nadph_c: 1.0
+      - pyr_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2463
+    - annotation: !!omap
+      - bigg.reaction: ME2
+      - biocyc: META:MALIC-NADP-RXN
+      - ec-code: 1.1.1.40
+      - kegg.reaction: R00216
+      - metanetx.reaction: MNXR101443
+      - rhea:
+        - '18253'
+        - '18254'
+        - '18255'
+        - '18256'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: NADH16
+    - name: NADH dehydrogenase (ubiquinone-8 & 3 protons)
+    - metabolites: !!omap
+      - h_c: -4.0
+      - h_e: 3.0
+      - nad_c: 1.0
+      - nadh_c: -1.0
+      - q8_c: -1.0
+      - q8h2_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2287 and b2285 and b2283 and b2281 and b2279 and b2277
+        and b2276 and b2278 and b2280 and b2282 and b2284 and b2286 and b2288
+    - annotation: !!omap
+      - bigg.reaction: NADH16
+      - ec-code: 1.6.5.3
+      - metanetx.reaction: MNXR101864
+      - sbo: SBO:0000375
+  - !!omap
+    - id: NADTRHD
+    - name: NAD transhydrogenase
+    - metabolites: !!omap
+      - nad_c: -1.0
+      - nadh_c: 1.0
+      - nadp_c: 1.0
+      - nadph_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3962 or (b1602 and b1603)
+    - annotation: !!omap
+      - bigg.reaction: NADTRHD
+      - biocyc: META:PYRNUTRANSHYDROGEN-RXN
+      - ec-code:
+        - 1.6.1.1
+        - 1.6.1.2
+        - 1.6.1.3
+      - kegg.reaction: R00112
+      - metanetx.reaction: MNXR101898
+      - rhea:
+        - '11692'
+        - '11693'
+        - '11694'
+        - '11695'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: NH4t
+    - name: Ammonia reversible transport
+    - metabolites: !!omap
+      - nh4_c: 1.0
+      - nh4_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: s0001 or b0451
+    - annotation: !!omap
+      - bigg.reaction: NH4t
+      - biocyc:
+        - META:RXN-9615
+        - META:TRANS-RXN0-206
+        - META:TRANS-RXN0-544
+      - metanetx.reaction: MNXR101950
+      - rhea:
+        - '28747'
+        - '28748'
+        - '28749'
+        - '28750'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: O2t
+    - name: 'O2 transport  diffusion '
+    - metabolites: !!omap
+      - o2_c: 1.0
+      - o2_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: s0001
+    - annotation: !!omap
+      - bigg.reaction: O2t
+      - biocyc: META:TRANS-RXN0-474
+      - metanetx.reaction: MNXR102090
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PDH
+    - name: Pyruvate dehydrogenase
+    - metabolites: !!omap
+      - accoa_c: 1.0
+      - co2_c: 1.0
+      - coa_c: -1.0
+      - nad_c: -1.0
+      - nadh_c: 1.0
+      - pyr_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0115 and b0114 and b0116
+    - annotation: !!omap
+      - bigg.reaction: PDH
+      - biocyc: META:PYRUVDEH-RXN
+      - ec-code:
+        - 1.2.1.-
+        - 1.2.1.51
+        - 1.2.4.1
+        - 1.8.1.4
+        - 2.3.1.12
+      - kegg.reaction: R00209
+      - metanetx.reaction: MNXR102425
+      - rhea:
+        - '28042'
+        - '28043'
+        - '28044'
+        - '28045'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PFK
+    - name: Phosphofructokinase
+    - metabolites: !!omap
+      - adp_c: 1.0
+      - atp_c: -1.0
+      - f6p_c: -1.0
+      - fdp_c: 1.0
+      - h_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3916 or b1723
+    - annotation: !!omap
+      - bigg.reaction: PFK
+      - ec-code: 2.7.1.11
+      - metanetx.reaction: MNXR102507
+      - rhea:
+        - '16109'
+        - '16110'
+        - '16111'
+        - '16112'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PFL
+    - name: Pyruvate formate lyase
+    - metabolites: !!omap
+      - accoa_c: 1.0
+      - coa_c: -1.0
+      - for_c: 1.0
+      - pyr_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: (b0902 and b3114) or (b0903 and b0902 and b2579) or (b0902
+        and b0903) or (b3951 and b3952)
+    - annotation: !!omap
+      - bigg.reaction: PFL
+      - biocyc: META:PYRUVFORMLY-RXN
+      - ec-code: 2.3.1.54
+      - kegg.reaction: R00212
+      - metanetx.reaction: MNXR102514
+      - rhea:
+        - '11844'
+        - '11845'
+        - '11846'
+        - '11847'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PGI
+    - name: Glucose-6-phosphate isomerase
+    - metabolites: !!omap
+      - f6p_c: 1.0
+      - g6p_c: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b4025
+    - annotation: !!omap
+      - bigg.reaction: PGI
+      - biocyc: META:PGLUCISOM-RXN
+      - ec-code: 5.3.1.9
+      - metanetx.reaction: MNXR102535
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PGK
+    - name: Phosphoglycerate kinase
+    - metabolites: !!omap
+      - 13dpg_c: 1.0
+      - 3pg_c: -1.0
+      - adp_c: 1.0
+      - atp_c: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2926
+    - annotation: !!omap
+      - bigg.reaction: PGK
+      - biocyc: META:PHOSGLYPHOS-RXN
+      - ec-code: 2.7.2.3
+      - kegg.reaction: R01512
+      - metanetx.reaction: MNXR102538
+      - rhea:
+        - '14801'
+        - '14802'
+        - '14803'
+        - '14804'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PGL
+    - name: 6-phosphogluconolactonase
+    - metabolites: !!omap
+      - 6pgc_c: 1.0
+      - 6pgl_c: -1.0
+      - h2o_c: -1.0
+      - h_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0767
+    - annotation: !!omap
+      - bigg.reaction: PGL
+      - biocyc: META:6PGLUCONOLACT-RXN
+      - ec-code: 3.1.1.31
+      - kegg.reaction: R02035
+      - metanetx.reaction: MNXR102539
+      - rhea:
+        - '12556'
+        - '12557'
+        - '12558'
+        - '12559'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PGM
+    - name: Phosphoglycerate mutase
+    - metabolites: !!omap
+      - 2pg_c: -1.0
+      - 3pg_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b4395 or b3612 or b0755
+    - annotation: !!omap
+      - bigg.reaction: PGM
+      - biocyc:
+        - META:3PGAREARR-RXN
+        - META:RXN-15513
+      - ec-code:
+        - 5.4.2.1
+        - 5.4.2.11
+        - 5.4.2.12
+      - kegg.reaction: R01518
+      - metanetx.reaction: MNXR102547
+      - rhea:
+        - '15901'
+        - '15902'
+        - '15903'
+        - '15904'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PIt2r
+    - name: Phosphate reversible transport via symport
+    - metabolites: !!omap
+      - h_c: 1.0
+      - h_e: -1.0
+      - pi_c: 1.0
+      - pi_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2987 or b3493
+    - annotation: !!omap
+      - bigg.reaction: PIt2r
+      - biocyc: META:TRANS-RXN-114
+      - metanetx.reaction: MNXR102872
+      - rhea:
+        - '29939'
+        - '29940'
+        - '29941'
+        - '29942'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PPC
+    - name: Phosphoenolpyruvate carboxylase
+    - metabolites: !!omap
+      - co2_c: -1.0
+      - h2o_c: -1.0
+      - h_c: 1.0
+      - oaa_c: 1.0
+      - pep_c: -1.0
+      - pi_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3956
+    - annotation: !!omap
+      - bigg.reaction: PPC
+      - ec-code: 4.1.1.31
+      - kegg.reaction: R00345
+      - metanetx.reaction: MNXR103096
+      - rhea:
+        - '23072'
+        - '23073'
+        - '23074'
+        - '23075'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PPCK
+    - name: Phosphoenolpyruvate carboxykinase
+    - metabolites: !!omap
+      - adp_c: 1.0
+      - atp_c: -1.0
+      - co2_c: 1.0
+      - oaa_c: -1.0
+      - pep_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3403
+    - annotation: !!omap
+      - bigg.reaction: PPCK
+      - biocyc: META:PEPCARBOXYKIN-RXN
+      - ec-code: 4.1.1.49
+      - kegg.reaction: R00341
+      - metanetx.reaction: MNXR103099
+      - rhea:
+        - '18617'
+        - '18618'
+        - '18619'
+        - '18620'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PPS
+    - name: Phosphoenolpyruvate synthase
+    - metabolites: !!omap
+      - amp_c: 1.0
+      - atp_c: -1.0
+      - h2o_c: -1.0
+      - h_c: 2.0
+      - pep_c: 1.0
+      - pi_c: 1.0
+      - pyr_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b1702
+    - annotation: !!omap
+      - bigg.reaction: PPS
+      - biocyc: META:PEPSYNTH-RXN
+      - ec-code: 2.7.9.2
+      - kegg.reaction: R00199
+      - metanetx.reaction: MNXR103140
+      - rhea:
+        - '11364'
+        - '11365'
+        - '11366'
+        - '11367'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PTAr
+    - name: Phosphotransacetylase
+    - metabolites: !!omap
+      - accoa_c: -1.0
+      - actp_c: 1.0
+      - coa_c: 1.0
+      - pi_c: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2297 or b2458
+    - annotation: !!omap
+      - bigg.reaction: PTAr
+      - biocyc: META:PHOSACETYLTRANS-RXN
+      - ec-code: 2.3.1.8
+      - kegg.reaction: R00230
+      - metanetx.reaction: MNXR103319
+      - rhea:
+        - '19521'
+        - '19522'
+        - '19523'
+        - '19524'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PYK
+    - name: Pyruvate kinase
+    - metabolites: !!omap
+      - adp_c: -1.0
+      - atp_c: 1.0
+      - h_c: -1.0
+      - pep_c: -1.0
+      - pyr_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b1854 or b1676
+    - annotation: !!omap
+      - bigg.reaction: PYK
+      - biocyc: META:PEPDEPHOS-RXN
+      - ec-code: 2.7.1.40
+      - kegg.reaction: R00200
+      - metanetx.reaction: MNXR103371
+      - rhea:
+        - '18157'
+        - '18158'
+        - '18159'
+        - '18160'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: PYRt2
+    - name: Pyruvate transport in via proton symport
+    - metabolites: !!omap
+      - h_c: 1.0
+      - h_e: -1.0
+      - pyr_c: 1.0
+      - pyr_e: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: PYRt2
+      - metanetx.reaction: MNXR103385
+      - sbo: SBO:0000375
+  - !!omap
+    - id: RPE
+    - name: Ribulose 5-phosphate 3-epimerase
+    - metabolites: !!omap
+      - ru5p__D_c: -1.0
+      - xu5p__D_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3386 or b4301
+    - annotation: !!omap
+      - bigg.reaction: RPE
+      - biocyc: META:RIBULP3EPIM-RXN
+      - ec-code: 5.1.3.1
+      - kegg.reaction: R01529
+      - metanetx.reaction: MNXR104083
+      - rhea:
+        - '13677'
+        - '13678'
+        - '13679'
+        - '13680'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: RPI
+    - name: Ribose-5-phosphate isomerase
+    - metabolites: !!omap
+      - r5p_c: -1.0
+      - ru5p__D_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2914 or b4090
+    - annotation: !!omap
+      - bigg.reaction: RPI
+      - ec-code: 5.3.1.6
+      - metanetx.reaction: MNXR104084
+      - sbo: SBO:0000375
+  - !!omap
+    - id: SUCCt2_2
+    - name: Succinate transport via proton symport (2 H)
+    - metabolites: !!omap
+      - h_c: 2.0
+      - h_e: -2.0
+      - succ_c: 1.0
+      - succ_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3528
+    - annotation: !!omap
+      - bigg.reaction: SUCCt2_2
+      - biocyc: META:TRANS-RXN-121
+      - metanetx.reaction: MNXR104620
+      - rhea:
+        - '29303'
+        - '29304'
+        - '29305'
+        - '29306'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: SUCCt3
+    - name: Succinate transport out via proton antiport
+    - metabolites: !!omap
+      - h_c: 1.0
+      - h_e: -1.0
+      - succ_c: -1.0
+      - succ_e: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: SUCCt3
+      - metanetx.reaction: MNXR104623
+      - sbo: SBO:0000375
+  - !!omap
+    - id: SUCDi
+    - name: Succinate dehydrogenase (irreversible)
+    - metabolites: !!omap
+      - fum_c: 1.0
+      - q8_c: -1.0
+      - q8h2_c: 1.0
+      - succ_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0723 and b0721 and b0722 and b0724
+    - annotation: !!omap
+      - bigg.reaction: SUCDi
+      - metanetx.reaction: MNXR99641
+      - rhea:
+        - '29187'
+        - '29188'
+        - '29189'
+        - '29190'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: SUCOAS
+    - name: Succinyl-CoA synthetase (ADP-forming)
+    - metabolites: !!omap
+      - adp_c: 1.0
+      - atp_c: -1.0
+      - coa_c: -1.0
+      - pi_c: 1.0
+      - succ_c: -1.0
+      - succoa_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b0728 and b0729
+    - annotation: !!omap
+      - bigg.reaction: SUCOAS
+      - biocyc: META:SUCCCOASYN-RXN
+      - ec-code: 6.2.1.5
+      - kegg.reaction: R00405
+      - metanetx.reaction: MNXR104635
+      - rhea:
+        - '17661'
+        - '17662'
+        - '17663'
+        - '17664'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: TALA
+    - name: Transaldolase
+    - metabolites: !!omap
+      - e4p_c: 1.0
+      - f6p_c: 1.0
+      - g3p_c: -1.0
+      - s7p_c: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2464 or b0008
+    - annotation: !!omap
+      - bigg.reaction: TALA
+      - biocyc: META:TRANSALDOL-RXN
+      - ec-code: 2.2.1.2
+      - kegg.reaction: R01827
+      - metanetx.reaction: MNXR104715
+      - rhea:
+        - '17053'
+        - '17054'
+        - '17055'
+        - '17056'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: THD2
+    - name: NAD(P) transhydrogenase
+    - metabolites: !!omap
+      - h_c: 2.0
+      - h_e: -2.0
+      - nad_c: 1.0
+      - nadh_c: -1.0
+      - nadp_c: -1.0
+      - nadph_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b1602 and b1603
+    - annotation: !!omap
+      - bigg.reaction: THD2
+      - ec-code: 1.6.1.1
+      - metanetx.reaction: MNXR104805
+      - sbo: SBO:0000375
+  - !!omap
+    - id: TKT1
+    - name: Transketolase
+    - metabolites: !!omap
+      - g3p_c: 1.0
+      - r5p_c: -1.0
+      - s7p_c: 1.0
+      - xu5p__D_c: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2935 or b2465
+    - annotation: !!omap
+      - bigg.reaction: TKT1
+      - ec-code: 2.2.1.1
+      - metanetx.reaction: MNXR104868
+      - sbo: SBO:0000375
+  - !!omap
+    - id: TKT2
+    - name: Transketolase
+    - metabolites: !!omap
+      - e4p_c: -1.0
+      - f6p_c: 1.0
+      - g3p_c: 1.0
+      - xu5p__D_c: -1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b2935 or b2465
+    - annotation: !!omap
+      - bigg.reaction: TKT2
+      - biocyc: META:2TRANSKETO-RXN
+      - ec-code: 2.2.1.1
+      - kegg.reaction: R01830
+      - metanetx.reaction: MNXR104869
+      - rhea:
+        - '27626'
+        - '27627'
+        - '27628'
+        - '27629'
+      - sbo: SBO:0000375
+  - !!omap
+    - id: TPI
+    - name: Triose-phosphate isomerase
+    - metabolites: !!omap
+      - dhap_c: -1.0
+      - g3p_c: 1.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: b3919
+    - annotation: !!omap
+      - bigg.reaction: TPI
+      - biocyc: META:TRIOSEPISOMERIZATION-RXN
+      - ec-code: 5.3.1.1
+      - kegg.reaction: R01015
+      - metanetx.reaction: MNXR104918
+      - rhea:
+        - '18585'
+        - '18586'
+        - '18587'
+        - '18588'
+      - sbo: SBO:0000375
+- genes:
+  - !!omap
+    - id: b0008
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0000027
+      - ecogene: EG11556
+      - ncbigene: '944748'
+      - ncbigi: gi:16128002
+      - uniprot: P0A870
+  - !!omap
+    - id: b0114
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0000397
+      - ecogene: EG10024
+      - ncbigene: '944834'
+      - ncbigi: gi:16128107
+      - uniprot: P0AFG8
+  - !!omap
+    - id: b0115
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0000400
+      - ecogene: EG10025
+      - ncbigene: '944794'
+      - ncbigi: gi:16128108
+      - uniprot: P06959
+  - !!omap
+    - id: b0116
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0000404
+      - ecogene: EG10543
+      - ncbigene: '944854'
+      - ncbigi: gi:16128109
+      - uniprot: P0A9P0
+  - !!omap
+    - id: b0118
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0000411
+      - ecogene: EG12316
+      - ncbigene: '944864'
+      - ncbigi: gi:16128111
+      - uniprot: P36683
+  - !!omap
+    - id: b0351
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0001207
+      - ecogene: EG13625
+      - ncbigene: '945008'
+      - ncbigi: gi:16128336
+      - uniprot: P77580
+  - !!omap
+    - id: b0356
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0001221
+      - ecogene: EG50010
+      - ncbigene: '944988'
+      - ncbigi: gi:16128341
+      - uniprot: P25437
+  - !!omap
+    - id: b0451
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0001564
+      - ecogene: EG11821
+      - ncbigene: '945084'
+      - ncbigi: gi:16128436
+      - uniprot: P69681
+  - !!omap
+    - id: b0474
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0001645
+      - ecogene: EG10032
+      - ncbigene: '945097'
+      - ncbigi: gi:16128458
+      - uniprot: P69441
+  - !!omap
+    - id: b0485
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0001688
+      - ecogene: EG13247
+      - ncbigene: '946187'
+      - ncbigi: gi:16128469
+      - uniprot: P77454
+  - !!omap
+    - id: b0720
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002451
+      - ecogene: EG10402
+      - ncbigene: '945323'
+      - ncbigi: gi:16128695
+      - uniprot: P0ABH7
+  - !!omap
+    - id: b0721
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002460
+      - ecogene: EG10933
+      - ncbigene: '945316'
+      - ncbigi: gi:16128696
+      - uniprot: P69054
+  - !!omap
+    - id: b0722
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002464
+      - ecogene: EG10934
+      - ncbigene: '945322'
+      - ncbigi: gi:16128697
+      - uniprot: P0AC44
+  - !!omap
+    - id: b0723
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002466
+      - ecogene: EG10931
+      - ncbigene: '945402'
+      - ncbigi: gi:16128698
+      - uniprot: P0AC41
+  - !!omap
+    - id: b0724
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002468
+      - ecogene: EG10932
+      - ncbigene: '945300'
+      - ncbigi: gi:16128699
+      - uniprot: P07014
+  - !!omap
+    - id: b0726
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002478
+      - ecogene: EG10979
+      - ncbigene: '945303'
+      - ncbigi: gi:16128701
+      - uniprot: P0AFG3
+  - !!omap
+    - id: b0727
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002480
+      - ecogene: EG10980
+      - ncbigene: '945307'
+      - ncbigi: gi:16128702
+      - uniprot: P0AFG6
+  - !!omap
+    - id: b0728
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002483
+      - ecogene: EG10981
+      - ncbigene: '945312'
+      - ncbigi: gi:16128703
+      - uniprot: P0A836
+  - !!omap
+    - id: b0729
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002485
+      - ecogene: EG10982
+      - ncbigene: '945314'
+      - ncbigi: gi:16128704
+      - uniprot: P0AGE9
+  - !!omap
+    - id: b0733
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002499
+      - ecogene: EG10173
+      - ncbigene: '945341'
+      - ncbigi: gi:90111166
+      - uniprot: P0ABJ9
+  - !!omap
+    - id: b0734
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002501
+      - ecogene: EG10174
+      - ncbigene: '945347'
+      - ncbigi: gi:16128709
+      - uniprot: P0ABK2
+  - !!omap
+    - id: b0755
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002563
+      - ecogene: EG11699
+      - ncbigene: '945068'
+      - ncbigi: gi:16128723
+      - uniprot: P62707
+  - !!omap
+    - id: b0767
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002611
+      - ecogene: EG13231
+      - ncbigene: '946398'
+      - ncbigi: gi:16128735
+      - uniprot: P52697
+  - !!omap
+    - id: b0809
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002764
+      - ecogene: EG10389
+      - ncbigene: '945435'
+      - ncbigi: gi:16128777
+      - uniprot: P10346
+  - !!omap
+    - id: b0810
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002766
+      - ecogene: EG10388
+      - ncbigene: '945621'
+      - ncbigi: gi:16128778
+      - uniprot: P0AEQ6
+  - !!omap
+    - id: b0811
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002771
+      - ecogene: EG10386
+      - ncbigene: '944872'
+      - ncbigi: gi:16128779
+      - uniprot: P0AEQ3
+  - !!omap
+    - id: b0875
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0002976
+      - ecogene: EG13270
+      - ncbigene: '945497'
+      - ncbigi: gi:16128843
+      - uniprot: P60844
+  - !!omap
+    - id: b0902
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0003068
+      - ecogene: EG10028
+      - ncbigene: '945517'
+      - ncbigi: gi:16128869
+      - uniprot: P0A9N4
+  - !!omap
+    - id: b0903
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0003071
+      - ecogene: EG10701
+      - ncbigene: '945514'
+      - ncbigi: gi:16128870
+      - uniprot: P09373
+  - !!omap
+    - id: b0904
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0003073
+      - ecogene: EG11258
+      - ncbigene: '945513'
+      - ncbigi: gi:16128871
+      - uniprot: P0AC23
+  - !!omap
+    - id: b0978
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0003300
+      - ecogene: EG11380
+      - ncbigene: '945585'
+      - ncbigi: gi:16128944
+      - uniprot: P26459
+  - !!omap
+    - id: b0979
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0003302
+      - ecogene: EG11379
+      - ncbigene: '947547'
+      - ncbigi: gi:16128945
+      - uniprot: P26458
+  - !!omap
+    - id: b1101
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0003722
+      - ecogene: EG10787
+      - ncbigene: '945651'
+      - ncbigi: gi:16129064
+      - uniprot: P69786
+  - !!omap
+    - id: b1136
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0003823
+      - ecogene: EG10489
+      - ncbigene: '945702'
+      - ncbigi: gi:16129099
+      - uniprot: P08200
+  - !!omap
+    - id: b1241
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0004164
+      - ecogene: EG10031
+      - ncbigene: '945837'
+      - ncbigi: gi:16129202
+      - uniprot: P0A9Q7
+  - !!omap
+    - id: b1276
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0004283
+      - ecogene: EG11325
+      - ncbigene: '946724'
+      - ncbigi: gi:16129237
+      - uniprot: P25516
+  - !!omap
+    - id: b1297
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0004365
+      - ecogene: EG13908
+      - ncbigene: '946202'
+      - ncbigi: gi:90111244
+      - uniprot: P78061
+  - !!omap
+    - id: b1380
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0004619
+      - ecogene: EG13186
+      - ncbigene: '946315'
+      - ncbigi: gi:16129341
+      - uniprot: P52643
+  - !!omap
+    - id: b1478
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0004928
+      - ecogene: EG12622
+      - ncbigene: '946036'
+      - ncbigi: gi:90111280
+      - uniprot: P39451
+  - !!omap
+    - id: b1479
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0004931
+      - ecogene: EG10948
+      - ncbigene: '946031'
+      - ncbigi: gi:90111281
+      - uniprot: P26616
+  - !!omap
+    - id: b1524
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005086
+      - ecogene: EG13816
+      - ncbigene: '944973'
+      - ncbigi: gi:16129483
+      - uniprot: P0A6W0
+  - !!omap
+    - id: b1602
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005352
+      - ecogene: EG10745
+      - ncbigene: '946144'
+      - ncbigi: gi:16129560
+      - uniprot: P0AB67
+  - !!omap
+    - id: b1603
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005354
+      - ecogene: EG10744
+      - ncbigene: '946628'
+      - ncbigi: gi:16129561
+      - uniprot: P07001
+  - !!omap
+    - id: b1611
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005380
+      - ecogene: EG10358
+      - ncbigene: '946147'
+      - ncbigi: gi:16129569
+      - uniprot: P05042
+  - !!omap
+    - id: b1612
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005392
+      - ecogene: EG10356
+      - ncbigene: '946826'
+      - ncbigi: gi:16129570
+      - uniprot: P0AC33
+  - !!omap
+    - id: b1621
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005429
+      - ecogene: EG10563
+      - ncbigene: '946009'
+      - ncbigi: gi:16129579
+      - uniprot: P19642
+  - !!omap
+    - id: b1676
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005600
+      - ecogene: EG10804
+      - ncbigene: '946179'
+      - ncbigi: gi:16129632
+      - uniprot: P0AD61
+  - !!omap
+    - id: b1702
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005678
+      - ecogene: EG10759
+      - ncbigene: '946209'
+      - ncbigi: gi:16129658
+      - uniprot: P23538
+  - !!omap
+    - id: b1723
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005748
+      - ecogene: EG10700
+      - ncbigene: '946230'
+      - ncbigi: gi:49176138
+      - uniprot: P06999
+  - !!omap
+    - id: b1761
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005865
+      - ecogene: EG10372
+      - ncbigene: '946802'
+      - ncbigi: gi:16129715
+      - uniprot: P00370
+  - !!omap
+    - id: b1773
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005906
+      - ecogene: EG13485
+      - ncbigene: '946291'
+      - ncbigi: gi:16129727
+      - uniprot: P77704
+  - !!omap
+    - id: b1779
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0005920
+      - ecogene: EG10367
+      - ncbigene: '947679'
+      - ncbigi: gi:16129733
+      - uniprot: P0A9B2
+  - !!omap
+    - id: b1812
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0006031
+      - ecogene: EG10683
+      - ncbigene: '946337'
+      - ncbigi: gi:16129766
+      - uniprot: P05041
+  - !!omap
+    - id: b1817
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0006054
+      - ecogene: EG10567
+      - ncbigene: '946334'
+      - ncbigi: gi:16129771
+      - uniprot: P69797
+  - !!omap
+    - id: b1818
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0006056
+      - ecogene: EG10568
+      - ncbigene: '946332'
+      - ncbigi: gi:16129772
+      - uniprot: P69801
+  - !!omap
+    - id: b1819
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0006058
+      - ecogene: EG10569
+      - ncbigene: '946342'
+      - ncbigi: gi:345452720
+      - uniprot: P69805
+  - !!omap
+    - id: b1849
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0006162
+      - ecogene: EG11809
+      - ncbigene: '946368'
+      - ncbigi: gi:16129802
+      - uniprot: P33221
+  - !!omap
+    - id: b1852
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0006171
+      - ecogene: EG11221
+      - ncbigene: '946370'
+      - ncbigi: gi:16129805
+      - uniprot: P0AC53
+  - !!omap
+    - id: b1854
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0006182
+      - ecogene: EG10803
+      - ncbigene: '946527'
+      - ncbigi: gi:16129807
+      - uniprot: P21599
+  - !!omap
+    - id: b2029
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0006737
+      - ecogene: EG10411
+      - ncbigene: '946554'
+      - ncbigi: gi:16129970
+      - uniprot: P00350
+  - !!omap
+    - id: b2097
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0006941
+      - ecogene: EG14062
+      - ncbigene: '946632'
+      - ncbigi: gi:90111385
+      - uniprot: P0A991
+  - !!omap
+    - id: b2133
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007048
+      - ecogene: EG10231
+      - ncbigene: '946653'
+      - ncbigi: gi:16130071
+      - uniprot: P06149
+  - !!omap
+    - id: b2276
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007526
+      - ecogene: EG12093
+      - ncbigene: '945136'
+      - ncbigi: gi:145698289
+      - uniprot: P0AFF0
+  - !!omap
+    - id: b2277
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007529
+      - ecogene: EG11773
+      - ncbigene: '947731'
+      - ncbigi: gi:16130212
+      - uniprot: P0AFE8
+  - !!omap
+    - id: b2278
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007532
+      - ecogene: EG12092
+      - ncbigene: '945540'
+      - ncbigi: gi:16130213
+      - uniprot: P33607
+  - !!omap
+    - id: b2279
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007534
+      - ecogene: EG12091
+      - ncbigene: '947580'
+      - ncbigi: gi:16130214
+      - uniprot: P0AFE4
+  - !!omap
+    - id: b2280
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007536
+      - ecogene: EG12090
+      - ncbigene: '946756'
+      - ncbigi: gi:16130215
+      - uniprot: P0AFE0
+  - !!omap
+    - id: b2281
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007539
+      - ecogene: EG12089
+      - ncbigene: '946757'
+      - ncbigi: gi:16130216
+      - uniprot: P0AFD6
+  - !!omap
+    - id: b2282
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007541
+      - ecogene: EG12088
+      - ncbigene: '946761'
+      - ncbigi: gi:16130217
+      - uniprot: P0AFD4
+  - !!omap
+    - id: b2283
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007543
+      - ecogene: EG12087
+      - ncbigene: '946762'
+      - ncbigi: gi:145698290
+      - uniprot: P33602
+  - !!omap
+    - id: b2284
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007545
+      - ecogene: EG11774
+      - ncbigene: '946753'
+      - ncbigi: gi:16130219
+      - uniprot: P31979
+  - !!omap
+    - id: b2285
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007547
+      - ecogene: EG12086
+      - ncbigene: '946746'
+      - ncbigi: gi:16130220
+      - uniprot: P0AFD1
+  - !!omap
+    - id: b2286
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007549
+      - ecogene: EG12084
+      - ncbigene: '946759'
+      - ncbigi: gi:145698291
+      - uniprot: P33599
+  - !!omap
+    - id: b2287
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007551
+      - ecogene: EG12083
+      - ncbigene: '946738'
+      - ncbigi: gi:16130222
+      - uniprot: P0AFC7
+  - !!omap
+    - id: b2288
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007553
+      - ecogene: EG12082
+      - ncbigene: '946764'
+      - ncbigi: gi:49176207
+      - uniprot: P0AFC3
+  - !!omap
+    - id: b2296
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007579
+      - ecogene: EG10027
+      - ncbigene: '946775'
+      - ncbigi: gi:16130231
+      - uniprot: P0A6A3
+  - !!omap
+    - id: b2297
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007582
+      - ecogene: EG20173
+      - ncbigene: '946778'
+      - ncbigi: gi:16130232
+      - uniprot: P0A9M8
+  - !!omap
+    - id: b2415
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007962
+      - ecogene: EG10788
+      - ncbigene: '946886'
+      - ncbigi: gi:16130341
+      - uniprot: P0AA04
+  - !!omap
+    - id: b2416
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007967
+      - ecogene: EG10789
+      - ncbigene: '946879'
+      - ncbigi: gi:16130342
+      - uniprot: P08839
+  - !!omap
+    - id: b2417
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0007971
+      - ecogene: EG10165
+      - ncbigene: '946880'
+      - ncbigi: gi:16130343
+      - uniprot: P69783
+  - !!omap
+    - id: b2458
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0008097
+      - ecogene: EG14188
+      - ncbigene: '946940'
+      - ncbigi: gi:16130383
+      - uniprot: P77218
+  - !!omap
+    - id: b2463
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0008111
+      - ecogene: EG14193
+      - ncbigene: '946947'
+      - ncbigi: gi:16130388
+      - uniprot: P76558
+  - !!omap
+    - id: b2464
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0008115
+      - ecogene: EG11797
+      - ncbigene: '947006'
+      - ncbigi: gi:16130389
+      - uniprot: P0A867
+  - !!omap
+    - id: b2465
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0008117
+      - ecogene: EG12100
+      - ncbigene: '945865'
+      - ncbigi: gi:16130390
+      - uniprot: P33570
+  - !!omap
+    - id: b2492
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0008206
+      - ecogene: EG14220
+      - ncbigene: '949032'
+      - ncbigi: gi:16130417
+      - uniprot: P77733
+  - !!omap
+    - id: b2579
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0008489
+      - ecogene: EG11784
+      - ncbigene: '947068'
+      - ncbigi: gi:16130504
+      - uniprot: P68066
+  - !!omap
+    - id: b2587
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0008515
+      - ecogene: EG10522
+      - ncbigene: '947069'
+      - ncbigi: gi:16130512
+      - uniprot: P0AEX3
+  - !!omap
+    - id: b2779
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0009110
+      - ecogene: EG10258
+      - ncbigene: '945032'
+      - ncbigi: gi:16130686
+      - uniprot: P0A6P9
+  - !!omap
+    - id: b2914
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0009567
+      - ecogene: EG11443
+      - ncbigene: '947407'
+      - ncbigi: gi:16130815
+      - uniprot: P0A7Z0
+  - !!omap
+    - id: b2925
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0009600
+      - ecogene: EG10282
+      - ncbigene: '947415'
+      - ncbigi: gi:16130826
+      - uniprot: P0AB71
+  - !!omap
+    - id: b2926
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0009605
+      - ecogene: EG10703
+      - ncbigene: '947414'
+      - ncbigi: gi:16130827
+      - uniprot: P0A799
+  - !!omap
+    - id: b2935
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0009625
+      - ecogene: EG11427
+      - ncbigene: '947420'
+      - ncbigi: gi:49176286
+      - uniprot: P27302
+  - !!omap
+    - id: b2975
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0009763
+      - ecogene: EG12995
+      - ncbigene: '947259'
+      - ncbigi: gi:16130875
+      - uniprot: Q46839
+  - !!omap
+    - id: b2976
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0009767
+      - ecogene: EG20080
+      - ncbigene: '948857'
+      - ncbigi: gi:16130876
+      - uniprot: P37330
+  - !!omap
+    - id: b2987
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0009800
+      - ecogene: EG12883
+      - ncbigene: '947475'
+      - ncbigi: gi:16130887
+      - uniprot: P43676
+  - !!omap
+    - id: b3114
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0010242
+      - ecogene: EG12758
+      - ncbigene: '947623'
+      - ncbigi: gi:49176316
+      - uniprot: P42632
+  - !!omap
+    - id: b3115
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0010245
+      - ecogene: EG11172
+      - ncbigene: '947635'
+      - ncbigi: gi:145698313
+      - uniprot: P11868
+  - !!omap
+    - id: b3212
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0010545
+      - ecogene: EG10403
+      - ncbigene: '947724'
+      - ncbigi: gi:308209621
+      - uniprot: P09831
+  - !!omap
+    - id: b3213
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0010547
+      - ecogene: EG10404
+      - ncbigene: '947723'
+      - ncbigi: gi:16131103
+      - uniprot: P09832
+  - !!omap
+    - id: b3236
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0010613
+      - ecogene: EG10576
+      - ncbigene: '947854'
+      - ncbigi: gi:16131126
+      - uniprot: P61889
+  - !!omap
+    - id: b3386
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0011061
+      - ecogene: EG11960
+      - ncbigene: '947896'
+      - ncbigi: gi:16131264
+      - uniprot: P0AG07
+  - !!omap
+    - id: b3403
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0011106
+      - ecogene: EG10688
+      - ncbigene: '945667'
+      - ncbigi: gi:16131280
+      - uniprot: P22259
+  - !!omap
+    - id: b3493
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0011407
+      - ecogene: EG12230
+      - ncbigene: '948009'
+      - ncbigi: gi:16131365
+      - uniprot: P0AFJ7
+  - !!omap
+    - id: b3528
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0011527
+      - ecogene: EG20044
+      - ncbigene: '948039'
+      - ncbigi: gi:16131400
+      - uniprot: P0A830
+  - !!omap
+    - id: b3603
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0011777
+      - ecogene: EG11961
+      - ncbigene: '948114'
+      - ncbigi: gi:16131474
+      - uniprot: P33231
+  - !!omap
+    - id: b3612
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0011818
+      - ecogene: EG12296
+      - ncbigene: '948130'
+      - ncbigi: gi:16131483
+      - uniprot: P37689
+  - !!omap
+    - id: b3731
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012206
+      - ecogene: EG10100
+      - ncbigene: '948245'
+      - ncbigi: gi:16131599
+      - uniprot: P0A6E6
+  - !!omap
+    - id: b3732
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012208
+      - ecogene: EG10101
+      - ncbigene: '948244'
+      - ncbigi: gi:16131600
+      - uniprot: P0ABB4
+  - !!omap
+    - id: b3733
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012211
+      - ecogene: EG10104
+      - ncbigene: '948243'
+      - ncbigi: gi:16131601
+      - uniprot: P0ABA6
+  - !!omap
+    - id: b3734
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012213
+      - ecogene: EG10098
+      - ncbigene: '948242'
+      - ncbigi: gi:16131602
+      - uniprot: P0ABB0
+  - !!omap
+    - id: b3735
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012215
+      - ecogene: EG10105
+      - ncbigene: '948254'
+      - ncbigi: gi:16131603
+      - uniprot: P0ABA4
+  - !!omap
+    - id: b3736
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012217
+      - ecogene: EG10103
+      - ncbigene: '948247'
+      - ncbigi: gi:16131604
+      - uniprot: P0ABA0
+  - !!omap
+    - id: b3737
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012220
+      - ecogene: EG10102
+      - ncbigene: '948253'
+      - ncbigi: gi:16131605
+      - uniprot: P68699
+  - !!omap
+    - id: b3738
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012222
+      - ecogene: EG10099
+      - ncbigene: '948252'
+      - ncbigi: gi:16131606
+      - uniprot: P0AB98
+  - !!omap
+    - id: b3739
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012224
+      - ecogene: EG10106
+      - ncbigene: '948251'
+      - ncbigi: gi:90111645
+      - uniprot: P0ABC0
+  - !!omap
+    - id: b3870
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012640
+      - ecogene: EG10383
+      - ncbigene: '948370'
+      - ncbigi: gi:16131710
+      - uniprot: P0A9C5
+  - !!omap
+    - id: b3916
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012789
+      - ecogene: EG10699
+      - ncbigene: '948412'
+      - ncbigi: gi:16131754
+      - uniprot: P0A796
+  - !!omap
+    - id: b3919
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012799
+      - ecogene: EG11015
+      - ncbigene: '948409'
+      - ncbigi: gi:16131757
+      - uniprot: P0A858
+  - !!omap
+    - id: b3925
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012821
+      - ecogene: EG11517
+      - ncbigene: '948424'
+      - ncbigi: gi:16131763
+      - uniprot: P0A9C9
+  - !!omap
+    - id: b3951
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012934
+      - ecogene: EG11910
+      - ncbigene: '948454'
+      - ncbigi: gi:16131789
+      - uniprot: P32674
+  - !!omap
+    - id: b3952
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012937
+      - ecogene: EG11911
+      - ncbigene: '948453'
+      - ncbigi: gi:49176447
+      - uniprot: P32675
+  - !!omap
+    - id: b3956
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012950
+      - ecogene: EG10756
+      - ncbigene: '948457'
+      - ncbigi: gi:16131794
+      - uniprot: P00864
+  - !!omap
+    - id: b3962
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0012975
+      - ecogene: EG11428
+      - ncbigene: '948461'
+      - ncbigi: gi:90111670
+      - uniprot: P27306
+  - !!omap
+    - id: b4014
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013125
+      - ecogene: EG10023
+      - ncbigene: '948512'
+      - ncbigi: gi:16131840
+      - uniprot: P08997
+  - !!omap
+    - id: b4015
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013128
+      - ecogene: EG10022
+      - ncbigene: '948517'
+      - ncbigi: gi:16131841
+      - uniprot: P0A9G6
+  - !!omap
+    - id: b4025
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013163
+      - ecogene: EG10702
+      - ncbigene: '948535'
+      - ncbigi: gi:16131851
+      - uniprot: P0A6T1
+  - !!omap
+    - id: b4077
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013357
+      - ecogene: EG10405
+      - ncbigene: '948591'
+      - ncbigi: gi:16131903
+      - uniprot: P21345
+  - !!omap
+    - id: b4090
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013405
+      - ecogene: EG11827
+      - ncbigene: '948602'
+      - ncbigi: gi:16131916
+      - uniprot: P37351
+  - !!omap
+    - id: b4122
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013501
+      - ecogene: EG10357
+      - ncbigene: '948642'
+      - ncbigi: gi:16131948
+      - uniprot: P14407
+  - !!omap
+    - id: b4151
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013595
+      - ecogene: EG10333
+      - ncbigene: '948668'
+      - ncbigi: gi:16131976
+      - uniprot: P0A8Q3
+  - !!omap
+    - id: b4152
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013598
+      - ecogene: EG10332
+      - ncbigene: '948680'
+      - ncbigi: gi:16131977
+      - uniprot: P0A8Q0
+  - !!omap
+    - id: b4153
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013602
+      - ecogene: EG10331
+      - ncbigene: '948666'
+      - ncbigi: gi:16131978
+      - uniprot: P0AC47
+  - !!omap
+    - id: b4154
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013604
+      - ecogene: EG10330
+      - ncbigene: '948667'
+      - ncbigi: gi:16131979
+      - uniprot: P00363
+  - !!omap
+    - id: b4232
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0013842
+      - ecogene: EG10283
+      - ncbigene: '948753'
+      - ncbigi: gi:16132054
+      - uniprot: P0A993
+  - !!omap
+    - id: b4301
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0014097
+      - ecogene: EG12553
+      - ncbigene: '948829'
+      - ncbigi: gi:16132122
+      - uniprot: P39362
+  - !!omap
+    - id: b4395
+    - name: ''
+    - annotation: !!omap
+      - asap: ABE-0014416
+      - ecogene: EG12164
+      - ncbigene: '948918'
+      - ncbigi: gi:16132212
+      - uniprot: P0A7A2
+  - !!omap
+    - id: s0001
+    - name: ''
+- id: e_coli_core
+- name: Escherichia coli str. K-12 substr. MG1655
+- compartments: !!omap
+  - c: cytosol
+  - e: extracellular space
+- notes: !!omap
+  - ? "For specific licensing terms about this particular model and regulations of\
+      \ commercial use, see \n        <a href=\"http"
+    : //identifiers.org/bigg.model/e_coli_core" title="Access to this model via BiGG
+      Models knowledge-base." target="_blank">this model in BiGG Models knowledge-base</a>.
+  - ? Redistribution and use of any part of this model from BiGG Models knowledge-base,
+      with or without modification, are permitted provided that the following conditions
+      are met
+    : "<ol>\n        <li>Redistributions of this SBML file must retain the above copyright\
+      \ notice, this list of conditions and the following disclaimer.</li>\n     \
+      \   <li>Redistributions in a different form must reproduce the above copyright\
+      \ notice, this list of conditions and the following disclaimer in the documentation\
+      \ and/or other materials provided\n          with the distribution.</li>\n \
+      \     </ol>This model is distributed in the hope that it will be useful, but\
+      \ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY\
+      \ or FITNESS FOR A PARTICULAR PURPOSE."
+  - ? "This is a metabolism model of Escherichia coli str. K-12 substr. MG1655 in\
+      \ \n        <a href=\"http"
+    : //sbml.org" target="_blank" title="Access the definition of the SBML file format.">SBML</a> format.
+- annotation: !!omap
+  - bigg.model: e_coli_core
+  - doi: 10.1128/ecosalplus.10.2.1
+  - taxonomy: '511145'
+- version: '1.2'
