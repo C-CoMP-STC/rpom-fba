@@ -1,3 +1,5 @@
 Results/
 .python-version
 .vscode/
+__pycache__
+index.html
