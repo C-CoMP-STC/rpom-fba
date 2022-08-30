@@ -1,3 +1,6 @@
+escher==1.7.3
+markupsafe==2.0.1
+matplotlib==3.5.3
 memote==0.13.0
 scipy==1.9.0
 tqdm==4.64.0
