@@ -11,11 +11,12 @@ from tqdm import tqdm
 from validate_migration import validate_model_migration
 
 
-def main():
-    models = ["base_model/Rpom_0.mat", "base_model/Rpom_02.mat", "base_model/Rpom_03.mat", "base_model/Rpom_04.mat", "base_model/Rpom_05.mat",
+MAT_MODELS = ["base_model/Rpom_0.mat", "base_model/Rpom_02.mat", "base_model/Rpom_03.mat", "base_model/Rpom_04.mat", "base_model/Rpom_05.mat",
               "base_model/Rpom_06.mat", "base_model/Rpom_025.mat", "base_model/Rpom_035.mat", "base_model/Rpom_045.mat", "base_model/Rpom_055.mat"]
 
-    for model in tqdm(models, desc="Converting Models"):
+def main():
+
+    for model in tqdm(MAT_MODELS, desc="Converting Models"):
         # Load model
         mat_model = loadmat(model)
 
