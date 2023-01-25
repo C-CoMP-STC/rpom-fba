@@ -1,4 +1,5 @@
 import os
+import json
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -114,21 +115,17 @@ def main():
     data = load_data(UPTAKE_RATES_FILE, UPTAKE_RATES_SHEET)
     rates = fit_uptake_rates(data)
 
+    print("Plotting fitted rates...")
     plot_fits(data, rates)
 
-    # Output rates to csv
+    # Output rates to json
+    print("Saving fitted rates to json...")
     os.makedirs(UPTAKE_RATES_OUTDIR, exist_ok=True)
 
-    df = {"Metabolite": [], "Rate": []}
-    for metabolite, rate in rates.items():
-        df["Metabolite"].append(metabolite)
-        df["Rate"].append(rate)
-    df = pd.DataFrame(df)
-
-    df.to_csv(
-        os.path.join(UPTAKE_RATES_OUTDIR, "fitted_uptake_rates.csv"),
-        index=False
-    )
+    # Writing to .json
+    outfile = os.path.join(UPTAKE_RATES_OUTDIR, "fitted_uptake_rates.json")
+    with open(outfile, "w") as f:
+        json.dump(rates, f, indent=4)
 
 
 if __name__ == "__main__":
