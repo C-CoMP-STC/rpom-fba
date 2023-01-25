@@ -1,0 +1,25 @@
+{
+    "Cadaverine": "CADAVERINE[e]",
+    "Glucose": "Glucose[e]",
+    "Isethionate": "CPD-3745[e]",
+    "Putrescine": "PUTRESCINE[e]",
+    "Spermidine": "SPERMIDINE[e]",
+    "Taurine": "TAURINE[e]",
+    "Xylose": "XYLOSE[e]",
+    "Citrate": "CIT[e]",
+    "DMSP": "SS-DIMETHYL-BETA-PROPIOTHETIN[e]",
+    "Fumarate": "FUM[e]",
+    "N-acetylglucosamine": "Uncertain, multiple forms present",
+    "Glycerol": "GLYCEROL[e]",
+    "Malate": "MAL[e]",
+    "Succinate": "SUC[e]",
+    "Carnitine": "CARNITINE[e]",
+    "Cysteate": "L-CYSTEATE[e]",
+    "3-Hydroxybutyrate": "3-HYDROXY-BUTYRATE (BioCyc), not present in model",
+    "Thymidine": "THYMIDINE[e]",
+    "Choline": "CHOLINE[e]",
+    "DHPS": "Not present in model",
+    "Ectoine": "ECTOINE[e]",
+
+    "Comments": ["Malate somewhat uncertain, multiple forms in model.", "GLC[c] vs. Glucose[e]?"]
+}
