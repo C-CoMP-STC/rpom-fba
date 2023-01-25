@@ -1,20 +1,4 @@
-"""
-clean_models.py
-
-Script for validating and cleaning the initial models (second step of the pipeline,
-following model conversion from .mat to .sbml).
-"""
-import os
-import json
-from cobra import Reaction
-from cobra.io import load_model, read_sbml_model, write_sbml_model
-
-BASE_MODEL_DIR = "base_model/"
-BASE_MODELS = ["Rpom_0.xml", "Rpom_02.xml", "Rpom_03.xml", "Rpom_04.xml", "Rpom_05.xml",
-               "Rpom_06.xml", "Rpom_025.xml", "Rpom_035.xml", "Rpom_045.xml", "Rpom_055.xml"]
-CLEAN_MODEL_DIR = "clean_models/"
-MANUAL_METABOLITE_MATCHES = "clean_models/manual_met_links.json"
-
+from cobra.io import load_model
 
 def get_ecoli_biomass():
     ecoli_model = load_model("iJO1366")
@@ -27,7 +11,6 @@ def get_ecoli_biomass():
     ecoli_biomass = ecoli_model.reactions.get_by_id(BIOMASS_RXN).metabolites
 
     return ecoli_biomass
-
 
 def ecoli_biomass_to_rpom(r_pom_model, ecoli_biomass, manual_matches={}):
     # Prepare metabolite : coefficient dictionary
@@ -110,48 +93,3 @@ def ecoli_biomass_to_rpom(r_pom_model, ecoli_biomass, manual_matches={}):
         f"\nfor a total of {n_kegg_matches + n_manual_matches} / {len(ecoli_biomass)} successful links.\n")
 
     return rpom_biomass_rxn
-
-
-def main():
-    # TODO: EX_glc reversibility is wrong given it should be an exchange reaction,
-    # need to match other EX reactions
-
-    # Get ecoli biomass reaction stoichiometry
-    ecoli_biomass = get_ecoli_biomass()
-
-    # Load models
-    # (loading all models before cleaning because of excessive warning messages)
-    rpom_models = []
-    for model_file in BASE_MODELS:
-        model = read_sbml_model(os.path.join(BASE_MODEL_DIR, model_file))
-        rpom_models.append(model)
-
-    # Load manual metabolite id links between E. coli and R. pom.
-    with open(MANUAL_METABOLITE_MATCHES, "r") as f:
-        manual_matches = json.load(f)
-
-    # Add biomass reaction, using ecoli biomass for now
-    for model in rpom_models:
-        # Get stoichiometry of biomass reaction
-        # using ecoli biomass reaction
-        biomass_stoich = ecoli_biomass_to_rpom(
-            model, ecoli_biomass, manual_matches=manual_matches)
-
-        # Create biomass reaction
-        biomass_rxn = Reaction("RPOM_provisional_biomass",
-                               "RPOM_provisional_biomass",
-                               lower_bound=0,
-                               upper_bound=1000)
-        biomass_rxn.add_metabolites(biomass_stoich)
-
-        # Add to model, set as objective
-        model.add_reactions([biomass_rxn])
-        model.objective = biomass_rxn
-
-        # Save cleaned model
-        write_sbml_model(model, os.path.join(
-            CLEAN_MODEL_DIR, f"{model.id}.xml"))
-
-
-if __name__ == "__main__":
-    main()
