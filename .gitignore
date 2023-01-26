@@ -3,3 +3,4 @@ Results/
 .vscode/
 __pycache__
 index.html
+out/

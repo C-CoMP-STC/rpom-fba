@@ -1,52 +1,62 @@
-import os
 import json
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
+import os
 
-UPTAKE_RATES_FILE = "data/uptake_rates.xlsx"
-UPTAKE_RATES_SHEET = "Eyeballed data"
+import matplotlib
+import numpy as np
+import pandas as pd
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+
+UPTAKE_RATES_FILE = "data/drawdown_clean.csv"
 UPTAKE_RATES_OUTDIR = "parameters/uptake_rates/"
 UPTAKE_RATES_PLOTS_OUTDIR = "out/uptake_rates/"
+RAW_UPTAKE_RATES_FILE = "data/drawdown_raw.xlsx"
+RAW_UPTAKE_RATES_SHEET = "drawdown_clean"
+GROWTH_RATES_FILE = "parameters/growth_rates/fitted_growth_rates.csv"
 METHOD_NOT_RECOGNIZED = "{} is not a recognized method to fit uptake rates!"
 BG_GRAY = "0.4"
 
-
-def load_data(filepath, sheet_name):
-    data = pd.read_excel(filepath, sheet_name=sheet_name)
-    return data
+INITIAL_MASS = 1e-6  # Temporary guess, = 1ug
 
 
 def fit_uptake_rates(
     data,
-    metabolites="Metabolite",
-    nmr_initial="T0_bar",
-    nmr_final="WT_bar",
-    initial_conc="Initial Concentration (mM metabolite)",
-    dt="dt (hours)",
-    method="exponential"
+    growth_rates="GrowthRate",
+    metabolites="Compound",
+    initial_conc="InitialMetabolite_mM",
+    final_conc="FinalMetabolite_mM",
+    dts="dt_hr",
+    method="linear"
 ):
     rates = {}
-
-    # Assuming NMR is linear with concentration,
-    # convert final NMR value to concentration
-    conc_to_nmr = data[initial_conc] / data[nmr_initial]
-    conc_final = data[nmr_final] * conc_to_nmr
 
     # Prevent taking log of 0 using this method:
     def correct_zeros(x): return x if x != 0 else .00001
 
     match method:
+        case "linear":
+            rates = {
+                metabolite: ((mu * (final - initial)) /
+                             (INITIAL_MASS * (np.exp(mu * dt) - 1)))
+                for metabolite, mu, final, initial, dt
+                in zip(data[metabolites],
+                       data[growth_rates],
+                       data[final_conc],
+                       data[initial_conc],
+                       data[dts])
+            }
         case "exponential":
             rates = {
                 metabolite: (np.log(correct_zeros(cT)) -
                              np.log(correct_zeros(c0))) / dt
                 for metabolite, c0, cT, dt
                 in zip(
-                    data[metabolites],
+                    data[metabolites], +
                     data[initial_conc],
-                    conc_final,
-                    data[dt]
+                    data[final_conc],
+                    data[dts]
                 )
             }
         case _:
@@ -57,51 +67,53 @@ def fit_uptake_rates(
 
 def plot_fits(
     data,
+    raw_data,
     rates,
-    metabolites="Metabolite",
-    nmr_initial_cols=["T0 (1)", "T0 (2)"],
-    mean_nmr_initial="T0_bar",
-    nmr_final_cols=["WT (1)", "WT (2)", "WT (3)"],
-    mean_nmr_final="WT_bar",
-    dt="dt (hours)",
-    method="exponential"
+    metabolites="Compound",
+    dt="dt_hr",
+    growth_rate="GrowthRate",
+    method="linear"
 ):
     # Ensure output directory exists
     os.makedirs(UPTAKE_RATES_PLOTS_OUTDIR, exist_ok=True)
 
     for metabolite, rate in rates.items():
         # Subset data to just one metabolite
-        metabolite_data = data[data[metabolites] == metabolite]
+        metabolite_data = raw_data[raw_data[metabolites] == metabolite]
 
-        # Extract useful variables
-        mean_initial = metabolite_data[mean_nmr_initial].iloc[0]
-        mean_final = metabolite_data[mean_nmr_final].iloc[0]
-        total_time = metabolite_data[dt].iloc[0]
+        total_time = data[data[metabolites] == metabolite][dt].values[0]
+        mu = data[data[metabolites] == metabolite][growth_rate].values[0]
+        mM_to_peak_ratio = data[data[metabolites] == metabolite]["mM_to_peak_ratio"].values[0]
 
         # Create plot
         fig, ax = plt.subplots()
 
         # Plot points
-        t0 = [metabolite_data[col] for col in nmr_initial_cols]
-        t_final = [metabolite_data[col] for col in nmr_final_cols]
+        t0 = metabolite_data[metabolite_data["SampleType"]
+                             == "initial"]["IntegratedPeakArea"].values
+        t_final = metabolite_data[metabolite_data["SampleType"]
+                                  == "final"]["IntegratedPeakArea"].values
+        t0 *= mM_to_peak_ratio
+        t_final *= mM_to_peak_ratio
         ax.scatter(np.zeros_like(t0), t0, c=BG_GRAY)
         ax.scatter(np.ones_like(t_final) * total_time, t_final, c=BG_GRAY)
 
-        # Plot mean of initial and final points as dotted horizontal lines
-        ax.hlines([mean_initial, mean_final], 0, total_time, colors=[
-                  BG_GRAY, BG_GRAY], linestyles="dashed")
+        mean_initial = t0.mean()
 
         # Plot fitted curve
         t = np.linspace(0, total_time, 100)
         match method:
+            case "linear":
+                ax.plot(t,
+                        mean_initial + (rate * INITIAL_MASS * (np.exp(mu * t) - 1) / mu))
             case "exponential":
                 ax.plot(t, mean_initial * np.exp(rate * t))
             case _:
                 raise ValueError(METHOD_NOT_RECOGNIZED.format(method))
 
-        ax.set_title(f"{metabolite} (fitted rate = {rate:.4f})")
+        ax.set_title(f"{metabolite} (fitted rate = {rate:.4f} $mmol / g \\cdot hr$)")
         ax.set_xlabel("Time (hours)")
-        ax.set_ylabel("Substrate concentration (area under NMR peak)")
+        ax.set_ylabel("Substrate concentration (mM)")
 
         # Save figure
         fig.set_size_inches(8, 6)
@@ -112,11 +124,18 @@ def plot_fits(
 
 
 def main():
-    data = load_data(UPTAKE_RATES_FILE, UPTAKE_RATES_SHEET)
-    rates = fit_uptake_rates(data)
+    data = pd.read_csv(UPTAKE_RATES_FILE)
+    growth_rates = (pd.read_csv(GROWTH_RATES_FILE)
+                    .mean()
+                    .reset_index(name="GrowthRate")
+                    .rename(columns={"index": "Compound"}))
+    data = data.merge(growth_rates, how="inner", on="Compound", validate="1:1")
+    rates = fit_uptake_rates(data, method="linear")
 
     print("Plotting fitted rates...")
-    plot_fits(data, rates)
+    raw_data = pd.read_excel(RAW_UPTAKE_RATES_FILE,
+                             sheet_name=RAW_UPTAKE_RATES_SHEET)
+    plot_fits(data, raw_data, rates)
 
     # Output rates to json
     print("Saving fitted rates to json...")
