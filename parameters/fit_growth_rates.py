@@ -8,6 +8,7 @@ import pandas as pd
 matplotlib.use("Agg")
 
 GROWTH_CURVES_FILE = "data/growth_curves_raw.csv"
+OD_CALIBRATION_FILE = "data/ODcounts_calibration.xlsx"
 GROWTH_RATE_OUTDIR = "parameters/growth_rates"
 GROWTH_RATE_PLOT_OUTDIR = "out/growth_rates"
 
