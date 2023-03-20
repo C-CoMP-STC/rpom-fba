@@ -22,7 +22,7 @@ class CellCountRegressor:
     def _format_data(self, data):
         if not isinstance(data, np.ndarray):
             data = np.array(data)
-        if len(data.shape) == 1:
+        if len(data.shape) <= 1:
             data = data.reshape(-1, 1)
         return data
 
@@ -121,7 +121,7 @@ def KFold_cell_count_regressor(od, cells, k=5):
 
 
 def get_od_to_cell_count_calibration():
-    SAVED_REGRESSOR = "parameters/conversions/od_to_cell_count_params.pickle"
+    SAVED_REGRESSOR = "parameters/conversions/od_to_cell_count.pickle"
     try:
         with open(SAVED_REGRESSOR, "rb") as f:
             return pickle.load(f)
@@ -143,7 +143,6 @@ def main():
 
     od = clean_data['OD600 (1-cm)'].values.reshape(-1, 1)
     cells = clean_data["Mean_cells"].values.reshape(-1, 1)
-
 
     best_reg, _, _ = KFold_cell_count_regressor(od, cells, k=4)
 

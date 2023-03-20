@@ -5,10 +5,11 @@ import matplotlib
 import numpy as np
 import pandas as pd
 
+from parameters.od_calibration import get_od_to_cell_count_calibration
+
 matplotlib.use("Agg")
 
 GROWTH_CURVES_FILE = "data/growth_curves_raw.csv"
-OD_CALIBRATION_FILE = "data/ODcounts_calibration.xlsx"
 GROWTH_RATE_OUTDIR = "parameters/growth_rates"
 GROWTH_RATE_PLOT_OUTDIR = "out/growth_rates"
 
@@ -57,7 +58,14 @@ def fit_growth_curve(data, compound, time="time (h)"):
 
 
 def main():
+    # Load data
     data = pd.read_csv(GROWTH_CURVES_FILE, skiprows=[1])
+
+    # Convert from OD to cell counts
+    od_to_count = get_od_to_cell_count_calibration()
+    data.loc[:, data.columns != "time (h)"] = (data.loc[:, data.columns != "time (h)"].applymap(
+        lambda s: od_to_count.predict(s).flatten()[0], na_action="ignore"))
+
     compounds = {s[:(s.index(".") if "." in s else None)]
                  for s in data.columns if s not in {"time (h)", "mean blank"}}
 
