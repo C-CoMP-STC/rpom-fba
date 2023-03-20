@@ -120,7 +120,7 @@ def KFold_cell_count_regressor(od, cells, k=5):
     return best_regressor, odmax_domain, mse_scan
 
 
-def load_calibration():
+def get_od_to_cell_count_calibration():
     SAVED_REGRESSOR = "parameters/conversions/od_to_cell_count_params.pickle"
     try:
         with open(SAVED_REGRESSOR, "rb") as f:
@@ -146,6 +146,14 @@ def main():
 
 
     best_reg, _, _ = KFold_cell_count_regressor(od, cells, k=4)
+
+    print("Fit regressor with parameters:")
+    print(f"\ta = {best_reg.a}")
+    print(f"\tb = {best_reg.b}")
+    print(f"\tcrossover = {best_reg.crossover}")
+    print(f"\tm = {best_reg.lm.coef_[0, 0]}")
+
+    print(f"saving to {OUT}...")
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "wb") as f:
