@@ -1,3 +1,5 @@
+import json
+
 from cobra.io import load_model
 
 def get_ecoli_biomass():
@@ -93,3 +95,10 @@ def ecoli_biomass_to_rpom(r_pom_model, ecoli_biomass, manual_matches={}):
         f"\nfor a total of {n_kegg_matches + n_manual_matches} / {len(ecoli_biomass)} successful links.\n")
 
     return rpom_biomass_rxn
+
+def get_core_biomass_stoich():
+    with open("data/core_biomass.json", "r") as f:
+        core_biomass = json.load(f)
+        biomass_objective = core_biomass["core_biomass"]
+    
+    return biomass_objective

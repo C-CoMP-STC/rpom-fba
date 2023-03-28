@@ -4,12 +4,13 @@ clean_models.py
 Script for validating and cleaning the initial models (second step of the pipeline,
 following model conversion from .mat to .sbml).
 """
+from argparse import ArgumentParser
 import os
 import json
 from cobra import Reaction
 from cobra.io import read_sbml_model, write_sbml_model
 
-from biomass import get_ecoli_biomass, ecoli_biomass_to_rpom
+from biomass import get_ecoli_biomass, ecoli_biomass_to_rpom, get_core_biomass_stoich
 from uptake_rxns import get_uptake_rates, add_uptake_reactions
 
 
@@ -20,7 +21,7 @@ CLEAN_MODEL_DIR = "clean_models/"
 MANUAL_METABOLITE_MATCHES = "clean_models/manual_met_links.json"
 
 
-def main():
+def main(biomass_objective):
     # Get ecoli biomass reaction stoichiometry
     ecoli_biomass = get_ecoli_biomass()
 
@@ -40,16 +41,27 @@ def main():
 
     # Add biomass reaction, using ecoli biomass for now
     for model in rpom_models:
-        # Get stoichiometry of biomass reaction
-        biomass_stoich = ecoli_biomass_to_rpom(
-            model, ecoli_biomass, manual_matches=manual_matches)
+        match biomass_objective:
+            case "ecoli":
+                # Get stoichiometry of biomass reaction
+                biomass_stoich = ecoli_biomass_to_rpom(
+                    model, ecoli_biomass, manual_matches=manual_matches)
 
-        # Create biomass reaction
-        biomass_rxn = Reaction("RPOM_provisional_biomass",
-                               "RPOM_provisional_biomass",
-                               lower_bound=0,
-                               upper_bound=1000)
-        biomass_rxn.add_metabolites(biomass_stoich)
+                # Create biomass reaction
+                biomass_rxn = Reaction("RPOM_provisional_biomass",
+                                    "RPOM_provisional_biomass",
+                                    lower_bound=0,
+                                    upper_bound=1000)
+                biomass_rxn.add_metabolites(biomass_stoich)
+            case "core":
+                biomass_stoich = get_core_biomass_stoich()
+                biomass_rxn = Reaction("RPOM_provisional_biomass",
+                                       "RPOM_provisional_biomass",
+                                       lower_bound=0,
+                                       upper_bound=1000)
+                biomass_rxn.add_metabolites(biomass_stoich)
+            case _:
+                raise ValueError(f"{biomass_objective} is not a recognized biomass objective.")
 
         # Add to model, set as objective
         model.add_reactions([biomass_rxn])
@@ -64,4 +76,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    argparser = ArgumentParser("Create cleaned models from the base models.")
+
+    argparser.add_argument("--biomass", "-b", default="core", choices=["ecoli", "core"])
+    
+    args = argparser.parse_args()
+
+    main(args.biomass)
