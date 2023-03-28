@@ -1,0 +1,36 @@
+{
+    "metadata" : {
+        "accessed": "1-26-23",
+        "url": "https://coremodels.mcs.anl.gov/app/#/models/janakakbase:CM-VR/core_246200.7_GP"
+    },
+    "core_biomass": {
+        "NADPH[c]": -1.8225,
+        "ERYTHROSE-4P[c]": -0.8977,
+        "NADH[c]": 3.547,
+        "PHOSPHO-ENOL-PYRUVATE[c]": -0.5191,
+        "NADP[c]": 1.8225,
+        "NAD[c]": -3.547,
+        "WATER[c]": -41.257,
+        "ACETYL-COA[c]": -3.7478,
+        "ADP[c]": 41.257,
+        "CO-A[c]": 3.7478,
+        "ATP[c]": -41.257,
+        "PYRUVATE[c]": -2.8328,
+        "3-Phosphoglycerate": -1.496,
+        "Oxaloacetate": -1.7867,
+        "Phosphate": 41.257,
+        "D-fructose-6-phosphate": -0.0709,
+        "ribose-5-phosphate": -0.8977,
+        "H+": 46.6265,
+        "Glyceraldehyde3-phosphate": -0.129,
+        "2-Oxoglutarate": -1.0789,
+        "D-glucose-6-phosphate": -0.205
+    },
+    "core_energy" : {
+        "H20" : -1,
+        "ADP" : 1,
+        "Phosphate": 1,
+        "H+" : 1,
+        "ATP" : -1
+    }
+}
