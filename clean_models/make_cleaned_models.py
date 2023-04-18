@@ -79,7 +79,7 @@ def main(biomass_objective):
 if __name__ == "__main__":
     argparser = ArgumentParser("Create cleaned models from the base models.")
 
-    argparser.add_argument("--biomass", "-b", default="core", choices=["ecoli", "core"])
+    argparser.add_argument("--biomass", "-b", default="ecoli", choices=["ecoli", "core"])
     
     args = argparser.parse_args()
 
