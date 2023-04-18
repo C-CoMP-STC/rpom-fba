@@ -16,21 +16,21 @@
         "CO-A[c]": 3.7478,
         "ATP[c]": -41.257,
         "PYRUVATE[c]": -2.8328,
-        "3-Phosphoglycerate": -1.496,
-        "Oxaloacetate": -1.7867,
-        "Phosphate": 41.257,
-        "D-fructose-6-phosphate": -0.0709,
-        "ribose-5-phosphate": -0.8977,
-        "H+": 46.6265,
-        "Glyceraldehyde3-phosphate": -0.129,
-        "2-Oxoglutarate": -1.0789,
-        "D-glucose-6-phosphate": -0.205
+        "G3P[c]": -1.496,
+        "OXALACETIC_ACID[c]": -1.7867,
+        "Pi[c]": 41.257,
+        "FRUCTOSE-6P[c]": -0.0709,
+        "RIBOSE-5P[c]": -0.8977,
+        "PROTON[c]": 46.6265,
+        "GAP[c]": -0.129,
+        "2-KETOGLUTARATE[c]": -1.0789,
+        "D-glucopyranose-6-phosphate[c]": -0.205
     },
     "core_energy" : {
-        "H20" : -1,
-        "ADP" : 1,
-        "Phosphate": 1,
-        "H+" : 1,
-        "ATP" : -1
+        "WATER[c]" : -1,
+        "ADP[c]" : 1,
+        "Pi[c]": 1,
+        "PROTON[c]" : 1,
+        "ATP[c]" : -1
     }
 }
