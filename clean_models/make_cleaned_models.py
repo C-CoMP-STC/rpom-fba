@@ -55,6 +55,7 @@ def main(biomass_objective):
                 biomass_rxn.add_metabolites(biomass_stoich)
             case "core":
                 biomass_stoich = get_core_biomass_stoich()
+                biomass_stoich = {model.metabolites.get_by_id(met) : coeff for met, coeff in biomass_stoich.items()}
                 biomass_rxn = Reaction("RPOM_provisional_biomass",
                                        "RPOM_provisional_biomass",
                                        lower_bound=0,
