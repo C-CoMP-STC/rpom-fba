@@ -33951,7 +33951,6 @@
     - gene_reaction_rule: ''
 - genes: []
 - id: Rpom_0
-- name: ''
 - compartments: !!omap
   - c: c
   - e: e

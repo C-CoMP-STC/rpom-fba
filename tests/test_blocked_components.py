@@ -1,9 +1,11 @@
 from cobra.io import read_sbml_model
 from cobra.flux_analysis.reaction import assess
 
+from tests.testing_utils import TEST_MODEL
+
 
 def test_blocked_biomass():
-    model = read_sbml_model("clean_models/Rpom_05.xml")
+    model = read_sbml_model(TEST_MODEL)
 
     # Returns True if biomass can be produced, otherwise a
     # dictionary of {precursor: Status, products: Status}

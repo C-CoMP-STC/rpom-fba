@@ -1,11 +1,11 @@
 from cobra.io import read_sbml_model
 from cobra.manipulation.validate import check_mass_balance
 
-from testing_utils import run_all_tests_in_object
+from tests.testing_utils import TEST_MODEL, run_all_tests_in_object
+
 
 class TestMassBalance:
-    def __init__(self, model="clean_models/Rpom_05.xml"):
-        self.model = read_sbml_model(model)
+    model = read_sbml_model(TEST_MODEL)
     
     def test_mass_balance(self):
         # Get all unbalanced reactions, then exclude
