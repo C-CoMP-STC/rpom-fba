@@ -1,0 +1,4 @@
+{
+    "base": "base_model/Rpom_05.xml",
+    "biomass": "ecoli-full"
+}

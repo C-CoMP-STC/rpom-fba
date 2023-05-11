@@ -9,7 +9,7 @@ def get_carbon_sources(carbon_source_ids="parameters/uptake_rates/carbon_source_
     with open(carbon_source_ids, "r") as f:
         carbon_source_ids = json.load(f)
 
-    return list(carbon_source_ids.values)
+    return list(carbon_source_ids.values())
 
 
 @pytest.mark.parametrize("metabolite", get_carbon_sources())
