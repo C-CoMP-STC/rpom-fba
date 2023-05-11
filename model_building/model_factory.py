@@ -26,6 +26,7 @@ class ModelFactory:
                 with open(config, "r") as f:
                     self.config = json.load(f)
             case dict():
+                self.config_file = None
                 self.config = config
             case _:
                 raise TypeError(
@@ -35,6 +36,12 @@ class ModelFactory:
         # Start from chosen base model
         model = read_sbml_model(self.config["base"])
 
+        # Store config and git hash in annotation
+        model.annotation["config-file"] = self.config_file
+        model.annotation["config"] = json.dumps(self.config)
+        model.annotation["git-hash"] = get_git_hash()
+        
+        # Add chosen biomass objective
         match self.config["biomass"]:
             case "ecoli-core":
                 add_ecoli_core_biomass_to_model(model)
@@ -66,7 +73,7 @@ if __name__ == "__main__":
     argparser.add_argument(
         "config", 
         nargs = "?",
-        default="model_building/blueprints/Rpom_05_ecoli_core.json")
+        default="model_building/blueprints/Rpom_05_ecoli_full.json")
     
     argparser.add_argument(
         "--out",
