@@ -1,4 +1,6 @@
 {
-    "base": "base_model/Rpom_05.xml",
-    "biomass": "ecoli-core"
+    "BaseModel": "base_model/Rpom_05.xml",
+    "MetaData": null,
+    "BiomassObjective": "ecoli-core",
+    "AddUptakeReactions": null
 }
