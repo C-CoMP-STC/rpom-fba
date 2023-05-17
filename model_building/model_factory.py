@@ -3,7 +3,7 @@ import os
 from argparse import ArgumentParser
 
 from cobra.io import read_sbml_model, write_sbml_model
-from model_building.stages.stage import STAGE_REGISTRY
+from model_building.stages import STAGE_REGISTRY
 
 
 class ModelFactory:
