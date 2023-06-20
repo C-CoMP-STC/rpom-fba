@@ -1,0 +1,25 @@
+Solution 1 (500 ml):					Solution 2 (500 ml):					L1 medium components					L1 Trace Element Solution						f/2 Vitamin Solution (modified from Bigelow: NCMAM Center)				
+Compound	(g/L)	Molar Mass (Da)	mmol/500 mL		Compound	(g/L)	Molar Mass (Da)	mmol/500 mL		Component	Stock Solution (g L^-1 dH2O)	Quantity	Molar Concentration in Final Medium		Component	Stock Solution	Quantity	Molar Concentration in Final Medium	Molar Mass		Component	Primary Stock Solution	Quantity	Molar Concentration in Final Medium	Molar Mass
+NaCl	21.19	58.443	725.1510018		MgCl2·6H2O	9.592	203.3	94.36301033		NaNO3	75	1 mL 	8.82 x 10-4 M		Na2EDTA · 2H2O	-	4.36 g	1.17 x 10-5 M	372.24		thiamine · HCl (vit. B1)	-	200 mg	2.96 x 10-7 M	337.27
+Na2SO4	3.55	142.04	49.98591946		CaCl2·2H2O	1.344	147.01	18.28447044		NaH2PO4· H2O	5	1 mL	3.62 x 10-5 M		FeCl3 · 6H2O	-	3.15 g	1.17 x 10-5 M	270.3		biotin (vit. H)	0.1g L-1 dH2O	10 mL	2.05 x 10-9 M	244.31
+KCl	0.599	74.551	16.06953629		SrCl2·6H2O	0.0219	266.62	0.164278749		Na2SiO3 · 9 H2O	30	1 mL	1.06 x 10-4 M		MnCl2·4 H2O	178.10 g L-1 dH2O	1 mL	9.09 x 10-7 M	197.91		cyanocobalamin (vit. B12)	1.0 g L-1dH2O	1 mL	3.69 x 10-10 M	1355.37
+Kbr	0.0862	119.0023	1.448711495		NaNO3	1 ml	84.99	0.88245676		trace element solution	See recipe below	1 mL	-		ZnSO4 · 7H2O	23.00 g L-1 dH2O	1 mL	8.00 x 10-8 M	287.56						
+H3BO3	0.229	61.83	7.407407407		NaH2PO4·H2O	1 ml	137.99	0.03623451		vitamin solution	See recipe below	0.5 mL	-		CoCl2 · 6H2O	11.90 g L-1 dH2O	1 mL	5.00 x 10-8 M	237.93						
+NaF	0.00275	41.988	0.130989807		Na2SiO3· 9H2O (Only add if the phytoplankton requires silicates).	1 ml	284.2	0.105559465							CuSO4 · 5H2O	2.50 g L-1 dH2O	1 mL	1.00 x 10-8 M	249.69						
+NaHCO3	0.1735	84.0066	4.130627832												Na2MoO4 · 2H2O	19.9 g L-1 dH2O	1 mL	8.22 x 10-8 M	241.95						
+															H2SeO3	1.29 g L-1 dH2O	1 mL	1.00 x 10-8 M	128.97						
+FINAL MEDIUM: 500 mL Solution 1 + 500 mL Solution 2 + 1 mL trace metals + 0.5 mL vitamins															NiSO4 · 6H2O	2.63 g L-1 dH2O	1 mL	1.00 x 10-8 M	262.85						
+Component	Compound	mmol/500 mL		Total Volume (mL)	Culture volume (uL)	Concentration in final Medium (mmol/L)	mmol in Culture								Na3VO4	1.84 g L-1 dH2O	1 mL	1.00 x 10-8 M	183.91						
+Solution 1	NaCl	725.1510018		1001.5	220	724.0649045	0.159294279								K2CrO	1.94 g L-1 dH2O	1 mL	1.00 x 10-8 M	???						
+	Na2SO4	49.98591946		1001.5	220	49.91105288	0.010980432																		
+	KCl	16.06953629		1001.5	220	16.04546809	0.003530003																		
+	Kbr	1.448711495		1001.5	220	1.446541683	0.000318239																		
+	H3BO3	7.407407407		1001.5	220	7.396312938	0.001627189																		
+	NaF	0.130989807		1001.5	220	0.130793616	2.87746E-05																		
+	NaHCO3	4.130627832		1001.5	220	4.12444117	0.000907377																		
+Solution 2	MgCl2·6H2O	94.36301033		1001.5	220	94.22167781	0.020728769																		
+	CaCl2·2H2O	18.28447044		1001.5	220	18.25708482	0.004016559																		
+	SrCl2·6H2O	0.164278749		1001.5	220	0.1640327	3.60872E-05																		
+	NaNO3	0.88245676		1001.5	220	0.881135057	0.00019385																		
+	NaH2PO4·H2O	0.03623451		1001.5	220	0.036180239	7.95965E-06																		
+	Na2SiO3· 9H2O (Only add if the phytoplankton requires silicates).	0.105559465		1001.5	220	0.105401363	2.31883E-05																		
