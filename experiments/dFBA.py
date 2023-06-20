@@ -9,28 +9,26 @@ from cobra.io import read_sbml_model
 from scipy.integrate import solve_ivp
 from tqdm import tqdm
 
-MODEL_DIR = "clean_models/"
-MODELS = ["Rpom_0.xml", "Rpom_02.xml", "Rpom_03.xml", "Rpom_04.xml", "Rpom_05.xml",
-          "Rpom_06.xml", "Rpom_025.xml", "Rpom_035.xml", "Rpom_045.xml", "Rpom_055.xml"]
+MODEL = "model/Rpom_05.xml"
 OUTDIR = "out/dFBA/"
 CARBON_SOURCES = "parameters/uptake_rates/carbon_source_ids.json"
 UPTAKE_RATES = "parameters/uptake_rates/fitted_uptake_rates.json"
-UPTAKE_DATA_FILE = "data/uptake_rates.xlsx"
-UPTAKE_RATES_SHEET = "Eyeballed data"
+UPTAKE_DATA_FILE = "data/drawdown_clean.csv"
+
+# TODO: Let's output and save data for all exchange fluxes in addition to biomass and external C
 
 
 def add_dynamic_bounds(model, y, exchange_rxn, V_max, K_M):
     """Use external concentrations to bound the uptake flux of glucose."""
     biomass, carbon_source = y  # expand the boundary species
     c_max_import = V_max * carbon_source / (K_M + carbon_source)
+    if c_max_import > 0:
+        c_max_import = 0
     model.reactions.get_by_id(exchange_rxn).lower_bound = c_max_import
 
 
-def make_dynamic_system(model, biomass_rxn, exchange_rxn, pbar=None):
+def make_dynamic_system(model, biomass_rxn, exchange_rxn, K_M, pbar=None):
     V_max = model.reactions.get_by_id(exchange_rxn).lower_bound
-
-    # TODO: Extremely arbitrary!!!
-    K_M = 5
 
     def dynamic_system(t, y):
         """Calculate the time derivative of external species."""
@@ -41,8 +39,11 @@ def make_dynamic_system(model, biomass_rxn, exchange_rxn, pbar=None):
         with model:
             add_dynamic_bounds(model, y, exchange_rxn, V_max, K_M)
 
+            # Check feasbility by adding a feasibility constraint(?)
             cobra.util.add_lp_feasibility(model)
             feasibility = cobra.util.fix_objective_as_constraint(model)
+
+            # Optimize biomass, and then carbon source exchange (why?)
             lex_constraints = cobra.util.add_lexicographic_constraints(
                 model, [biomass_rxn, exchange_rxn], ['max', 'max'])
 
@@ -89,7 +90,7 @@ def make_infeasible_event(model, exchange_rxn, K_M, epsilon=1E-6):
 
 
 def experiment(model, exchange_rxn, y0):
-    ts = np.linspace(0, 1, 10)
+    T = np.linspace(0, 1, 10)
     # Biomass, carbon source
     # y0 = [0.1, 10]
 
@@ -99,19 +100,19 @@ def experiment(model, exchange_rxn, y0):
     with tqdm() as pbar:
         sol = solve_ivp(
             fun=make_dynamic_system(
-                model, "RPOM_provisional_biomass", exchange_rxn, pbar),
+                model, "RPOM_provisional_biomass", exchange_rxn, K_M, pbar),
             events=[make_infeasible_event(model, exchange_rxn, K_M)],
-            t_span=(ts.min(), ts.max()),
+            t_span=(T.min(), T.max()),
             y0=y0,
-            t_eval=ts,
-            rtol=1e-6,
-            atol=1e-8,
-            method='BDF'
+            t_eval=T,
+            rtol=1e-3,  # 1e-6,
+            atol=1e-6,  # 1e-8,
+            method='RK23'
         )
 
     return sol
 
- 
+
 def plot_data(ivp_solution, carbon_source, ax):
     ax.plot(ivp_solution.t, ivp_solution.y.T[:, 0])
     ax2 = plt.twinx(ax)
@@ -124,13 +125,27 @@ def plot_data(ivp_solution, carbon_source, ax):
 
 
 def main():
-    # Load models
-    # (loading all models before cleaning because of excessive warning messages)
-    # TODO: use all models, or choose one specifically
-    rpom_models = []
-    for model_file in [MODELS[3]]:
-        model = read_sbml_model(os.path.join(MODEL_DIR, model_file))
-        rpom_models.append(model)
+    model = read_sbml_model(MODEL)
+
+    # TODO: Clean this up and use correct media
+    min_medium = {
+        "EX_ca2": 0.001692,
+        "EX_cl": 0.001692,
+        "EX_cobalt2": 0.001128,
+        "EX_cu2": 0.001128,
+        "EX_fe2": 0.002619,
+        "EX_fe3": 0.002538,
+        "EX_k": 0.063444,
+        "EX_mg2": 0.002820,
+        "EX_mn2": 0.001128,
+        "EX_mobd": 0.001128,
+        "EX_nh4": 3.810975,
+        "EX_o2": 80.262691,
+        "EX_pi": 0.722799,
+        "EX_so4": 0.069699,
+        "EX_thm": 0.000081,
+        "EX_zn2": 0.001128
+    }
 
     # Load carbon sources to test
     with open(CARBON_SOURCES, "r") as f:
@@ -142,8 +157,7 @@ def main():
     }
 
     # Load uptake rate source data for comparison
-    uptake_data = pd.read_excel(
-        UPTAKE_DATA_FILE, sheet_name=UPTAKE_RATES_SHEET)
+    uptake_data = pd.read_csv(UPTAKE_DATA_FILE)
 
     with open(UPTAKE_RATES, "r") as f:
         uptake_rates = json.load(f)
@@ -157,11 +171,15 @@ def main():
             lambda m: m.id == carbon_source_id)[0]
         exchange_rxn = model.exchanges.query(
             lambda r: metabolite in r.reactants)[0]
+        lower_bound = float(exchange_rxn._annotation["Experimental rate"])
+
+        model.medium = {**min_medium,
+                        exchange_rxn.id: -lower_bound}
 
         # Run the experiment, get data
         # Biomass, carbon source
-        initial = uptake_data[uptake_data["Metabolite"] ==
-                              carbon_source]["Initial Concentration (mM metabolite)"].values[0]
+        initial = uptake_data[uptake_data["Compound"] ==
+                              carbon_source]["InitialMetabolite_mM"].values[0]
         y0 = [0.1, initial]
         data = experiment(model, exchange_rxn.id, y0)
 

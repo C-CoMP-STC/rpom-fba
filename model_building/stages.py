@@ -52,6 +52,10 @@ class MetaData(Stage):
 @register_stage
 class BiomassObjective(Stage):
     def process(self, model: Model, params: object) -> Model:
+        # Ignore previous biomass objective
+        # TODO: compare this with what we have?
+        model.reactions.get_by_id("BiomassRxn").bounds = (0, 0)
+
         # Add chosen biomass objective
         match params:
             case "ecoli-core":
@@ -72,4 +76,3 @@ class AddUptakeReactions(Stage):
         add_uptake_reactions(model, uptake_rates)
 
         return model
-
