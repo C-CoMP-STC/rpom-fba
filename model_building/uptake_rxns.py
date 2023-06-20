@@ -46,4 +46,7 @@ def add_uptake_reactions(model, rates):
         # Constrain with fitted rate
         # Need to translate
 
-        exchange.lower_bound = rate
+        exchange = exchange[0]
+        exchange._annotation["Experimental rate"] = rate
+        exchange.lower_bound = 0
+        exchange.upper_bound = 0

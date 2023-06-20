@@ -44,7 +44,7 @@ if __name__ == "__main__":
     argparser.add_argument(
         "config", 
         nargs = "?",
-        default="model_building/blueprints/Rpom_05_ecoli_full.json")
+        default="model_building/blueprints/Rpom_05_ecoli_core.json")
     
     argparser.add_argument(
         "--out",
