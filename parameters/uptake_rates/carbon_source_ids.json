@@ -15,7 +15,7 @@
     "succinate": "SUC[e]",
     "carnitine": "CARNITINE[e]",
     "cysteate": "L-CYSTEATE[e]",
-    "3-OH_butyrate": "3-HYDROXY-BUTYRATE (BioCyc), not present in model",
+    "3-OH_butyrate": "CPD-335[e]",
     "thymidine": "THYMIDINE[e]",
     "choline": "CHOLINE[e]",
     "DHPS": "Not present in model",
