@@ -21,9 +21,7 @@ def get_uptake_rates(uptake_rates_file=UPTAKE_RATES_DATA, carbon_sources_file=CA
 
 def add_uptake_reactions(model, rates):
     # TODO: EX_glc reversibility is wrong given it should be an exchange reaction,
-    # need to match other EX reactions
-
-    # Clear existing exchange reactions?
+    # need to match other EX reactions?
 
     # Add uptake reactions one-by-one
     for met_id, rate in rates.items():
@@ -44,9 +42,11 @@ def add_uptake_reactions(model, rates):
             exchange = model.add_boundary(metabolite, type="exchange")
 
         # Constrain with fitted rate
-        # Need to translate
+        # TODO: Need to translate...?
 
         exchange = exchange[0]
         exchange._annotation["Experimental rate"] = rate
-        exchange.lower_bound = 0
-        exchange.upper_bound = 0
+
+        # Assuming growth on glucose by default!
+        if met_id != "Glucose[e]":
+            exchange.bounds = (0, 0)
