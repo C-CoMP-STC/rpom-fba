@@ -18,7 +18,9 @@ GROWTH_RATES_FILE = "parameters/growth_rates/fitted_growth_rates.csv"
 METHOD_NOT_RECOGNIZED = "{} is not a recognized method to fit uptake rates!"
 BG_GRAY = "0.4"
 
-INITIAL_MASS = 1e-6  # Temporary guess, = 1ug
+# TODO: this is wet mass, check where from and whether to use dry mass?
+# (in L1_minimal_medium_composition.xlsx)
+INITIAL_MASS = 579e-6  # ug
 
 
 def fit_uptake_rates(

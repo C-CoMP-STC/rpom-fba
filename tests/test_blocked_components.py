@@ -2,7 +2,6 @@ import pytest
 from cobra import Reaction
 from cobra.flux_analysis.reaction import assess
 from cobra.io import read_sbml_model
-from numpy import sign
 
 from tests.testing_utils import TEST_MODEL, run_all_tests_in_object
 
@@ -33,23 +32,21 @@ class TestBlockedComponents():
                               .metabolites
                               .items()))
     def test_biomass_component(self, component, coefficient):
+        with self.model as model:
+            model.reactions.get_by_id(
+                "RPOM_provisional_biomass").bounds = (0, 0)
 
-        self.model.reactions.get_by_id(
-            "RPOM_provisional_biomass").bounds = (0, 0)
+            single_metabolite_objective = Reaction(f"{component.id}_objective")
+            single_metabolite_objective.add_metabolites({
+                component: coefficient
+            })
+            model.add_reactions([single_metabolite_objective])
 
-        single_metabolite_objective = Reaction(f"{component.id}_objective")
-        single_metabolite_objective.add_metabolites({
-            component: coefficient
-        })
-        self.model.add_reactions([single_metabolite_objective])
+            model.objective = single_metabolite_objective
+            solution = model.optimize()
 
-        self.model.objective = single_metabolite_objective
-        solution = self.model.optimize()
-
-        assert solution.objective_value > 0, (f"Unable to {'produce' if coefficient < 0 else 'absorb'} "
-                                              f"{component} (objective value = {solution.objective_value})")
-
-        self.model.remove_reactions([single_metabolite_objective])
+            assert solution.objective_value > 0, (f"Unable to {'produce' if coefficient < 0 else 'absorb'} "
+                                                f"{component} (objective value = {solution.objective_value})")
 
 
 def main():

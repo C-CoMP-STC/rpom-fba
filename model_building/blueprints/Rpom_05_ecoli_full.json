@@ -2,5 +2,6 @@
     "BaseModel": "base_model/Rpom_05.xml",
     "MetaData": null,
     "BiomassObjective": "ecoli-full",
+    "SetMedium": "data/media/L1_minimal_medium.json",
     "AddUptakeReactions": null
 }
