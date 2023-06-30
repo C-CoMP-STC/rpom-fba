@@ -1,4 +1,9 @@
 import json
+import re
+
+from cobra.core import Metabolite
+
+from utils.cobra_utils import change_compartment, get_or_create_exchange
 
 UPTAKE_RATES_DATA = "parameters/uptake_rates/fitted_uptake_rates.json"
 CARBON_SOURCE_IDS = "parameters/uptake_rates/carbon_source_ids.json"
@@ -25,26 +30,16 @@ def add_uptake_reactions(model, rates):
 
     # Add uptake reactions one-by-one
     for met_id, rate in rates.items():
-
-        # Check that metabolite is already in model
-        try:
-            metabolite = model.metabolites.get_by_id(met_id)
-        except KeyError:
-            # TODO: Fix missing metabolites
-            print(f"{met_id} not found in model")
-            continue
-
         # Check if exchange reaction already exists,
         # create exchange reaction if it does not
-        exchange = model.exchanges.query(lambda r: metabolite in r.reactants)
-        if len(exchange) == 0:
-            print(f"Exchange reaction for {met_id} not found, creating exchange reaction")
-            exchange = model.add_boundary(metabolite, type="exchange")
+        try:
+            exchange = get_or_create_exchange(model, met_id, verbose=True)
+        except KeyError:
+            print(f"{met_id} not found in model, failed to create exchange reaction.")
+            continue
 
         # Constrain with fitted rate
         # TODO: Need to translate...?
-
-        exchange = exchange[0]
         exchange._annotation["Experimental rate"] = rate
 
         # Assuming growth on glucose by default!
