@@ -5,6 +5,8 @@ import matplotlib
 import numpy as np
 import pandas as pd
 
+from scipy.optimize import minimize
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -18,9 +20,42 @@ GROWTH_RATES_FILE = "parameters/growth_rates/fitted_growth_rates.csv"
 METHOD_NOT_RECOGNIZED = "{} is not a recognized method to fit uptake rates!"
 BG_GRAY = "0.4"
 
-# TODO: this is wet mass, check where from and whether to use dry mass?
-# (in L1_minimal_medium_composition.xlsx)
-INITIAL_MASS = 579e-6  # ug
+# Dry mass
+INITIAL_MASS = 405.3053598e-6 # g
+
+# Michaelis-Menten
+# Assuming K_M fixed at 5, consider varying later
+K_M = 5
+
+
+def michaelis_menten_dynamic_system(S_0, X_0, V_max, K_M, mu, max_t, dt=0.1):
+    time = np.arange(0, max_t, dt)
+    trajectory = np.zeros((time.size, 2))
+
+    s = S_0
+    x = X_0
+    for i, t in enumerate(time):
+        trajectory[i, :] = [s, x]
+
+        x = X_0 * np.exp(mu * t)
+        dS = V_max * (s / (K_M + s)) * x
+
+        s += dS * dt
+
+    return np.array(time), np.array(trajectory)
+
+
+def fit_M_M_for_given_K_M(S_0, X_0, S_final, K_M, mu, max_t, dt=0.1):
+    result = minimize(
+        (
+            lambda v_max: (
+                S_final -
+                michaelis_menten_dynamic_system(
+                    S_0, X_0, v_max, K_M, mu, max_t, dt=dt)[1][-1, 0]
+            )**2
+        ),
+        [1])
+    return result
 
 
 def fit_uptake_rates(
@@ -30,7 +65,7 @@ def fit_uptake_rates(
     initial_conc="InitialMetabolite_mM",
     final_conc="FinalMetabolite_mM",
     dts="dt_hr",
-    method="linear"
+    method="michaelis-menten"
 ):
     rates = {}
 
@@ -38,6 +73,16 @@ def fit_uptake_rates(
     def correct_zeros(x): return x if x != 0 else .00001
 
     match method:
+        case "michaelis-menten":
+            rates = {
+                metabolite : fit_M_M_for_given_K_M(initial, INITIAL_MASS, final, K_M, mu, tmax).x[0]
+                for metabolite, mu, final, initial, tmax
+                in zip(data[metabolites],
+                       data[growth_rates],
+                       data[final_conc],
+                       data[initial_conc],
+                       data[dts])
+            }
         case "linear":
             rates = {
                 metabolite: ((mu * (final - initial)) /
@@ -74,7 +119,7 @@ def plot_fits(
     metabolites="Compound",
     dt="dt_hr",
     growth_rate="GrowthRate",
-    method="linear"
+    method="michaelis-menten"
 ):
     # Ensure output directory exists
     os.makedirs(UPTAKE_RATES_PLOTS_OUTDIR, exist_ok=True)
@@ -105,6 +150,17 @@ def plot_fits(
         # Plot fitted curve
         t = np.linspace(0, total_time, 100)
         match method:
+            case "michaelis-menten":
+                t, x = michaelis_menten_dynamic_system(t0.mean(), INITIAL_MASS, rate, K_M, mu, total_time)
+                
+                ax.plot(t, x[:, 0], color="g", alpha=0.5, label=f"[S]")
+                ax.set_xlabel("Time (hr)")
+                ax.set_ylabel("Substrate concentration (mM)")
+                ax2 = ax.twinx()
+                ax2.plot(t, x[:, 1], color="r", label="X(t)")
+                ax2.set_ylabel("Colony mass")
+
+                fig.legend()
             case "linear":
                 ax.plot(t,
                         mean_initial + (rate * INITIAL_MASS * (np.exp(mu * t) - 1) / mu))
@@ -132,7 +188,7 @@ def main():
                     .reset_index(name="GrowthRate")
                     .rename(columns={"index": "Compound"}))
     data = data.merge(growth_rates, how="inner", on="Compound", validate="1:1")
-    rates = fit_uptake_rates(data, method="linear")
+    rates = fit_uptake_rates(data, method="michaelis-menten")
 
     print("Plotting fitted rates...")
     raw_data = pd.read_excel(RAW_UPTAKE_RATES_FILE,
