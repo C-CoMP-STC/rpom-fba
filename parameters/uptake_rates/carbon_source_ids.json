@@ -18,8 +18,6 @@
     "3-OH_butyrate": "CPD-335[e]",
     "thymidine": "THYMIDINE[e]",
     "choline": "CHOLINE[e]",
-    "DHPS": "Not present in model",
-    "ectoine": "ECTOINE[e]",
-
-    "Comments": ["Malate somewhat uncertain, multiple forms in model."]
+    "DHPS": "CPD-12693[e]",
+    "ectoine": "ECTOINE[e]"
 }

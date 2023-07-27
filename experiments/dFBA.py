@@ -6,37 +6,36 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from cobra.io import read_sbml_model
+from cobra.exceptions import Infeasible
 from scipy.integrate import solve_ivp
 from tqdm import tqdm
+from parameters.fit_uptake_rates import get_mass_interpolator, michaelis_menten_dynamic_system
 
-from utils.cobra_utils import change_compartment, get_or_create_exchange, set_active_bound
+from utils.cobra_utils import get_or_create_exchange, set_active_bound, get_active_bound
+from parameters.drawdown import *
 
 MODEL = "model/Rpom_05.xml"
 OUTDIR = "out/dFBA/"
 CARBON_SOURCES = "parameters/uptake_rates/carbon_source_ids.json"
-UPTAKE_RATES = "parameters/uptake_rates/fitted_uptake_rates.json"
 UPTAKE_DATA_FILE = "data/drawdown_clean.csv"
-
-
-COLONY_VOLUME = 220  # uL
-COLONY_DRY_WEIGHT = 405.3053598  # ug
+GROWTH_DATA_FILE = "data/growth_curves_clean.csv"
 
 
 def michaelis_menten_bounds(y, V_max, K_M):
-    _, carbon_source = y # expand the boundary species
+    _, carbon_source = y  # expand the boundary species
     return V_max * carbon_source / (K_M + carbon_source)
 
 
 def add_dynamic_bounds(y, exchange_rxn, V_max, K_M):
     """Use external concentrations to bound the uptake flux of glucose."""
-    c_max_import = michaelis_menten_bounds(y, V_max, K_M)
+    c_max_import = abs(michaelis_menten_bounds(y, V_max, K_M))
 
     set_active_bound(exchange_rxn, c_max_import)
 
 
 def make_dynamic_system(model, biomass_rxn, exchange_rxn, K_M, pbar=None):
     exchange = model.reactions.get_by_id(exchange_rxn)
-    V_max = exchange_rxn.lower_bound
+    V_max = get_active_bound(exchange)
 
     def dynamic_system(t, y):
         """Calculate the time derivative of external species."""
@@ -58,11 +57,14 @@ def make_dynamic_system(model, biomass_rxn, exchange_rxn, K_M, pbar=None):
             # thus guaranteeing a unique optimal exchange flux.
             lex_constraints = cobra.util.add_lexicographic_constraints(
                 model, [biomass_rxn, exchange_rxn], ['max', 'max'])
+            fluxes = lex_constraints.values
 
         # Since the calculated fluxes are specific rates, we multiply them by the
         # biomass concentration to get the bulk exchange rates.
-        fluxes = lex_constraints.values
-        fluxes *= biomass
+        fluxes[0] *= biomass
+        # Fitted Vmax is specific, in units mM/hr/g, so need to multiply by g (not g/L)
+        # to get mM/hr
+        fluxes[1] *= biomass * COLONY_VOLUME * 1e-6
 
         # Update progress bar
         if dynamic_system.pbar is not None:
@@ -89,9 +91,10 @@ def make_infeasible_event(model, exchange_rxn, K_M, epsilon=1E-6):
         """
 
         with model:
-            V_max = model.reactions.get_by_id(exchange_rxn).lower_bound
+            exchange = model.reactions.get_by_id(exchange_rxn)
+            V_max = get_active_bound(exchange)
 
-            add_dynamic_bounds(model, y, exchange_rxn, V_max, K_M)
+            add_dynamic_bounds(y, exchange, V_max, K_M)
 
             cobra.util.add_lp_feasibility(model)
             feasibility = cobra.util.fix_objective_as_constraint(model)
@@ -102,22 +105,16 @@ def make_infeasible_event(model, exchange_rxn, K_M, epsilon=1E-6):
         if t == 0:
             feasibility = 0
 
-        print(feasibility)
-
         return feasibility - epsilon
 
     return infeasible_event
 
 
-def experiment(model, exchange_rxn, y0, tmin, tmax):
-    # TODO: Extremely arbitrary!!!
-    K_M = 5
-
+def run_dFBA(model, exchange_rxn, y0, tmin, tmax, terminate_on_infeasible=True):
     # generate infeasibility detector
-    infeasible_event = make_infeasible_event(model, exchange_rxn, K_M)
-
-    # Terminate at the first instance of infeasibility
-    infeasible_event.terminal = True
+    infeasible_event = make_infeasible_event(
+        model, exchange_rxn, K_M)
+    infeasible_event.terminal = terminate_on_infeasible
 
     # TODO: solve_ivp supports a `vectorized` : Bool option,
     # indicating whether fun can be called in a vectorized fashion.
@@ -131,7 +128,6 @@ def experiment(model, exchange_rxn, y0, tmin, tmax):
             events=[infeasible_event],
             t_span=(tmin, tmax),
             y0=y0,
-            # t_eval=T,
             rtol=1e-6,
             atol=1e-8,
             method='RK45'
@@ -140,31 +136,10 @@ def experiment(model, exchange_rxn, y0, tmin, tmax):
     return sol
 
 
-def plot_data(ivp_solution, carbon_source, ax):
-    ax.plot(ivp_solution.t, ivp_solution.y.T[:, 0], label="Biomass")
-    ax2 = plt.twinx(ax)
-    ax2.plot(ivp_solution.t,
-             ivp_solution.y.T[:, 1], color='r', label=carbon_source)
-
-    ax.set_ylabel('Biomass', color='b')
-    ax2.set_ylabel(carbon_source, color='r')
-
-    return ax, ax2
-
-
-def main():
-    model = read_sbml_model(MODEL)
-
+def setup_drawdown(model):
     # Growth is infeasible on the seawater medium as it currently is,
-    # supplement with the following:
-    # supplement = ['CO+2[c]', 'CU+2[c]', 'MN+2[c]', 'CPD-3[c]', 'NI+2[c]', 'THIAMINE[c]', "FE+2[c]", "ZN+2[c]"]
-    # supplement.append("Pi[c]")
-    # supp_medium = model.medium
-    # for met in supplement:
-    #     ex = get_or_create_exchange(model, met)
-    #     supp_medium[ex.id] = 1000
-    # model.medium = supp_medium
-    supp_medium = {k : 1000. for k, v in model.medium.items()}
+    # needs to be supplemented with FE+2 (also increase everything to 1000 to not be limiting)
+    supp_medium = {k: 1000. for k, v in model.medium.items()}
     supp_medium["EX_fe2"] = 1000.
     model.medium = supp_medium
 
@@ -173,6 +148,12 @@ def main():
     biotin = model.metabolites.get_by_id("BIOTIN[c]")
     biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
     biomass.subtract_metabolites({biotin: biomass.metabolites[biotin]})
+
+
+def main():
+    model = read_sbml_model(MODEL)
+
+    setup_drawdown(model)
 
     # Load carbon sources to test
     with open(CARBON_SOURCES, "r") as f:
@@ -183,11 +164,9 @@ def main():
         if len(model.metabolites.query(lambda m: m.id == v)) == 1
     }
 
-    # Load uptake rate source data for comparison
+    # Load data for compoarison
     uptake_data = pd.read_csv(UPTAKE_DATA_FILE)
-
-    with open(UPTAKE_RATES, "r") as f:
-        uptake_rates = json.load(f)
+    growth_data = pd.read_csv(GROWTH_DATA_FILE)
 
     # Ensure output directory exists
     os.makedirs(OUTDIR, exist_ok=True)
@@ -200,40 +179,56 @@ def main():
             # Get Metabolite object and exchange reaction for the given carbon source
             exchange_rxn = get_or_create_exchange(model, carbon_source_id)
 
-            # TODO: Feeding extra for now, due to infeasibility on calculated
-            # feeding rate (at least for glucose)
-            rate = 2 * \
-                abs(float(exchange_rxn._annotation["Experimental rate"]))
+            vmax = abs(float(exchange_rxn._annotation["Experimental rate"]))
 
-            set_active_bound(exchange_rxn, rate)
+            set_active_bound(exchange_rxn, vmax)
 
-            # Run the experiment, get data
-            # Biomass, carbon source
+            # Get initial conditions
+            # TODO: set initial biomass from data?
             initial = uptake_data[uptake_data["Compound"] ==
                                   carbon_source]["InitialMetabolite_mM"].values[0]
-            # convert to mmol/gDCW
-            initial *= COLONY_VOLUME / COLONY_DRY_WEIGHT
+            y0 = [COLONY_DRY_WEIGHT / COLONY_VOLUME,  # convert to concentration (g/L)
+                  initial]
 
-            # TODO: set initial biomass from data?
-            y0 = [COLONY_DRY_WEIGHT * 1e-6, initial]
+            # Get timespan of experiment
+            tmin, tmax = 0, uptake_data[uptake_data["Compound"] ==
+                                        carbon_source]["dt_hr"].values[0]
 
-            tmin, tmax = 0, 24
-            data = experiment(model, exchange_rxn.id, y0, tmin, tmax)
+            data = run_dFBA(model, exchange_rxn.id, y0,
+                            tmin, tmax)
 
             # Plot output
             fig, ax = plt.subplots()
 
-            # Plot depletion of carbon source over 24 hrs
-            _, ax2 = plot_data(data, carbon_source_id, ax)
+            # Plot data
+            ax.plot(data.t,
+                    data.y.T[:, 0] * COLONY_VOLUME,
+                    label="Biomass")
+            ax2 = plt.twinx(ax)
+            ax2.plot(data.t,
+                     data.y.T[:, 1], color='r', label=f"[{carbon_source}] (mM)")
+
+            ax.set_ylabel('Biomass (ug)', color='b')
+            ax2.set_ylabel(carbon_source, color='r')
 
             # TODO: Plot fitted curve, points (?)
+            col = f"{carbon_source}_predicted_mass"
+            growth_on_carbon_source = growth_data[[col, "time (h)"]]
+            growth_on_carbon_source = growth_on_carbon_source[~np.isnan(
+                growth_on_carbon_source[col])]
 
-            rate = uptake_rates[carbon_source]
-            t = np.linspace(tmin, tmax, 50)
-            ax2.plot(t, initial * np.exp(rate * t),
-                     "r--", label="Theoretical drawdown")
+            ax.plot(growth_on_carbon_source["time (h)"],
+                    growth_on_carbon_source[col],
+                    "b--",
+                    label="Biomass (data)")
 
-            fig.legend()
+            # TODO: replace with fitted drawdown as in uptake rate fitting
+            mass_curve = get_mass_interpolator(carbon_source, growth_data)
+            t, x = michaelis_menten_dynamic_system(
+                initial, mass_curve, -abs(vmax), K_M, tmax, dt=0.01)
+
+            ax2.plot(t, x[:, 0], "r--",
+                     label=f"Fitted {carbon_source_id} drawdown")
 
             # Save figure
             fig.set_size_inches(8, 6)

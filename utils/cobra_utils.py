@@ -113,6 +113,12 @@ def set_active_bound(reaction: Reaction, bound: float) -> None:
         reaction.upper_bound = bound
 
 
+def set_fixed(reaction: Reaction, flux: float) -> Reaction:
+    reaction.lower_bound = flux
+    reaction.upper_bound = flux
+    return reaction
+
+
 def path_to(model, met_from, met_to):
     pass
 

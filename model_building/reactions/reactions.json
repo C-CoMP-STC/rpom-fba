@@ -1,0 +1,63 @@
+[
+    {
+        "id" : "RXN-11728",
+        "name": "",
+        "subsystem" : "",
+        "lower_bound" : 0.0,
+        "upper_bound": 1000.0,
+        "metabolites" : {
+            "CPD-12693[c]" : -1.0,
+            "NADP[c]" : -1.0,
+            "CPD-12694[c]" : 1.0,
+            "NADPH[c]": 1.0,
+            "PROTON[c]" : 1.0
+        },
+        "gene_reaction_rule" : "(SPO0595)"
+    },
+    {
+        "id" : "RXN-11729",
+        "name": "",
+        "subsystem" : "",
+        "lower_bound" : 0.0,
+        "upper_bound": 1000.0,
+        "metabolites" : {
+            "CPD-12694[c]" : -1.0,
+            "NADPH[c]": -1.0,
+            "PROTON[c]" : -1.0,
+            "CPD-12692[c]" : 1.0,
+            "NAD[c]" : 1.0
+        },
+        "gene_reaction_rule" : "(SPO0596)"
+    },
+    {
+        "id" : "RXN-11727",
+        "name": "",
+        "subsystem" : "",
+        "lower_bound" : 0.0,
+        "upper_bound": 1000.0,
+        "metabolites" : {
+            "CPD-12692[c]" : -1.0,
+            "NAD[c]" : -2.0,
+            "WATER[c]" : -1.0,
+            "CPD-367[c]": 1.0,
+            "NADH[c]": 2.0,
+            "PROTON[c]": 3.0
+        },
+        "gene_reaction_rule" : "(hpsN)"
+    },
+    {
+        "id" : "RXN-11738",
+        "name": "",
+        "subsystem" : "",
+        "lower_bound" : 0.0,
+        "upper_bound": 1000.0,
+        "metabolites" : {
+            "CPD-367[c]": -1.0,
+            "NAD[c]": -1.0,
+            "CPD-380[c]": 1.0,
+            "NADH[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule" : "(slcD)"
+    }
+]
