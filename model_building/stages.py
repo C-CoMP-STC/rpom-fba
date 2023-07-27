@@ -4,6 +4,8 @@ import json
 import git
 from cobra.io import read_sbml_model
 from cobra.core.model import Model
+from cobra.core.metabolite import Metabolite
+from cobra.core.reaction import Reaction
 
 from biomass import (add_ecoli_core_biomass_to_model,
                      add_ecoli_full_biomass_to_model)
@@ -12,6 +14,7 @@ from utils.cobra_utils import get_or_create_exchange, set_active_bound
 
 STAGE_REGISTRY = {}
 
+
 def register_stage(cls):
     STAGE_REGISTRY[cls.__name__] = cls
     return cls
@@ -19,7 +22,7 @@ def register_stage(cls):
 
 class Stage(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def process(self, model : Model, params : object) -> Model:
+    def process(self, model: Model, params: object) -> Model:
         pass
 
 
@@ -27,10 +30,11 @@ class Stage(metaclass=abc.ABCMeta):
 class BaseModel(Stage):
     def process(self, model: Model, params: object) -> Model:
         if not isinstance(params, str):
-            raise TypeError(f"BaseModel stage requires a path to a base model (as a str). Got {type(params)}.")
+            raise TypeError(
+                f"BaseModel stage requires a path to a base model (as a str). Got {type(params)}.")
 
         return read_sbml_model(params)
-    
+
 
 @register_stage
 class MetaData(Stage):
@@ -41,7 +45,7 @@ class MetaData(Stage):
         model.annotation["git-hash"] = self.get_git_hash()
 
         return model
-    
+
     def get_git_hash(self):
         try:
             repo = git.Repo(search_parent_directories=True)
@@ -64,7 +68,7 @@ class BiomassObjective(Stage):
                 add_ecoli_core_biomass_to_model(model)
             case "ecoli-full":
                 add_ecoli_full_biomass_to_model(model)
-        
+
         return model
 
 
@@ -83,9 +87,52 @@ class SetMedium(Stage):
         for metabolite, value in medium.items():
             exchange = get_or_create_exchange(model, metabolite, verbose=True)
             final_medium[exchange.id] = value
-        
+
         model.medium = final_medium
-        
+
+        return model
+
+
+@register_stage
+class AddMetabolites(Stage):
+    def process(self, model: Model, params: object) -> Model:
+        with open(params, "r") as f:
+            metabolites = json.load(f)
+
+        metabolites = [Metabolite(**metabolite)
+                       for metabolite in metabolites
+                       ]
+
+        model.add_metabolites(metabolites)
+
+        return model
+
+
+@register_stage
+class AddReactions(Stage):
+    def process(self, model: Model, params: object) -> Model:
+        with open(params, "r") as f:
+            reactions_to_add = json.load(f)
+
+        reactions = []
+        for reaction in reactions_to_add:
+            reaction["metabolites"] = {
+                model.metabolites.get_by_id(m): v
+                for m, v in reaction["metabolites"].items()
+            }
+
+            rxn = Reaction()
+            rxn.id = reaction["id"]
+            rxn.name = reaction["name"]
+            rxn.subsystem = reaction["subsystem"]
+            rxn.lower_bound = reaction["lower_bound"]
+            rxn.upper_bound = reaction["upper_bound"]
+            rxn.add_metabolites(reaction["metabolites"])
+            
+            reactions.append(rxn)
+
+        model.add_reactions(reactions)
+
         return model
 
 

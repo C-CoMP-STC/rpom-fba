@@ -38,10 +38,13 @@ def main():
 
     for carbon_source, carbon_source_id in carbon_sources.items():
         with model:
-            # Get Metabolite object and exchange reaction for the given carbon source
+            # Get exchange reaction and calculated rate for the given carbon source
             exchange_rxn = get_or_create_exchange(model, carbon_source_id)
+            experimental_rate = abs(float(exchange_rxn.annotation["Experimental rate"]))
 
-            x = np.linspace(0, 100, 100)
+            # Sweep bound on exchange reaction,
+            # keeping track of objective value and feasibility
+            x = np.linspace(0, max(100, experimental_rate), 100)
             y = np.zeros_like(x)
             feasible = np.zeros_like(x)
             for i, v in enumerate(x):
@@ -55,10 +58,11 @@ def main():
             fig, ax = plt.subplots()
             ax.plot(x, y, "b-", label="Objective value")
 
-            ax2 = ax.twinx()
             height = y.max()
-            plt.fill_between(x, height * feasible, color="g", step="pre", alpha=0.4, label="Feasibility")
-            ax2.set_ylim(0, height)
+            ax.fill_between(x, height * feasible, color="g", step="pre", alpha=0.4, label="Feasibility")
+            ax.set_ylim(0, height)
+
+            ax.vlines([experimental_rate], 0, max(height, 0.01), ["r"])
             
             # Labels
             ax.set_xlabel(f"{carbon_source} supply ($\\frac{{mmol}}{{gDCW \\cdot hr}}$)")
@@ -69,6 +73,7 @@ def main():
             fig.set_size_inches(4, 2)
             fig.tight_layout()
             fig.savefig(os.path.join(OUTDIR, f"{carbon_source} feasibility scan.png"))
+
 
 if __name__ == "__main__":
     main()
