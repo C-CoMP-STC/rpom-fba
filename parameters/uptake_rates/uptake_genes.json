@@ -1,0 +1,25 @@
+{
+    "3-OH_butyrate": "(SPO2573)",
+    "DHPS": "(SPO0591)",
+    "DMSP": "(SPO3186)",
+    "GlcNac": "(SPO1839)",
+    "cadaverine": "(SPO3469)",
+    "carnitine": "(SPO2995 and SPO2996)",
+    "choline": "(SPO1087)",
+    "citrate": "(SPO0184)",
+    "cysteate": "(SPO3040 and SPO3041)",
+    "ectoine": "(SPO1147)",
+    "fumarate": "(SPO2630)",
+    "glucose": "(SPO0863)",
+    "glycerol": "(SPO0608)",
+    "isethionate": "(SPO2357 and SPO2358)",
+    "malate": "(SPO2628)",
+    "putresceine": "(SPO3469)",
+    "spermidine": "(SPO3469)",
+    "succinate": "(SPO2630)",
+    "taurine": "(SPO0674 and SPO0676)",
+    "thymidine": "(SPO0378 and SPO0379)",
+    "xylose": "(SPO0863)",
+
+    "Comments": "From Schroer et al. 2023, TODO: consider revisiting and/or relations"
+}
