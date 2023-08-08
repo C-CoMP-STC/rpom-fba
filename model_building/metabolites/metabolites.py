@@ -1,0 +1,26 @@
+from cobra.core.metabolite import Metabolite
+
+ADDED_METABOLITES = [
+    # DHPS Metabolism =============================================================================
+    Metabolite(id="CPD-12693[e]",
+               formula="C3H7O5S",
+               name="DHPS",
+               compartment="e"),
+    Metabolite(id="CPD-12693[c]",
+               formula="C3H7O5S",
+               name="DHPS",
+               compartment="c"),
+    Metabolite(id="CPD-12694[c]",
+               formula="C3H5O5S",
+               name="1-hydroxy-2-oxo-3-sulfopropane",
+               compartment="c"),
+    Metabolite(id="CPD-12692[c]",
+               formula="C3H7O5S",
+               name="(R)-2,3-dihydroxypropane 1-sulfonate",
+               compartment="c"),
+    Metabolite(id="CPD-367[c]",
+               formula="C3H4O6S",
+               name="(2R)-3-sulfolactate",
+               compartment="c"),
+    
+]
