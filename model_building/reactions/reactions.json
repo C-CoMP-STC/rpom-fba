@@ -1,4 +1,5 @@
 [
+    "DHPS Degradation ===========================================================================",
     {
         "id" : "RXN-11728",
         "name": "",
@@ -43,7 +44,7 @@
             "NADH[c]": 2.0,
             "PROTON[c]": 3.0
         },
-        "gene_reaction_rule" : "(hpsN)"
+        "gene_reaction_rule" : "(SPO0594)"
     },
     {
         "id" : "RXN-11738",
@@ -59,5 +60,85 @@
             "PROTON[c]": 1.0
         },
         "gene_reaction_rule" : "(slcD)"
+    },
+
+    "3-Hydroxybutyrate degradation ==============================================================",
+    {
+        "id": "3-Hydroxybutyrate-transport",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CPD-335[e]" : -1.0,
+            "CPD-335[c]" : 1.0
+        },
+        "gene_reaction_rule": "(SPO2573)"
+    },
+
+    "Citrate transport ==========================================================================",
+    {
+        "id": "Citrate-transport",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CIT[e]" : -1.0,
+            "CIT[c]" : 1.0
+        },
+        "gene_reaction_rule": "(SPO0184)"
+    },
+
+    "Trimethylamine degradation =================================================================",
+    "Lidbury et al. 2014 PNAS",
+    {
+        "id": "TRIMETHYLAMINE-OXIDE-ALDOLASE-RXN",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "TRIMETHYLAMINE-N-O[c]" : -1.0,
+            "PROTON[c]" : -1.0,
+            "DIMETHYLAMINE[c]" : 1.0,
+            "FORMALDEHYDE" : 1.0
+        },
+        "gene_reaction_rule": "(SPO1562)"
+    },
+    "thiosulfate oxidation III (multienzyme complex) ============================================",
+    "sulfite oxidation I should be part of this as well - how?",
+    "pyruvate decarboxylation to acetyl CoA I ===================================================",
+    {
+        "id": "RXN0-1134",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "PYRUVATE[c]" : -1.0,
+            "Pyruvate-dehydrogenase-lipoate[c]" : -1.0,
+            "PROTON[c]": -1.0,
+            "Pyruvate-dehydrogenase-acetylDHlipoyl[c]": 1.0,
+            "CARBON-DIOXIDE[c]": 1.0
+        },
+        "gene_reaction_rule": "(SPO2240 and SPO2241)"
+    },
+    {
+        "id": "RXN0-1133",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "Pyruvate-dehydrogenase-acetylDHlipoyl[c]" : -1.0,
+            "CO-A[c]": -1.0,
+            "Pyruvate-dehydrogenase-dihydrolipoate[c]": 1.0,
+            "ACETYL-COA[c]": 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        
     }
 ]

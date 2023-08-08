@@ -9,8 +9,9 @@ from cobra.core.reaction import Reaction
 
 from biomass import (add_ecoli_core_biomass_to_model,
                      add_ecoli_full_biomass_to_model)
-from uptake_rxns import add_uptake_reactions, get_uptake_rates
+from uptake_rxns import add_uptake_reactions, get_uptake_data
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
+from model_building.metabolites.metabolites import ADDED_METABOLITES
 
 STAGE_REGISTRY = {}
 
@@ -96,14 +97,7 @@ class SetMedium(Stage):
 @register_stage
 class AddMetabolites(Stage):
     def process(self, model: Model, params: object) -> Model:
-        with open(params, "r") as f:
-            metabolites = json.load(f)
-
-        metabolites = [Metabolite(**metabolite)
-                       for metabolite in metabolites
-                       ]
-
-        model.add_metabolites(metabolites)
+        model.add_metabolites(ADDED_METABOLITES)
 
         return model
 
@@ -116,6 +110,10 @@ class AddReactions(Stage):
 
         reactions = []
         for reaction in reactions_to_add:
+            # Allows the use of strings as comments
+            if not isinstance(reaction, dict):
+                continue
+
             reaction["metabolites"] = {
                 model.metabolites.get_by_id(m): v
                 for m, v in reaction["metabolites"].items()
@@ -128,6 +126,7 @@ class AddReactions(Stage):
             rxn.lower_bound = reaction["lower_bound"]
             rxn.upper_bound = reaction["upper_bound"]
             rxn.add_metabolites(reaction["metabolites"])
+            rxn.gene_reaction_rule = reaction["gene_reaction_rule"]
             
             reactions.append(rxn)
 
@@ -139,10 +138,10 @@ class AddReactions(Stage):
 @register_stage
 class AddUptakeReactions(Stage):
     def process(self, model: Model, params: object) -> Model:
-        # Get uptake rates
-        uptake_rates = get_uptake_rates()
+        # Get uptake rates and genes
+        uptake_data = get_uptake_data()
 
         # Add uptake reactions
-        add_uptake_reactions(model, uptake_rates)
+        add_uptake_reactions(model, uptake_data)
 
         return model
