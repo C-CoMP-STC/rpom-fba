@@ -3,7 +3,7 @@
     "MetaData": null,
     "BiomassObjective": "ecoli-full",
     "SetMedium": "data/media/L1_minimal_medium.json",
-    "AddMetabolites": "model_building/metabolites/metabolites.json",
-    "AddReactions": "model_building/reactions/reactions.json",
-    "AddUptakeReactions": null
+    "AddMetabolites": null,
+    "AddUptakeReactions": null,
+    "AddReactions": "model_building/reactions/reactions.json"
 }

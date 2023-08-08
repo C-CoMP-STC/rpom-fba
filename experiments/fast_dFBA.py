@@ -1,16 +1,17 @@
+from parameters.drawdown import *
+from parameters.fit_uptake_rates import get_mass_interpolator, michaelis_menten_dynamic_system
+from utils.cobra_utils import get_or_create_exchange, set_active_bound
+from tqdm import tqdm
+from cobra.io import read_sbml_model
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 import json
 import os
 
 import cobra
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-from cobra.io import read_sbml_model
-from tqdm import tqdm
-
-from utils.cobra_utils import get_or_create_exchange, set_active_bound
-from parameters.fit_uptake_rates import get_mass_interpolator, michaelis_menten_dynamic_system
-from parameters.drawdown import *
+import matplotlib
+matplotlib.use("Agg")
 
 
 def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pbar_desc=None):
@@ -77,6 +78,16 @@ def setup_drawdown(model):
     biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
     biomass.subtract_metabolites({biotin: biomass.metabolites[biotin]})
 
+    # TODO: Growth is currently slow on glucose -
+    # try changing maintenance requirement
+    # atpm = model.reactions.get_by_id("ATPM")
+    # atpm.lower_bound = atpm.upper_bound = 10
+
+    # TODO: Growth is currently slow on glucose -
+    # testing lower peptidoglycan requirement
+    # murein = model.metabolites.get_by_id("CPD0-2278[p]")
+    # biomass.add_metabolites({murein: 1/10 * abs(biomass.metabolites[murein])})
+
 
 def plot_data(t, y, carbon_source, initial_C, V_max, t_max, growth_data):
     fig, ax = plt.subplots()
@@ -137,9 +148,6 @@ def main():
     growth_data = pd.read_csv(GROWTH_DATA_FILE)
 
     for carbon_source, carbon_source_id in carbon_sources.items():
-        if carbon_source_id != "Glucose[e]":
-            continue
-
         with model:
             # Get Metabolite object and exchange reaction for the given carbon source
             exchange_rxn = get_or_create_exchange(model, carbon_source_id)
@@ -147,10 +155,11 @@ def main():
 
             # Get initial conditions
             # TODO: set initial biomass from data?
-            initial = uptake_data[uptake_data["Compound"] ==
-                                  carbon_source]["InitialMetabolite_mM"].values[0]
-            y0 = np.array([COLONY_DRY_WEIGHT / COLONY_VOLUME,  # convert to concentration (g/L)
-                           initial])
+            initial_C = uptake_data[uptake_data["Compound"] ==
+                                    carbon_source]["InitialMetabolite_mM"].values[0]
+            initial_biomass = growth_data[f"{carbon_source}_predicted_mass"].values[0] / (COLONY_VOLUME * 1e-6)
+            y0 = np.array([initial_biomass,
+                           initial_C])
 
             # Run experiment
             tmax = uptake_data[uptake_data["Compound"] ==
@@ -160,7 +169,7 @@ def main():
                         K_M, y0, tmax, dt=0.01, terminate_on_infeasible=True)
 
             # Plot data
-            fig, _ = plot_data(t, y, carbon_source, initial,
+            fig, _ = plot_data(t, y, carbon_source, initial_C,
                                V_max, tmax, growth_data)
             fig.set_size_inches(6, 4)
             fig.tight_layout()

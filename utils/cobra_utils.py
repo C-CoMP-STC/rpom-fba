@@ -8,6 +8,35 @@ def reactions_of_metabolite(model, metID):
                                  attribute=None)
 
 
+def distance(model, o1, o2):
+    queue = []
+    if isinstance(o1, Metabolite):
+        queue += [(r, 1) for r in reactions_of_metabolite(model, o1.id)]
+    else:
+        queue += [(m, 1) for m in o1.metabolites.keys()]
+    
+    seen = {o1: 0}
+    while len(queue) > 0:
+        next_item, steps = queue.pop()
+        
+        # Found the other item, return
+        if next_item == o2:
+            return steps
+        
+        # Do not get trapped in cycles
+        if next_item in seen:
+            continue
+        seen[next_item] = steps
+
+        # Add next items to queue
+        if isinstance(next_item, Metabolite):
+            queue += [(r, steps + 1) for r in reactions_of_metabolite(model, next_item.id)]
+        else:
+            queue += [(m, steps + 1) for m in next_item.metabolites.keys()]
+    
+    return float('inf')
+
+
 def change_compartment(metabolite_id, new_compartment):
     return re.sub(r'\[.*?\]', f'[{new_compartment}]', metabolite_id)
 
