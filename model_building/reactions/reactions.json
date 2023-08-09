@@ -138,6 +138,39 @@
         },
         "gene_reaction_rule": ""
     },
+
+    "phosphatidylserine and phosphatidylethanolamine biosynthesis I =============================",
+    "TODO: some of these are compound classes, revisit - also, L-1-PHOSPHATIDYL-SERINE[c] (and L-1-PHOSPHATIDYL-ETHANOLAMINE[c]) may be [p]?",
+    {
+        "id": "PHOSPHASERSYN-RXN",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CDPDIACYLGLYCEROL[c]": -1.0,
+            "SER[c]": -1.0,
+            "CMP[c]": 1.0,
+            "L-1-PHOSPHATIDYL-SERINE[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule": "SPOA0293"
+    },
+    {
+        "id": "PHOSPHASERDECARB-RXN",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "L-1-PHOSPHATIDYL-SERINE[c]": -1.0,
+            "PROTON[c]": -1.0,
+            "L-1-PHOSPHATIDYL-ETHANOLAMINE[c]": 1.0,
+            "CARBON-DIOXIDE[c]": 1.0
+        },
+        "gene_reaction_rule": "SPOA0292"
+    },
+    "lipoate biosynthesis and incorporation I ===================================================",
     {
         
     }

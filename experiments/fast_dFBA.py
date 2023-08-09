@@ -1,20 +1,23 @@
-from parameters.drawdown import *
-from parameters.fit_uptake_rates import get_mass_interpolator, michaelis_menten_dynamic_system
+from itertools import pairwise
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
-from tqdm import tqdm
-from cobra.io import read_sbml_model
-import pandas as pd
-import numpy as np
+from parameters.fit_uptake_rates import (get_mass_interpolator,
+                                         michaelis_menten_dynamic_system)
+from parameters.drawdown import *
 import matplotlib.pyplot as plt
 import json
 import os
 
 import cobra
 import matplotlib
+import numpy as np
+import pandas as pd
+from cobra.io import read_sbml_model
+from tqdm import tqdm
+
 matplotlib.use("Agg")
 
 
-def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pbar_desc=None):
+def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pbar_desc=None, listeners=None):
     def rk45_step(df_dt, y0, dt):
         k1 = df_dt(y0) * dt
         k2 = df_dt(y0 + 0.5 * k1) * dt
@@ -26,20 +29,28 @@ def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pba
     t_range = np.arange(tmin, tmax, dt)
     result = np.zeros((t_range.size, y0.size))
     result[0, :] = y0
+    listener_data = ([listener(y0) for listener in listeners]
+                     if listeners is not None else [])
 
     t_index = range(1, len(t_range))
     for i in tqdm(t_index, pbar_desc) if pbar else t_index:
         try:
-            result[i, :] = rk45_step(df_dt, result[i-1], dt)
+            y = rk45_step(df_dt, result[i-1], dt)
+            result[i, :] = y
+
+            # Run listeners
+            listener_data += ([listener(y) for listener in listeners]
+                              if listeners is not None else [])
+
         except Exception as e:
             if terminate_on_error:
-                return t_range[:i], result[:i, :]
+                return t_range[:i], result[:i, :], listener_data
             raise e
 
-    return t_range, result
+    return t_range, result, listener_data
 
 
-def dFBA(model, biomass_id, C_exchange_id, V_max, K_M, y0, tmax, dt=0.01, terminate_on_infeasible=True):
+def dFBA(model, biomass_id, C_exchange_id, V_max, K_M, y0, tmax, dt=0.01, terminate_on_infeasible=True, listeners=None):
     exchange = model.reactions.get_by_id(C_exchange_id)
 
     def df_dt(y):
@@ -62,7 +73,26 @@ def dFBA(model, biomass_id, C_exchange_id, V_max, K_M, y0, tmax, dt=0.01, termin
 
         return fluxes
 
-    return rk45(df_dt, y0, 0, tmax, dt, terminate_on_infeasible, pbar_desc=C_exchange_id)
+    return rk45(df_dt, y0, 0, tmax, dt, terminate_on_infeasible, pbar_desc=C_exchange_id, listeners=listeners)
+
+
+def make_shadow_price_listener(model, V_max, C_exchange_id, n=10):
+    exchange = model.reactions.get_by_id(C_exchange_id)
+
+    def shadow_price_listener(y):
+        _, carbon_source = y
+
+        with model:
+            mm_bound = abs(V_max * carbon_source / (K_M + carbon_source))
+            set_active_bound(exchange, mm_bound)
+
+            sol = model.optimize()
+            max_shadow_price_metabolites = sol.shadow_prices.abs(
+            ).sort_values(ascending=False)[:n].index
+
+            return sol.shadow_prices[max_shadow_price_metabolites]
+
+    return shadow_price_listener
 
 
 def setup_drawdown(model):
@@ -148,6 +178,7 @@ def main():
     growth_data = pd.read_csv(GROWTH_DATA_FILE)
 
     for carbon_source, carbon_source_id in carbon_sources.items():
+
         with model:
             # Get Metabolite object and exchange reaction for the given carbon source
             exchange_rxn = get_or_create_exchange(model, carbon_source_id)
@@ -157,7 +188,8 @@ def main():
             # TODO: set initial biomass from data?
             initial_C = uptake_data[uptake_data["Compound"] ==
                                     carbon_source]["InitialMetabolite_mM"].values[0]
-            initial_biomass = growth_data[f"{carbon_source}_predicted_mass"].values[0] / (COLONY_VOLUME * 1e-6)
+            initial_biomass = growth_data[f"{carbon_source}_predicted_mass"].values[0] / (
+                COLONY_VOLUME * 1e-6)
             y0 = np.array([initial_biomass,
                            initial_C])
 
@@ -165,13 +197,60 @@ def main():
             tmax = uptake_data[uptake_data["Compound"] ==
                                carbon_source]["dt_hr"].values[0]
 
-            t, y = dFBA(model, BIOMASS_ID, exchange_rxn.id, V_max,
-                        K_M, y0, tmax, dt=0.01, terminate_on_infeasible=True)
+            t, y, listeners = dFBA(model, BIOMASS_ID, exchange_rxn.id, V_max,
+                                   K_M, y0, tmax, dt=0.01, terminate_on_infeasible=True,
+                                   listeners=[make_shadow_price_listener(model, V_max, exchange_rxn.id)])
+
+            # Plot shadow prices over time
+            all_metabolites = set()
+            for shadow_prices in listeners:
+                all_metabolites.update(shadow_prices.index)
+            df = pd.DataFrame({"time": t})
+            for metabolite in all_metabolites:
+                df[metabolite] = [shadow_prices[metabolite] if metabolite in shadow_prices.index else 0 for shadow_prices in listeners]
+            sum_abs = df.loc[:, df.columns!='time'].abs().sum(axis=1)
+            max_abs = df.loc[:, df.columns!='time'].abs().max(axis=1)
+            df["sum_abs"] = sum_abs
+            df["max_abs"] = max_abs
+
+            fig, ax = plt.subplots()
+            bottom = np.zeros(df.shape[0])
+            for i, metabolite in enumerate(all_metabolites):
+                heights = (df[metabolite].abs() / df["sum_abs"]).values
+                pc = matplotlib.collections.PatchCollection(
+                    [
+                        matplotlib.patches.Rectangle(
+                            (df.iloc[r1]["time"], bottom[r1]),
+                            df.iloc[r2]["time"] - df.iloc[r1]["time"],
+                            heights[r1])
+                        for r1, r2 in pairwise(range(df.shape[0]))
+                    ]
+                )
+                pc.set_cmap("Spectral")
+                pc.set_norm(plt.Normalize(-max(max_abs), max(max_abs)))
+                pc.set_array(df[metabolite])
+                ax.add_collection(pc)
+
+                ax.plot(df["time"], bottom + heights, "w", label=f"{i}: {metabolite}")
+
+                max_height = heights.max()
+                max_height_idx = heights.argmax()
+                ax.text(df["time"].values[max_height_idx], bottom[max_height_idx], f"{i}", horizontalalignment="left", verticalalignment="bottom")
+                bottom += heights
+
+            leg = fig.legend(handlelength=0, handletextpad=0, loc="center left", bbox_to_anchor=(1, 0.5))
+            for item in leg.legendHandles:
+                item.set_visible(False)
+            ax.set_xlim(t.min(), t.max())
+            ax.set_xlabel("Time (hr)")
+            ax.set_ylabel("Shadow Price (normalized magnitude)")
+            fig.colorbar(pc, location="left", pad=0.2)
+            fig.savefig(os.path.join(OUTDIR, f"{carbon_source} shadow prices.png"), bbox_inches='tight')
 
             # Plot data
             fig, _ = plot_data(t, y, carbon_source, initial_C,
                                V_max, tmax, growth_data)
-            fig.set_size_inches(6, 4)
+            fig.set_size_inches(5, 3)
             fig.tight_layout()
             fig.savefig(os.path.join(OUTDIR, f"{carbon_source} dFBA.png"))
 
