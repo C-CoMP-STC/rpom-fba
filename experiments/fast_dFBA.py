@@ -50,18 +50,24 @@ def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pba
     return t_range, result, listener_data
 
 
-def dFBA(model, biomass_id, C_exchange_id, V_max, K_M, y0, tmax, dt=0.01, terminate_on_infeasible=True, listeners=None):
-    exchange = model.reactions.get_by_id(C_exchange_id)
+def dFBA(model, biomass_id, dynamic_medium, V_max, K_M, y0, tmax, dt=0.01, terminate_on_infeasible=True, listeners=None, desc=""):
+    medium_ids = [rxn.id for rxn in dynamic_medium.keys()]
 
     def df_dt(y):
         biomass, carbon_source = y
 
         with model:
-            mm_bound = abs(V_max * carbon_source / (K_M + carbon_source))
-            set_active_bound(exchange, mm_bound)
+            for exchange, updater in dynamic_medium.items():
+                if updater == "michaelis-menten":
+                    mm_bound = abs(V_max * carbon_source / (K_M + carbon_source))
+                    set_active_bound(exchange, mm_bound)
 
+            # Using lexicographic optimization,
+            # first optimize for biomass, then for the exchange fluxes
+            # (holding optimal biomass as a constraint),
+            # thus guaranteeing a unique optimal set of exchange fluxes.
             lex_constraints = cobra.util.add_lexicographic_constraints(
-                model, [biomass_id, C_exchange_id], ['max', 'max'])
+                model, [biomass_id] + medium_ids, ['max' for _ in range(len(medium_ids) + 1)])
             fluxes = lex_constraints.values
 
         # Fluxes are specific rates, so we multiply them by the
@@ -73,7 +79,7 @@ def dFBA(model, biomass_id, C_exchange_id, V_max, K_M, y0, tmax, dt=0.01, termin
 
         return fluxes
 
-    return rk45(df_dt, y0, 0, tmax, dt, terminate_on_infeasible, pbar_desc=C_exchange_id, listeners=listeners)
+    return rk45(df_dt, y0, 0, tmax, dt, terminate_on_infeasible, pbar_desc=desc, listeners=listeners)
 
 
 def make_shadow_price_listener(model, V_max, C_exchange_id, n=10):
@@ -178,7 +184,6 @@ def main():
     growth_data = pd.read_csv(GROWTH_DATA_FILE)
 
     for carbon_source, carbon_source_id in carbon_sources.items():
-
         with model:
             # Get Metabolite object and exchange reaction for the given carbon source
             exchange_rxn = get_or_create_exchange(model, carbon_source_id)
@@ -197,9 +202,11 @@ def main():
             tmax = uptake_data[uptake_data["Compound"] ==
                                carbon_source]["dt_hr"].values[0]
 
-            t, y, listeners = dFBA(model, BIOMASS_ID, exchange_rxn.id, V_max,
+            dynamic_medium = {exchange_rxn : "michaelis-menten"}
+            t, y, listeners = dFBA(model, BIOMASS_ID, dynamic_medium, V_max,
                                    K_M, y0, tmax, dt=0.01, terminate_on_infeasible=True,
-                                   listeners=[make_shadow_price_listener(model, V_max, exchange_rxn.id)])
+                                   listeners=[make_shadow_price_listener(model, V_max, exchange_rxn.id)],
+                                   desc=carbon_source)
 
             # Plot shadow prices over time
             all_metabolites = set()
@@ -207,9 +214,10 @@ def main():
                 all_metabolites.update(shadow_prices.index)
             df = pd.DataFrame({"time": t})
             for metabolite in all_metabolites:
-                df[metabolite] = [shadow_prices[metabolite] if metabolite in shadow_prices.index else 0 for shadow_prices in listeners]
-            sum_abs = df.loc[:, df.columns!='time'].abs().sum(axis=1)
-            max_abs = df.loc[:, df.columns!='time'].abs().max(axis=1)
+                df[metabolite] = [shadow_prices[metabolite]
+                                  if metabolite in shadow_prices.index else 0 for shadow_prices in listeners]
+            sum_abs = df.loc[:, df.columns != 'time'].abs().sum(axis=1)
+            max_abs = df.loc[:, df.columns != 'time'].abs().max(axis=1)
             df["sum_abs"] = sum_abs
             df["max_abs"] = max_abs
 
@@ -231,21 +239,26 @@ def main():
                 pc.set_array(df[metabolite])
                 ax.add_collection(pc)
 
-                ax.plot(df["time"], bottom + heights, "w", label=f"{i}: {metabolite}")
+                ax.plot(df["time"], bottom + heights,
+                        "w", label=f"{i}: {metabolite}")
 
                 max_height = heights.max()
                 max_height_idx = heights.argmax()
-                ax.text(df["time"].values[max_height_idx], bottom[max_height_idx], f"{i}", horizontalalignment="left", verticalalignment="bottom")
+                ax.text(df["time"].values[max_height_idx], bottom[max_height_idx],
+                        f"{i}", horizontalalignment="left", verticalalignment="bottom")
                 bottom += heights
 
-            leg = fig.legend(handlelength=0, handletextpad=0, loc="center left", bbox_to_anchor=(1, 0.5))
+            leg = fig.legend(handlelength=0, handletextpad=0,
+                             loc="center left", bbox_to_anchor=(1, 0.5))
             for item in leg.legendHandles:
                 item.set_visible(False)
             ax.set_xlim(t.min(), t.max())
             ax.set_xlabel("Time (hr)")
             ax.set_ylabel("Shadow Price (normalized magnitude)")
+            ax.set_title(f"Shadow prices over time on {carbon_source}")
             fig.colorbar(pc, location="left", pad=0.2)
-            fig.savefig(os.path.join(OUTDIR, f"{carbon_source} shadow prices.png"), bbox_inches='tight')
+            fig.savefig(os.path.join(
+                OUTDIR, f"{carbon_source} shadow prices.png"), bbox_inches='tight')
 
             # Plot data
             fig, _ = plot_data(t, y, carbon_source, initial_C,

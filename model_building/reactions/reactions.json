@@ -102,12 +102,108 @@
             "TRIMETHYLAMINE-N-O[c]" : -1.0,
             "PROTON[c]" : -1.0,
             "DIMETHYLAMINE[c]" : 1.0,
-            "FORMALDEHYDE" : 1.0
+            "FORMALDEHYDE[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO1562)"
     },
     "thiosulfate oxidation III (multienzyme complex) ============================================",
     "sulfite oxidation I should be part of this as well - how?",
+    {
+        "id": "RXN-11951",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "SoxZY-L-Cysteine[c]": -1.0,
+            "S2O3[c]" : -1.0,
+            "Cytochromes-C-Oxidized[c]" : -1.0,
+            "SoxY-Thiocysteine-Sulfate[c]": 1.0,
+            "Cytochromes-C-Reduced[c]" : 1.0,
+            "PROTON[c]": 2.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "RXN-11952",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "SoxY-Thiocysteine-Sulfate[c]" : -1.0,
+            "WATER[c]": -1.0,
+            "SoxY-S-Thiocysteine[c]": 1.0,
+            "SULFATE[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule": "SPO0997"
+    },
+    {
+        "id": "RXN-18796",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "SoxY-S-Thiocysteine[c]": -1.0,
+            "S2O3[c]": -1.0,
+            "Cytochromes-C-Oxidized[c]": -2.0,
+            "SoxY-Thiocysteine-S-Sulfate[c]": 1.0,
+            "Cytochromes-C-Reduced[c]": 2.0,
+            "PROTON[c]": 2.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "RXN-18797",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "SoxY-Thiocysteine-S-Sulfate[c]": -1.0,
+            "WATER[c]": -1.0,
+            "SoxY-S-S-Thiocysteine[c]": 1.0,
+            "SULFATE[c]": 1.0,
+            "PROTON[c]": 2.0
+        },
+        "gene_reaction_rule": "SPO0997"
+    },
+    {
+        "id": "RXN-18798",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "SoxY-S-S-Thiocysteine[c]": -1.0,
+            "Cytochromes-C-Oxidized[c]": -6.0,
+            "WATER[c]": -3.0,
+            "SoxY-Thiocysteine-Sulfate[c]": 1.0,
+            "Cytochromes-C-Reduced[c]": 6.0,
+            "PROTON[c]": 6.0
+        },
+        "gene_reaction_rule": ""
+    },
+
+    "Cytochrome c peroxidase (necessary to balance thiosulfate oxidation III)",
+    {
+        "id": "CYTOCHROME-C-PEROXIDASE-RXN",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "HYDROGEN-PEROXIDE[c]" : -1.0,
+            "Cytochromes-C-Reduced[c]": -2.0,
+            "PROTON[c]": -2.0,
+            "Cytochromes-C-Oxidized[c]": 2.0,
+            "WATER[c]": 2.0
+        },
+        "gene_reaction_rule": "SPO0330"
+    },
+
     "pyruvate decarboxylation to acetyl CoA I ===================================================",
     {
         "id": "RXN0-1134",
@@ -136,11 +232,26 @@
             "Pyruvate-dehydrogenase-dihydrolipoate[c]": 1.0,
             "ACETYL-COA[c]": 1.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "(SPO2242 and SPO3790)"
+    },
+    {
+        "id": "RXN0-1132",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "Pyruvate-dehydrogenase-dihydrolipoate[c]": -1.0,
+            "NAD[c]": -1.0,
+            "Pyruvate-dehydrogenase-lipoate[c]": 1.0,
+            "NADH[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule": "(SPO0340)"
     },
 
     "phosphatidylserine and phosphatidylethanolamine biosynthesis I =============================",
-    "TODO: some of these are compound classes, revisit - also, L-1-PHOSPHATIDYL-SERINE[c] (and L-1-PHOSPHATIDYL-ETHANOLAMINE[c]) may be [p]?",
+    "TODO: some of these are compound classes, revisit",
     {
         "id": "PHOSPHASERSYN-RXN",
         "name": "",
@@ -170,8 +281,5 @@
         },
         "gene_reaction_rule": "SPOA0292"
     },
-    "lipoate biosynthesis and incorporation I ===================================================",
-    {
-        
-    }
+    "lipoate biosynthesis and incorporation I ==================================================="
 ]
