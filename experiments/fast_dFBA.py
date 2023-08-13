@@ -1,11 +1,7 @@
-from itertools import pairwise
-from utils.cobra_utils import get_or_create_exchange, set_active_bound
-from parameters.fit_uptake_rates import (get_mass_interpolator,
-                                         michaelis_menten_dynamic_system)
-from parameters.drawdown import *
 import matplotlib.pyplot as plt
 import json
 import os
+from itertools import pairwise
 
 import cobra
 import matplotlib
@@ -14,7 +10,23 @@ import pandas as pd
 from cobra.io import read_sbml_model
 from tqdm import tqdm
 
+from parameters.drawdown import *
+from parameters.fit_uptake_rates import (get_mass_interpolator,
+                                         michaelis_menten_dynamic_system)
+from utils.cobra_utils import get_or_create_exchange, set_active_bound
+
 matplotlib.use("Agg")
+
+
+class MichaelisMentenBounds:
+    def __init__(self, substrate_id, V_max, K_M):
+        self.substrate_id = substrate_id
+        self.V_max = V_max
+        self.K_M = K_M
+
+    def bound(self, exchange, concentration):
+        mm_bound = abs(self.V_max * concentration / (K_M + concentration))
+        set_active_bound(exchange, mm_bound)
 
 
 def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pbar_desc=None, listeners=None):
@@ -50,17 +62,16 @@ def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pba
     return t_range, result, listener_data
 
 
-def dFBA(model, biomass_id, dynamic_medium, V_max, K_M, y0, tmax, dt=0.01, terminate_on_infeasible=True, listeners=None, desc=""):
+def dFBA(model, biomass_id, substrate_ids, dynamic_medium, y0, tmax, dt=0.01, terminate_on_infeasible=True, listeners=None, desc=""):
     medium_ids = [rxn.id for rxn in dynamic_medium.keys()]
 
     def df_dt(y):
-        biomass, carbon_source = y
+        biomass = y[0]
+        substrates = dict(zip(substrate_ids, y[1:]))
 
         with model:
-            for exchange, updater in dynamic_medium.items():
-                if updater == "michaelis-menten":
-                    mm_bound = abs(V_max * carbon_source / (K_M + carbon_source))
-                    set_active_bound(exchange, mm_bound)
+            for exchange, bounds in dynamic_medium.items():
+                bounds.bound(exchange, substrates[bounds.substrate_id])
 
             # Using lexicographic optimization,
             # first optimize for biomass, then for the exchange fluxes
@@ -75,22 +86,20 @@ def dFBA(model, biomass_id, dynamic_medium, V_max, K_M, y0, tmax, dt=0.01, termi
         # Fitted Vmax is also specific (mM/hr/g), so we further multiply
         # by volume to get final units of mM/hr
         fluxes *= biomass
-        fluxes[1] *= COLONY_VOLUME * 1e-6
+        fluxes[1:] *= COLONY_VOLUME * 1e-6
 
         return fluxes
 
     return rk45(df_dt, y0, 0, tmax, dt, terminate_on_infeasible, pbar_desc=desc, listeners=listeners)
 
 
-def make_shadow_price_listener(model, V_max, C_exchange_id, n=10):
-    exchange = model.reactions.get_by_id(C_exchange_id)
-
+def make_shadow_price_listener(model, substrate_ids, dynamic_medium, n=10):
     def shadow_price_listener(y):
-        _, carbon_source = y
+        substrates = dict(zip(substrate_ids, y[1:]))
 
         with model:
-            mm_bound = abs(V_max * carbon_source / (K_M + carbon_source))
-            set_active_bound(exchange, mm_bound)
+            for exchange, bounds in dynamic_medium.items():
+                bounds.bound(exchange, substrates[bounds.substrate_id])
 
             sol = model.optimize()
             max_shadow_price_metabolites = sol.shadow_prices.abs(
@@ -202,10 +211,12 @@ def main():
             tmax = uptake_data[uptake_data["Compound"] ==
                                carbon_source]["dt_hr"].values[0]
 
-            dynamic_medium = {exchange_rxn : "michaelis-menten"}
-            t, y, listeners = dFBA(model, BIOMASS_ID, dynamic_medium, V_max,
-                                   K_M, y0, tmax, dt=0.01, terminate_on_infeasible=True,
-                                   listeners=[make_shadow_price_listener(model, V_max, exchange_rxn.id)],
+            dynamic_medium = {exchange_rxn: MichaelisMentenBounds(
+                carbon_source_id, V_max, K_M)}
+            t, y, listeners = dFBA(model, BIOMASS_ID, [carbon_source_id], dynamic_medium,
+                                   y0, tmax, dt=0.01, terminate_on_infeasible=True,
+                                   listeners=[make_shadow_price_listener(
+                                       model, [carbon_source_id], dynamic_medium)],
                                    desc=carbon_source)
 
             # Plot shadow prices over time
