@@ -9,7 +9,7 @@ from cobra.io import read_sbml_model
 from cobra.exceptions import Infeasible
 from scipy.integrate import solve_ivp
 from tqdm import tqdm
-from parameters.fit_uptake_rates import get_mass_interpolator, michaelis_menten_dynamic_system
+from parameters.fit_uptake_rates import get_interpolator, michaelis_menten_dynamic_system
 
 from utils.cobra_utils import get_or_create_exchange, set_active_bound, get_active_bound
 from parameters.drawdown import *
@@ -223,7 +223,7 @@ def main():
                     label="Biomass (data)")
 
             # TODO: replace with fitted drawdown as in uptake rate fitting
-            mass_curve = get_mass_interpolator(carbon_source, growth_data)
+            mass_curve = get_interpolator(carbon_source, growth_data)
             t, x = michaelis_menten_dynamic_system(
                 initial, mass_curve, -abs(vmax), K_M, tmax, dt=0.01)
 

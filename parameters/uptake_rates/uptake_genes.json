@@ -20,6 +20,7 @@
     "taurine": "(SPO0674 and SPO0676)",
     "thymidine": "(SPO0378 and SPO0379)",
     "xylose": "(SPO0863)",
+    "acetate": "",
 
     "Comments": "From Schroer et al. 2023, TODO: consider revisiting and/or relations"
 }

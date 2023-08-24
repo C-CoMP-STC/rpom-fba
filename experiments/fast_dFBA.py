@@ -11,7 +11,7 @@ from cobra.io import read_sbml_model
 from tqdm import tqdm
 
 from parameters.drawdown import *
-from parameters.fit_uptake_rates import (get_mass_interpolator,
+from parameters.fit_uptake_rates import (get_interpolator,
                                          michaelis_menten_dynamic_system)
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
 
@@ -25,6 +25,7 @@ class MichaelisMentenBounds:
         self.K_M = K_M
 
     def bound(self, exchange, concentration):
+        concentration = max(concentration, 0)
         mm_bound = abs(self.V_max * concentration / (K_M + concentration))
         set_active_bound(exchange, mm_bound)
 
@@ -155,7 +156,7 @@ def plot_data(t, y, carbon_source, initial_C, V_max, t_max, growth_data):
             "b--",
             label="Biomass (data)")
 
-    mass_curve = get_mass_interpolator(carbon_source, growth_data)
+    mass_curve = get_interpolator(carbon_source, growth_data)
     t, x = michaelis_menten_dynamic_system(
         initial_C, mass_curve, -abs(V_max), K_M, t_max, dt=0.01)
 
