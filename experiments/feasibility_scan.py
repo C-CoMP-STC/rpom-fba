@@ -1,5 +1,6 @@
 import json
 import os
+import pandas as pd
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -32,6 +33,9 @@ def main():
         for k, v in carbon_sources.items()
         if len(model.metabolites.query(lambda m: m.id == v)) == 1
     }
+
+    # Add acetate
+    carbon_sources["acetate"] = "ACET[e]"
 
     # Ensure output directory exists
     os.makedirs(OUTDIR, exist_ok=True)

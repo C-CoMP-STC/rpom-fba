@@ -22,7 +22,8 @@ def get_uptake_data(uptake_rates_file=UPTAKE_RATES_DATA,
 
     with open(carbon_sources_file, "r") as f:
         carbon_sources = json.load(f)
-
+    carbon_sources["acetate"] = "ACET[e]"
+    
     result = {
         carbon_sources[metabolite]: {
             "rate": rate,

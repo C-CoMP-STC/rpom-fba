@@ -13,17 +13,19 @@ from parameters.drawdown import *
 matplotlib.use("Agg")
 
 
+EXPERIMENT_VOLUME = 100  # mL
+
+
 def plot_result(t, y, initial, V_max, t_max, data):
     fig, ax = plt.subplots()
 
     # Plot data
-    # TODO: get correct volume
-    ax.plot(t, y[:, 0] * 1, color="b", label="Biomass")
+    ax.plot(t, y[:, 0] * EXPERIMENT_VOLUME, color="b", label="Biomass")
     ax2 = plt.twinx(ax)
     ax2.plot(t, y[:, 1], color='r', label=f"Glucose (mM)")
-    ax2.plot(t, y[:, 2], color='o', label=f"Acetate (mM)")
+    ax2.plot(t, y[:, 2], color='orange', label=f"Acetate (mM)")
 
-    ax.set_ylabel('Biomass (ug?)', color='b')
+    ax.set_ylabel('Biomass (g)', color='b')
     ax2.set_ylabel(f"Substrate (mM)", color='r')
 
     # col = f"{carbon_source}_predicted_mass"
@@ -51,7 +53,7 @@ def main():
     OUTDIR = "out/dFBA/CUE"
     BIOMASS_ID = "RPOM_provisional_biomass"
 
-    DATA_FILE = "data/CUE/doubles.csv"
+    DATA_FILE = "data/CUE/cue_data.csv"
 
     # TODO: Estimated from E coli, get a better number if possible and move to a single source
     MASS_PER_CELL = 0.95  # pg
@@ -71,14 +73,18 @@ def main():
     ex_ace = get_or_create_exchange(model, "ACET[e]")
 
     # Get V_maxes
-    # TODO: setting V_max to just be glucose for now, until after I fit
-    # acetate V_max
-    V_max = abs(float(ex_glc._annotation["Experimental rate"]))
+    V_max_glc = abs(float(ex_glc._annotation["Experimental rate"]))
+    V_max_ace = abs(float(ex_ace._annotation["Experimental rate"]))
 
     dynamic_medium = {
-        ex_glc: MichaelisMentenBounds("Glucose[e]", V_max, K_M),
-        ex_ace: MichaelisMentenBounds("ACET[e]", V_max, K_M)
+        ex_glc: MichaelisMentenBounds("Glucose[e]", V_max_glc, K_M),
+        ex_ace: MichaelisMentenBounds("ACET[e]", V_max_ace, K_M)
     }
+
+    # Turn off maintenance for now 
+    # TODO: bring back?
+    # atpm = model.reactions.get_by_id("ATPM")
+    # atpm.bounds = (0, 0)
 
     # Initial state
     initial_conditions = data[["Initial_mM_Glucose",
@@ -88,12 +94,12 @@ def main():
                                 (data["Time (h)"] == 0) &
                                 (data["Initial_mM_Glucose"] == initial_glucose) &
                                 (data["Initial_mM_Acetate"] == initial_acetate)
-                                ]["Value"].mean() * MASS_PER_CELL)
+                                ]["Value"].mean() * MASS_PER_CELL * 1e-12)
         tmax = (data[(data["Type"] == "counts") & (data["Initial_mM_Glucose"] == initial_glucose) & (
             data["Initial_mM_Acetate"] == initial_acetate)]["Time (h)"].max())
 
         initial = np.array([
-            initial_biomass / 1,  # TODO: Get correct volume
+            initial_biomass / EXPERIMENT_VOLUME,
             initial_glucose,
             initial_acetate
         ])
@@ -107,7 +113,7 @@ def main():
 
         # Plot data
         fig, _ = plot_result(t, y, [initial_glucose, initial_acetate],
-                             V_max, tmax, data)
+                             V_max_ace, tmax, data)
         fig.set_size_inches(5, 3)
         fig.tight_layout()
         fig.savefig(os.path.join(
