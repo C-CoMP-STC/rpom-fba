@@ -13,13 +13,19 @@ from parameters.drawdown import *
 matplotlib.use("Agg")
 
 
-EXPERIMENT_VOLUME = 100  # mL
+EXPERIMENT_VOLUME = 0.1  # L
+# TODO: Estimated from E coli, get a better number if possible and move to a single source
+MASS_PER_CELL = 0.95  # pg
+C_PER_GLUCOSE = 6
+C_PER_ACETATE = 2
 
 
 def plot_result(t, y, initial, V_max, t_max, data):
+    condition_data = data[(data["Initial_mM_Glucose"] == initial[0]) &
+                          (data["Initial_mM_Acetate"] == initial[1])]
     fig, ax = plt.subplots()
 
-    # Plot data
+    # Plot simulation results
     ax.plot(t, y[:, 0] * EXPERIMENT_VOLUME, color="b", label="Biomass")
     ax2 = plt.twinx(ax)
     ax2.plot(t, y[:, 1], color='r', label=f"Glucose (mM)")
@@ -28,22 +34,54 @@ def plot_result(t, y, initial, V_max, t_max, data):
     ax.set_ylabel('Biomass (g)', color='b')
     ax2.set_ylabel(f"Substrate (mM)", color='r')
 
-    # col = f"{carbon_source}_predicted_mass"
-    # growth_on_carbon_source = growth_data[[col, "time (h)"]]
-    # growth_on_carbon_source = growth_on_carbon_source[~np.isnan(
-    #     growth_on_carbon_source[col])]
+    # Plot biomass from data
+    mass_data = condition_data[condition_data["Type"] == "counts"]
+    mass_data["Mass (g)"] = mass_data["Value"] * \
+        MASS_PER_CELL * 1e-12  # pg to g
+    mass_mean = mass_data.groupby("Time (h)")["Mass (g)"].mean().reset_index()
+    mass_min = mass_data.groupby("Time (h)")["Mass (g)"].min().reset_index()
+    mass_max = mass_data.groupby("Time (h)")["Mass (g)"].max().reset_index()
 
-    # ax.plot(growth_on_carbon_source["time (h)"],
-    #         growth_on_carbon_source[col] * 1e6,  # Convert g -> ug
-    #         "b--",
-    #         label="Biomass (data)")
+    ax.plot(mass_mean["Time (h)"], mass_mean["Mass (g)"], "b--")
+    ax.fill_between(mass_min["Time (h)"], mass_min["Mass (g)"],
+                    mass_max["Mass (g)"], color="b", alpha=0.2)
 
-    # mass_curve = get_mass_interpolator(carbon_source, growth_data)
-    # t, x = michaelis_menten_dynamic_system(
-    #     initial_C, mass_curve, -abs(V_max), K_M, t_max, dt=0.01)
+    # Plot substrates from data
+    substrate_data = condition_data[condition_data["Type"]
+                                    == "drawdown (umol)"]
+    
+    if substrate_data.size > 0:
+        substrate_data["Drawdown (mM)"] = (substrate_data["Value"] *
+                                        1e-3 /
+                                        EXPERIMENT_VOLUME /
+                                        substrate_data["Metabolite"].apply(lambda x: {"glucose": C_PER_GLUCOSE,
+                                                                                        "acetate": C_PER_ACETATE}[x])
+                                        )  # umol C to mM
+        glucose_data = substrate_data[substrate_data["Metabolite"] == "glucose"]
+        acetate_data = substrate_data[substrate_data["Metabolite"] == "acetate"]
 
-    # ax2.plot(t, x[:, 0], "r--",
-    #          label=f"Fitted {carbon_source} drawdown")
+        glucose_mean = glucose_data.groupby(
+            "Time (h)")["Drawdown (mM)"].mean().reset_index()
+        glucose_min = glucose_data.groupby(
+            "Time (h)")["Drawdown (mM)"].min().reset_index()
+        glucose_max = glucose_data.groupby(
+            "Time (h)")["Drawdown (mM)"].max().reset_index()
+
+        acetate_mean = acetate_data.groupby(
+            "Time (h)")["Drawdown (mM)"].mean().reset_index()
+        acetate_min = acetate_data.groupby(
+            "Time (h)")["Drawdown (mM)"].min().reset_index()
+        acetate_max = acetate_data.groupby(
+            "Time (h)")["Drawdown (mM)"].max().reset_index()
+
+        ax2.plot(glucose_mean["Time (h)"], glucose_mean["Drawdown (mM)"], "r--")
+        ax2.fill_between(glucose_min["Time (h)"], glucose_min["Drawdown (mM)"],
+                        glucose_max["Drawdown (mM)"], color="r", alpha=0.2)
+
+        ax2.plot(acetate_mean["Time (h)"],
+                acetate_mean["Drawdown (mM)"], "orange", linestyle="--")
+        ax2.fill_between(acetate_min["Time (h)"], acetate_min["Drawdown (mM)"],
+                        acetate_max["Drawdown (mM)"], color="orange", alpha=0.2)
 
     return fig, [ax, ax2]
 
@@ -54,9 +92,6 @@ def main():
     BIOMASS_ID = "RPOM_provisional_biomass"
 
     DATA_FILE = "data/CUE/cue_data.csv"
-
-    # TODO: Estimated from E coli, get a better number if possible and move to a single source
-    MASS_PER_CELL = 0.95  # pg
 
     # Load data
     data = pd.read_csv(DATA_FILE)
@@ -81,7 +116,7 @@ def main():
         ex_ace: MichaelisMentenBounds("ACET[e]", V_max_ace, K_M)
     }
 
-    # Turn off maintenance for now 
+    # Turn off maintenance for now
     # TODO: bring back?
     # atpm = model.reactions.get_by_id("ATPM")
     # atpm.bounds = (0, 0)
