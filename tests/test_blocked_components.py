@@ -4,10 +4,21 @@ from cobra.flux_analysis.reaction import assess
 from cobra.io import read_sbml_model
 
 from tests.testing_utils import TEST_MODEL, run_all_tests_in_object
+from utils.cobra_utils import set_active_bound
 
 
 class TestBlockedComponents():
     model = read_sbml_model(TEST_MODEL)
+
+    # TODO: Remove this after setting all this to be default
+    supp_medium = {k: 1000. for k in model.medium.keys()}
+    supp_medium["EX_fe2"] = 1000.
+    model.medium = supp_medium
+    biotin = model.metabolites.get_by_id("BIOTIN[c]")
+    biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
+    biomass.subtract_metabolites({biotin: biomass.metabolites[biotin]})
+    ex_glc = model.reactions.get_by_id("EX_glc")
+    set_active_bound(ex_glc, abs(float(ex_glc.annotation["Experimental rate"])))
 
     def test_blocked_biomass(self):
         # Returns True if biomass can be produced, otherwise a
