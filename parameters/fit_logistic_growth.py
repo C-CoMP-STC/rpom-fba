@@ -8,7 +8,7 @@ import pandas as pd
 from scipy.optimize import minimize
 
 from parameters.drawdown import MASS_PER_CELL
-from utils.math import get_interpolator, rk45
+from utils.math import get_interpolator, runge_kutta
 from utils.units import u
 from tqdm import tqdm
 
@@ -37,7 +37,7 @@ def logistic_growth_dynamic_system(S_0, X_0, k, alpha, max_t, dt=0.1):
         except RuntimeWarning:
             pass
 
-    time, trajectory, _ = rk45(dfdt, np.array(
+    time, trajectory, _ = runge_kutta(dfdt, np.array(
         [S_0, X_0]), 0, max_t, dt, pbar=False)
 
     return time, trajectory

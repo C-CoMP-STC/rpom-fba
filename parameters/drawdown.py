@@ -8,3 +8,5 @@ K_M = 1 * u.mM
 
 # TODO: double-check this
 MASS_PER_CELL = 0.95 * u.pg
+
+CUE_VOLUME = 100 * u.mL
