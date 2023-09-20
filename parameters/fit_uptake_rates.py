@@ -7,6 +7,9 @@ import numpy as np
 import pandas as pd
 
 from scipy.optimize import minimize
+from utils.math import get_interpolator
+
+from parameters.drawdown import MASS_PER_CELL
 
 matplotlib.use("Agg")
 
@@ -21,16 +24,10 @@ GROWTH_RATES_FILE = "parameters/growth_rates/fitted_growth_rates.csv"
 CUE_DATA_FILE = "data/CUE/cue_data.csv"
 METHOD_NOT_RECOGNIZED = "{} is not a recognized method to fit uptake rates!"
 BG_GRAY = "0.4"
-MASS_PER_CELL = 0.95 # pg
 
 # Michaelis-Menten
 # Assuming K_M fixed for all metabolites, consider varying later
 K_M = 1
-
-
-def get_interpolator(t, y):
-    def Y_t(times): return np.interp(np.atleast_1d(times), t, y)
-    return Y_t
 
 
 def michaelis_menten_dynamic_system(S_0, X_t, V_max, K_M, max_t, dt=0.1):

@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from cobra.io import read_sbml_model
 
+from experiments.fast_dFBA import setup_drawdown
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
 
 MODEL = "model/Rpom_05.xml"
@@ -14,27 +15,11 @@ CARBON_SOURCES = "parameters/uptake_rates/carbon_source_ids.json"
 
 def main():
     model = read_sbml_model(MODEL)
-
-    supp_medium = {k : 1000. for k in model.medium.keys()}
-    supp_medium["EX_fe2"] = 1000.
-    model.medium = supp_medium
-
-    # Remove biotin from objective temporarily as biotin is blocking
-    # TODO: fix biotin production?
-    biotin = model.metabolites.get_by_id("BIOTIN[c]")
-    biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
-    biomass.subtract_metabolites({biotin: biomass.metabolites[biotin]})
+    setup_drawdown(model)
 
     # Load carbon sources to test
     with open(CARBON_SOURCES, "r") as f:
         carbon_sources = json.load(f)
-    carbon_sources = {
-        k: v
-        for k, v in carbon_sources.items()
-        if len(model.metabolites.query(lambda m: m.id == v)) == 1
-    }
-
-    # Add acetate
     carbon_sources["acetate"] = "ACET[e]"
 
     # Ensure output directory exists
