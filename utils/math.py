@@ -1,5 +1,6 @@
 import numpy as np
 from tqdm import tqdm
+from pint import Quantity
 
 
 def get_interpolator(t, y):
@@ -7,8 +8,16 @@ def get_interpolator(t, y):
     return Y_t
 
 
-def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pbar_desc=None, listeners=None):
-    def rk45_step(df_dt, y0, dt):
+def runge_kutta(df_dt,
+         y0,
+         tmin,
+         tmax,
+         dt=0.01,
+         terminate_on_error=True,
+         pbar=True,
+         pbar_desc=None,
+         listeners=None):
+    def rk_step(df_dt, y0, dt):
         k1 = df_dt(y0) * dt
         k2 = df_dt(y0 + 0.5 * k1) * dt
         k3 = df_dt(y0 + 0.5 * k2) * dt
@@ -17,6 +26,7 @@ def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pba
         return y0 + (k1 + 2*k2 + 2*k3 + k4)/6
 
     t_range = np.arange(tmin, tmax, dt)
+
     result = np.zeros((t_range.size, y0.size))
     result[0, :] = y0
     listener_data = ([listener(y0) for listener in listeners]
@@ -25,7 +35,7 @@ def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pba
     t_index = range(1, len(t_range))
     for i in tqdm(t_index, pbar_desc) if pbar else t_index:
         try:
-            y = rk45_step(df_dt, result[i-1], dt)
+            y = rk_step(df_dt, result[i-1], dt)
             result[i, :] = y
 
             # Run listeners

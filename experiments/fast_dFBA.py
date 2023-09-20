@@ -13,7 +13,7 @@ from tqdm import tqdm
 from parameters.drawdown import *
 from parameters.fit_uptake_rates import michaelis_menten_dynamic_system
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
-from utils.math import get_interpolator, rk45
+from utils.math import get_interpolator, runge_kutta
 from utils.units import u
 
 matplotlib.use("Agg")
@@ -64,7 +64,7 @@ def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=
 
         return fluxes
 
-    return rk45(df_dt, y0, 0, tmax, dt, terminate_on_infeasible, pbar_desc=desc, listeners=listeners)
+    return runge_kutta(df_dt, y0, 0, tmax, dt, terminate_on_infeasible, pbar_desc=desc, listeners=listeners)
 
 
 def make_shadow_price_listener(model, substrate_ids, dynamic_medium, n=10):

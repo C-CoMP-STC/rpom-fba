@@ -1,45 +1,25 @@
+import json
 import pickle
 import numpy as np
 import pandas as pd
 
 from parameters.drawdown import MASS_PER_CELL
 
-GROWTH_DATA_FILE = "data/growth_curves_raw.csv"
-OUT_FILE = "data/growth_curves_clean.csv"
 
 def main():
-    # Need to:
-    # - convert metabolite names to recognizable IDs
-    # - convert OD to predicted cell count and predicted mass
+    GROWTH_DATA_FILE = "data/growth_curves_raw.csv"
+    OUT_FILE = "data/growth_curves_clean.csv"
+    CARBON_SOURCES = "parameters/uptake_rates/carbon_source_ids.json"
+
     data = pd.read_csv(GROWTH_DATA_FILE)
 
     with open("parameters/conversions/od_to_cell_count.pickle", "rb") as f:
         od_reg = pickle.load(f)
 
-    carbon_sources = {
-        'glycerol',
-        'carnitine',
-        'malate',
-        'fumarate',
-        'succinate',
-        'citrate',
-        '3-OH_butyrate',
-        'ectoine',
-        'DMSP',
-        'thymidine',
-        'cysteate',
-        'xylose',
-        'glucose',
-        'isethionate',
-        'cadaverine',
-        'putresceine',
-        'spermidine',
-        'DHPS',
-        'taurine',
-        'choline',
-        'GlcNac'
-    }
+    with open(CARBON_SOURCES, "r") as f:
+        carbon_sources = json.load(f).keys()
 
+    # TODO: Subtract blank?
     blank = data["mean blank"].values[1:].astype(float)
     time = data["time (h)"].values[1:].astype(float)
 
@@ -58,7 +38,7 @@ def main():
 
         # Translate to mass
         total_mass = MASS_PER_CELL * cell_count
-        result[f"{carbon_source}_predicted_mass"] = total_mass / 1e12  # convert to g
+        result[f"{carbon_source}_predicted_mass"] = total_mass.to("g").magnitude
 
     result["time (h)"] = time
 
