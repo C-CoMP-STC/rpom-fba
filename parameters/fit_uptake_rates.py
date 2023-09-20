@@ -11,6 +11,7 @@ from tqdm import tqdm
 from parameters.drawdown import K_M, MASS_PER_CELL, CUE_VOLUME, COLONY_VOLUME
 from utils.math import get_interpolator, runge_kutta
 from utils.units import u
+from data.files import DRAWDOWN_DATA_CLEAN, DRAWDOWN_DATA_RAW, UPTAKE_RATES_SHEET, GROWTH_DATA_CLEAN
 
 matplotlib.use("Agg")
 
@@ -110,19 +111,15 @@ def plot_fit(metabolite, rate, t_X, X, t_S, S, data_t, data_S):
 
 
 def main():
-    UPTAKE_RATES_FILE = "data/drawdown_clean.csv"
     UPTAKE_RATES_OUTDIR = "parameters/uptake_rates/"
     UPTAKE_RATES_PLOTS_OUTDIR = "out/uptake_rates/"
-    RAW_UPTAKE_RATES_FILE = "data/drawdown_raw.xlsx"
-    RAW_UPTAKE_RATES_SHEET = "drawdown_clean"
-    GROWTH_DATA_FILE = "data/growth_curves_clean.csv"
-    CUE_DATA_FILE = "data/CUE/cue_data.csv"
+    CUE_DATA_FILE = "data/clean/CUE/cue_data.csv"
 
-    drawdown_data = pd.read_csv(UPTAKE_RATES_FILE)
+    drawdown_data = pd.read_csv(DRAWDOWN_DATA_CLEAN)
     cue_data = pd.read_csv(CUE_DATA_FILE)
-    growth_data = pd.read_csv(GROWTH_DATA_FILE)
-    raw_data = pd.read_excel(RAW_UPTAKE_RATES_FILE,
-                             sheet_name=RAW_UPTAKE_RATES_SHEET)
+    growth_data = pd.read_csv(GROWTH_DATA_CLEAN)
+    raw_data = pd.read_excel(DRAWDOWN_DATA_RAW,
+                             sheet_name=UPTAKE_RATES_SHEET)
 
     # Filter cue_data down to just acetate singles
     acetate_data = (cue_data[(cue_data["Condition"] == "singles") &

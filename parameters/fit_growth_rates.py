@@ -8,12 +8,9 @@ import pandas as pd
 from parameters.od_calibration import get_od_to_cell_density_calibration, CellDensityRegressor
 from parameters.drawdown import COLONY_VOLUME
 from utils.units import u
+from data.files import GROWTH_DATA_RAW
 
 matplotlib.use("Agg")
-
-GROWTH_CURVES_FILE = "data/growth_curves_raw.csv"
-GROWTH_RATE_OUTDIR = "parameters/growth_rates"
-GROWTH_RATE_PLOT_OUTDIR = "out/growth_rates"
 
 
 def fit_growth_curve(data, compound, time="time (h)"):
@@ -60,8 +57,11 @@ def fit_growth_curve(data, compound, time="time (h)"):
 
 
 def main():
+    OUTDIR = "parameters/growth_rates"
+    PLOT_OUTDIR = "out/growth_rates"
+
     # Load data
-    data = pd.read_csv(GROWTH_CURVES_FILE, skiprows=[1])
+    data = pd.read_csv(GROWTH_DATA_RAW, skiprows=[1])
 
     # Convert from OD to cell counts
     od_to_cell_density = get_od_to_cell_density_calibration()
@@ -75,8 +75,8 @@ def main():
     compounds = {s[:(s.index(".") if "." in s else None)]
                  for s in data.columns if s not in {"time (h)", "mean blank"}}
 
-    os.makedirs(GROWTH_RATE_PLOT_OUTDIR, exist_ok=True)
-
+    # Create and save plots
+    os.makedirs(PLOT_OUTDIR, exist_ok=True)
     growth_rates = {}
     for compound in compounds:
         estimates, fig, _ = fit_growth_curve(
@@ -88,13 +88,13 @@ def main():
         # Save plot
         fig.set_size_inches(8, 6)
         fig.tight_layout()
-        fig.savefig(os.path.join(GROWTH_RATE_PLOT_OUTDIR, f"{compound}.png"))
+        fig.savefig(os.path.join(PLOT_OUTDIR, f"{compound}.png"))
         plt.close(fig)
 
     # Save estimates
-    os.makedirs(GROWTH_RATE_OUTDIR, exist_ok=True)
+    os.makedirs(OUTDIR, exist_ok=True)
     pd.DataFrame(growth_rates).to_csv(
-        os.path.join(GROWTH_RATE_OUTDIR, "fitted_growth_rates.csv"),
+        os.path.join(OUTDIR, "fitted_growth_rates.csv"),
         index=False)
 
 

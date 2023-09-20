@@ -1,6 +1,7 @@
+import os
 import pandas as pd
 
-from data.cleaning.files import DRAWDOWN_DATA_FILE, UPTAKE_RATES_SHEET, METADATA_SHEET
+from data.files import DRAWDOWN_DATA_CLEAN, DRAWDOWN_DATA_RAW, UPTAKE_RATES_SHEET, METADATA_SHEET
 
 def clean_drawdown_data(filepath):
     data = pd.read_excel(filepath, sheet_name=UPTAKE_RATES_SHEET)
@@ -42,9 +43,9 @@ def clean_drawdown_data(filepath):
 
 
 def main():
-    OUTFILE = "data/drawdown_clean.csv"
-    clean_data = clean_drawdown_data(DRAWDOWN_DATA_FILE)
-    clean_data.to_csv(OUTFILE, index=False)
+    clean_data = clean_drawdown_data(DRAWDOWN_DATA_RAW)
+    os.makedirs(os.path.dirname(DRAWDOWN_DATA_CLEAN), exist_ok=True)
+    clean_data.to_csv(DRAWDOWN_DATA_CLEAN, index=False)
 
 
 if __name__ == "__main__":
