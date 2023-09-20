@@ -10,6 +10,8 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 
+from parameters.drawdown import K_M
+
 
 LOGISTIC_RATES_FILE = "parameters/logistic_fits/fitted_rates.json"
 CARBON_SOURCE_IDS = "parameters/uptake_rates/carbon_source_ids.json"
@@ -18,7 +20,6 @@ MODEL = "model/Rpom_05.xml"
 
 
 def main():
-    K_M = 1
 
     # Load and set up model
     model = read_sbml_model(MODEL)

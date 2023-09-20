@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import json
 import os
 
@@ -12,7 +13,6 @@ from utils.math import get_interpolator, runge_kutta
 from utils.units import u
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 
 
 def michaelis_menten_dynamic_system(S_0, X_t, V_max, K_M, max_t, dt=0.1):
@@ -23,7 +23,8 @@ def michaelis_menten_dynamic_system(S_0, X_t, V_max, K_M, max_t, dt=0.1):
         # Slightly hacky, using time as a state variable with dT/dt=1
         return np.array([dS, 1])
 
-    t, trajectory, _ = runge_kutta(df_dt, np.array([S_0, 0]), 0, max_t, dt, pbar=False)
+    t, trajectory, _ = runge_kutta(
+        df_dt, np.array([S_0, 0]), 0, max_t, dt, pbar=False)
     S_t = trajectory[:, 0][..., np.newaxis]
     return t, np.concatenate([S_t, X_t(t)[..., np.newaxis]], axis=1)
 
@@ -69,7 +70,8 @@ def plot_fits(
         t_S, S = traces["t_S"], traces["S"]
         data_t, data_S = substrate_raw_data[metabolite]
 
-        fig, _ = plot_fit(metabolite, rate, t_X, X, t_S, S, data_t.magnitude, data_S.magnitude)
+        fig, _ = plot_fit(metabolite, rate, t_X, X, t_S, S,
+                          data_t.magnitude, data_S.magnitude)
         fig.set_size_inches(4, 2.25)
         fig.tight_layout()
         fig.savefig(os.path.join(out_dir, f"uptake_[{metabolite}].png"))
@@ -129,6 +131,7 @@ def main():
                     .mean()
                     .reset_index())
     acetate_growth = acetate_data[acetate_data["Type"] == "counts"]
+    acetate_growth["Value"] = ((acetate_growth["Value"].values / u.mL ) * CUE_VOLUME).to("dimensionless").magnitude
 
     # Get data for each metabolite, namely biomass traces (t_X, X) and substrate traces (t_S, S)
     metabolite_traces = {
@@ -158,11 +161,9 @@ def main():
                                           trace["X"].magnitude,
                                           K_M.magnitude)
         for metabolite, trace
-        in tqdm(metabolite_traces.items())
+        in tqdm(metabolite_traces.items(), desc="Fitting")
     }
 
-    print("Plotting fitted rates...")
-    
     # Get raw points for plot
     substrate_raw_data = {
         metabolite: (
@@ -172,15 +173,16 @@ def main():
                                   == metabolite]["IntegratedPeakArea"].values * u.mM
         )
         for metabolite, dt_hr, mM_to_peak
-        in zip(drawdown_data["Compound"],
-               drawdown_data["dt_hr"],
-               drawdown_data["mM_to_peak_ratio"])
+        in tqdm(zip(drawdown_data["Compound"],
+                    drawdown_data["dt_hr"],
+                    drawdown_data["mM_to_peak_ratio"]),
+                desc="Plotting")
     }
     substrate_raw_data["acetate"] = (
         acetate_data[acetate_data["Type"] ==
                      "drawdown (umol)"]["Time (h)"].values * u.hr,
         (acetate_data[acetate_data["Type"] ==
-                     "drawdown (umol)"]["Value"].values * u.umol / CUE_VOLUME).to("mM")
+                      "drawdown (umol)"]["Value"].values * u.umol / CUE_VOLUME).to("mM")
     )
 
     # Make and save plots

@@ -27,7 +27,7 @@ class MichaelisMentenBounds:
 
     def bound(self, exchange, concentration):
         concentration = max(concentration, 0 * u.mM)
-        mm_bound = abs(self.V_max * concentration / (K_M + concentration))
+        mm_bound = abs(self.V_max * concentration / (self.K_M + concentration))
         set_active_bound(exchange, mm_bound.magnitude)
 
 
@@ -89,7 +89,7 @@ def setup_drawdown(model):
     # needs to be supplemented with FE+2 (also increase everything to 1000 to not be limiting)
     supp_medium = {k: 1000. for k, v in model.medium.items()}
     supp_medium["EX_fe2"] = 1000.
-    supp_medium["EX_o2"] = 65.
+    # supp_medium["EX_o2"] = 65.
     model.medium = supp_medium
 
     # Remove biotin from objective temporarily as biotin is blocking

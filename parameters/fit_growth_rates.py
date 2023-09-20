@@ -5,7 +5,9 @@ import matplotlib
 import numpy as np
 import pandas as pd
 
-from parameters.od_calibration import get_od_to_cell_count_calibration
+from parameters.od_calibration import get_od_to_cell_density_calibration, CellDensityRegressor
+from parameters.drawdown import COLONY_VOLUME
+from utils.units import u
 
 matplotlib.use("Agg")
 
@@ -62,9 +64,13 @@ def main():
     data = pd.read_csv(GROWTH_CURVES_FILE, skiprows=[1])
 
     # Convert from OD to cell counts
-    od_to_count = get_od_to_cell_count_calibration()
-    data.loc[:, data.columns != "time (h)"] = (data.loc[:, data.columns != "time (h)"].applymap(
-        lambda s: od_to_count.predict(s).flatten()[0], na_action="ignore"))
+    od_to_cell_density = get_od_to_cell_density_calibration()
+    data.loc[:, data.columns != "time (h)"] = (
+        data.loc[:, data.columns != "time (h)"].applymap(
+            lambda s: ((od_to_cell_density.predict(s).flatten()[
+                       0] / u.mL) * COLONY_VOLUME).to("dimensionless").magnitude,
+            na_action="ignore")
+    )
 
     compounds = {s[:(s.index(".") if "." in s else None)]
                  for s in data.columns if s not in {"time (h)", "mean blank"}}

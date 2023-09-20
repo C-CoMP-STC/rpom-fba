@@ -8,8 +8,10 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import KFold
 
+from utils.units import u
 
-class CellCountRegressor:
+
+class CellDensityRegressor:
     def __init__(self, crossover=None, a=None, b=None, warn_nonlinear=True):
         self.crossover = np.Infinity if crossover is None else crossover
         self.a = 0 if a is None else a
@@ -85,7 +87,7 @@ def KFold_cell_count_regressor(od, cells, k=5):
     mse_scan = np.zeros_like(odmax_domain, dtype="float")
 
     min_mse = np.Infinity
-    model = CellCountRegressor()
+    model = CellDensityRegressor()
     best_regressor = model
 
     for i, odmax in enumerate(odmax_domain):
@@ -96,7 +98,7 @@ def KFold_cell_count_regressor(od, cells, k=5):
             x_out = od[test]
             y_out = cells[test]
 
-            model = CellCountRegressor(odmax, warn_nonlinear=False)
+            model = CellDensityRegressor(odmax, warn_nonlinear=False)
             model.train(x_in, y_in)
             pred = model.predict(x_out)
 
@@ -114,14 +116,14 @@ def KFold_cell_count_regressor(od, cells, k=5):
         mse_scan[i] = cv_err
 
     # retrain regressor using the crossover identified, on all the data
-    best_regressor = CellCountRegressor(best_regressor.crossover)
+    best_regressor = CellDensityRegressor(best_regressor.crossover)
     best_regressor.train(od, cells)
 
     return best_regressor, odmax_domain, mse_scan
 
 
-def get_od_to_cell_count_calibration():
-    SAVED_REGRESSOR = "parameters/conversions/od_to_cell_count.pickle"
+def get_od_to_cell_density_calibration():
+    SAVED_REGRESSOR = "parameters/conversions/od_to_cell_density.pickle"
     try:
         with open(SAVED_REGRESSOR, "rb") as f:
             return pickle.load(f)
@@ -132,19 +134,18 @@ def get_od_to_cell_count_calibration():
 
 
 def main():
-    OUT = "parameters/conversions/od_to_cell_count.pickle"
+    OUT = "parameters/conversions/od_to_cell_density.pickle"
     DATA = "data/ODcounts_calibration.xlsx"
     raw_data = pd.read_excel(DATA)
 
     # Clean data
     raw_data['OD600 (1-cm)'] /= raw_data["Scale_OD"]
-    raw_data["Mean_cells"] = raw_data["Cells per ml, cyto"]
     clean_data = raw_data.sort_values("OD600 (1-cm)")
 
     od = clean_data['OD600 (1-cm)'].values.reshape(-1, 1)
-    cells = clean_data["Mean_cells"].values.reshape(-1, 1)
+    density = (clean_data["Cells per ml, cyto"].values / u.mL).magnitude.reshape(-1, 1)
 
-    best_reg, _, _ = KFold_cell_count_regressor(od, cells, k=4)
+    best_reg, _, _ = KFold_cell_count_regressor(od, density, k=4)
 
     print("Fit regressor with parameters:")
     print(f"\ta = {best_reg.a}")
