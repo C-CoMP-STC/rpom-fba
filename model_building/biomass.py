@@ -103,7 +103,7 @@ def ecoli_biomass_to_rpom(r_pom_model, ecoli_biomass, manual_matches={}):
 
 
 def get_core_biomass_stoich():
-    with open("data/core_biomass.json", "r") as f:
+    with open("data/objectives/core_biomass.json", "r") as f:
         core_biomass = json.load(f)
         biomass_objective = core_biomass["core_biomass"]
 

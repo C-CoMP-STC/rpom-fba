@@ -13,8 +13,6 @@ from parameters.drawdown import *
 
 # matplotlib.use("Agg")
 
-
-EXPERIMENT_VOLUME = 0.1 * u.L
 C_PER_GLUCOSE = 6
 C_PER_ACETATE = 2
 
@@ -26,7 +24,7 @@ def plot_result(t, y, initial, data):
 
     # Plot simulation results
     ax.plot(t,
-            ((y[:, 0] * u.g/u.L).to("ug/L") * EXPERIMENT_VOLUME).magnitude,
+            ((y[:, 0] * u.g/u.L).to("ug/L") * CUE_VOLUME).magnitude,
             color="b",
             label="Biomass")
     ax2 = plt.twinx(ax)
@@ -53,7 +51,7 @@ def plot_result(t, y, initial, data):
 
     if substrate_data.size > 0:
         substrate_data["Drawdown (mM)"] = ((substrate_data["Value"].values * u.umol).to("mmol") /
-                                           EXPERIMENT_VOLUME /
+                                           CUE_VOLUME /
                                            substrate_data["Metabolite"].apply(lambda x: {"glucose": C_PER_GLUCOSE,
                                                                                          "acetate": C_PER_ACETATE}[x]).values
                                            ).to("mM").magnitude
@@ -140,7 +138,7 @@ def main():
         initial_acetate *= u.mM
 
         initial = np.array([
-            (initial_biomass / EXPERIMENT_VOLUME).to("g/L").magnitude,
+            (initial_biomass / CUE_VOLUME).to("g/L").magnitude,
             initial_glucose.magnitude,
             initial_acetate.magnitude
         ])
@@ -149,7 +147,7 @@ def main():
                        BIOMASS_ID,
                        ["Glucose[e]", "ACET[e]"],
                        dynamic_medium,
-                       EXPERIMENT_VOLUME,
+                       CUE_VOLUME,
                        initial,
                        tmax)
 

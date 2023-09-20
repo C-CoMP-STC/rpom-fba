@@ -1,6 +1,5 @@
 import numpy as np
 from tqdm import tqdm
-from pint import Quantity
 
 
 def get_interpolator(t, y):

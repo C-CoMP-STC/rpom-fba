@@ -1,1 +1,6 @@
-Drawdown and growth curve data (drawdown_raw.xlsx, growth_curves_raw.csv) due to William Francis Schroer, of the Moran lab
+Drawdown and growth curve data (drawdown_raw.xlsx, growth_curves_raw.csv) from Schroer et al. 2023.
+CUE, transcriptomic and proteomic data from Cooper et al. (in preparation.)
+
+## References:
+- Schroer, W. F., Kepner, H. E., Uchimiya, M., Mejia, C., Rodriguez, L. T., Reisch, C. R., & Moran, M. A. (2023). Functional annotation and importance of marine bacterial transporters of plankton exometabolites. ISME Communications, 3(1), Article 1. https://doi.org/10.1038/s43705-023-00244-6
+- Cooper et al. 2024 (in preparation).
