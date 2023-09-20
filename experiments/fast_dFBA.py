@@ -11,9 +11,10 @@ from cobra.io import read_sbml_model
 from tqdm import tqdm
 
 from parameters.drawdown import *
-from parameters.fit_uptake_rates import (get_interpolator,
-                                         michaelis_menten_dynamic_system)
+from parameters.fit_uptake_rates import michaelis_menten_dynamic_system
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
+from utils.math import get_interpolator, rk45
+from utils.units import u
 
 matplotlib.use("Agg")
 
@@ -25,50 +26,17 @@ class MichaelisMentenBounds:
         self.K_M = K_M
 
     def bound(self, exchange, concentration):
-        concentration = max(concentration, 0)
+        concentration = max(concentration, 0 * u.mM)
         mm_bound = abs(self.V_max * concentration / (K_M + concentration))
-        set_active_bound(exchange, mm_bound)
+        set_active_bound(exchange, mm_bound.magnitude)
 
 
-def rk45(df_dt, y0, tmin, tmax, dt=0.01, terminate_on_error=True, pbar=True, pbar_desc=None, listeners=None):
-    def rk45_step(df_dt, y0, dt):
-        k1 = df_dt(y0) * dt
-        k2 = df_dt(y0 + 0.5 * k1) * dt
-        k3 = df_dt(y0 + 0.5 * k2) * dt
-        k4 = df_dt(y0 + k3) * dt
-
-        return y0 + (k1 + 2*k2 + 2*k3 + k4)/6
-
-    t_range = np.arange(tmin, tmax, dt)
-    result = np.zeros((t_range.size, y0.size))
-    result[0, :] = y0
-    listener_data = ([listener(y0) for listener in listeners]
-                     if listeners is not None else [])
-
-    t_index = range(1, len(t_range))
-    for i in tqdm(t_index, pbar_desc) if pbar else t_index:
-        try:
-            y = rk45_step(df_dt, result[i-1], dt)
-            result[i, :] = y
-
-            # Run listeners
-            listener_data += ([listener(y) for listener in listeners]
-                              if listeners is not None else [])
-
-        except Exception as e:
-            if terminate_on_error:
-                return t_range[:i], result[:i, :], listener_data
-            raise e
-
-    return t_range, result, listener_data
-
-
-def dFBA(model, biomass_id, substrate_ids, dynamic_medium, y0, tmax, dt=0.01, terminate_on_infeasible=True, listeners=None, desc=""):
+def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=0.01, terminate_on_infeasible=True, listeners=None, desc=""):
     medium_ids = [rxn.id for rxn in dynamic_medium.keys()]
 
     def df_dt(y):
-        biomass = y[0]
-        substrates = dict(zip(substrate_ids, y[1:]))
+        biomass = y[0] * u.g/u.L
+        substrates = dict(zip(substrate_ids, y[1:] * u.mM))
 
         with model:
             for exchange, bounds in dynamic_medium.items():
@@ -80,14 +48,19 @@ def dFBA(model, biomass_id, substrate_ids, dynamic_medium, y0, tmax, dt=0.01, te
             # thus guaranteeing a unique optimal set of exchange fluxes.
             lex_constraints = cobra.util.add_lexicographic_constraints(
                 model, [biomass_id] + medium_ids, ['max' for _ in range(len(medium_ids) + 1)])
-            fluxes = lex_constraints.values
+            # TODO: FIX!!!! biomass is not in fx units
+            biomass_flux = lex_constraints.values[0] * (1/u.hr)
+            medium_fluxes = lex_constraints.values[1:] * u.fx
 
         # Fluxes are specific rates, so we multiply them by the
         # biomass concentration to get the bulk exchange rates.
         # Fitted Vmax is also specific (mM/hr/g), so we further multiply
         # by volume to get final units of mM/hr
         fluxes *= biomass
-        fluxes[1:] *= COLONY_VOLUME * 1e-6
+        fluxes = fluxes.to("mmol/L/hr").magnitude
+
+        # TODO: WRONG!!! Pass in a volume
+        fluxes[1:] *= volume.to("L").magnitude
 
         return fluxes
 
@@ -96,7 +69,7 @@ def dFBA(model, biomass_id, substrate_ids, dynamic_medium, y0, tmax, dt=0.01, te
 
 def make_shadow_price_listener(model, substrate_ids, dynamic_medium, n=10):
     def shadow_price_listener(y):
-        substrates = dict(zip(substrate_ids, y[1:]))
+        substrates = dict(zip(substrate_ids, y[1:] * u.mM))
 
         with model:
             for exchange, bounds in dynamic_medium.items():
@@ -116,6 +89,7 @@ def setup_drawdown(model):
     # needs to be supplemented with FE+2 (also increase everything to 1000 to not be limiting)
     supp_medium = {k: 1000. for k, v in model.medium.items()}
     supp_medium["EX_fe2"] = 1000.
+    supp_medium["EX_o2"] = 65.
     model.medium = supp_medium
 
     # Remove biotin from objective temporarily as biotin is blocking
@@ -139,7 +113,10 @@ def plot_data(t, y, carbon_source, initial_C, V_max, t_max, growth_data):
     fig, ax = plt.subplots()
 
     # Plot data
-    ax.plot(t, y[:, 0] * COLONY_VOLUME, color="b", label="Biomass")
+    ax.plot(t,
+            (y[:, 0] * u.g/u.L * COLONY_VOLUME.to("L")).to("ug"),
+            color="b",
+            label="Biomass")
     ax2 = plt.twinx(ax)
     ax2.plot(t, y[:, 1], color='r', label=f"[{carbon_source}] (mM)")
 
@@ -152,13 +129,15 @@ def plot_data(t, y, carbon_source, initial_C, V_max, t_max, growth_data):
         growth_on_carbon_source[col])]
 
     ax.plot(growth_on_carbon_source["time (h)"],
-            growth_on_carbon_source[col] * 1e6,  # Convert g -> ug
+            (growth_on_carbon_source[col].values * u.g).to("ug"),
             "b--",
             label="Biomass (data)")
 
-    mass_curve = get_interpolator(carbon_source, growth_data)
+    t = growth_data["time (h)"] * u.h
+    y = growth_data[f"{carbon_source}_predicted_mass"] * u.g
+    mass_curve = get_interpolator(t, y)
     t, x = michaelis_menten_dynamic_system(
-        initial_C, mass_curve, -abs(V_max), K_M, t_max, dt=0.01)
+        initial_C.magnitude, mass_curve, -abs(V_max), K_M.magnitude, t_max, dt=0.01)
 
     ax2.plot(t, x[:, 0], "r--",
              label=f"Fitted {carbon_source} drawdown")
@@ -200,13 +179,12 @@ def main():
             V_max = abs(float(exchange_rxn._annotation["Experimental rate"]))
 
             # Get initial conditions
-            # TODO: set initial biomass from data?
             initial_C = uptake_data[uptake_data["Compound"] ==
-                                    carbon_source]["InitialMetabolite_mM"].values[0]
-            initial_biomass = growth_data[f"{carbon_source}_predicted_mass"].values[0] / (
-                COLONY_VOLUME * 1e-6)
-            y0 = np.array([initial_biomass,
-                           initial_C])
+                                    carbon_source]["InitialMetabolite_mM"].values[0] * u.mM
+            initial_biomass = growth_data[f"{carbon_source}_predicted_mass"].values[0] * u.g / (
+                COLONY_VOLUME.to("L"))
+            y0 = np.array([initial_biomass.magnitude,
+                           initial_C.magnitude])
 
             # Run experiment
             tmax = uptake_data[uptake_data["Compound"] ==
@@ -214,7 +192,7 @@ def main():
 
             dynamic_medium = {exchange_rxn: MichaelisMentenBounds(
                 carbon_source_id, V_max, K_M)}
-            t, y, listeners = dFBA(model, BIOMASS_ID, [carbon_source_id], dynamic_medium,
+            t, y, listeners = dFBA(model, BIOMASS_ID, [carbon_source_id], dynamic_medium, COLONY_VOLUME,
                                    y0, tmax, dt=0.01, terminate_on_infeasible=True,
                                    listeners=[make_shadow_price_listener(
                                        model, [carbon_source_id], dynamic_medium)],

@@ -148,6 +148,27 @@ def set_fixed(reaction: Reaction, flux: float) -> Reaction:
     return reaction
 
 
+def formula_str(reaction: Reaction) -> str:
+    stoich = {
+        metabolite : (metabolite.formula, coeff)
+        for metabolite, coeff in reaction.metabolites.items()
+    }
+
+    arrow = "-->"
+    if reaction.upper_bound == 0:
+        if reaction.lower_bound == 0:
+            arrow = "="
+        else:
+            arrow = "<--"
+    elif reaction.reversibility:
+        arrow = "<=>"
+
+    left = " + ".join(f"{-coeff} {formula}" for _, (formula, coeff) in stoich.items() if coeff < 0)
+    right = " + ".join(f"{coeff} {formula}" for _, (formula, coeff) in stoich.items() if coeff > 0)
+
+    return f"{left} {arrow} {right}"
+
+
 def path_to(model, met_from, met_to):
     pass
 

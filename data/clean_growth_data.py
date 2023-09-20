@@ -2,11 +2,10 @@ import pickle
 import numpy as np
 import pandas as pd
 
+from parameters.drawdown import MASS_PER_CELL
+
 GROWTH_DATA_FILE = "data/growth_curves_raw.csv"
 OUT_FILE = "data/growth_curves_clean.csv"
-
-# TODO: Estimated from E coli, get a better number if possible and move to a single source
-MASS_PER_CELL = 0.95  # pg
 
 def main():
     # Need to:
