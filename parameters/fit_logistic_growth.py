@@ -11,18 +11,14 @@ from parameters.drawdown import MASS_PER_CELL
 from utils.math import get_interpolator, runge_kutta
 from utils.units import u
 from tqdm import tqdm
+from data.files import DRAWDOWN_DATA_CLEAN, DRAWDOWN_DATA_RAW, UPTAKE_RATES_SHEET, GROWTH_DATA_CLEAN
 
 matplotlib.use("Agg")
 
-
-UPTAKE_RATES_FILE = "data/drawdown_clean.csv"
 LOGISTIC_RATES_OUTDIR = "parameters/logistic_fits/"
 LOGISTIC_PLOTS_OUTDIR = "out/logistic_fits/"
-RAW_UPTAKE_RATES_FILE = "data/drawdown_raw.xlsx"
-RAW_UPTAKE_RATES_SHEET = "drawdown_clean"
-GROWTH_DATA_FILE = "data/growth_curves_clean.csv"
 GROWTH_RATES_FILE = "parameters/growth_rates/fitted_growth_rates.csv"
-CUE_DATA_FILE = "data/CUE/cue_data.csv"
+CUE_DATA_FILE = "data/clean/CUE/cue_data.csv"
 METHOD_NOT_RECOGNIZED = "{} is not a recognized method to fit uptake rates!"
 BG_GRAY = "0.4"
 
@@ -138,9 +134,9 @@ def plot_fits(
 
 
 def main():
-    data = pd.read_csv(UPTAKE_RATES_FILE)
+    data = pd.read_csv(DRAWDOWN_DATA_CLEAN)
     cue_data = pd.read_csv(CUE_DATA_FILE)
-    growth_data = pd.read_csv(GROWTH_DATA_FILE)
+    growth_data = pd.read_csv(GROWTH_DATA_CLEAN)
 
     # Filter cue_data down to just acetate singles
     acetate_data = (cue_data[(cue_data["Condition"] == "singles") &
@@ -182,8 +178,8 @@ def main():
     }
 
     print("Plotting fitted rates...")
-    raw_data = pd.read_excel(RAW_UPTAKE_RATES_FILE,
-                             sheet_name=RAW_UPTAKE_RATES_SHEET)
+    raw_data = pd.read_excel(DRAWDOWN_DATA_RAW,
+                             sheet_name=UPTAKE_RATES_SHEET)
     # Subset data to just one metabolite
     substrate_raw_data = {
         metabolite: (

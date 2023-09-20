@@ -1,3 +1,4 @@
+import os
 import json
 import pickle
 import numpy as np
@@ -6,13 +7,11 @@ import pandas as pd
 from parameters.od_calibration import CellDensityRegressor
 from parameters.drawdown import MASS_PER_CELL, COLONY_VOLUME
 from utils.units import u
-from data.cleaning.files import GROWTH_DATA_FILE, CARBON_SOURCES
+from data.files import GROWTH_DATA_RAW, CARBON_SOURCES, GROWTH_DATA_CLEAN
 
 
 def main():
-    OUT_FILE = "data/growth_curves_clean.csv"
-
-    data = pd.read_csv(GROWTH_DATA_FILE)
+    data = pd.read_csv(GROWTH_DATA_RAW)
 
     with open("parameters/conversions/od_to_cell_density.pickle", "rb") as f:
         od_reg = pickle.load(f)
@@ -44,7 +43,9 @@ def main():
     result["time (h)"] = time
 
     result = pd.DataFrame.from_dict(result, orient='index').T
-    result.to_csv(OUT_FILE, index=False)
+
+    os.makedirs(os.path.dirname(GROWTH_DATA_RAW), exist_ok=True)
+    result.to_csv(GROWTH_DATA_CLEAN, index=False)
 
 
 if __name__ == "__main__":
