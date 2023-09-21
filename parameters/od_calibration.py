@@ -11,6 +11,9 @@ from sklearn.model_selection import KFold
 from utils.units import u
 
 
+# Shep's data needs to be scaled to match the calibration data
+DRAWDOWN_SCALE_FACTOR = 1.87
+
 class CellDensityRegressor:
     def __init__(self, crossover=None, a=None, b=None, warn_nonlinear=True):
         self.crossover = np.Infinity if crossover is None else crossover

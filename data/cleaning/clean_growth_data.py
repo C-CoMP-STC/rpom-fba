@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 import pandas as pd
 
-from parameters.od_calibration import CellDensityRegressor
+from parameters.od_calibration import CellDensityRegressor, DRAWDOWN_SCALE_FACTOR
 from parameters.drawdown import MASS_PER_CELL, COLONY_VOLUME
 from utils.units import u
 from data.files import GROWTH_DATA_RAW, CARBON_SOURCES, GROWTH_DATA_CLEAN
@@ -28,8 +28,8 @@ def main():
         # Subset to data pertaining to this carbon source
         source_data = data.loc[:, [c.startswith(carbon_source) for c in data.columns]].values[1:].astype(float)
 
-        # Take the mean across rows
-        mean_growth = source_data.mean(axis=1)
+        # Take the mean across rows, multiplying by the necessary scale factor
+        mean_growth = source_data.mean(axis=1) * DRAWDOWN_SCALE_FACTOR
         result[f"{carbon_source}_mean_OD"] = mean_growth
 
         # Translate to cell count
