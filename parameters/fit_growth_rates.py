@@ -67,7 +67,7 @@ def main():
     od_to_cell_density = get_od_to_cell_density_calibration()
     data.loc[:, data.columns != "time (h)"] = (
         data.loc[:, data.columns != "time (h)"].applymap(
-            lambda s: ((od_to_cell_density.predict(s).flatten()[
+            lambda s: ((od_to_cell_density.predict(s, always_linear=True).flatten()[
                        0] / u.mL) * COLONY_VOLUME).to("dimensionless").magnitude,
             na_action="ignore")
     )

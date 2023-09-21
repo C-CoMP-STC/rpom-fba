@@ -4,6 +4,7 @@ import warnings
 import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
+from scipy.stats import gmean
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import KFold
@@ -74,11 +75,14 @@ class CellDensityRegressor:
     def _predict_curve(self, od):
         return self.a * od**self.b
 
-    def predict(self, od):
+    def predict(self, od, always_linear=False):
         od = self._format_data(od)
         if self.warn_nonlinear and any(od > self.crossover):
             warnings.warn(
-                f"Predicting cell count from OD outside the presumed linear range! (OD > {self.crossover:2e})")
+                f"Predicting cell count from OD outside the presumed linear range! (OD > {self.crossover:.2f})")
+
+        if always_linear:
+            return self._predict_linear(od)
 
         return np.where(od <= self.crossover, self._predict_linear(od), self._predict_curve(od))
 
@@ -140,15 +144,49 @@ def main():
     OUT = "parameters/conversions/od_to_cell_density.pickle"
     DATA = "data/ODcounts_calibration.xlsx"
     raw_data = pd.read_excel(DATA)
+    raw_data = raw_data.sort_values("OD600 (1-cm)")
 
-    # Clean data
-    raw_data['OD600 (1-cm)'] /= raw_data["Scale_OD"]
-    clean_data = raw_data.sort_values("OD600 (1-cm)")
+    od = raw_data['OD600 (1-cm)'].values
+    density = (raw_data["Cells per ml, cyto"].values / u.mL).magnitude
 
-    od = clean_data['OD600 (1-cm)'].values.reshape(-1, 1)
-    density = (clean_data["Cells per ml, cyto"].values / u.mL).magnitude.reshape(-1, 1)
+    # collect all od and density data from CUE data
+    all_od = od
+    all_density = density
 
-    best_reg, _, _ = KFold_cell_count_regressor(od, density, k=4)
+    cue_data = pd.read_csv("data/clean/CUE/cue_data.csv")
+    conditions = cue_data[["Initial_C_Glucose",
+                        "Initial_C_Acetate"]].drop_duplicates()
+    blank_OD = cue_data[
+        (cue_data["Type"] == "OD")
+        & (cue_data["Initial_C_Glucose"] == 0)
+        & (cue_data["Initial_C_Acetate"] == 0)
+    ].groupby("Time (h)")["Value"].mean().reset_index()
+
+    for glucose, acetate in conditions.values:
+        if glucose == 0 and acetate == 0:
+            continue
+
+        counts = cue_data[
+            (cue_data["Type"] == "counts")
+            & (cue_data["Initial_C_Glucose"] == glucose)
+            & (cue_data["Initial_C_Acetate"] == acetate)
+        ].groupby("Time (h)")["Value"].agg(gmean).reset_index()
+
+        od_data = cue_data[
+            (cue_data["Type"] == "OD")
+            & (cue_data["Time (h)"].isin(counts["Time (h)"]))
+            & (cue_data["Initial_C_Glucose"] == glucose)
+            & (cue_data["Initial_C_Acetate"] == acetate)
+        ].groupby("Time (h)")["Value"].mean().reset_index()
+
+        # Subtract blank
+        od_data["Value"] = od_data["Value"].values - blank_OD[blank_OD["Time (h)"].isin(od_data["Time (h)"])]["Value"].values
+        df = counts.merge(od_data, on="Time (h)", suffixes=("_count", "_od"))
+
+        all_od = np.concatenate([all_od, df["Value_od"].values])
+        all_density = np.concatenate([all_density, df["Value_count"].values])
+
+    best_reg, _, _ = KFold_cell_count_regressor(all_od.reshape(-1, 1), all_density.reshape(-1, 1))
 
     print("Fit regressor with parameters:")
     print(f"\ta = {best_reg.a}")
