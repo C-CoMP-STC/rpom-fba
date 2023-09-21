@@ -5,7 +5,7 @@ Credits
 Model Maintainer
 ----------------
 
-* `Michael Yang <myang42@stanford.edu>`_
+* `Mica Yang <myang42@stanford.edu>`_
 
 Contributors
 ------------
