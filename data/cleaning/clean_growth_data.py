@@ -20,7 +20,7 @@ def main():
         carbon_sources = json.load(f).keys()
 
     # TODO: Subtract blank?
-    blank = data["mean blank"].values[1:].astype(float)
+    blank = data["mean blank"].values[1:].astype(float).mean()
     time = data["time (h)"].values[1:].astype(float)
 
     result = {}
@@ -29,11 +29,11 @@ def main():
         source_data = data.loc[:, [c.startswith(carbon_source) for c in data.columns]].values[1:].astype(float)
 
         # Take the mean across rows, multiplying by the necessary scale factor
-        mean_growth = source_data.mean(axis=1) * DRAWDOWN_SCALE_FACTOR
+        mean_growth = (source_data.mean(axis=1) - blank) * DRAWDOWN_SCALE_FACTOR
         result[f"{carbon_source}_mean_OD"] = mean_growth
 
         # Translate to cell count
-        cell_count = (od_reg.predict(mean_growth[~np.isnan(mean_growth)]).T[0] /u.mL) * COLONY_VOLUME
+        cell_count = (od_reg.predict(mean_growth[~np.isnan(mean_growth)], always_linear=True).T[0] /u.mL) * COLONY_VOLUME
         result[f"{carbon_source}_predicted_count"] = cell_count.to("dimensionless").magnitude
 
         # Translate to mass

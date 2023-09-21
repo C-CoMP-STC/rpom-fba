@@ -74,6 +74,14 @@ class BiomassObjective(Stage):
 
 
 @register_stage
+class MaintenanceFlux(Stage):
+    def process(self, model: Model, params: object) -> Model:
+        if not params:
+            atpm = model.reactions.get_by_id("ATPM")
+            atpm.bounds = (0, 0)
+        return model
+
+@register_stage
 class SetMedium(Stage):
     def process(self, model: Model, params: object) -> Model:
         # reset existing medium
