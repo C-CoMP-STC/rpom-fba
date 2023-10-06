@@ -115,7 +115,7 @@ def main():
         # Store charge data, Kegg IDs in metabolites
 
         for metabolite, charge, kegg in zip(metabolites, met_charges, met_kegg):
-            metabolite.annotation["Charge"] = charge
+            metabolite.charge = charge
             metabolite.annotation["Kegg ID"] = kegg
 
         # Store EC numbers, Kegg IDs in reactions
@@ -136,8 +136,7 @@ def main():
         write_sbml_model(sbml_model, outfile)
 
         # Validate the migration, checking reversibility...
-        validate_model_migration(
-            sbml_model, outfile, rev)
+        validate_model_migration(outfile)
 
 
 if __name__ == "__main__":
