@@ -63,7 +63,7 @@ def main():
     # Load data
     data = pd.read_csv(GROWTH_DATA_RAW, skiprows=[1])
 
-    # Convert from OD to cell counts
+    # Convert from OD to cell density
     od_to_cell_density = get_od_to_cell_density_calibration()
     data.loc[:, data.columns != "time (h)"] = (
         data.loc[:, data.columns != "time (h)"].applymap(

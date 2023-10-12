@@ -3,13 +3,15 @@ from utils.cobra_utils import get_or_create_exchange, get_active_bound
 from experiments.fast_dFBA import MichaelisMentenBounds
 import cobra
 from cobra.io import read_sbml_model
-import matplotlib.pyplot as plt
+
 import os
 import json
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 
+from matplotlib import pyplot as plt
+from experiments.fast_dFBA import setup_drawdown
 from parameters.drawdown import K_M
 
 
@@ -23,16 +25,9 @@ def main():
 
     # Load and set up model
     model = read_sbml_model(MODEL)
+    setup_drawdown(model)
 
-    supp_medium = {k: 1000. for k in model.medium.keys()}
-    supp_medium["EX_fe2"] = 1000.
-    model.medium = supp_medium
-
-    # Remove biotin from objective temporarily as biotin is blocking
-    # TODO: fix biotin production?
-    biotin = model.metabolites.get_by_id("BIOTIN[c]")
     biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
-    biomass.subtract_metabolites({biotin: biomass.metabolites[biotin]})
 
     with open(LOGISTIC_RATES_FILE, "r") as f:
         rates = json.load(f)
@@ -66,10 +61,12 @@ def main():
                     # Check that more C is not being created in biomass than is being put in
                     carbon_flux_in = abs(ex.flux) * model.metabolites.get_by_id(substrate_id).elements.get("C", 0)
                     carbon_flux_through_biomass = sum(
-                        [- met.elements.get("C", 0) * (mu_hat / coeff)
+                        [- met.elements.get("C", 0) * (mu_hat * coeff)
                             for met, coeff in biomass.metabolites.items()])
 
-                    print(f"{substrate_id} : {carbon_flux_in} > {carbon_flux_through_biomass} ({carbon_flux_in > carbon_flux_through_biomass})")
+                    if carbon_flux_in < carbon_flux_through_biomass:
+                        print(f"{substrate_id} : {carbon_flux_in} < {carbon_flux_through_biomass}!")
+                    
                 except Exception as e:
                     pass
                 uptake_rate[i] = get_active_bound(ex)            
@@ -90,6 +87,8 @@ def main():
         fig.set_size_inches(4, 3)
         fig.tight_layout()
         fig.savefig(os.path.join(YIELD_OUTDIR, f"{substrate}_yield.png"))
+
+        plt.close(fig)
 
 
 if __name__ == "__main__":
