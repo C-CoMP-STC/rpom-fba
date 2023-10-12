@@ -7,9 +7,9 @@ from cobra.core.model import Model
 from cobra.core.metabolite import Metabolite
 from cobra.core.reaction import Reaction
 
-from biomass import (add_ecoli_core_biomass_to_model,
+from model_building.biomass import (add_ecoli_core_biomass_to_model,
                      add_ecoli_full_biomass_to_model)
-from uptake_rxns import add_uptake_reactions, get_uptake_data
+from model_building.uptake_rxns import add_uptake_reactions, get_uptake_data
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
 from model_building.metabolites.metabolites import ADDED_METABOLITES
 

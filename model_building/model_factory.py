@@ -6,6 +6,10 @@ from cobra.io import read_sbml_model, write_sbml_model
 from model_building.stages import STAGE_REGISTRY
 
 
+DEFAULT_CONFIG = "model_building/blueprints/Rpom_05_ecoli_full.json"
+DEFAULT_MODEL = "model/Rpom_05.xml"
+
+
 class ModelFactory:
     def __init__(self, config):
         match config:
@@ -24,13 +28,18 @@ class ModelFactory:
         model = None
         for stage, params in self.config.items():
             model = STAGE_REGISTRY[stage]().process(model, params)
-        
+
         # Save cleaned model
         if out is not None:
             os.makedirs(os.path.dirname(out), exist_ok=True)
             write_sbml_model(model, out)
 
         return model
+
+
+def rebuild_and_get_model(config_file=DEFAULT_CONFIG, model_out=DEFAULT_MODEL):
+    ModelFactory(config_file).build_model(model_out)
+    return read_sbml_model(model_out)
 
 
 def main(config_file, out_file):
@@ -42,14 +51,14 @@ if __name__ == "__main__":
     argparser = ArgumentParser("Create cleaned models from the base models.")
 
     argparser.add_argument(
-        "config", 
-        nargs = "?",
-        default="model_building/blueprints/Rpom_05_ecoli_full.json")
-    
+        "config",
+        nargs="?",
+        default=DEFAULT_CONFIG)
+
     argparser.add_argument(
         "--out",
         "-o",
-        default="model/Rpom_05.xml")
+        default=DEFAULT_MODEL)
 
     args = argparser.parse_args()
 
