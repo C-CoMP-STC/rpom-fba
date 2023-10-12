@@ -8,6 +8,7 @@ import pandas as pd
 from cobra.io import read_sbml_model
 from tqdm import tqdm
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
+from experiments.fast_dFBA import setup_drawdown
 
 
 def main():
@@ -19,14 +20,7 @@ def main():
     os.makedirs(OUTDIR, exist_ok=True)
 
     model = read_sbml_model(MODEL)
-
-    # TODO: Remove these after making them the default
-    supp_medium = {k: 1000. for k in model.medium.keys()}
-    supp_medium["EX_fe2"] = 1000.
-    model.medium = supp_medium
-    biotin = model.metabolites.get_by_id("BIOTIN[c]")
-    biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
-    biomass.subtract_metabolites({biotin: biomass.metabolites[biotin]})
+    setup_drawdown(model)
 
     # Load fitted growth rates
     growth_rates = pd.read_csv(GROWTH_RATES)
