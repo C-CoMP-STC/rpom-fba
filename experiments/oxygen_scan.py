@@ -38,7 +38,7 @@ def main():
             # Get exchange reaction and calculated rate for the given carbon source
             exchange_rxn = get_or_create_exchange(model, carbon_source_id)
             experimental_rate = abs(float(exchange_rxn.annotation["Experimental rate"]))
-            set_active_bound(exchange_rxn, experimental_rate)
+            set_active_bound(exchange_rxn, 10)
 
             # Sweep oxygen bound, keeping track of objective value
             # with/without maintenance flux
@@ -70,7 +70,12 @@ def main():
             ax.set_ylim(0, height)
 
             if carbon_source in growth_rates.columns:
-                ax.hlines([growth_rates[carbon_source].mean()], 0, 100, ["r"], "solid", label="Experimental")
+                mu = growth_rates[carbon_source].mean()
+                ax.hlines([mu], 0, 100, ["r"], "solid", label="Experimental")
+                bottom, top = ax.get_ylim()
+                if top < mu:
+                    top = 1.5 * mu
+                    ax.set_ylim(bottom, top)
         
             # Labels
             ax.set_xlabel(f"O2 supply ($\\frac{{mmol}}{{gDCW \\cdot hr}}$)")

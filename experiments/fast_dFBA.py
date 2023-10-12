@@ -10,6 +10,7 @@ import pandas as pd
 from cobra.io import read_sbml_model
 from tqdm import tqdm
 
+from data.files import DRAWDOWN_DATA_CLEAN, GROWTH_DATA_CLEAN
 from parameters.drawdown import *
 from parameters.fit_uptake_rates import michaelis_menten_dynamic_system
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
@@ -26,17 +27,29 @@ class MichaelisMentenBounds:
         self.K_M = K_M
 
     def bound(self, exchange, concentration):
-        concentration = max(concentration, 0 * u.mM)
+        concentration = max(concentration, 0)
         mm_bound = abs(self.V_max * concentration / (self.K_M + concentration))
-        set_active_bound(exchange, mm_bound.magnitude)
+        set_active_bound(exchange, mm_bound)
+
+
+class ConstantBounds:
+    def __init__(self, substrate_id, V, dt=0.01):
+        self.substrate_id = substrate_id
+        self.V = V
+        self.dt = dt
+
+    def bound(self, exchange, concentration,):
+        concentration = max(concentration, 0)
+        bound = min(self.V, concentration / self.dt)
+        set_active_bound(exchange, bound)
 
 
 def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=0.01, terminate_on_infeasible=True, listeners=None, desc=""):
     medium_ids = [rxn.id for rxn in dynamic_medium.keys()]
 
     def df_dt(y):
-        biomass = y[0] * u.g/u.L
-        substrates = dict(zip(substrate_ids, y[1:] * u.mM))
+        biomass = y[0]  # * u.g/u.L
+        substrates = dict(zip(substrate_ids, y[1:]))  # mM
 
         with model:
             for exchange, bounds in dynamic_medium.items():
@@ -48,19 +61,28 @@ def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=
             # thus guaranteeing a unique optimal set of exchange fluxes.
             lex_constraints = cobra.util.add_lexicographic_constraints(
                 model, [biomass_id] + medium_ids, ['max' for _ in range(len(medium_ids) + 1)])
-            # TODO: FIX!!!! biomass is not in fx units
-            biomass_flux = lex_constraints.values[0] * (1/u.hr)
-            medium_fluxes = lex_constraints.values[1:] * u.fx
+            fluxes = lex_constraints.values
 
-        # Fluxes are specific rates, so we multiply them by the
-        # biomass concentration to get the bulk exchange rates.
-        # Fitted Vmax is also specific (mM/hr/g), so we further multiply
-        # by volume to get final units of mM/hr
+            # sol = model.optimize()
+            # if sol.status == "infeasible":
+            #     raise Exception()
+            # fluxes = np.array([sol.fluxes["RPOM_provisional_biomass"]] +
+            #                   [sol.fluxes[sub] for sub in substrate_ids])
+
         fluxes *= biomass
-        fluxes = fluxes.to("mmol/L/hr").magnitude
+        # # TODO: FIX!!!! biomass is not in fx units
+        # biomass_flux = lex_constraints.values[0] * (1/u.hr)
+        # medium_fluxes = lex_constraints.values[1:] * u.fx
 
-        # TODO: WRONG!!! Pass in a volume
-        fluxes[1:] *= volume.to("L").magnitude
+        # # # Fluxes are specific rates, so we multiply them by the
+        # # # biomass concentration to get the bulk exchange rates.
+        # # # Fitted Vmax is also specific (mM/hr/g), so we further multiply
+        # # # by volume to get final units of mM/hr
+        # # fluxes *= biomass
+        # # fluxes = fluxes.to("mmol/L/hr").magnitude
+
+        # # # TODO: WRONG!!! Pass in a volume
+        # # fluxes[1:] *= volume.to("L").magnitude
 
         return fluxes
 
@@ -69,7 +91,7 @@ def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=
 
 def make_shadow_price_listener(model, substrate_ids, dynamic_medium, n=10):
     def shadow_price_listener(y):
-        substrates = dict(zip(substrate_ids, y[1:] * u.mM))
+        substrates = dict(zip(substrate_ids, y[1:]))  # mM
 
         with model:
             for exchange, bounds in dynamic_medium.items():
@@ -89,14 +111,15 @@ def setup_drawdown(model):
     # needs to be supplemented with FE+2 (also increase everything to 1000 to not be limiting)
     supp_medium = {k: 1000. for k, v in model.medium.items()}
     supp_medium["EX_fe2"] = 1000.
-    # supp_medium["EX_o2"] = 65.
+    supp_medium["EX_o2"] = 20.
     model.medium = supp_medium
 
     # Remove biotin from objective temporarily as biotin is blocking
     # TODO: fix biotin production?
     biotin = model.metabolites.get_by_id("BIOTIN[c]")
     biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
-    biomass.subtract_metabolites({biotin: biomass.metabolites[biotin]})
+    if biotin in biomass.metabolites:
+        biomass.subtract_metabolites({biotin: biomass.metabolites[biotin]})
 
     # TODO: Growth is currently slow on glucose -
     # try changing maintenance requirement
@@ -144,13 +167,62 @@ def plot_data(t, y, carbon_source, initial_C, V_max, t_max, growth_data):
 
     return fig, [ax, ax2]
 
+def plot_shadow_prices(listeners, t, carbon_source):
+    all_metabolites = set()
+    for shadow_prices in listeners:
+        all_metabolites.update(shadow_prices.index)
+    df = pd.DataFrame({"time": t})
+    for metabolite in all_metabolites:
+        df[metabolite] = [shadow_prices[metabolite]
+                            if metabolite in shadow_prices.index else 0 for shadow_prices in listeners]
+    sum_abs = df.loc[:, df.columns != 'time'].abs().sum(axis=1)
+    max_abs = df.loc[:, df.columns != 'time'].abs().max(axis=1)
+    df["sum_abs"] = sum_abs
+    df["max_abs"] = max_abs
+
+    fig, ax = plt.subplots()
+    bottom = np.zeros(df.shape[0])
+    for i, metabolite in enumerate(all_metabolites):
+        heights = (df[metabolite].abs() / df["sum_abs"]).values
+        pc = matplotlib.collections.PatchCollection(
+            [
+                matplotlib.patches.Rectangle(
+                    (df.iloc[r1]["time"], bottom[r1]),
+                    df.iloc[r2]["time"] - df.iloc[r1]["time"],
+                    heights[r1])
+                for r1, r2 in pairwise(range(df.shape[0]))
+            ]
+        )
+        pc.set_cmap("Spectral")
+        pc.set_norm(plt.Normalize(-max(max_abs), max(max_abs)))
+        pc.set_array(df[metabolite])
+        ax.add_collection(pc)
+
+        ax.plot(df["time"], bottom + heights,
+                "w", label=f"{i}: {metabolite}")
+
+        max_height = heights.max()
+        max_height_idx = heights.argmax()
+        ax.text(df["time"].values[max_height_idx], bottom[max_height_idx],
+                f"{i}", horizontalalignment="left", verticalalignment="bottom")
+        bottom += heights
+
+    leg = fig.legend(handlelength=0, handletextpad=0,
+                        loc="center left", bbox_to_anchor=(1, 0.5))
+    for item in leg.legendHandles:
+        item.set_visible(False)
+    ax.set_xlim(t.min(), t.max())
+    ax.set_xlabel("Time (hr)")
+    ax.set_ylabel("Shadow Price (normalized magnitude)")
+    ax.set_title(f"Shadow prices over time on {carbon_source}")
+    fig.colorbar(pc, location="left", pad=0.2)
+    
+    return fig, ax
 
 def main():
     MODEL = "model/Rpom_05.xml"
     BIOMASS_ID = "RPOM_provisional_biomass"
     CARBON_SOURCES = "parameters/uptake_rates/carbon_source_ids.json"
-    UPTAKE_DATA_FILE = "data/drawdown_clean.csv"
-    GROWTH_DATA_FILE = "data/growth_curves_clean.csv"
     OUTDIR = "out/dFBA/"
 
     # Ensure output directory exists
@@ -169,8 +241,8 @@ def main():
     }
 
     # Load data for compoarison
-    uptake_data = pd.read_csv(UPTAKE_DATA_FILE)
-    growth_data = pd.read_csv(GROWTH_DATA_FILE)
+    uptake_data = pd.read_csv(DRAWDOWN_DATA_CLEAN)
+    growth_data = pd.read_csv(GROWTH_DATA_CLEAN)
 
     for carbon_source, carbon_source_id in carbon_sources.items():
         with model:
@@ -199,56 +271,8 @@ def main():
                                    desc=carbon_source)
 
             # Plot shadow prices over time
-            all_metabolites = set()
-            for shadow_prices in listeners:
-                all_metabolites.update(shadow_prices.index)
-            df = pd.DataFrame({"time": t})
-            for metabolite in all_metabolites:
-                df[metabolite] = [shadow_prices[metabolite]
-                                  if metabolite in shadow_prices.index else 0 for shadow_prices in listeners]
-            sum_abs = df.loc[:, df.columns != 'time'].abs().sum(axis=1)
-            max_abs = df.loc[:, df.columns != 'time'].abs().max(axis=1)
-            df["sum_abs"] = sum_abs
-            df["max_abs"] = max_abs
-
-            fig, ax = plt.subplots()
-            bottom = np.zeros(df.shape[0])
-            for i, metabolite in enumerate(all_metabolites):
-                heights = (df[metabolite].abs() / df["sum_abs"]).values
-                pc = matplotlib.collections.PatchCollection(
-                    [
-                        matplotlib.patches.Rectangle(
-                            (df.iloc[r1]["time"], bottom[r1]),
-                            df.iloc[r2]["time"] - df.iloc[r1]["time"],
-                            heights[r1])
-                        for r1, r2 in pairwise(range(df.shape[0]))
-                    ]
-                )
-                pc.set_cmap("Spectral")
-                pc.set_norm(plt.Normalize(-max(max_abs), max(max_abs)))
-                pc.set_array(df[metabolite])
-                ax.add_collection(pc)
-
-                ax.plot(df["time"], bottom + heights,
-                        "w", label=f"{i}: {metabolite}")
-
-                max_height = heights.max()
-                max_height_idx = heights.argmax()
-                ax.text(df["time"].values[max_height_idx], bottom[max_height_idx],
-                        f"{i}", horizontalalignment="left", verticalalignment="bottom")
-                bottom += heights
-
-            leg = fig.legend(handlelength=0, handletextpad=0,
-                             loc="center left", bbox_to_anchor=(1, 0.5))
-            for item in leg.legendHandles:
-                item.set_visible(False)
-            ax.set_xlim(t.min(), t.max())
-            ax.set_xlabel("Time (hr)")
-            ax.set_ylabel("Shadow Price (normalized magnitude)")
-            ax.set_title(f"Shadow prices over time on {carbon_source}")
-            fig.colorbar(pc, location="left", pad=0.2)
-            fig.savefig(os.path.join(
-                OUTDIR, f"{carbon_source} shadow prices.png"), bbox_inches='tight')
+            fig_sp, _ = plot_shadow_prices(listeners)
+            fig_sp.savefig(os.path.join(OUTDIR, f"{carbon_source} shadow prices.png"), bbox_inches='tight')
 
             # Plot data
             fig, _ = plot_data(t, y, carbon_source, initial_C,
