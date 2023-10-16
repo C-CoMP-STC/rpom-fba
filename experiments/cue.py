@@ -1,10 +1,10 @@
 from matplotlib import pyplot as plt
 import os
+from datetime import datetime
 import numpy as np
 import pandas as pd
 import matplotlib
 
-from cobra.io import read_sbml_model
 from experiments.fast_dFBA import dFBA, make_shadow_price_listener, setup_drawdown, MichaelisMentenBounds, ConstantBounds, plot_shadow_prices
 
 from utils.cobra_utils import get_or_create_exchange
@@ -13,7 +13,6 @@ from model_building.model_factory import rebuild_and_get_model
 from parameters.drawdown import *
 
 matplotlib.use("Agg")
-
 
 C_PER_GLUCOSE = 6
 C_PER_ACETATE = 2
@@ -128,6 +127,9 @@ def main():
 
     # Ensure output directory exists
     os.makedirs(OUTDIR, exist_ok=True)
+    data_out = os.path.join(
+        OUTDIR, datetime.now().strftime('%d-%b-%Y_%H:%M:%S'))
+    os.makedirs(data_out)
 
     # Load and set up model
     model = rebuild_and_get_model(MODEL_BLUEPRINT)
@@ -183,8 +185,22 @@ def main():
                            model, ["Glucose[e]", "ACET[e]"], dynamic_medium)],
                        dt=0.1)
 
+        # Save data
+        save_data = pd.DataFrame({"time (h)": t,
+                                  "Biomass (g/L)": y[:, 0],
+                                  "Glucose (mM)": y[:, 1],
+                                  "Acetate (mM)": y[:, 2]})
+        sp = pd.concat(l, axis=1, ignore_index=True).T
+        save_data = pd.concat((save_data, sp), axis=1)
+        save_data.to_csv(os.path.join(
+            data_out, f"data_{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate.csv"), index=False)
+
         # Plot data
-        plot_shadow_prices(l, t, f"{initial_glucose.magnitude:.2f}mM Glucose, {initial_acetate.magnitude:.2f} mM Acetate")[0].savefig(os.path.join(
+        fig, axs = plot_shadow_prices(l, t)
+        axs[0].set_title(
+            f"{initial_glucose.magnitude:.2f}mM Glucose, {initial_acetate.magnitude:.2f} mM Acetate")
+        fig.set_size_inches(5, len(axs))
+        fig.savefig(os.path.join(
             OUTDIR, f"{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate_shadow_prices.png"))
 
         fig, _ = plot_result(t, y, [initial_glucose, initial_acetate], data)

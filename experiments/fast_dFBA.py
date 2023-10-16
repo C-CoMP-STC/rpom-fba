@@ -63,27 +63,7 @@ def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=
                 model, [biomass_id] + medium_ids, ['max' for _ in range(len(medium_ids) + 1)])
             fluxes = lex_constraints.values
 
-            # sol = model.optimize()
-            # if sol.status == "infeasible":
-            #     raise Exception()
-            # fluxes = np.array([sol.fluxes["RPOM_provisional_biomass"]] +
-            #                   [sol.fluxes[sub] for sub in substrate_ids])
-
         fluxes *= biomass
-        # # TODO: FIX!!!! biomass is not in fx units
-        # biomass_flux = lex_constraints.values[0] * (1/u.hr)
-        # medium_fluxes = lex_constraints.values[1:] * u.fx
-
-        # # # Fluxes are specific rates, so we multiply them by the
-        # # # biomass concentration to get the bulk exchange rates.
-        # # # Fitted Vmax is also specific (mM/hr/g), so we further multiply
-        # # # by volume to get final units of mM/hr
-        # # fluxes *= biomass
-        # # fluxes = fluxes.to("mmol/L/hr").magnitude
-
-        # # # TODO: WRONG!!! Pass in a volume
-        # # fluxes[1:] *= volume.to("L").magnitude
-
         return fluxes
 
     return runge_kutta(df_dt, y0, 0, tmax, dt, terminate_on_infeasible, pbar_desc=desc, listeners=listeners)
@@ -167,57 +147,83 @@ def plot_data(t, y, carbon_source, initial_C, V_max, t_max, growth_data):
 
     return fig, [ax, ax2]
 
-def plot_shadow_prices(listeners, t, carbon_source):
-    all_metabolites = set()
-    for shadow_prices in listeners:
-        all_metabolites.update(shadow_prices.index)
-    df = pd.DataFrame({"time": t})
-    for metabolite in all_metabolites:
-        df[metabolite] = [shadow_prices[metabolite]
-                            if metabolite in shadow_prices.index else 0 for shadow_prices in listeners]
-    sum_abs = df.loc[:, df.columns != 'time'].abs().sum(axis=1)
-    max_abs = df.loc[:, df.columns != 'time'].abs().max(axis=1)
-    df["sum_abs"] = sum_abs
-    df["max_abs"] = max_abs
 
-    fig, ax = plt.subplots()
-    bottom = np.zeros(df.shape[0])
-    for i, metabolite in enumerate(all_metabolites):
-        heights = (df[metabolite].abs() / df["sum_abs"]).values
-        pc = matplotlib.collections.PatchCollection(
-            [
-                matplotlib.patches.Rectangle(
-                    (df.iloc[r1]["time"], bottom[r1]),
-                    df.iloc[r2]["time"] - df.iloc[r1]["time"],
-                    heights[r1])
-                for r1, r2 in pairwise(range(df.shape[0]))
-            ]
-        )
-        pc.set_cmap("Spectral")
-        pc.set_norm(plt.Normalize(-max(max_abs), max(max_abs)))
-        pc.set_array(df[metabolite])
-        ax.add_collection(pc)
-
-        ax.plot(df["time"], bottom + heights,
-                "w", label=f"{i}: {metabolite}")
-
-        max_height = heights.max()
-        max_height_idx = heights.argmax()
-        ax.text(df["time"].values[max_height_idx], bottom[max_height_idx],
-                f"{i}", horizontalalignment="left", verticalalignment="bottom")
-        bottom += heights
-
-    leg = fig.legend(handlelength=0, handletextpad=0,
-                        loc="center left", bbox_to_anchor=(1, 0.5))
-    for item in leg.legendHandles:
-        item.set_visible(False)
-    ax.set_xlim(t.min(), t.max())
-    ax.set_xlabel("Time (hr)")
-    ax.set_ylabel("Shadow Price (normalized magnitude)")
-    ax.set_title(f"Shadow prices over time on {carbon_source}")
-    fig.colorbar(pc, location="left", pad=0.2)
+def plot_shadow_prices(shadow_prices, t):
+    shadow_prices = pd.concat(shadow_prices, axis=1,
+                              ignore_index=True).T.fillna(0)
     
-    return fig, ax
+    fig, axs = plt.subplots(len(shadow_prices.columns), 1)
+    for ax, metabolite in zip(axs, shadow_prices.columns):
+        ax.plot(t, shadow_prices[metabolite])
+        ax.hlines(0, t.min(), t.max(), colors=["0.4"])
+
+        ax.set_ylabel(metabolite, rotation="horizontal", ha="right")
+        ax.xaxis.set_visible(False)
+        ax.spines[:].set_visible(False)
+        ax.tick_params(left=False, labelleft=False)
+
+    axs[-1].xaxis.set_visible(True)
+    axs[-1].spines.bottom.set_visible(True)
+
+    fig.subplots_adjust(hspace=0)
+    fig.tight_layout()
+
+    return fig, axs
+
+
+
+# def plot_shadow_prices(listeners, t, carbon_source):
+#     all_metabolites = set()
+#     for shadow_prices in listeners:
+#         all_metabolites.update(shadow_prices.index)
+#     df = pd.DataFrame({"time": t})
+#     for metabolite in all_metabolites:
+#         df[metabolite] = [shadow_prices[metabolite]
+#                           if metabolite in shadow_prices.index else 0 for shadow_prices in listeners]
+#     sum_abs = df.loc[:, df.columns != 'time'].abs().sum(axis=1)
+#     max_abs = df.loc[:, df.columns != 'time'].abs().max(axis=1)
+#     df["sum_abs"] = sum_abs
+#     df["max_abs"] = max_abs
+
+#     fig, ax = plt.subplots()
+#     bottom = np.zeros(df.shape[0])
+#     for i, metabolite in enumerate(all_metabolites):
+#         heights = (df[metabolite].abs() / df["sum_abs"]).values
+#         pc = matplotlib.collections.PatchCollection(
+#             [
+#                 matplotlib.patches.Rectangle(
+#                     (df.iloc[r1]["time"], bottom[r1]),
+#                     df.iloc[r2]["time"] - df.iloc[r1]["time"],
+#                     heights[r1])
+#                 for r1, r2 in pairwise(range(df.shape[0]))
+#             ]
+#         )
+#         pc.set_cmap("Spectral")
+#         pc.set_norm(plt.Normalize(-max(max_abs), max(max_abs)))
+#         pc.set_array(df[metabolite])
+#         ax.add_collection(pc)
+
+#         ax.plot(df["time"], bottom + heights,
+#                 "w", label=f"{i}: {metabolite}")
+
+#         max_height = heights.max()
+#         max_height_idx = heights.argmax()
+#         ax.text(df["time"].values[max_height_idx], bottom[max_height_idx],
+#                 f"{i}", horizontalalignment="left", verticalalignment="bottom")
+#         bottom += heights
+
+#     leg = fig.legend(handlelength=0, handletextpad=0,
+#                      loc="center left", bbox_to_anchor=(1, 0.5))
+#     for item in leg.legendHandles:
+#         item.set_visible(False)
+#     ax.set_xlim(t.min(), t.max())
+#     ax.set_xlabel("Time (hr)")
+#     ax.set_ylabel("Shadow Price (normalized magnitude)")
+#     ax.set_title(f"Shadow prices over time on {carbon_source}")
+#     fig.colorbar(pc, location="left", pad=0.2)
+
+#     return fig, ax
+
 
 def main():
     MODEL = "model/Rpom_05.xml"
@@ -271,8 +277,10 @@ def main():
                                    desc=carbon_source)
 
             # Plot shadow prices over time
-            fig_sp, _ = plot_shadow_prices(listeners)
-            fig_sp.savefig(os.path.join(OUTDIR, f"{carbon_source} shadow prices.png"), bbox_inches='tight')
+            fig_sp, axs_sp = plot_shadow_prices(listeners, t)
+            axs_sp[0].set_title(carbon_source)
+            fig_sp.savefig(os.path.join(
+                OUTDIR, f"{carbon_source} shadow prices.png"), bbox_inches='tight')
 
             # Plot data
             fig, _ = plot_data(t, y, carbon_source, initial_C,
