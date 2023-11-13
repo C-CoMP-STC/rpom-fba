@@ -13,7 +13,7 @@ from utils.math import get_interpolator, runge_kutta
 from utils.units import u
 from data.files import DRAWDOWN_DATA_CLEAN, DRAWDOWN_DATA_RAW, UPTAKE_RATES_SHEET, GROWTH_DATA_CLEAN
 
-matplotlib.use("Agg")
+# matplotlib.use("Agg")
 
 
 def michaelis_menten_dynamic_system(S_0, X_t, V_max, K_M, max_t, dt=0.1):

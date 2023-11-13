@@ -132,8 +132,12 @@ def main():
     os.makedirs(data_out)
 
     # Load and set up model
-    model = rebuild_and_get_model(MODEL_BLUEPRINT)
+    model = rebuild_and_get_model()# MODEL_BLUEPRINT)
     setup_drawdown(model)
+
+    # TODO: remove
+    sink = model.add_boundary(model.metabolites.get_by_id("PROTON[c]"), type="sink")
+    sink.bounds = (0,1000)
 
     # Set up Michaelis-Menten medium
     ex_glc = model.reactions.get_by_id("EX_glc")
@@ -153,10 +157,7 @@ def main():
     initial_conditions = data[["Initial_mM_Glucose",
                                "Initial_mM_Acetate"]].drop_duplicates().values
     for initial_glucose, initial_acetate in initial_conditions:
-        # TODO: Remove
-        if initial_glucose == 0 and initial_acetate == 0:
-            continue
-
+        
         initial_biomass = (data[(data["Type"] == "counts") &
                                 (data["Time (h)"] == 0) &
                                 (data["Initial_mM_Glucose"] == initial_glucose) &
@@ -203,7 +204,7 @@ def main():
         fig.savefig(os.path.join(
             OUTDIR, f"{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate_shadow_prices.png"))
 
-        fig, _ = plot_result(t, y, [initial_glucose, initial_acetate], data)
+        fig, _ = plot_result(t, y, [initial_glucose, initial_acetate], data, mass_units=False)
         fig.set_size_inches(5, 3)
         fig.tight_layout()
         fig.savefig(os.path.join(
