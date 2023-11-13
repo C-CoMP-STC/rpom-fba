@@ -17,7 +17,7 @@ from utils.cobra_utils import get_or_create_exchange, set_active_bound
 from utils.math import get_interpolator, runge_kutta
 from utils.units import u
 
-matplotlib.use("Agg")
+# matplotlib.use("Agg")
 
 
 class MichaelisMentenBounds:
@@ -110,6 +110,10 @@ def setup_drawdown(model):
     # testing lower peptidoglycan requirement
     # murein = model.metabolites.get_by_id("CPD0-2278[p]")
     # biomass.add_metabolites({murein: 1/10 * abs(biomass.metabolites[murein])})
+
+    nadh_dehyd_rxns = [rxn for rxn in model.reactions if rxn.id.startswith("1.6.99.5")]
+    for rxn in nadh_dehyd_rxns:
+        rxn.add_metabolites({"PROTON[c]" : -4., "PROTON[e]" : 4.})
 
 
 def plot_data(t, y, carbon_source, initial_C, V_max, t_max, growth_data):
