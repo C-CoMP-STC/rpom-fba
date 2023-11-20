@@ -1,0 +1,75 @@
+[
+    {
+        "id" : "1.6.99.5-RXN-NADH/UBIQUINONE-10/PROTON//NAD/CPD-9958.40.",
+        "metabolites" : {
+            "NADH[c]" : -1.0,
+            "PROTON[c]" : -5.0,
+            "UBIQUINONE-10[c]" : -1.0,
+            "CPD-9958[c]" : 1.0,
+            "NAD[c]" : 1.0,
+            "PROTON[e]" : 4.0
+        }
+    },
+    {
+        "id" : "1.6.99.5-RXN-NADH/UBIQUINONE-6/PROTON//NAD/UBIQUINOL-30.43.",
+        "metabolites" : {
+            "NADH[c]" : -1.0,
+            "PROTON[c]" : -5.0,
+            "UBIQUINONE-6[c]" : -1.0,
+            "NAD[c]" : 1.0,
+            "UBIQUINOL-30[c]" : 1.0,
+            "PROTON[e]" : 4.0
+        }
+    },
+    {
+        "id" : "1.6.99.5-RXN-NADH/UBIQUINONE-9/PROTON//NAD/CPD-9957.39.",
+        "metabolites" : {
+            "NADH[c]" : -1.0,
+            "PROTON[c]" : -5.0,
+            "UBIQUINONE-9[c]" : -1.0,
+            "CPD-9957[c]" : 1.0,
+            "NAD[c]" : 1.0,
+            "PROTON[e]" : 4.0
+        }
+    },
+    {
+        "id": "RXN0-5398-CPD-16551/URACIL//PSEUDOURIDINE-5-P/WATER.42.",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN0-5398-CPD-16551/URACIL//PSEUDOURIDINE-5-P/WATER.42.",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RIB5PISOM-RXN-CPD-16551//RIBULOSE-5P.23.",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RIB5PISOM-RXN-CPD-15895//RIBULOSE-5P.23.",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RIB5PISOM-RXN-CPD-15318//RIBULOSE-5P.23.",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "PPENTOMUT-RXN-RIBOSE-1P//CPD-16551.21.",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "PPENTOMUT-RXN-RIBOSE-1P//CPD-15895.21.",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "PPENTOMUT-RXN-RIBOSE-1P//CPD-15318.21.",
+        "lower_bound" : -1000.0,
+        "upper_bound": 1000.0
+    }
+]

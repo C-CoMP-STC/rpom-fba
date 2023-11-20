@@ -135,10 +135,6 @@ def main():
     model = rebuild_and_get_model()# MODEL_BLUEPRINT)
     setup_drawdown(model)
 
-    # TODO: remove
-    sink = model.add_boundary(model.metabolites.get_by_id("PROTON[c]"), type="sink")
-    sink.bounds = (0,1000)
-
     # Set up Michaelis-Menten medium
     ex_glc = model.reactions.get_by_id("EX_glc")
     ex_ace = get_or_create_exchange(model, "ACET[e]")

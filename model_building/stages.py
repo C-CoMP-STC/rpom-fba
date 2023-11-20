@@ -144,6 +144,38 @@ class AddReactions(Stage):
 
 
 @register_stage
+class ModifyReactions(Stage):
+    def process(self, model: Model, params: str) -> Model:
+        with open(params, "r") as f:
+            reactions_to_change = json.load(f)
+        
+        for reaction in reactions_to_change:
+            # Allows the use of strings as comments:
+            if not isinstance(reaction, dict):
+                continue
+
+            rxn = model.reactions.get_by_id(reaction["id"])
+            rxn.name = reaction.get("name", rxn.name)
+
+            rxn.subsystem = reaction.get("subsystem", rxn.subsystem)
+            rxn.lower_bound = reaction.get("lower_bound", rxn.lower_bound)
+            rxn.upper_bound = reaction.get("upper_bound", rxn.upper_bound)
+
+            if "metabolites" in reaction:
+                metabolites = {
+                    model.metabolites.get_by_id(met) : coeff
+                    for met, coeff in reaction["metabolites"].items()
+                }
+                rxn.subtract_metabolites(rxn.metabolites)
+                rxn.add_metabolites(metabolites)
+                
+
+            rxn.gene_reaction_rule = reaction.get("gene_reaction_rule", rxn.gene_reaction_rule)
+
+        return model
+
+
+@register_stage
 class AddUptakeReactions(Stage):
     def process(self, model: Model, params: object) -> Model:
         # Get uptake rates and genes
