@@ -94,26 +94,15 @@ def setup_drawdown(model):
     supp_medium["EX_o2"] = 20.
     model.medium = supp_medium
 
-    # Remove biotin from objective temporarily as biotin is blocking
-    # TODO: fix biotin production?
+    # Remove biotin from biomass objective
     biotin = model.metabolites.get_by_id("BIOTIN[c]")
     biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
     if biotin in biomass.metabolites:
         biomass.subtract_metabolites({biotin: biomass.metabolites[biotin]})
 
-    # TODO: Growth is currently slow on glucose -
-    # try changing maintenance requirement
-    # atpm = model.reactions.get_by_id("ATPM")
-    # atpm.lower_bound = atpm.upper_bound = 10
-
-    # TODO: Growth is currently slow on glucose -
-    # testing lower peptidoglycan requirement
-    # murein = model.metabolites.get_by_id("CPD0-2278[p]")
-    # biomass.add_metabolites({murein: 1/10 * abs(biomass.metabolites[murein])})
-
-    nadh_dehyd_rxns = [rxn for rxn in model.reactions if rxn.id.startswith("1.6.99.5")]
-    for rxn in nadh_dehyd_rxns:
-        rxn.add_metabolites({"PROTON[c]" : -4., "PROTON[e]" : 4.})
+    # nadh_dehyd_rxns = [rxn for rxn in model.reactions if rxn.id.startswith("1.6.99.5")]
+    # for rxn in nadh_dehyd_rxns:
+    #     rxn.add_metabolites({"PROTON[c]" : -4., "PROTON[e]" : 4.})
 
 
 def plot_data(t, y, carbon_source, initial_C, V_max, t_max, growth_data):

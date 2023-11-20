@@ -6,5 +6,6 @@
     "SetMedium": "data/media/L1_minimal_medium.json",
     "AddMetabolites": null,
     "AddUptakeReactions": null,
-    "AddReactions": "model_building/reactions/reactions.json"
+    "AddReactions": "model_building/reactions/reactions.json",
+    "ModifyReactions": "model_building/reactions/corrections.json"
 }
