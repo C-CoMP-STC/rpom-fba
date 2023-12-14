@@ -137,9 +137,9 @@ def set_active_bound(reaction: Reaction, bound: float) -> None:
         has reactants, it seems the upper bound won't be set.
     """
     if reaction.reactants:
-        reaction.lower_bound = -bound
+        reaction.lower_bound = -abs(bound)
     elif reaction.products:
-        reaction.upper_bound = bound
+        reaction.upper_bound = abs(bound)
 
 
 def set_fixed(reaction: Reaction, flux: float) -> Reaction:
