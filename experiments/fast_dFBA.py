@@ -26,7 +26,7 @@ class MichaelisMentenBounds:
         self.V_max = V_max
         self.K_M = K_M
 
-    def bound(self, exchange, concentration):
+    def bound(self, exchange, concentration, t=None):
         concentration = max(concentration, 0)
         mm_bound = abs(self.V_max * concentration / (self.K_M + concentration))
         set_active_bound(exchange, mm_bound)
@@ -38,22 +38,35 @@ class ConstantBounds:
         self.V = V
         self.dt = dt
 
-    def bound(self, exchange, concentration,):
+    def bound(self, exchange, concentration, t=None):
         concentration = max(concentration, 0)
         bound = min(self.V, concentration / self.dt)
         set_active_bound(exchange, bound)
 
+class BoundFromData:
+    def __init__(self, substrate_id, t, s) -> None:
+        self.substrate_id = substrate_id
+        self.t=t
+        self.s=s
+    
+    def bound(self, exchange, concentration, t):
+        # index of last timepoint < t
+        timepoint = (self.t < t).sum()
+        ds = self.s[timepoint+1] - self.s[timepoint]
+        dt = self.t[timepoint+1] - self.t[timepoint]
+        bound = ds/dt
+        set_active_bound(exchange, min(bound, 0))
 
 def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=0.01, terminate_on_infeasible=True, listeners=None, desc=""):
     medium_ids = [rxn.id for rxn in dynamic_medium.keys()]
 
-    def df_dt(y):
+    def df_dt(y, t=None):
         biomass = y[0]  # * u.g/u.L
         substrates = dict(zip(substrate_ids, y[1:]))  # mM
 
         with model:
             for exchange, bounds in dynamic_medium.items():
-                bounds.bound(exchange, substrates[bounds.substrate_id])
+                bounds.bound(exchange, substrates[bounds.substrate_id], t=t)
 
             # Using lexicographic optimization,
             # first optimize for biomass, then for the exchange fluxes
@@ -70,12 +83,12 @@ def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=
 
 
 def make_shadow_price_listener(model, substrate_ids, dynamic_medium, n=10):
-    def shadow_price_listener(y):
+    def shadow_price_listener(y, t=None):
         substrates = dict(zip(substrate_ids, y[1:]))  # mM
 
         with model:
             for exchange, bounds in dynamic_medium.items():
-                bounds.bound(exchange, substrates[bounds.substrate_id])
+                bounds.bound(exchange, substrates[bounds.substrate_id], t=t)
 
             sol = model.optimize()
             max_shadow_price_metabolites = sol.shadow_prices.abs(

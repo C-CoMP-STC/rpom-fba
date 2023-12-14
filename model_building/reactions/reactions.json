@@ -281,5 +281,37 @@
         },
         "gene_reaction_rule": "SPOA0292"
     },
-    "lipoate biosynthesis and incorporation I ==================================================="
+    "lipoate biosynthesis and incorporation I ===================================================",
+    "aerobic respiration I (cytochrome c) =======================================================",
+    {
+        "id": "CYTOCHROME-C-OXIDASE-RXN",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "Cytochromes-C-Reduced[p]" : -4,
+            "OXYGEN-MOLECULE[c]": -1,
+            "PROTON[c]": -8,
+            "Cytochromes-C-Oxidized[p]": 4,
+            "PROTON[p]": 4,
+            "WATER[c]": 2
+        },
+        "gene_reaction_rule": "SPO3073 and SPO3076 and SPO1383 and SPO3523 and SPO3524 and SPO3525 and SPO3526 and G1RHL-427 and SPOA0187 and SPOA0188 and SPOA0189 and SPOA0190 and G1RHL-200"
+    },
+    {
+        "id": "1.10.2.2-RXN",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "Cytochromes-C-Oxidized[p]": -2,
+            "CPD-9958[c]" : -1,
+            "UBIQUINONE-10[c]" : 1,
+            "Cytochromes-C-Reduced[p]" : 2,
+            "PROTON[c]": 2
+        },
+        "gene_reaction_rule": "SPO0273 and SPO0272 and SPO0271"
+    }
 ]

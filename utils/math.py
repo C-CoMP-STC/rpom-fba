@@ -16,11 +16,11 @@ def runge_kutta(df_dt,
          pbar=True,
          pbar_desc=None,
          listeners=None):
-    def rk_step(df_dt, y0, dt):
-        k1 = df_dt(y0) * dt
-        k2 = df_dt(y0 + 0.5 * k1) * dt
-        k3 = df_dt(y0 + 0.5 * k2) * dt
-        k4 = df_dt(y0 + k3) * dt
+    def rk_step(df_dt, y0, dt, t=None):
+        k1 = df_dt(y0, t=t) * dt
+        k2 = df_dt(y0 + 0.5 * k1, t=t) * dt
+        k3 = df_dt(y0 + 0.5 * k2, t=t) * dt
+        k4 = df_dt(y0 + k3, t=t) * dt
 
         return y0 + (k1 + 2*k2 + 2*k3 + k4)/6
 
@@ -28,17 +28,17 @@ def runge_kutta(df_dt,
 
     result = np.zeros((t_range.size, y0.size))
     result[0, :] = y0
-    listener_data = ([listener(y0) for listener in listeners]
+    listener_data = ([listener(y0, tmin) for listener in listeners]
                      if listeners is not None else [])
 
     t_index = range(1, len(t_range))
     for i in tqdm(t_index, pbar_desc) if pbar else t_index:
         try:
-            y = rk_step(df_dt, result[i-1], dt)
+            y = rk_step(df_dt, result[i-1], dt, t=t_range[i])
             result[i, :] = y
 
             # Run listeners
-            listener_data += ([listener(y) for listener in listeners]
+            listener_data += ([listener(y, t=t_range[i]) for listener in listeners]
                               if listeners is not None else [])
 
         except Exception as e:

@@ -4,12 +4,13 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 import matplotlib
+from cobra.io import read_sbml_model
 
-from experiments.fast_dFBA import dFBA, make_shadow_price_listener, setup_drawdown, MichaelisMentenBounds, ConstantBounds, plot_shadow_prices
+from experiments.fast_dFBA import dFBA, make_shadow_price_listener, setup_drawdown, MichaelisMentenBounds, ConstantBounds, BoundFromData, plot_shadow_prices
 
 from utils.cobra_utils import get_or_create_exchange
 from utils.units import u
-from model_building.model_factory import rebuild_and_get_model
+from model_building.model_factory import rebuild_and_get_model, DEFAULT_MODEL
 from parameters.drawdown import *
 
 matplotlib.use("Agg")
@@ -132,7 +133,7 @@ def main():
     os.makedirs(data_out)
 
     # Load and set up model
-    model = rebuild_and_get_model()# MODEL_BLUEPRINT)
+    model = rebuild_and_get_model()  # MODEL_BLUEPRINT)
     setup_drawdown(model)
 
     # Set up Michaelis-Menten medium
@@ -143,17 +144,20 @@ def main():
     V_max_glc = 10 * abs(float(ex_glc._annotation["Experimental rate"]))
     V_max_ace = 10 * abs(float(ex_ace._annotation["Experimental rate"]))
 
-    dynamic_medium = {
-        ex_glc: MichaelisMentenBounds("Glucose[e]", V_max_glc, K_M.to("mM").magnitude),
-        ex_ace: MichaelisMentenBounds(
-            "ACET[e]", V_max_ace, K_M.to("mM").magnitude)
-    }
+    # dynamic_medium = {
+    #     ex_glc: MichaelisMentenBounds("Glucose[e]", V_max_glc, K_M.to("mM").magnitude),
+    #     ex_ace: MichaelisMentenBounds(
+    #         "ACET[e]", V_max_ace, K_M.to("mM").magnitude)
+    # }
 
     # Initial state
     initial_conditions = data[["Initial_mM_Glucose",
                                "Initial_mM_Acetate"]].drop_duplicates().values
+    
+    # TODO: Remove
+    initial_conditions = [initial_conditions[3]]
     for initial_glucose, initial_acetate in initial_conditions:
-        
+
         initial_biomass = (data[(data["Type"] == "counts") &
                                 (data["Time (h)"] == 0) &
                                 (data["Initial_mM_Glucose"] == initial_glucose) &
@@ -170,6 +174,25 @@ def main():
             initial_glucose.magnitude,
             initial_acetate.magnitude
         ])
+
+        # Get bounds from data
+        substrate_timeseries = data[(data["Type"] == "drawdown (umol)")
+                                    & (data["Initial_mM_Glucose"] == initial_glucose.magnitude)
+                                    & (data["Initial_mM_Acetate"] == initial_acetate.magnitude)].copy()
+        substrate_timeseries["Value"] = ((substrate_timeseries["Value"].values * u.umol) / CUE_VOLUME).to("mM")
+        substrate_timeseries = substrate_timeseries.groupby(["Metabolite", "Time (h)"])["Value"].mean().reset_index()
+        
+        g_t, g_s = substrate_timeseries[substrate_timeseries["Metabolite"] == "glucose"][["Time (h)", "Value"]].values.T
+        a_t, a_s = substrate_timeseries[substrate_timeseries["Metabolite"] == "acetate"][["Time (h)", "Value"]].values.T
+        if initial_glucose == 0:
+            g_t, g_s = np.array([0, tmax]), np.array([0, 0])
+        if initial_acetate == 0:
+            a_t, a_s = np.array([0, tmax]), np.array([0, 0])
+        
+        dynamic_medium = {
+            ex_glc: BoundFromData("Glucose[e]", g_t, g_s),
+            ex_ace: BoundFromData("ACET[e]", a_t, a_s),
+        }
 
         t, y, l = dFBA(model,
                        BIOMASS_ID,
@@ -200,7 +223,8 @@ def main():
         fig.savefig(os.path.join(
             OUTDIR, f"{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate_shadow_prices.png"))
 
-        fig, _ = plot_result(t, y, [initial_glucose, initial_acetate], data, mass_units=False)
+        fig, _ = plot_result(
+            t, y, [initial_glucose, initial_acetate], data, mass_units=False)
         fig.set_size_inches(5, 3)
         fig.tight_layout()
         fig.savefig(os.path.join(
