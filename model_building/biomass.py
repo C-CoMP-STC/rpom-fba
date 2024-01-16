@@ -98,6 +98,10 @@ def ecoli_biomass_to_rpom(r_pom_model, ecoli_biomass, manual_matches={}):
         f"\nSuccessfully linked {n_kegg_matches} metabolites by Kegg ID,"
         f"\nwith an additional {n_manual_matches} matches supplied manually"
         f"\nfor a total of {n_kegg_matches + n_manual_matches} / {len(ecoli_biomass)} successful links.\n")
+    
+    # Remove biotin - not produced by R pom
+    biotin = r_pom_model.metabolites.get_by_id("BIOTIN[c]")
+    del rpom_biomass_rxn[biotin]
 
     return rpom_biomass_rxn
 

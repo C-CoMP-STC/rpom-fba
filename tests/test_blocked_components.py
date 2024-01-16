@@ -54,7 +54,7 @@ class TestBlockedComponents():
             solution = model.optimize()
 
             assert solution.objective_value > 0, (f"Unable to {'produce' if coefficient < 0 else 'absorb'} "
-                                                f"{component} (objective value = {solution.objective_value})")
+                                                f"{component} (objective value = {solution.objective_value} < {coefficient})")
 
 
 def main():
