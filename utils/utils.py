@@ -6,3 +6,14 @@ def pp(d, t=0):
     ])
 
     return "{\n" + result + f"\n{TAB * t}}}"
+
+
+def deep_get(dict, path, default=None):
+    if not isinstance(path, tuple):
+        path = (path, )
+
+    for elem in path:
+        if elem not in dict:
+            return default
+        dict = dict[elem]
+    return dict

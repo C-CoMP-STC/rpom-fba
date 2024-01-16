@@ -107,12 +107,6 @@ def setup_drawdown(model):
     supp_medium["EX_o2"] = 20.
     model.medium = supp_medium
 
-    # Remove biotin from biomass objective
-    biotin = model.metabolites.get_by_id("BIOTIN[c]")
-    biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
-    if biotin in biomass.metabolites:
-        biomass.subtract_metabolites({biotin: biomass.metabolites[biotin]})
-
     # nadh_dehyd_rxns = [rxn for rxn in model.reactions if rxn.id.startswith("1.6.99.5")]
     # for rxn in nadh_dehyd_rxns:
     #     rxn.add_metabolites({"PROTON[c]" : -4., "PROTON[e]" : 4.})
