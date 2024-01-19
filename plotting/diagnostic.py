@@ -109,7 +109,7 @@ def plot_pathway(model, metabolite_graph, reaction_list, ax=None):
     return ax
 
 
-def plot_metabolite_fluxes(model, metabolite_id, ax=None):
+def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxes"):
     if ax is None:
         _, ax = plt.subplots()
 
@@ -117,7 +117,7 @@ def plot_metabolite_fluxes(model, metabolite_id, ax=None):
     metabolite = model.metabolites.get_by_id(metabolite_id)
     node_id = count()
     id_0 = next(node_id)
-    g.add_node(id_0, name=metabolite_id, pos=(0, 0))
+    g.add_node(id_0, label=metabolite_id, pos=(0, 0))
 
     input_metabolites = []
     output_metabolites = []
@@ -128,7 +128,10 @@ def plot_metabolite_fluxes(model, metabolite_id, ax=None):
         producing = flux * coeff > 0
 
         rxn_id = next(node_id)
-        g.add_node(rxn_id, reaction=True, name=f"{reaction.flux:.2g}")
+        g.add_node(rxn_id,
+                   reaction=True,
+                   label=f"{reaction.flux:.2g}" if label_reactions == "fluxes" else reaction.id,
+                   name=reaction.id)
 
         if producing:
             g.add_edge(rxn_id, id_0, flux = reaction.flux)
@@ -138,7 +141,7 @@ def plot_metabolite_fluxes(model, metabolite_id, ax=None):
                     continue
                 met_id = next(node_id)
                 input_metabolites.append(met_id)
-                g.add_node(met_id, name=met.id, align="right")
+                g.add_node(met_id, label=met.id, align="right")
                 g.add_edge(met_id, rxn_id, flux = reaction.flux)
 
         else:
@@ -149,7 +152,7 @@ def plot_metabolite_fluxes(model, metabolite_id, ax=None):
                     continue
                 met_id = next(node_id)
                 output_metabolites.append(met_id)
-                g.add_node(met_id, name=met.id, align="left")
+                g.add_node(met_id, label=met.id, align="left")
                 g.add_edge(rxn_id, met_id, flux = reaction.flux)
 
     # Position metabolite nodes
@@ -173,7 +176,10 @@ def plot_metabolite_fluxes(model, metabolite_id, ax=None):
 
     nx.draw_networkx(g,
                      pos={n: g.nodes[n]["pos"] for n in g.nodes},
-                     labels={n: g.nodes[n].get("name", "") for n in g.nodes},
+                     labels={
+                            n: g.nodes[n].get("label", "")
+                            for n in g.nodes
+                         },
                      #  horizontalalignment={n: g.nodes[n].get("align", "center") for n in g.nodes},
                      node_size = [0 if g.nodes[n].get("reaction", False) else 100 for n in g.nodes],
                      edge_color=[flux_color(g.edges[e]["flux"]) for e in g.edges],
