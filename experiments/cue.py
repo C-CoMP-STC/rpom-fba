@@ -133,7 +133,8 @@ def main():
     os.makedirs(data_out)
 
     # Load and set up model
-    model = rebuild_and_get_model()  # MODEL_BLUEPRINT)
+    # rebuild_and_get_model()  # MODEL_BLUEPRINT)
+    model = read_sbml_model("model/Rpom_05.xml")
     setup_drawdown(model)
 
     # Set up Michaelis-Menten medium
@@ -153,45 +154,51 @@ def main():
     # Initial state
     initial_conditions = data[["Initial_mM_Glucose",
                                "Initial_mM_Acetate"]].drop_duplicates().values
-    
-    # TODO: Remove
-    initial_conditions = [initial_conditions[3]]
-    for initial_glucose, initial_acetate in initial_conditions:
 
-        initial_biomass = (data[(data["Type"] == "counts") &
-                                (data["Time (h)"] == 0) &
-                                (data["Initial_mM_Glucose"] == initial_glucose) &
-                                (data["Initial_mM_Acetate"] == initial_acetate)
-                                ]["Value"].mean() * (1/u.mL) * MASS_PER_CELL).to("g/L")
-        tmax = (data[(data["Type"] == "counts") & (data["Initial_mM_Glucose"] == initial_glucose) & (
-            data["Initial_mM_Acetate"] == initial_acetate)]["Time (h)"].max())
+    # TODO: Remove
+    # initial_conditions = [initial_conditions[3]]
+    for initial_glucose, initial_acetate in initial_conditions:
+        condition_data = data[(data["Initial_mM_Glucose"] == initial_glucose) &
+                              (data["Initial_mM_Acetate"] == initial_acetate)]
+
+        # Get biomass timeseries from data
+        biomass_timeseries = condition_data[condition_data["Type"] == "counts"].groupby(
+            "Time (h)")["Value"].mean().reset_index()
+        biomass_timeseries["Value"] = (
+            biomass_timeseries["Value"].values * (1/u.mL) * MASS_PER_CELL).to("g/L")
+        b_t, b = biomass_timeseries.values.T
+
+        initial_biomass = b[0]
+        tmax = b_t.max()
 
         initial_glucose *= u.mM
         initial_acetate *= u.mM
 
         initial = np.array([
-            initial_biomass.magnitude,
+            initial_biomass,
             initial_glucose.magnitude,
             initial_acetate.magnitude
         ])
 
         # Get bounds from data
-        substrate_timeseries = data[(data["Type"] == "drawdown (umol)")
-                                    & (data["Initial_mM_Glucose"] == initial_glucose.magnitude)
-                                    & (data["Initial_mM_Acetate"] == initial_acetate.magnitude)].copy()
-        substrate_timeseries["Value"] = ((substrate_timeseries["Value"].values * u.umol) / CUE_VOLUME).to("mM")
-        substrate_timeseries = substrate_timeseries.groupby(["Metabolite", "Time (h)"])["Value"].mean().reset_index()
-        
-        g_t, g_s = substrate_timeseries[substrate_timeseries["Metabolite"] == "glucose"][["Time (h)", "Value"]].values.T
-        a_t, a_s = substrate_timeseries[substrate_timeseries["Metabolite"] == "acetate"][["Time (h)", "Value"]].values.T
+        substrate_timeseries = condition_data[condition_data["Type"] == "drawdown (umol)"].copy()
+        substrate_timeseries["Value"] = (
+            (substrate_timeseries["Value"].values * u.umol) / CUE_VOLUME).to("mM")
+        substrate_timeseries = substrate_timeseries.groupby(["Metabolite", "Time (h)"])[
+            "Value"].mean().reset_index()
+
+        g_t, g_s = substrate_timeseries[substrate_timeseries["Metabolite"] == "glucose"][[
+            "Time (h)", "Value"]].values.T
+        a_t, a_s = substrate_timeseries[substrate_timeseries["Metabolite"] == "acetate"][[
+            "Time (h)", "Value"]].values.T
         if initial_glucose == 0:
             g_t, g_s = np.array([0, tmax]), np.array([0, 0])
         if initial_acetate == 0:
             a_t, a_s = np.array([0, tmax]), np.array([0, 0])
-        
+
         dynamic_medium = {
-            ex_glc: BoundFromData("Glucose[e]", g_t, g_s),
-            ex_ace: BoundFromData("ACET[e]", a_t, a_s),
+            ex_glc: BoundFromData("Glucose[e]", g_t, g_s, b_t, b),
+            ex_ace: BoundFromData("ACET[e]", a_t, a_s, b_t, b),
         }
 
         t, y, l = dFBA(model,
@@ -201,6 +208,7 @@ def main():
                        CUE_VOLUME,
                        initial,
                        tmax,
+                       terminate_on_infeasible=False,
                        listeners=[make_shadow_price_listener(
                            model, ["Glucose[e]", "ACET[e]"], dynamic_medium)],
                        dt=0.1)

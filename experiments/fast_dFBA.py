@@ -44,18 +44,27 @@ class ConstantBounds:
         set_active_bound(exchange, bound)
 
 class BoundFromData:
-    def __init__(self, substrate_id, t, s) -> None:
+    def __init__(self, substrate_id, t, s, b_t, b) -> None:
         self.substrate_id = substrate_id
         self.t=t
         self.s=s
+        self.b_t=b_t
+        self.b=b
     
     def bound(self, exchange, concentration, t):
+        timepoint = (self.b_t < t).sum() - 1
+        b = self.b[timepoint]
+        
         # index of last timepoint < t
-        timepoint = (self.t < t).sum()
+        timepoint = (self.t < t).sum() - 1
+        
         ds = self.s[timepoint+1] - self.s[timepoint]
         dt = self.t[timepoint+1] - self.t[timepoint]
-        bound = ds/dt
-        set_active_bound(exchange, min(bound, 0))
+        data_bound = min(ds/dt/b, 0)
+
+        # Get environmental capacity bound
+        env_bound = -concentration / dt / b
+        set_active_bound(exchange, max(data_bound, env_bound))
 
 def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=0.01, terminate_on_infeasible=True, listeners=None, desc=""):
     medium_ids = [rxn.id for rxn in dynamic_medium.keys()]
@@ -64,17 +73,23 @@ def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=
         biomass = y[0]  # * u.g/u.L
         substrates = dict(zip(substrate_ids, y[1:]))  # mM
 
-        with model:
-            for exchange, bounds in dynamic_medium.items():
-                bounds.bound(exchange, substrates[bounds.substrate_id], t=t)
+        try:
+            with model:
+                for exchange, bounds in dynamic_medium.items():
+                    bounds.bound(exchange, substrates[bounds.substrate_id], t=t)
 
-            # Using lexicographic optimization,
-            # first optimize for biomass, then for the exchange fluxes
-            # (holding optimal biomass as a constraint),
-            # thus guaranteeing a unique optimal set of exchange fluxes.
-            lex_constraints = cobra.util.add_lexicographic_constraints(
-                model, [biomass_id] + medium_ids, ['max' for _ in range(len(medium_ids) + 1)])
-            fluxes = lex_constraints.values
+                # Using lexicographic optimization,
+                # first optimize for biomass, then for the exchange fluxes
+                # (holding optimal biomass as a constraint),
+                # thus guaranteeing a unique optimal set of exchange fluxes.
+                lex_constraints = cobra.util.add_lexicographic_constraints(
+                    model, [biomass_id] + medium_ids, ['max' for _ in range(len(medium_ids) + 1)])
+                fluxes = lex_constraints.values
+        except Exception as e:
+            if terminate_on_infeasible:
+                raise e
+            else:
+                return np.array([0 for _ in range(len(medium_ids) + 1)])
 
         fluxes *= biomass
         return fluxes
