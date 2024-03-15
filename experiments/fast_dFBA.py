@@ -16,6 +16,7 @@ from parameters.fit_uptake_rates import michaelis_menten_dynamic_system
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
 from utils.math import get_interpolator, runge_kutta
 from utils.units import u
+from gem2cue import utils as cue
 
 # matplotlib.use("Agg")
 
@@ -85,12 +86,16 @@ def dFBA(model, biomass_id, substrate_ids, dynamic_medium, volume, y0, tmax, dt=
                 lex_constraints = cobra.util.add_lexicographic_constraints(
                     model, [biomass_id] + medium_ids, ['max' for _ in range(len(medium_ids) + 1)])
                 fluxes = lex_constraints.values
+                # sol = model.optimize()
+
+
         except Exception as e:
             if terminate_on_infeasible:
                 raise e
             else:
                 return np.array([0 for _ in range(len(medium_ids) + 1)])
 
+        # fluxes = sol.fluxes
         fluxes *= biomass
         return fluxes
 
@@ -112,6 +117,41 @@ def make_shadow_price_listener(model, substrate_ids, dynamic_medium, n=10):
             return sol.shadow_prices[max_shadow_price_metabolites]
 
     return shadow_price_listener
+
+
+def make_cue_listener(model, substrate_ids, dynamic_medium):
+    def cue_listener(y, t=None):
+        biomass = y[0]  # * u.g/u.L
+        substrates = dict(zip(substrate_ids, y[1:]))  # mM
+
+        with model:
+            for exchange, bounds in dynamic_medium.items():
+                bounds.bound(exchange, substrates[bounds.substrate_id], t=t)
+            
+            sol = model.optimize()
+
+            c_ex_rxns = cue.get_c_ex_rxns(model)
+        c_uptake, c_secret = cue.get_c_ex_rxn_fluxes(sol, c_ex_rxns, "cobrapy")
+        return cue.calculate_cue(c_uptake, c_secret, "EX_co2")
+    
+    return cue_listener
+
+def make_bge_listener(model, substrate_ids, dynamic_medium):
+    def bge_listener(y, t=None):
+        biomass = y[0]  # * u.g/u.L
+        substrates = dict(zip(substrate_ids, y[1:]))  # mM
+
+        with model:
+            for exchange, bounds in dynamic_medium.items():
+                bounds.bound(exchange, substrates[bounds.substrate_id], t=t)
+            
+            sol = model.optimize()
+
+            c_ex_rxns = cue.get_c_ex_rxns(model)
+        c_uptake, c_secret = cue.get_c_ex_rxn_fluxes(sol, c_ex_rxns, "cobrapy")
+        return cue.calculate_bge(c_uptake, c_secret, "EX_co2")
+    
+    return bge_listener
 
 
 def setup_drawdown(model):
