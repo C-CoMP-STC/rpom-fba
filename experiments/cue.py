@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib
 from cobra.io import read_sbml_model
 
-from experiments.fast_dFBA import dFBA, make_shadow_price_listener, setup_drawdown, MichaelisMentenBounds, ConstantBounds, BoundFromData, plot_shadow_prices
+from experiments.fast_dFBA import dFBA, make_shadow_price_listener, make_bge_listener, setup_drawdown, MichaelisMentenBounds, ConstantBounds, BoundFromData, plot_shadow_prices
 
 from utils.cobra_utils import get_or_create_exchange
 from utils.units import u
@@ -19,7 +19,7 @@ C_PER_GLUCOSE = 6
 C_PER_ACETATE = 2
 
 
-def plot_result(t, y, initial, data, mass_units=True):
+def plot_result(t, y, c, initial, data, mass_units=True):
     glc_mw = 180.15588 * u.g / u.mol
     ace_mw = 59.04402 * u.g / u.mol
 
@@ -42,6 +42,13 @@ def plot_result(t, y, initial, data, mass_units=True):
     else:
         ax2.plot(t, y[:, 1], color='r', label=f"Glucose (simulation)")
         ax2.plot(t, y[:, 2], color='orange', label=f"Acetate (simulation)")
+
+    # Plot bge
+    ax3 = ax.twinx()
+    ax3.plot(t, c, "k--")
+    ax3.set_ylabel("BGE")
+    ax3.set_ylim(0, 1)
+    ax3.spines['right'].set_position(('outward', 50))
 
     ax.set_ylabel('Biomass (g/L)', color='b')
     ax2.set_ylabel(f"Substrate ({'g/L' if mass_units else 'mM'})", color='r')
@@ -209,8 +216,10 @@ def main():
                        initial,
                        tmax,
                        terminate_on_infeasible=False,
-                       listeners=[make_shadow_price_listener(
-                           model, ["Glucose[e]", "ACET[e]"], dynamic_medium)],
+                       listeners=[
+                           make_shadow_price_listener(model, ["Glucose[e]", "ACET[e]"], dynamic_medium),
+                           make_bge_listener(model, ["Glucose[e]", "ACET[e]"], dynamic_medium)
+                           ],
                        dt=0.1)
 
         # Save data
@@ -218,22 +227,24 @@ def main():
                                   "Biomass (g/L)": y[:, 0],
                                   "Glucose (mM)": y[:, 1],
                                   "Acetate (mM)": y[:, 2]})
-        sp = pd.concat(l, axis=1, ignore_index=True).T
+        sp = pd.concat(l[0], axis=1, ignore_index=True).T
         save_data = pd.concat((save_data, sp), axis=1)
         save_data.to_csv(os.path.join(
             data_out, f"data_{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate.csv"), index=False)
 
-        # Plot data
-        fig, axs = plot_shadow_prices(l, t)
+        # Plot shadow prices
+        fig, axs = plot_shadow_prices(l[0], t)
         axs[0].set_title(
             f"{initial_glucose.magnitude:.2f}mM Glucose, {initial_acetate.magnitude:.2f} mM Acetate")
         fig.set_size_inches(5, len(axs))
         fig.savefig(os.path.join(
             OUTDIR, f"{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate_shadow_prices.png"))
 
+        # Plot data
+        c = l[1]
         fig, _ = plot_result(
-            t, y, [initial_glucose, initial_acetate], data, mass_units=False)
-        fig.set_size_inches(5, 3)
+            t, y, c, [initial_glucose, initial_acetate], data, mass_units=False)
+        fig.set_size_inches(6, 3)
         fig.tight_layout()
         fig.savefig(os.path.join(
             OUTDIR, f"{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate_dFBA.png"))

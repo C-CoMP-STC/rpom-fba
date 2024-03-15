@@ -28,7 +28,7 @@ def runge_kutta(df_dt,
 
     result = np.zeros((t_range.size, y0.size))
     result[0, :] = y0
-    listener_data = ([listener(y0, tmin) for listener in listeners]
+    listener_data = ([[listener(y0, tmin)] for listener in listeners]
                      if listeners is not None else [])
 
     t_index = range(1, len(t_range))
@@ -38,8 +38,11 @@ def runge_kutta(df_dt,
             result[i, :] = y
 
             # Run listeners
-            listener_data += ([listener(y, t=t_range[i]) for listener in listeners]
-                              if listeners is not None else [])
+            if listeners is not None:
+                for l, listener in enumerate(listeners):
+                    listener_data[l].append(listener(y, t=t_range[i]))
+            # listener_data += ([listener(y, t=t_range[i]) for listener in listeners]
+            #                   if listeners is not None else [])
 
         except Exception as e:
             if terminate_on_error:
