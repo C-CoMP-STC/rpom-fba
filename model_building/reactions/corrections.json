@@ -71,5 +71,14 @@
         "id": "PPENTOMUT-RXN-RIBOSE-1P//CPD-15318.21.",
         "lower_bound" : -1000.0,
         "upper_bound": 1000.0
+    },
+    {
+        "id": "PHB-SYNTHESIS",
+        "metabolites" : {
+            "CPD-650[c]" : -1.0,
+            "PROTON[c]" : 1.0,
+            "CO-A[c]" : 1.0,
+            "PHB-MONOMER[c]" : 1.0
+        }
     }
 ]

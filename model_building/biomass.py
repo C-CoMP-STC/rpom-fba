@@ -1,10 +1,12 @@
 import json
 
-from cobra import Reaction
+from cobra import Reaction, Metabolite
 from cobra.io import load_model
 
 
 MANUAL_METABOLITE_MATCHES = "model_building/manual_met_links.json"
+HWA_BIOMASS = "model_building/reactions/hwa_biomass.json"
+
 
 def get_ecoli_biomass():
     ecoli_model = load_model("iJO1366")
@@ -98,7 +100,7 @@ def ecoli_biomass_to_rpom(r_pom_model, ecoli_biomass, manual_matches={}):
         f"\nSuccessfully linked {n_kegg_matches} metabolites by Kegg ID,"
         f"\nwith an additional {n_manual_matches} matches supplied manually"
         f"\nfor a total of {n_kegg_matches + n_manual_matches} / {len(ecoli_biomass)} successful links.\n")
-    
+
     # Remove biotin - not produced by R pom
     biotin = r_pom_model.metabolites.get_by_id("BIOTIN[c]")
     del rpom_biomass_rxn[biotin]
@@ -151,3 +153,31 @@ def add_ecoli_full_biomass_to_model(model):
     # Add to model, set as objective
     model.add_reactions([biomass_rxn])
     model.objective = biomass_rxn
+
+
+def add_hwa_biomass_to_model(model):
+    with open(HWA_BIOMASS, "r") as f:
+        biomass_reactions = json.load(f)
+
+    # Create missing pseudo-metabolites
+    biomass_stoich = biomass_reactions["Rpom_hwa_biomass"]
+    for met in biomass_stoich:
+        try:
+            model.metabolites.get_by_id(met)
+        except:
+            comp = met[met.index("[")+1:met.index("]")]
+            model.add_metabolites(Metabolite(met, compartment=comp))
+            print(f"Added {met}.")
+
+    # Create reactions
+    for rxnid, stoich in biomass_reactions.items():
+        reaction = Reaction(rxnid, rxnid)
+        reaction.add_metabolites(
+            {
+                model.metabolites.get_by_id(metid): coeff
+                for metid, coeff in stoich.items()
+            }
+        )
+        model.add_reactions([reaction])
+    
+    model.objective = model.reactions.get_by_id("Rpom_hwa_biomass")
