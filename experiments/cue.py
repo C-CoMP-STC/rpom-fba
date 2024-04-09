@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 import os
+import pickle
 from datetime import datetime
 import numpy as np
 import pandas as pd
@@ -19,12 +20,10 @@ C_PER_GLUCOSE = 6
 C_PER_ACETATE = 2
 
 
-def plot_result(t, y, c, initial, data, mass_units=True):
+def plot_result(t, y, c, initial, condition_data, mass_units=True):
     glc_mw = 180.15588 * u.g / u.mol
     ace_mw = 59.04402 * u.g / u.mol
 
-    condition_data = data[(data["Initial_mM_Glucose"] == initial[0].magnitude) &
-                          (data["Initial_mM_Acetate"] == initial[1].magnitude)]
     fig, ax = plt.subplots()
 
     # Plot simulation results
@@ -54,84 +53,48 @@ def plot_result(t, y, c, initial, data, mass_units=True):
     ax2.set_ylabel(f"Substrate ({'g/L' if mass_units else 'mM'})", color='r')
 
     # Plot biomass from data
-    mass_data = condition_data[condition_data["Type"] == "counts"].copy()
-    mass_data["Mass (g/L)"] = ((mass_data["Value"].values /
-                                u.mL) * MASS_PER_CELL).to("g/L")
-    mass_mean = mass_data.groupby(
-        "Time (h)")["Mass (g/L)"].mean().reset_index()
-    mass_min = mass_data.groupby("Time (h)")["Mass (g/L)"].min().reset_index()
-    mass_max = mass_data.groupby("Time (h)")["Mass (g/L)"].max().reset_index()
+    mass_t = condition_data["mean"]["b_t"]
+    mass_mean = condition_data["mean"]["b_s"]
+    mass_min = condition_data["raw"]["raw_b"].min(axis=0)
+    mass_max = condition_data["raw"]["raw_b"].max(axis=0)
 
-    ax.plot(mass_mean["Time (h)"], mass_mean["Mass (g/L)"], "b--")
-    ax.fill_between(mass_min["Time (h)"], mass_min["Mass (g/L)"],
-                    mass_max["Mass (g/L)"], color="b", alpha=0.2)
-
+    ax.plot(mass_t, mass_mean, "b--")
+    ax.fill_between(mass_t, mass_min,
+                    mass_max, color="b", alpha=0.2)
+    
     # Plot substrates from data
-    substrate_data = condition_data[condition_data["Type"]
-                                    == "drawdown (umol)"].copy()
+    glucose_t = condition_data["raw"]["raw_g_t"]
+    glucose = condition_data["raw"]["raw_g_s"]
+    acetate_t = condition_data["raw"]["raw_a_t"]
+    acetate = condition_data["raw"]["raw_a_s"]
+    if mass_units:
+        glucose = (glucose * u.mM * glc_mw).to("g/L").magnitude
+        acetate = (acetate * u.mM * ace_mw).to("g/L").magnitude
+    
+    if glucose.size > 0:
+        ax2.plot(glucose_t, glucose.mean(axis=0), "r--")
+        ax2.fill_between(glucose_t, glucose.min(axis=0), glucose.max(axis=0), color="r", alpha=0.2)
 
-    if substrate_data.size > 0:
-        substrate_data["Drawdown (mM)"] = ((substrate_data["Value"].values * u.umol).to("mmol") /
-                                           CUE_VOLUME /
-                                           substrate_data["Metabolite"].apply(lambda x: {"glucose": C_PER_GLUCOSE,
-                                                                                         "acetate": C_PER_ACETATE}[x]).values
-                                           ).to("mM").magnitude
-        glucose_data = substrate_data[substrate_data["Metabolite"] == "glucose"]
-        acetate_data = substrate_data[substrate_data["Metabolite"] == "acetate"]
-
-        glucose_mean = glucose_data.groupby(
-            "Time (h)")["Drawdown (mM)"].mean().reset_index()
-        glucose_min = glucose_data.groupby(
-            "Time (h)")["Drawdown (mM)"].min().reset_index()
-        glucose_max = glucose_data.groupby(
-            "Time (h)")["Drawdown (mM)"].max().reset_index()
-
-        acetate_mean = acetate_data.groupby(
-            "Time (h)")["Drawdown (mM)"].mean().reset_index()
-        acetate_min = acetate_data.groupby(
-            "Time (h)")["Drawdown (mM)"].min().reset_index()
-        acetate_max = acetate_data.groupby(
-            "Time (h)")["Drawdown (mM)"].max().reset_index()
-
-        if mass_units:
-            glucose_mean["Drawdown (mM)"] = (
-                (glucose_mean["Drawdown (mM)"].values * u.mM) * glc_mw).to("g/L").magnitude
-            glucose_min["Drawdown (mM)"] = (
-                (glucose_min["Drawdown (mM)"].values * u.mM) * glc_mw).to("g/L").magnitude
-            glucose_max["Drawdown (mM)"] = (
-                (glucose_max["Drawdown (mM)"].values * u.mM) * glc_mw).to("g/L").magnitude
-
-            acetate_mean["Drawdown (mM)"] = (
-                (acetate_mean["Drawdown (mM)"].values * u.mM) * ace_mw).to("g/L").magnitude
-            acetate_min["Drawdown (mM)"] = (
-                (acetate_min["Drawdown (mM)"].values * u.mM) * ace_mw).to("g/L").magnitude
-            acetate_max["Drawdown (mM)"] = (
-                (acetate_max["Drawdown (mM)"].values * u.mM) * ace_mw).to("g/L").magnitude
-
-        ax2.plot(glucose_mean["Time (h)"],
-                 glucose_mean["Drawdown (mM)"], "r--")
-        ax2.fill_between(glucose_min["Time (h)"], glucose_min["Drawdown (mM)"],
-                         glucose_max["Drawdown (mM)"], color="r", alpha=0.2)
-
-        ax2.plot(acetate_mean["Time (h)"],
-                 acetate_mean["Drawdown (mM)"], "orange", linestyle="--")
-        ax2.fill_between(acetate_min["Time (h)"], acetate_min["Drawdown (mM)"],
-                         acetate_max["Drawdown (mM)"], color="orange", alpha=0.2)
+    if acetate.size > 0:
+        ax2.plot(acetate_t, acetate.mean(axis=0), "orange", linestyle="--")
+        ax2.fill_between(acetate_t, acetate.min(axis=0), acetate.max(axis=0),
+                        color="orange", alpha=0.2)
 
     ax2.legend()
-
     return fig, [ax, ax2]
 
 
 def main():
     MODEL_BLUEPRINT = "model_building/blueprints/Rpom_05_ecoli_core.json"
     OUTDIR = "out/dFBA/CUE"
-    BIOMASS_ID = "RPOM_provisional_biomass"
+    # BIOMASS_ID = "RPOM_provisional_biomass"
+    BIOMASS_ID = "Rpom_hwa_biomass"
 
-    DATA_FILE = "data/clean/CUE/cue_data.csv"
+    DATA_FILE = "data/clean/CUE/dFBA.pkl"
 
     # Load data
-    data = pd.read_csv(DATA_FILE)
+    with open(DATA_FILE, "rb") as f:
+        data = pickle.load(f)
 
     # Ensure output directory exists
     os.makedirs(OUTDIR, exist_ok=True)
@@ -141,7 +104,8 @@ def main():
 
     # Load and set up model
     # rebuild_and_get_model()  # MODEL_BLUEPRINT)
-    model = read_sbml_model("model/Rpom_05.xml")
+    # model = read_sbml_model("model/Rpom_05.xml")
+    model = read_sbml_model("model/Rpom_05_hwa.xml")
     setup_drawdown(model)
 
     # Set up Michaelis-Menten medium
@@ -152,34 +116,11 @@ def main():
     V_max_glc = 10 * abs(float(ex_glc._annotation["Experimental rate"]))
     V_max_ace = 10 * abs(float(ex_ace._annotation["Experimental rate"]))
 
-    # dynamic_medium = {
-    #     ex_glc: MichaelisMentenBounds("Glucose[e]", V_max_glc, K_M.to("mM").magnitude),
-    #     ex_ace: MichaelisMentenBounds(
-    #         "ACET[e]", V_max_ace, K_M.to("mM").magnitude)
-    # }
-
-    # Initial state
-    initial_conditions = data[["Initial_mM_Glucose",
-                               "Initial_mM_Acetate"]].drop_duplicates().values
-
-    # TODO: Remove
-    # initial_conditions = [initial_conditions[3]]
-    for initial_glucose, initial_acetate in initial_conditions:
-        condition_data = data[(data["Initial_mM_Glucose"] == initial_glucose) &
-                              (data["Initial_mM_Acetate"] == initial_acetate)]
-
+    for (initial_glucose, initial_acetate), condition_data in data.items():
         # Get biomass timeseries from data
-        biomass_timeseries = condition_data[condition_data["Type"] == "counts"].groupby(
-            "Time (h)")["Value"].mean().reset_index()
-        biomass_timeseries["Value"] = (
-            biomass_timeseries["Value"].values * (1/u.mL) * MASS_PER_CELL).to("g/L")
-        b_t, b = biomass_timeseries.values.T
-
+        b_t, b = condition_data["mean"]["b_t"], condition_data["mean"]["b_s"]
         initial_biomass = b[0]
         tmax = b_t.max()
-
-        initial_glucose *= u.mM
-        initial_acetate *= u.mM
 
         initial = np.array([
             initial_biomass,
@@ -187,22 +128,18 @@ def main():
             initial_acetate.magnitude
         ])
 
-        # Get bounds from data
-        substrate_timeseries = condition_data[condition_data["Type"] == "drawdown (umol)"].copy()
-        substrate_timeseries["Value"] = (
-            (substrate_timeseries["Value"].values * u.umol) / CUE_VOLUME).to("mM")
-        substrate_timeseries = substrate_timeseries.groupby(["Metabolite", "Time (h)"])[
-            "Value"].mean().reset_index()
+        # Get glucose and acetate traces from data
+        g_t = condition_data["mean"]["g_t"]
+        g_s = condition_data["mean"]["g_s"]
+        a_t = condition_data["mean"]["a_t"]
+        a_s = condition_data["mean"]["a_s"]
 
-        g_t, g_s = substrate_timeseries[substrate_timeseries["Metabolite"] == "glucose"][[
-            "Time (h)", "Value"]].values.T
-        a_t, a_s = substrate_timeseries[substrate_timeseries["Metabolite"] == "acetate"][[
-            "Time (h)", "Value"]].values.T
         if initial_glucose == 0:
             g_t, g_s = np.array([0, tmax]), np.array([0, 0])
         if initial_acetate == 0:
             a_t, a_s = np.array([0, tmax]), np.array([0, 0])
 
+        # Make bounds from data
         dynamic_medium = {
             ex_glc: BoundFromData("Glucose[e]", g_t, g_s, b_t, b),
             ex_ace: BoundFromData("ACET[e]", a_t, a_s, b_t, b),
@@ -217,9 +154,11 @@ def main():
                        tmax,
                        terminate_on_infeasible=False,
                        listeners=[
-                           make_shadow_price_listener(model, ["Glucose[e]", "ACET[e]"], dynamic_medium),
-                           make_bge_listener(model, ["Glucose[e]", "ACET[e]"], dynamic_medium)
-                           ],
+                           make_shadow_price_listener(
+                               model, ["Glucose[e]", "ACET[e]"], dynamic_medium),
+                           make_bge_listener(
+                               model, ["Glucose[e]", "ACET[e]"], dynamic_medium)
+                       ],
                        dt=0.1)
 
         # Save data
@@ -243,7 +182,7 @@ def main():
         # Plot data
         c = l[1]
         fig, _ = plot_result(
-            t, y, c, [initial_glucose, initial_acetate], data, mass_units=False)
+            t, y, c, [initial_glucose, initial_acetate], condition_data, mass_units=False)
         fig.set_size_inches(6, 3)
         fig.tight_layout()
         fig.savefig(os.path.join(

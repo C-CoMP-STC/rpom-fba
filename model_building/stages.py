@@ -8,7 +8,7 @@ from cobra.core.metabolite import Metabolite
 from cobra.core.reaction import Reaction
 
 from model_building.biomass import (add_ecoli_core_biomass_to_model,
-                     add_ecoli_full_biomass_to_model)
+                     add_ecoli_full_biomass_to_model, add_hwa_biomass_to_model)
 from model_building.uptake_rxns import add_uptake_reactions, get_uptake_data
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
 from model_building.metabolites.metabolites import ADDED_METABOLITES
@@ -69,6 +69,9 @@ class BiomassObjective(Stage):
                 add_ecoli_core_biomass_to_model(model)
             case "ecoli-full":
                 add_ecoli_full_biomass_to_model(model)
+            case "hwa":
+                add_ecoli_full_biomass_to_model(model)  # Debugging
+                add_hwa_biomass_to_model(model)
 
         return model
 

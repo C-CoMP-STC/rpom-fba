@@ -1,10 +1,15 @@
+import pickle
+import numpy as np
 import pandas as pd
+from utils.units import u
+from parameters.drawdown import MASS_PER_CELL, CUE_VOLUME
 
 
 def main():
     CARBONS_PER_GLUCOSE = 6
     CARBONS_PER_ACETATE = 2
     OUTFILE = "data/clean/CUE/cue_data.csv"
+    OUTFILE_DFBA = "data/clean/CUE/dFBA.pkl"
 
     files = {
         "doubles": {
@@ -161,6 +166,103 @@ def main():
         all_data[["Initial_C_Glucose", "Initial_C_Acetate"]] / [CARBONS_PER_GLUCOSE, CARBONS_PER_ACETATE])
     all_data.to_csv(OUTFILE, index=False)
 
+    # Create file with easily digestible condition data for running dFBA experiments
+    dFBA_condition_data = {}
+    initial_conditions = all_data[["Initial_mM_Glucose",
+                                   "Initial_mM_Acetate"]].drop_duplicates().values
+
+    for initial_glucose, initial_acetate in initial_conditions:
+        condition_data = all_data[(all_data["Initial_mM_Glucose"] == initial_glucose) &
+                                  (all_data["Initial_mM_Acetate"] == initial_acetate)]
+
+        # Get biomass timeseries from data
+        biomass_timeseries = condition_data[condition_data["Type"] == "counts"].groupby(
+            "Time (h)")["Value"].mean().reset_index()
+        biomass_timeseries["Value"] = (
+            biomass_timeseries["Value"].values * (1/u.mL) * MASS_PER_CELL).to("g/L")
+        b_t, b = biomass_timeseries.values.T
+
+        initial_biomass = b[0]
+        tmax = b_t.max()
+
+        initial_glucose *= u.mM
+        initial_acetate *= u.mM
+
+        initial = np.array([
+            initial_biomass,
+            initial_glucose.magnitude,
+            initial_acetate.magnitude
+        ])
+
+        # Get bounds from data
+        substrate_timeseries = condition_data[condition_data["Type"] == "drawdown (umol)"].copy(
+        )
+        substrate_timeseries["Value"] = (
+            (substrate_timeseries["Value"].values * u.umol) / CUE_VOLUME).to("mM")
+        substrate_timeseries = substrate_timeseries.groupby(["Metabolite", "Time (h)"])[
+            "Value"].mean().reset_index()
+
+        g_t, g_s = substrate_timeseries[substrate_timeseries["Metabolite"] == "glucose"][[
+            "Time (h)", "Value"]].values.T
+        g_s /= CARBONS_PER_GLUCOSE
+        a_t, a_s = substrate_timeseries[substrate_timeseries["Metabolite"] == "acetate"][[
+            "Time (h)", "Value"]].values.T
+        a_s /= CARBONS_PER_ACETATE
+        if initial_glucose == 0:
+            g_t, g_s = np.array([0, tmax]), np.array([0, 0])
+        if initial_acetate == 0:
+            a_t, a_s = np.array([0, tmax]), np.array([0, 0])
+
+        # Raw biomass data
+        mass_data = condition_data[condition_data["Type"] == "counts"].copy()
+        mass_data["Mass (g/L)"] = ((mass_data["Value"].values /
+                      u.mL) * MASS_PER_CELL).to("g/L")
+        mass_data = mass_data.pivot(
+            index="Time (h)",
+            columns="Sample" if initial_glucose + initial_acetate != 0 else "Condition",
+            values="Mass (g/L)").reset_index().values
+        raw_b_t = mass_data[:, 0]
+        raw_b = mass_data[:, 1:].T
+
+        # Raw substrate data
+        substrate_data = condition_data[condition_data["Type"]
+                                        == "drawdown (umol)"].copy()
+        substrate_data["Value"] = (
+            (substrate_data["Value"].values * u.umol) / CUE_VOLUME).to("mM")
+
+        raw_glucose = substrate_data[substrate_data["Metabolite"] == "glucose"].pivot(
+            index="Time (h)", columns="Sample", values="Value").reset_index().values
+        raw_g_t = raw_glucose[:,0]
+        raw_g_s = raw_glucose[:,1:].T / CARBONS_PER_GLUCOSE
+
+        raw_acetate = substrate_data[substrate_data["Metabolite"] == "acetate"].pivot(
+            index="Time (h)", columns="Sample", values="Value").reset_index().values
+        raw_a_t = raw_acetate[:,0]
+        raw_a_s = raw_acetate[:,1:].T / CARBONS_PER_ACETATE
+
+        dFBA_condition_data[(initial_glucose, initial_acetate)] = {
+            "raw": {
+                "raw_b_t": raw_b_t,
+                "raw_b": raw_b,
+                "raw_g_t": raw_g_t,
+                "raw_g_s": raw_g_s,
+                "raw_a_t": raw_a_t,
+                "raw_a_s": raw_a_s,
+            },
+            "mean": {
+                "g_t": g_t,
+                "g_s": g_s,
+                "a_t": a_t,
+                "a_s": a_s,
+                "b_t": b_t,
+                "b_s": b
+            }
+        }
+        
+    # Save data for dFBA
+    with open(OUTFILE_DFBA, "wb") as f:
+        pickle.dump(dFBA_condition_data, f)
+        
 
 if __name__ == "__main__":
     main()

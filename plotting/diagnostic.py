@@ -109,7 +109,7 @@ def plot_pathway(model, metabolite_graph, reaction_list, ax=None):
     return ax
 
 
-def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxes"):
+def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxes", include_zeros=True):
     if ax is None:
         _, ax = plt.subplots()
 
@@ -123,6 +123,9 @@ def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxe
     output_metabolites = []
     for reaction in metabolite.reactions:
         flux = reaction.flux
+
+        if not include_zeros and flux == 0:
+            continue
 
         coeff = reaction.metabolites[metabolite]
         producing = flux * coeff > 0
