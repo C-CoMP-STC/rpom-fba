@@ -1,7 +1,7 @@
 {
     "BaseModel": "base_model/Rpom_05.xml",
     "MetaData": null,
-    "BiomassObjective": "ecoli-full",
+    "BiomassObjective": "hwa",
     "MaintenanceFlux": false,
     "SetMedium": "data/media/L1_minimal_medium.json",
     "AddMetabolites": null,
