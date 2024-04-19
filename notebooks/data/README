@@ -1,0 +1,1 @@
+This is really stupid but I duplicated the data directory to avoid relative path issues with ipynbs

@@ -10,6 +10,7 @@
     "pe161_p": "CPD-17086[p]",
     "thf_c": "THF-GLU-N[c]",
     "udcpdp_c":"UNDECAPRENYL-DIPHOSPHATE[c]",
+    "pheme_c": "PROTOHEME[c]",
 
     "COMMENTS": "thf_c = THF-GLU-N[c] is somewhat uncertain but probably fine"
 }
