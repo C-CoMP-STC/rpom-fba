@@ -7,23 +7,16 @@ def get_interpolator(t, y):
     return Y_t
 
 
-def runge_kutta(df_dt,
-         y0,
-         tmin,
-         tmax,
-         dt=0.01,
-         terminate_on_error=True,
-         pbar=True,
-         pbar_desc=None,
-         listeners=None):
-    def rk_step(df_dt, y0, dt, t=None):
-        k1 = df_dt(y0, t=t) * dt
-        k2 = df_dt(y0 + 0.5 * k1, t=t) * dt
-        k3 = df_dt(y0 + 0.5 * k2, t=t) * dt
-        k4 = df_dt(y0 + k3, t=t) * dt
-
-        return y0 + (k1 + 2*k2 + 2*k3 + k4)/6
-
+def integrate(integrator_step,
+              df_dt,
+              y0,
+              tmin,
+              tmax,
+              dt=0.01,
+              terminate_on_error=True,
+              pbar=True,
+              pbar_desc=None,
+              listeners=None):
     t_range = np.arange(tmin, tmax, dt)
 
     result = np.zeros((t_range.size, y0.size))
@@ -34,7 +27,7 @@ def runge_kutta(df_dt,
     t_index = range(1, len(t_range))
     for i in tqdm(t_index, pbar_desc) if pbar else t_index:
         try:
-            y = rk_step(df_dt, result[i-1], dt, t=t_range[i])
+            y = integrator_step(df_dt, result[i-1], dt, t=t_range[i])
             result[i, :] = y
 
             # Run listeners
@@ -50,3 +43,57 @@ def runge_kutta(df_dt,
             raise e
 
     return t_range, result, listener_data
+
+
+def euler_step(df_dt, y0, dt, t=None):
+    return y0 + df_dt(y0, t=t) * dt
+
+
+def euler(df_dt,
+          y0,
+          tmin,
+          tmax,
+          dt=0.01,
+          terminate_on_error=True,
+          pbar=True,
+          pbar_desc=None,
+          listeners=None):
+    return integrate(euler_step,
+                     df_dt,
+                     y0,
+                     tmin,
+                     tmax,
+                     dt,
+                     terminate_on_error,
+                     pbar,
+                     pbar_desc,
+                     listeners)
+
+
+def rk_step(df_dt, y0, dt, t=None):
+    k1 = df_dt(y0, t=t) * dt
+    k2 = df_dt(y0 + 0.5 * k1, t=t) * dt
+    k3 = df_dt(y0 + 0.5 * k2, t=t) * dt
+    k4 = df_dt(y0 + k3, t=t) * dt
+    return y0 + (k1 + 2*k2 + 2*k3 + k4)/6
+
+
+def runge_kutta(df_dt,
+                y0,
+                tmin,
+                tmax,
+                dt=0.01,
+                terminate_on_error=True,
+                pbar=True,
+                pbar_desc=None,
+                listeners=None):
+    return integrate(rk_step,
+                     df_dt,
+                     y0,
+                     tmin,
+                     tmax,
+                     dt,
+                     terminate_on_error,
+                     pbar,
+                     pbar_desc,
+                     listeners)

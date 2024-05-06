@@ -123,7 +123,7 @@ def get_active_bound(reaction: Reaction) -> float:
         return reaction.upper_bound
 
 
-def set_active_bound(reaction: Reaction, bound: float) -> None:
+def set_active_bound(reaction: Reaction, bound: float, abs_bounds=True) -> None:
     """Set active bound for boundary reaction (i.e., the bound constraining
     production of metabolites).
 
@@ -136,10 +136,12 @@ def set_active_bound(reaction: Reaction, bound: float) -> None:
         if reaction has reactants (metabolites that are consumed). If reaction
         has reactants, it seems the upper bound won't be set.
     """
+
+    # TODO: This abs_bounds thing is really shoddy but I want to avoid changing set_active_bound everywhere it crops up for now
     if reaction.reactants:
-        reaction.lower_bound = -abs(bound)
+        reaction.lower_bound = -abs(bound) if abs_bounds else bound
     elif reaction.products:
-        reaction.upper_bound = abs(bound)
+        reaction.upper_bound = abs(bound) if abs_bounds else bound
 
 
 def set_fixed(reaction: Reaction, flux: float) -> Reaction:
