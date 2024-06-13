@@ -1,5 +1,6 @@
 import json
 import os
+import functools
 from abc import abstractmethod
 from dataclasses import dataclass
 from itertools import pairwise
@@ -46,16 +47,19 @@ class Bounds:
 #         set_active_bound(exchange, mm_bound)
 
 
-# class ConstantBounds:
-#     def __init__(self, substrate_id, V, biomass, dt=0.01):
-#         self.substrate_id = substrate_id
-#         self.V = V
-#         self.dt = dt
+class ConstantBounds(Bounds):
+    def __init__(self, exchange, substrate_id, V, dt=0.01) -> None:
+        self.exchange = exchange
+        self.substrate_id = substrate_id
+        self.V = V
+        self.dt = dt
 
-#     def bound(self, exchange, concentration, biomass, t=None):
-#         concentration = max(concentration, 0)
-#         bound = min(self.V, concentration / self.dt)
-#         set_active_bound(exchange, bound)
+    def bound(self, concentration, biomass, t):
+        concentration = max(concentration, 0)
+        env_bound = min(0, -concentration / self.dt / biomass)
+        bound = max(self.V, env_bound)
+        # set_active_bound(self.exchange, bound)
+        set_active_bound(self.exchange, bound, abs_bounds=False)
 
 
 class BoundFromData(Bounds):
@@ -69,15 +73,18 @@ class BoundFromData(Bounds):
 
     def bound(self, concentration, biomass, t):
         # index of last timepoint < t
-        timepoint = (self.t < t).sum() - 1
-        ds = self.s[timepoint + 1] - self.s[timepoint]
-        dt = self.t[timepoint + 1] - self.t[timepoint]
+        timepoint = (self.t <= t).sum() - 1
+        # ds = self.s[timepoint + 1] - self.s[timepoint]
+        # dt = self.t[timepoint + 1] - self.t[timepoint]
+        ds = self.s[timepoint + 1] - concentration
+        dt = self.t[timepoint + 1] - t
 
         data_bound = min(ds / dt / biomass, 0)
 
         # Get environmental capacity bound
         env_bound = -concentration / dt / biomass
-        set_active_bound(self.exchange, max(data_bound, env_bound), abs_bounds=False)
+        set_active_bound(self.exchange, max(
+            data_bound, env_bound), abs_bounds=False)
 
 
 def bound_and_optimize(model,
@@ -85,7 +92,8 @@ def bound_and_optimize(model,
                        dynamic_medium,
                        biomass,
                        concentrations,
-                       t) -> np.ndarray:
+                       t,
+                       callback=None):
     exchanges = [bound.exchange for bound in dynamic_medium]
 
     with model:
@@ -96,12 +104,25 @@ def bound_and_optimize(model,
         # first optimize for biomass, then for the exchange fluxes
         # (holding optimal biomass as a constraint),
         # thus guaranteeing a unique optimal set of exchange fluxes.
-        lex_constraints = cobra.util.add_lexicographic_constraints(
-            model,
-            [biomass_id] + [ex.id for ex in exchanges],
-            ["max" for _ in range(len(exchanges) + 1)],
-        )
-        fluxes = lex_constraints.values
+        
+        # lex_constraints = cobra.util.add_lexicographic_constraints(
+        #     model,
+        #     [biomass_id] + [ex.id for ex in exchanges],
+        #     ["max" for _ in range(len(exchanges) + 1)],
+        # )
+        # fluxes = lex_constraints.values
+
+        sol = model.optimize()
+        fluxes = [sol.objective_value] + [sol.fluxes[ex.id] for ex in exchanges]
+
+        if callback is not None:
+            return fluxes, callback({
+                "model": model,
+                "biomass_id": biomass_id,
+                "dynamic_medium": dynamic_medium,
+                "biomass": biomass,
+                "concentrations": concentrations,
+                "t": t})
 
     return np.array(fluxes)
 
@@ -125,7 +146,7 @@ def dFBA(
     def df_dt(y, t):
         biomass = y[0]  # g/L
         concentrations = y[1:]  # mM
-
+        
         try:
             fluxes = bound_and_optimize(model,
                                         biomass_id,
@@ -135,7 +156,7 @@ def dFBA(
                                         t)
             fluxes *= biomass
             return fluxes
-        
+
         except Exception as e:
             if terminate_on_infeasible:
                 raise e
@@ -189,40 +210,81 @@ def make_shadow_price_listener(model, substrate_ids, dynamic_medium, n=10):
     return shadow_price_listener
 
 
-def make_cue_listener(model, substrate_ids, dynamic_medium):
+def make_cue_listener(model, biomass_id, dynamic_medium, co2_exchange="EX_co2"):
     def cue_listener(y, t=None):
         biomass = y[0]  # * u.g/u.L
-        substrates = dict(zip(substrate_ids, y[1:]))  # mM
+        substrates = y[1:]  # mM
 
-        with model:
-            for exchange, bounds in dynamic_medium.items():
-                bounds.bound(exchange, substrates[bounds.substrate_id], t=t)
+        _, (sol, c_ex_rxns) = bound_and_optimize(
+            model,
+            biomass_id,
+            dynamic_medium,
+            biomass,
+            substrates,
+            t,
+            callback=lambda d: (model.optimize(), cue.get_c_ex_rxns(d["model"])))
 
-            sol = model.optimize()
-
-            c_ex_rxns = cue.get_c_ex_rxns(model)
         c_uptake, c_secret = cue.get_c_ex_rxn_fluxes(sol, c_ex_rxns, "cobrapy")
-        return cue.calculate_cue(c_uptake, c_secret, "EX_co2")
+        return cue.calculate_cue(c_uptake, c_secret, co2_exchange)
 
     return cue_listener
 
 
-def make_bge_listener(model, substrate_ids, dynamic_medium):
+def make_bge_listener(model, biomass_id, dynamic_medium, co2_exchange="EX_co2"):
     def bge_listener(y, t=None):
         biomass = y[0]  # * u.g/u.L
-        substrates = dict(zip(substrate_ids, y[1:]))  # mM
+        substrates = y[1:]  # mM
 
-        with model:
-            for exchange, bounds in dynamic_medium.items():
-                bounds.bound(exchange, substrates[bounds.substrate_id], t=t)
+        _, (sol, c_ex_rxns) = bound_and_optimize(
+            model,
+            biomass_id,
+            dynamic_medium,
+            biomass,
+            substrates,
+            t,
+            callback=lambda d: (model.optimize(), cue.get_c_ex_rxns(d["model"])))
 
-            sol = model.optimize()
-
-            c_ex_rxns = cue.get_c_ex_rxns(model)
         c_uptake, c_secret = cue.get_c_ex_rxn_fluxes(sol, c_ex_rxns, "cobrapy")
-        return cue.calculate_bge(c_uptake, c_secret, "EX_co2")
+        return cue.calculate_bge(c_uptake, c_secret, co2_exchange)
 
     return bge_listener
+
+
+def make_growth_rate_listener(model, biomass_id, dynamic_medium):
+    def growth_rate_listener(y, t=None):
+        biomass = y[0]  # * u.g/u.L
+        substrates = y[1:]  # mM
+
+        fluxes = bound_and_optimize(
+            model,
+            biomass_id,
+            dynamic_medium,
+            biomass,
+            substrates,
+            t)
+
+        return fluxes[0]
+
+    return growth_rate_listener
+
+
+def make_boundary_listener(model, biomass_id, dynamic_medium):
+    def boundary_listener(y, t=None):
+        biomass = y[0]
+        substrates = y[1:]
+
+        _, boundary_fluxes = bound_and_optimize(
+            model,
+            biomass_id,
+            dynamic_medium,
+            biomass,
+            substrates,
+            t,
+            callback=lambda d: [(rxn, rxn.flux) for rxn in d["model"].boundary if rxn.flux != 0])
+
+        return boundary_fluxes
+    
+    return boundary_listener
 
 
 def setup_drawdown(model):
@@ -280,7 +342,8 @@ def plot_data(t, y, carbon_source, initial_C, V_max, t_max, growth_data):
 
 
 def plot_shadow_prices(shadow_prices, t):
-    shadow_prices = pd.concat(shadow_prices, axis=1, ignore_index=True).T.fillna(0)
+    shadow_prices = pd.concat(shadow_prices, axis=1,
+                              ignore_index=True).T.fillna(0)
 
     fig, axs = plt.subplots(len(shadow_prices.columns), 1)
     for ax, metabolite in zip(axs, shadow_prices.columns):

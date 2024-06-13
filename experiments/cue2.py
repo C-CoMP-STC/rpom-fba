@@ -1,7 +1,7 @@
 from collections import defaultdict
 import os
-import pickle
 from datetime import datetime
+import pickle
 
 import numpy as np
 import pandas as pd
@@ -21,6 +21,7 @@ from experiments.fast_dFBA import (
     make_growth_rate_listener,
     setup_drawdown,
 )
+from experiments.cue import plot_result, plot_bge
 from parameters.drawdown import *
 from utils.units import u
 from utils.cobra_utils import get_or_create_exchange
@@ -29,10 +30,10 @@ from utils.cobra_utils import get_or_create_exchange
 C_PER_GLUCOSE = 6
 C_PER_ACETATE = 2
 
-OUTDIR = "out/dFBA/CUE"
+OUTDIR = "out/dFBA/CUE2"
 
 
-class CUE_Experiment(Experiment):
+class CUE_Experiment_2(Experiment):
     def __init__(
         self, model, biomass_id, ex_glc="EX_glc", ex_ace="EX_ace", out=OUTDIR
     ) -> None:
@@ -40,6 +41,7 @@ class CUE_Experiment(Experiment):
         self.biomass_id = biomass_id
         self.ex_glc = model.reactions.get_by_id(ex_glc)
         self.ex_ace = model.reactions.get_by_id(ex_ace)
+        self.dt = 0.1
 
         # Ensure output directory exists
         self.out = out
@@ -91,11 +93,15 @@ class CUE_Experiment(Experiment):
         initial_biomass, initial_glucose, initial_acetate = initial
 
         dynamic_medium = [
-            ConstantBounds(self.ex_glc, "Glucose[e]", -.75),
-            ConstantBounds(self.ex_ace, "ACET[e]", -.75),
-            # BoundFromData(self.ex_glc, "Glucose[e]", g_t, g_s, b_t, b),
-            # BoundFromData(self.ex_ace, "ACET[e]", a_t, a_s, b_t, b),
+            ConstantBounds(self.ex_glc, "Glucose[e]", -4),
+            ConstantBounds(self.ex_ace, "ACET[e]", -2)
         ]
+
+        # Override initial biomass and dynamic medium if given
+        initial_biomass = condition_data.get("initial_biomass", initial_biomass)
+        dynamic_medium = condition_data.get("dynamic_medium", dynamic_medium)
+        for bounds in dynamic_medium:
+            bounds.dt = self.dt
 
         t, y, l = dFBA(
             self.model,
@@ -108,11 +114,9 @@ class CUE_Experiment(Experiment):
             listeners=[
                 #    make_shadow_price_listener(
                 #        self.model, ["Glucose[e]", "ACET[e]"], dynamic_medium),
+                ## TODO: bge listener causes freezing on some conditions
                 # make_bge_listener(
                     # self.model, self.biomass_id, dynamic_medium),
-                make_bge_listener(
-                    self.model, self.biomass_id, dynamic_medium
-                )
                 # make_growth_rate_listener(
                 #     self.model, self.biomass_id, dynamic_medium
                 # ),
@@ -120,7 +124,7 @@ class CUE_Experiment(Experiment):
                 #     self.model, self.biomass_id, dynamic_medium
                 # )
             ],
-            dt=0.1,
+            dt=self.dt,
             integrator="runge_kutta",
         )
 
@@ -151,94 +155,9 @@ class CUE_Experiment(Experiment):
         save_data.to_csv(filepath, index=False)
 
 
-def plot_mean_min_max(
-    t, data, across_axis=0, color=None, linestyle="--", alpha=0.2, ax=None
-):
-    if ax is None:
-        _, ax = plt.subplots()
-    ax.plot(t, data.mean(axis=across_axis), color=color, linestyle=linestyle)
-    ax.fill_between(
-        t,
-        data.min(axis=across_axis),
-        data.max(axis=across_axis),
-        color=color,
-        alpha=alpha,
-    )
-    return ax
-
-
-def plot_result(t, y, condition_data, mass_units=True):
-    glc_mw = 180.15588 * u.g / u.mol
-    ace_mw = 59.04402 * u.g / u.mol
-
-    fig, ax = plt.subplots()
-
-    # Plot simulation results
-    ax.plot(t, y[:, 0], color="b", label="Biomass")
-    ax2 = ax if mass_units else plt.twinx(ax)
-
-    if mass_units:
-        ax2.plot(
-            t,
-            ((y[:, 1] * u.mM) * glc_mw).to("g/L").magnitude,
-            color="r",
-            label=f"Glucose (simulation)",
-        )
-        ax2.plot(
-            t,
-            ((y[:, 2] * u.mM) * ace_mw).to("g/L").magnitude,
-            color="orange",
-            label=f"Acetate (simulation)",
-        )
-    else:
-        ax2.plot(t, y[:, 1], color="r", label=f"Glucose (simulation)")
-        ax2.plot(t, y[:, 2], color="orange", label=f"Acetate (simulation)")
-
-    # Plot biomass from data
-    mass_t = condition_data["mean"]["b_t"]
-    mass_raw = condition_data["raw"]["raw_b"]
-    plot_mean_min_max(mass_t, mass_raw, color="b", ax=ax)
-
-    # Plot substrates from data
-    glucose_t = condition_data["raw"]["raw_g_t"]
-    glucose = condition_data["raw"]["raw_g_s"] * (
-        1 if not mass_units else (u.mM * glc_mw).to("g/L").magnitude
-    )
-    acetate_t = condition_data["raw"]["raw_a_t"]
-    acetate = condition_data["raw"]["raw_a_s"] * (
-        1 if not mass_units else (u.mM * ace_mw).to("g/L").magnitude
-    )
-
-    for t, substrate, color in [
-        (glucose_t, glucose, "r"),
-        (acetate_t, acetate, "orange"),
-    ]:
-        if substrate.size > 0:
-            plot_mean_min_max(t, substrate, color=color, ax=ax2)
-
-    ax.set_ylabel("Biomass (g/L)", color="b")
-    ax2.set_ylabel(f"Substrate ({'g/L' if mass_units else 'mM'})", color="r")
-    ax2.legend()
-
-    return fig, [ax, ax2]
-
-
-def plot_bge(t, c, ax=None):
-    if ax is None:
-        _, ax = plt.subplots()
-
-    # Plot bge
-    ax.plot(t, c, "k--")
-    ax.set_ylabel("BGE")
-    ax.set_ylim(0, 1)
-    ax.spines["right"].set_position(("outward", 50))
-
-    return ax
-
-
 def main():
     BIOMASS_ID = "Rpom_hwa_biomass"
-    DATA_FILE = "data/clean/CUE/dFBA.pkl"
+    DATA_FILE = "data/clean/CUE2/dFBA.pkl"
 
     # Load and set up model
     model = read_sbml_model("model/Rpom_05.xml")
@@ -246,7 +165,7 @@ def main():
     ex_ace = get_or_create_exchange(model, "ACET[e]")
     # model = load_model("iJO1366")
 
-    cue_experiment = CUE_Experiment(model, BIOMASS_ID, ex_ace=ex_ace.id)
+    cue_experiment = CUE_Experiment_2(model, BIOMASS_ID, ex_ace=ex_ace.id)
     # cue_experiment = CUE_Experiment(model, "BIOMASS_Ec_iJO1366_core_53p95M", ex_ace="EX_ac_e", ex_glc="EX_glc__D_e")
 
     # Load condition data
@@ -254,7 +173,28 @@ def main():
         data = pickle.load(f)
     cue_experiment.conditions = data
 
+    # Use fitted parameters and initial conditions
+    fitted_params = {
+        (2.0, 0.0): np.array([3.986983252901049e-06, -3.48343011, -2]),
+        (0.0, 6.0): np.array([2.3238157977192332e-05, -4, -9.74197188]),
+        (2/3, 4.0): np.array([0.0008569068002118332, -2.4163559482092194, 0.07347412097172867])
+    }
+    for k, v in fitted_params.items():
+        key = [(g, a) for (g, a) in cue_experiment.conditions if g.magnitude == k[0] and a.magnitude == k[1]][0]
+        cue_experiment.conditions[key]["initial_biomass"] = v[0]
+        cue_experiment.conditions[key]["dynamic_medium"] = [
+            ConstantBounds(cue_experiment.ex_glc, "Glucose[e]", v[1]),
+            ConstantBounds(cue_experiment.ex_ace, "ACET[e]", v[2])
+        ]
+
     # Run dFBA
+    # cue_experiment.dt = 1
+    #TODO: delete
+    # cue_experiment.conditions = {
+    #     (g, a): v
+    #     for (g, a), v in cue_experiment.conditions.items()
+    #     if g > 0 and a.magnitude == 0
+    # }
     results = cue_experiment.run()
 
     for condition, (t, y, l) in results.items():
@@ -276,12 +216,6 @@ def main():
         # ax3 = ax.twinx()
         # bge, mu, boundary = l
         # plot_bge(t, bge, ax=ax3)
-
-        # plot CUE (temp)
-        # TODO: delete
-        ax3 = ax.twinx()
-        cue = l[0]
-        plot_bge(t, cue, ax=ax3)
 
 
         # Save figure
