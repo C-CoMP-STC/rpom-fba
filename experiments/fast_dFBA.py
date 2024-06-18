@@ -35,18 +35,6 @@ class Bounds:
         pass
 
 
-# class MichaelisMentenBounds:
-#     def __init__(self, substrate_id, V_max, K_M):
-#         self.substrate_id = substrate_id
-#         self.V_max = V_max
-#         self.K_M = K_M
-
-#     def bound(self, exchange, concentration, biomass, t=None):
-#         concentration = max(concentration, 0)
-#         mm_bound = abs(self.V_max * concentration / (self.K_M + concentration))
-#         set_active_bound(exchange, mm_bound)
-
-
 class ConstantBounds(Bounds):
     def __init__(self, exchange, substrate_id, V, dt=0.01) -> None:
         self.exchange = exchange
@@ -62,29 +50,54 @@ class ConstantBounds(Bounds):
         set_active_bound(self.exchange, bound, abs_bounds=False)
 
 
-class BoundFromData(Bounds):
-    def __init__(self, exchange, substrate_id, t, s, b_t, b) -> None:
-        self.exchange = exchange
-        self.substrate_id = substrate_id
-        self.t = t
-        self.s = s
-        self.b_t = b_t
-        self.b = b
+def cache_notify(func):
+    func = functools.cache(func)
+    def notify_wrapper(*args, **kwargs):
+        stats = func.cache_info()
+        hits = stats.hits
+        results = func(*args, **kwargs)
+        stats = func.cache_info()
+        if stats.hits > hits:
+            print(f"NOTE: {func.__name__}() results were cached")
+        return results
+    return notify_wrapper
 
-    def bound(self, concentration, biomass, t):
-        # index of last timepoint < t
-        timepoint = (self.t <= t).sum() - 1
-        # ds = self.s[timepoint + 1] - self.s[timepoint]
-        # dt = self.t[timepoint + 1] - self.t[timepoint]
-        ds = self.s[timepoint + 1] - concentration
-        dt = self.t[timepoint + 1] - t
 
-        data_bound = min(ds / dt / biomass, 0)
-
-        # Get environmental capacity bound
-        env_bound = -concentration / dt / biomass
-        set_active_bound(self.exchange, max(
-            data_bound, env_bound), abs_bounds=False)
+class CachingBoundedOptimizer:
+    def __init__(self, model, biomass_id, dynamic_medium):
+        self.model = model
+        self.biomass_id = biomass_id
+        self.dynamic_medium = dynamic_medium
+        self.cache = {}
+    
+    def bound_and_optimize(self,
+                           biomass,
+                           concentrations,
+                           t,
+                           use_cache=False):
+        with self.model:
+            # Bound
+            bound_values = []
+            for bound, conc in zip(self.dynamic_medium, concentrations):
+                bound.bound(conc, biomass, t)
+                bound_values.append(bound.exchange.lower_bound)
+            
+            # Optimize, potentially using cache
+            if use_cache:
+                key = tuple(bound_values)
+                if key in self.cache:
+                    # print('hit!')
+                    return np.copy(self.cache[key])
+            
+            # Fall back to calculation
+            # print(f"memoizing: {tuple(bound_values)}")
+            sol = self.model.optimize()
+            exchanges = [bound.exchange for bound in self.dynamic_medium]
+            fluxes = np.array([sol.objective_value] + [sol.fluxes[ex.id] for ex in exchanges])
+            if use_cache:
+                self.cache[key] = np.copy(fluxes)
+            
+            return np.copy(fluxes)
 
 
 def bound_and_optimize(model,
@@ -94,11 +107,18 @@ def bound_and_optimize(model,
                        concentrations,
                        t,
                        callback=None):
+
+    # TODO: Implement caching for bounded_optimize - doesn't work when creating the function each time
+    @cache_notify
+    def bounded_optimize(exchange_ids, bounds):
+        sol = model.optimize()
+        fluxes = [sol.objective_value] + [sol.fluxes[ex_id] for ex_id in exchange_ids]
+        return fluxes
+
     exchanges = [bound.exchange for bound in dynamic_medium]
 
     with model:
-        for bounds, concentration in zip(dynamic_medium, concentrations):
-            bounds.bound(concentration, biomass, t)
+        bound(model, biomass_id, dynamic_medium, biomass, concentrations, t)
 
         # Using lexicographic optimization,
         # first optimize for biomass, then for the exchange fluxes
@@ -112,8 +132,10 @@ def bound_and_optimize(model,
         # )
         # fluxes = lex_constraints.values
 
-        sol = model.optimize()
-        fluxes = [sol.objective_value] + [sol.fluxes[ex.id] for ex in exchanges]
+        # sol = model.optimize()
+        # fluxes = [sol.objective_value] + [sol.fluxes[ex.id] for ex in exchanges]
+        # print(bound_values)
+        fluxes = bounded_optimize(tuple(ex.id for ex in exchanges), tuple(bound_values))
 
         if callback is not None:
             return fluxes, callback({
@@ -139,21 +161,19 @@ def dFBA(
     listeners=None,
     desc="",
     integrator="runge_kutta",
+    use_cache=False
 ):
     y0 = np.array([initial_biomass, *initial_concentrations])
     medium_ids = [bounds.exchange.id for bounds in dynamic_medium]
+
+    optimizer = CachingBoundedOptimizer(model, biomass_id, dynamic_medium)
 
     def df_dt(y, t):
         biomass = y[0]  # g/L
         concentrations = y[1:]  # mM
         
         try:
-            fluxes = bound_and_optimize(model,
-                                        biomass_id,
-                                        dynamic_medium,
-                                        biomass,
-                                        concentrations,
-                                        t)
+            fluxes = optimizer.bound_and_optimize(biomass, concentrations, t, use_cache)
             fluxes *= biomass
             return fluxes
 
