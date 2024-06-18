@@ -10,7 +10,6 @@ from matplotlib import pyplot as plt
 
 from experiments.experiment import Experiment
 from experiments.fast_dFBA import (
-    BoundFromData,
     ConstantBounds,
     dFBA,
     make_bge_listener,
@@ -126,6 +125,7 @@ class CUE_Experiment_2(Experiment):
             ],
             dt=self.dt,
             integrator="runge_kutta",
+            use_cache=True
         )
 
         if save_data:
@@ -175,9 +175,10 @@ def main():
 
     # Use fitted parameters and initial conditions
     fitted_params = {
-        (2.0, 0.0): np.array([3.986983252901049e-06, -3.48343011, -2]),
-        (0.0, 6.0): np.array([2.3238157977192332e-05, -4, -9.74197188]),
-        (2/3, 4.0): np.array([0.0008569068002118332, -2.4163559482092194, 0.07347412097172867])
+        (2.0, 0.0): np.array([1.1595419660824984e-05, -2.334173528354084, -19.999999999999996]),
+        (0.0, 6.0): np.array([0.0005743100034881377, -4.0, -0.010240082938445227]),
+        # (2/3, 4.0): np.array([1.852104325893396e-05, -5.145670898738702, -21.160361379964]),
+        # (4/3, 2.0): np.array([1.5705806351090746e-05, -4.509314230145606, -20.53487923125136]),
     }
     for k, v in fitted_params.items():
         key = [(g, a) for (g, a) in cue_experiment.conditions if g.magnitude == k[0] and a.magnitude == k[1]][0]
@@ -193,7 +194,7 @@ def main():
     # cue_experiment.conditions = {
     #     (g, a): v
     #     for (g, a), v in cue_experiment.conditions.items()
-    #     if g > 0 and a.magnitude == 0
+    #     if g == 0 and a.magnitude > 0
     # }
     results = cue_experiment.run()
 

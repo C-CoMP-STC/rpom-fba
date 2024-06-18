@@ -10,7 +10,6 @@ from matplotlib import pyplot as plt
 
 from experiments.experiment import Experiment
 from experiments.fast_dFBA import (
-    BoundFromData,
     ConstantBounds,
     dFBA,
     make_bge_listener,
