@@ -1,30 +1,24 @@
-from collections import defaultdict
 import os
-from datetime import datetime
 import pickle
+import warnings
+from collections import defaultdict
+from datetime import datetime
 
 import numpy as np
 import pandas as pd
-from cobra.io import read_sbml_model, load_model
+from cobra.io import load_model, read_sbml_model
 from matplotlib import pyplot as plt
 
+from experiments.cue import plot_bge, plot_result
 from experiments.experiment import Experiment
-from experiments.fast_dFBA import (
-    ConstantBounds,
-    dFBA,
-    make_bge_listener,
-    make_cue_listener,
-    make_shadow_price_listener,
-    plot_shadow_prices,
-    make_boundary_listener,
-    make_growth_rate_listener,
-    setup_drawdown,
-)
-from experiments.cue import plot_result, plot_bge
+from experiments.fast_dFBA import (ConstantBounds, dFBA, make_bge_listener,
+                                   make_boundary_listener, make_cue_listener,
+                                   make_growth_rate_listener,
+                                   make_shadow_price_listener,
+                                   plot_shadow_prices, setup_drawdown)
 from parameters.drawdown import *
-from utils.units import u
 from utils.cobra_utils import get_or_create_exchange
-
+from utils.units import u
 
 C_PER_GLUCOSE = 6
 C_PER_ACETATE = 2
@@ -47,7 +41,7 @@ class CUE_Experiment_2(Experiment):
         os.makedirs(out, exist_ok=True)
         self.data_out = os.path.join(
             out, datetime.now().strftime("%d-%b-%Y_%H:%M:%S"))
-        os.makedirs(self.data_out)
+        os.makedirs(self.data_out, exist_ok=True)
 
     def unpack_condition_data(self, condition, condition_data):
         # Get initial conditions
@@ -97,36 +91,39 @@ class CUE_Experiment_2(Experiment):
         ]
 
         # Override initial biomass and dynamic medium if given
-        initial_biomass = condition_data.get("initial_biomass", initial_biomass)
+        initial_biomass = condition_data.get(
+            "initial_biomass", initial_biomass)
         dynamic_medium = condition_data.get("dynamic_medium", dynamic_medium)
         for bounds in dynamic_medium:
             bounds.dt = self.dt
 
-        t, y, l = dFBA(
-            self.model,
-            self.biomass_id,
-            initial_biomass,
-            np.array([initial_glucose, initial_acetate]),
-            dynamic_medium,
-            tmax,
-            terminate_on_infeasible=False,
-            listeners=[
-                #    make_shadow_price_listener(
-                #        self.model, ["Glucose[e]", "ACET[e]"], dynamic_medium),
-                ## TODO: bge listener causes freezing on some conditions
-                # make_bge_listener(
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            t, y, l = dFBA(
+                self.model,
+                self.biomass_id,
+                initial_biomass,
+                np.array([initial_glucose, initial_acetate]),
+                dynamic_medium,
+                tmax,
+                terminate_on_infeasible=False,
+                listeners=[
+                    #    make_shadow_price_listener(
+                    #        self.model, ["Glucose[e]", "ACET[e]"], dynamic_medium),
+                    # TODO: bge listener causes freezing on some conditions
+                    # make_bge_listener(
                     # self.model, self.biomass_id, dynamic_medium),
-                # make_growth_rate_listener(
-                #     self.model, self.biomass_id, dynamic_medium
-                # ),
-                # make_boundary_listener(
-                #     self.model, self.biomass_id, dynamic_medium
-                # )
-            ],
-            dt=self.dt,
-            integrator="runge_kutta",
-            use_cache=True
-        )
+                    # make_growth_rate_listener(
+                    #     self.model, self.biomass_id, dynamic_medium
+                    # ),
+                    # make_boundary_listener(
+                    #     self.model, self.biomass_id, dynamic_medium
+                    # )
+                ],
+                dt=self.dt,
+                integrator="runge_kutta",
+                use_cache=True
+            )
 
         if save_data:
             self.save_data(
@@ -163,7 +160,34 @@ def main():
     model = read_sbml_model("model/Rpom_05.xml")
     setup_drawdown(model)
     ex_ace = get_or_create_exchange(model, "ACET[e]")
-    # model = load_model("iJO1366")
+
+    # Turn on maintenance
+    atpm = model.reactions.get_by_id("ATPM")
+    atpm.bounds = (30, 30)
+
+    # Replace all ubiquinones with ubiquinone-8, same with ubiquinols. TODO: curate this more, use whichever R. pom mostly uses.
+    ubiquinones = [model.metabolites.get_by_id(ubi)
+                   for ubi in [
+        "UBIQUINONE-6[c]",
+        "UBIQUINONE-8[c]",
+        "UBIQUINONE-9[c]",
+        "UBIQUINONE-10[c]"]]
+    ubiquinols = [model.metabolites.get_by_id(ubi)
+                  for ubi in [
+        "UBIQUINOL-30[c]",
+        "CPD-9956[c]",
+        "CPD-9957[c]",
+        "CPD-9958[c]"
+    ]]
+    ubiquinone8 = model.metabolites.get_by_id("UBIQUINONE-8[c]")
+    ubiquinol8 = model.metabolites.get_by_id("CPD-9956[c]")
+    for rxn in model.reactions:
+        metabolites_copy = rxn.metabolites.copy()
+        for met, coeff in metabolites_copy.items():
+            if met in ubiquinones:
+                rxn.add_metabolites({met: -coeff, ubiquinone8: coeff})
+            if met in ubiquinols:
+                rxn.add_metabolites({met: -coeff, ubiquinol8: coeff})
 
     cue_experiment = CUE_Experiment_2(model, BIOMASS_ID, ex_ace=ex_ace.id)
     # cue_experiment = CUE_Experiment(model, "BIOMASS_Ec_iJO1366_core_53p95M", ex_ace="EX_ac_e", ex_glc="EX_glc__D_e")
@@ -174,14 +198,18 @@ def main():
     cue_experiment.conditions = data
 
     # Use fitted parameters and initial conditions
+    # {(<Quantity(2.0, 'millimolar')>, <Quantity(0.0, 'millimolar')>): ((3.857788639318984e-06, -3.7498565796153476, -20.0), 4.864342853437677)}
+    # {(<Quantity(0.0, 'millimolar')>, <Quantity(6.0, 'millimolar')>): ((1.7746685352765677e-06, -4.0, -20.65117661222312), 4.604088166504376)}
+
     fitted_params = {
-        (2.0, 0.0): np.array([1.1595419660824984e-05, -2.334173528354084, -19.999999999999996]),
-        (0.0, 6.0): np.array([0.0005743100034881377, -4.0, -0.010240082938445227]),
-        # (2/3, 4.0): np.array([1.852104325893396e-05, -5.145670898738702, -21.160361379964]),
-        # (4/3, 2.0): np.array([1.5705806351090746e-05, -4.509314230145606, -20.53487923125136]),
+        (2.0, 0.0): np.array([3.857788639318984e-06, -5, -0]),
+        (0.0, 6.0): np.array([5e-05, -0, -18]),
+        (2/3, 4.0): np.array([1.852104325893396e-05, -2.5 * 2/3, -3 * 4.]),
+        (4/3, 2.0): np.array([1.5705806351090746e-05, -2.5 * 4/3, -3 * 2.]),
     }
     for k, v in fitted_params.items():
-        key = [(g, a) for (g, a) in cue_experiment.conditions if g.magnitude == k[0] and a.magnitude == k[1]][0]
+        key = [(g, a) for (g, a) in cue_experiment.conditions if g.magnitude ==
+               k[0] and a.magnitude == k[1]][0]
         cue_experiment.conditions[key]["initial_biomass"] = v[0]
         cue_experiment.conditions[key]["dynamic_medium"] = [
             ConstantBounds(cue_experiment.ex_glc, "Glucose[e]", v[1]),
@@ -190,7 +218,7 @@ def main():
 
     # Run dFBA
     # cue_experiment.dt = 1
-    #TODO: delete
+    # TODO: delete
     # cue_experiment.conditions = {
     #     (g, a): v
     #     for (g, a), v in cue_experiment.conditions.items()
@@ -212,12 +240,11 @@ def main():
         condition_data = cue_experiment.conditions[condition]
         fig, (ax, _) = plot_result(t, y, condition_data, mass_units=False)
         ax.set_yscale("log")
-        
+
         # plot bge
         # ax3 = ax.twinx()
         # bge, mu, boundary = l
         # plot_bge(t, bge, ax=ax3)
-
 
         # Save figure
         fig.set_size_inches(6, 3)
@@ -238,7 +265,7 @@ def main():
         # for mu in mu:
         #     integ.append(integ[-1] + mu * integ[-1] * dt)
         # ax.plot(t, integ[:-1], "b--")
-        
+
         # ax.set_xlabel("Biomass (g/L)")
         # fig.tight_layout()
         # fig.savefig(os.path.join(
@@ -246,15 +273,14 @@ def main():
         #     f"{model.id}_mu_test_{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate_dFBA.png",
         # ))
 
-
         # # Make boundary figure
         # traces = defaultdict(list)
         # for timepoint in boundary:
         #     for reaction, flux in timepoint:
         #         traces[reaction.id].append(flux)
-        
+
         # n_traces = len(traces)
-        
+
         # if n_traces > 0:
         #     fig, axs = plt.subplots(n_traces, 1)
         #     for ax, (reaction, trace) in zip(axs, traces.items()):

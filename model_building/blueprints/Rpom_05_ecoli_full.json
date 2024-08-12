@@ -7,5 +7,6 @@
     "AddMetabolites": null,
     "AddUptakeReactions": null,
     "AddReactions": "model_building/reactions/reactions.json",
-    "ModifyReactions": "model_building/reactions/corrections.json"
+    "ModifyReactions": "model_building/reactions/corrections.json",
+    "AnnotateReactions": "model_building/reaction_annotations.pkl"
 }
