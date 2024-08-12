@@ -1,5 +1,6 @@
 import abc
 import json
+import pickle
 
 import git
 from cobra.io import read_sbml_model
@@ -187,4 +188,26 @@ class AddUptakeReactions(Stage):
         # Add uptake reactions
         add_uptake_reactions(model, uptake_data)
 
+        return model
+
+
+@register_stage
+class AnnotateReactions(Stage):
+    def process(self, model: Model, params: object) -> Model:
+        if params is None:
+            return model
+
+        if not isinstance(params, str):
+            raise ValueError("AnnotateReactions stage requires a path to a .pkl file, containing a dictionary of reaction annotations.")
+        
+        with open(params, "rb") as f:
+            annotations = pickle.load(f)
+
+        stems = annotations["stems"]
+        pathways = annotations["pathways"]
+
+        for reaction in model.reactions:
+            reaction.annotation["stem"] = stems.get(reaction.id, "")
+            reaction.annotation["pathways"] = list(pathways.get(reaction.id, []))
+        
         return model
