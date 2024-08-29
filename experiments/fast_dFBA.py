@@ -52,6 +52,7 @@ class ConstantBounds(Bounds):
 
 def cache_notify(func):
     func = functools.cache(func)
+
     def notify_wrapper(*args, **kwargs):
         stats = func.cache_info()
         hits = stats.hits
@@ -69,7 +70,7 @@ class CachingBoundedOptimizer:
         self.biomass_id = biomass_id
         self.dynamic_medium = dynamic_medium
         self.cache = {}
-    
+
     def bound_and_optimize(self,
                            biomass,
                            concentrations,
@@ -81,22 +82,23 @@ class CachingBoundedOptimizer:
             for bound, conc in zip(self.dynamic_medium, concentrations):
                 bound.bound(conc, biomass, t)
                 bound_values.append(bound.exchange.lower_bound)
-            
+
             # Optimize, potentially using cache
             if use_cache:
                 key = tuple(bound_values)
                 if key in self.cache:
                     # print('hit!')
                     return np.copy(self.cache[key])
-            
+
             # Fall back to calculation
             # print(f"memoizing: {tuple(bound_values)}")
             sol = self.model.optimize()
             exchanges = [bound.exchange for bound in self.dynamic_medium]
-            fluxes = np.array([sol.objective_value] + [sol.fluxes[ex.id] for ex in exchanges])
+            fluxes = np.array([sol.objective_value] +
+                              [sol.fluxes[ex.id] for ex in exchanges])
             if use_cache:
                 self.cache[key] = np.copy(fluxes)
-            
+
             return np.copy(fluxes)
 
 
@@ -112,7 +114,8 @@ def bound_and_optimize(model,
     @cache_notify
     def bounded_optimize(exchange_ids, bounds):
         sol = model.optimize()
-        fluxes = [sol.objective_value] + [sol.fluxes[ex_id] for ex_id in exchange_ids]
+        fluxes = [sol.objective_value] + [sol.fluxes[ex_id]
+                                          for ex_id in exchange_ids]
         return fluxes
 
     exchanges = [bound.exchange for bound in dynamic_medium]
@@ -124,7 +127,7 @@ def bound_and_optimize(model,
         # first optimize for biomass, then for the exchange fluxes
         # (holding optimal biomass as a constraint),
         # thus guaranteeing a unique optimal set of exchange fluxes.
-        
+
         # lex_constraints = cobra.util.add_lexicographic_constraints(
         #     model,
         #     [biomass_id] + [ex.id for ex in exchanges],
@@ -135,7 +138,8 @@ def bound_and_optimize(model,
         # sol = model.optimize()
         # fluxes = [sol.objective_value] + [sol.fluxes[ex.id] for ex in exchanges]
         # print(bound_values)
-        fluxes = bounded_optimize(tuple(ex.id for ex in exchanges), tuple(bound_values))
+        fluxes = bounded_optimize(
+            tuple(ex.id for ex in exchanges), tuple(bound_values))
 
         if callback is not None:
             return fluxes, callback({
@@ -171,9 +175,10 @@ def dFBA(
     def df_dt(y, t):
         biomass = y[0]  # g/L
         concentrations = y[1:]  # mM
-        
+
         try:
-            fluxes = optimizer.bound_and_optimize(biomass, concentrations, t, use_cache)
+            fluxes = optimizer.bound_and_optimize(
+                biomass, concentrations, t, use_cache)
             fluxes *= biomass
             return fluxes
 
@@ -205,6 +210,53 @@ def dFBA(
                 terminate_on_infeasible,
                 pbar_desc=desc,
                 listeners=listeners,
+            )
+        case _:
+            raise ValueError(
+                f"{integrator} is not a recognized integrator (options: runge_kutta, euler)."
+            )
+
+
+def evaluate_rates_sim(initial_biomass,
+                       initial_concentrations,
+                       growth_rate,
+                       glucose_uptake,
+                       acetate_uptake,
+                       tmax,
+                       dt=0.01,
+                       integrator="runge_kutta",):
+    y0 = np.array([initial_biomass, *initial_concentrations])
+
+    def df_dt(y, t):
+        biomass = y[0]  # g/L
+        glucose, acetate = y[1:]  # mM
+
+        fluxes = np.array([growth_rate,
+                           max(-glucose_uptake, -glucose/dt),
+                           max(-acetate_uptake, -acetate/dt)])
+        fluxes *= biomass
+        return fluxes
+
+    match integrator:
+        case "runge_kutta":
+            return runge_kutta(
+                df_dt,
+                y0,
+                0,
+                tmax,
+                dt,
+                False,
+                pbar_desc=""
+            )
+        case "euler":
+            return euler(
+                df_dt,
+                y0,
+                0,
+                tmax,
+                dt,
+                False,
+                pbar_desc="",
             )
         case _:
             raise ValueError(
@@ -303,7 +355,7 @@ def make_boundary_listener(model, biomass_id, dynamic_medium):
             callback=lambda d: [(rxn, rxn.flux) for rxn in d["model"].boundary if rxn.flux != 0])
 
         return boundary_fluxes
-    
+
     return boundary_listener
 
 
