@@ -2,7 +2,7 @@
     "BaseModel": "base_model/Rpom_05.xml",
     "MetaData": null,
     "BiomassObjective": "hwa",
-    "MaintenanceFlux": true,
+    "MaintenanceFlux": 0,
     "SetMedium": "data/media/L1_minimal_medium.json",
     "AddMetabolites": null,
     "AddUptakeReactions": null,

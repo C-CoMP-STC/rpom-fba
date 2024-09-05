@@ -24,9 +24,12 @@ class ModelFactory:
                 raise TypeError(
                     "Invalid type for config (must be str path, or dict)")
 
-    def build_model(self, out=None):
+    def build_model(self, out=None, verbose=True):
         model = None
         for stage, params in self.config.items():
+            if verbose:
+                print(f"\nRunning stage {stage} ==================================")
+                print(f"Params: {params}\n")
             model = STAGE_REGISTRY[stage]().process(model, params)
 
         # Save cleaned model
