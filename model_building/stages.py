@@ -79,10 +79,11 @@ class BiomassObjective(Stage):
 
 @register_stage
 class MaintenanceFlux(Stage):
-    def process(self, model: Model, params: object) -> Model:
-        if not params:
-            atpm = model.reactions.get_by_id("ATPM")
-            atpm.bounds = (0, 0)
+    def process(self, model: Model, params: float) -> Model:
+        flux = abs(params)
+        
+        atpm = model.reactions.get_by_id("ATPM")
+        atpm.bounds = (flux, flux)
         return model
 
 @register_stage

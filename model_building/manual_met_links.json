@@ -10,7 +10,8 @@
     "pe161_p": "CPD-17086[p]",
     "thf_c": "THF-GLU-N[c]",
     "udcpdp_c":"UNDECAPRENYL-DIPHOSPHATE[c]",
-    "pheme_c": "PROTOHEME[c]",
+    "bmocogdp_c": "CPD-15873[c]",
+    "pheme_c" : "PROTOHEME[c]",
 
-    "COMMENTS": "thf_c = THF-GLU-N[c] is somewhat uncertain but probably fine"
+    "COMMENTS": "thf_c = THF-GLU-N[c] may be more accurately converted as THF[c], but this is not in the model"
 }
