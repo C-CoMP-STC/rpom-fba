@@ -37,16 +37,15 @@ for pref, key in conditions.items():
     mass_per_cell = np.interp(theta, [0, 1], [MASS_PER_CELL_GLUCOSE.magnitude, MASS_PER_CELL_ACETATE.magnitude]) * u.pg
 
     # Biomass
-    cell_data = cells[[col for col in cells.columns if col.startswith(pref)]]
+    cell_data = cells[[col for col in cells.columns if col.startswith(pref)]]  # Cells / mL
     b_t = cells["Time"].values
     cell_raw = cell_data[[
         col for col in cell_data.columns if not col.endswith("mean")]]
     cell_mean = cell_data[[
         col for col in cell_data.columns if col.endswith("mean")]]
-    raw_b = (cell_raw.values * mass_per_cell /
-             CUE_VOLUME).to("g/L").magnitude.T
-    b_s = (cell_mean.values.T[0] * mass_per_cell /
-           CUE_VOLUME).to("g/L").magnitude
+    # Convert to g/L
+    raw_b = (cell_raw.values * 1/u.mL * mass_per_cell).to("g/L").magnitude.T
+    b_s = (cell_mean.values.T[0] * 1/u.mL * mass_per_cell).to("g/L").magnitude
 
     # Glucose
     gluc_data = glucose[[
