@@ -1,0 +1,46 @@
+[
+    "Electron transport chain (changed to use Q10) =========================================", 
+    {
+        "id": "RXN-14903",
+        "name": "RXN-14903",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "PRO[c]": -1.0,
+            "L-DELTA1-PYRROLINE_5-CARBOXYLATE[c]" : 1.0,
+            "PROTON[c]" : 1.0,
+            "UBIQUINONE-10[c]": -1.0,
+            "CPD-9958[c]" : 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "RXN-14970",
+        "name": "RXN-14970",
+        "subsystem": "",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "SUC[c]": 1.0,
+            "FUM[c]" : -1.0,
+            "UBIQUINONE-10[c]": 1.0,
+            "CPD-9958[c]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "RXN-20992",
+        "name": "RXN-20992",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CPD-9958[c]": -2.0,
+            "OXYGEN-MOLECULE[c]" : -1.0,
+            "UBIQUINONE-10[c]": 2.0,
+            "WATER[c]" : 2.0
+        },
+        "gene_reaction_rule": ""
+    }
+]

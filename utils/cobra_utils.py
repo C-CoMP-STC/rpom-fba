@@ -169,22 +169,3 @@ def formula_str(reaction: Reaction) -> str:
     right = " + ".join(f"{coeff} {formula}" for _, (formula, coeff) in stoich.items() if coeff > 0)
 
     return f"{left} {arrow} {right}"
-
-
-def path_to(model, met_from, met_to):
-    pass
-
-
-def diff_models(model1, model2):
-    pass
-
-
-def main():
-    model1 = read_sbml_model("clean_models/Rpom_0.xml")
-    model2 = read_sbml_model("clean_models/Rpom_02.xml")
-
-    diff_models(model1, model2)
-
-
-if __name__ == "__main__":
-    main()

@@ -1,18 +1,20 @@
 import abc
 import json
 import pickle
+from pathlib import Path
 
 import git
-from cobra.io import read_sbml_model
-from cobra.core.model import Model
 from cobra.core.metabolite import Metabolite
+from cobra.core.model import Model
 from cobra.core.reaction import Reaction
+from cobra.io import read_sbml_model
 
 from model_building.biomass import (add_ecoli_core_biomass_to_model,
-                     add_ecoli_full_biomass_to_model, add_hwa_biomass_to_model)
+                                    add_ecoli_full_biomass_to_model,
+                                    add_hwa_biomass_to_model)
+from model_building.metabolites.metabolites import ADDED_METABOLITES
 from model_building.uptake_rxns import add_uptake_reactions, get_uptake_data
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
-from model_building.metabolites.metabolites import ADDED_METABOLITES
 
 STAGE_REGISTRY = {}
 
@@ -118,8 +120,17 @@ class AddMetabolites(Stage):
 @register_stage
 class AddReactions(Stage):
     def process(self, model: Model, params: object) -> Model:
-        with open(params, "r") as f:
-            reactions_to_add = json.load(f)
+        if not isinstance(params, list):
+            raise ValueError("AddReactions stage requires a list of files/folders with reactions to add.")
+        
+        root = Path(r".")
+
+        # Collect reactions from all files
+        reactions_to_add = []
+        for path in params:
+            for filepath in root.glob(path):
+                with open(filepath, "r") as f:
+                    reactions_to_add += json.load(f)
 
         reactions = []
         for reaction in reactions_to_add:
@@ -146,14 +157,44 @@ class AddReactions(Stage):
         model.add_reactions(reactions)
 
         return model
+    
+
+@register_stage
+class RemoveReactions(Stage):
+    def process(self, model: Model, params: object) -> Model:
+        if not isinstance(params, list):
+            raise ValueError("RemoveReactions stage requires a list of files/folders with reactions to add.")
+        
+        root = Path(r".")
+
+        # Collect reactions from all files
+        reactions_to_remove = []
+        for path in params:
+            for filepath in root.glob(path):
+                with open(filepath, "r") as f:
+                    reactions_to_remove += json.load(f)
+
+        # Remove reactions
+        model.remove_reactions(reactions_to_remove)
+
+        return model
 
 
 @register_stage
 class ModifyReactions(Stage):
     def process(self, model: Model, params: str) -> Model:
-        with open(params, "r") as f:
-            reactions_to_change = json.load(f)
+        if not isinstance(params, list):
+            raise ValueError("ModifyReactions stage requires a list of files/folders with reactions to add.")
         
+        root = Path(r".")
+
+        # Collect reactions to modify from all files
+        reactions_to_change = []
+        for path in params:
+            for filepath in root.glob(path):
+                with open(filepath, "r") as f:
+                    reactions_to_change += json.load(f)
+                    
         for reaction in reactions_to_change:
             # Allows the use of strings as comments:
             if not isinstance(reaction, dict):

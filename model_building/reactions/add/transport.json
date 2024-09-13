@@ -1,0 +1,29 @@
+[
+    "Citrate transport ==========================================================================",
+    {
+        "id": "Citrate-transport",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CIT[e]" : -1.0,
+            "CIT[c]" : 1.0
+        },
+        "gene_reaction_rule": "(SPO0184)"
+    },
+
+    "3-Hydroxybutyrate degradation ==============================================================",
+    {
+        "id": "3-Hydroxybutyrate-transport",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CPD-335[e]" : -1.0,
+            "CPD-335[c]" : 1.0
+        },
+        "gene_reaction_rule": "(SPO2573)"
+    }
+]
