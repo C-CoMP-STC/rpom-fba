@@ -166,56 +166,6 @@ def main():
     atpm = model.reactions.get_by_id("ATPM")
     atpm.bounds = (25, 25)
 
-    # Make ETC complex II irreversible, complex I reversible
-    model.reactions.get_by_id("RXN-14970-SUC/UBIQUINONE-8//FUM/CPD-9956.31.").bounds = (-1000, 0)
-    model.reactions.get_by_id("1.6.99.5-RXN-NADH/UBIQUINONE-10/PROTON//NAD/CPD-9958.40.").bounds = (-1000, 1000)
-    model.reactions.get_by_id("1.6.99.5-RXN-NADH/UBIQUINONE-6/PROTON//NAD/UBIQUINOL-30.43.").bounds = (-1000, 1000)
-    model.reactions.get_by_id("1.6.99.5-RXN-NADH/UBIQUINONE-9/PROTON//NAD/CPD-9957.39.").bounds = (-1000, 1000)
-
-    # Make 1.5.5.1-RXN-ETF-Reduced/UBIQUINONE-10//ETF-Oxidized/CPD-9958/PROTON.56. irreversible
-    model.reactions.get_by_id("1.5.5.1-RXN-ETF-Reduced/UBIQUINONE-10//ETF-Oxidized/CPD-9958/PROTON.56.").bounds = (0, 1000)
-
-    # Change/remove all reactions so as to use ubiquinone 10 only
-    model.remove_reactions([
-        "1.5.5.1-RXN-ETF-Reduced/UBIQUINONE-6//ETF-Oxidized/UBIQUINOL-30/PROTON.59.",
-        "1.5.5.1-RXN-ETF-Reduced/UBIQUINONE-9//ETF-Oxidized/CPD-9957/PROTON.55.",
-        "1.6.99.5-RXN-NADH/UBIQUINONE-6/PROTON//NAD/UBIQUINOL-30.43.",
-        "1.6.99.5-RXN-NADH/UBIQUINONE-9/PROTON//NAD/CPD-9957.39.",
-        "2.1.1.64-RXN",
-        "DHHB-METHYLTRANSFER-RXN",
-        "RXN3O-102",
-        "RXN66-550-ETF-Reduced/UBIQUINONE-8//ETF-Oxidized/CPD-9956/PROTON.55.",
-        "SUCCINATE-DEHYDROGENASE-UBIQUINONE6-RXN"
-    ])
-    # Add new ETC reactions
-    ubiquinones = [model.metabolites.get_by_id(ubi)
-                    for ubi in [
-                        "UBIQUINONE-6[c]",
-                        "UBIQUINONE-8[c]",
-                        "UBIQUINONE-9[c]",
-                        "UBIQUINONE-10[c]"]]
-    ubiquinols = [model.metabolites.get_by_id(ubi)
-                    for ubi in [
-                        "UBIQUINOL-30[c]",
-                        "CPD-9956[c]",
-                        "CPD-9957[c]",
-                        "CPD-9958[c]"
-                    ]]
-    
-    reactions_to_change = [
-        "RXN-14903-PRO/UBIQUINONE-8//L-DELTA1-PYRROLINE_5-CARBOXYLATE/CPD-9956/PROTON.67.",
-        "RXN-14970-SUC/UBIQUINONE-8//FUM/CPD-9956.31.",
-        "RXN-20992-CPD-9956/OXYGEN-MOLECULE//UBIQUINONE-8/WATER.45.",
-    ]
-    for rxn_id in reactions_to_change:
-        rxn = model.reactions.get_by_id(rxn_id)
-        metabolites_copy = rxn.metabolites.copy()
-        for met, coeff in metabolites_copy.items():
-            if met in ubiquinones:
-                rxn.add_metabolites({met : -coeff, model.metabolites.get_by_id("UBIQUINONE-10[c]") : coeff})
-            if met in ubiquinols:
-                rxn.add_metabolites({met : -coeff, model.metabolites.get_by_id("CPD-9958[c]") : coeff})
-
     cue_experiment = CUE_Experiment_2(model, BIOMASS_ID, ex_ace=ex_ace.id)
     # cue_experiment = CUE_Experiment(model, "BIOMASS_Ec_iJO1366_core_53p95M", ex_ace="EX_ac_e", ex_glc="EX_glc__D_e")
 
