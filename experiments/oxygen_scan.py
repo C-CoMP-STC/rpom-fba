@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from cobra.io import read_sbml_model
 
-from experiments.fast_dFBA import setup_drawdown
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
 
 MODEL = "model/Rpom_05.xml"
@@ -16,8 +15,7 @@ GROWTH_RATES = "parameters/growth_rates/fitted_growth_rates.csv"
 
 def main():
     model = read_sbml_model(MODEL)
-    setup_drawdown(model)
-
+    
     # Load carbon sources to test
     with open(CARBON_SOURCES, "r") as f:
         carbon_sources = json.load(f)

@@ -7,7 +7,6 @@ import numpy as np
 from tqdm import tqdm
 from cobra.io import read_sbml_model
 
-from experiments.fast_dFBA import setup_drawdown
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
 from model_building.model_factory import rebuild_and_get_model
 
@@ -18,7 +17,6 @@ GROWTH_RATES = "parameters/growth_rates/fitted_growth_rates.csv"
 
 def main():
     model = rebuild_and_get_model()  # read_sbml_model(DEFAULT_MODEL)
-    setup_drawdown(model)
 
     # Load carbon sources to test
     with open(CARBON_SOURCES, "r") as f:

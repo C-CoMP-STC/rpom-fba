@@ -11,7 +11,6 @@ import matplotlib
 matplotlib.use("Agg")
 
 from matplotlib import pyplot as plt
-from experiments.fast_dFBA import setup_drawdown
 from parameters.drawdown import K_M
 
 
@@ -25,7 +24,6 @@ def main():
 
     # Load and set up model
     model = read_sbml_model(MODEL)
-    setup_drawdown(model)
 
     biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
 

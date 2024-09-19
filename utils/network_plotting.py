@@ -1,7 +1,6 @@
 from pyvis.network import Network
 import numpy as np
 from cobra.io import read_sbml_model
-from experiments.fast_dFBA import setup_drawdown
 from tqdm import tqdm
 
 
@@ -93,7 +92,6 @@ def main():
     model = read_sbml_model(MODEL)
 
     with model:
-        setup_drawdown(model)
         model.reactions.get_by_id("EX_glc").bounds = (-10, 1000)
 
         fluxes = model.optimize().fluxes

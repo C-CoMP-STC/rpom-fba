@@ -8,7 +8,6 @@ import pandas as pd
 from cobra.io import read_sbml_model
 from tqdm import tqdm
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
-from experiments.fast_dFBA import setup_drawdown
 
 
 def main():
@@ -20,7 +19,6 @@ def main():
     os.makedirs(OUTDIR, exist_ok=True)
 
     model = read_sbml_model(MODEL)
-    setup_drawdown(model)
 
     # Load fitted growth rates
     growth_rates = pd.read_csv(GROWTH_RATES)

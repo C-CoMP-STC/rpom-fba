@@ -15,7 +15,7 @@ from experiments.fast_dFBA import (ConstantBounds, dFBA, make_bge_listener,
                                    make_boundary_listener, make_cue_listener,
                                    make_growth_rate_listener,
                                    make_shadow_price_listener,
-                                   plot_shadow_prices, setup_drawdown,
+                                   plot_shadow_prices,
                                    evaluate_rates_sim)
 from parameters.drawdown import *
 from utils.cobra_utils import get_or_create_exchange
@@ -91,12 +91,13 @@ class CUE_Experiment_2(Experiment):
             ConstantBounds(self.ex_ace, "ACET[e]", -2)
         ]
 
-        # Override initial biomass and dynamic medium if given
+        # Override initial biomass, dynamic medium, and tmax if given
         initial_biomass = condition_data.get(
             "initial_biomass", initial_biomass)
         dynamic_medium = condition_data.get("dynamic_medium", dynamic_medium)
         for bounds in dynamic_medium:
             bounds.dt = self.dt
+        tmax = condition_data.get("tmax", tmax)
 
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
@@ -159,7 +160,6 @@ def main():
 
     # Load and set up model
     model = read_sbml_model("model/Rpom_05.xml")
-    setup_drawdown(model)
     ex_ace = get_or_create_exchange(model, "ACET[e]")
 
     # Turn on maintenance
@@ -178,11 +178,12 @@ def main():
     # {(<Quantity(2.0, 'millimolar')>, <Quantity(0.0, 'millimolar')>): ((3.857788639318984e-06, -3.7498565796153476, -20.0), 4.864342853437677)}
     # {(<Quantity(0.0, 'millimolar')>, <Quantity(6.0, 'millimolar')>): ((1.7746685352765677e-06, -4.0, -20.65117661222312), 4.604088166504376)}
 
+    # X_0, v_g, v_a, t_max
     fitted_params = {
-        (2.0, 0.0): np.array([3.857788639318984e-04, -3, -0]),
-        (0.0, 6.0): np.array([5e-03, -0, -10]),
-        (2/3, 4.0): np.array([1.852104325893396e-03, -2.5 * 2/3, -3 * 4.]),
-        (4/3, 2.0): np.array([1.5705806351090746e-03, -2.5 * 4/3, -3 * 2.]),
+        (2.0, 0.0): np.array([6e-04, -3, -0, 30.]),
+        (0.0, 6.0): np.array([1e-03, -0, -15, 30.]),
+        (2/3, 4.0): np.array([5e-04, -1.25, -15., 20.]),
+        (4/3, 2.0): np.array([5e-04, -1.5, -15., 20.]),
     }
     for k, v in fitted_params.items():
         key = [(g, a) for (g, a) in cue_experiment.conditions if g.magnitude ==
@@ -192,6 +193,7 @@ def main():
             ConstantBounds(cue_experiment.ex_glc, "Glucose[e]", v[1]),
             ConstantBounds(cue_experiment.ex_ace, "ACET[e]", v[2])
         ]
+        cue_experiment.conditions[key]["tmax"] = v[3]
 
     # Run dFBA
     # cue_experiment.dt = 1
@@ -216,7 +218,8 @@ def main():
         initial_glucose, initial_acetate = condition
         condition_data = cue_experiment.conditions[condition]
         fig, (ax, _) = plot_result(t, y, condition_data, mass_units=False)
-        ax.set_yscale("log")
+        ax.set_xlim(0, fitted_params[(initial_glucose.magnitude, initial_acetate.magnitude)][3])
+        # ax.set_yscale("log")
 
         # plot bge
         # ax3 = ax.twinx()
@@ -229,7 +232,7 @@ def main():
         fig.savefig(
             os.path.join(
                 OUTDIR,
-                f"{model.id}_{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate_dFBA.png",
+                f"{model.id}_{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate_dFBA.svg",
             )
         )
 
