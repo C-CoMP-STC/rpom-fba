@@ -102,7 +102,16 @@ class SetMedium(Stage):
         final_medium = {}
         for metabolite, value in medium.items():
             exchange = get_or_create_exchange(model, metabolite, verbose=True)
-            final_medium[exchange.id] = value
+            
+            # final_medium[exchange.id] = value
+
+            # Currently, the values are not accurate - let everything 
+            # be essentially unbounded except for oxygen
+            if metabolite != "OXYGEN-MOLECULE[e]":
+                final_medium[exchange.id] = 1000
+        
+        # Set oxygen to 20
+        final_medium["EX_o2"] = 20
 
         model.medium = final_medium
 

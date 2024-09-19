@@ -6,7 +6,7 @@ import os
 import numpy as np
 from cobra.io import read_sbml_model
 from experiments.cue2 import CUE_Experiment_2
-from experiments.fast_dFBA import ConstantBounds, setup_drawdown
+from experiments.fast_dFBA import ConstantBounds
 from utils.cobra_utils import get_or_create_exchange
 from utils.units import u
 from utils.math import get_interpolator
@@ -233,7 +233,6 @@ def main():
 
     # Load and set up model
     model = read_sbml_model("model/Rpom_05.xml")
-    setup_drawdown(model)
     ex_ace = get_or_create_exchange(model, "ACET[e]")
 
     # Turn on ATPM

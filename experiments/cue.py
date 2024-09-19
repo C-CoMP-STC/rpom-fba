@@ -17,8 +17,7 @@ from experiments.fast_dFBA import (
     make_shadow_price_listener,
     plot_shadow_prices,
     make_boundary_listener,
-    make_growth_rate_listener,
-    setup_drawdown,
+    make_growth_rate_listener
 )
 from parameters.drawdown import *
 from utils.units import u
@@ -241,7 +240,6 @@ def main():
 
     # Load and set up model
     model = read_sbml_model("model/Rpom_05.xml")
-    setup_drawdown(model)
     ex_ace = get_or_create_exchange(model, "ACET[e]")
     # model = load_model("iJO1366")
 

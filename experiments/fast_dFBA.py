@@ -96,10 +96,13 @@ class CachingBoundedOptimizer:
             exchanges = [bound.exchange for bound in self.dynamic_medium]
             fluxes = np.array([sol.objective_value] +
                               [sol.fluxes[ex.id] for ex in exchanges])
+            
+            # result = np.copy(fluxes)
+            result = fluxes if fluxes[0] >= 0 else np.zeros_like(fluxes)
             if use_cache:
-                self.cache[key] = np.copy(fluxes)
+                self.cache[key] = np.copy(result)
 
-            return np.copy(fluxes)
+            return np.copy(result)
 
 
 def bound_and_optimize(model,
@@ -359,19 +362,6 @@ def make_boundary_listener(model, biomass_id, dynamic_medium):
     return boundary_listener
 
 
-def setup_drawdown(model):
-    # Growth is infeasible on the seawater medium as it currently is,
-    # needs to be supplemented with FE+2 (also increase everything to 1000 to not be limiting)
-    supp_medium = {k: 1000.0 for k, v in model.medium.items()}
-    supp_medium["EX_fe2"] = 1000.0
-    supp_medium["EX_o2"] = 20.0
-    model.medium = supp_medium
-
-    # nadh_dehyd_rxns = [rxn for rxn in model.reactions if rxn.id.startswith("1.6.99.5")]
-    # for rxn in nadh_dehyd_rxns:
-    #     rxn.add_metabolites({"PROTON[c]" : -4., "PROTON[e]" : 4.})
-
-
 def plot_data(t, y, carbon_source, initial_C, V_max, t_max, growth_data):
     fig, ax = plt.subplots()
 
@@ -446,7 +436,6 @@ def plot_shadow_prices(shadow_prices, t):
 #     os.makedirs(OUTDIR, exist_ok=True)
 
 #     model = read_sbml_model(MODEL)
-#     setup_drawdown(model)
 
 #     # Load carbon sources to test
 #     with open(CARBON_SOURCES, "r") as f:
