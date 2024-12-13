@@ -214,6 +214,12 @@ def plot_result(t, y, condition_data, mass_units=True):
         if substrate.size > 0:
             plot_mean_min_max(t, substrate, color=color, ax=ax2)
 
+    # Plot BGE
+    ax3 = ax.twinx()
+    bge_t = condition_data["raw"]["raw_bge_t"]
+    bge = condition_data["raw"]["raw_bge"]
+    plot_mean_min_max(bge_t, bge, color="k", ax=ax3)
+
     ax.set_ylabel("Biomass (g/L)", color="b")
     ax2.set_ylabel(f"Substrate ({'g/L' if mass_units else 'mM'})", color="r")
     ax2.legend()

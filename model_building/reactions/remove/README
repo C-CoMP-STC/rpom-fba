@@ -8,3 +8,9 @@ Removed so as to use ubiquinone 10 only:
     "RXN3O-102",
     "RXN66-550-ETF-Reduced/UBIQUINONE-8//ETF-Oxidized/CPD-9956/PROTON.55.",
     "SUCCINATE-DEHYDROGENASE-UBIQUINONE6-RXN"
+
+Removed as sub-reactions (and sub-sub-reactions) of PDH:
+    "RXN0-1134",
+        "RXN-12583",
+    "RXN0-1133",
+    "RXN0-1132"

@@ -1,4 +1,6 @@
+import os
 import pandas as pd
+import numpy as np
 
 from cobra.core import Reaction, Model
 from cobra.io import read_sbml_model
@@ -72,28 +74,64 @@ def main():
 
     # Get fluxes for growth on glucose
     with model:
-        ex_glc.lower_bound = -10
+        ex_glc.lower_bound = -3
         sol = model.optimize()
-        flux_glc = sol.fluxes
-
+        flux_glc = sol.fluxes / sol.objective_value
 
     # Get fluxes for growth on acetate
     with model:
-        ex_ace.lower_bound = -10
+        ex_ace.lower_bound = -9
         sol = model.optimize()
-        flux_ace = sol.fluxes
+        flux_ace = sol.fluxes / sol.objective_value
 
+    rxn_fc = flux_ace / flux_glc
 
-    # Generate paintable
-    df = to_paintable(model,
-                      collection = "reactions",
-                      pbar=True,
-                      presence = 1,
-                      flux_glc = lambda r: flux_glc.get(r.id, 0),
-                      flux_ace = lambda r: flux_ace.get(r.id, 0)
+    # Create output directory
+    os.makedirs("out/biocyc", exist_ok=True)
+
+    # Generate paintable for reaction presence
+    presence_df = to_paintable(model,
+                               collection="reactions",
+                               pbar=True,
+                               presence=1)
+    presence_df.to_csv("out/biocyc/reaction_presence.tsv", index=False, sep="\t")
+
+    # Generate paintable for reaction fluxes
+    flux_df = to_paintable(
+        model,
+        collection="reactions",
+        pbar=True,
+        flux_glc = lambda r: flux_glc.get(r.id, 0),
+        flux_ace = lambda r: flux_ace.get(r.id, 0)
     )
+    flux_df = flux_df[(flux_df["flux_glc"] != 0) | (flux_df["flux_ace"] != 0)]
+    flux_df.to_csv("out/biocyc/reaction_flux.tsv", index=False, sep="\t")
 
-    df.to_csv("out/biocyc/reaction_paintable.tsv", index=False, sep="\t")
+    # Generate paintable for reaction fold changes
+    fc_df = to_paintable(
+        model,
+        collection="reactions",
+        pbar=True,
+        rxn_fc = lambda r: rxn_fc.get(r.id, 0)
+    )
+    fc_df = fc_df[fc_df["rxn_fc"] != 0]
+    fc_df.to_csv("out/biocyc/reaction_fc.tsv", index=False, sep="\t")
+
+
+    # flux_glc_df = to_paintable(model,
+    #                            collection="reactions",
+    #                            pbar=True,
+    #                            flux_glc=lambda r: flux_glc.get(r.id, 0))
+    # flux_glc_df = flux_glc_df[flux_glc_df["flux_glc"] != 0]
+    # flux_glc_df.to_csv("out/biocyc/reaction_flux_glc.tsv", index=False, sep="\t")
+
+    # # Generate paintable for reaction fluxes on acetate
+    # flux_ace_df = to_paintable(model,
+    #                            collection="reactions",
+    #                            pbar=True,
+    #                            flux_ace=lambda r: flux_ace.get(r.id, 0))
+    # flux_ace_df = flux_ace_df[flux_ace_df["flux_ace"] != 0]
+    # flux_ace_df.to_csv("out/biocyc/reaction_flux_ace.tsv", index=False, sep="\t")
 
 
 if __name__ == "__main__":

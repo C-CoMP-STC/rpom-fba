@@ -65,6 +65,22 @@ for pref, key in conditions.items():
     acetate_raw = ace_data.values[:a_t.size, :].T
     acetate_mean = acetate_raw.mean(axis=0)
 
+    # BGE
+    bge_data = bge[[col
+                    for col in bge.columns
+                    if col.startswith(pref)
+                    and not col.endswith("mean")]]
+    bge_t = bge["OD time"].values
+    bge_raw = bge_data.values.T
+
+    # Remove NaNs
+    # nan_pos = np.isnan(bge_raw).any(axis=0)
+    # bge_raw = bge_raw[:, ~nan_pos]
+    # bge_t = bge_t[~nan_pos]
+
+    bge_mean = bge_raw.mean(axis=0)
+
+
     data[key] = {
         "raw": {
             "raw_b_t": b_t,
@@ -72,7 +88,9 @@ for pref, key in conditions.items():
             "raw_g_t": g_t,
             "raw_g_s": glucose_raw,
             "raw_a_t": a_t,
-            "raw_a_s": acetate_raw
+            "raw_a_s": acetate_raw,
+            "raw_bge_t": bge_t,
+            "raw_bge": bge_raw,
         },
         "mean": {
             "g_t": g_t,
@@ -81,6 +99,8 @@ for pref, key in conditions.items():
             "a_s": acetate_mean,
             "b_t": b_t,
             "b_s": b_s,
+            "bge_t": bge_t,
+            "bge": bge_mean
         }
     }
 
