@@ -108,7 +108,7 @@ class CUE_Experiment_2(Experiment):
                 np.array([initial_glucose, initial_acetate]),
                 dynamic_medium,
                 tmax,
-                terminate_on_infeasible=False,
+                terminate_on_infeasible=True,
                 listeners=[
                     #    make_shadow_price_listener(
                     #        self.model, ["Glucose[e]", "ACET[e]"], dynamic_medium),
@@ -232,8 +232,9 @@ def main():
         fig.savefig(
             os.path.join(
                 OUTDIR,
-                f"{model.id}_{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate_dFBA.svg",
-            )
+                f"{model.id}_{initial_glucose.magnitude:.2f}mM_glucose_{initial_acetate.magnitude:.2f}mM_acetate_dFBA.png",
+            ),
+            dpi=300
         )
 
         # Plot mu

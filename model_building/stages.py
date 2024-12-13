@@ -36,7 +36,6 @@ class BaseModel(Stage):
         if not isinstance(params, str):
             raise TypeError(
                 f"BaseModel stage requires a path to a base model (as a str). Got {type(params)}.")
-
         return read_sbml_model(params)
 
 

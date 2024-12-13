@@ -109,19 +109,27 @@ def plot_pathway(model, metabolite_graph, reaction_list, ax=None):
     return ax
 
 
-def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxes", include_zeros=True):
+def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxes", include_zeros=True, top_N=None):
     if ax is None:
         _, ax = plt.subplots()
 
+    if top_N is None:
+        top_N = len(model.reactions)
+
+    # Initialize graph
     g = nx.DiGraph()
     metabolite = model.metabolites.get_by_id(metabolite_id)
     node_id = count()
     id_0 = next(node_id)
     g.add_node(id_0, label=metabolite_id, pos=(0, 0))
 
+    # Put metabolite reactions in sorted order, only take up to top_N
+    reactions = sorted(metabolite.reactions, key=lambda rxn: abs(rxn.flux), reverse=True)[:top_N]
+
+    # Add reactions, metabolites to graph
     input_metabolites = []
     output_metabolites = []
-    for reaction in metabolite.reactions:
+    for reaction in reactions:
         flux = reaction.flux
 
         if not include_zeros and flux == 0:
