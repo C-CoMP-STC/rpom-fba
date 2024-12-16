@@ -14,3 +14,8 @@ Removed as sub-reactions (and sub-sub-reactions) of PDH:
         "RXN-12583",
     "RXN0-1133",
     "RXN0-1132"
+
+Removed as sub-reactions of GCVMULTI-RXN:
+    "GCVP-RXN",
+    "GCVT-RXN",
+    "RXN-8629"
