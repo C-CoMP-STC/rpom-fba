@@ -66,5 +66,12 @@
             "CO-A[c]" : 1.0,
             "PHB-MONOMER[c]" : 1.0
         }
+    },
+    "Pathway corrections ===================================================",
+    {
+        "id" : "PDH",
+        "annotation": {
+            "pathways" : "PYRUVDEHYD-PWY"
+        }
     }
 ]

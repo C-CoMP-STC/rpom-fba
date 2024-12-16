@@ -222,7 +222,9 @@ class ModifyReactions(Stage):
                 }
                 rxn.subtract_metabolites(rxn.metabolites)
                 rxn.add_metabolites(metabolites)
-                
+            
+            if "annotation" in reaction:
+                rxn.annotation.update(reaction["annotation"])
 
             rxn.gene_reaction_rule = reaction.get("gene_reaction_rule", rxn.gene_reaction_rule)
 

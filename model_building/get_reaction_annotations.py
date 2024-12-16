@@ -1,3 +1,4 @@
+from collections import defaultdict
 import pickle
 import re
 import requests
@@ -6,6 +7,7 @@ from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from getpass import getpass
 from cobra.io import read_sbml_model
+from urllib.parse import quote_plus
 
 
 RPOM_ORGID = "GCF_000011965"
@@ -86,7 +88,79 @@ def genes_of_reaction(reaction, orgid=RPOM_ORGID, session=None):
     return genes
 
 
-def get_pathways(reaction, orgid=RPOM_ORGID, session=None):
+def get_pathway_data(orgid=RPOM_ORGID, session=None):
+    # Use session if provided
+    # (can be Session object or tuple of username, password),
+    # or create one if not
+    if isinstance(session, requests.Session):
+        s = session
+    elif isinstance(session, tuple):
+        username, password = session
+        s = get_session(username, password)
+    else:
+        s = get_session()
+
+    # Using ^^^ instead of ^^ to get only instances (not classes)
+    query = quote_plus(f"[x:x<-{orgid}^^^pathways]")
+    r = s.get(f"https://websvc.biocyc.org/xmlquery?{query}")
+    r.raise_for_status()
+
+    # Clean up response
+    pathways = xmltodict.parse(r.text)["ptools-xml"].get("Pathway", [])
+
+    # Key by frameid
+    pathway_data = {
+        pwy["@frameid"] : pwy
+        for pwy in pathways
+    }
+
+    # Function to recursively get all reactions in a pathway
+    def get_reactions(pwy_dict):
+        reaction_list = pwy_dict.get("reaction-list", {})
+        result = []
+
+        # If there are subpathways, get reactions from them recursively
+        if "Pathway" in reaction_list:
+            subpathways = reaction_list["Pathway"]
+            if not isinstance(subpathways, list):
+                subpathways = [subpathways]
+            
+            for subpwy in subpathways:
+                subpwy_id = subpwy["@frameid"]
+                result.extend(get_reactions(pathway_data[subpwy_id]))
+        
+        # Get reactions from this pathway
+        reactions = reaction_list.get("Reaction", [])
+        if not isinstance(reactions, list):
+            reactions = [reactions]
+        for reaction in reactions:
+            result.append(reaction["@frameid"])
+
+        return result
+    
+    # Get all reactions in each pathway
+    pathway_data = {
+        pwy_id : {
+            "common-name": pwy_dict.get("common-name", {}).get("#text", ""),
+            "reactions": get_reactions(pwy_dict)
+        }
+        for pwy_id, pwy_dict in pathway_data.items()
+    }
+
+    return pathway_data
+
+
+def get_pathways_of_genes_of_reaction(reaction, orgid=RPOM_ORGID, session=None):
+    """DEPRECATED: 
+    Unfortunately, there is no direct way to get the pathways of a reaction
+    with BioCyc API functions. This method is a workaround that gets the genes
+    of a reaction, then gets the pathways of each gene. However, this approach
+    is too inclusive, since a gene can catalyze multiple reactions belonging to
+    different pathways. This method is kept here for reference, but is not used.
+
+    Instead, use the get_pathway_data function to get all pathways in the organism,
+    then reactions in each pathway directly from that data.
+    """
     # Use session if provided
     # (can be Session object or tuple of username, password),
     # or create one if not
@@ -133,20 +207,33 @@ def main():
     stems = {
         reaction.id: get_stem(reaction.id) for reaction in model.reactions
     }
-    
-    # Get pathways of reactions
-    pathways = {}
-    with tqdm(total=len(model.reactions)) as pbar:
-        with ThreadPoolExecutor() as executor:
-            futures = {
-                executor.submit(get_pathways, stems[reaction.id], RPOM_ORGID, (username, password)) : reaction
-                for reaction in model.reactions}
-            
-            for future in as_completed(futures):
-                pathways[futures[future].id] = future.result()
-                pbar.update(1)
 
-    # Save data
+    # Get all pathways in R. pom
+    pathway_data = get_pathway_data(RPOM_ORGID, (username, password))
+
+    # Get pathways of reactions, as a {reaction: [pathways]} dict.
+    # Note that in order to account for instance reactions, we use the *stem*
+    # to check for membership in pathway.
+    pathways = defaultdict(list)
+    # remaining = set(model.reactions)
+    # for pwy_id, pwy_data in tqdm(pathway_data.items()):
+    #     for reaction in pwy_data["reactions"]:
+    #         pathways[reaction].append(pwy_id)
+    #         remaining.discard(reaction)
+    
+    # # Remaining reactions are not in any pathway
+    # for reaction in remaining:
+    #     pathways[reaction] = []
+    for reaction, stem in tqdm(stems.items()):
+        for pwy_id, pwy_data in pathway_data.items():
+            if stem in pwy_data["reactions"]:
+                pathways[reaction].append(pwy_id)
+
+    # Save pathway data
+    with open("model_building/pathway_data.pkl", "wb") as f:
+        pickle.dump(pathway_data, f)
+
+    # Save reaction annotations
     with open("model_building/reaction_annotations.pkl", "wb") as f:
         pickle.dump({
             "stems" : stems,
