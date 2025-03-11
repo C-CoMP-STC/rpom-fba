@@ -2,7 +2,6 @@
     "BaseModel": "base_model/Rpom_05.xml",
     "MetaData": null,
     "BiomassObjective": "hwa",
-    "MaintenanceFlux": 0,
     "SetMedium": "data/media/L1_minimal_medium.json",
     "AddMetabolites": null,
     "AddUptakeReactions": null,
@@ -13,5 +12,7 @@
         "model_building/reactions/remove/*.json"
     ],
     "ModifyReactions": ["model_building/reactions/corrections/*.json"],
-    "AnnotateReactions": "model_building/reaction_annotations.pkl"
+    "AnnotateReactions": "model_building/reaction_annotations.pkl",
+    "BioCycUpdates" : "model_building/biocyc_update_pipeline/templates/template.xlsx",
+    "MaintenanceFlux": 0
 }

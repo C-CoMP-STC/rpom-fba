@@ -1,0 +1,11 @@
+Run scripts in this order:
+
+EXTRACT
+1. model_building/biocyc_update_pipeline/extract/get_biocyc_data.py
+2. model_building/biocyc_update_pipeline/extract/get_gene_reaction_mappings.py
+
+TRANSFORM
+...
+
+LOAD
+...

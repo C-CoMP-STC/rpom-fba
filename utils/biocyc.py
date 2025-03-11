@@ -1,12 +1,14 @@
+from getpass import getpass
 import os
 import pandas as pd
 import numpy as np
 
 from cobra.core import Reaction, Model
 from cobra.io import read_sbml_model
+import requests
 from tqdm import tqdm
 
-from cobra_utils import get_or_create_exchange
+from utils.cobra_utils import get_or_create_exchange
 
 
 def to_paintable(model : Model, collection : str = "reactions", pbar : bool = False, **data):
@@ -60,6 +62,29 @@ def to_paintable(model : Model, collection : str = "reactions", pbar : bool = Fa
         })
     
     return pd.DataFrame(result)
+
+
+def get_session(username=None, password=None, n_tries=3):
+    # Prompt for username and password if not provided
+    if username is None:
+        username = input("Username: ")
+    if password is None:
+        password = getpass("Password: ")
+    
+    # Get and return session
+    for _ in range(n_tries):
+        try:
+            s = requests.Session()
+            r = s.post("https://websvc.biocyc.org/credentials/login/",
+                    data={"email": username, "password": password})
+            r.raise_for_status()
+            return s
+        except requests.HTTPError as e:
+            print(f"Error: {e}")
+            username = input("Username: ")
+            password = getpass("Password: ")
+
+    return s
 
 
 def main():

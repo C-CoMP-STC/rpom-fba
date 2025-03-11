@@ -1,6 +1,128 @@
 import re
 from cobra.core import Metabolite, Reaction
 from cobra.io import read_sbml_model
+import networkx as nx
+import heapq
+import matplotlib.pyplot as plt
+import numpy as np
+from molmass import Formula
+
+
+def widest_path(fluxes,
+                source_met,
+                target_met,
+                ignore_ids={"WATER[c]",
+                            "ATP[c]",
+                            "ADP[c]",
+                            "Pi[c]",
+                            "PROTON[c]",
+                            "NAD[c]",
+                            "NADP[c]",
+                            "NADH[c]",
+                            "NADPH[c]", }):
+    """Find the widest (least-constraining) path from source_met to target_met
+    with the given fluxes. Paths through currency metabolites or certain reactions are blocked by specifying
+    currency metabolites in the ignore_ids parameter.
+    """
+    def neighbors(node):
+        if isinstance(node, Metabolite):
+            # Return only reactions that consuming the metabolite
+            result = set()
+            for reaction in node.reactions:
+                coeff = reaction.metabolites[node]
+                if coeff * fluxes[reaction.id] < 0 and reaction.id not in ignore_ids:
+                    result.add(reaction)
+            return result
+        elif isinstance(node, Reaction):
+            # Return only metabolites producing the metabolite
+            return set(met
+                       for met, coeff in node.metabolites.items()
+                       if coeff * fluxes[node.id] > 0
+                       and met.id not in ignore_ids)
+        else:
+            raise ValueError(
+                f"Expected a Metabolite or Reaction, got {type(node)}")
+
+    def clean_path(path):
+        # Utility function to remove extraneous nodes from the path found.
+        # Traverse backwards from the target to the source in order to identify a single chain path
+        node = target_met
+        chain = [node]
+        preds = list(path.predecessors(node))
+        while preds:
+            assert len(preds) == 1
+            chain.extend(preds)
+            node = preds[0]
+            preds = list(path.predecessors(node))
+        chain = list(reversed(chain))
+
+        to_remove = set(path.nodes) - set(chain)
+        path.remove_nodes_from(to_remove)
+        return path
+
+    # Resulting path will be given as a DiGraph
+    path = nx.DiGraph()
+
+    # priority queue: (-capacity, tiebreaker, (prev_node, node))
+    _tiebreaker = 0
+    pq = [(-float('inf'), _tiebreaker, (None, source_met))]
+    visited = set()
+    while pq:
+        # Visit next node
+        neg_capacity, _, (prev_node, node) = heapq.heappop(pq)
+
+        # Ignore visited nodes
+        if node in visited:
+            continue
+        visited.add(node)
+
+        # Add to path
+        path.add_node(node, node_type=type(node))
+        if prev_node is not None:
+            path.add_edge(prev_node, node, weight=-neg_capacity)
+
+        # Stop if we've reached the target
+        if node == target_met:
+            return clean_path(path)
+
+        # Move on to neighbors of node
+        for neighbor in neighbors(node):
+            # Take the capacity on this edge as the quantity per hour going through the reaction
+            # (multiply flux * coefficient)
+            # Ideally, we would convert this to mass, but some metabolites have generic formulas (e.g. with an R or X)
+            met = neighbor if isinstance(neighbor, Metabolite) else node
+            rxn = neighbor if isinstance(neighbor, Reaction) else node
+            edge_capacity = abs(fluxes[rxn.id]
+                                * rxn.metabolites[met])
+            _tiebreaker += 1
+            heapq.heappush(pq, (max(neg_capacity, -edge_capacity),
+                           _tiebreaker, (node, neighbor)))
+
+    # If we haven't returned by now, there is no path
+    return None
+
+
+def draw_path(path, mets_per_row = 4, jitter=2):
+    pos = {}
+    i, j = 0, 0
+    direction = 1
+    for node in nx.topological_sort(path):
+        pos[node] = np.array([10*i,
+                              -10*j + jitter*((i+j)%2)])
+        
+        if i + direction >= mets_per_row or i + direction < 0:
+            
+            j += 1
+            direction *= -1
+        else:
+            i += direction
+        
+
+    nx.draw(path,
+            pos=pos,
+            labels={node: node.id if isinstance(node, Metabolite) else "" for node in path.nodes},
+            with_labels=True)
+    nx.draw_networkx_edge_labels(path, pos, edge_labels={(u, v): f"{path[u][v]['weight']:.2g}" for u, v in path.edges})
 
 
 def reactions_of_metabolite(model, metID):

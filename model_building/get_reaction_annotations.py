@@ -8,24 +8,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from getpass import getpass
 from cobra.io import read_sbml_model
 from urllib.parse import quote_plus
+from utils.biocyc import get_session
 
 
 RPOM_ORGID = "GCF_000011965"
-
-def get_session(username=None, password=None):
-    # Prompt for username and password if not provided
-    if username is None:
-        username = input("Username: ")
-    if password is None:
-        password = getpass("Password: ")
-    
-    # Get and return session
-    s = requests.Session()
-    r = s.post("https://websvc.biocyc.org/credentials/login/",
-            data={"email": username, "password": password})
-    r.raise_for_status()
-
-    return s
 
 
 def get_stem(reaction_full_id):
