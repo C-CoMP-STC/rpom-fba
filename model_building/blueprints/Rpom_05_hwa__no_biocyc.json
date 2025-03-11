@@ -1,0 +1,17 @@
+{
+    "BaseModel": "base_model/Rpom_05.xml",
+    "MetaData": null,
+    "BiomassObjective": "hwa",
+    "MaintenanceFlux": 0,
+    "SetMedium": "data/media/L1_minimal_medium.json",
+    "AddMetabolites": null,
+    "AddUptakeReactions": null,
+    "AddReactions": [
+        "model_building/reactions/add/*.json"
+    ],
+    "RemoveReactions": [
+        "model_building/reactions/remove/*.json"
+    ],
+    "ModifyReactions": ["model_building/reactions/corrections/*.json"],
+    "AnnotateReactions": "model_building/reaction_annotations.pkl"
+}
