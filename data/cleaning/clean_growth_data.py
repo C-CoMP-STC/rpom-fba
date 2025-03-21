@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 import pandas as pd
 
-from parameters.od_calibration import CellDensityRegressor, DRAWDOWN_SCALE_FACTOR
+from parameters.od_calibration import DRAWDOWN_SCALE_FACTOR
 from parameters.drawdown import MASS_PER_CELL, COLONY_VOLUME
 from utils.units import u
 from data.files import GROWTH_DATA_RAW, CARBON_SOURCES, GROWTH_DATA_CLEAN
@@ -19,7 +19,6 @@ def main():
     with open(CARBON_SOURCES, "r") as f:
         carbon_sources = json.load(f).keys()
 
-    # TODO: Subtract blank?
     blank = data["mean blank"].values[1:].astype(float).mean()
     time = data["time (h)"].values[1:].astype(float)
 
