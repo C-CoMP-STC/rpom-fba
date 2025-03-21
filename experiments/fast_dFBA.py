@@ -19,7 +19,7 @@ from tqdm import tqdm
 
 from data.files import DRAWDOWN_DATA_CLEAN, GROWTH_DATA_CLEAN
 from parameters.drawdown import *
-from parameters.fit_uptake_rates import michaelis_menten_dynamic_system
+from parameters.fit_uptake_rates__old import michaelis_menten_dynamic_system
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
 from utils.math import euler, get_interpolator, runge_kutta, euler_step, rk_step
 from utils.units import u
