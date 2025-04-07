@@ -1,0 +1,13 @@
+[
+    "Rename PDH to PYRUVDEH-RXN, add genes",
+    "E1 component: SPO2241 [pdhB], SPO2240 [pdhA], E2 component: SPO2242 [pdhC], E3 component: SPO0340 [lpdA] (+ SPO2222? from DB2)",
+    {
+        "id": "PYRUVDEH-RXN",
+        "name": "Pyruvate dehydrogenase",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "CO-A[c] + NAD[c] + PYRUVATE[c] --> ACETYL-COA[c] + CARBON-DIOXIDE[c] + NADH[c]",
+        "gene_reaction_rule": "(SPO2241 and SPO2240 and SPO2242 and (SPO0340 or SPO2222))"
+    }
+]

@@ -151,29 +151,43 @@ class AddReactions(Stage):
             if not isinstance(reaction, dict):
                 continue
 
-            reaction["metabolites"] = {
-                model.metabolites.get_by_id(m): v
-                for m, v in reaction["metabolites"].items()
-            }
-
+            # Create a new reaction object
             rxn = Reaction()
             rxn.id = reaction["id"]
             rxn.name = reaction["name"]
             rxn.subsystem = reaction["subsystem"]
+
+            # reaction["metabolites"] may be a dict of metabolite ids : coefficients,
+            # or a reaction string like "A + B <=> C + D"
+            if isinstance(reaction["metabolites"], dict):
+                metabolites = {
+                    model.metabolites.get_by_id(m): v
+                    for m, v in reaction["metabolites"].items()
+                }
+                rxn.add_metabolites(metabolites)
+            elif isinstance(reaction["metabolites"], str):
+                # Parse the reaction string
+                reaction_str = reaction["metabolites"]
+                rxn.build_reaction_from_string(reaction_str)
+            else:
+                raise ValueError(
+                    f"Invalid format for metabolites in reaction {reaction['id']}.")
+
+            # Set bounds and gene reaction rule
             rxn.lower_bound = reaction["lower_bound"]
             rxn.upper_bound = reaction["upper_bound"]
-            rxn.add_metabolites(reaction["metabolites"])
             rxn.gene_reaction_rule = reaction["gene_reaction_rule"]
 
             reactions.append(rxn)
 
+        # Add all new reactions
         model.add_reactions(reactions)
 
         return model
 
 
 @register_stage
-class RemoveReactions(Stage):
+class RemoveReactions(Stage
     def process(self, model: Model, params: object) -> Model:
         if not isinstance(params, list):
             raise ValueError(
