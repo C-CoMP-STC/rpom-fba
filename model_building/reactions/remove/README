@@ -1,3 +1,5 @@
+electron transport chain.json =====================================================================
+
 Removed so as to use ubiquinone 10 only:
     "1.5.5.1-RXN-ETF-Reduced/UBIQUINONE-6//ETF-Oxidized/UBIQUINOL-30/PROTON.59.",
     "1.5.5.1-RXN-ETF-Reduced/UBIQUINONE-9//ETF-Oxidized/CPD-9957/PROTON.55.",
@@ -9,6 +11,8 @@ Removed so as to use ubiquinone 10 only:
     "RXN66-550-ETF-Reduced/UBIQUINONE-8//ETF-Oxidized/CPD-9956/PROTON.55.",
     "SUCCINATE-DEHYDROGENASE-UBIQUINONE6-RXN"
 
+sub-reactions.json ================================================================================
+
 Removed as sub-reactions (and sub-sub-reactions) of PDH:
     "RXN0-1134",
         "RXN-12583",
@@ -19,3 +23,7 @@ Removed as sub-reactions of GCVMULTI-RXN:
     "GCVP-RXN",
     "GCVT-RXN",
     "RXN-8629"
+
+rename.json =======================================================================================
+
+Removed to rename to PYRUVDEH-RXN: PDH

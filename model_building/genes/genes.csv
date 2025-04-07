@@ -1,0 +1,9 @@
+ID, Name
+# pyruvate dehydrogenase
+SPO2240, pdhA
+SPO2241, pdhB
+SPO2242, pdhC
+SPO0340, lpdA
+
+# DMSP cleavage
+SPO0147, acuH
