@@ -1,0 +1,14 @@
+[
+    {
+        "id": "RXN-9510",
+        "gene_reaction_rule": "SPO3573 or SPO1806"
+    },
+    {
+        "id" : "RXN-12444",
+        "gene_reaction_rule": "SPO3573 or SPO1806"
+    },
+    {
+        "id": "GLUTAMATE-DEHYDROGENASE-RXN",
+        "gene_reaction_rule": "SPO1743"
+    }
+]
