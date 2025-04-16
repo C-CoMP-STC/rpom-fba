@@ -75,9 +75,9 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "CPD-335[p]" : -1.0,
-            "Na+[e]" : -2.0,
+            "NA+[e]" : -2.0,
             "CPD-335[c]" : 1.0,
-            "Na+[c]" : 2.0
+            "NA+[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO2571 and SPO2572 and SPO2573)"
     },
@@ -156,8 +156,8 @@
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
-            "Na+[e]" : -1.0,
-            "Na+[c]" : 1.0,
+            "NA+[e]" : -1.0,
+            "NA+[c]" : 1.0,
             "CHOLINE[p]" : -1.0,
             "CHOLINE[c]" : 1.0
         },
@@ -276,9 +276,9 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "CPD-12693[p]" : -1.0,
-            "Na+[e]" : -2.0,
+            "NA+[e]" : -2.0,
             "CPD-12693[c]" : 1.0,
-            "Na+[c]" : 2.0
+            "NA+[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO0591 and SPO0592 and SPO0593)"
     },
@@ -315,8 +315,8 @@
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
-            "Na+[e]" : -1.0,
-            "Na+[c]" : 1.0,
+            "NA+[e]" : -1.0,
+            "NA+[c]" : 1.0,
             "SS-DIMETHYL-BETA-PROPIOTHETIN[p]" : -1.0,
             "SS-DIMETHYL-BETA-PROPIOTHETIN[c]" : 1.0
         },
@@ -355,9 +355,9 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "ECTOINE[p]" : -1.0,
-            "Na+[e]" : -2.0,
+            "NA+[e]" : -2.0,
             "ECTOINE[c]" : 1.0,
-            "Na+[c]" : 2.0
+            "NA+[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO1145 and SPO1146 and SPO1147)"
     },
@@ -394,9 +394,9 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "FUM[p]" : -1.0,
-            "Na+[e]" : -2.0,
+            "NA+[e]" : -2.0,
             "FUM[c]" : 1.0,
-            "Na+[c]" : 2.0
+            "NA+[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO2626 and SPO2627 and SPO2628 and SPO2629 and SPO2630)"
     },
@@ -431,9 +431,9 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "MAL[p]" : -1.0,
-            "Na+[e]" : -2.0,
+            "NA+[e]" : -2.0,
             "MAL[c]" : 1.0,
-            "Na+[c]" : 2.0
+            "NA+[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO2626 and SPO2627 and SPO2628 and SPO2629 and SPO2630)"
     },
@@ -468,9 +468,9 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "SUC[p]" : -1.0,
-            "Na+[e]" : -2.0,
+            "NA+[e]" : -2.0,
             "SUC[c]" : 1.0,
-            "Na+[c]" : 2.0
+            "NA+[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO2626 and SPO2627 and SPO2628 and SPO2629 and SPO2630)"
     },
@@ -517,37 +517,37 @@
         "gene_reaction_rule": "(SPO0861 and SPO0862 and SPO0863)"
     },
     {
-        "id": "EX_CPD-25028",
+        "id": "EX_BETA-D-XYLOSE",
         "name": "",
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 0.0,
         "metabolites": {
-            "CPD-25028[e]" : 1.0
+            "BETA-D-XYLOSE[e]" : 1.0
         },
         "gene_reaction_rule": ""
     },
     {
-        "id": "CPD-25028tex",
+        "id": "BETA-D-XYLOSEtex",
         "name": "",
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
-            "CPD-25028[e]" : -1.0,
-            "CPD-25028[p]" : 1.0
+            "BETA-D-XYLOSE[e]" : -1.0,
+            "BETA-D-XYLOSE[p]" : 1.0
         },
         "gene_reaction_rule": ""
     },
     {
-        "id": "CPD-25028tpp",
+        "id": "BETA-D-XYLOSEtpp",
         "name": "",
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
-            "CPD-25028[p]" : -1.0,
-            "CPD-25028[c]" : 1.0,
+            "BETA-D-XYLOSE[p]" : -1.0,
+            "BETA-D-XYLOSE[c]" : 1.0,
             "ATP[c]" : -2.0,
             "WATER[c]" : -2.0,
             "ADP[c]" : 2.0,
@@ -673,9 +673,9 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "CPD-3745[p]" : -1.0,
-            "Na+[e]" : -2.0,
+            "NA+[e]" : -2.0,
             "CPD-3745[c]" : 1.0,
-            "Na+[c]" : 2.0
+            "NA+[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO2356 and SPO2357 and SPO2358)"
     },

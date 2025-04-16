@@ -59,7 +59,7 @@
             "NADH[c]": 1.0,
             "PROTON[c]": 1.0
         },
-        "gene_reaction_rule" : "(slcD)"
+        "gene_reaction_rule" : "(SPO0598)"
     },
 
     "Trimethylamine degradation =================================================================",
@@ -269,7 +269,7 @@
             "PROTON[p]": 4,
             "WATER[c]": 2
         },
-        "gene_reaction_rule": "SPO3073 and SPO3076 and SPO1383 and SPO3523 and SPO3524 and SPO3525 and SPO3526 and G1RHL-427 and SPOA0187 and SPOA0188 and SPOA0189 and SPOA0190 and G1RHL-200"
+        "gene_reaction_rule": "(SPO0303 and SPO0623 and SPO1383 and SPO3076 and SPO3073 and SPO3526 and SPO3525 and SPO3524 and SPO3523 and SPOA0190 and SPOA0189 and SPOA0188 and SPOA0187)"
     },
     {
         "id": "1.10.2.2-RXN",
