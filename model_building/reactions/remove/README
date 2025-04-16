@@ -27,3 +27,16 @@ Removed as sub-reactions of GCVMULTI-RXN:
 rename.json =======================================================================================
 
 Removed to rename to PYRUVDEH-RXN: PDH
+
+gap_filled.json ===================================================================================
+
+Removed for apparently erroneous gap-filling:
+
+VALINE-PYRUVATE-AMINOTRANSFER-RXN
+Gap-filled for alanine biosynthesis I. However, gene SPO2014 exists for alanine biosynthesis III
+in both DBs, and as the Biocyc page notes, that the contribution of the alanine biosynthesis I pathway
+is unclear, as it contains reversible reactions involved in other physiological processes. Both
+other genes in the pathway are present in both DBs. Running blastp on the E coli protein
+(valine—pyruvate aminotransferase, avtA) finds SPO3230 (E=3e-11), SPOA0066 (E=1e-07)...
+Reverse blastp on SPO3230 finds E. coli's ydcR as top result (E=4e-36) with avtA as result #4 (E=1e-12).
+Alignment of AlphaFold structures shows some homology, but not great RMSD.

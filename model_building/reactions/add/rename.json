@@ -8,6 +8,9 @@
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": "CO-A[c] + NAD[c] + PYRUVATE[c] --> ACETYL-COA[c] + CARBON-DIOXIDE[c] + NADH[c]",
-        "gene_reaction_rule": "(SPO2241 and SPO2240 and SPO2242 and (SPO0340 or SPO2222))"
+        "gene_reaction_rule": "(SPO2241 and SPO2240 and SPO2242 and (SPO0340 or SPO2222))",
+        "annotation": {
+            "pathways" : "PYRUVDEHYD-PWY"
+        }
     }
 ]
