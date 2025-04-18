@@ -1,0 +1,12 @@
+[
+    "DMS needs to be exported to enable growth on DMSP. Assuming that this is free for now.",
+    {
+        "id": "SK_CPD-7670[c]",
+        "name": "dimethyl sulfide sink",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "subsystem": "",
+        "metabolites": "CPD-7670[c] <=>",
+        "gene_reaction_rule": ""
+    }
+]

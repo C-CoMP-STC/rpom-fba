@@ -4,6 +4,7 @@
     "BiomassObjective": "hwa",
     "SetMedium": "data/media/L1_minimal_medium.json",
     "AddMetabolites": null,
+    "AddUptakeReactions": null,
     "AddReactions": [
         "model_building/reactions/add/*.json"
     ],

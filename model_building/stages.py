@@ -145,7 +145,7 @@ class AddReactions(Stage):
                 with open(filepath, "r") as f:
                     reactions_to_add += json.load(f)
 
-        # reactions = []
+        reactions = []
         for reaction in reactions_to_add:
             # Allows the use of strings as comments
             if not isinstance(reaction, dict):
@@ -156,9 +156,6 @@ class AddReactions(Stage):
             rxn.id = reaction["id"]
             rxn.name = reaction["name"]
             rxn.subsystem = reaction["subsystem"]
-
-            # Add to model (need to do it now to allow building from reaction string)
-            model.add_reactions([rxn])
 
             # reaction["metabolites"] may be a dict of metabolite ids : coefficients,
             # or a reaction string like "A + B <=> C + D"
@@ -181,21 +178,16 @@ class AddReactions(Stage):
             rxn.upper_bound = reaction["upper_bound"]
             rxn.gene_reaction_rule = reaction["gene_reaction_rule"]
 
-            # Annotate reaction, gene source as manual
-            rxn.annotation["source"] = "manual"
-            if reaction["gene_reaction_rule"] != "":
-                rxn.annotation["Gene Source"] = "manual"
-
-            # reactions.append(rxn)
+            reactions.append(rxn)
 
         # Add all new reactions
-        # model.add_reactions(reactions)
+        model.add_reactions(reactions)
 
         return model
 
 
 @register_stage
-class RemoveReactions(Stage):
+class RemoveReactions(Stage
     def process(self, model: Model, params: object) -> Model:
         if not isinstance(params, list):
             raise ValueError(
@@ -255,16 +247,12 @@ class ModifyReactions(Stage):
             if "annotation" in reaction:
                 rxn.annotation.update(reaction["annotation"])
 
-            # Update gene reaction rule if provided,
-            # recording the source as manual to prevent downstream overrides
-            if "gene_reaction_rule" in reaction:
-                rxn.gene_reaction_rule = reaction["gene_reaction_rule"]
-                rxn.annotation["Gene Source"] = "manual"
+            rxn.gene_reaction_rule = reaction.get(
+                "gene_reaction_rule", rxn.gene_reaction_rule)
 
         return model
 
 
-# TODO: Remove? Check if this is still necessary
 @register_stage
 class AddUptakeReactions(Stage):
     def process(self, model: Model, params: object) -> Model:
@@ -321,15 +309,10 @@ class BioCycUpdates(Stage):
         initial_genes = len(model.genes)
 
         # First, clear existing genes and gene rules (which use bad ids)
-        # (except for manually annotated genes)
         for reaction in model.reactions:
-            if reaction.annotation.get("Gene Source") != "manual":
-                reaction.gene_reaction_rule = ""
-        genes_to_remove = []
-        for gene in model.genes:
-            if len(gene.reactions) ==0:
-                genes_to_remove.append(gene)
-        remove_genes(model, genes_to_remove, remove_reactions=False)
+            reaction.gene_reaction_rule = ""
+        gene_ids = set(gene.id for gene in model.genes)
+        remove_genes(model, gene_ids, remove_reactions=False)
 
         # Update existing reactions, by adding gene rules and removing unused reactions
         genes_added = set()
@@ -337,40 +320,28 @@ class BioCycUpdates(Stage):
         for _, row in existing_reactions.iterrows():
             reaction = model.reactions.get_by_id(row["Reaction ID"])
 
-            # # Get gene rule, preferring DB2 if available
-            # in_db1 = row["In DB1?"]
-            # in_db2 = row["In DB2?"]
-            # if in_db2:
-            #     gene_reaction_rule = row["Gene-reaction rule 2"]
-            # elif in_db1:
-            #     gene_reaction_rule = row["Gene-reaction rule 1"]
-            # else:
-            #     gene_reaction_rule = None
-
-            # Get gene rule, preferring DB1 if available
+            # Get gene rule, preferring DB2 if available
             in_db1 = row["In DB1?"]
             in_db2 = row["In DB2?"]
-            if in_db1:
-                gene_reaction_rule = row["Gene-reaction rule 1"]
-            elif in_db2:
+            if in_db2:
                 gene_reaction_rule = row["Gene-reaction rule 2"]
+            elif in_db1:
+                gene_reaction_rule = row["Gene-reaction rule 1"]
             else:
                 gene_reaction_rule = None
 
-            # Update gene rule if we have one (do not overwrite manual annotations)
+            # Update gene rule if we have one
             # (Also skipping empty gene rules of the form "()" since the parser doesn't like them)
             if not pd.isna(gene_reaction_rule) and gene_reaction_rule != "()":
-                if reaction.annotation.get("Gene Source") != "manual":
-                    reaction.gene_reaction_rule = gene_reaction_rule
-                    genes_added.update(reaction.genes)
-                    for gene in reaction.genes:
-                        gene.annotation["source"] = ("Ruegeria pomeroyi DSS-3"
-                                                    if in_db1
-                                                    else "Ruegeria pomeroyi DSS-3 representative genome")
+                reaction.gene_reaction_rule = gene_reaction_rule
+                genes_added.update(reaction.genes)
+                for gene in reaction.genes:
+                    gene.annotation["source"] = ("Ruegeria pomeroyi DSS-3 representative genome"
+                                                if in_db2
+                                                else "Ruegeria pomeroyi DSS-3")
 
-            # Remove reaction if unused and not manually added
-            if (row["Recommendation"] == "Delete"
-                and reaction.annotation.get("source") != "manual"):
+            # Remove reaction if unused
+            if row["Recommendation"] == "Delete":
                 model.remove_reactions([reaction])
                 removed_reactions.append(row["Reaction ID"])
         
@@ -381,12 +352,12 @@ class BioCycUpdates(Stage):
             if row["Recommendation"] != "Add":
                 continue
 
-            # Get database of origin (preferring DB1)
+            # Get database of origin (preferring DB2)
             in_db1 = row["In DB1?"]
             in_db2 = row["In DB2?"]
             
             # Get bounds, defaulting to (-1000, 1000) if not found
-            bounds = row["Bounds 1"] if in_db1 else row["Bounds 2"]
+            bounds = row["Bounds 2"] if in_db2 else row["Bounds 1"]
             if not pd.isna(bounds):
                 bounds = eval(bounds)
             else:
@@ -395,7 +366,7 @@ class BioCycUpdates(Stage):
                 warnings.warn(warning)
             
             # Get reaction common name, if any
-            name = row["Reaction name 1" if in_db1 else "Reaction name 2"]
+            name = row["Reaction name 2" if in_db2 else "Reaction name 1"]
             name = name if not pd.isna(name) else ""
 
             # Build reaction object
@@ -404,14 +375,13 @@ class BioCycUpdates(Stage):
                                 lower_bound=bounds[0],
                                 upper_bound=bounds[1])
             
-            # Add gene-reaction-rule (do not overwrite manual annotations)
-            gene_reaction_rule = row["Gene-reaction rule 1" if in_db1 else "Gene-reaction rule 2"]
-            if reaction.annotation.get("Gene Source") != "manual":
-                if not pd.isna(gene_reaction_rule) and gene_reaction_rule != "()":
-                    reaction.gene_reaction_rule = gene_reaction_rule
+            # Add gene-reaction-rule
+            gene_reaction_rule = row["Gene-reaction rule 2" if in_db2 else "Gene-reaction rule 1"]
+            if not pd.isna(gene_reaction_rule) and gene_reaction_rule != "()":
+                reaction.gene_reaction_rule = gene_reaction_rule
             
             # Build stoichiometry, incorporating new metabolites as needed
-            stoichiometry = eval(row["Stoichiometry 1"] if in_db1 else row["Stoichiometry 2"])
+            stoichiometry = eval(row["Stoichiometry 2"] if in_db2 else row["Stoichiometry 1"])
             metabolites = {}
             for met_id, coeff in stoichiometry.items():
                 if met_id not in model.metabolites:
@@ -429,9 +399,9 @@ class BioCycUpdates(Stage):
             reaction.add_metabolites(metabolites)
 
             # Keep track of which database the reaction came from
-            reaction.annotation["source"] = ("Ruegeria pomeroyi DSS-3"
-                                            if in_db1
-                                            else "Ruegeria pomeroyi DSS-3 representative genome")
+            reaction.annotation["source"] = ("Ruegeria pomeroyi DSS-3 representative genome"
+                                            if in_db2
+                                            else "Ruegeria pomeroyi DSS-3")
             
             # Add reaction to model, keep track of new genes
             model.add_reactions([reaction])
@@ -447,9 +417,9 @@ class BioCycUpdates(Stage):
             gene.annotation["synonyms"] = new_genes_row["Synonyms"] if not pd.isna(new_genes_row["Synonyms"]) else []
 
             # database of origin
-            gene.annotation["source"] = ("Ruegeria pomeroyi DSS-3"
-                                        if new_genes_row["In DB1?"]
-                                        else "Ruegeria pomeroyi DSS-3 representative genome")
+            gene.annotation["source"] = ("Ruegeria pomeroyi DSS-3 representative genome"
+                                        if new_genes_row["In DB2?"]
+                                        else "Ruegeria pomeroyi DSS-3")
             
             # Position
             gene.annotation["left-end-position"] = str(new_genes_row["Left-Position"]) if not pd.isna(new_genes_row["Left-Position"]) else None
@@ -460,7 +430,6 @@ class BioCycUpdates(Stage):
         
         print(f"Before updates, had {initial_reactions} reactions, {initial_metabolites} metabolites, and {initial_genes} genes.")
         print(f"Removed {len(removed_reactions)} reactions.")
-        print(f"Removed {len(genes_to_remove)} genes.")
         print(f"Added {len(added_reactions)} reactions, {len(added_metabolites)} metabolites, and {len(genes_added)} genes.")
 
         return model
