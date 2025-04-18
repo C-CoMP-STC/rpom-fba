@@ -309,10 +309,7 @@ def build_new_reactions_template(
         reaction_data_2 = reactions2.get(reaction, None)
 
         # For some fields, favor data from DB2 if available
-        # reaction_data = reaction_data_2 if in_db2 else reaction_data_1
-
-        # For some fields, favor data from DB1 if available
-        reaction_data = reaction_data_1 if in_db1 else reaction_data_2
+        reaction_data = reaction_data_2 if in_db2 else reaction_data_1
 
         # Store reaction name, and the databases in which it is present
         line["Reaction name 1"] = (reaction_data_1.get(
@@ -345,10 +342,7 @@ def build_new_reactions_template(
         line["Stoichiometry 2"] = stoichiometry_2
 
         # Prefer stoichiometry from DB2, if available
-        # stoichiometry = stoichiometry_2 if in_db2 else stoichiometry_1
-
-        # Prefer stoichiometry from DB1, if available
-        stoichiometry = stoichiometry_1 if in_db1 else stoichiometry_2
+        stoichiometry = stoichiometry_2 if in_db2 else stoichiometry_1
 
         # Get bounds
         bounds_1 = get_bounds(reaction_data_1) if in_db1 else None
@@ -370,8 +364,7 @@ def build_new_reactions_template(
         line["Metabolites without data"] = fake_metabolites
 
         # Check for class metabolites
-        # metabolites = metabolites2 if in_db2 else metabolites1
-        metabolites = metabolites1 if in_db1 else metabolites2
+        metabolites = metabolites2 if in_db2 else metabolites1
         has_class_metabolites = False
         for met in stoichiometry.keys():
             met = met.split("[")[0]
@@ -458,10 +451,7 @@ def build_new_metabolites_template(model, candidate_mets, metabolites1, metaboli
             continue
 
         # Prefer data from DB2, if available
-        # met_data = metabolites2[met] if in_db2 else metabolites1[met]
-
-        # Prefer data from DB1, if available
-        met_data = metabolites1[met] if in_db1 else metabolites2[met]
+        met_data = metabolites2[met] if in_db2 else metabolites1[met]
 
         # Store metabolite ID
         line["Metabolite ID"] = met
@@ -513,10 +503,7 @@ def build_new_genes_template(genes1, genes2):
         in_db2 = gene in genes2
 
         # Prefer data from DB2, if available
-        # gene_data = genes2[gene] if in_db2 else genes1[gene]
-
-        # Prefer data from DB1, if available
-        gene_data = genes1[gene] if in_db1 else genes2[gene]
+        gene_data = genes2[gene] if in_db2 else genes1[gene]
 
         # Store gene ID, name, synonyms
         line["Gene ID"] = gene

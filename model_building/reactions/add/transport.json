@@ -3,17 +3,6 @@
     "ABC transporter missing permease and ATP binding casette - possibly SPO1510, SPO1511 which are downstream",
     "Note however that the model has no metabolic pathways involving this compound",
     {
-        "id": "EX_CPD0-1265",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "CPD0-1265[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
-    {
         "id": "CPD0-1265tex",
         "name": "",
         "subsystem": "",
@@ -43,18 +32,7 @@
         "gene_reaction_rule": "(SPO1514)"
     },
     "3-Hydroxybutyrate transport ================================================================",
-    "TRAP transporter, assuming Na+ is the ion and n=2",
-    {
-        "id": "EX_CPD-335",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "CPD-335[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
+    "TRAP transporter, assuming H+ is the ion and n=2",
     {
         "id": "CPD-335tex",
         "name": "",
@@ -75,25 +53,14 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "CPD-335[p]" : -1.0,
-            "NA+[e]" : -2.0,
+            "PROTON[e]" : -2.0,
             "CPD-335[c]" : 1.0,
-            "NA+[c]" : 2.0
+            "PROTON[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO2571 and SPO2572 and SPO2573)"
     },
     "Carnitine transport ================================================================",
     "ABC transporter, assuming n=2",
-    {
-        "id": "EX_CARNITINE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "CARNITINE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
     {
         "id": "CARNITINEtex",
         "name": "",
@@ -124,19 +91,8 @@
         "gene_reaction_rule": "(SPO2995 and SPO2996 and SPO2997 and SPO2998)"
     },
     "Choline transport ================================================================",
-    "BCCT family transporter. Driven by..? Assuming Na+ gradient for now.",
+    "BCCT family transporter. Driven by..? Assuming PROTON gradient for now.",
     "TODO: Check if this is correct",
-    {
-        "id": "EX_CHOLINE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "CHOLINE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
     {
         "id": "CHOLINEtex",
         "name": "",
@@ -156,8 +112,8 @@
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
-            "NA+[e]" : -1.0,
-            "NA+[c]" : 1.0,
+            "PROTON[e]" : -1.0,
+            "PROTON[c]" : 1.0,
             "CHOLINE[p]" : -1.0,
             "CHOLINE[c]" : 1.0
         },
@@ -166,17 +122,6 @@
 
     "Citrate transport ==========================================================================",
     "TTT family transporter - really not sure how this family works",
-    {
-        "id": "EX_CIT",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "CIT[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
     {
         "id": "CITtex",
         "name": "",
@@ -203,17 +148,6 @@
     },
     "Cysteate transport ===============================================================================",
     "ABC transporter, assuming n=2",
-    {
-        "id": "EX_L-CYSTEATE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "L-CYSTEATE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
     {
         "id": "L-CYSTEATEtex",
         "name": "",
@@ -244,18 +178,7 @@
         "gene_reaction_rule": "(SPO3039 and SPO3040 and SPO3041 and SPO3042 and SPO3043)"
     },
     "DHPS transport ===============================================================================",
-    "TRAP transporter, assuming Na+ and n=2",
-    {
-        "id": "EX_CPD-12693",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "CPD-12693[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
+    "TRAP transporter, assuming PROTON and n=2",
     {
         "id": "CPD-12693tex",
         "name": "",
@@ -276,26 +199,15 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "CPD-12693[p]" : -1.0,
-            "NA+[e]" : -2.0,
+            "PROTON[e]" : -2.0,
             "CPD-12693[c]" : 1.0,
-            "NA+[c]" : 2.0
+            "PROTON[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO0591 and SPO0592 and SPO0593)"
     },
     "DMSP transport =====================================================================================",
-    "BCCT family transporter. Driven by..? Assuming Na+ gradient for now.",
+    "BCCT family transporter. Driven by..? Assuming PROTON gradient for now.",
     "TODO: Check if this is correct",
-    {
-        "id": "EX_SS-DIMETHYL-BETA-PROPIOTHETIN",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "SS-DIMETHYL-BETA-PROPIOTHETIN[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
     {
         "id": "SS-DIMETHYL-BETA-PROPIOTHETINtex",
         "name": "",
@@ -315,26 +227,15 @@
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
-            "NA+[e]" : -1.0,
-            "NA+[c]" : 1.0,
+            "PROTON[e]" : -1.0,
+            "PROTON[c]" : 1.0,
             "SS-DIMETHYL-BETA-PROPIOTHETIN[p]" : -1.0,
             "SS-DIMETHYL-BETA-PROPIOTHETIN[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO3186)"
     },
     "Ectoine transport =====================================================================================",
-    "TRAP transporter, assuming Na+ and n=2",
-    {
-        "id": "EX_ECTOINE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "ECTOINE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
+    "TRAP transporter, assuming PROTON and n=2",
     {
         "id": "ECTOINEtex",
         "name": "",
@@ -355,25 +256,14 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "ECTOINE[p]" : -1.0,
-            "NA+[e]" : -2.0,
+            "PROTON[e]" : -2.0,
             "ECTOINE[c]" : 1.0,
-            "NA+[c]" : 2.0
+            "PROTON[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO1145 and SPO1146 and SPO1147)"
     },
     "Fumarate, Malate, and Succinate transport ================================================================",
-    "TRAP transporter, assuming Na+ and n=2",
-    {
-        "id": "EX_FUM",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "FUM[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
+    "TRAP transporter, assuming PROTON and n=2",
     {
         "id": "FUMtex",
         "name": "",
@@ -394,22 +284,11 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "FUM[p]" : -1.0,
-            "NA+[e]" : -2.0,
+            "PROTON[e]" : -2.0,
             "FUM[c]" : 1.0,
-            "NA+[c]" : 2.0
+            "PROTON[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO2626 and SPO2627 and SPO2628 and SPO2629 and SPO2630)"
-    },
-    {
-        "id": "EX_MAL",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "MAL[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
     },
     {
         "id": "MALtex",
@@ -431,22 +310,11 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "MAL[p]" : -1.0,
-            "NA+[e]" : -2.0,
+            "PROTON[e]" : -2.0,
             "MAL[c]" : 1.0,
-            "NA+[c]" : 2.0
+            "PROTON[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO2626 and SPO2627 and SPO2628 and SPO2629 and SPO2630)"
-    },
-    {
-        "id": "EX_SUC",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "SUC[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
     },
     {
         "id": "SUCtex",
@@ -468,25 +336,14 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "SUC[p]" : -1.0,
-            "NA+[e]" : -2.0,
+            "PROTON[e]" : -2.0,
             "SUC[c]" : 1.0,
-            "NA+[c]" : 2.0
+            "PROTON[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO2626 and SPO2627 and SPO2628 and SPO2629 and SPO2630)"
     },
     "Glucose and Xylose transport ================================================================",
     "ABC transporter, assuming n=2",
-    {
-        "id": "EX_GLC",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "GLC[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
     {
         "id": "GLCtex",
         "name": "",
@@ -515,17 +372,6 @@
             "PROTON[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO0861 and SPO0862 and SPO0863)"
-    },
-    {
-        "id": "EX_BETA-D-XYLOSE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "BETA-D-XYLOSE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
     },
     {
         "id": "BETA-D-XYLOSEtex",
@@ -559,17 +405,6 @@
     "Glycerol transport ===============================================================================",
     "ABC transporter, assuming n=2",
     {
-        "id": "EX_GLYCEROL",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "GLYCEROL[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
-    {
         "id": "GLYCEROLtex",
         "name": "",
         "subsystem": "",
@@ -601,17 +436,6 @@
     "Glycerol-3-Phosphate transport ===============================================================================",
     "ABC transporter, assuming n=2",
     {
-        "id": "EX_GLYCEROL-3P",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "GLYCEROL-3P[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
-    {
         "id": "GLYCEROL-3Ptex",
         "name": "",
         "subsystem": "",
@@ -641,18 +465,7 @@
         "gene_reaction_rule": "(SPO0237 and SPO0238 and SPO0239 and SPO0240)"
     },
     "Isethionate transport ===============================================================================",
-    "TRAP transporter, assuming Na+ and n=2",
-    {
-        "id": "EX_CPD-3745",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "CPD-3745[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
+    "TRAP transporter, assuming PROTON and n=2",
     {
         "id": "CPD-3745tex",
         "name": "",
@@ -673,25 +486,14 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "CPD-3745[p]" : -1.0,
-            "NA+[e]" : -2.0,
+            "PROTON[e]" : -2.0,
             "CPD-3745[c]" : 1.0,
-            "NA+[c]" : 2.0
+            "PROTON[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO2356 and SPO2357 and SPO2358)"
     },
     "N-acetylglucosamine transport ======================================================================================",
     "ABC transporter, assuming n=2",
-    {
-        "id": "EX_N-ACETYL-D-GLUCOSAMINE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "N-ACETYL-D-GLUCOSAMINE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
     {
         "id": "N-ACETYL-D-GLUCOSAMINEtex",
         "name": "",
@@ -728,17 +530,6 @@
     "Spermidine, Cadaverine, and Putrescine transport ================================================================",
     "ABC transporter, assuming n=2",
     {
-        "id": "EX_SPERMIDINE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "SPERMIDINE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
-    {
         "id": "SPERMIDINEtex",
         "name": "",
         "subsystem": "",
@@ -768,17 +559,6 @@
         "gene_reaction_rule": "(SPO3466 and SPO3467 and SPO3468 and SPO3469)"
     },
     {
-        "id": "EX_CADAVERINE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "CADAVERINE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
-    {
         "id": "CADAVERINEtex",
         "name": "",
         "subsystem": "",
@@ -806,17 +586,6 @@
             "PROTON[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO3466 and SPO3467 and SPO3468 and SPO3469)"
-    },
-    {
-        "id": "EX_PUTRESCINE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "SPERMIDINE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
     },
     {
         "id": "PUTRESCINEtex",
@@ -851,17 +620,6 @@
     "Taurine transport ======================================================================================",
     "ABC transporter, assuming n=2",
     {
-        "id": "EX_TAURINE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "TAURINE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
-    {
         "id": "TAURINEtex",
         "name": "",
         "subsystem": "",
@@ -892,17 +650,6 @@
     },
     "Thymidine transport ======================================================================================",
     "ABC transporter, assuming n=2",
-    {
-        "id": "EX_THYMIDINE",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "THYMIDINE[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
     {
         "id": "THYMIDINEtex",
         "name": "",
@@ -935,17 +682,6 @@
     
     "TMAO transport ======================================================================================",
     "ABC transporter, assuming n=2",
-    {
-        "id": "EX_TRIMETHYLAMINE-N-O",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": 0.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "TRIMETHYLAMINE-N-O[e]" : 1.0
-        },
-        "gene_reaction_rule": ""
-    },
     {
         "id": "TRIMETHYLAMINE-N-Otex",
         "name": "",

@@ -1,0 +1,255 @@
+[
+    {
+        "id": "EX_CPD0-1265",
+        "name": "Azelaic acid exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "CPD0-1265[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_CPD-335",
+        "name": "3-Hydroxybutyrate exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "CPD-335[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_CARNITINE",
+        "name": "Carnitine exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "CARNITINE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_CHOLINE",
+        "name": "Choline exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "CHOLINE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_CIT",
+        "name": "Citrate exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "CIT[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_L-CYSTEATE",
+        "name": "Cysteate exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "L-CYSTEATE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_CPD-12693",
+        "name": "DHPS exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "CPD-12693[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_SS-DIMETHYL-BETA-PROPIOTHETIN",
+        "name": "DMSP exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "SS-DIMETHYL-BETA-PROPIOTHETIN[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_ECTOINE",
+        "name": "Ectoine exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "ECTOINE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_FUM",
+        "name": "Fumarate exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "FUM[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_MAL",
+        "name": "Malate exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "MAL[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_SUC",
+        "name": "Succinate exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "SUC[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_BETA-D-XYLOSE",
+        "name": "Xylose exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "BETA-D-XYLOSE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_GLYCEROL",
+        "name": "Glycerol exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "GLYCEROL[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_GLYCEROL-3P",
+        "name": "Glycerol-3-phosphate exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "GLYCEROL-3P[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_CPD-3745",
+        "name": "Isethionate exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "CPD-3745[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_N-ACETYL-D-GLUCOSAMINE",
+        "name": "N-acetylglucosamine exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "N-ACETYL-D-GLUCOSAMINE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_SPERMIDINE",
+        "name": "Spermidine exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "SPERMIDINE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_CADAVERINE",
+        "name": "Cadaverine exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "CADAVERINE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_PUTRESCINE",
+        "name": "Putrescine exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "SPERMIDINE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_TAURINE",
+        "name": "Taurine exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "TAURINE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_THYMIDINE",
+        "name": "Thymidine exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "THYMIDINE[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_TRIMETHYLAMINE-N-O",
+        "name": "TMAO exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "TRIMETHYLAMINE-N-O[e]" : -1.0
+        },
+        "gene_reaction_rule": ""
+    },
+]
