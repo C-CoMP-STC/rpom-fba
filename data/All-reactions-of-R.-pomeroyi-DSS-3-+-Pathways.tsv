@@ -1,0 +1,1490 @@
+Reaction	In-Pathway	Names
+THIOREDOXIN-RXN	THIOREDOX-PWY	thioredoxin pathway
+DCYSDESULF-RXN		
+RXN-7919		
+RXN-22711	ANTHRANSYN-RXN	
+LCYSDESULF-RXN		
+HOMOSERINE-O-ACETYLTRANSFERASE-RXN	PWY-5344	L-homocysteine biosynthesis
+RXN-17609		
+RXN0-6485	PWY0-1479	tRNA processing
+AIRS-RXN	PWY-6121	5-aminoimidazole ribonucleotide biosynthesis I
+RXN-20152	RXN-20153	
+RXN-9533	PWY-5971 // PWY-8279 // PWY-7664	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III // oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+COBALAMIN5PSYN-RXN	COBALSYN-PWY // PWY-5509	superpathway of adenosylcobalamin salvage from cobinamide I // adenosylcobalamin biosynthesis from adenosylcobinamide-GDP I
+RXN0-5330	PWY-7279	aerobic respiration II (cytochrome c) (yeast)
+RXN0-1281		
+RXN-9644	PWY0-1337	oleate &beta;-oxidation
+RXN-22237	PWY-8245	lipid IV<sub>A</sub> biosynthesis (<i>P. gingivalis</i>) // lipid-A-precursor biosynthesis (<i>P. gingivalis</i>)
+RXN-2364	PWY-1281	sulfoacetaldehyde degradation I
+RXN-12720	PWY-6932	selenate reduction // selenium metabolism // selenium assimilation
+RXN-19381	DCYSDESULF-RXN	
+S-FORMYLGLUTATHIONE-HYDROLASE-RXN	PWY-1801	formaldehyde oxidation II (glutathione-dependent) // formaldehyde oxidation II (GSH-dependent)
+RXN-13908		
+RXN-21000		
+ACETOOHBUTREDUCTOISOM-RXN	ILEUSYN-PWY	L-isoleucine biosynthesis I (from threonine)
+RXN1-42	PWY1-3	polyhydroxybutanoate biosynthesis // PHB biosynthesis // polyhydroxybutyrate biosynthesis
+RXN0-5055	PWY0-1264 // PWY-4381	biotin-carboxyl carrier protein assembly // BCCP assembly // fatty acid biosynthesis initiation (type II) // de novo fatty acid biosynthesis, initial reactions // fatty acid biosynthesis initiation (bacteria and plants)
+TETHYDPICSUCC-RXN	DAPLYSINESYN-PWY	L-lysine biosynthesis I // L-lysine and L-diaminopimelate biosynthesis
+4.2.1.61-RXN	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+RXN-22484	PWY-8283	lipid IV<sub>A</sub> biosynthesis (generic) // lipid-A-precursor biosynthesis (generic)
+RXN0-6727	PWY-6938-1	NADH repair (prokaryotes)
+RXN-14396		
+2KETO-4METHYL-PENTANOATE-DEHYDROG-RXN	LEU-DEG2-PWY	L-leucine degradation I
+RXN-8958	PWY-5741	ethylmalonyl-CoA pathway // ethylmalonyl pathway
+HYDROXYLAMINE-REDUCTASE-NADH-RXN	PWY-7798	protein <i>S</i>-nitrosylation and denitrosylation
+RXN-14196	CITRULLINE-DEG-PWY // RXN-13202 // RXN-22735	L-citrulline degradation
+RXNQT-4178		
+RXN-5721		
+RXN0-5101		
+RXN-15714		
+RXN-16820		
+HYDROXYMETHYLGLUTARYL-COA-REDUCTASE-RXN	PWY-5074	mevalonate degradation
+GLYOXIII-RXN		
+RXN-22024	PWY-8203	8-amino-7-oxononanoate biosynthesis IV // 7-keto-8-aminopelargonate biosynthesis IV
+PANTOATE-BETA-ALANINE-LIG-RXN	PANTO-PWY	phosphopantothenate biosynthesis I // vitamin B<sub>5</sub> biosynthesis
+RXN0-302	PWY-7560 // NONMEVIPP-PWY	methylerythritol phosphate pathway II // nonmevalonate isopentenyl diphosphate biosynthesis // methylerythritol phosphate degradation // MEP degradation // deoxyxylulose phosphate pathway // DOXP pathway // Rohmer pathway // isopentenyl diphosphate biosynthesis -- mevalonate-independent // nonmevalonate isoprenoid pathway // MEP pathway // methylerythritol phosphate pathway I
+RXN-17393		
+RXN-16622	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+RXN-16623	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+3.5.1.88-RXN		
+ADENYLATECYC-RXN		
+RXN-9787	PWY-6892	thiazole component of thiamine diphosphate biosynthesis I // (<i>R,Z</i>)-2-(2-carboxy-4-methylthiazol-5(2<i>H</i>)-ylidene)ethyl phosphate biosynthesis
+RXN-21523	PWY-8159 // OHMETHYLBILANESYN-RXN	dipyrromethane cofactor biosynthesis
+RXN-14903	PROUT-PWY	L-proline degradation I // L-proline utilization
+ORNCARBAMTRANSFER-RXN	ARGSYN-PWY // CITRULLINE-DEG-PWY // PWY-4984 // ARGSYNBSUB-PWY	L-arginine biosynthesis I (via L-ornithine) // L-citrulline degradation // urea cycle // Krebs ornithine cycle // Krebs-Henseleit cycle // L-arginine biosynthesis II (acetyl cycle)
+CHLORAMPHENICOL-O-ACETYLTRANSFERASE-RXN		
+RXN-6264		
+RXN-8665	PWY-5651	L-tryptophan degradation to 2-amino-3-carboxymuconate semialdehyde
+ALCOHOL-DEHYDROG-RXN	PWY0-1477	ethanolamine utilization
+DGDPKIN-RXN	PWY-7226	guanosine deoxyribonucleotides <i>de novo</i> biosynthesis I
+ALDOSE1EPIM-RXN	PWY-6317	D-galactose degradation I (Leloir pathway) // Leloir pathway
+RXN-11455		
+RXN-9528	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+PGLYCDEHYDROG-RXN	SERSYN-PWY	L-serine biosynthesis I
+RXN-20785	PWY-8073	lipid IV<sub>A</sub> biosynthesis (<i>P. putida</i>) // lipid-A-precursor biosynthesis (<i>P. putida</i>)
+1.10.2.2-RXN	PWY-7279 // PWY-3781	aerobic respiration II (cytochrome c) (yeast) // aerobic respiration I (cytochrome c)
+ACSERLY-RXN	CYSTSYN-PWY	L-cysteine biosynthesis I
+UREASE-RXN	PWY-5704	urea degradation II // urea assimilation
+RXN-16950		
+ACETATE--COA-LIGASE-RXN	PWY0-1313 // PWY-8303 // PWY-8328	acetate conversion to acetyl-CoA // acetic acid conversion to acetyl-CoA // reductive glycine pathway of autotrophic CO<sub>2</sub> fixation // carbon fixation VI // glycine synthase-reductase pathway // acetate and ATP formation from acetyl-CoA III // acetic acid formation from acetyl-CoA III
+RXN-9731	PWY-6041	4-sulfocatechol degradation
+RXN-20459		
+RXN-8763	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+RXN-16690	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+3-OXOACYL-ACP-SYNTH-RXN	FASYN-ELONG-PWY	fatty acid elongation -- saturated
+METHGLYSYN-RXN		
+RXN-9733	PWY-6041	4-sulfocatechol degradation
+CTPSYN-RXN	PWY-7185 // PWY-7176	UTP and CTP dephosphorylation I // pyrimidine nucleotides dephosphorylation // UTP and CTP <i>de novo</i> biosynthesis
+RXN-20895		
+RXN-7593		
+RXN-8667		
+RIBOFLAVINSYNREDUC-RXN	RIBOSYN2-PWY	flavin biosynthesis I (bacteria and plants) // riboflavin, FMN and FAD biosynthesis // vitamin B<sub>2</sub> biosynthesis
+GLUCOSAMINE-6-P-DEAMIN-RXN	GLUAMCAT-PWY	<i>N</i>-acetylglucosamine degradation I // glucosamine degradation // N-acetyl-glucosamine degradation
+PROTEIN-KINASE-RXN		
+RXN-9633	PWY-8280	stearate biosynthesis IV // stearic acid biosynthesis IV
+RXN-8959	PWY-5741	ethylmalonyl-CoA pathway // ethylmalonyl pathway
+6PFRUCTPHOS-RXN	ANAGLYCOLYSIS-PWY	glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+RXN-9514	PWY-5971 // PWY-8279 // PWY-7388	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+RXN-14118		
+PREPHENATEDEHYDROG-RXN	TYRSYN	L-tyrosine biosynthesis I
+DIOHBUTANONEPSYN-RXN	RIBOSYN2-PWY	flavin biosynthesis I (bacteria and plants) // riboflavin, FMN and FAD biosynthesis // vitamin B<sub>2</sub> biosynthesis
+4OHBENZOATE-OCTAPRENYLTRANSFER-RXN	PWY-6708	ubiquinol-8 biosynthesis (early decarboxylation) // ubiquinone-8 biosynthesis (prokaryotic) // ubiquinol-8 biosynthesis (prokaryotic)
+PEPSYNTH-RXN	GLUCONEO-PWY	gluconeogenesis I
+RXN2B4Q-53		
+RXN-14461		
+RXN-9003		
+RXN-9658	PWY-5971	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm)
+RXN-22388		
+RXN-12142		
+1.11.1.12-RXN	PWY-4081	glutathione-peroxide redox reactions
+THIAZOLSYN3-RXN	PWY-7356	thiamine diphosphate salvage IV (yeast) // thiamin salvage IV (yeast)
+AMP-DEPHOSPHORYLATION-RXN	SALVADEHYPOX-PWY	adenosine nucleotides degradation II // purine ribonucleotide/ribonucleoside metabolism
+RXN-17752		
+4-CARBOXYMUCONOLACTONE-DECARBOXYLASE-RXN	PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY	protocatechuate degradation II (ortho-cleavage pathway) // protocatechuate branch of the 3-oxoadipate pathway // protocatechuate branch of the 3-ketoadipate pathway // protocatechuate branch of the &beta;-ketoadipate pathway // protocatechuate degradation via ortho-cleavage // protocatechuate degradation via the &beta;-ketoadipate pathway // protocatechuate 3,4-cleavage
+HEMN-RXN	HEMESYN2-PWY	heme <i>b</i> biosynthesis II (oxygen-independent)
+RXN-18211	RXN-14986	
+RXN-22608		
+RXN-14189		
+ACETYLORNTRANSAM-RXN	GLUTORN-PWY // ARGSYNBSUB-PWY	L-ornithine biosynthesis I // L-arginine biosynthesis II (acetyl cycle)
+RXN-21566	PWY-8164	<i>bis</i>(guanylyl molybdopterin) cofactor sulfurylation // sulfo-<i>bis</i>(guanylyl molybdopterin) cofactor biosynthesis // bis-MGD sulfulylation
+CARDIOLIPSYN-RXN	PWY-5668	cardiolipin biosynthesis I
+BADH-RXN	BETSYN-PWY // CHOLINE-BETAINE-ANA-PWY	glycine betaine biosynthesis I (Gram-negative bacteria) // choline degradation I // choline betaine anabolism
+FOLYLPOLYGLUTAMATESYNTH-RXN	PWY-2161	folate polyglutamylation
+PEPCARBOXYKIN-RXN	GLUCONEO-PWY	gluconeogenesis I
+RXN-14304	PWY-8130	5'-deoxyadenosine degradation I // 5'-deoxyadenosine salvage I
+F16BDEPHOS-RXN	GLUCONEO-PWY	gluconeogenesis I
+ADENODEAMIN-RXN	SALVADEHYPOX-PWY // PWY0-1296 // PWY-6609	adenosine nucleotides degradation II // purine ribonucleotide/ribonucleoside metabolism // purine ribonucleosides degradation // adenine and adenosine salvage III // adenosine nucleotides salvage III
+HYDROXYHEPTA-DIENEDIOATE-HYDROXY-RXN		
+RXN-22497		
+RXN-22729	ANTHRANSYN-RXN	
+RXN-2881		
+RXN-17959	PWY-7807	glyphosate degradation III // glyphosate C-P lyase enzyme system
+RXN-12541		
+RXN0-2144	PWY0-862	(5Z)-dodecenoate biosynthesis I // (5Z)-dodec-5-enoate biosynthesis I // <i>cis</i>-dodecenoate biosynthesis I
+RXN0-6510	PWY0-321	phenylacetate degradation I (aerobic)
+RXN-12610	PWY-6893 // PWY-6907	thiamine diphosphate biosynthesis II (Bacillus) // vitamin B<sub>1</sub> biosynthesis II // thiamin diphosphate biosynthesis II (Bacillus) // thiamine diphosphate biosynthesis III (Staphylococcus) // vitamin B<sub>1</sub> biosynthesis III // thiamin diphosphate biosynthesis III (Staphylococcus)
+RXN-22248		
+PSERTRANSAMPYR-RXN	PYRIDOXSYN-PWY	pyridoxal 5'-phosphate biosynthesis I // vitamin B<sub>6</sub> biosynthesis // deoxyxylulose-dependent pyridoxal 5'-phosphate biosynthesis
+RXN-14160		
+RXNQT-4168		
+RXN-16649	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+RXN-8764	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+3-ISOPROPYLMALISOM-RXN	LEUSYN-PWY // RXN-13163	L-leucine biosynthesis
+RXN-13616	PWY0-1337	oleate &beta;-oxidation
+RXN-1381	PWY-5667	CDP-diacylglycerol biosynthesis I // CDP-diacylglycerol biosynthesis
+RXN-11952	PWY-5296	thiosulfate oxidation III (multienzyme complex) // Sox enzyme system // Paracoccus sulfur oxidation pathway // PSO pathway
+RXN-11176	PWY-6420	pyrroloquinoline quinone biosynthesis // PQQ biosynthesis
+RXNMETA-12671	PWY0-321	phenylacetate degradation I (aerobic)
+2.1.1.132-RXN		
+RXN0-313		
+RXN-15200		
+RXN-19302	PWY-7970	benzimidazolyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP
+RXN-19344	PWY-7962 // RXN-19339	adenosylcobinamide-GDP biosynthesis from cobyrinate <i>a,c</i>-diamide
+RXN0-3962	PWY-7268	cytosolic NADPH production (yeast)
+325-BISPHOSPHATE-NUCLEOTIDASE-RXN		
+D-PPENTOMUT-RXN	PWY-7180	2-deoxy-&alpha;-D-ribose 1-phosphate degradation
+SPERMIDINESYN-RXN	BSUBPOLYAMSYN-PWY	spermidine biosynthesis I // arginine degradation to spermidine // spermidine biosynthesis
+TRYPTOPHAN--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+MALATE--COA-LIGASE-RXN	PWY-5741	ethylmalonyl-CoA pathway // ethylmalonyl pathway
+RXN-19300		
+RXN-22025	PWY-8203	8-amino-7-oxononanoate biosynthesis IV // 7-keto-8-aminopelargonate biosynthesis IV
+RXN-16949		
+PANTEPADENYLYLTRAN-RXN	COA-PWY	coenzyme A biosynthesis I (bacteria) // CoA biosynthesis
+THREODEHYD-RXN	THREONINE-DEG2-PWY // RXN-14249	L-threonine degradation II // threonine dehydrogenase pathway // TDG pathway
+HOMOCYSMETB12-RXN	1CMET2-PWY	folate transformations III (<i>E. coli</i>) // <i>N</i><sup>10</sup>-formyl-THF biosynthesis // <i>N</i><sup>10</sup>-formyl-tetrahydrofolate biosynthesis
+RXN-7800	LEUSYN-PWY // RXN-13158	L-leucine biosynthesis
+UDPGLUCEPIM-RXN	PWY-6317	D-galactose degradation I (Leloir pathway) // Leloir pathway
+RXN-12573		
+RXN-18392		
+RXN-22315		
+ACETYLHOMOSER-CYS-RXN	PWY-5344	L-homocysteine biosynthesis
+METHIONINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+3.1.1.76-RXN		
+RXN-9239		
+RXN-14048	RXN-15130	
+THIOREDOXIN-REDUCT-NADPH-RXN	THIOREDOX-PWY	thioredoxin pathway
+RXN-14277	PWY0-1337	oleate &beta;-oxidation
+TYROSINE-AMINOTRANSFERASE-RXN	TYRFUMCAT-PWY // PWY-5886 // TYRSYN	L-tyrosine degradation I // tyrosine fumarate catabolism // 3-(4-hydroxyphenyl)pyruvate biosynthesis // 4-hydroxyphenylpyruvic acid biosynthesis // 4-hydroxyphenylpyruvate biosynthesis // L-tyrosine biosynthesis I
+2.7.1.148-RXN	PWY-7560 // NONMEVIPP-PWY	methylerythritol phosphate pathway II // nonmevalonate isopentenyl diphosphate biosynthesis // methylerythritol phosphate degradation // MEP degradation // deoxyxylulose phosphate pathway // DOXP pathway // Rohmer pathway // isopentenyl diphosphate biosynthesis -- mevalonate-independent // nonmevalonate isoprenoid pathway // MEP pathway // methylerythritol phosphate pathway I
+RXN-13158		
+RXN-18397	PWY-7855	ectoine degradation
+R341-RXN	PWY-7376	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+OHMETPYRKIN-RXN	PWY-6910 // PWY-7356	hydroxymethylpyrimidine salvage // HMP salvage // thiamine diphosphate salvage IV (yeast) // thiamin salvage IV (yeast)
+VALINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+RXN-22498		
+BIOTIN-CARBOXYL-RXN	PWY0-1264	biotin-carboxyl carrier protein assembly // BCCP assembly
+RXN-14858		
+RXN-17355	2.7.3.9-RXN	
+RXN0-7081	PWY-7892	tRNA-uridine 2-thiolation and selenation (bacteria)
+RXN-14325	CTPSYN-RXN	
+RXN-21561	PWY-8165	cytidylyl molybdenum cofactor sulfurylation // sulfo-cytidylyl molybdopterin cofactor biosynthesis // MCD sulfulylation
+RXN-9540	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+RXN-9632	PWY-8280	stearate biosynthesis IV // stearic acid biosynthesis IV
+MANDELATE-RACEMASE-RXN		
+PHOSPHAGLYPSYN-RXN	PWY4FS-7 // PWY4FS-8 // PWY-5668 // PWY0-1545	phosphatidylglycerol biosynthesis I (plastidic) // phosphatidylglycerol biosynthesis II (non-plastidic) // cardiolipin biosynthesis I // cardiolipin biosynthesis III
+RXN-20738		
+R101-RXN	PWY-7855	ectoine degradation
+HEMEOSYN-RXN		
+GLUCISOM-RXN		
+GLUTAMIN-RXN	GLUTAMINDEG-PWY // GLUTSYN-PWY // PWY-5921 // PWY490-4 // AMMASSIM-PWY // 6.3.5.6-RXN // 6.3.5.7-RXN // PABASYN-RXN // GLUTAMIDOTRANS-RXN // CTPSYN-RXN // CARBPSYN-RXN // GMP-SYN-GLUT-RXN // ANTHRANSYN-RXN // GLUTAMATESYN-RXN	L-glutamine degradation I // L-glutamate biosynthesis I // glutaminyl-tRNA<sup>gln</sup> biosynthesis via transamidation // L-asparagine biosynthesis III (tRNA-dependent) // L-asparaginyl-tRNA<sup>asn</sup> biosynthesis via transamidation // ammonia assimilation cycle III // ammonia assimilation III // GS/GOGAT pathway // imidazole glycerol phosphate synthase cyclase subunit // Imidazole glycerol phosphate synthase cyclase subunit (EC 4.1.3.-) // Imidazole glycerol phosphate synthase amidotransferase subunit (EC 2.4.2.-)
+H2PTEROATESYNTH-RXN	PWY2DNV-11	tetrahydrofolate biosynthesis II // folic acid biosynthesis II // folate biosynthesis II // THF biosynthesis II
+RXN-16632	PWY-7663	gondoate biosynthesis (anaerobic) // <i>cis</i>-11-icosenoate biosynthesis // (11<i>Z</i>)-icos-11-enoate biosynthesis // (11<i>Z</i>)-icosenoate biosynthesis // gondoic acid biosynthesis // 11-eicosenoic acid biosynthesis
+RXN-8769	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+ACETALD-DEHYDROG-RXN	PWY0-1477 // PWY-7180	ethanolamine utilization // 2-deoxy-&alpha;-D-ribose 1-phosphate degradation
+ENOYL-ACP-REDUCT-NADH-RXN	FASYN-ELONG-PWY	fatty acid elongation -- saturated
+THYM-PHOSPH-RXN	PWY-7181	pyrimidine deoxyribonucleosides degradation
+RXN-21230		
+CDPREDUCT-RXN	PWY-6545	pyrimidine deoxyribonucleotides <i>de novo</i> biosynthesis III
+FUMHYDR-RXN	TCA	TCA cycle I (prokaryotic) // tricarboxylic acid cycle // citric acid cycle // Krebs cycle // Szent-Gyorgyi-Krebs cycle
+RXN-7719	2KETO-4METHYL-PENTANOATE-DEHYDROG-RXN // PWY-5046	4-methyl-2-oxopentanoate dehydrogenase (acylating) // 2-oxoisovalerate decarboxylation to isobutanoyl-CoA // branched-chain &alpha;-keto acid dehydrogenase system // branched-chain &alpha;-keto acid dehydrogenase complex // branched-chain 2-oxo acid dehydrogenase complex // branched-chain 2-oxo acid dehydrogenase system
+RXN-19611	RXN-19609	
+PHOSPHASERSYN-RXN	PWY-5669	phosphatidylserine and phosphatidylethanolamine biosynthesis I
+RXN-7566	PWY-8303	reductive glycine pathway of autotrophic CO<sub>2</sub> fixation // carbon fixation VI // glycine synthase-reductase pathway
+DMBPPRIBOSYLTRANS-RXN	COBALSYN-PWY // PWY-5509	superpathway of adenosylcobalamin salvage from cobinamide I // adenosylcobalamin biosynthesis from adenosylcobinamide-GDP I
+XMPXAN-RXN	PWY-5695	inosine 5'-phosphate degradation // IMP degradation // urate biosynthesis
+DALADALALIG-RXN	PWY-6387	UDP-<i>N</i>-acetylmuramoyl-pentapeptide biosynthesis I (<i>meso</i>-diaminopimelate containing)
+2OXOGLUTDECARB-RXN	PWY-5084 // 2OXOGLUTARATEDEH-RXN	2-oxoglutarate decarboxylation to succinyl-CoA // 2-oxoglutarate dehydrogenase complex // 2-ketoglutarate dehydrogenase complex // 2-oxoglutarate dehydrogenase system // 2-ketoglutarate dehydrogenase system // &alpha;-ketoglutarate dehydrogenase system // 2-oxoglutarate dehydrogenation // &alpha;-ketoglutarate oxidative decarboxylation
+RXN-16012	PWY-6048 // RXN-12573	methylthiopropanoate degradation I (cleavage) // MTPA degradation // methylthiopropionate degradation I (cleavage) // MTA-CoA hydrolase
+RXN-15140		
+5.5.1.2-RXN	PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY	protocatechuate degradation II (ortho-cleavage pathway) // protocatechuate branch of the 3-oxoadipate pathway // protocatechuate branch of the 3-ketoadipate pathway // protocatechuate branch of the &beta;-ketoadipate pathway // protocatechuate degradation via ortho-cleavage // protocatechuate degradation via the &beta;-ketoadipate pathway // protocatechuate 3,4-cleavage
+RXN-22455	PWY-8280	stearate biosynthesis IV // stearic acid biosynthesis IV
+RXN-14301	PWY-701 // METHIONINE-GAMMA-LYASE-RXN	L-methionine degradation II
+DIHYDROFOLATEREDUCT-RXN	1CMET2-PWY	folate transformations III (<i>E. coli</i>) // <i>N</i><sup>10</sup>-formyl-THF biosynthesis // <i>N</i><sup>10</sup>-formyl-tetrahydrofolate biosynthesis
+PEPTIDYLPROLYL-ISOMERASE-RXN		
+GLYC3PDEHYDROGBIOSYN-RXN	PWY-5667 // PWY0-1319	CDP-diacylglycerol biosynthesis I // CDP-diacylglycerol biosynthesis // CDP-diacylglycerol biosynthesis II
+RXN-12107		
+N-ACETYLTRANSFER-RXN	GLUTORN-PWY // ARGSYNBSUB-PWY	L-ornithine biosynthesis I // L-arginine biosynthesis II (acetyl cycle)
+RXN-11951	PWY-5296	thiosulfate oxidation III (multienzyme complex) // Sox enzyme system // Paracoccus sulfur oxidation pathway // PSO pathway
+ASPARTASE-RXN	PWY-8291 // PWY-8294 // GLUTDEG-PWY	L-aspartate degradation II (aerobic) // L-aspartate degradation III (anaerobic) // L-glutamate degradation II // L-glutamate - L-aspartate pathway // L-aspartate degradation
+DCDPKIN-RXN	PWY-7197 // PWY-6545	pyrimidine deoxyribonucleotide phosphorylation // pyrimidine deoxyribonucleotides <i>de novo</i> biosynthesis III
+RXN-8767	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+RXN0-1461	HEME-BIOSYNTHESIS-II	heme <i>b</i> biosynthesis I (aerobic)
+TRNA-GUANINE-N7--METHYLTRANSFERASE-RXN		
+RXN-22241	PWY-8245	lipid IV<sub>A</sub> biosynthesis (<i>P. gingivalis</i>) // lipid-A-precursor biosynthesis (<i>P. gingivalis</i>)
+RXN-16624	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+ACETYL-COA-ACETYLTRANSFER-RXN	PWY1-3 // PWY-5741 // PWY0-1337	polyhydroxybutanoate biosynthesis // PHB biosynthesis // polyhydroxybutyrate biosynthesis // ethylmalonyl-CoA pathway // ethylmalonyl pathway // oleate &beta;-oxidation
+RXN-18511		
+RXN-14207		
+ASPARTATEKIN-RXN	HOMOSERSYN-PWY // DAPLYSINESYN-PWY	L-homoserine biosynthesis // L-lysine biosynthesis I // L-lysine and L-diaminopimelate biosynthesis
+SUCCINATE-DEHYDROGENASE-UBIQUINONE-RXN	PWY-7279 // PWY-3781	aerobic respiration II (cytochrome c) (yeast) // aerobic respiration I (cytochrome c)
+BRANCHED-CHAINAMINOTRANSFERLEU-RXN	LEU-DEG2-PWY // LEUSYN-PWY	L-leucine degradation I // L-leucine biosynthesis
+RXN-2003	PWY-6458	benzoyl-CoA biosynthesis // benzoyl-coenzyme A biosynthesis
+RXN-18204	RXNQT-4171	
+RXN-22914	P-PANTOCYSLIG-RXN	
+GLYCOLATEDEHYDRO-RXN	GLYOXDEG-PWY	glycolate and glyoxylate degradation II // glyoxylate degradation
+1.4.1.21-RXN		
+RXN-11181	PWY-6420	pyrroloquinoline quinone biosynthesis // PQQ biosynthesis
+RXN-15881	PWY-7250	[2Fe-2S] iron-sulfur cluster biosynthesis // [Fe-S] cluster biosynthesis // [2Fe-2S] cluster biosynthesis
+RXN-9224		
+DIAMINOPIMEPIM-RXN	DAPLYSINESYN-PWY	L-lysine biosynthesis I // L-lysine and L-diaminopimelate biosynthesis
+R311-RXN	PWY-7308	acrylonitrile degradation I
+RXN-1623	PWY-5667	CDP-diacylglycerol biosynthesis I // CDP-diacylglycerol biosynthesis
+CHORISMATE-SYNTHASE-RXN	PWY-6163	chorismate biosynthesis from 3-dehydroquinate
+RXN-8761	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+RXN-14136		
+RXN-19921		
+3-CH3-2-OXOBUTANOATE-OH-CH3-XFER-RXN	PANTO-PWY	phosphopantothenate biosynthesis I // vitamin B<sub>5</sub> biosynthesis
+PROTOCATECHUATE-34-DIOXYGENASE-RXN	PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY	protocatechuate degradation II (ortho-cleavage pathway) // protocatechuate branch of the 3-oxoadipate pathway // protocatechuate branch of the 3-ketoadipate pathway // protocatechuate branch of the &beta;-ketoadipate pathway // protocatechuate degradation via ortho-cleavage // protocatechuate degradation via the &beta;-ketoadipate pathway // protocatechuate 3,4-cleavage
+RXN-20676	PWY0-1337	oleate &beta;-oxidation
+RXN-22706	PWY-3661	glycine betaine degradation I
+RXN-9535	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+RXN-22002	BIOTINLIG-RXN	
+RXN-10462	PWY0-1319	CDP-diacylglycerol biosynthesis II
+RXN-21560	PWY-8165	cytidylyl molybdenum cofactor sulfurylation // sulfo-cytidylyl molybdopterin cofactor biosynthesis // MCD sulfulylation
+METHANETHIOL-OXIDASE-RXN	PWY-6047	dimethyl sulfide degradation I // DMS degradation // dimethylsulfide degradation I
+MALATE-DEHYDROGENASE-NADP+-RXN	MALIC-NADP-RXN	
+SUCCCOASYN-RXN	TCA	TCA cycle I (prokaryotic) // tricarboxylic acid cycle // citric acid cycle // Krebs cycle // Szent-Gyorgyi-Krebs cycle
+D-ALANINE-AMINOTRANSFERASE-RXN		
+METHYLASPARTATE-AMMONIA-LYASE-RXN	PWY-5087	L-glutamate degradation VI (to pyruvate) // L-glutamate fermentation // mesaconate pathway // methylaspartate pathway // L-glutamic acid degradation VI (to pyruvic acid )
+R310-RXN	PWY-7308	acrylonitrile degradation I
+RXN-20407		
+UREIDOGLYCOLATE-LYASE-RXN	PWY-5705 // PWY-5694	allantoin degradation to glyoxylate III // allantoin degradation to glyoxylate I
+PHOSNACMURPENTATRANS-RXN	PEPTIDOGLYCANSYN-PWY	peptidoglycan biosynthesis I (<I>meso</I>-diaminopimelate containing)
+DCTP-DEAM-RXN		
+RXN-7904	PWY-5143	long-chain fatty acid activation // long-chain acyl-CoA synthetase pathway
+3-HYDROXYDECANOYL-ACP-DEHYDR-RXN	FASYN-ELONG-PWY	fatty acid elongation -- saturated
+RXN0-5225	PWY0-1261	anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+ARYLFORMAMIDASE-RXN	PWY-5651	L-tryptophan degradation to 2-amino-3-carboxymuconate semialdehyde
+ARGSUCCINLYA-RXN	ARGSYN-PWY // PWY-4984 // ARGSYNBSUB-PWY	L-arginine biosynthesis I (via L-ornithine) // urea cycle // Krebs ornithine cycle // Krebs-Henseleit cycle // L-arginine biosynthesis II (acetyl cycle)
+4.1.1.75-RXN		
+RXN0-5422		
+RXN-9536	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+R-2-METHYLMALATE-DEHYDRATASE-RXN	PWY-5101	L-isoleucine biosynthesis II
+RXN-12570	PWY0-1337	oleate &beta;-oxidation
+RXN-11064		
+RXN0-7078		
+RXN-22913		
+PYRUFLAVREDUCT-RXN	PWY-8303	reductive glycine pathway of autotrophic CO<sub>2</sub> fixation // carbon fixation VI // glycine synthase-reductase pathway
+RXN-7592		
+RXN-17920	DNA-LIGASE-NAD+-RXN	
+DIHYDROOROTATE-DEHYDROGENASE-RXN	PWY-5686	UMP biosynthesis I // uridine-5'-phosphate biosynthesis I // <i>de novo</i> biosynthesis of uridine-5'-phosphate I // <i>de novo</i> biosynthesis of uridine-5'-monophosphate I
+RXN-22883	PWY-3602	L-carnitine degradation III
+RXN66-1		
+2.5.1.19-RXN	PWY-6163	chorismate biosynthesis from 3-dehydroquinate
+2.3.1.78-RXN		
+P-PANTOCYSDECARB-RXN	COA-PWY	coenzyme A biosynthesis I (bacteria) // CoA biosynthesis
+ASPARAGHYD-RXN	ASPARAGINE-DEG1-PWY	L-asparagine degradation I
+PPGPPSYN-RXN	PPGPPMET-PWY	ppGpp metabolism // guanosine 3'-diphosphate 5'-diphosphate biosynthesis // ppGpp biosynthesis
+RXN0-901	SALVADEHYPOX-PWY // PWY-6608 // PWY-5695	adenosine nucleotides degradation II // purine ribonucleotide/ribonucleoside metabolism // guanosine nucleotides degradation III // inosine 5'-phosphate degradation // IMP degradation // urate biosynthesis
+3-HYDROXYBENZOATE-6-MONOOXYGENASE-RXN		
+RXN-22603		
+4-HYDROXYPHENYLPYRUVATE-DIOXYGENASE-RXN	TYRFUMCAT-PWY	L-tyrosine degradation I // tyrosine fumarate catabolism
+RXN-12864	PWY-6932	selenate reduction // selenium metabolism // selenium assimilation
+RXN0-6710	PWY0-1533 // PWY-7807 // PWY-7805	methylphosphonate degradation I // carbon-phosphorus lyase pathway // glyphosate degradation III // glyphosate C-P lyase enzyme system // (aminomethyl)phosphonate degradation
+RXN-14569	PWY0-1587	N<sup>6</sup>-L-threonylcarbamoyladenosine<sup>37</sup>-modified tRNA biosynthesis
+SHIKIMATE-5-DEHYDROGENASE-RXN	PWY-6163	chorismate biosynthesis from 3-dehydroquinate
+ADENYLYLSULFKIN-RXN	PWY-5340	sulfate activation for sulfonation // sulfation pathway
+RXN-17109		
+UDPACYLGLCNACDEACETYL-RXN	NAGLIPASYN-PWY	lipid IV<sub>A</sub> biosynthesis (<i>E. coli</i>) // lipid-A-precursor biosynthesis (<i>E. coli</i>)
+CYSTEINE-AMINOTRANSFERASE-RXN	PWY-5329	L-cysteine degradation III // hydrogen sulfide biosynthesis I
+QOR-RXN		
+RXN-15635		
+DIHYDRODIPICSYN-RXN	DAPLYSINESYN-PWY	L-lysine biosynthesis I // L-lysine and L-diaminopimelate biosynthesis
+GSAAMINOTRANS-RXN	PWY-5188	tetrapyrrole biosynthesis I (from glutamate)
+RXN0-6565		
+PRPPSYN-RXN	PWY0-662	PRPP biosynthesis // 5-phosphoribosyl 1-pyrophosphate biosynthesis
+RXN2B4Q-49		
+ERYTHRON4PDEHYDROG-RXN	PYRIDOXSYN-PWY	pyridoxal 5'-phosphate biosynthesis I // vitamin B<sub>6</sub> biosynthesis // deoxyxylulose-dependent pyridoxal 5'-phosphate biosynthesis
+RXN-17392		
+RXN-12508	RXN0-1134	
+DEHYDDEOXGALACTKIN-RXN		
+RXN-8315		
+PORPHOBILSYNTH-RXN	PWY-5188 // PWY-5189	tetrapyrrole biosynthesis I (from glutamate) // tetrapyrrole biosynthesis II (from glycine)
+ALANINE-DEHYDROGENASE-RXN	PWY1-2	L-alanine degradation IV
+1.1.1.39-RXN	GLUCONEO-PWY	gluconeogenesis I
+RXN-15127	LCYSDEG-PWY // SERDEG-PWY // PWY-3661 // 4.4.1.25-RXN // 4.3.1.17-RXN // DCYSDESULF-RXN // LCYSDESULF-RXN	L-cysteine degradation II // L-cysteine catabolism // L-cysteine degradation // L-serine degradation // glycine betaine degradation I
+GMP-SYN-GLUT-RXN	PWY-7221	guanosine ribonucleotides <i>de novo</i> biosynthesis
+RXN-14274	PWY0-1337	oleate &beta;-oxidation
+3-HYDROXY-KYNURENINASE-RXN	PWY-5651	L-tryptophan degradation to 2-amino-3-carboxymuconate semialdehyde
+RXN-9772	PWY-8277	NAD <i>de novo</i> biosynthesis IV (anaerobic) // nicotinamide adenine dinucleotide biosynthesis
+RXN-9655	PWY0-862 // PWY-5971 // PWY-8279	(5Z)-dodecenoate biosynthesis I // (5Z)-dodec-5-enoate biosynthesis I // <i>cis</i>-dodecenoate biosynthesis I // palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+RXN-22606		
+RXN-14385	PWY-7250	[2Fe-2S] iron-sulfur cluster biosynthesis // [Fe-S] cluster biosynthesis // [2Fe-2S] cluster biosynthesis
+RXN0-6481	PWY0-1479	tRNA processing
+GLYC3PDEHYDROG-RXN		
+THREONINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+L-ASPARTATE-OXID-RXN	PYRIDNUCSYN-PWY	NAD <i>de novo</i> biosynthesis I (from aspartate) // nicotinamide adenine dinucleotide biosynthesis
+RXN-18709	PWY-7892	tRNA-uridine 2-thiolation and selenation (bacteria)
+RXN-17781	PWY0-1337	oleate &beta;-oxidation
+1.8.1.4-RXN		
+RXN-18448		
+RXN-8629	GLYCLEAV-PWY // GCVMULTI-RXN	glycine cleavage // glycine cleavage system // glycine decarboxylase complex // gcv system // glycine cleavage complex
+RXN0-7083		
+RXN-15348		
+GLUTATHIONE-REDUCT-NADPH-RXN	PWY-4081	glutathione-peroxide redox reactions
+RXN0-6734	PWY0-1533	methylphosphonate degradation I // carbon-phosphorus lyase pathway
+IMPCYCLOHYDROLASE-RXN	PWY-6123	inosine-5'-phosphate biosynthesis I // IMP biosynthesis I
+RXN-17362	PWY-7884	lipoprotein posttranslational modification // lipoprotein lipoylation // Lol pathway
+RXN0-5293	PWY-6536	4-aminobutanoate degradation III // &gamma;-amino-butyrate shunt // GABA degradation // 4-aminobutyrate degradation III // 4-aminobutanoic acid degradation III
+RXN-9232		
+MALYL-COA-LYASE-RXN	PWY-5741	ethylmalonyl-CoA pathway // ethylmalonyl pathway
+R313-RXN		
+KETOISOCAPROATE-RXN	2KETO-4METHYL-PENTANOATE-DEHYDROG-RXN	4-methyl-2-oxopentanoate dehydrogenase (acylating)
+RXN-14857		
+ASPCARBTRANS-RXN	PWY-5686	UMP biosynthesis I // uridine-5'-phosphate biosynthesis I // <i>de novo</i> biosynthesis of uridine-5'-phosphate I // <i>de novo</i> biosynthesis of uridine-5'-monophosphate I
+RXN0-5227	PWY0-1261	anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+RXN-20400		
+RXN-12752	PWY-6938-1	NADH repair (prokaryotes)
+TRYPSYN-RXN		
+RXN-16112		
+RXN-7931	PWY0-1337	oleate &beta;-oxidation
+RXN0-2023	PWY-7892	tRNA-uridine 2-thiolation and selenation (bacteria)
+RXN-22698	PWY-6823	molybdopterin biosynthesis
+THREONINE-ALDOLASE-RXN	GLYSYN-THR-PWY	glycine biosynthesis IV
+RXN-9380		
+RXN-15124	LCYSDEG-PWY // SERDEG-PWY // PWY-3661 // 4.4.1.25-RXN // 4.3.1.17-RXN // DCYSDESULF-RXN // LCYSDESULF-RXN	L-cysteine degradation II // L-cysteine catabolism // L-cysteine degradation // L-serine degradation // glycine betaine degradation I
+RXN-16621	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+RXN2DNV-42	PWY2DNV-11	tetrahydrofolate biosynthesis II // folic acid biosynthesis II // folate biosynthesis II // THF biosynthesis II
+RXN-19612	RXN-19609	
+ORNITHINE-RACEMASE-RXN		
+RXN-14992		
+RXN-18203	RXNQT-4174	
+TRIOSEPISOMERIZATION-RXN	GLUCONEO-PWY // ANAGLYCOLYSIS-PWY	gluconeogenesis I // glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+1.2.4.4-RXN	PWY-5046	2-oxoisovalerate decarboxylation to isobutanoyl-CoA // branched-chain &alpha;-keto acid dehydrogenase system // branched-chain &alpha;-keto acid dehydrogenase complex // branched-chain 2-oxo acid dehydrogenase complex // branched-chain 2-oxo acid dehydrogenase system
+EXOPOLYPHOSPHATASE-RXN	PWY-8138	polyphosphate metabolism
+RXN-10		
+PROLINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+RXN-21753	PWY-8180	acrylate degradation II
+RXN0-5114	SERSYN-PWY	L-serine biosynthesis I
+RXN-12726		
+RXN-10654	PWY-6282	palmitoleate biosynthesis I (from (5Z)-dodec-5-enoate) // palmitoleic acid biosynthesis I // palmitoleate biosynthesis (anaerobic)
+RXN0-1342	PWY-6700	queuosine biosynthesis I (<i>de novo</i>)
+RXN-12458		
+RXN0-366	PWY-6599	guanine and guanosine salvage II
+ARGINASE-RXN	PWY-4984 // ARG-GLU-PWY // ARGASEDEG-PWY	urea cycle // Krebs ornithine cycle // Krebs-Henseleit cycle // L-arginine degradation VII (arginase 3 pathway) // L-arginine degradation I (arginase pathway) // L-arginase degradative pathway // L-glutamate biosynthesis
+ACETYL-COA-CARBOXYLTRANSFER-RXN		
+2-HALOACID-DEHALOGENASE-RXN		
+RXN-11638		
+RXN-14056		
+RXN-7744	PWY-5101	L-isoleucine biosynthesis II
+RXN2DNV-43	PWY2DNV-11	tetrahydrofolate biosynthesis II // folic acid biosynthesis II // folate biosynthesis II // THF biosynthesis II
+CYCPHOSDIESTER-RXN		
+RXN-8342	PWY-6823	molybdopterin biosynthesis
+RXN-17777	PWY0-1337	oleate &beta;-oxidation
+2.1.1.131-RXN	PWY-7376	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+RXN-16011	PWY-6048 // RXN-12573	methylthiopropanoate degradation I (cleavage) // MTPA degradation // methylthiopropionate degradation I (cleavage) // MTA-CoA hydrolase
+LEUCINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+PRAISOM-RXN	TRPSYN-PWY	L-tryptophan biosynthesis
+RXN-11319	PWY-6892	thiazole component of thiamine diphosphate biosynthesis I // (<i>R,Z</i>)-2-(2-carboxy-4-methylthiazol-5(2<i>H</i>)-ylidene)ethyl phosphate biosynthesis
+RXN-11209	PWY-6430	thymine degradation // uracil degradation (reductive)
+RXN0-5408		
+RXN-8975		
+RXN-19920	RXN0-7078	
+RXN-12456		
+RXN-2006	PWY-6458	benzoyl-CoA biosynthesis // benzoyl-coenzyme A biosynthesis
+3-OXOACYL-ACP-REDUCT-RXN	FASYN-ELONG-PWY	fatty acid elongation -- saturated
+RXN-17776	PWY0-1337	oleate &beta;-oxidation
+RXN-8675	PWY-7377 // PWY-7376 // RXN-13403	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion) // cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+RXN-20155	ACETYL-COA-ACETYLTRANSFER-RXN	
+RXN-2425	PWY0-321 // PWY-1361	phenylacetate degradation I (aerobic) // benzoyl-CoA degradation I (aerobic)
+RXN-9521	PWY-8279 // PWY-7388	palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+DHLBXANAU-RXN		
+RXN-20679	PWY0-1337	oleate &beta;-oxidation
+S-ADENMETSYN-RXN	METHIONINE-DEG1-PWY // PWY-5041	L-methionine degradation I (to L-homocysteine) // <i>S</i>-adenosyl-L-methionine salvage II // activated methyl cycle // SAM cycle // <i>S</i>-adenosyl-L-methionine cycle II
+RXN-22285		
+RXN66-336		
+DXPREDISOM-RXN	PWY-7560 // NONMEVIPP-PWY	methylerythritol phosphate pathway II // nonmevalonate isopentenyl diphosphate biosynthesis // methylerythritol phosphate degradation // MEP degradation // deoxyxylulose phosphate pathway // DOXP pathway // Rohmer pathway // isopentenyl diphosphate biosynthesis -- mevalonate-independent // nonmevalonate isoprenoid pathway // MEP pathway // methylerythritol phosphate pathway I
+RXN-11348		
+RXN-10819	PWY0-321	phenylacetate degradation I (aerobic)
+UDP-NACMUR-ALA-LIG-RXN	PWY-6387	UDP-<i>N</i>-acetylmuramoyl-pentapeptide biosynthesis I (<i>meso</i>-diaminopimelate containing)
+RXN0-7192	BIOTINLIG-RXN	
+RXN-16165	TRNA-CHARGING-PWY	tRNA charging
+RXN-11217		
+RXN-9736	PWY-6052	dimethylsulfoniopropanoate degradation III (demethylation) // DMSP degradation // dimethylsulfoniopropionate degradation III (demethylation)
+RXN-14025	PWY-7185	UTP and CTP dephosphorylation I // pyrimidine nucleotides dephosphorylation
+RXN-2424	PWY-1361	benzoyl-CoA degradation I (aerobic)
+GLUCOKIN-RXN	ANAGLYCOLYSIS-PWY	glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+DEOXYADENPHOSPHOR-RXN	PWY-7179	purine deoxyribonucleosides degradation I
+RXN-9205	PWY-5844	menaquinol-9 biosynthesis // vitamin K<sub>2</sub> biosynthesis // menaquinone-9 biosynthesis
+1TRANSKETO-RXN		
+RXN-2002	PWY-6458	benzoyl-CoA biosynthesis // benzoyl-coenzyme A biosynthesis
+RXN0-2145	PWY0-862	(5Z)-dodecenoate biosynthesis I // (5Z)-dodec-5-enoate biosynthesis I // <i>cis</i>-dodecenoate biosynthesis I
+RXN-19774		
+RXN-17363	PWY-7884	lipoprotein posttranslational modification // lipoprotein lipoylation // Lol pathway
+RXN-9538	PWY-8279	palmitate biosynthesis III
+THREDEHYD-RXN		
+SPONTPRO-RXN	PROUT-PWY // PROSYN-PWY	L-proline degradation I // L-proline utilization // L-proline biosynthesis I (from L-glutamate)
+FGAMSYN-RXN	PWY-6121	5-aminoimidazole ribonucleotide biosynthesis I
+RXN-12565	PWY0-1337	oleate &beta;-oxidation
+RXN-18206	RXNQT-4168	
+RXN-16688	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+ALDEHYDE-DEHYDROGENASE-NADP+-RXN		
+3-OXOACYL-ACP-SYNTH-BASE-RXN	PWY-7388	octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+RXN-9157		
+RXN0-6512	PWY0-321	phenylacetate degradation I (aerobic)
+RXN-16427		
+RXN-17846	PWY-7801	N-end rule pathway I (prokaryotic)
+GUANPRIBOSYLTRAN-RXN	PWY-6599 // PWY-6620	guanine and guanosine salvage II // guanine and guanosine salvage I
+RXN-8999	PWY-5785	di-<i>trans</i>,poly-<i>cis</i>-undecaprenyl phosphate biosynthesis
+GLYCPDIESTER-RXN	PWY-6952	glycerophosphodiester degradation
+RXN-19299		
+RXN-16804	PWY-1269	CMP-3-deoxy-D-<I>manno</I>-octulosonate biosynthesis // CMP-Kdo biosynthesis I
+RXN0-7068		
+RXN-7605	METHIONINE-DEG1-PWY	L-methionine degradation I (to L-homocysteine)
+RXN-19343	PWY-7971 // BTUR2-RXN	adenosylcobinamide-GDP salvage from cobinamide I
+DEOXYCYTIDINE-KINASE-RXN	PWY-7199	pyrimidine deoxyribonucleosides salvage
+RXN-13279		
+3-HYDROXYISOBUTYRATE-DEHYDROGENASE-RXN		
+RXN-21550	PWY-8164	<i>bis</i>(guanylyl molybdopterin) cofactor sulfurylation // sulfo-<i>bis</i>(guanylyl molybdopterin) cofactor biosynthesis // bis-MGD sulfulylation
+RXN-9952	OXIDATIVEPENT-PWY	pentose phosphate pathway (oxidative branch) I
+RXN-16393	PWY-5971	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm)
+RXN-16665	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+2OXOGLUTARATEDEH-RXN	TCA	TCA cycle I (prokaryotic) // tricarboxylic acid cycle // citric acid cycle // Krebs cycle // Szent-Gyorgyi-Krebs cycle
+GDPKIN-RXN	PPGPPMET-PWY // PWY-7221	ppGpp metabolism // guanosine 3'-diphosphate 5'-diphosphate biosynthesis // ppGpp biosynthesis // guanosine ribonucleotides <i>de novo</i> biosynthesis
+1.13.11.6-RXN	PWY-5651	L-tryptophan degradation to 2-amino-3-carboxymuconate semialdehyde
+AGMATIN-RXN	PWY0-823 // PWY-40	L-arginine degradation III (arginine decarboxylase/agmatinase pathway) // putrescine biosynthesis I
+R321-RXN	PWY-7376	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+KETOACYLCOATHIOL-RXN	FAO-PWY	fatty acid &beta;-oxidation I (generic)
+RXN-17631		
+RXN-10086		
+RXN-14112		
+RXN0-1132	PYRUVDEHYD-PWY	pyruvate decarboxylation to acetyl CoA I // pyruvate dehydrogenase complex // acetyl-CoA biosynthesis I (pyruvate dehydrogenase complex) // pyruvic acid decarboxylation to acetyl CoA // pyruvate dehydrogenase system
+RXN0-6478	PWY0-1479	tRNA processing
+RXN-18396	PWY-7855	ectoine degradation
+H2NEOPTERINP3PYROPHOSPHOHYDRO-RXN	PWY-6147	6-hydroxymethyl-dihydropterin diphosphate biosynthesis I
+RXN-11741		
+INOPHOSPHOR-RXN	SALVADEHYPOX-PWY // PWY0-1296 // PWY-6609	adenosine nucleotides degradation II // purine ribonucleotide/ribonucleoside metabolism // purine ribonucleosides degradation // adenine and adenosine salvage III // adenosine nucleotides salvage III
+SAMDECARB-RXN	BSUBPOLYAMSYN-PWY	spermidine biosynthesis I // arginine degradation to spermidine // spermidine biosynthesis
+RXN-20645		
+LYSINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+RXN-11375		
+RXN-20082	PWY-5921 // 6.3.5.7-RXN	glutaminyl-tRNA<sup>gln</sup> biosynthesis via transamidation
+RXN-7253		
+RXN-17780	PWY0-1337	oleate &beta;-oxidation
+MALONYL-COA-ACP-TRANSACYL-RXN	PWY-4381	fatty acid biosynthesis initiation (type II) // de novo fatty acid biosynthesis, initial reactions // fatty acid biosynthesis initiation (bacteria and plants)
+RXN-18207	RXNQT-4168	
+RXN-12612	PWY-6899	base-degraded thiamine salvage // formylaminopyrimidine salvage // base-degraded thiamin salvage
+RXN0-5222	CITRULLINE-DEG-PWY // ALLOPHANATE-HYDROLASE-RXN	L-citrulline degradation
+RXN-22556		
+R222-RXN	P221-PWY	octane oxidation
+GLUTRACE-RXN	PWY-6387	UDP-<i>N</i>-acetylmuramoyl-pentapeptide biosynthesis I (<i>meso</i>-diaminopimelate containing)
+DIMETHYLPROPIOTHETIN-DETHIOMETHYLASE-RXN	PWY-6046	dimethylsulfoniopropanoate degradation I (cleavage) // DMSP degradation // dimethylsulfoniopropionate degradation I (cleavage)
+CYTIDEAM2-RXN		
+N-FORMYLGLUTAMATE-DEFORMYLASE-RXN	PWY-5028	L-histidine degradation II
+AICARSYN-RXN	PWY-6123	inosine-5'-phosphate biosynthesis I // IMP biosynthesis I
+RXN-7716	PWY-5084 // 2OXOGLUTARATEDEH-RXN	2-oxoglutarate decarboxylation to succinyl-CoA // 2-oxoglutarate dehydrogenase complex // 2-ketoglutarate dehydrogenase complex // 2-oxoglutarate dehydrogenase system // 2-ketoglutarate dehydrogenase system // &alpha;-ketoglutarate dehydrogenase system // 2-oxoglutarate dehydrogenation // &alpha;-ketoglutarate oxidative decarboxylation
+KETOBUTFORMLY-RXN	PWY-5437	L-threonine degradation I
+RXN-22244	PWY-8245	lipid IV<sub>A</sub> biosynthesis (<i>P. gingivalis</i>) // lipid-A-precursor biosynthesis (<i>P. gingivalis</i>)
+UROGENDECARBOX-RXN	HEME-BIOSYNTHESIS-II // HEMESYN2-PWY	heme <i>b</i> biosynthesis I (aerobic) // heme <i>b</i> biosynthesis II (oxygen-independent)
+PEPCARBOX-RXN		
+2TRANSKETO-RXN		
+RXN-20081	PWY490-4 // 6.3.5.6-RXN	L-asparagine biosynthesis III (tRNA-dependent) // L-asparaginyl-tRNA<sup>asn</sup> biosynthesis via transamidation
+RXN-8173		
+PYRAZIN-RXN		
+RXN-14014	DAPLYSINESYN-PWY	L-lysine biosynthesis I // L-lysine and L-diaminopimelate biosynthesis
+DIHYDRONEOPTERIN-MONO-P-DEPHOS-RXN	PWY-6147	6-hydroxymethyl-dihydropterin diphosphate biosynthesis I
+GUANYLCYC-RXN		
+RXN-8850	PWY-6545	pyrimidine deoxyribonucleotides <i>de novo</i> biosynthesis III
+RXN-21315	PWY-8130	5'-deoxyadenosine degradation I // 5'-deoxyadenosine salvage I
+5-METHYLTHIOADENOSINE-PHOSPHORYLASE-RXN	PWY-6756	<i>S</i>-methyl-5'-thioadenosine degradation II // methylthioadenosine degradation II
+RXN-9087	PWY-8180	acrylate degradation II
+RXN-12198	PWY-7185	UTP and CTP dephosphorylation I // pyrimidine nucleotides dephosphorylation
+ACYLCOASYN-RXN	FAO-PWY	fatty acid &beta;-oxidation I (generic)
+RXN-14026	PWY-7185	UTP and CTP dephosphorylation I // pyrimidine nucleotides dephosphorylation
+RXN-18200	RXNQT-4178	
+RXN0-6480	PWY0-1479	tRNA processing
+PSERTRANSAM-RXN	SERSYN-PWY	L-serine biosynthesis I
+RXN-12609	PWY-6891	thiazole component of thiamine diphosphate biosynthesis II // 2-(2-carboxy-4-methylthiazol-5-yl)ethyl phosphate biosynthesis
+6.3.2.10-RXN		
+RXN-17473	2.8.1.6-RXN	
+RXN-4821		
+RXN-19919	RXN0-7078	
+DIHYDROFOLATESYNTH-RXN		
+PANTOTHENATE-KIN-RXN	PANTO-PWY	phosphopantothenate biosynthesis I // vitamin B<sub>5</sub> biosynthesis
+RXN-34		
+RXN-19319	PWY-7965	2-methyladeninyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP // adenosyl-factor A biosynthesis from adenosylcobinamide-GDP // <i>Co</i>&alpha;-[a-(2-methyladenin-9-yl)]-<i>Co</i>&beta;-adenosylcobamide biosynthesis from adenosylcobinamide-GDP
+RXN-14290		
+THIAMIN-PYROPHOSPHOKINASE-RXN	PWY-6898 // PWY-6907 // PWY-7356	thiamine diphosphate salvage III // thiamin salvage III // thiamine diphosphate biosynthesis III (Staphylococcus) // vitamin B<sub>1</sub> biosynthesis III // thiamin diphosphate biosynthesis III (Staphylococcus) // thiamine diphosphate salvage IV (yeast) // thiamin salvage IV (yeast)
+RXN-14249		
+RXN-10058		
+RXN-22218		
+2.1.1.133-RXN	PWY-7376	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+5-AMINOLEVULINIC-ACID-SYNTHASE-RXN	PWY-5189	tetrapyrrole biosynthesis II (from glycine)
+RXN-19341	PWY-6268	adenosylcobalamin salvage from cobalamin // vitamin B<sub>12</sub> biosynthesis
+RXN-14728		
+COBINAMIDEKIN-RXN	COBALSYN-PWY // PWY-7971	superpathway of adenosylcobalamin salvage from cobinamide I // adenosylcobinamide-GDP salvage from cobinamide I
+RXN-7594		
+RXN-18710	PWY-7892	tRNA-uridine 2-thiolation and selenation (bacteria)
+RXN490-3616	PWY490-4	L-asparagine biosynthesis III (tRNA-dependent) // L-asparaginyl-tRNA<sup>asn</sup> biosynthesis via transamidation
+RXN-12140		
+DIMETHUROPORDEHYDROG-RXN	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+RXNMETA-12672	PWY0-321	phenylacetate degradation I (aerobic)
+ASPARTATE-SEMIALDEHYDE-DEHYDROGENASE-RXN	HOMOSERSYN-PWY // DAPLYSINESYN-PWY	L-homoserine biosynthesis // L-lysine biosynthesis I // L-lysine and L-diaminopimelate biosynthesis
+1.14.11.1-RXN	PWY-3621	&gamma;-butyrobetaine degradation II
+RXN0-7012	PWY0-1545	cardiolipin biosynthesis III
+2-NITROPROPANE-DIOXYGENASE-RXN		
+RXN-16391	PWY-5741	ethylmalonyl-CoA pathway // ethylmalonyl pathway
+UNDECAPRENYL-DIPHOSPHATASE-RXN	PWY-5785	di-<i>trans</i>,poly-<i>cis</i>-undecaprenyl phosphate biosynthesis
+THI-P-KIN-RXN	PWY-6893 // PWY-6894	thiamine diphosphate biosynthesis II (Bacillus) // vitamin B<sub>1</sub> biosynthesis II // thiamin diphosphate biosynthesis II (Bacillus) // thiamine diphosphate biosynthesis I (E. coli) // vitamin B<sub>1</sub> biosynthesis // thiamin diphosphate biosynthesis I (E. coli)
+RXN-21526	OHMETHYLBILANESYN-RXN	
+RXN-16628	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+LEUCYLTRANSFERASE-RXN	PWY-7801	N-end rule pathway I (prokaryotic)
+HOMOGENTISATE-12-DIOXYGENASE-RXN	TYRFUMCAT-PWY	L-tyrosine degradation I // tyrosine fumarate catabolism
+4-HYDROXYBENZOATE-3-MONOOXYGENASE-RXN		
+R345-RXN	PWY-7962	adenosylcobinamide-GDP biosynthesis from cobyrinate <i>a,c</i>-diamide
+THYKI-RXN	PWY-7199	pyrimidine deoxyribonucleosides salvage
+DIHYDROURACIL-DEHYDROGENASE-NAD+-RXN		
+RXN-18446		
+RXN-19318	PWY-7965	2-methyladeninyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP // adenosyl-factor A biosynthesis from adenosylcobinamide-GDP // <i>Co</i>&alpha;-[a-(2-methyladenin-9-yl)]-<i>Co</i>&beta;-adenosylcobamide biosynthesis from adenosylcobinamide-GDP
+NADH-KINASE-RXN	PWY-7268	cytosolic NADPH production (yeast)
+RXN-20995		
+RXN-22238	PWY-8245	lipid IV<sub>A</sub> biosynthesis (<i>P. gingivalis</i>) // lipid-A-precursor biosynthesis (<i>P. gingivalis</i>)
+ENOYL-COA-DELTA-ISOM-RXN	FAO-PWY	fatty acid &beta;-oxidation I (generic)
+RXN0-949	PWY0-501	lipoate biosynthesis and incorporation I
+RXN-10656	PWY-6282	palmitoleate biosynthesis I (from (5Z)-dodec-5-enoate) // palmitoleic acid biosynthesis I // palmitoleate biosynthesis (anaerobic)
+MYO-INOSITOL-1-PHOSPHATE-SYNTHASE-RXN	PWY-2301	<i>myo</i>-inositol biosynthesis
+HOLO-ACP-SYNTH-RXN	PWY-6012-1	acyl carrier protein activation // [acp] metabolism // ACP metabolism // ACP activation
+RXN-11729	PWY-6634	3-sulfopropanediol degradation I // DHPS degradation // 2,3-dihydroxypropane-1-sulfonate degradation
+RXN-20755	PWY-7892 // RXN0-2281	tRNA-uridine 2-thiolation and selenation (bacteria)
+RXN-13313		
+3.5.2.17-RXN		
+COBALADENOSYLTRANS-RXN	PWY-6268 // RXN-19368 // RXN-19335 // RXN-19369	adenosylcobalamin salvage from cobalamin // vitamin B<sub>12</sub> biosynthesis
+RXN-20778	PWY-3602	L-carnitine degradation III
+RXN-18798	PWY-5296	thiosulfate oxidation III (multienzyme complex) // Sox enzyme system // Paracoccus sulfur oxidation pathway // PSO pathway
+GLYOXII-RXN		
+RXN-15583	4.4.1.25-RXN	
+SUCCINYLDIAMINOPIMTRANS-RXN	DAPLYSINESYN-PWY	L-lysine biosynthesis I // L-lysine and L-diaminopimelate biosynthesis
+RXN-21562	PWY-8164	<i>bis</i>(guanylyl molybdopterin) cofactor sulfurylation // sulfo-<i>bis</i>(guanylyl molybdopterin) cofactor biosynthesis // bis-MGD sulfulylation
+RXN-14882		
+RXN-22438	1CMET2-PWY	folate transformations III (<i>E. coli</i>) // <i>N</i><sup>10</sup>-formyl-THF biosynthesis // <i>N</i><sup>10</sup>-formyl-tetrahydrofolate biosynthesis
+N-ACETYLGLUTPREDUCT-RXN	GLUTORN-PWY // ARGSYNBSUB-PWY	L-ornithine biosynthesis I // L-arginine biosynthesis II (acetyl cycle)
+ISOCITDEH-RXN	PWY-7268 // TCA	cytosolic NADPH production (yeast) // TCA cycle I (prokaryotic) // tricarboxylic acid cycle // citric acid cycle // Krebs cycle // Szent-Gyorgyi-Krebs cycle
+TRNA-PSEUDOURIDINE-SYNTHASE-I-RXN		
+RXN-19609		
+RXN-17782	PWY0-1337	oleate &beta;-oxidation
+3.2.1.52-RXN		
+ENOYL-COA-HYDRAT-RXN	FAO-PWY	fatty acid &beta;-oxidation I (generic)
+3-DEHYDROQUINATE-DEHYDRATASE-RXN	PWY-6163	chorismate biosynthesis from 3-dehydroquinate
+RXN-9951	ISOCITDEH-RXN	
+RXN-20150	RXN-20153	
+ACETYLGLUTKIN-RXN	GLUTORN-PWY // ARGSYNBSUB-PWY	L-ornithine biosynthesis I // L-arginine biosynthesis II (acetyl cycle)
+ARGININE-DEIMINASE-RXN	ARGDEGRAD-PWY	L-arginine degradation V (arginine deiminase pathway) // L-arginine dihydrolase pathway // L-arginine deiminase degradation
+ETHAMLY-RXN	PWY0-1477	ethanolamine utilization
+S-2-METHYLMALATE-DEHYDRATASE-RXN	PWY-5087	L-glutamate degradation VI (to pyruvate) // L-glutamate fermentation // mesaconate pathway // methylaspartate pathway // L-glutamic acid degradation VI (to pyruvic acid )
+RXN-2961	PWY-1801	formaldehyde oxidation II (glutathione-dependent) // formaldehyde oxidation II (GSH-dependent)
+RXN0-6732	PWY0-1533	methylphosphonate degradation I // carbon-phosphorus lyase pathway
+R342-RXN	PWY-7376	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+GLUTSEMIALDEHYDROG-RXN	PROSYN-PWY	L-proline biosynthesis I (from L-glutamate)
+RXN-17775	PWY0-1337	oleate &beta;-oxidation
+HISTIDINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+PPENTOMUT-RXN	PWY0-1296	purine ribonucleosides degradation
+RXN0-6733	PWY0-1533	methylphosphonate degradation I // carbon-phosphorus lyase pathway
+RIBOKIN-RXN		
+RXN0-3201	PWY-7884	lipoprotein posttranslational modification // lipoprotein lipoylation // Lol pathway
+RXN-18092		
+RXN-11042		
+RXN0-5190		
+ACONITATEDEHYDR-RXN	TCA // RXN-14047	TCA cycle I (prokaryotic) // tricarboxylic acid cycle // citric acid cycle // Krebs cycle // Szent-Gyorgyi-Krebs cycle
+RXN-13202	PWY-4984	urea cycle // Krebs ornithine cycle // Krebs-Henseleit cycle
+RXN-9230		
+RXN-7913	PWY-7197	pyrimidine deoxyribonucleotide phosphorylation
+RXN-8642	ISOCITDEH-RXN	
+RXN-6081		
+DGTPTRIPHYDRO-RXN		
+ACETYLORNDEACET-RXN	GLUTORN-PWY	L-ornithine biosynthesis I
+RXN-11667	PWY0-1337	oleate &beta;-oxidation
+RXN-20789	PWY-8073	lipid IV<sub>A</sub> biosynthesis (<i>P. putida</i>) // lipid-A-precursor biosynthesis (<i>P. putida</i>)
+HOMOSERDEHYDROG-RXN	HOMOSERSYN-PWY	L-homoserine biosynthesis
+RXN-21432		
+THREOSPON-RXN	RXN-14249	
+ASPARTATE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+RXN-16629	PWY-7663	gondoate biosynthesis (anaerobic) // <i>cis</i>-11-icosenoate biosynthesis // (11<i>Z</i>)-icos-11-enoate biosynthesis // (11<i>Z</i>)-icosenoate biosynthesis // gondoic acid biosynthesis // 11-eicosenoic acid biosynthesis
+2.5.1.39-RXN		
+THI-P-SYN-RXN	PWY-7356	thiamine diphosphate salvage IV (yeast) // thiamin salvage IV (yeast)
+BENZALDEHYDE-DEHYDROGENASE-NADP+-RXN		
+IMIDPHOSDEHYD-RXN	HISTSYN-PWY	L-histidine biosynthesis
+R343-RXN	PWY-7962 // RXN-19339	adenosylcobinamide-GDP biosynthesis from cobyrinate <i>a,c</i>-diamide
+RXN-17633		
+RXN2DNV-1	PWYI-14	lipid IV<sub>A</sub> biosynthesis (<i>H. pylori</i>) // lipid-A-precursor biosynthesis
+DHHB-METHYLTRANSFER-RXN	PWY-6708	ubiquinol-8 biosynthesis (early decarboxylation) // ubiquinone-8 biosynthesis (prokaryotic) // ubiquinol-8 biosynthesis (prokaryotic)
+RXN-11588		
+XYLULOKIN-RXN	XYLCAT-PWY	D-xylose degradation I // D-xylose catabolism
+RXN-11211	PWY-6430	thymine degradation // uracil degradation (reductive)
+NICONUCADENYLYLTRAN-RXN	PYRIDNUCSYN-PWY // PWY3O-4107 // PWY-8277	NAD <i>de novo</i> biosynthesis I (from aspartate) // nicotinamide adenine dinucleotide biosynthesis // NAD salvage pathway V (PNC V cycle) // Preiss-Handler pathway // NAD <i>de novo</i> biosynthesis IV (anaerobic)
+RXN-9530	PWY-8279	palmitate biosynthesis III
+RXN-6601		
+PABASYN-RXN	PWY-6543	4-aminobenzoate biosynthesis I // pABA biosynthesis I // plastidial PABA biosynthesis // PABA biosynthesis in plastids // <i>p</i>-aminobenzoate biosynthesis I
+SUPEROX-DISMUT-RXN	DETOX1-PWY-1 // DETOX1-PWY	reactive oxygen species degradation // removal of superoxide radicals // superoxide radicals degradation
+BETA-UREIDOPROPIONASE-RXN	PWY-3982	uracil degradation I (reductive) // &beta;-alanine biosynthesis
+RXN-18708	PWY-7892	tRNA-uridine 2-thiolation and selenation (bacteria)
+3.5.1.80-RXN		
+RXN-17956	PWY-7805	(aminomethyl)phosphonate degradation
+PRIBFAICARPISOM-RXN	HISTSYN-PWY	L-histidine biosynthesis
+4-HYDROXYPROLINE-EPIMERASE-RXN		
+RXN0-4641	PWY0-1261	anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+RXN-20401		
+RXN-20674	3-DEHYDROQUINATE-SYNTHASE-RXN	
+RXN-16765		
+RXN-15139		
+RXN-19342	PWY-7971 // BTUR2-RXN	adenosylcobinamide-GDP salvage from cobinamide I
+RXN-14291		
+RXN-7609	PWY-6608	guanosine nucleotides degradation III
+RXN-12611	PWY-6894	thiamine diphosphate biosynthesis I (E. coli) // vitamin B<sub>1</sub> biosynthesis // thiamin diphosphate biosynthesis I (E. coli)
+GUANYL-KIN-RXN	PWY-7221	guanosine ribonucleotides <i>de novo</i> biosynthesis
+1.5.1.20-RXN		
+RXN-14808		
+RXN-12572	PWY-6048	methylthiopropanoate degradation I (cleavage) // MTPA degradation // methylthiopropionate degradation I (cleavage)
+RXN-9634	PWY-8280	stearate biosynthesis IV // stearic acid biosynthesis IV
+ENOYL-ACP-REDUCT-NADPH-RXN	FASYN-ELONG-PWY	fatty acid elongation -- saturated
+RXN-14386	PWY-7250	[2Fe-2S] iron-sulfur cluster biosynthesis // [Fe-S] cluster biosynthesis // [2Fe-2S] cluster biosynthesis
+5.3.3.14-RXN	PWY0-862	(5Z)-dodecenoate biosynthesis I // (5Z)-dodec-5-enoate biosynthesis I // <i>cis</i>-dodecenoate biosynthesis I
+3.1.2.21-RXN	PWY-5971	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm)
+RXN-16615	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+RXN-10661	PWY-6282	palmitoleate biosynthesis I (from (5Z)-dodec-5-enoate) // palmitoleic acid biosynthesis I // palmitoleate biosynthesis (anaerobic)
+KDPGALDOL-RXN	PWY-7242 // ENTNER-DOUDOROFF-PWY	D-fructuronate degradation // Entner-Doudoroff shunt
+RXN-18797	PWY-5296	thiosulfate oxidation III (multienzyme complex) // Sox enzyme system // Paracoccus sulfur oxidation pathway // PSO pathway
+OROTPDECARB-RXN	PWY-5686	UMP biosynthesis I // uridine-5'-phosphate biosynthesis I // <i>de novo</i> biosynthesis of uridine-5'-phosphate I // <i>de novo</i> biosynthesis of uridine-5'-monophosphate I
+RXN-18205	RXNQT-4171	
+RXN-6341		
+RXN-10857		
+RXN-19295	PWY-7964	adeninyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP // <i>Co</i>&alpha;-[a-(adenin-9-yl)]-<i>Co</i>&beta;-adenosylcobamide biosynthesis from adenosylcobinamide-GDP // pseudo-adenosyl cobamide biosynthesis from adenosylcobinamide-GDP
+GTP-CYCLOHYDRO-I-RXN	PWY-6147 // PWY-6703	6-hydroxymethyl-dihydropterin diphosphate biosynthesis I // preQ<sub>0</sub> biosynthesis // deazapurine biosynthesis // 7-cyano-7-deazaguanine biosynthesis // 7-cyano-7-carbaguanine biosynthesis
+BRANCHED-CHAINAMINOTRANSFERVAL-RXN	VALSYN-PWY	L-valine biosynthesis
+RXN-10815		
+RXN-8001		
+RXN-17783	PWY0-1337	oleate &beta;-oxidation
+RXN-12141		
+RXN-20786	PWY-8073	lipid IV<sub>A</sub> biosynthesis (<i>P. putida</i>) // lipid-A-precursor biosynthesis (<i>P. putida</i>)
+XANTHOSINEPHOSPHORY-RXN	PWY0-1296 // SALVPURINE2-PWY // PWY-5695	purine ribonucleosides degradation // xanthine and xanthosine salvage // inosine 5'-phosphate degradation // IMP degradation // urate biosynthesis
+RXN-13733		
+RXN0-2044	PWY0-321 // PWY-1361	phenylacetate degradation I (aerobic) // benzoyl-CoA degradation I (aerobic)
+R322-RXN	PWY-7376	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+RXN-21565	RXN-21566	
+ARGSUCCINSYN-RXN	ARGSYN-PWY // PWY-4984 // ARGSYNBSUB-PWY	L-arginine biosynthesis I (via L-ornithine) // urea cycle // Krebs ornithine cycle // Krebs-Henseleit cycle // L-arginine biosynthesis II (acetyl cycle)
+RXN0-5515		
+NAG1P-URIDYLTRANS-RXN	UDPNAGSYN-PWY // PWY0-1261	UDP-<i>N</i>-acetyl-D-glucosamine biosynthesis I // UDP-<i>N</i>-acetyl-D-glucosamine biosynthesis // anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+RXN0-5507	PWY-6703	preQ<sub>0</sub> biosynthesis // deazapurine biosynthesis // 7-cyano-7-deazaguanine biosynthesis // 7-cyano-7-carbaguanine biosynthesis
+UDP-NACMURALGLDAPAALIG-RXN	PWY-6387	UDP-<i>N</i>-acetylmuramoyl-pentapeptide biosynthesis I (<i>meso</i>-diaminopimelate containing)
+RXN0-1321	PWY-6700	queuosine biosynthesis I (<i>de novo</i>)
+RXN-16619	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+RXN-9531	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+RXN-15878	NONMEVIPP-PWY	methylerythritol phosphate pathway I // nonmevalonate isopentenyl diphosphate biosynthesis // methylerythritol phosphate degradation // MEP degradation // deoxyxylulose phosphate pathway // DOXP pathway // Rohmer pathway // isopentenyl diphosphate biosynthesis -- mevalonate-independent // nonmevalonate isoprenoid pathway // MEP pathway
+BUTYRYL-COA-DEHYDROGENASE-RXN	PWY0-1337	oleate &beta;-oxidation
+TYROSINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+NAD-SYNTH-NH3-RXN	PYRIDNUCSYN-PWY // PWY-8277	NAD <i>de novo</i> biosynthesis I (from aspartate) // nicotinamide adenine dinucleotide biosynthesis // NAD <i>de novo</i> biosynthesis IV (anaerobic)
+RXN-15446	PWY-6420	pyrroloquinoline quinone biosynthesis // PQQ biosynthesis
+RXN-12753	PWY-6938-1	NADH repair (prokaryotes)
+RXN-7682	SALVADEHYPOX-PWY	adenosine nucleotides degradation II // purine ribonucleotide/ribonucleoside metabolism
+RXN-19310	PWY-7964	adeninyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP // <i>Co</i>&alpha;-[a-(adenin-9-yl)]-<i>Co</i>&beta;-adenosylcobamide biosynthesis from adenosylcobinamide-GDP // pseudo-adenosyl cobamide biosynthesis from adenosylcobinamide-GDP
+PHENYLPYRUVATE-TAUTOMERASE-RXN		
+THIOESTER-RXN	PWY-5148	acyl-CoA hydrolysis // acyl-CoA thioesterase pathway
+AMIDASE-RXN		
+P-PANTOCYSLIG-RXN	COA-PWY	coenzyme A biosynthesis I (bacteria) // CoA biosynthesis
+RXN-11740		
+METHYLGLUTACONYL-COA-HYDRATASE-RXN	LEU-DEG2-PWY	L-leucine degradation I
+GUANINE-DEAMINASE-RXN	PWY-6608	guanosine nucleotides degradation III
+RXN-2962	PWY-1801	formaldehyde oxidation II (glutathione-dependent) // formaldehyde oxidation II (GSH-dependent)
+5-FORMYL-THF-CYCLO-LIGASE-RXN	1CMET2-PWY	folate transformations III (<i>E. coli</i>) // <i>N</i><sup>10</sup>-formyl-THF biosynthesis // <i>N</i><sup>10</sup>-formyl-tetrahydrofolate biosynthesis
+RXN-12353		
+RXNI-27	PWYI-14	lipid IV<sub>A</sub> biosynthesis (<i>H. pylori</i>) // lipid-A-precursor biosynthesis
+RXN-12134		
+RXN-14883		
+CHMS-DEHYDROGENASE-RXN		
+RXN-8765	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+ISOVALERYLCOA-DHLIPOAMIDE-RXN	2KETO-4METHYL-PENTANOATE-DEHYDROG-RXN	4-methyl-2-oxopentanoate dehydrogenase (acylating)
+RXN-22242	PWY-8245	lipid IV<sub>A</sub> biosynthesis (<i>P. gingivalis</i>) // lipid-A-precursor biosynthesis (<i>P. gingivalis</i>)
+RXN0-7014	PWY-7805	(aminomethyl)phosphonate degradation
+RXN-20457	PWY-8136	NADPH repair (prokaryotes)
+RXN-20557		
+MANNONDEHYDRAT-RXN	PWY-7242	D-fructuronate degradation
+RXN0-2141	PWY0-862	(5Z)-dodecenoate biosynthesis I // (5Z)-dodec-5-enoate biosynthesis I // <i>cis</i>-dodecenoate biosynthesis I
+RXN-14091		
+RXN-14256	RXN-8769	
+LIPIDXSYNTHESIS-RXN	NAGLIPASYN-PWY	lipid IV<sub>A</sub> biosynthesis (<i>E. coli</i>) // lipid-A-precursor biosynthesis (<i>E. coli</i>)
+MYO-INOSITOL-1OR-4-MONOPHOSPHATASE-RXN	PWY-2301	<i>myo</i>-inositol biosynthesis
+ALKANE-1-MONOOXYGENASE-RXN	P221-PWY	octane oxidation
+O-ACETYLHOMOSERINE-THIOL-LYASE-RXN		
+RXN-10659	PWY-6282	palmitoleate biosynthesis I (from (5Z)-dodec-5-enoate) // palmitoleic acid biosynthesis I // palmitoleate biosynthesis (anaerobic)
+LUMAZINESYN-RXN	RIBOSYN2-PWY	flavin biosynthesis I (bacteria and plants) // riboflavin, FMN and FAD biosynthesis // vitamin B<sub>2</sub> biosynthesis
+RXN-12195	PWY-7185 // PWY-6545	UTP and CTP dephosphorylation I // pyrimidine nucleotides dephosphorylation // pyrimidine deoxyribonucleotides <i>de novo</i> biosynthesis III
+2.7.1.156-RXN		
+RXN-8961	PWY-5741	ethylmalonyl-CoA pathway // ethylmalonyl pathway
+RXN-19340	PWY-6268 // RXN-19335	adenosylcobalamin salvage from cobalamin // vitamin B<sub>12</sub> biosynthesis
+AKBLIG-RXN	THREONINE-DEG2-PWY	L-threonine degradation II // threonine dehydrogenase pathway // TDG pathway
+RXN-22558		
+RXN0-5226	PWY0-1261	anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+2.1.1.5-RXN	PWY-3661	glycine betaine degradation I
+RXN-14394	PWY0-1337	oleate &beta;-oxidation
+RXN-20739		
+RXN-11484	PWY-8203	8-amino-7-oxononanoate biosynthesis IV // 7-keto-8-aminopelargonate biosynthesis IV
+RXN-20084	GLUTSYN-PWY // AMMASSIM-PWY // GLUTAMATESYN-RXN	L-glutamate biosynthesis I // ammonia assimilation cycle III // ammonia assimilation III // GS/GOGAT pathway
+HOMOSERDEAM-RXN		
+RXN-16013	PWY-6048 // RXN-12573	methylthiopropanoate degradation I (cleavage) // MTPA degradation // methylthiopropionate degradation I (cleavage) // MTA-CoA hydrolase
+RXN-8762	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+RXN0-7310	PWY0-1599	periplasmic disulfide bond formation
+RXN-9520	PWY-5971 // PWY-8279 // PWY-7388	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+RXN-13403		
+4.4.1.25-RXN	PWY-6638	sulfolactate degradation III
+RXNQT-4165		
+RXN-15513	PWY-8004 // ANAGLYCOLYSIS-PWY	Entner-Doudoroff pathway I // ED pathway I // glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+RXN0-6482	PWY0-1479	tRNA processing
+6.2.1.34-RXN		
+RXN-15308		
+RXN2B4Q-51		
+RXN66-546		
+RXN-13141	PWY-8136	NADPH repair (prokaryotes)
+HOMOSERKIN-RXN	HOMOSER-THRESYN-PWY	L-threonine biosynthesis
+RXN0-4022	PWY-6700	queuosine biosynthesis I (<i>de novo</i>)
+RXN-13697		
+RXN-8141		
+RXN-12721	PWY-6932	selenate reduction // selenium metabolism // selenium assimilation
+RXN-20788	PWY-8073	lipid IV<sub>A</sub> biosynthesis (<i>P. putida</i>) // lipid-A-precursor biosynthesis (<i>P. putida</i>)
+RXNQT-4191	PWY-6907 // PWY-7356	thiamine diphosphate biosynthesis III (Staphylococcus) // vitamin B<sub>1</sub> biosynthesis III // thiamin diphosphate biosynthesis III (Staphylococcus) // thiamine diphosphate salvage IV (yeast) // thiamin salvage IV (yeast)
+RXN-17354	2.7.3.9-RXN	
+3PGAREARR-RXN	GLUCONEO-PWY // ANAGLYCOLYSIS-PWY	gluconeogenesis I // glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+RXN-12621	PWY-6891 // RXN-20037	thiazole component of thiamine diphosphate biosynthesis II // 2-(2-carboxy-4-methylthiazol-5-yl)ethyl phosphate biosynthesis
+ARYLESTERASE-RXN		
+RXN-8753		
+1.5.1.9-RXN		
+THIAMINASE-RXN	PWY-7356	thiamine diphosphate salvage IV (yeast) // thiamin salvage IV (yeast)
+AMP-NUCLEOSID-RXN	PWY-6617	adenosine nucleotides degradation III // adenosine ribonucleotide/ribonucleoside metabolism
+RXN-9760	PWY-6056	dimethylsulfoniopropanoate degradation II (cleavage) // DMSP degradation // dimethylsulfoniopropionate degradation II (cleavage)
+RXNQT-4171		
+ORNITHINE-CYCLODEAMINASE-RXN	ORN-AMINOPENTANOATE-CAT-PWY // ARG-GLU-PWY	L-ornithine degradation I (L-proline biosynthesis) // L-arginine degradation VII (arginase 3 pathway)
+L-IDONATE-2-DEHYDROGENASE-RXN		
+RXN-17886	PWY-7798	protein <i>S</i>-nitrosylation and denitrosylation
+NICOTINAMID-RXN	PWY3O-4107	NAD salvage pathway V (PNC V cycle) // Preiss-Handler pathway
+RXN-8768	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+GAPOXNPHOSPHN-RXN	PWY-8004 // GLUCONEO-PWY // ANAGLYCOLYSIS-PWY	Entner-Doudoroff pathway I // ED pathway I // gluconeogenesis I // glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+2PGADEHYDRAT-RXN	PWY-8004 // GLUCONEO-PWY // ANAGLYCOLYSIS-PWY	Entner-Doudoroff pathway I // ED pathway I // gluconeogenesis I // glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+HISTIDPHOS-RXN	HISTSYN-PWY	L-histidine biosynthesis
+RXN-16626	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+PHOSGLYPHOS-RXN	PWY-8004 // GLUCONEO-PWY // ANAGLYCOLYSIS-PWY	Entner-Doudoroff pathway I // ED pathway I // gluconeogenesis I // glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+NAD-SYNTH-GLN-RXN	PYRIDNUCSYN-PWY // PWY3O-4107 // PWY-8277	NAD <i>de novo</i> biosynthesis I (from aspartate) // nicotinamide adenine dinucleotide biosynthesis // NAD salvage pathway V (PNC V cycle) // Preiss-Handler pathway // NAD <i>de novo</i> biosynthesis IV (anaerobic)
+HISTALDEHYD-RXN	HISTSYN-PWY // RXN-8001	L-histidine biosynthesis
+BIOTINLIG-RXN	PWY0-1264	biotin-carboxyl carrier protein assembly // BCCP assembly
+RXN-22713	PABASYN-RXN	
+RXN0-308	PWY-6891 // RXN-22700 // RXN-12588 // RXN-20037 // RXN-22698 // RXN-9787 // RXN-21566	thiazole component of thiamine diphosphate biosynthesis II // 2-(2-carboxy-4-methylthiazol-5-yl)ethyl phosphate biosynthesis // cysteine:[ThiI sulfur-carrier protein]-L-cysteine sulfurtransferase desulfurase
+RXN-22612		
+FMNREDUCT-RXN	PWY-5523	5,6-dimethylbenzimidazole biosynthesis I (aerobic) // DMB biosynthesis I
+RXN0-262	PWY-5964	guanylyl molybdenum cofactor biosynthesis // MGD biosynthesis // molybdopterin guanine dinucleotide biosynthesis
+RXN-6268		
+RXN-21025	RXN-982	
+1.2.2.3-RXN	PWY-8303	reductive glycine pathway of autotrophic CO<sub>2</sub> fixation // carbon fixation VI // glycine synthase-reductase pathway
+RXN-22557		
+RXN-12560		
+PREPHENATEDEHYDRAT-RXN	PHESYN	L-phenylalanine biosynthesis I
+RXN0-2381	TRPSYN-PWY // TRYPSYN-RXN	L-tryptophan biosynthesis
+RXN-8770	COBALSYN-PWY // PWY-5509	superpathway of adenosylcobalamin salvage from cobinamide I // adenosylcobalamin biosynthesis from adenosylcobinamide-GDP I
+METHYLCROTONYL-COA-CARBOXYLASE-RXN	LEU-DEG2-PWY	L-leucine degradation I
+TRANS-RXN0-286	PEPTIDOGLYCANSYN-PWY	peptidoglycan biosynthesis I (<I>meso</I>-diaminopimelate containing)
+RXN-9220	PWY-5849	menaquinol-6 biosynthesis // vitamin K<sub>2</sub> biosynthesis // MK-6 biosynthesis // menaquinone-6 biosynthesis
+RXN-11350		
+RXN-14570	PWY0-1587	N<sup>6</sup>-L-threonylcarbamoyladenosine<sup>37</sup>-modified tRNA biosynthesis
+RXN-15130	HOMOCYSDEGR-PWY	L-cysteine biosynthesis III (from L-homocysteine) // L-homocysteine degradation
+SULFITE-REDUCT-RXN	PWY-6683	assimilatory sulfate reduction III
+RXN-9662	PWY-5971	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm)
+RXN-11361	PWY-6823	molybdopterin biosynthesis
+ACETOLACTSYN-RXN	VALSYN-PWY	L-valine biosynthesis
+OCTAPRENYL-METHYL-METHOXY-BENZOQ-OH-RXN	PWY-6708	ubiquinol-8 biosynthesis (early decarboxylation) // ubiquinone-8 biosynthesis (prokaryotic) // ubiquinol-8 biosynthesis (prokaryotic)
+RXN2DNV-2	PWYI-14	lipid IV<sub>A</sub> biosynthesis (<i>H. pylori</i>) // lipid-A-precursor biosynthesis
+RXN-16956		
+RIBOFLAVIN-SYN-RXN	RIBOSYN2-PWY	flavin biosynthesis I (bacteria and plants) // riboflavin, FMN and FAD biosynthesis // vitamin B<sub>2</sub> biosynthesis
+FORMYLTHFGLUSYNTH-RXN	PWY-2161	folate polyglutamylation
+URUR-RXN	PWY-5698	allantoin degradation to ureidoglycolate II (ammonia producing)
+RXN-22247	PWYI-14 // PWY-8245	lipid IV<sub>A</sub> biosynthesis (<i>H. pylori</i>) // lipid-A-precursor biosynthesis // lipid IV<sub>A</sub> biosynthesis (<i>P. gingivalis</i>) // lipid-A-precursor biosynthesis (<i>P. gingivalis</i>)
+RXN0-6998		
+RXN-14727		
+KDOTRANS-RXN		
+RXN-17955	PWY-7805	(aminomethyl)phosphonate degradation
+3-OH-BENZALDEHYDE-DEHYDROG-NADP+-RXN		
+PMPOXI-RXN		
+IMIDAZOLONEPROPIONASE-RXN	PWY-5028	L-histidine degradation II
+RIB5PISOM-RXN		
+DURIDKI-RXN	PWY-7199	pyrimidine deoxyribonucleosides salvage
+RXN-21601		
+RXN-21027	RXN-982	
+RXN-22286		
+RXN-22604		
+ADENYLOSUCCINATE-SYNTHASE-RXN	PWY-7219	adenosine ribonucleotides <i>de novo</i> biosynthesis
+RXN-11410	PWY-6502	8-oxo-(d)GTP detoxification I // oxidized GTP and dGTP detoxification I // oxidized guanosine triphosphate and deoxyguanosine triphosphate detoxification I // 8-oxo-7,8-dihydro-guanosine-triphosphate and 8-oxo-7,8-dihydro-deoxyguanosine-triphosphate I
+RXN-12865	PWY-6932	selenate reduction // selenium metabolism // selenium assimilation
+RXN-22610		
+3.1.26.5-RXN	PWY0-1479	tRNA processing
+RXN-11409	PWY-6502	8-oxo-(d)GTP detoxification I // oxidized GTP and dGTP detoxification I // oxidized guanosine triphosphate and deoxyguanosine triphosphate detoxification I // 8-oxo-7,8-dihydro-guanosine-triphosphate and 8-oxo-7,8-dihydro-deoxyguanosine-triphosphate I
+PYRUVATEORTHOPHOSPHATE-DIKINASE-RXN		
+RXN-7933		
+2.4.1.129-RXN		
+RXN-20154	ACETYL-COA-ACETYLTRANSFER-RXN	
+RXN-2401	PWY-1361	benzoyl-CoA degradation I (aerobic)
+UDP-NACMURALA-GLU-LIG-RXN	PWY-6387	UDP-<i>N</i>-acetylmuramoyl-pentapeptide biosynthesis I (<i>meso</i>-diaminopimelate containing)
+RXN-8991	LEUSYN-PWY // RXN-13163	L-leucine biosynthesis
+RXN-18202	RXNQT-4174	
+COBINPGUANYLYLTRANS-RXN	COBALSYN-PWY // PWY-7962 // PWY-7971	superpathway of adenosylcobalamin salvage from cobinamide I // adenosylcobinamide-GDP biosynthesis from cobyrinate <i>a,c</i>-diamide // adenosylcobinamide-GDP salvage from cobinamide I
+1.1.1.264-RXN	IDNCAT-PWY	L-idonate degradation // L-idonic acid catabolism // L-idonate catabolism
+RXN-7743	PWY-5101	L-isoleucine biosynthesis II
+RXN-18796	PWY-5296	thiosulfate oxidation III (multienzyme complex) // Sox enzyme system // Paracoccus sulfur oxidation pathway // PSO pathway
+DCTP-PYROPHOSPHATASE-RXN	PWY-7206	pyrimidine deoxyribonucleotides dephosphorylation
+RXNN-404	PWY-5025	indole-3-acetate biosynthesis IV (bacteria) // IAA biosynthesis IV (bacteria) // indole-3-acetic acid biosynthesis IV (bacteria)
+RXN-5901	PWY1-3 // PWY-5741	polyhydroxybutanoate biosynthesis // PHB biosynthesis // polyhydroxybutyrate biosynthesis // ethylmalonyl-CoA pathway // ethylmalonyl pathway
+DARAB5PISOM-RXN	PWY-1269	CMP-3-deoxy-D-<I>manno</I>-octulosonate biosynthesis // CMP-Kdo biosynthesis I
+RXN-20718		
+GCVP-RXN	GLYCLEAV-PWY // GCVMULTI-RXN	glycine cleavage // glycine cleavage system // glycine decarboxylase complex // gcv system // glycine cleavage complex
+ALLANTOICASE-RXN	PWY-5697	allantoin degradation to ureidoglycolate I (urea producing)
+RXN-22026	PWY-8203	8-amino-7-oxononanoate biosynthesis IV // 7-keto-8-aminopelargonate biosynthesis IV
+RXN-12567	PWY0-1337	oleate &beta;-oxidation
+RXN-9660	PWY-5971	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm)
+NADPYROPHOSPHAT-RXN		
+GPH-RXN		
+RXN-15261		
+RXN0-6515		
+RXN-13617	PWY0-1337	oleate &beta;-oxidation
+3.1.1.77-RXN		
+RXN-18693		
+DUTP-PYROP-RXN	PWY-7206 // PWY-6545	pyrimidine deoxyribonucleotides dephosphorylation // pyrimidine deoxyribonucleotides <i>de novo</i> biosynthesis III
+XYLISOM-RXN	XYLCAT-PWY	D-xylose degradation I // D-xylose catabolism
+MERCAPYSTRANS-RXN	PWY-5329	L-cysteine degradation III // hydrogen sulfide biosynthesis I
+RXN-9515	PWY-8279 // PWY-7388	palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+RXN-20787	PWY-8073	lipid IV<sub>A</sub> biosynthesis (<i>P. putida</i>) // lipid-A-precursor biosynthesis (<i>P. putida</i>)
+ALLANTOINASE-RXN	PWY-5697 // PWY-5698	allantoin degradation to ureidoglycolate I (urea producing) // allantoin degradation to ureidoglycolate II (ammonia producing)
+DADPKIN-RXN	PWY-7227	adenosine deoxyribonucleotides <i>de novo</i> biosynthesis I
+RXN0-6575	PWY-6703	preQ<sub>0</sub> biosynthesis // deazapurine biosynthesis // 7-cyano-7-deazaguanine biosynthesis // 7-cyano-7-carbaguanine biosynthesis
+RXN-8340	PWY-6823	molybdopterin biosynthesis
+DAHPSYN-RXN	PWY-6164	3-dehydroquinate biosynthesis I
+MALIC-NADP-RXN	GLUCONEO-PWY	gluconeogenesis I
+2-OCTAPRENYLPHENOL-HYDROX-RXN	PWY-6708	ubiquinol-8 biosynthesis (early decarboxylation) // ubiquinone-8 biosynthesis (prokaryotic) // ubiquinol-8 biosynthesis (prokaryotic)
+ADOMET-DMK-METHYLTRANSFER-RXN	MENAQUINONESYN-PWY	menaquinol-8 biosynthesis // vitamin K<sub>2</sub> biosynthesis I // menaquinone-8 biosynthesis
+RXN0-6721		
+THYMIDYLATESYN-RXN	1CMET2-PWY // PWY-7199	folate transformations III (<i>E. coli</i>) // <i>N</i><sup>10</sup>-formyl-THF biosynthesis // <i>N</i><sup>10</sup>-formyl-tetrahydrofolate biosynthesis // pyrimidine deoxyribonucleosides salvage
+RXN-20000	PWY0-1599	periplasmic disulfide bond formation
+SEDOBISALDOL-RXN		
+RXN-9661	PWY-5971	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm)
+RXN-9518	PWY-5971 // PWY-8279 // PWY-7388	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+RXN-13179	PYRIDOXSYN-PWY	pyridoxal 5'-phosphate biosynthesis I // vitamin B<sub>6</sub> biosynthesis // deoxyxylulose-dependent pyridoxal 5'-phosphate biosynthesis
+RXN-8348	PWY-8171	molybdenum cofactor biosynthesis // moco biosynthesis // molybdopterin biosynthesis
+RXN0-7080		
+ADENPHOSPHOR-RXN	P121-PWY // PWY0-1296 // PWY-6609	adenine and adenosine salvage I // purine salvage // salvage pathway of adenosine nucleosides // adenosine nucleosides salvage I // purine ribonucleosides degradation // adenine and adenosine salvage III // adenosine nucleotides salvage III
+RXN-17900	GLUTAMIDOTRANS-RXN	imidazole glycerol phosphate synthase cyclase subunit // Imidazole glycerol phosphate synthase cyclase subunit (EC 4.1.3.-) // Imidazole glycerol phosphate synthase amidotransferase subunit (EC 2.4.2.-)
+DIHYDROOROT-RXN	PWY-5686	UMP biosynthesis I // uridine-5'-phosphate biosynthesis I // <i>de novo</i> biosynthesis of uridine-5'-phosphate I // <i>de novo</i> biosynthesis of uridine-5'-monophosphate I
+TETRAACYLDISACC4KIN-RXN	NAGLIPASYN-PWY	lipid IV<sub>A</sub> biosynthesis (<i>E. coli</i>) // lipid-A-precursor biosynthesis (<i>E. coli</i>)
+CYSTATHIONINE-BETA-SYNTHASE-RXN	HOMOCYSDEGR-PWY	L-cysteine biosynthesis III (from L-homocysteine) // L-homocysteine degradation
+RXN-17958	PWY-7807	glyphosate degradation III // glyphosate C-P lyase enzyme system
+RXN-1961		
+RXN-17954	PWY-7805	(aminomethyl)phosphonate degradation
+RXN-12196	PWY-7185	UTP and CTP dephosphorylation I // pyrimidine nucleotides dephosphorylation
+RXN-14047		
+RXN-13163		
+RXN-13824	PWY-7376 // 2.1.1.132-RXN	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+GLYOHMETRANS-RXN	GLYSYN-PWY // 1CMET2-PWY // PWY-2161 // PWY-3661	glycine biosynthesis I // folate transformations III (<i>E. coli</i>) // <i>N</i><sup>10</sup>-formyl-THF biosynthesis // <i>N</i><sup>10</sup>-formyl-tetrahydrofolate biosynthesis // folate polyglutamylation // glycine betaine degradation I
+RXN-11063		
+RXN-11592		
+RXN0-2142	PWY0-862	(5Z)-dodecenoate biosynthesis I // (5Z)-dodec-5-enoate biosynthesis I // <i>cis</i>-dodecenoate biosynthesis I
+RXN-15121	PWY-701 // PWY-5437 // ILEUSYN-PWY // METHIONINE-GAMMA-LYASE-RXN // THREDEHYD-RXN // RXN-15130 // HOMOSERDEAM-RXN	L-methionine degradation II // L-threonine degradation I // L-isoleucine biosynthesis I (from threonine)
+RXN-12798		
+RXN-9550	PWY-6282	palmitoleate biosynthesis I (from (5Z)-dodec-5-enoate) // palmitoleic acid biosynthesis I // palmitoleate biosynthesis (anaerobic)
+HOMSUCTRAN-RXN		
+RXN-9386	PWY-5921	glutaminyl-tRNA<sup>gln</sup> biosynthesis via transamidation
+ALLOPHANATE-HYDROLASE-RXN		
+UDPNACETYLGLUCOSAMENOLPYRTRANS-RXN	PWY-6387 // PWY0-1261	UDP-<i>N</i>-acetylmuramoyl-pentapeptide biosynthesis I (<i>meso</i>-diaminopimelate containing) // anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+RXN-22591		
+NADH-DEHYDROGENASE-QUINONE-RXN		
+RXN0-5199	PWY-6608 // PWY0-1296 // PWY-6620	guanosine nucleotides degradation III // purine ribonucleosides degradation // guanine and guanosine salvage I
+RXN-9542	PWY-8279	palmitate biosynthesis III
+PHENYLALANINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+RXN0-5234		
+PROTOHEMEFERROCHELAT-RXN	HEME-BIOSYNTHESIS-II // HEMESYN2-PWY	heme <i>b</i> biosynthesis I (aerobic) // heme <i>b</i> biosynthesis II (oxygen-independent)
+DIHYDROXYMETVALDEHYDRAT-RXN	ILEUSYN-PWY // PWY-5101	L-isoleucine biosynthesis I (from threonine) // L-isoleucine biosynthesis II
+RXN-11852		
+RXN-12019	PWY-6683	assimilatory sulfate reduction III
+PHOSPHASERDECARB-RXN	PWY-5669	phosphatidylserine and phosphatidylethanolamine biosynthesis I
+GLUTATHIONE-PEROXIDASE-RXN	DETOX1-PWY-1 // PWY-4081	reactive oxygen species degradation // removal of superoxide radicals // glutathione-peroxide redox reactions
+ALANINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+ADPREDUCT-RXN	PWY-7227	adenosine deoxyribonucleotides <i>de novo</i> biosynthesis I
+RXN-14725		
+DTDPKIN-RXN	PWY-7197 // PWY-6545	pyrimidine deoxyribonucleotide phosphorylation // pyrimidine deoxyribonucleotides <i>de novo</i> biosynthesis III
+RXN-14315	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+ALARACECAT-RXN	PWY-8072	alanine racemization
+3-OXOADIPATE-ENOL-LACTONASE-RXN	PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY	protocatechuate degradation II (ortho-cleavage pathway) // protocatechuate branch of the 3-oxoadipate pathway // protocatechuate branch of the 3-ketoadipate pathway // protocatechuate branch of the &beta;-ketoadipate pathway // protocatechuate degradation via ortho-cleavage // protocatechuate degradation via the &beta;-ketoadipate pathway // protocatechuate 3,4-cleavage
+RXN0-2361	PWY0-1261	anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+NITRILE-HYDRATASE-RXN		
+RXN-12002	PWY-7176	UTP and CTP <i>de novo</i> biosynthesis
+RXN-18702	MERCAPYSTRANS-RXN	
+RXN-21024	RXN-982	
+DIHYDLIPACETRANS-RXN		
+RXN-16456	PWY-7639 // RXN-21601	bis(guanylyl molybdenum cofactor) biosynthesis // bisMGD biosynthesis // bis-MPT guanine dinucleotide cofactor biosynthesis
+RXN-9758		
+CPM-KDOSYNTH-RXN	PWY-1269	CMP-3-deoxy-D-<I>manno</I>-octulosonate biosynthesis // CMP-Kdo biosynthesis I
+GABATRANSAM-RXN	PWY-6536 // PWY-6535	4-aminobutanoate degradation III // &gamma;-amino-butyrate shunt // GABA degradation // 4-aminobutyrate degradation III // 4-aminobutanoic acid degradation III // 4-aminobutanoate degradation I // 4-aminobutyrate degradation I // 4-aminobutanoic acid degradation I
+RXN0-2042	PWY0-321	phenylacetate degradation I (aerobic)
+RXN0-6427	PPGPPMET-PWY	ppGpp metabolism // guanosine 3'-diphosphate 5'-diphosphate biosynthesis // ppGpp biosynthesis
+RXN-18201	RXNQT-4178	
+4.2.1.58-RXN	PWY-5971 // PWY-8279 // PWY-7388	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+DEOXYINOPHOSPHOR-RXN	PWY-7179	purine deoxyribonucleosides degradation I
+RXN-20994		
+RXN-8960	PWY-5741	ethylmalonyl-CoA pathway // ethylmalonyl pathway
+RXN-17884	PWY-7798	protein <i>S</i>-nitrosylation and denitrosylation
+DTMPKI-RXN	PWY-7197 // PWY-6545	pyrimidine deoxyribonucleotide phosphorylation // pyrimidine deoxyribonucleotides <i>de novo</i> biosynthesis III
+RXN-9222		
+UDPHYDROXYMYRGLUCOSAMNACETYLTRANS-RXN	NAGLIPASYN-PWY	lipid IV<sub>A</sub> biosynthesis (<i>E. coli</i>) // lipid-A-precursor biosynthesis (<i>E. coli</i>)
+RXN-22317		
+RXN0-1147	PWY-5084 // 2OXOGLUTARATEDEH-RXN	2-oxoglutarate decarboxylation to succinyl-CoA // 2-oxoglutarate dehydrogenase complex // 2-ketoglutarate dehydrogenase complex // 2-oxoglutarate dehydrogenase system // 2-ketoglutarate dehydrogenase system // &alpha;-ketoglutarate dehydrogenase system // 2-oxoglutarate dehydrogenation // &alpha;-ketoglutarate oxidative decarboxylation
+RXN0-6483	PWY0-1479	tRNA processing
+2.6.1.57-RXN		
+RXN-12613	PWY-6899	base-degraded thiamine salvage // formylaminopyrimidine salvage // base-degraded thiamin salvage
+RXN-11633		
+RXN-12754	PWY-6938-1	NADH repair (prokaryotes)
+RXN-16062	PWY-5101	L-isoleucine biosynthesis II
+RXN-14113		
+GDPREDUCT-RXN	PWY-7226	guanosine deoxyribonucleotides <i>de novo</i> biosynthesis I
+SUCCINATE-SEMIALDEHYDE-DEHYDROGENASE-RXN	PWY-6535	4-aminobutanoate degradation I // &gamma;-amino-butyrate shunt // GABA degradation // 4-aminobutyrate degradation I // 4-aminobutanoic acid degradation I
+RXN-11179	PWY-6420	pyrroloquinoline quinone biosynthesis // PQQ biosynthesis
+4OH2OXOGLUTARALDOL-RXN		
+R125-RXN		
+RXN-10814	PHESYN	L-phenylalanine biosynthesis I
+RXN-14812		
+RXN-22319		
+RXN-22915	P-PANTOCYSLIG-RXN	
+RXN-22697	RXN-22698	
+DEOXYRIBOSE-P-ALD-RXN	PWY-7180	2-deoxy-&alpha;-D-ribose 1-phosphate degradation
+PGLUCONDEHYDRAT-RXN	ENTNER-DOUDOROFF-PWY	Entner-Doudoroff shunt
+CHD-RXN	BETSYN-PWY // CHOLINE-BETAINE-ANA-PWY	glycine betaine biosynthesis I (Gram-negative bacteria) // choline degradation I // choline betaine anabolism
+RXN-9549	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+RXN0-5131		
+RXN-11738	PWY-6638	sulfolactate degradation III
+RXN0-6484	PWY0-1479	tRNA processing
+RXN-9532	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+ADENOSINE-KINASE-RXN	PWY-6619	adenine and adenosine salvage VI
+RXN-20678	PWY0-1337	oleate &beta;-oxidation
+RXN-9663	PWY-5971	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm)
+3.3.2.5-RXN		
+RXN-8766	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+RXN-14116	PROUT-PWY // ARGASEDEG-PWY	L-proline degradation I // L-proline utilization // L-arginine degradation I (arginase pathway) // L-arginase degradative pathway // L-glutamate biosynthesis
+RXNI-2		
+RXN0-742	PWY-6123	inosine-5'-phosphate biosynthesis I // IMP biosynthesis I
+KDO-8PPHOSPHAT-RXN	PWY-1269	CMP-3-deoxy-D-<I>manno</I>-octulosonate biosynthesis // CMP-Kdo biosynthesis I
+GLUTAMINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+RXN-12104	PWY-6700	queuosine biosynthesis I (<i>de novo</i>)
+SHIKIMATE-KINASE-RXN	PWY-6163	chorismate biosynthesis from 3-dehydroquinate
+DIHYDROXYISOVALDEHYDRAT-RXN	VALSYN-PWY	L-valine biosynthesis
+RXN-11397	PWY-6502	8-oxo-(d)GTP detoxification I // oxidized GTP and dGTP detoxification I // oxidized guanosine triphosphate and deoxyguanosine triphosphate detoxification I // 8-oxo-7,8-dihydro-guanosine-triphosphate and 8-oxo-7,8-dihydro-deoxyguanosine-triphosphate I
+RXN-20406		
+HEXOKINASE-RXN		
+ALDOSE-1-EPIMERASE-RXN		
+3.3.2.2-RXN		
+RXN0-300		
+CARBPSYN-RXN	ARGSYN-PWY // PWY-5686 // ARGSYNBSUB-PWY	L-arginine biosynthesis I (via L-ornithine) // UMP biosynthesis I // uridine-5'-phosphate biosynthesis I // <i>de novo</i> biosynthesis of uridine-5'-phosphate I // <i>de novo</i> biosynthesis of uridine-5'-monophosphate I // L-arginine biosynthesis II (acetyl cycle)
+RXN-18510		
+RXN-21228		
+HISTPRATPHYD-RXN	HISTSYN-PWY	L-histidine biosynthesis
+RIBOPHOSPHAT-RXN	RIBOSYN2-PWY	flavin biosynthesis I (bacteria and plants) // riboflavin, FMN and FAD biosynthesis // vitamin B<sub>2</sub> biosynthesis
+1-ACYLGLYCEROL-3-P-ACYLTRANSFER-RXN	PWY0-1319	CDP-diacylglycerol biosynthesis II
+2-ISOPROPYLMALATESYN-RXN	LEUSYN-PWY	L-leucine biosynthesis
+FUMARYLACETOACETASE-RXN	TYRFUMCAT-PWY	L-tyrosine degradation I // tyrosine fumarate catabolism
+RXN-14270		
+RXN-19308	PWY-7964	adeninyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP // <i>Co</i>&alpha;-[a-(adenin-9-yl)]-<i>Co</i>&beta;-adenosylcobamide biosynthesis from adenosylcobinamide-GDP // pseudo-adenosyl cobamide biosynthesis from adenosylcobinamide-GDP
+RXN-22480	PWY-8283	lipid IV<sub>A</sub> biosynthesis (generic) // lipid-A-precursor biosynthesis (generic)
+ADENPRIBOSYLTRAN-RXN	PWY-7807 // PWY-7805 // P121-PWY // PWY-6610	glyphosate degradation III // glyphosate C-P lyase enzyme system // (aminomethyl)phosphonate degradation // adenine and adenosine salvage I // purine salvage // salvage pathway of adenosine nucleosides // adenosine nucleosides salvage I // adenine salvage
+SARCOX-RXN	PWY-3661	glycine betaine degradation I
+HISTAMINOTRANS-RXN	HISTSYN-PWY	L-histidine biosynthesis
+RXN-13329		
+RXN-20456	PWY-8136	NADPH repair (prokaryotes)
+RXN-17881		
+HOMOCYSMET-RXN	PWY-5041	<i>S</i>-adenosyl-L-methionine salvage II // activated methyl cycle // SAM cycle // <i>S</i>-adenosyl-L-methionine cycle II
+ERYTH4PDEHYDROG-RXN	PYRIDOXSYN-PWY	pyridoxal 5'-phosphate biosynthesis I // vitamin B<sub>6</sub> biosynthesis // deoxyxylulose-dependent pyridoxal 5'-phosphate biosynthesis
+2.1.1.63-RXN		
+MALATE-DEH-RXN	GLUCONEO-PWY // TCA // 1.1.1.39-RXN	gluconeogenesis I // TCA cycle I (prokaryotic) // tricarboxylic acid cycle // citric acid cycle // Krebs cycle // Szent-Gyorgyi-Krebs cycle
+THRESYN-RXN	HOMOSER-THRESYN-PWY	L-threonine biosynthesis
+PYRNUTRANSHYDROGEN-RXN		
+UROPORIIIMETHYLTRANSA-RXN	PWY-7377 // PWY-7376 // RXN-13403	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion) // cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+URACIL-PRIBOSYLTRANS-RXN	PWY-7183	pyrimidine nucleobases salvage I // uracil salvage
+GLUTCYSLIG-RXN	GLUTATHIONESYN-PWY	glutathione biosynthesis
+RXN-11811		
+3.1.22.4-RXN		
+6PGLUCONOLACT-RXN	PWY-8004 // OXIDATIVEPENT-PWY	Entner-Doudoroff pathway I // ED pathway I // pentose phosphate pathway (oxidative branch) I
+DNA-CYTOSINE-5--METHYLTRANSFERASE-RXN		
+IMP-DEHYDROG-RXN	PWY-5695 // PWY-7221	inosine 5'-phosphate degradation // IMP degradation // urate biosynthesis // guanosine ribonucleotides <i>de novo</i> biosynthesis
+RXN-20896		
+RXNQT-4174		
+ACYLCOADEHYDROG-RXN	FAO-PWY	fatty acid &beta;-oxidation I (generic)
+RXN-9544		
+MANNONOXIDOREDUCT-RXN	PWY-7242	D-fructuronate degradation
+SAICARSYN-RXN	PWY-6123	inosine-5'-phosphate biosynthesis I // IMP biosynthesis I
+RXN-18459		
+RXN-22742	PWY-3661	glycine betaine degradation I
+UDPNACETYLMURAMATEDEHYDROG-RXN	PWY-6387 // PWY0-1261	UDP-<i>N</i>-acetylmuramoyl-pentapeptide biosynthesis I (<i>meso</i>-diaminopimelate containing) // anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+RXN0-5462		
+METHENYLTHFCYCLOHYDRO-RXN	PWY-1722 // 1CMET2-PWY // PWY-6613 // PWY-8303	formate assimilation into 5,10-methylenetetrahydrofolate // folate transformations III (<i>E. coli</i>) // <i>N</i><sup>10</sup>-formyl-THF biosynthesis // <i>N</i><sup>10</sup>-formyl-tetrahydrofolate biosynthesis // tetrahydrofolate salvage from 5,10-methenyltetrahydrofolate // folic acid salvage // folate salvage // THF salvage // reductive glycine pathway of autotrophic CO<sub>2</sub> fixation // carbon fixation VI // glycine synthase-reductase pathway
+1.3.1.2-RXN	PWY-3982	uracil degradation I (reductive) // &beta;-alanine biosynthesis
+RXN-15509	RXN-15513	
+RXN-9548	PWY-8280	stearate biosynthesis IV // stearic acid biosynthesis IV
+RXN-6263		
+RXN-16660	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+RXN-16650	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+RXN-12867	PWY-6932	selenate reduction // selenium metabolism // selenium assimilation
+3-ISOPROPYLMALDEHYDROG-RXN	LEUSYN-PWY // RXN-13158	L-leucine biosynthesis
+PROTOPORGENOXI-RXN	HEME-BIOSYNTHESIS-II	heme <i>b</i> biosynthesis I (aerobic)
+RXN-12614	PWY-6891	thiazole component of thiamine diphosphate biosynthesis II // 2-(2-carboxy-4-methylthiazol-5-yl)ethyl phosphate biosynthesis
+RXN-9659	PWY-5971	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm)
+RXN-9788	PWY-6892	thiazole component of thiamine diphosphate biosynthesis I // (<i>R,Z</i>)-2-(2-carboxy-4-methylthiazol-5(2<i>H</i>)-ylidene)ethyl phosphate biosynthesis
+RXN0-6259	HEMESYN2-PWY	heme <i>b</i> biosynthesis II (oxygen-independent)
+RXN-21295	PWY-8168	<i>bis</i>(guanylyl tungstenpterin) cofactor biosynthesis
+RXN-22483	PWY-8283	lipid IV<sub>A</sub> biosynthesis (generic) // lipid-A-precursor biosynthesis (generic)
+ARGININE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+MALATE-DEHYDROGENASE-ACCEPTOR-RXN	TCA	TCA cycle I (prokaryotic) // tricarboxylic acid cycle // citric acid cycle // Krebs cycle // Szent-Gyorgyi-Krebs cycle
+GLU6PDEHYDROG-RXN	PWY-8004 // PWY-7268 // OXIDATIVEPENT-PWY	Entner-Doudoroff pathway I // ED pathway I // cytosolic NADPH production (yeast) // pentose phosphate pathway (oxidative branch) I
+RXN0-2921	PWY-2161	folate polyglutamylation
+RXN-7908		
+RXN-16691	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+RXN-14192		
+RXN-16685	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+ALLANTOATE-DEIMINASE-RXN	PWY-5698	allantoin degradation to ureidoglycolate II (ammonia producing)
+RXN-3641	PWY-2361 // PWY0-321 // PWY-1361	3-oxoadipate degradation // &beta;-ketoadipate degradation // phenylacetate degradation I (aerobic) // benzoyl-CoA degradation I (aerobic)
+3-OXOACID-COA-TRANSFERASE-RXN		
+RXN-17779	PWY0-1337	oleate &beta;-oxidation
+RXN-17778	PWY0-1337	oleate &beta;-oxidation
+GLUTAMATESYN-RXN	GLUTAMINEFUM-PWY	L-glutamine degradation II
+ACONITATEHYDR-RXN	TCA // RXN-14047	TCA cycle I (prokaryotic) // tricarboxylic acid cycle // citric acid cycle // Krebs cycle // Szent-Gyorgyi-Krebs cycle
+RXN-7587		
+RXN-22715		
+PRODISULFREDUCT-A-RXN	GLUT-REDOX-PWY // PRODISULFREDUCT-RXN	glutathione-glutaredoxin redox reactions
+RXN-22740		
+RXN-14064		
+RXN-12900	PWY-6968	trimethylamine degradation
+RXN0-5398	PWY-6019	pseudouridine degradation
+RXN-19022		
+RXN-21522	PWY-8159	dipyrromethane cofactor biosynthesis
+RXN-17824		
+RXN-14063		
+RXN-12197	PWY-7185	UTP and CTP dephosphorylation I // pyrimidine nucleotides dephosphorylation
+AIRCARBOXY-RXN		
+TRYPTOPHAN-AMINOTRANSFERASE-RXN		
+GLYCERATE-DEHYDROGENASE-RXN		
+RXN-15123	PWY-701 // PWY-5437 // ILEUSYN-PWY // METHIONINE-GAMMA-LYASE-RXN // THREDEHYD-RXN // RXN-15130 // HOMOSERDEAM-RXN	L-methionine degradation II // L-threonine degradation I // L-isoleucine biosynthesis I (from threonine)
+CYSTEINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+KDO-8PSYNTH-RXN	PWY-1269	CMP-3-deoxy-D-<I>manno</I>-octulosonate biosynthesis // CMP-Kdo biosynthesis I
+RXN-13142	PWY-8136	NADPH repair (prokaryotes)
+RXN-18032		
+RXN-11368		
+RXN-20673	3-DEHYDROQUINATE-SYNTHASE-RXN	
+KYNURENINE-3-MONOOXYGENASE-RXN	PWY-5651	L-tryptophan degradation to 2-amino-3-carboxymuconate semialdehyde
+RXN0-7271	GLUT-REDOX-PWY // PRODISULFREDUCT-RXN	glutathione-glutaredoxin redox reactions
+OHACYL-COA-DEHYDROG-RXN	FAO-PWY	fatty acid &beta;-oxidation I (generic)
+RXN-14904		
+RXN-13826	PWY-7376 // 2.1.1.132-RXN	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+TRIMETHYLAMINE-OXIDE-ALDOLASE-RXN	PWY-6968	trimethylamine degradation
+RXN-16664	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+RXN-17608		
+NAD-KIN-RXN	PWY-8148 // PWY-7268	NADP biosynthesis // cytosolic NADPH production (yeast)
+RXN-12625		
+1.13.11.15-RXN		
+METHYLMALONYL-COA-EPIM-RXN	PROPIONMET-PWY	propanoyl CoA degradation I // propionyl CoA degradation I // methylmalonyl pathway
+RXN-16129		
+RXN-21527	OHMETHYLBILANESYN-RXN	
+CATAL-RXN	DETOX1-PWY-1 // DETOX1-PWY	reactive oxygen species degradation // removal of superoxide radicals // superoxide radicals degradation
+RXN-7745	PWY-5101	L-isoleucine biosynthesis II
+SERINE-O-ACETTRAN-RXN	CYSTSYN-PWY	L-cysteine biosynthesis I
+QUINOLINATE-SYNTHA-RXN	PYRIDNUCSYN-PWY // PWY-8277	NAD <i>de novo</i> biosynthesis I (from aspartate) // nicotinamide adenine dinucleotide biosynthesis // NAD <i>de novo</i> biosynthesis IV (anaerobic)
+RXN-14381	PWY-7250	[2Fe-2S] iron-sulfur cluster biosynthesis // [Fe-S] cluster biosynthesis // [2Fe-2S] cluster biosynthesis
+PRTRANS-RXN	TRPSYN-PWY	L-tryptophan biosynthesis
+GLUCOSE-6-PHOSPHATE-1-EPIMERASE-RXN		
+GDPPYPHOSKIN-RXN	PPGPPMET-PWY	ppGpp metabolism // guanosine 3'-diphosphate 5'-diphosphate biosynthesis // ppGpp biosynthesis
+RXN-22735	CARBPSYN-RXN	
+GLUTAMINESYN-RXN	AMMASSIM-PWY // PWY-8291 // PWY-8294	ammonia assimilation cycle III // ammonia assimilation III // GS/GOGAT pathway // L-aspartate degradation II (aerobic) // L-aspartate degradation III (anaerobic)
+RXN-14809		
+UDPREDUCT-RXN	PWY-6545	pyrimidine deoxyribonucleotides <i>de novo</i> biosynthesis III
+SULFITE-DEHYDROGENASE-RXN	PWY-5276	sulfite oxidation I
+PYRUVATE-CARBOXYLASE-RXN		
+RXN-8771	PWY-5523	5,6-dimethylbenzimidazole biosynthesis I (aerobic) // DMB biosynthesis I
+3.8.1.11-RXN		
+ACETOOHBUTSYN-RXN	ILEUSYN-PWY // PWY-5101	L-isoleucine biosynthesis I (from threonine) // L-isoleucine biosynthesis II
+RXN-14986		
+6.3.1.10-RXN		
+RXN-18031		
+RXN-14391	PWY-7250	[2Fe-2S] iron-sulfur cluster biosynthesis // [Fe-S] cluster biosynthesis // [2Fe-2S] cluster biosynthesis
+RUBREDOXIN--NAD+-REDUCTASE-RXN	P221-PWY	octane oxidation
+R221-RXN	P221-PWY	octane oxidation
+2.1.1.77-RXN		
+RXN-10660	PWY-6282	palmitoleate biosynthesis I (from (5Z)-dodec-5-enoate) // palmitoleic acid biosynthesis I // palmitoleate biosynthesis (anaerobic)
+R344-RXN	PWY-7962 // RXN-19339	adenosylcobinamide-GDP biosynthesis from cobyrinate <i>a,c</i>-diamide
+RXN0-6948		
+F16ALDOLASE-RXN	GLUCONEO-PWY // ANAGLYCOLYSIS-PWY	gluconeogenesis I // glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+SUCCDIAMINOPIMDESUCC-RXN	DAPLYSINESYN-PWY	L-lysine biosynthesis I // L-lysine and L-diaminopimelate biosynthesis
+GLYCINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+DIHYDROPYRIMIDINASE-RXN	PWY-3982	uracil degradation I (reductive) // &beta;-alanine biosynthesis
+2.3.1.180-RXN	PWY-4381	fatty acid biosynthesis initiation (type II) // de novo fatty acid biosynthesis, initial reactions // fatty acid biosynthesis initiation (bacteria and plants)
+RXN-6383	PWY-8180	acrylate degradation II
+RXN-9534	PWY-8279	palmitate biosynthesis III
+RXN-11737	PWY-6638	sulfolactate degradation III
+RXN-13248		
+CHORISMATEMUT-RXN	PHESYN // TYRSYN	L-phenylalanine biosynthesis I // L-tyrosine biosynthesis I
+HYPOXANPRIBOSYLTRAN-RXN	PWY-6609 // PWY-6610	adenine and adenosine salvage III // adenosine nucleotides salvage III // adenine salvage
+INORGPYROPHOSPHAT-RXN	PWY-7807 // PWY-7805	glyphosate degradation III // glyphosate C-P lyase enzyme system // (aminomethyl)phosphonate degradation
+RXN-15733		
+RXN-20757	PWY-7892 // RXN0-2281	tRNA-uridine 2-thiolation and selenation (bacteria)
+RXN-16627	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+3-DEHYDROQUINATE-SYNTHASE-RXN	PWY-6164	3-dehydroquinate biosynthesis I
+RIBOFLAVINKIN-RXN	PWY-5523 // RIBOSYN2-PWY	5,6-dimethylbenzimidazole biosynthesis I (aerobic) // DMB biosynthesis I // flavin biosynthesis I (bacteria and plants) // riboflavin, FMN and FAD biosynthesis // vitamin B<sub>2</sub> biosynthesis
+2-DEHYDROPANTOATE-REDUCT-RXN	PANTO-PWY	phosphopantothenate biosynthesis I // vitamin B<sub>5</sub> biosynthesis
+3-HYDROXBUTYRYL-COA-DEHYDRATASE-RXN	PWY-5741	ethylmalonyl-CoA pathway // ethylmalonyl pathway
+RXN-22482	PWY-8283	lipid IV<sub>A</sub> biosynthesis (generic) // lipid-A-precursor biosynthesis (generic)
+RXN0-6479	PWY0-1479	tRNA processing
+PROPIONYL-COA-CARBOXY-RXN	PROPIONMET-PWY	propanoyl CoA degradation I // propionyl CoA degradation I // methylmalonyl pathway
+OHBUTYRYL-COA-EPIM-RXN	FAO-PWY	fatty acid &beta;-oxidation I (generic)
+AMPSYN-RXN	PWY-7219	adenosine ribonucleotides <i>de novo</i> biosynthesis
+RXN-11578		
+RXN-15122	PWY-5437 // ILEUSYN-PWY // THREDEHYD-RXN	L-threonine degradation I // L-isoleucine biosynthesis I (from threonine)
+RXN-8752		
+RXN-9523	PWY-5971 // PWY-8279 // PWY-7388	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+RXN0-947	PWY0-501	lipoate biosynthesis and incorporation I
+RXN-14712		
+PHENYLSERINE-ALDOLASE-RXN		
+RXN-20756	PWY-7892 // RXN0-2281	tRNA-uridine 2-thiolation and selenation (bacteria)
+RXN-19316	PWY-7965	2-methyladeninyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP // adenosyl-factor A biosynthesis from adenosylcobinamide-GDP // <i>Co</i>&alpha;-[a-(2-methyladenin-9-yl)]-<i>Co</i>&beta;-adenosylcobamide biosynthesis from adenosylcobinamide-GDP
+RXN-9789	PWY-6891 // PWY-6892	thiazole component of thiamine diphosphate biosynthesis II // 2-(2-carboxy-4-methylthiazol-5-yl)ethyl phosphate biosynthesis // thiazole component of thiamine diphosphate biosynthesis I // (<i>R,Z</i>)-2-(2-carboxy-4-methylthiazol-5(2<i>H</i>)-ylidene)ethyl phosphate biosynthesis
+RXN-14390	PWY-7250	[2Fe-2S] iron-sulfur cluster biosynthesis // [Fe-S] cluster biosynthesis // [2Fe-2S] cluster biosynthesis
+ANTHRANSYN-RXN	TRPSYN-PWY	L-tryptophan biosynthesis
+RXN0-4222	PWY0-1479	tRNA processing
+METHYLASPARTATE-MUTASE-RXN	PWY-5087	L-glutamate degradation VI (to pyruvate) // L-glutamate fermentation // mesaconate pathway // methylaspartate pathway // L-glutamic acid degradation VI (to pyruvic acid )
+ACETOLACTREDUCTOISOM-RXN	VALSYN-PWY	L-valine biosynthesis
+RXN-17957	PWY-7807	glyphosate degradation III // glyphosate C-P lyase enzyme system
+RXN-12583	RXN0-1134	
+RXN-22485	PWY-8283	lipid IV<sub>A</sub> biosynthesis (generic) // lipid-A-precursor biosynthesis (generic)
+RXN-22246	PWYI-14 // PWY-8245	lipid IV<sub>A</sub> biosynthesis (<i>H. pylori</i>) // lipid-A-precursor biosynthesis // lipid IV<sub>A</sub> biosynthesis (<i>P. gingivalis</i>) // lipid-A-precursor biosynthesis (<i>P. gingivalis</i>)
+RXN-20717		
+RXN0-1133	PYRUVDEHYD-PWY	pyruvate decarboxylation to acetyl CoA I // pyruvate dehydrogenase complex // acetyl-CoA biosynthesis I (pyruvate dehydrogenase complex) // pyruvic acid decarboxylation to acetyl CoA // pyruvate dehydrogenase system
+RXN-6261	PWY-7962	adenosylcobinamide-GDP biosynthesis from cobyrinate <i>a,c</i>-diamide
+LIPIDADISACCHARIDESYNTH-RXN	NAGLIPASYN-PWY	lipid IV<sub>A</sub> biosynthesis (<i>E. coli</i>) // lipid-A-precursor biosynthesis (<i>E. coli</i>)
+BRANCHED-CHAINAMINOTRANSFERILEU-RXN	ILEUSYN-PWY // PWY-5101	L-isoleucine biosynthesis I (from threonine) // L-isoleucine biosynthesis II
+ASPAMINOTRANS-RXN	ASPARTATE-DEG1-PWY // ASPARTATESYN-PWY // GLUTDEG-PWY	L-aspartate degradation I // L-aspartate biosynthesis // L-aspartate biosynthesis and degradation // L-glutamate degradation II // L-glutamate - L-aspartate pathway // L-aspartate degradation
+RXN-19338	PWY-7971 // BTUR2-RXN	adenosylcobinamide-GDP salvage from cobinamide I
+RXN0-2382	TRPSYN-PWY // TRYPSYN-RXN	L-tryptophan biosynthesis
+RXN-17887	PWY-7798	protein <i>S</i>-nitrosylation and denitrosylation
+CHOLINE-SULFATASE-RXN	P542-PWY	choline-<i>O</i>-sulfate degradation // choline sulfate degradation
+ADDALT-RXN	PWY-7179	purine deoxyribonucleosides degradation I
+RXN2B4Q-52		
+RXN1G01-46		
+GMP-SYN-NH3-RXN	GMP-SYN-GLUT-RXN	
+2.3.1.157-RXN	UDPNAGSYN-PWY // PWY0-1261	UDP-<i>N</i>-acetyl-D-glucosamine biosynthesis I // UDP-<i>N</i>-acetyl-D-glucosamine biosynthesis // anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+1.3.1.54-RXN	PWY-7376	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+RXN-17391		
+RXN-19301		
+RXN0-5065		
+GLYRIBONUCSYN-RXN	PWY-6121	5-aminoimidazole ribonucleotide biosynthesis I
+RXN-22481	PWY-8283	lipid IV<sub>A</sub> biosynthesis (generic) // lipid-A-precursor biosynthesis (generic)
+ATPPHOSPHORIBOSYLTRANS-RXN	HISTSYN-PWY	L-histidine biosynthesis
+ACETOACETATE--COA-LIGASE-RXN		
+NICOTINATEPRIBOSYLTRANS-RXN	PWY3O-4107	NAD salvage pathway V (PNC V cycle) // Preiss-Handler pathway
+RXN-9516	PWY-5971 // PWY-8279 // PWY-7388	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+RXN-15512	RXN-15513	
+AICARTRANSFORM-RXN	PWY-6123	inosine-5'-phosphate biosynthesis I // IMP biosynthesis I
+PPPGPPHYDRO-RXN	PPGPPMET-PWY	ppGpp metabolism // guanosine 3'-diphosphate 5'-diphosphate biosynthesis // ppGpp biosynthesis
+NACGLCTRANS-RXN	PEPTIDOGLYCANSYN-PWY	peptidoglycan biosynthesis I (<I>meso</I>-diaminopimelate containing)
+PROPKIN-RXN	PWY-5437	L-threonine degradation I
+RXN-16625	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+RXN-11728	PWY-6634	3-sulfopropanediol degradation I // DHPS degradation // 2,3-dihydroxypropane-1-sulfonate degradation
+2.1.1.130-RXN	PWY-7376	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+RXN1G-4355		
+RXN-10851		
+RXN-9527	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+RXN0-884	PWY-7560 // NONMEVIPP-PWY	methylerythritol phosphate pathway II // nonmevalonate isopentenyl diphosphate biosynthesis // methylerythritol phosphate degradation // MEP degradation // deoxyxylulose phosphate pathway // DOXP pathway // Rohmer pathway // isopentenyl diphosphate biosynthesis -- mevalonate-independent // nonmevalonate isoprenoid pathway // MEP pathway // methylerythritol phosphate pathway I
+4.3.1.17-RXN		
+2-OCTAPRENYL-6-METHOXYPHENOL-HYDROX-RXN	PWY-6708	ubiquinol-8 biosynthesis (early decarboxylation) // ubiquinone-8 biosynthesis (prokaryotic) // ubiquinol-8 biosynthesis (prokaryotic)
+CERAMIDASE-YEAST-RXN		
+KYNURENINASE-RXN		
+4.1.1.81-RXN		
+4.99.1.3-RXN	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+RXN-9537	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+2-OCTAPRENYL-6-OHPHENOL-METHY-RXN	PWY-6708	ubiquinol-8 biosynthesis (early decarboxylation) // ubiquinone-8 biosynthesis (prokaryotic) // ubiquinol-8 biosynthesis (prokaryotic)
+RXN0-5393	PWY0-1337	oleate &beta;-oxidation
+RXN-15129	LCYSDEG-PWY // LCYSDESULF-RXN	L-cysteine degradation II // L-cysteine catabolism // L-cysteine degradation
+PSERPHOSPHA-RXN		
+RXN-11637		
+H2PTERIDINEPYROPHOSPHOKIN-RXN	PWY-6147	6-hydroxymethyl-dihydropterin diphosphate biosynthesis I
+RXN2DNV-3	PWYI-14	lipid IV<sub>A</sub> biosynthesis (<i>H. pylori</i>) // lipid-A-precursor biosynthesis
+HISTCYCLOHYD-RXN	HISTSYN-PWY	L-histidine biosynthesis
+SERINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+GLUTATHIONE-SYN-RXN	GLUTATHIONESYN-PWY	glutathione biosynthesis
+GALACTOKIN-RXN	PWY-6317	D-galactose degradation I (Leloir pathway) // Leloir pathway
+RXN-9539	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+PDXJ-RXN	PYRIDOXSYN-PWY	pyridoxal 5'-phosphate biosynthesis I // vitamin B<sub>6</sub> biosynthesis // deoxyxylulose-dependent pyridoxal 5'-phosphate biosynthesis
+PTAALT-RXN	PWY-5437	L-threonine degradation I
+PHOSMANMUT-RXN		
+4.3.1.15-RXN		
+GLUCONATE-5-DEHYDROGENASE-RXN	IDNCAT-PWY	L-idonate degradation // L-idonic acid catabolism // L-idonate catabolism
+MALEYLACETATE-REDUCTASE-RXN	PWY-6041	4-sulfocatechol degradation
+RXN-9732	PWY-6041	4-sulfocatechol degradation
+CDPKIN-RXN	PWY-7205	CMP phosphorylation
+RXN-17883		
+RXN-21525	PWY-8159 // OHMETHYLBILANESYN-RXN	dipyrromethane cofactor biosynthesis
+RXN-11727	PWY-6634	3-sulfopropanediol degradation I // DHPS degradation // 2,3-dihydroxypropane-1-sulfonate degradation
+MALSYN-RXN	GLYOXDEG-PWY	glycolate and glyoxylate degradation II // glyoxylate degradation
+RXN-9191	PWY-5839	menaquinol-7 biosynthesis // vitamin K<sub>2</sub> biosynthesis // menaquinone-7 biosynthesis
+4.2.1.59-RXN	PWY-5971 // PWY-8279 // PWY-7388	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+DEPHOSPHOCOAKIN-RXN	COA-PWY	coenzyme A biosynthesis I (bacteria) // CoA biosynthesis
+2-OCTAPRENYL-METHOXY-BENZOQ-METH-RXN	PWY-6708	ubiquinol-8 biosynthesis (early decarboxylation) // ubiquinone-8 biosynthesis (prokaryotic) // ubiquinol-8 biosynthesis (prokaryotic)
+RXN-20675	PWY0-1337	oleate &beta;-oxidation
+RXN-15125	SERDEG-PWY // PWY-3661 // 4.3.1.17-RXN	L-serine degradation // glycine betaine degradation I
+RXN-18209	RXNQT-4165	
+RXN0-5390	PWY0-1337	oleate &beta;-oxidation
+RXN-16620	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+RXN-15025	PWY3O-4107	NAD salvage pathway V (PNC V cycle) // Preiss-Handler pathway
+RXN-11053	PWY-1361	benzoyl-CoA degradation I (aerobic)
+IGPSYN-RXN	TRPSYN-PWY	L-tryptophan biosynthesis
+RXN-9740	PWY-6047	dimethyl sulfide degradation I // DMS degradation // dimethylsulfide degradation I
+ARGDECARBOX-RXN	PWY0-823 // PWY0-1299 // PWY-40	L-arginine degradation III (arginine decarboxylase/agmatinase pathway) // arginine dependent acid resistance // putrescine biosynthesis I
+RXN-10642		
+RXN-11028		
+CDPDIGLYSYN-RXN	PWY-5667 // PWY0-1319	CDP-diacylglycerol biosynthesis I // CDP-diacylglycerol biosynthesis // CDP-diacylglycerol biosynthesis II
+PHOSPHOGLUCMUT-RXN	PWY-6317	D-galactose degradation I (Leloir pathway) // Leloir pathway
+RXN-18210	RXN-14986	
+CITRAMALATE-LYASE-RXN	PWY-5087	L-glutamate degradation VI (to pyruvate) // L-glutamate fermentation // mesaconate pathway // methylaspartate pathway // L-glutamic acid degradation VI (to pyruvic acid )
+THIAZOLSYN2-RXN	PWY-6891 // PWY-6892	thiazole component of thiamine diphosphate biosynthesis II // 2-(2-carboxy-4-methylthiazol-5-yl)ethyl phosphate biosynthesis // thiazole component of thiamine diphosphate biosynthesis I // (<i>R,Z</i>)-2-(2-carboxy-4-methylthiazol-5(2<i>H</i>)-ylidene)ethyl phosphate biosynthesis
+DEOXYGUANPHOSPHOR-RXN	PWY-7179	purine deoxyribonucleosides degradation I
+RXN0-882	PWY-7560	methylerythritol phosphate pathway II // nonmevalonate isopentenyl diphosphate biosynthesis // methylerythritol phosphate degradation // MEP degradation // deoxyxylulose phosphate pathway // DOXP pathway // Rohmer pathway // isopentenyl diphosphate biosynthesis -- mevalonate-independent // nonmevalonate isoprenoid pathway // MEP pathway
+RXN-14388	PWY-7250	[2Fe-2S] iron-sulfur cluster biosynthesis // [Fe-S] cluster biosynthesis // [2Fe-2S] cluster biosynthesis
+MALEYLACETOACETATE-ISOMERASE-RXN	TYRFUMCAT-PWY	L-tyrosine degradation I // tyrosine fumarate catabolism
+RXN-19307	PWY-7968	5-methylbenzimidazolyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP
+RIBULP3EPIM-RXN		
+RXN-10657	PWY-6282	palmitoleate biosynthesis I (from (5Z)-dodec-5-enoate) // palmitoleic acid biosynthesis I // palmitoleate biosynthesis (anaerobic)
+RXN-13615	PWY0-1337	oleate &beta;-oxidation
+RXN0-20	PWY-7884	lipoprotein posttranslational modification // lipoprotein lipoylation // Lol pathway
+IPPISOM-RXN	PWY-7560 // NONMEVIPP-PWY	methylerythritol phosphate pathway II // nonmevalonate isopentenyl diphosphate biosynthesis // methylerythritol phosphate degradation // MEP degradation // deoxyxylulose phosphate pathway // DOXP pathway // Rohmer pathway // isopentenyl diphosphate biosynthesis -- mevalonate-independent // nonmevalonate isoprenoid pathway // MEP pathway // methylerythritol phosphate pathway I
+1.2.1.2-RXN	PWY-1881	formate oxidation to CO<sub>2</sub>
+DXS-RXN	PWY-7560 // NONMEVIPP-PWY // PYRIDOXSYN-PWY // PWY-6891 // PWY-6892	methylerythritol phosphate pathway II // nonmevalonate isopentenyl diphosphate biosynthesis // methylerythritol phosphate degradation // MEP degradation // deoxyxylulose phosphate pathway // DOXP pathway // Rohmer pathway // isopentenyl diphosphate biosynthesis -- mevalonate-independent // nonmevalonate isoprenoid pathway // MEP pathway // methylerythritol phosphate pathway I // pyridoxal 5'-phosphate biosynthesis I // vitamin B<sub>6</sub> biosynthesis // deoxyxylulose-dependent pyridoxal 5'-phosphate biosynthesis // thiazole component of thiamine diphosphate biosynthesis II // 2-(2-carboxy-4-methylthiazol-5-yl)ethyl phosphate biosynthesis // thiazole component of thiamine diphosphate biosynthesis I // (<i>R,Z</i>)-2-(2-carboxy-4-methylthiazol-5(2<i>H</i>)-ylidene)ethyl phosphate biosynthesis
+GLUTKIN-RXN	PROSYN-PWY	L-proline biosynthesis I (from L-glutamate)
+ADENINE-DEAMINASE-RXN	PWY-6610	adenine salvage
+2.7.3.9-RXN		
+RXN-14726		
+RXN0-6563		
+PRPPAMIDOTRANS-RXN	PWY-6121	5-aminoimidazole ribonucleotide biosynthesis I
+RXN-16659	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+RXN0-6274		
+RXN-22643		
+RXN-16457	PWY-7639 // RXN-21601	bis(guanylyl molybdenum cofactor) biosynthesis // bisMGD biosynthesis // bis-MPT guanine dinucleotide cofactor biosynthesis
+RXN-20083	PWY-5921 // 6.3.5.7-RXN	glutaminyl-tRNA<sup>gln</sup> biosynthesis via transamidation
+CERAMIDASE-RXN		
+2.7.7.60-RXN	PWY-7560 // NONMEVIPP-PWY	methylerythritol phosphate pathway II // nonmevalonate isopentenyl diphosphate biosynthesis // methylerythritol phosphate degradation // MEP degradation // deoxyxylulose phosphate pathway // DOXP pathway // Rohmer pathway // isopentenyl diphosphate biosynthesis -- mevalonate-independent // nonmevalonate isoprenoid pathway // MEP pathway // methylerythritol phosphate pathway I
+RXN-14229	PWY0-1337	oleate &beta;-oxidation
+AMINO-ACID-RACEMASE-RXN		
+RXN0-2281		
+RXN0-5144	PWY-7892	tRNA-uridine 2-thiolation and selenation (bacteria)
+RXN-9526	PWY-8279 // PWY-7388	palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+RXN-22739		
+FORMIMINOGLUTAMATE-DEIMINASE-RXN	PWY-5028	L-histidine degradation II
+RXN-20080	PWY490-4 // 6.3.5.6-RXN	L-asparagine biosynthesis III (tRNA-dependent) // L-asparaginyl-tRNA<sup>asn</sup> biosynthesis via transamidation
+DEOXYGLUCONOKIN-RXN	PWY-7242	D-fructuronate degradation
+RXN-16630	PWY-7663	gondoate biosynthesis (anaerobic) // <i>cis</i>-11-icosenoate biosynthesis // (11<i>Z</i>)-icos-11-enoate biosynthesis // (11<i>Z</i>)-icosenoate biosynthesis // gondoic acid biosynthesis // 11-eicosenoic acid biosynthesis
+RXN-14188	PWY-7206	pyrimidine deoxyribonucleotides dephosphorylation
+RXN-20153		
+RXN0-1401	PWY-7807 // PWY-7805	glyphosate degradation III // glyphosate C-P lyase enzyme system // (aminomethyl)phosphonate degradation
+3-HYDROXYBUTYRYL-COA-DEHYDROGENASE-RXN		
+3-HYDROXYBUTYRATE-DEHYDROGENASE-RXN		
+RXN-16909	RXN-13202 // RXN-22735	
+RXN-10083		
+RXN-12540	DETOX1-PWY-1	reactive oxygen species degradation // removal of superoxide radicals
+RXN-10811		
+RXN-14073		
+PYRUVFORMLY-RXN	PWY-5485	pyruvate fermentation to acetate IV // pyruvic acid fermentation to acetic acid IV
+RXN-9623	PWY-5971 // PWY-8279	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III
+L-GLN-FRUCT-6-P-AMINOTRANS-RXN	UDPNAGSYN-PWY	UDP-<i>N</i>-acetyl-D-glucosamine biosynthesis I // UDP-<i>N</i>-acetyl-D-glucosamine biosynthesis
+RXN-14206		
+GLURS-RXN	PWY-5188 // TRNA-CHARGING-PWY	tetrapyrrole biosynthesis I (from glutamate) // tRNA charging
+RXN-11564		
+RXN-12490	PWY0-1337	oleate &beta;-oxidation
+CARNITINE-3-DEHYDROGENASE-RXN	PWY-3602	L-carnitine degradation III
+RXN-6002		
+PYRIMSYN3-RXN	PWY-6910 // PWY-7356	hydroxymethylpyrimidine salvage // HMP salvage // thiamine diphosphate salvage IV (yeast) // thiamin salvage IV (yeast)
+RXN-8976		
+RXN-19334	PWY-6268 // RXN-19368 // RXN-19335 // RXN-19369	adenosylcobalamin salvage from cobalamin // vitamin B<sub>12</sub> biosynthesis
+RXN-12093	PWY-6703	preQ<sub>0</sub> biosynthesis // deazapurine biosynthesis // 7-cyano-7-deazaguanine biosynthesis // 7-cyano-7-carbaguanine biosynthesis
+RXN0-4401		
+RXN-19324	PWY-7968	5-methylbenzimidazolyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP
+ADCLY-RXN	PWY-6543	4-aminobenzoate biosynthesis I // pABA biosynthesis I // plastidial PABA biosynthesis // PABA biosynthesis in plastids // <i>p</i>-aminobenzoate biosynthesis I
+RXN-8631		
+URA-PHOSPH-RXN	PWY-7181	pyrimidine deoxyribonucleosides degradation
+RXN-14481	RXN0-5063	
+RXN-9524	PWY-5971 // PWY-8279 // PWY-7388	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm) // palmitate biosynthesis III // octanoyl-[acyl-carrier protein] biosynthesis (mitochondria, yeast) // octanoyl-ACP biosynthesis (mitochondria, yeast)
+RXN-15745	PWY-4261 // PWY-6952	glycerol degradation I // glycerophosphodiester degradation
+ISOLEUCINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+3-OXOADIPATE-COA-TRANSFERASE-RXN	PWY-2361	3-oxoadipate degradation // &beta;-ketoadipate degradation
+RXN-22027	PWY-8203	8-amino-7-oxononanoate biosynthesis IV // 7-keto-8-aminopelargonate biosynthesis IV
+RXN-8899		
+ORNITHINE-GLU-AMINOTRANSFERASE-RXN	ARGASEDEG-PWY	L-arginine degradation I (arginase pathway) // L-arginase degradative pathway // L-glutamate biosynthesis
+RXN-11291		
+RXN-14517		
+2.3.1.184-RXN	PWY-6157	autoinducer AI-1 biosynthesis
+GLUCONOKIN-RXN	IDNCAT-PWY	L-idonate degradation // L-idonic acid catabolism // L-idonate catabolism
+LTAA-RXN		
+ADENOSYLHOMOCYSTEINASE-RXN	METHIONINE-DEG1-PWY // PWY-5041	L-methionine degradation I (to L-homocysteine) // <i>S</i>-adenosyl-L-methionine salvage II // activated methyl cycle // SAM cycle // <i>S</i>-adenosyl-L-methionine cycle II
+PEPDEPHOS-RXN	PWY-8004 // ANAGLYCOLYSIS-PWY	Entner-Doudoroff pathway I // ED pathway I // glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+RXN-22736	RXN-22735	
+UDP-NACMURALGLDAPLIG-RXN	PWY-6387	UDP-<i>N</i>-acetylmuramoyl-pentapeptide biosynthesis I (<i>meso</i>-diaminopimelate containing)
+RXN-7101	PWY0-1264	biotin-carboxyl carrier protein assembly // BCCP assembly
+RXN-19916		
+RXN0-5359		
+RXN-15521		
+RXN-22699	PWY-7892	tRNA-uridine 2-thiolation and selenation (bacteria)
+RXN0-4621	PWY0-1261	anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+XANPRIBOSYLTRAN-RXN	SALVPURINE2-PWY	xanthine and xanthosine salvage
+RXN-19306	PWY-7968	5-methylbenzimidazolyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP
+GLUTRNAREDUCT-RXN	PWY-5188	tetrapyrrole biosynthesis I (from glutamate)
+RXN-22623		
+H2NEOPTERINALDOL-RXN	PWY-6147	6-hydroxymethyl-dihydropterin diphosphate biosynthesis I
+RXN-20065	ALLOPHANATE-HYDROLASE-RXN	
+RXN0-2301	LEU-DEG2-PWY	L-leucine degradation I
+RXN-22316		
+PHOSACETYLTRANS-RXN	PWY-5485 // PWY-1281 // PWY0-1477 // PWY0-1312	pyruvate fermentation to acetate IV // pyruvic acid fermentation to acetic acid IV // sulfoacetaldehyde degradation I // ethanolamine utilization // acetate and ATP formation from acetyl-CoA I // acetic acid formation from acetyl-CoA I
+RXN-19298	PWY-7970	benzimidazolyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP
+RXN-11832	PWY-7205	CMP phosphorylation
+5.3.3.10-RXN		
+2.3.1.168-RXN	PWY-5046	2-oxoisovalerate decarboxylation to isobutanoyl-CoA // branched-chain &alpha;-keto acid dehydrogenase system // branched-chain &alpha;-keto acid dehydrogenase complex // branched-chain 2-oxo acid dehydrogenase complex // branched-chain 2-oxo acid dehydrogenase system
+GART-RXN	PWY-6613 // PWY-6121	tetrahydrofolate salvage from 5,10-methenyltetrahydrofolate // folic acid salvage // folate salvage // THF salvage // 5-aminoimidazole ribonucleotide biosynthesis I
+RXN-18082		
+RXN-15715		
+RXN-9657	PWY-5971	palmitate biosynthesis II (type II fatty acid synthase) // palmitate biosynthesis II (bacteria and plant cytoplasm)
+RXN-17882		
+R223-RXN	P221-PWY	octane oxidation
+UROCANATE-HYDRATASE-RXN	PWY-5028	L-histidine degradation II
+RXN-12588	PWY0-1021	L-alanine biosynthesis III
+3.1.3.16-RXN		
+RXN-8751		
+RXN-19366	PWY-6268 // RXN-19335	adenosylcobalamin salvage from cobalamin // vitamin B<sub>12</sub> biosynthesis
+CARNDETRU-RXN		
+RXN-22245	PWY-8245	lipid IV<sub>A</sub> biosynthesis (<i>P. gingivalis</i>) // lipid-A-precursor biosynthesis (<i>P. gingivalis</i>)
+FADSYN-RXN	RIBOSYN2-PWY	flavin biosynthesis I (bacteria and plants) // riboflavin, FMN and FAD biosynthesis // vitamin B<sub>2</sub> biosynthesis
+GSADENYLATION-RXN		
+RXN-20670		
+RXN-11177	PWY-6420	pyrroloquinoline quinone biosynthesis // PQQ biosynthesis
+RXN-18384		
+RXN-14393	PWY0-1337	oleate &beta;-oxidation
+HISTOLDEHYD-RXN	HISTSYN-PWY // RXN-8001	L-histidine biosynthesis
+RXN-11662	PWY0-1337	oleate &beta;-oxidation
+DUDPKIN-RXN	PWY-6545	pyrimidine deoxyribonucleotides <i>de novo</i> biosynthesis III
+SULFATE-ADENYLYLTRANS-RXN	PWY-6683 // PWY-5340	assimilatory sulfate reduction III // sulfate activation for sulfonation // sulfation pathway
+GLYCEROL-KIN-RXN	PWY-4261	glycerol degradation I
+RXN-11598		
+GTP-CYCLOHYDRO-II-RXN	RIBOSYN2-PWY	flavin biosynthesis I (bacteria and plants) // riboflavin, FMN and FAD biosynthesis // vitamin B<sub>2</sub> biosynthesis
+RXN-20504		
+RXN-22700	PWY-7892	tRNA-uridine 2-thiolation and selenation (bacteria)
+FORMATETHFLIG-RXN	PWY-1722 // PWY-2161 // PWY-8303	formate assimilation into 5,10-methylenetetrahydrofolate // folate polyglutamylation // reductive glycine pathway of autotrophic CO<sub>2</sub> fixation // carbon fixation VI // glycine synthase-reductase pathway
+OROPRIBTRANS-RXN	PWY-5686	UMP biosynthesis I // uridine-5'-phosphate biosynthesis I // <i>de novo</i> biosynthesis of uridine-5'-phosphate I // <i>de novo</i> biosynthesis of uridine-5'-monophosphate I
+ALDXANAU-RXN		
+PYRROLINECARBREDUCT-RXN	PROSYN-PWY	L-proline biosynthesis I (from L-glutamate)
+RXN-14257	RXN-8769	
+RXN-14389	PWY-7250	[2Fe-2S] iron-sulfur cluster biosynthesis // [Fe-S] cluster biosynthesis // [2Fe-2S] cluster biosynthesis
+RXNN-386		
+RXN-12901	PWY-6968	trimethylamine degradation
+RXN-18447		
+GALACTURIDYLYLTRANS-RXN	PWY-6317	D-galactose degradation I (Leloir pathway) // Leloir pathway
+HYDROXY-MANDELATE-RACEMASE-RXN		
+RXN-14971	TCA	TCA cycle I (prokaryotic) // tricarboxylic acid cycle // citric acid cycle // Krebs cycle // Szent-Gyorgyi-Krebs cycle
+RXN-18208	RXNQT-4165	
+RXN-14117		
+RXN-20524		
+PGLUCISOM-RXN	UDPNAGSYN-PWY // GLUCONEO-PWY // ANAGLYCOLYSIS-PWY	UDP-<i>N</i>-acetyl-D-glucosamine biosynthesis I // UDP-<i>N</i>-acetyl-D-glucosamine biosynthesis // gluconeogenesis I // glycolysis III (from glucose) // anaerobic glycolysis // Embden-Meyerhof-Parnas pathway // EMP pathway // glycolysis III (glucokinase)
+RXN-21524	PWY-8159 // OHMETHYLBILANESYN-RXN	dipyrromethane cofactor biosynthesis
+RXN-12571	PWY-6048	methylthiopropanoate degradation I (cleavage) // MTPA degradation // methylthiopropionate degradation I (cleavage)
+GCVT-RXN	GLYCLEAV-PWY // GCVMULTI-RXN	glycine cleavage // glycine cleavage system // glycine decarboxylase complex // gcv system // glycine cleavage complex
+RXN-16631	PWY-7663	gondoate biosynthesis (anaerobic) // <i>cis</i>-11-icosenoate biosynthesis // (11<i>Z</i>)-icos-11-enoate biosynthesis // (11<i>Z</i>)-icosenoate biosynthesis // gondoic acid biosynthesis // 11-eicosenoic acid biosynthesis
+RXN-11839		
+RIBOFLAVINSYNDEAM-RXN	RIBOSYN2-PWY	flavin biosynthesis I (bacteria and plants) // riboflavin, FMN and FAD biosynthesis // vitamin B<sub>2</sub> biosynthesis
+RXN0-1134	PYRUVDEHYD-PWY	pyruvate decarboxylation to acetyl CoA I // pyruvate dehydrogenase complex // acetyl-CoA biosynthesis I (pyruvate dehydrogenase complex) // pyruvic acid decarboxylation to acetyl CoA // pyruvate dehydrogenase system
+QUINOPRIBOTRANS-RXN	PYRIDNUCSYN-PWY // PWY-8277	NAD <i>de novo</i> biosynthesis I (from aspartate) // nicotinamide adenine dinucleotide biosynthesis // NAD <i>de novo</i> biosynthesis IV (anaerobic)
+RXN-18427	PWY-7855	ectoine degradation
+HYDROXYMETHYLGLUTARYL-COA-LYASE-RXN	PWY-5074 // LEU-DEG2-PWY	mevalonate degradation // L-leucine degradation I
+RXN-7567	PWY-5025	indole-3-acetate biosynthesis IV (bacteria) // IAA biosynthesis IV (bacteria) // indole-3-acetic acid biosynthesis IV (bacteria)
+HISTIDINE-AMMONIA-LYASE-RXN	PWY-5028	L-histidine degradation II
+RXN-16010	PWY-6048 // RXN-12573	methylthiopropanoate degradation I (cleavage) // MTPA degradation // methylthiopropionate degradation I (cleavage) // MTA-CoA hydrolase
+RXN-11054	PWY-1361	benzoyl-CoA degradation I (aerobic)
+RXN-22239	PWY-8245	lipid IV<sub>A</sub> biosynthesis (<i>P. gingivalis</i>) // lipid-A-precursor biosynthesis (<i>P. gingivalis</i>)
+RXN0-5224		
+RXN-17753		
+RXN-3482		
+RXN-11347		
+GCVMULTI-RXN	1CMET2-PWY // PWY-8303	folate transformations III (<i>E. coli</i>) // <i>N</i><sup>10</sup>-formyl-THF biosynthesis // <i>N</i><sup>10</sup>-formyl-tetrahydrofolate biosynthesis // reductive glycine pathway of autotrophic CO<sub>2</sub> fixation // carbon fixation VI // glycine synthase-reductase pathway
+ISPH2-RXN	PWY-7560 // NONMEVIPP-PWY	methylerythritol phosphate pathway II // nonmevalonate isopentenyl diphosphate biosynthesis // methylerythritol phosphate degradation // MEP degradation // deoxyxylulose phosphate pathway // DOXP pathway // Rohmer pathway // isopentenyl diphosphate biosynthesis -- mevalonate-independent // nonmevalonate isoprenoid pathway // MEP pathway // methylerythritol phosphate pathway I
+RXN-9922		
+RXN-15510	RXN-15513	
+RXN-11180	PWY-6420	pyrroloquinoline quinone biosynthesis // PQQ biosynthesis
+GUANIDINOBUTANAMIDE-NH3-RXN		
+RXN-17880	PWY-7798	protein <i>S</i>-nitrosylation and denitrosylation
+RXN-16616	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+NAG6PDEACET-RXN	GLUAMCAT-PWY // PWY0-1261	<i>N</i>-acetylglucosamine degradation I // glucosamine degradation // N-acetyl-glucosamine degradation // anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+RXN0-7188		
+RXN-14278	PWY0-1337	oleate &beta;-oxidation
+RXN-11178	PWY-6420	pyrroloquinoline quinone biosynthesis // PQQ biosynthesis
+METHIONINE-GAMMA-LYASE-RXN		
+RXN-16322		
+OXALODECARB-RXN	MALIC-NADP-RXN // 1.1.1.39-RXN	
+UDPNACETYLGLUCOSAMACYLTRANS-RXN	NAGLIPASYN-PWY	lipid IV<sub>A</sub> biosynthesis (<i>E. coli</i>) // lipid-A-precursor biosynthesis (<i>E. coli</i>)
+PSEUDOURIDINE-KINASE-RXN	PWY-6019	pseudouridine degradation
+RXN-16380	PWY-8280	stearate biosynthesis IV // stearic acid biosynthesis IV
+5.4.2.10-RXN	UDPNAGSYN-PWY // PWY0-1261	UDP-<i>N</i>-acetyl-D-glucosamine biosynthesis I // UDP-<i>N</i>-acetyl-D-glucosamine biosynthesis // anhydromuropeptides recycling I // 1,6-anhydro-<i>N</i>-acetylmuramic acid recycling I // cell wall recycling I
+3-OCTAPRENYL-4-OHBENZOATE-DECARBOX-RXN	PWY-6708	ubiquinol-8 biosynthesis (early decarboxylation) // ubiquinone-8 biosynthesis (prokaryotic) // ubiquinol-8 biosynthesis (prokaryotic)
+DIAMINOPIMDECARB-RXN	DAPLYSINESYN-PWY	L-lysine biosynthesis I // L-lysine and L-diaminopimelate biosynthesis
+RXN-16689	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+RXN-10658	PWY-6282	palmitoleate biosynthesis I (from (5Z)-dodec-5-enoate) // palmitoleic acid biosynthesis I // palmitoleate biosynthesis (anaerobic)
+2.7.9.3-RXN		
+ADENYL-KIN-RXN	PWY-7219	adenosine ribonucleotides <i>de novo</i> biosynthesis
+RXN-11396	PWY-6502	8-oxo-(d)GTP detoxification I // oxidized GTP and dGTP detoxification I // oxidized guanosine triphosphate and deoxyguanosine triphosphate detoxification I // 8-oxo-7,8-dihydro-guanosine-triphosphate and 8-oxo-7,8-dihydro-deoxyguanosine-triphosphate I
+RXN-12473	PWY-6823	molybdopterin biosynthesis
+RXN-20556		
+RXN-16910	RXN-13202	
+OHMETHYLBILANESYN-RXN	PWY-5188 // PWY-5189	tetrapyrrole biosynthesis I (from glutamate) // tetrapyrrole biosynthesis II (from glycine)
+RXN-9190	PWY-5839	menaquinol-7 biosynthesis // vitamin K<sub>2</sub> biosynthesis // menaquinone-7 biosynthesis
+5.4.1.2-RXN	PWY-7376	cob(II)yrinate <i>a,c</i>-diamide biosynthesis II (late cobalt incorporation)
+RXN0-5391	PWY0-1337	oleate &beta;-oxidation
+RXN-20743		
+RXN-11210	PWY-6430	thymine degradation // uracil degradation (reductive)
+RXN-17809	PWY-6823	molybdopterin biosynthesis
+PNPOXI-RXN	PYRIDOXSYN-PWY	pyridoxal 5'-phosphate biosynthesis I // vitamin B<sub>6</sub> biosynthesis // deoxyxylulose-dependent pyridoxal 5'-phosphate biosynthesis
+RXN-10655	PWY-6282	palmitoleate biosynthesis I (from (5Z)-dodec-5-enoate) // palmitoleic acid biosynthesis I // palmitoleate biosynthesis (anaerobic)
+CITSYN-RXN	TCA	TCA cycle I (prokaryotic) // tricarboxylic acid cycle // citric acid cycle // Krebs cycle // Szent-Gyorgyi-Krebs cycle
+POLYPHOSPHATE-KINASE-RXN	PWY-8138	polyphosphate metabolism
+RXN-14049	HOMOSERDEAM-RXN	
+RXN-22287		
+RXN-12626		
+RXN-20056	PWY0-1599	periplasmic disulfide bond formation
+RXN-18707	RXN-22700	
+RXN-6382		
+UROGENIIISYN-RXN	PWY-5188 // PWY-5189	tetrapyrrole biosynthesis I (from glutamate) // tetrapyrrole biosynthesis II (from glycine)
+RXN-15511	RXN-15513	
+UDPKIN-RXN	PWY-7176	UTP and CTP <i>de novo</i> biosynthesis
+RXN-16614	PWY-7664	oleate biosynthesis IV (anaerobic) // <i>cis</i>-7-hexadecenoate biosynthesis // <i>cis</i>-9-octadecenoate biosynthesis // (7<i>Z</i>)-hexadec-7-enoate biosynthesis // (9<i>Z</i>)-octadec-9-enoate biosynthesis // (7<i>Z</i>)-hexadecenoate biosynthesis // (9<i>Z</i>)-octadecenoate biosynthesis
+PGPPHOSPHA-RXN	PWY4FS-7 // PWY4FS-8 // PWY-5668 // PWY0-1545	phosphatidylglycerol biosynthesis I (plastidic) // phosphatidylglycerol biosynthesis II (non-plastidic) // cardiolipin biosynthesis I // cardiolipin biosynthesis III
+RXN-14387	PWY-7250	[2Fe-2S] iron-sulfur cluster biosynthesis // [Fe-S] cluster biosynthesis // [2Fe-2S] cluster biosynthesis
+ACETATEKIN-RXN	PWY-5485 // PWY0-1477 // PWY0-1312 // PWY-8303	pyruvate fermentation to acetate IV // pyruvic acid fermentation to acetic acid IV // ethanolamine utilization // acetate and ATP formation from acetyl-CoA I // acetic acid formation from acetyl-CoA I // reductive glycine pathway of autotrophic CO<sub>2</sub> fixation // carbon fixation VI // glycine synthase-reductase pathway
+RXN-14384	PWY-7250	[2Fe-2S] iron-sulfur cluster biosynthesis // [Fe-S] cluster biosynthesis // [2Fe-2S] cluster biosynthesis
+RXN-16687	PWY0-1586	peptidoglycan maturation (<i>meso</i>-diaminopimelate containing)
+D-2-HYDROXY-ACID-DEHYDROGENASE-RXN		
+METHYLMALONYL-COA-MUT-RXN	PROPIONMET-PWY	propanoyl CoA degradation I // propionyl CoA degradation I // methylmalonyl pathway
+RXN-22		
+RXN-20784	PWY-8073	lipid IV<sub>A</sub> biosynthesis (<i>P. putida</i>) // lipid-A-precursor biosynthesis (<i>P. putida</i>)
+HYDROXYPYRUVATE-REDUCTASE-RXN		
+RXN-16955		
+ASPARAGINE--TRNA-LIGASE-RXN	TRNA-CHARGING-PWY	tRNA charging
+RXN-8344	PWY-8171	molybdenum cofactor biosynthesis // moco biosynthesis // molybdopterin biosynthesis
+RXN-21316	PWY-8130	5'-deoxyadenosine degradation I // 5'-deoxyadenosine salvage I
+RXN0-5305		
+GTPPYPHOSKIN-RXN	PPGPPMET-PWY	ppGpp metabolism // guanosine 3'-diphosphate 5'-diphosphate biosynthesis // ppGpp biosynthesis
+RXN-19326	PWY-7970	benzimidazolyl adenosylcobamide biosynthesis from adenosylcobinamide-GDP
+RXN-8957	PWY-5741	ethylmalonyl-CoA pathway // ethylmalonyl pathway
+GLUTAMIDOTRANS-RXN	HISTSYN-PWY	L-histidine biosynthesis
+GLUTAMATE-N-ACETYLTRANSFERASE-RXN	ARGSYNBSUB-PWY	L-arginine biosynthesis II (acetyl cycle)
+RXN-9384		
+METHYLENETHFDEHYDROG-NADP-RXN	PWY-1722 // 1CMET2-PWY // PWY-8303	formate assimilation into 5,10-methylenetetrahydrofolate // folate transformations III (<i>E. coli</i>) // <i>N</i><sup>10</sup>-formyl-THF biosynthesis // <i>N</i><sup>10</sup>-formyl-tetrahydrofolate biosynthesis // reductive glycine pathway of autotrophic CO<sub>2</sub> fixation // carbon fixation VI // glycine synthase-reductase pathway
+RXN0-743	PWY-6123	inosine-5'-phosphate biosynthesis I // IMP biosynthesis I
+RXN0-7187		
+CYTIDEAM-RXN	PWY-7181 // PWY-7199	pyrimidine deoxyribonucleosides degradation // pyrimidine deoxyribonucleosides salvage
+2.1.1.151-RXN	PWY-7377	cob(II)yrinate <i>a,c</i>-diamide biosynthesis I (early cobalt insertion)
+RXN-21019		

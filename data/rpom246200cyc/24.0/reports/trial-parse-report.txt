@@ -1,0 +1,96 @@
+;;;      ---  Parse Results for Ruegeria pomeroyi DSS-3  ---
+;;;
+;;; This report summarizes the findings of the PathoLogic parser for
+;;; the annotation files for all new genetic elements.
+;;; Through inspection of this report, the user can tell whether features of major
+;;; importance were not recognized, possibly due to syntax errors or other
+;;; problems in the annotation files.
+;;;
+;;; If you want to change annotation file(s) to improve their parsability, 
+;;; update the files.
+;;; Then, reinitialize the KB, and re-run the Build.  If you want
+;;; to avoid having to reinitialize in the future, use the Trial Parse 
+;;; command until you are satisfied with the parse results, and only then
+;;; Build.
+
+
+;;; -----------------------------------------------------------
+
+;;; Parsing results for annotation file:
+;;;        /home/kaffir2/brg/allcyc-2017/rpom246200cyc/21.5/input/GCF_000011965.2_ASM1196v2_genomic.gbff
+
+
+;;; NC_003911
+;;;
+;;; The annotation file used by the parser is:
+;;; /home/kaffir2/brg/allcyc-2017/rpom246200cyc/21.5/input/GCF_000011965.2_ASM1196v2_genomic.gbff
+gene-IDs :                      3957
+gene-name :                       30
+gene-startbase :                3957
+gene-endbase :                  3957
+gene-product-type :             3956
+  gene-Proteins :                 3850
+  gene-tRNAs :                      50
+  gene-rRNAs :                       9
+  gene-snRNAs :                      0
+  gene-miscRNAs :                    2
+product-IDs :                      0 [cannot be supplied in Genbank files]
+product-names :                 3956
+product-synonyms :                 0 [cannot be supplied in Genbank files]
+total EC numbers :               602
+  genes with an EC number :        594
+  genes with >1 EC numbers :         8
+total supplied MetaCyc reaction ids :       0
+  genes with a supplied MetaCyc reaction id :       0
+  genes with >1 supplied MetaCyc reaction id :       0
+total GO terms linked to reactions :       0
+  genes with a GO term linked to reactions :       0
+  genes with >1 GO terms linked to reactions :       0
+gene-products:
+  hypothetical :                   826
+  predicted :                        0
+  putative :                         0
+genes with synonyms :              0
+
+;;; NC_006569
+;;;
+;;; The annotation file used by the parser is:
+;;; /home/kaffir2/brg/allcyc-2017/rpom246200cyc/21.5/input/GCF_000011965.2_ASM1196v2_genomic.gbff
+gene-IDs :                       465
+gene-name :                        2
+gene-startbase :                 465
+gene-endbase :                   465
+gene-product-type :              465
+  gene-Proteins :                  456
+  gene-tRNAs :                       2
+  gene-rRNAs :                       0
+  gene-snRNAs :                      0
+  gene-miscRNAs :                    0
+product-IDs :                      0 [cannot be supplied in Genbank files]
+product-names :                  465
+product-synonyms :                 0 [cannot be supplied in Genbank files]
+total EC numbers :                71
+  genes with an EC number :         70
+  genes with >1 EC numbers :         1
+total supplied MetaCyc reaction ids :       0
+  genes with a supplied MetaCyc reaction id :       0
+  genes with >1 supplied MetaCyc reaction id :       0
+total GO terms linked to reactions :       0
+  genes with a GO term linked to reactions :       0
+  genes with >1 GO terms linked to reactions :       0
+gene-products:
+  hypothetical :                    96
+  predicted :                        0
+  putative :                         0
+genes with synonyms :              0
+
+;;;; :::::::: Ignored gene features and qualifiers ::::::::
+
+The Genbank file contains these additional features,
+which have not been processed:
+(tmRNA regulatory)
+The Genbank file contains these additional feature qualifiers,
+which have not been processed:
+(/ncRNA_class= /bound_moiety= /regulatory_class= /translation= /transl_table=
+ /codon_start= /inference= /strain= /mol_type= /organism=)
+

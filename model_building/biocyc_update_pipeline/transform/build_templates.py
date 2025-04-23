@@ -212,15 +212,19 @@ def build_existing_reactions_template(model,
                                           "EX_glc",
                                           "EX_ac"
                                       ],
-                                      skip_reactions = ["ATPM", "Rpom_hwa_biomass"]):
+                                      skip_reactions=["ATPM", "Rpom_hwa_biomass"]):
 
-    # Get flux vectors for the specified substrates
+    # Get flux vectors for the specified substrates,
+    # to ensure that we keep reactions necessary for growth on these substrates
     flux_vectors = {}
     for ex in substrate_exchanges:
         with model:
             exchange = model.reactions.get_by_id(ex)
             exchange.bounds = (-10, 0)
-            flux_vectors[ex] = model.optimize().fluxes
+            sol = model.optimize()
+
+            if sol.objective_value > 0:
+                flux_vectors[ex] = sol.fluxes
 
     report = []
     for reaction in tqdm(model.reactions, "Processing existing reactions..."):
@@ -233,9 +237,9 @@ def build_existing_reactions_template(model,
         # Store reaction ID
         line["Reaction ID"] = reaction.id
 
-        # Test whether the reaction has nonzero flux on specified substrates
+        # Test whether the reaction has nonzero flux on specified substratess
         used_on_any = False
-        for ex in substrate_exchanges:
+        for ex in flux_vectors.keys():
             used_on_ex = (flux_vectors[ex][reaction.id] != 0)
             line[f"Used on {ex}?"] = used_on_ex
             used_on_any |= used_on_ex
@@ -243,8 +247,8 @@ def build_existing_reactions_template(model,
 
         # Check if the reaction is present in either biocyc database,
         # and retrieve data if so.
-        reaction_db1 = reactions1.get(reaction.annotation["stem"], None)
-        reaction_db2 = reactions2.get(reaction.annotation["stem"], None)
+        reaction_db1 = reactions1.get(reaction.annotation.get("stem", reaction.id), None)
+        reaction_db2 = reactions2.get(reaction.annotation.get("stem", reaction.id), None)
         line["In DB1?"] = reaction_db1 is not None
         line["In DB2?"] = reaction_db2 is not None
 
@@ -293,7 +297,7 @@ def build_new_reactions_template(
     # Look only at reactions not in model
     reactions_db1 = set(reactions1.keys())
     reactions_db2 = set(reactions2.keys())
-    reactions_model = set([rxn.annotation["stem"] for rxn in model.reactions])
+    reactions_model = set([rxn.annotation.get("stem", rxn.id) for rxn in model.reactions])
     reactions_to_add = (reactions_db1 | reactions_db2) - reactions_model
 
     for reaction in reactions_to_add:
@@ -309,7 +313,10 @@ def build_new_reactions_template(
         reaction_data_2 = reactions2.get(reaction, None)
 
         # For some fields, favor data from DB2 if available
-        reaction_data = reaction_data_2 if in_db2 else reaction_data_1
+        # reaction_data = reaction_data_2 if in_db2 else reaction_data_1
+
+        # For some fields, favor data from DB1 if available
+        reaction_data = reaction_data_1 if in_db1 else reaction_data_2
 
         # Store reaction name, and the databases in which it is present
         line["Reaction name 1"] = (reaction_data_1.get(
@@ -342,7 +349,10 @@ def build_new_reactions_template(
         line["Stoichiometry 2"] = stoichiometry_2
 
         # Prefer stoichiometry from DB2, if available
-        stoichiometry = stoichiometry_2 if in_db2 else stoichiometry_1
+        # stoichiometry = stoichiometry_2 if in_db2 else stoichiometry_1
+
+        # Prefer stoichiometry from DB1, if available
+        stoichiometry = stoichiometry_1 if in_db1 else stoichiometry_2
 
         # Get bounds
         bounds_1 = get_bounds(reaction_data_1) if in_db1 else None
@@ -364,7 +374,8 @@ def build_new_reactions_template(
         line["Metabolites without data"] = fake_metabolites
 
         # Check for class metabolites
-        metabolites = metabolites2 if in_db2 else metabolites1
+        # metabolites = metabolites2 if in_db2 else metabolites1
+        metabolites = metabolites1 if in_db1 else metabolites2
         has_class_metabolites = False
         for met in stoichiometry.keys():
             met = met.split("[")[0]
@@ -451,7 +462,10 @@ def build_new_metabolites_template(model, candidate_mets, metabolites1, metaboli
             continue
 
         # Prefer data from DB2, if available
-        met_data = metabolites2[met] if in_db2 else metabolites1[met]
+        # met_data = metabolites2[met] if in_db2 else metabolites1[met]
+
+        # Prefer data from DB1, if available
+        met_data = metabolites1[met] if in_db1 else metabolites2[met]
 
         # Store metabolite ID
         line["Metabolite ID"] = met
@@ -503,7 +517,10 @@ def build_new_genes_template(genes1, genes2):
         in_db2 = gene in genes2
 
         # Prefer data from DB2, if available
-        gene_data = genes2[gene] if in_db2 else genes1[gene]
+        # gene_data = genes2[gene] if in_db2 else genes1[gene]
+
+        # Prefer data from DB1, if available
+        gene_data = genes1[gene] if in_db1 else genes2[gene]
 
         # Store gene ID, name, synonyms
         line["Gene ID"] = gene
@@ -597,7 +614,32 @@ def main():
     # update gene-reaction rules, check for usage on key substrates,
     # and recommend deletion if not used
     existing_reactions_template = build_existing_reactions_template(
-        model, reactions1, reactions2, proteins1, proteins2)
+        model, reactions1, reactions2, proteins1, proteins2,
+        substrate_exchanges=["EX_glc",
+                             "EX_ac",
+                             "EX_CPD0-1265",
+                             "EX_CPD-335",
+                             "EX_CARNITINE",
+                             "EX_CHOLINE",
+                             "EX_CIT",
+                             "EX_L-CYSTEATE",
+                             "EX_CPD-12693",
+                             "EX_SS-DIMETHYL-BETA-PROPIOTHETIN",
+                             "EX_ECTOINE",
+                             "EX_FUM",
+                             "EX_MAL",
+                             "EX_SUC",
+                             "EX_BETA-D-XYLOSE",
+                             "EX_GLYCEROL",
+                             "EX_GLYCEROL-3P",
+                             "EX_CPD-3745",
+                             "EX_N-ACETYL-D-GLUCOSAMINE",
+                             "EX_SPERMIDINE",
+                             "EX_CADAVERINE",
+                             "EX_PUTRESCINE",
+                             "EX_TAURINE",
+                             "EX_THYMIDINE",
+                             "EX_TRIMETHYLAMINE-N-O"])
 
     # Candidate new reactions to add -
     # check for missing metabolites, class metabolites, polymerization reactions,
