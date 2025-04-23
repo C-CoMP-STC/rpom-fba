@@ -6,7 +6,7 @@ from cobra.io import read_sbml_model, write_sbml_model
 from model_building.stages import STAGE_REGISTRY
 
 
-DEFAULT_CONFIG = "model_building/blueprints/Rpom_05_hwa__no_biocyc.json"
+DEFAULT_CONFIG = "model_building/blueprints/Rpom_05_hwa.json"
 DEFAULT_MODEL = "model/Rpom_05.xml"
 
 

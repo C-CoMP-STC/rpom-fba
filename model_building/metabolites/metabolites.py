@@ -223,4 +223,16 @@ ADDED_METABOLITES = [
                formula="C3H9NO",
                name="trimethylamine <i>N</i>-oxide",
                compartment="p"),
+    Metabolite(id="GLN[e]",
+               formula = "C5H10N2O3",
+               name="L-glutamine",
+               compartment="e"),
+    Metabolite(id="L-ASPARTATE[e]",
+               formula="C4H6NO4",
+               name="L-aspartate",
+               compartment="e"),
+    Metabolite(id="ASN[e]",
+               formula="C4H8N2O3",
+               name="L-asparagine",
+               compartment="e")
 ]
