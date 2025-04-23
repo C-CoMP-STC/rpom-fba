@@ -1,4 +1,5 @@
 import re
+from warnings import warn
 from cobra.core import Metabolite, Reaction
 from cobra.io import read_sbml_model
 import networkx as nx
@@ -193,10 +194,10 @@ def get_or_create_exchange(model, external_metabolite_id, verbose=False):
     # create exchange reaction if it does not
     exchange = [rxn for rxn in model.exchanges if metabolite in rxn.reactants]
 
-    if len(exchange) > 1:
-        raise ValueError(
-            f"More than one exchange found for {external_metabolite_id}!")
-    elif len(exchange) == 1:
+    if len(exchange) >= 1:
+        if len(exchange) > 1:
+            if verbose:
+                warn(f"More than one exchange reaction found for {external_metabolite_id}!")
         exchange = exchange[0]
     else:
         if verbose:

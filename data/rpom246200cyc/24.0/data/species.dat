@@ -1,0 +1,126 @@
+# 
+#
+# Authors:
+#    Pallavi Subhraveti
+#    Quang Ong
+#    Ingrid Keseler
+#    Anamika Kothari
+#    Ron Caspi
+#    Peter D Karp
+#
+# Please see the license agreement regarding the use of and distribution of this file.
+# The format of this file is defined at http://bioinformatics.ai.sri.com/ptools/flatfile-format.html .
+#
+# Filename: /homedir/brg/aic/pgdbs/tier3/rpom246200cyc/24.0/data/species.dat
+#
+# Organism: Ruegeria pomeroyi DSS-3
+# Database: RPOM246200CYC
+# Version: 24.0
+# Date and time generated: April 20, 2020, 17:11:11
+#
+# Attributes:
+#    UNIQUE-ID
+#    TYPES
+#    COMMON-NAME
+#    BIOMASS-TEMPLATES
+#    CCO-INSTANCES
+#    CITATIONS
+#    COMMENT
+#    CONTACT-EMAIL
+#    CREDITS
+#    DATA-SOURCE
+#    DBLINKS
+#    DOCUMENTATION
+#    GENETIC-CODE
+#    GENOME
+#    GENOME-UPDATE-DATE
+#    HIDDEN-NAMES
+#    HIDE-SLOT?
+#    INFERENCE-STATS
+#    INSTANCE-NAME-TEMPLATE
+#    MEMBER-SORT-FN
+#    MITOCHONDRIAL-GENETIC-CODE
+#    PATHOLOGIC-NAME-MATCHER-EVIDENCE
+#    PATHOLOGIC-PWY-EVIDENCE
+#    PGDB-AUTHORS
+#    PGDB-COPYRIGHT
+#    PGDB-FOOTER-CITATION
+#    PGDB-HOME-PAGE
+#    PGDB-LAST-CONSISTENCY-CHECK
+#    PGDB-NAME
+#    PGDB-TIER
+#    PGDB-TYPE
+#    PGDB-UNIQUE-ID
+#    RANK
+#    SEQUENCE-SOURCE
+#    STRAIN-NAME
+#    SUBSPECIES-NAME
+#    SYNONYMS
+#
+UNIQUE-ID - RPOM246200
+TYPES - TAX-246200
+COMMON-NAME - Ruegeria pomeroyi
+CCO-INSTANCES - CCI-CYTOSKELETON-GN
+CCO-INSTANCES - CCI-RIBOSOME-GN
+CCO-INSTANCES - CCI-FLAGELLUM-GN
+CCO-INSTANCES - CCI-PILUS-GN
+CCO-INSTANCES - CCI-BAC-NUCLEOID-GN
+CCO-INSTANCES - CCI-CW-BAC-NEG-GN
+CCO-INSTANCES - CCI-S-LAYER-GN
+CCO-INSTANCES - CCI-PM-BAC-NEG-GN
+CCO-INSTANCES - CCI-OUTER-MEM-GN
+CCO-INSTANCES - CCI-EXTRACELLULAR-GN
+CCO-INSTANCES - CCI-PERI-BAC-GN
+CCO-INSTANCES - CCI-CYTOSOL-GN
+COMMENT - This Pathway/Genome Database (PGDB) was generated on 20-Sep-2017 from the annotated genome of <i>Ruegeria pomeroyi</i> DSS-3, as obtained from RefSeq (annotation date: 17-APR-2017).  
+/The PGDB was created computationally by the PathoLogic component of the Pathway Tools software (version 21.5) |CITS: [26454094],[22675592]| using MetaCyc version 21.1 |CITS: [26527732]|. It has not undergone any manual curation or review, and  may contain errors.
+/ Development of this PGDB was supported by grant GM080746 from the National Institutes of Health.
+/
+DBLINKS - (BIOSAMPLE "SAMN02604003" NIL |pecocyc| 3714539623 NIL NIL)
+DBLINKS - (NCBI-BIOPROJECT "PRJNA224116" NIL |pecocyc| 3714539623 NIL NIL)
+DBLINKS - (NCBI-TAXONOMY-DB "246200" NIL |pecocyc| 3714539622 NIL NIL)
+GENETIC-CODE - 11
+GENOME - NC_003911
+GENOME - NC_006569
+GENOME-UPDATE-DATE - 17-APR-2017
+INFERENCE-STATS - (GO |pecocyc| 3761077206 (("distinct" . 1799) ("genes >1 exp GO term" . 8) (">1 exp GO term" . 8) (">1 GO term" . 3545) ("protein/RNAs" . 4483)))
+INFERENCE-STATS - (GO |pecocyc| 3761077206 (("GO term annotations" . 20749)))
+INFERENCE-STATS - (UNIPROT |pecocyc| 3744512814 (("deleted protein features" . 4) ("new protein features" . 80) ("proteins with new features" . 22)))
+INFERENCE-STATS - (GO |pecocyc| 3744512791 (("distinct" . 1653) ("genes >1 exp GO term" . 8) (">1 exp GO term" . 8) (">1 GO term" . 3262) ("protein/RNAs" . 4483)))
+INFERENCE-STATS - (GO |pecocyc| 3744512790 (("GO term annotations" . 19720)))
+INFERENCE-STATS - (PSORT |pecocyc| 3718989882 (("Proteins with PSORTdb localizations" . 1)))
+INFERENCE-STATS - (UNIPROT |pecocyc| 3718989882 (("deleted protein features" . 7428) ("new protein features" . 36) ("proteins with new features" . 6)))
+INFERENCE-STATS - (GO |pecocyc| 3718989845 (("distinct" . 2) ("genes >1 exp GO term" . 0) (">1 exp GO term" . 0) (">1 GO term" . 435) ("protein/RNAs" . 4484)))
+INFERENCE-STATS - (GO |pecocyc| 3718989845 (("GO term annotations" . 0)))
+INFERENCE-STATS - (PFAM |pecocyc| 3718989845 (("Pfam features created" . 5585)))
+INFERENCE-STATS - (TIP |pecocyc| 3718989834 (("multisubstrate transporters" . 0) ("low-probability transporters" . 239) ("high-probability transporters" . 12)))
+INFERENCE-STATS - (TIP |pecocyc| 3718989834 (("reactions imported during inference" . 0) ("reactions created during inference" . 0)))
+INFERENCE-STATS - (TIP |pecocyc| 3718989834 (("PTS complexes created" . 0)))
+INFERENCE-STATS - (TIP |pecocyc| 3718989834 (("ATP complexes created" . 0)))
+INFERENCE-STATS - (PSORT |pecocyc| 3716574295 (("Proteins with PSORTdb localizations" . 1)))
+INFERENCE-STATS - (UNIPROT |pecocyc| 3716574293 (("deleted protein features" . 0) ("new protein features" . 8594) ("proteins with new features" . 2519)))
+INFERENCE-STATS - (GO |pecocyc| 3716574195 (("distinct" . 1) ("genes >1 exp GO term" . 0) (">1 exp GO term" . 0) (">1 GO term" . 434) ("protein/RNAs" . 4484)))
+INFERENCE-STATS - (GO |pecocyc| 3716574195 (("GO term annotations" . 0)))
+INFERENCE-STATS - (TIP |pecocyc| 3716574180 (("multisubstrate transporters" . 8) ("low-probability transporters" . 239) ("high-probability transporters" . 195)))
+INFERENCE-STATS - (TIP |pecocyc| 3716574180 (("reactions imported during inference" . 25) ("reactions created during inference" . 58)))
+INFERENCE-STATS - (TIP |pecocyc| 3716574095 (("PTS complexes created" . 0)))
+INFERENCE-STATS - (TIP |pecocyc| 3716574095 (("ATP complexes created" . 62)))
+INFERENCE-STATS - (HF |pecocyc| 3716574089 (("Filled Pathway Holes" . 58) ("All Pathway Holes" . 122)))
+MITOCHONDRIAL-GENETIC-CODE - 0
+PGDB-AUTHORS - kaipa
+PGDB-AUTHORS - ong
+PGDB-AUTHORS - keseler
+PGDB-AUTHORS - kothari
+PGDB-AUTHORS - caspi
+PGDB-AUTHORS - pkarp
+PGDB-LAST-CONSISTENCY-CHECK - 3718990100
+PGDB-NAME - RPOM246200CYC
+PGDB-TIER - 3
+PGDB-UNIQUE-ID - 1G48
+RANK - |strain|
+STRAIN-NAME - DSS-3
+SYNONYMS - Ruegeria pomeroyi str. DSS-3
+SYNONYMS - Ruegeria pomeroyi strain DSS-3
+SYNONYMS - Silicibacter pomeroyi DSS-3
+SYNONYMS - Ruegeria pomeroyi DSS-3
+NCBI-TAXONOMY-ID - PRJNA224116

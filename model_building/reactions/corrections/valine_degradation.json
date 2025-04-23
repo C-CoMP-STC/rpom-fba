@@ -1,0 +1,7 @@
+[
+    {
+        "id": "BRANCHED-CHAINAMINOTRANSFERVAL-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    }
+]

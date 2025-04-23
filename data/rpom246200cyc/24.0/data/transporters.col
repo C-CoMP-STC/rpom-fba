@@ -1,0 +1,121 @@
+# 
+#
+# Authors:
+#    Pallavi Subhraveti
+#    Quang Ong
+#    Ingrid Keseler
+#    Anamika Kothari
+#    Ron Caspi
+#    Peter D Karp
+#
+# Please see the license agreement regarding the use of and distribution of this file.
+# The format of this file is defined at http://bioinformatics.ai.sri.com/ptools/flatfile-format.html .
+#
+# Filename: /homedir/brg/aic/pgdbs/tier3/rpom246200cyc/24.0/data/transporters.col
+#
+# Organism: Ruegeria pomeroyi DSS-3
+# Database: RPOM246200CYC
+# Version: 24.0
+# Date and time generated: April 20, 2020, 17:11:58
+#
+UNIQUE-ID	NAME	REACTION-EQUATION	SUBUNIT-COMPOSITION
+G1G48-3675-MONOMER	nitrate ABC transporter ATP-binding protein	nitrate[periplasm] + ATP + H2O  <-->  nitrate[cytosol] + ADP + phosphate	1*G1G48-3675-MONOMER
+G1G48-78-MONOMER	PTS lactose transporter subunit IIC	an [HPr protein]-Npi-phospho-L-histidine + alpha-lactose[periplasm]  <-->  alpha-lactose 6'-phosphate[cytosol] + an [HPr]-L-histidine	1*G1G48-78-MONOMER
+G1G48-4344-MONOMER	amino acid permease	an amino acid[periplasm] + H+[periplasm]  <-->  an amino acid[cytosol] + H+[cytosol]	1*G1G48-4344-MONOMER
+G1G48-2411-MONOMER	sodium:alanine symporter	Na+[periplasm] + L-alanine[periplasm]  <-->  Na+[cytosol] + L-alanine[cytosol]	1*G1G48-2411-MONOMER
+CPLX1G48-6	predicted ABC transporter of spermidine/putrescine	putrescine[periplasm] + ATP + H2O  <-->  putrescine[cytosol] + ADP + phosphate	1*G1G48-1641-MONOMER,1*G1G48-1638-MONOMER
+G1G48-804-MONOMER	copper-translocating P-type ATPase	Cu2+[in] + ATP + H2O  <-->  Cu2+[out] + ADP + phosphate + H+	1*G1G48-804-MONOMER
+		arsenite[in] + ATP + H2O  <-->  arsenite[out] + ADP + phosphate + H+	
+G1G48-2705-MONOMER	glutamate ABC transporter permease	glutamate[periplasm] + ATP + H2O  <-->  glutamate[cytosol] + ADP + phosphate	1*G1G48-2705-MONOMER
+G1G48-974-MONOMER	phosphate transporter family protein	phosphate[cytosol]  <-->  phosphate[periplasm]	1*G1G48-974-MONOMER
+G1G48-707-MONOMER	molybdenum ABC transporter ATP-binding protein	molybdate[out] + ATP + H2O  <-->  molybdate[in] + ADP + phosphate + H+	1*G1G48-707-MONOMER
+G1G48-2707-MONOMER	arginine ABC transporter ATP-binding protein	L-arginine[periplasm] + ATP + H2O  <-->  L-arginine[cytosol] + ADP + phosphate	1*G1G48-2707-MONOMER
+G1G48-4182-MONOMER	Na/Pi cotransporter	Na+[periplasm] + H+[periplasm]  <-->  Na+[cytosol] + H+[cytosol]	1*G1G48-4182-MONOMER
+G1G48-1419-MONOMER	cation diffusion facilitator family transporter	a cation[periplasm] + H+[periplasm]  <-->  a cation[cytosol] + H+[cytosol]	1*G1G48-1419-MONOMER
+G1G48-2869-MONOMER	pyridine nucleotide transhydrogenase	NADPH + NAD+ + H+[in]  <-->  NADP+ + NADH + H+[out]	1*G1G48-2869-MONOMER
+G1G48-2131-MONOMER	ammonia channel protein	ammonia[periplasm]  <-->  ammonia[cytosol]	1*G1G48-2131-MONOMER
+CPLX1G48-6	predicted ABC transporter of spermidine/putrescine	spermidine[periplasm] + ATP + H2O  <-->  spermidine[cytosol] + ADP + phosphate	1*G1G48-1641-MONOMER,1*G1G48-1638-MONOMER
+G1G48-3670-MONOMER	lysine transporter LysE	L-lysine[cytosol]  <-->  L-lysine[periplasm]	1*G1G48-3670-MONOMER
+G1G48-2148-MONOMER	DMT transporter permease	3,5-dimethoxytoluene[periplasm] + H+[periplasm]  <-->  3,5-dimethoxytoluene[cytosol] + H+[cytosol]	1*G1G48-2148-MONOMER
+G1G48-1516-MONOMER	sodium:galactoside symporter	a D-galactoside[periplasm] + Na+[periplasm]  <-->  a D-galactoside[cytosol] + Na+[cytosol]	1*G1G48-1516-MONOMER
+G1G48-2588-MONOMER	TRAP transporter substrate-binding protein DctP	dCTP[periplasm]  <-->  dCTP[cytosol]	1*G1G48-2588-MONOMER
+G1G48-3210-MONOMER	ATP synthase	ADP + phosphate + 4 H+[out]  <-->  ATP + H2O + 3 H+[in]	1*G1G48-3210-MONOMER
+		a chitodextrin[out]  <-->  a chitodextrin[in]	
+G1G48-724-MONOMER	PTS fructose transporter subunit IIA	an [HPr protein]-Npi-phospho-L-histidine + beta-D-fructofuranose[periplasm]  <-->  beta-D-fructofuranose 1-phosphate[cytosol] + an [HPr]-L-histidine	1*G1G48-724-MONOMER
+CPLX1G48-4	predicted ABC transporter of Zn2+	Zn2+[periplasm] + ATP + H2O  <-->  Zn2+[cytosol] + ADP + phosphate	1*G1G48-3415-MONOMER,1*G1G48-3416-MONOMER
+G1G48-78-MONOMER	PTS lactose transporter subunit IIC	an [HPr protein]-Npi-phospho-L-histidine + lactose[periplasm]  <-->  lactose 6'-phosphate[cytosol] + an [HPr]-L-histidine	1*G1G48-78-MONOMER
+G1G48-2484-MONOMER	glycine/betaine ABC transporter substrate-binding protein	glycine[periplasm] + ATP + H2O  <-->  glycine[cytosol] + ADP + phosphate	1*G1G48-2484-MONOMER
+G1G48-2423-MONOMER	tricarboxylate transporter family protein	a tricarboxylate[periplasm]  <-->  a tricarboxylate[cytosol]	1*G1G48-2423-MONOMER
+G1G48-994-MONOMER	Mn2+/Zn2+ABC transporter ATP-binding protein	Mn2+[periplasm] + ATP + H2O  <-->  Mn2+[cytosol] + ADP + phosphate	1*G1G48-994-MONOMER
+CPLX1G48-3	predicted ABC transporter of taurine	taurine[periplasm] + ATP + H2O  <-->  taurine[cytosol] + ADP + phosphate	1*G1G48-684-MONOMER,1*G1G48-685-MONOMER,1*G1G48-686-MONOMER
+G1G48-1847-MONOMER	cation acetate symporter	a cation[periplasm] + acetate[periplasm]  <-->  a cation[cytosol] + acetate[cytosol]	1*G1G48-1847-MONOMER
+G1G48-1943-MONOMER	chromate transporter	chromate[periplasm]  <-->  chromate[cytosol]	1*G1G48-1943-MONOMER
+G1G48-3840-MONOMER	LPS export ABC transporter permease LptF	a lipopolysaccharide[cytosol] + ATP + H2O  <-->  a lipopolysaccharide[periplasm] + ADP + phosphate	1*G1G48-3840-MONOMER
+		4 H+[in]  <-->  4 H+[out]	
+CPLX1G48-9	predicted ABC transporter of phosphate	ATP + phosphate[periplasm] + H2O  <-->  ADP + 2 phosphate[cytosol] + H+	1*G1G48-1987-MONOMER,1*G1G48-1988-MONOMER,1*G1G48-1989-MONOMER
+G1G48-1229-MONOMER	voltage-gated chloride channel	chloride[periplasm]  <-->  chloride[cytosol]	1*G1G48-1229-MONOMER
+G1G48-1495-MONOMER	TRAP dicarboxylate transporter subunit DctQ	a dicarboxylate[periplasm]  <-->  a dicarboxylate[cytosol]	1*G1G48-1495-MONOMER
+G1G48-244-MONOMER	glycerol-3-phosphate transporter permease	sn-glycerol 3-phosphate[periplasm] + H+[periplasm]  <-->  sn-glycerol 3-phosphate[cytosol] + H+[cytosol]	1*G1G48-244-MONOMER
+G1G48-1827-MONOMER	sulfate transporter	sulfate[periplasm]  <-->  sulfate[cytosol]	1*G1G48-1827-MONOMER
+CPLX1G48-5	predicted ABC transporter of phosphonate	phosphonate[periplasm] + ATP + H2O  <-->  phosphonate[cytosol] + ADP + phosphate	1*G1G48-790-MONOMER,1*G1G48-791-MONOMER,1*G1G48-792-MONOMER,1*G1G48-793-MONOMER
+CPLX1G48-13	predicted ABC transporter of a branched-chain amino acid	a branched-chain amino acid[periplasm] + ATP + H2O  <-->  a branched-chain amino acid[cytosol] + ADP + phosphate	1*G1G48-1028-MONOMER,1*G1G48-1029-MONOMER,1*G1G48-1030-MONOMER
+G1G48-3366-MONOMER	sodium-dependent bicarbonate transport family permease	hydrogencarbonate[periplasm] + Na+[periplasm]  <-->  hydrogencarbonate[cytosol] + Na+[cytosol]	1*G1G48-3366-MONOMER
+G1G48-3985-MONOMER	NADH:ubiquinone reductase (Na(+)-transporting) subunit A	Na+[in] + NADH + a ubiquinone + H+  <-->  Na+[out] + NAD+ + an ubiquinol	1*G1G48-3985-MONOMER
+CPLX1G48-2	predicted ABC transporter of molybdate	molybdate[periplasm] + ATP + H2O  <-->  molybdate[cytosol] + ADP + phosphate	1*G1G48-708-MONOMER,1*G1G48-709-MONOMER
+G1G48-4203-MONOMER	glycine/betaine ABC transporter	L-proline betaine[out] + ATP + H2O  <-->  L-proline betaine[in] + ADP + phosphate + H+	1*G1G48-4203-MONOMER
+G1G48-2486-MONOMER	glycine/betaine ABC transporter	glycine betaine[out] + ATP + H2O  <-->  glycine betaine[in] + ADP + phosphate + H+	1*G1G48-2486-MONOMER
+G1G48-1106-MONOMER	choline transporter	choline[periplasm]  <-->  choline[cytosol]	1*G1G48-1106-MONOMER
+G1G48-3430-MONOMER	benzoate transporter	benzoate[periplasm]  <-->  benzoate[cytosol]	1*G1G48-3430-MONOMER
+CPLX1G48-1	predicted ABC transporter of urea	urea[periplasm] + ATP + H2O  <-->  urea[cytosol] + ADP + phosphate	1*G1G48-1741-MONOMER,1*G1G48-1743-MONOMER
+G1G48-4221-MONOMER	dehydroascorbate transporter	L-dehydro-ascorbate[periplasm]  <-->  L-dehydro-ascorbate[cytosol]	1*G1G48-4221-MONOMER
+CPLX1G48-23	predicted ABC transporter of a sugar	a sugar[periplasm] + ATP + H2O  <-->  a sugar[cytosol] + ADP + phosphate	1*G1G48-3843-MONOMER,1*G1G48-3845-MONOMER,1*G1G48-3846-MONOMER,1*G1G48-3847-MONOMER
+CPLX1G48-36	predicted ABC transporter of an amino acid	an amino acid[periplasm] + ATP + H2O  <-->  an amino acid[cytosol] + ADP + phosphate	1*G1G48-2711-MONOMER,1*G1G48-2704-MONOMER
+G1G48-156-MONOMER	amino acid transporter LysE	an amino acid[periplasm]  <-->  an amino acid[cytosol]	1*G1G48-156-MONOMER
+G1G48-2946-MONOMER	K+/H+ antiporter subunit F	K+[cytosol] + H+[periplasm]  <-->  K+[periplasm] + H+[cytosol]	1*G1G48-2946-MONOMER
+G1G48-2925-MONOMER	cobalt transporter	Co2+[periplasm]  <-->  Co2+[cytosol]	1*G1G48-2925-MONOMER
+G1G48-713-MONOMER	dipeptide/oligopeptide/nickel ABC transporter ATP-binding protein	Ni2+[periplasm] + ATP + H2O  <-->  Ni2+[cytosol] + ADP + phosphate	1*G1G48-713-MONOMER
+G1G48-78-MONOMER	PTS lactose transporter subunit IIC	an [HPr protein]-Npi-phospho-L-histidine + beta-lactose[periplasm]  <-->  beta-lactose 6'-phosphate[cytosol] + an [HPr]-L-histidine	1*G1G48-78-MONOMER
+G1G48-472-MONOMER	formate transporter	formate[cytosol]  <-->  formate[periplasm]	1*G1G48-472-MONOMER
+G1G48-724-MONOMER	PTS fructose transporter subunit IIA	an [HPr protein]-Npi-phospho-L-histidine + beta-D-fructopyranose[periplasm]  <-->  beta-D-fructopyranose 1-phosphate[cytosol] + an [HPr]-L-histidine	1*G1G48-724-MONOMER
+G1G48-713-MONOMER	dipeptide/oligopeptide/nickel ABC transporter ATP-binding protein	a dipeptide[periplasm] + ATP + H2O  <-->  a dipeptide[cytosol] + ADP + phosphate	1*G1G48-713-MONOMER
+G1G48-243-MONOMER	glycerol-3-phosphate transporter membrane protein	sn-glycerol 3-phosphate[periplasm]  <-->  sn-glycerol 3-phosphate[cytosol]	1*G1G48-243-MONOMER
+G1G48-884-MONOMER	uracil permease	uracil[periplasm] + H+[periplasm]  <-->  uracil[cytosol] + H+[cytosol]	1*G1G48-884-MONOMER
+G1G48-2942-MONOMER	monovalent cation/H+ antiporter subunit A	a cation[periplasm] + H+[cytosol]  <-->  a cation[cytosol] + H+[periplasm]	1*G1G48-2942-MONOMER
+G1G48-3387-MONOMER	glutamine ABC transporter substrate-binding protein	L-glutamine[periplasm] + ATP + H2O  <-->  L-glutamine[cytosol] + ADP + phosphate	1*G1G48-3387-MONOMER
+CPLX1G48-11	predicted ABC transporter of a polyamine	a polyamine[periplasm] + ATP + H2O  <-->  a polyamine[cytosol] + ADP + phosphate	1*G1G48-2746-MONOMER,1*G1G48-2747-MONOMER
+G1G48-3337-MONOMER	Fe(3+) ABC transporter substrate-binding protein	Fe3+[periplasm] + ATP + H2O  <-->  Fe3+[cytosol] + ADP + phosphate	1*G1G48-3337-MONOMER
+G1G48-724-MONOMER	PTS fructose transporter subunit IIA	an [HPr protein]-Npi-phospho-L-histidine + keto-D-fructose[periplasm]  <-->  keto-D-fructose 1-phosphate[cytosol] + an [HPr]-L-histidine	1*G1G48-724-MONOMER
+G1G48-1821-MONOMER	sulfonate ABC transporter ATP-binding lipoprotein	a sulfonate[periplasm] + ATP + H2O  <-->  a sulfonate[cytosol] + ADP + phosphate	1*G1G48-1821-MONOMER
+G1G48-295-MONOMER	threonine transporter RhtB	L-threonine[periplasm]  <-->  L-threonine[cytosol]	1*G1G48-295-MONOMER
+G1G48-242-MONOMER	sn-glycerol-3-phosphate import ATP-binding protein UgpC	ATP + sn-glycerol 3-phosphate[out] + H2O  <-->  ADP + sn-glycerol 3-phosphate[in] + phosphate + H+	1*G1G48-242-MONOMER
+G1G48-311-MONOMER	branched-chain amino acid transporter AzlC	a branched-chain amino acid[periplasm]  <-->  a branched-chain amino acid[cytosol]	1*G1G48-311-MONOMER
+G1G48-10-MONOMER	nucleotide exchange factor GrpE	a nucleotide[periplasm] + H+[cytosol]  <-->  a nucleotide[cytosol] + H+[periplasm]	1*G1G48-10-MONOMER
+		2 H+[in]  <-->  2 H+[out]	
+G1G48-2794-MONOMER	malonate transporter	malonate[periplasm]  <-->  malonate[cytosol]	1*G1G48-2794-MONOMER
+		nitrate[out] + nitrite[in]  <-->  nitrate[in] + nitrite[out]	
+G1G48-2596-MONOMER	glutathione ABC transporter permease	glutathione[periplasm] + ATP + H2O  <-->  glutathione[cytosol] + ADP + phosphate	1*G1G48-2596-MONOMER
+G1G48-724-MONOMER	PTS fructose transporter subunit IIA	an [HPr protein]-Npi-phospho-L-histidine + D-fructose[periplasm]  <-->  D-fructose 1-phosphate[cytosol] + an [HPr]-L-histidine	1*G1G48-724-MONOMER
+G1G48-242-MONOMER	sn-glycerol-3-phosphate import ATP-binding protein UgpC	sn-glycerol 3-phosphate[out] + ATP + H2O  <-->  sn-glycerol 3-phosphate[in] + ADP + phosphate + H+	1*G1G48-242-MONOMER
+G1G48-799-MONOMER	hemin uptake protein HemP	hemin[periplasm]  <-->  hemin[cytosol]	1*G1G48-799-MONOMER
+CPLX1G48-25	predicted ABC transporter of a polar amino acid	a polar amino acid[periplasm] + ATP + H2O  <-->  a polar amino acid[cytosol] + ADP + phosphate	1*G1G48-3089-MONOMER,1*G1G48-3091-MONOMER
+G1G48-542-MONOMER	sodium:calcium antiporter	Ca2+[periplasm] + Na+[cytosol]  <-->  Ca2+[cytosol] + Na+[periplasm]	1*G1G48-542-MONOMER
+G1G48-4189-MONOMER	zinc transporter ZntB	Zn2+[periplasm]  <-->  Zn2+[cytosol]	1*G1G48-4189-MONOMER
+CPLX1G48-26	predicted ABC transporter of a peptide	a peptide[periplasm] + ATP + H2O  <-->  a peptide[cytosol] + ADP + phosphate	1*G1G48-3098-MONOMER,1*G1G48-3097-MONOMER
+G1G48-3003-MONOMER	magnesium transporter	Mg2+[periplasm]  <-->  Mg2+[cytosol]	1*G1G48-3003-MONOMER
+G1G48-713-MONOMER	dipeptide/oligopeptide/nickel ABC transporter ATP-binding protein	an oligopeptide[periplasm] + ATP + H2O  <-->  an oligopeptide[cytosol] + ADP + phosphate	1*G1G48-713-MONOMER
+G1G48-2706-MONOMER	glutamate/aspartate transporter permease GltK	glutamate[periplasm] + L-aspartate[periplasm]  <-->  glutamate[cytosol] + L-aspartate[cytosol]	1*G1G48-2706-MONOMER
+CPLX1G48-40	predicted ABC transporter of a C4-dicarboxylate	a C4-dicarboxylate[periplasm] + ATP + H2O  <-->  a C4-dicarboxylate[cytosol] + ADP + phosphate	1*G1G48-2617-MONOMER,1*G1G48-2616-MONOMER
+G1G48-382-MONOMER	anion permease	an anion[periplasm] + H+[periplasm]  <-->  an anion[cytosol] + H+[cytosol]	1*G1G48-382-MONOMER
+G1G48-1387-MONOMER	sodium/glutamate symporter	glutamate[periplasm] + Na+[periplasm]  <-->  glutamate[cytosol] + Na+[cytosol]	1*G1G48-1387-MONOMER
+G1G48-30-MONOMER	voltage-gated sodium channel	Na+[cytosol]  <-->  Na+[periplasm]	1*G1G48-30-MONOMER
+G1G48-724-MONOMER	PTS fructose transporter subunit IIA	an [HPr protein]-Npi-phospho-L-histidine + alpha-D-fructofuranose[periplasm]  <-->  alpha-D-fructofuranose 1-phosphate[cytosol] + an [HPr]-L-histidine	1*G1G48-724-MONOMER
+G1G48-4203-MONOMER	glycine/betaine ABC transporter	a quaternary amine[out] + ATP + H2O  <-->  a quaternary amine[in] + ADP + phosphate + H+	1*G1G48-4203-MONOMER
+G1G48-1586-MONOMER	ammonium transporter	ammonium[out]  <-->  ammonium[in]	1*G1G48-1586-MONOMER
+CPLX1G48-10	predicted ABC transporter of D-ribose	D-ribose[periplasm] + ATP + H2O  <-->  D-ribose[cytosol] + ADP + phosphate	1*G1G48-4224-MONOMER,1*G1G48-4225-MONOMER
+G1G48-1860-MONOMER	glycerol-3-phosphate ABC transporter ATP-binding protein	sn-glycerol 3-phosphate[periplasm] + ATP + H2O  <-->  sn-glycerol 3-phosphate[cytosol] + ADP + phosphate	1*G1G48-1860-MONOMER
+G1G48-2484-MONOMER	glycine/betaine ABC transporter substrate-binding protein	glycine betaine[periplasm] + ATP + H2O  <-->  glycine betaine[cytosol] + ADP + phosphate	1*G1G48-2484-MONOMER
+G1G48-3107-MONOMER	sodium-independent anion transporter	an anion[periplasm]  <-->  an anion[cytosol]	1*G1G48-3107-MONOMER
+G1G48-707-MONOMER	molybdenum ABC transporter ATP-binding protein	ATP + molybdate[out] + H2O  <-->  ADP + molybdate[in] + phosphate + H+	1*G1G48-707-MONOMER
+G1G48-3903-MONOMER	malate transporter	(RS)-malate[periplasm]  <-->  (RS)-malate[cytosol]	1*G1G48-3903-MONOMER
+G1G48-1542-MONOMER	2-phenylethanol ABC transporter ATP-binding protein	2-phenylethanol[periplasm] + ATP + H2O  <-->  2-phenylethanol[cytosol] + ADP + phosphate	1*G1G48-1542-MONOMER
+G1G48-2339-MONOMER	biotin transporter BioY	biotin[periplasm]  <-->  biotin[cytosol]	1*G1G48-2339-MONOMER

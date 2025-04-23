@@ -710,5 +710,80 @@
             "PROTON[c]" : 2.0
         },
         "gene_reaction_rule": "(SPO1548 and SPO1549 and SPO1550)"
+    },
+
+    "Glutamate/glutamine/aspartate/asparagine transport (inferred) =======================================",
+    "ABC transporter, assuming n=2",
+    {
+        "id": "GLTtex",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "GLT[e] --> GLT[p]",
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "ABC-13-RXN[[GLT]]",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "GLT[p] + 2 ATP[c] + 2 H2O[c] --> GLT[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
+        "gene_reaction_rule": "(SPO0519, SPO0520, SPO0521, SPO0522)"
+    },
+    {
+        "id": "GLNtex",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "GLN[e] --> GLN[p]",
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "ABC-13-RXN[[GLN]]",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "GLN[p] + 2 ATP[c] + 2 H2O[c] --> GLN[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
+        "gene_reaction_rule": "(SPO0519, SPO0520, SPO0521, SPO0522)"
+    },
+    {
+        "id": "L-ASPARTATEtex",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "L-ASPARTATE[e] --> L-ASPARTATE[p]",
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "ABC-13-RXN[[L-ASPARTATE]]",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "L-ASPARTATE[p] + 2 ATP[c] + 2 H2O[c] --> L-ASPARTATE[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
+        "gene_reaction_rule": "(SPO0519, SPO0520, SPO0521, SPO0522)"
+    },
+    {
+        "id": "ASNtex",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "ASN[e] --> ASN[p]",
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "ABC-13-RXN[[ASN]]",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "ASN[p] + 2 ATP[c] + 2 H2O[c] --> ASN[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
+        "gene_reaction_rule": "(SPO0519, SPO0520, SPO0521, SPO0522)"
     }
 ]
