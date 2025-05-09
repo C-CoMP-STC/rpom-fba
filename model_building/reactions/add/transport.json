@@ -715,6 +715,15 @@
     "Glutamate/glutamine/aspartate/asparagine transport (inferred) =======================================",
     "ABC transporter, assuming n=2",
     {
+        "id": "GLTtex",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "GLT[e] --> GLT[p]",
+        "gene_reaction_rule": ""
+    },
+    {
         "id": "ABC-13-RXN{{GLT}}",
         "name": "",
         "subsystem": "",
@@ -733,7 +742,7 @@
         "gene_reaction_rule": ""
     },
     {
-        "id": "ABC-13-RXN{{GLN}}",
+        "id": "ABC-12-RXN",
         "name": "",
         "subsystem": "",
         "lower_bound": 0.0,
@@ -751,7 +760,7 @@
         "gene_reaction_rule": ""
     },
     {
-        "id": "ABC-13-RXN{{L-ASPARTATE}}",
+        "id": "TRANS-RXN0-222",
         "name": "",
         "subsystem": "",
         "lower_bound": 0.0,
@@ -769,12 +778,44 @@
         "gene_reaction_rule": ""
     },
     {
-        "id": "ABC-13-RXN{{ASN}}",
+        "id": "RXN1RHL-12",
         "name": "",
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": "ASN[p] + 2 ATP[c] + 2 WATER[c] --> ASN[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
         "gene_reaction_rule": "(SPO0519 and SPO0520 and SPO0521 and SPO0522)"
+    },
+    "Valine transport (guess) =================================================================",
+    "initial guess since biocyc isn't working right now",
+    "ABC transporter, assuming n=2",
+    {
+        "id": "VALtex",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "VAL[e]" : -1.0,
+            "VAL[p]" : 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "VALtpp",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "VAL[p]" : -1.0,
+            "VAL[c]" : 1.0,
+            "ATP[c]" : -2.0,
+            "WATER[c]" : -2.0,
+            "ADP[c]" : 2.0,
+            "Pi[c]" : 2.0,
+            "PROTON[c]" : 2.0
+        },
+        "gene_reaction_rule": ""
     }
 ]

@@ -157,6 +157,12 @@ class AddReactions(Stage):
             rxn.name = reaction["name"]
             rxn.subsystem = reaction["subsystem"]
 
+            # Skip reactions that are already in the model (they are ignored anyway by model.add_reactions,
+            # but we do it here to skip subsequent steps)
+            if rxn.id in model.reactions:
+                print(f"Ignoring reaction '{rxn.id}' since it already exists.")
+                continue
+
             # Add to model (need to do it now to allow building from reaction string)
             model.add_reactions([rxn])
 

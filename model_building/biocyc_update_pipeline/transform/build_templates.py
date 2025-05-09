@@ -237,6 +237,10 @@ def build_existing_reactions_template(model,
         # Store reaction ID
         line["Reaction ID"] = reaction.id
 
+        # Store whether the reaction is an exchange/transport reaction, as we'll keep all of these
+        line["Is-Exchange"] = reaction in model.exchanges
+        line["Is-Transport"] = reaction.id.endswith("tex") or reaction.id.endswith("tpp")
+
         # Test whether the reaction has nonzero flux on specified substratess
         used_on_any = False
         for ex in flux_vectors.keys():
@@ -270,7 +274,11 @@ def build_existing_reactions_template(model,
 
         # Compute recommendation
         recommendation = None
-        if not used_on_any and reaction_db1 is None and reaction_db2 is None:
+        if (not used_on_any
+            and not line["Is-Exchange"]
+            and not line["Is-Transport"]
+            and reaction_db1 is None
+            and reaction_db2 is None):
             recommendation = "Delete"
         else:
             recommendation = "Keep"
@@ -639,7 +647,9 @@ def main():
                              "EX_PUTRESCINE",
                              "EX_TAURINE",
                              "EX_THYMIDINE",
-                             "EX_TRIMETHYLAMINE-N-O"])
+                             "EX_TRIMETHYLAMINE-N-O",
+                             "EX_VAL",
+                             "EX_GLT"])
 
     # Candidate new reactions to add -
     # check for missing metabolites, class metabolites, polymerization reactions,

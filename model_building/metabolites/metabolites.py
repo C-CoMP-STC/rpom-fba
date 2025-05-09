@@ -234,5 +234,9 @@ ADDED_METABOLITES = [
     Metabolite(id="ASN[e]",
                formula="C4H8N2O3",
                name="L-asparagine",
+               compartment="e"),
+    Metabolite(id="VAL[e]",
+               formula="C5H11NO2",
+               name="L-valine",
                compartment="e")
 ]
