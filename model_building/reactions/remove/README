@@ -40,3 +40,12 @@ other genes in the pathway are present in both DBs. Running blastp on the E coli
 (valine—pyruvate aminotransferase, avtA) finds SPO3230 (E=3e-11), SPOA0066 (E=1e-07)...
 Reverse blastp on SPO3230 finds E. coli's ydcR as top result (E=4e-36) with avtA as result #4 (E=1e-12).
 Alignment of AlphaFold structures shows some homology, but not great RMSD.
+
+tca.json ==========================================================================================
+ 
+Removed RXN-14047 because it's the net of two reactions catalyzed by the same enzyme
+(citrate -> cis-aconitate -> threo-ds-isocitrate).
+
+glycolysis.json ===================================================================================
+
+Removed RXN-15513 as a duplicate of 3PGAREARR-RXN catalyzed by the same enzyme.

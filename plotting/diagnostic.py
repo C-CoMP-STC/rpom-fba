@@ -72,25 +72,28 @@ def flux_color(flux, c0 = (0.75, 0.75, 0.75), c_minus = (0, 0, 1), c_plus = (1, 
     return theta * np.array(c_end) + (1 - theta) * np.array(c0)
 
 
-def plot_pathway(model, metabolite_graph, reaction_list, ax=None):
+def plot_pathway(model, metabolite_graph, reaction_list, ax=None, sol=None):
     if ax is None:
         _, ax = plt.subplots()
+
+    def rxn_flux(rxn):
+        return rxn.flux if sol is None else sol.fluxes[rxn.id]
 
     for rxn_id in reaction_list:
         # Add node for reaction
         rxn = model.reactions.get_by_id(rxn_id)
         metabolite_graph.add_node(rxn_id,
                             reaction=True,
-                            flux=model.reactions.get_by_id(rxn_id).flux)
+                            flux=rxn_flux(rxn))
 
         # Add edges to metabolites and position node
         met_positions = []
         for met, coeff in rxn.metabolites.items():
             if met.id in metabolite_graph.nodes:
                 if coeff > 0:
-                    metabolite_graph.add_edge(rxn_id, met.id, rxn=rxn_id, flux=rxn.flux)
+                    metabolite_graph.add_edge(rxn_id, met.id, rxn=rxn_id, flux=rxn_flux(rxn))
                 else:
-                    metabolite_graph.add_edge(met.id, rxn_id, rxn=rxn_id, flux=rxn.flux)
+                    metabolite_graph.add_edge(met.id, rxn_id, rxn=rxn_id, flux=rxn_flux(rxn))
                 met_positions.append(metabolite_graph.nodes[met.id]["pos"])
         metabolite_graph.nodes[rxn_id]["pos"] = np.array(met_positions).mean(axis=0)
 
@@ -109,7 +112,7 @@ def plot_pathway(model, metabolite_graph, reaction_list, ax=None):
     return ax
 
 
-def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxes", include_zeros=True, top_N=None):
+def plot_metabolite_fluxes(model, metabolite_id, ax=None, sol=None, label_reactions="fluxes", include_zeros=True, top_N=None):
     if ax is None:
         _, ax = plt.subplots()
 
@@ -130,7 +133,7 @@ def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxe
     input_metabolites = []
     output_metabolites = []
     for reaction in reactions:
-        flux = reaction.flux
+        flux = reaction.flux if sol is None else sol.fluxes[reaction.id]
 
         if not include_zeros and flux == 0:
             continue
@@ -141,11 +144,11 @@ def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxe
         rxn_id = next(node_id)
         g.add_node(rxn_id,
                    reaction=True,
-                   label=f"{reaction.flux:.2g}" if label_reactions == "fluxes" else reaction.id,
+                   label=f"{flux:.2g}" if label_reactions == "fluxes" else reaction.id,
                    name=reaction.id)
 
         if producing:
-            g.add_edge(rxn_id, id_0, flux = reaction.flux)
+            g.add_edge(rxn_id, id_0, flux = flux)
             for met, coeff in reaction.metabolites.items():
                 # Skip central metabolite and anything else produced
                 if met == metabolite or flux * coeff > 0:
@@ -153,10 +156,10 @@ def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxe
                 met_id = next(node_id)
                 input_metabolites.append(met_id)
                 g.add_node(met_id, label=met.id, align="right")
-                g.add_edge(met_id, rxn_id, flux = reaction.flux)
+                g.add_edge(met_id, rxn_id, flux = flux)
 
         else:
-            g.add_edge(id_0, rxn_id, flux = reaction.flux)
+            g.add_edge(id_0, rxn_id, flux = flux)
             for met, coeff in reaction.metabolites.items():
                 # Skip central metabolite and anything else consumed
                 if met == metabolite or flux * coeff < 0:
@@ -164,7 +167,7 @@ def plot_metabolite_fluxes(model, metabolite_id, ax=None, label_reactions="fluxe
                 met_id = next(node_id)
                 output_metabolites.append(met_id)
                 g.add_node(met_id, label=met.id, align="left")
-                g.add_edge(rxn_id, met_id, flux = reaction.flux)
+                g.add_edge(rxn_id, met_id, flux = flux)
 
     # Position metabolite nodes
     n_inputs = len(input_metabolites)

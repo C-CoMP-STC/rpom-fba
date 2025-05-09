@@ -287,5 +287,14 @@
         "upper_bound": 0.0,
         "metabolites": "ASN[e] -->",
         "gene_reaction_rule": ""
+    },
+    {
+        "id": "EX_VAL",
+        "name": "Valine exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 0.0,
+        "metabolites": "VAL[e] -->",
+        "gene_reaction_rule": ""
     }
 ]
