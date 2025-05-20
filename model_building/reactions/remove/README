@@ -41,6 +41,34 @@ other genes in the pathway are present in both DBs. Running blastp on the E coli
 Reverse blastp on SPO3230 finds E. coli's ydcR as top result (E=4e-36) with avtA as result #4 (E=1e-12).
 Alignment of AlphaFold structures shows some homology, but not great RMSD.
 
+RXN-22218
+
+Removed while fixing an issue where the ethylmalonyl-CoA pathway was not running when expected.
+My notes from that expedition:
+
+RXN-6383 is the other newly added reaction that, when knocked out, turns on the ethylmalonyl-CoA pathway.
+It sits in the acrylate degradation (II) pathway downstream of DMSP cleavage, where it probably buffers acryloyl-CoA 
+(by conversion to 3-hydroxy-propionyl-CoA) to prevent buildup of this toxic compound. Reisch et al. (2013) show that
+the fate of 3-hydroxy-propionyl-CoA is to be converted back into acryloyl-CoA, which is then converted to propionyl-CoA.
+That probably rules out any other reactions consuming 3-hydroxy-propionyl-CoA, but not reactions producing it.
+ 
+In short, RXN-6383 is almost certainly actually in the organism. RXN-22218 may not be,
+but I've yet to find evidence ruling it out (the above unfortunately falls short).
+
+To summarize, the ethylmalonyl-CoA pathway is turned off when growing on acetate because:
+1. Acetate is converted to acetyl-CoA, presumably(?) through the usual acetate-CoA ligase.
+2. Acetyl-CoA is converted to 3-oxopropanoyl-CoA through:
+   - acetaldehyde dehydrogenase: Acetyl-CoA -> acetaldehyde
+   - methylthioacryloyl-CoA hydratase (dmdD): Acetaldehyde -> MALONATE-S-ALD (3-oxopropanoate) -> CPD-17259 (3-oxopropanoyl-CoA)
+       - ****This is part of the DMSP demethylation pathway running in reverse!****
+         I'm not actually sure if this is possible - let's look into the reversibility of these reactions
+3. 3-oxopropanoyl-CoA is converted to 3-hydroxypropanoyl-CoA through RXN-22218, which 
+   is a biocyc ETL reaction that is not in the original model. It is catalyzed by acetoacetyl-CoA reductase (phbB)
+   which is a known enzyme in the ethylmalonyl-CoA pathway, where it catalyzes the conversion of acetoacetyl-CoA to 3-hydroxybutanoyl-CoA.
+   **I'm uncertain whether this alternative substrate can actually be processed by phbB.**
+4. 3-hydroxypropanoyl-CoA is converted to acrylyl-CoA through RXN-6383, which is also a biocyc ETL reaction that is not in the original model.
+   However, it is in the acrylate degradation (II) pathway, which is a known pathway in the organism, so it is probably correct.
+
 tca.json ==========================================================================================
  
 Removed RXN-14047 because it's the net of two reactions catalyzed by the same enzyme

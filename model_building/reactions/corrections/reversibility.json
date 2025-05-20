@@ -1,0 +1,45 @@
+[
+    "Ethylmalonyl-CoA pathway ====================",
+    {
+        "id": "RXN-5901",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    "Valine degradation ==========================",
+    {
+        "id": "BRANCHED-CHAINAMINOTRANSFERVAL-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    "DMSP degradation reactions ==================",
+    {
+        "id": "RXN-12571",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-12572",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-16010",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-16011",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-16012",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-16013",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    }
+]
