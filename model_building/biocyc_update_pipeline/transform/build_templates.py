@@ -50,8 +50,7 @@ def get_gene_reaction_rule(reaction_data, proteins):
                 genes = [gene["Gene"]
                          for gene in wrap(component.get("gene", []))]
                 gene_ids = [gene["@frameid"] for gene in genes]
-                assert len(genes) <= 1, f"Expected <= 1 gene per polypeptide, got {
-                    len(genes)}"
+                assert len(genes) <= 1, f"Expected <= 1 gene per polypeptide, got {len(genes)}"
 
                 # Extend the sub-rule with the gene frameid
                 sub_rule.extend(gene_ids)
@@ -166,7 +165,7 @@ def get_stoichiometry(reaction_data):
                             int(compound["coefficient"]["#text"])
                     else:
                         # coefficient is a string, like "n" or "n-1"
-                        coefficient = f"{'-' if sign == -1 else '+'}{compound["coefficient"]["#text"]}"
+                        coefficient = f"{'-' if sign == -1 else '+'}{compound['coefficient']['#text']}"
 
             # Store coefficient
             if isinstance(coefficient, int):
@@ -677,11 +676,10 @@ def main():
     if not os.path.exists(OUT):
         pd.DataFrame().to_excel(OUT)
 
-    # Write in append mode
+    # Write in overwrite mode
     with pd.ExcelWriter(
             OUT,
-            mode="a",
-            if_sheet_exists="overlay") as writer:
+            mode="w") as writer:
         existing_reactions_template.to_excel(writer,
                                              index=False,
                                              sheet_name="Existing reactions")
