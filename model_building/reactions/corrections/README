@@ -1,0 +1,37 @@
+Initially tried to make the DMSP degradation pathway irreversible, but ran into errrors because
+it turns out that running some of these reactions in reverse is NECESSARY for growth
+IN THE MODEL BEFORE ADDING BIOCYC UPDATES. This behavior seems unrealistic, but then again,
+we can't expect never to be surprised.
+
+Seeing as, in the end, I'm not 100% sure that these are irreversible, I'm leaving them as-is for now.
+
+{
+    "id": "RXN-12571",
+    "lower_bound": 0.0,
+    "upper_bound": 1000.0
+},
+{
+    "id": "RXN-12572",
+    "lower_bound": 0.0,
+    "upper_bound": 1000.0
+},
+{
+    "id": "RXN-16010",
+    "lower_bound": 0.0,
+    "upper_bound": 1000.0
+},
+{
+    "id": "RXN-16011",
+    "lower_bound": 0.0,
+    "upper_bound": 1000.0
+},
+{
+    "id": "RXN-16012",
+    "lower_bound": 0.0,
+    "upper_bound": 1000.0
+},
+{
+    "id": "RXN-16013",
+    "lower_bound": 0.0,
+    "upper_bound": 1000.0
+}
