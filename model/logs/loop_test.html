@@ -1,0 +1,262 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 600px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "1.5.1.15-RXN", "label": "1.5.1.15-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "METHYLENETHFDEHYDROG-NADP-RXN", "label": "METHYLENETHFDEHYDROG-NADP-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "1.5.1.9-RXN", "label": "1.5.1.9-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "L-LYSINE-AMINOTRANSFERASE-RXN", "label": "L-LYSINE-AMINOTRANSFERASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "3-HYDROXBUTYRYL-COA-DEHYDRATASE-RXN", "label": "3-HYDROXBUTYRYL-COA-DEHYDRATASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-11667", "label": "RXN-11667", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "3-ISOPROPYLMALISOM-RXN", "label": "3-ISOPROPYLMALISOM-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-13163", "label": "RXN-13163", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-8991", "label": "RXN-8991", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "5.4.2.10-RXN", "label": "5.4.2.10-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "5.4.2.10-RXN-CPD-13469//GLUCOSAMINE-1P.26.", "label": "5.4.2.10-RXN-CPD-13469//GLUCOSAMINE-1P.26.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "L-GLN-FRUCT-6-P-AMINOTRANS-RXN", "label": "L-GLN-FRUCT-6-P-AMINOTRANS-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ACETALD-DEHYDROG-RXN", "label": "ACETALD-DEHYDROG-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-2902", "label": "RXN-2902", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ALDOSE-1-EPIMERASE-RXN", "label": "ALDOSE-1-EPIMERASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "GLUCISOM-RXN-ALPHA-GLUCOSE//CPD-15382.25.", "label": "GLUCISOM-RXN-ALPHA-GLUCOSE//CPD-15382.25.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "GLUCISOM-RXN-GLC//CPD-15382.15.", "label": "GLUCISOM-RXN-GLC//CPD-15382.15.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ASPARTASE-RXN", "label": "ASPARTASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "FUMHYDR-RXN", "label": "FUMHYDR-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "MALATE-DEH-RXN", "label": "MALATE-DEH-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "CARBAMATE-KINASE-RXN", "label": "CARBAMATE-KINASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-14196", "label": "RXN-14196", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN0-5222", "label": "RXN0-5222", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "CARBODEHYDRAT-RXN", "label": "CARBODEHYDRAT-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-18031", "label": "RXN-18031", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "DMSPtex", "label": "DMSPtex", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "SS-DIMETHYL-BETA-PROPIOTHETINtex", "label": "SS-DIMETHYL-BETA-PROPIOTHETINtex", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "GLUTACONYL-COA-DECARBOXYLASE-RXN", "label": "GLUTACONYL-COA-DECARBOXYLASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "GLUTARYL-COA-DEHYDROG-RXN", "label": "GLUTARYL-COA-DEHYDROG-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "GLUTARYL-COA-DEHYDROGENASE-RXN", "label": "GLUTARYL-COA-DEHYDROGENASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "GLYCERATE-DEHYDROGENASE-RXN", "label": "GLYCERATE-DEHYDROGENASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN0-300", "label": "RXN0-300", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "GLYCtex", "label": "GLYCtex", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "GLYCEROLtex", "label": "GLYCEROLtex", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ISETHIONATEtex", "label": "ISETHIONATEtex", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "CPD-3745tex", "label": "CPD-3745tex", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ISOCITDEH-RXN", "label": "ISOCITDEH-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-8642", "label": "RXN-8642", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9951", "label": "RXN-9951", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "KETOACYLCOATHIOL-RXN-CPD-196/ACETYL-COA//CPD0-2123/CO-A.35.", "label": "KETOACYLCOATHIOL-RXN-CPD-196/ACETYL-COA//CPD0-2123/CO-A.35.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-13617", "label": "RXN-13617", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "OHACYL-COA-DEHYDROG-RXN-POLYMER-INST-L-3-HYDROXYACYL-COA-C14-H28/NAD//CPD-10260/NADH/PROTON.68.", "label": "OHACYL-COA-DEHYDROG-RXN-POLYMER-INST-L-3-HYDROXYACYL-COA-C14-H28/NAD//CPD-10260/NADH/PROTON.68.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "OHBUTYRYL-COA-EPIM-RXN-CPD-10261//POLYMER-INST-L-3-HYDROXYACYL-COA-C14-H28.52.", "label": "OHBUTYRYL-COA-EPIM-RXN-CPD-10261//POLYMER-INST-L-3-HYDROXYACYL-COA-C14-H28.52.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9544", "label": "RXN-9544", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "PPENTOMUT-RXN-RIBOSE-1P//CPD-15895.21.", "label": "PPENTOMUT-RXN-RIBOSE-1P//CPD-15895.21.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RIB5PISOM-RXN-CPD-15895//RIBULOSE-5P.23.", "label": "RIB5PISOM-RXN-CPD-15895//RIBULOSE-5P.23.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-11209", "label": "RXN-11209", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9530", "label": "RXN-9530", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9660", "label": "RXN-9660", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN0-6565", "label": "RXN0-6565", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-11811", "label": "RXN-11811", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-20084", "label": "RXN-20084", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-12444", "label": "RXN-12444", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9510", "label": "RXN-9510", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-12573", "label": "RXN-12573", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-16010", "label": "RXN-16010", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-16011", "label": "RXN-16011", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-16012", "label": "RXN-16012", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-13482", "label": "RXN-13482", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ORNCARBAMTRANSFER-RXN", "label": "ORNCARBAMTRANSFER-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-14256", "label": "RXN-14256", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-14257", "label": "RXN-14257", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-8769", "label": "RXN-8769", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-161", "label": "RXN-161", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ENZRXN-201-RXN", "label": "ENZRXN-201-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-7968-SHIKIMATE/NAD//3-DEHYDRO-SHIKIMATE/NADH/PROTON.47.", "label": "RXN-7968-SHIKIMATE/NAD//3-DEHYDRO-SHIKIMATE/NADH/PROTON.47.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "SHIKIMATE-5-DEHYDROGENASE-RXN", "label": "SHIKIMATE-5-DEHYDROGENASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9515", "label": "RXN-9515", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9657", "label": "RXN-9657", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9516", "label": "RXN-9516", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9648", "label": "RXN-9648", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9521", "label": "RXN-9521", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9658", "label": "RXN-9658", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9523", "label": "RXN-9523", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9650", "label": "RXN-9650", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9526", "label": "RXN-9526", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9659", "label": "RXN-9659", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9527", "label": "RXN-9527", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9651", "label": "RXN-9651", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9531", "label": "RXN-9531", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9652", "label": "RXN-9652", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9534", "label": "RXN-9534", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9538", "label": "RXN-9538", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9661", "label": "RXN-9661", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9662", "label": "RXN-9662", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9535", "label": "RXN-9535", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9653", "label": "RXN-9653", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9539", "label": "RXN-9539", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9654", "label": "RXN-9654", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9542", "label": "RXN-9542", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9663", "label": "RXN-9663", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9632", "label": "RXN-9632", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN3O-1803", "label": "RXN3O-1803", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-9635", "label": "RXN-9635", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN3O-5293", "label": "RXN3O-5293", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN0-2381", "label": "RXN0-2381", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN0-2382", "label": "RXN0-2382", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "TRYPSYN-RXN", "label": "TRYPSYN-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN0-5398-CPD-15318/URACIL//PSEUDOURIDINE-5-P/WATER.42.", "label": "RXN0-5398-CPD-15318/URACIL//PSEUDOURIDINE-5-P/WATER.42.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN0-5398-CPD-16551/URACIL//PSEUDOURIDINE-5-P/WATER.42.", "label": "RXN0-5398-CPD-16551/URACIL//PSEUDOURIDINE-5-P/WATER.42.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "SERINE--GLYOXYLATE-AMINOTRANSFERASE-RXN", "label": "SERINE--GLYOXYLATE-AMINOTRANSFERASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "SERINE-GLYOXYLATE-AMINOTRANSFERASE-RXN", "label": "SERINE-GLYOXYLATE-AMINOTRANSFERASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "SUCCINATE-SEMIALDEHYDE-DEHYDROGENASE-RXN", "label": "SUCCINATE-SEMIALDEHYDE-DEHYDROGENASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "SUCCSEMIALDDEHYDROG-RXN", "label": "SUCCSEMIALDDEHYDROG-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "TSA-REDUCT-RXN-GLYCERATE/NAD//TARTRONATE-S-ALD/NADH/PROTON.44.", "label": "TSA-REDUCT-RXN-GLYCERATE/NAD//TARTRONATE-S-ALD/NADH/PROTON.44.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "TSA-REDUCT-RXN-GLYCERATE/NADP//TARTRONATE-S-ALD/NADPH/PROTON.46.", "label": "TSA-REDUCT-RXN-GLYCERATE/NADP//TARTRONATE-S-ALD/NADPH/PROTON.46.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "TYROSINE-AMINOTRANSFERASE-RXN", "label": "TYROSINE-AMINOTRANSFERASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-15200", "label": "RXN-15200", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "UREASE-RXN", "label": "UREASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "UREIDOGLYCOLATE-HYDROLASE-RXN", "label": "UREIDOGLYCOLATE-HYDROLASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "UREIDOGLYCOLATE-LYASE-RXN", "label": "UREIDOGLYCOLATE-LYASE-RXN", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RXN-11738", "label": "RXN-11738", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "R230-RXN", "label": "R230-RXN", "shape": "dot", "size": 10}]);
+                  edges = new vis.DataSet([{"from": "1.5.1.15-RXN", "to": "METHYLENETHFDEHYDROG-NADP-RXN", "width": 1}, {"from": "1.5.1.9-RXN", "to": "L-LYSINE-AMINOTRANSFERASE-RXN", "width": 1}, {"from": "3-HYDROXBUTYRYL-COA-DEHYDRATASE-RXN", "to": "RXN-11667", "width": 1}, {"from": "3-ISOPROPYLMALISOM-RXN", "to": "RXN-13163", "width": 1}, {"from": "3-ISOPROPYLMALISOM-RXN", "to": "RXN-8991", "width": 1}, {"from": "RXN-13163", "to": "RXN-8991", "width": 1}, {"from": "5.4.2.10-RXN", "to": "5.4.2.10-RXN-CPD-13469//GLUCOSAMINE-1P.26.", "width": 1}, {"from": "5.4.2.10-RXN", "to": "L-GLN-FRUCT-6-P-AMINOTRANS-RXN", "width": 1}, {"from": "ACETALD-DEHYDROG-RXN", "to": "RXN-2902", "width": 1}, {"from": "ALDOSE-1-EPIMERASE-RXN", "to": "GLUCISOM-RXN-ALPHA-GLUCOSE//CPD-15382.25.", "width": 1}, {"from": "ALDOSE-1-EPIMERASE-RXN", "to": "GLUCISOM-RXN-GLC//CPD-15382.15.", "width": 1}, {"from": "GLUCISOM-RXN-ALPHA-GLUCOSE//CPD-15382.25.", "to": "GLUCISOM-RXN-GLC//CPD-15382.15.", "width": 1}, {"from": "ASPARTASE-RXN", "to": "FUMHYDR-RXN", "width": 1}, {"from": "FUMHYDR-RXN", "to": "MALATE-DEH-RXN", "width": 1}, {"from": "CARBAMATE-KINASE-RXN", "to": "RXN-14196", "width": 1}, {"from": "CARBAMATE-KINASE-RXN", "to": "RXN0-5222", "width": 1}, {"from": "RXN-14196", "to": "RXN0-5222", "width": 1}, {"from": "CARBODEHYDRAT-RXN", "to": "RXN-18031", "width": 1}, {"from": "DMSPtex", "to": "SS-DIMETHYL-BETA-PROPIOTHETINtex", "width": 1}, {"from": "GLUTACONYL-COA-DECARBOXYLASE-RXN", "to": "GLUTARYL-COA-DEHYDROG-RXN", "width": 1}, {"from": "GLUTACONYL-COA-DECARBOXYLASE-RXN", "to": "GLUTARYL-COA-DEHYDROGENASE-RXN", "width": 1}, {"from": "GLUTARYL-COA-DEHYDROG-RXN", "to": "GLUTARYL-COA-DEHYDROGENASE-RXN", "width": 1}, {"from": "GLYCERATE-DEHYDROGENASE-RXN", "to": "RXN0-300", "width": 1}, {"from": "GLYCtex", "to": "GLYCEROLtex", "width": 1}, {"from": "ISETHIONATEtex", "to": "CPD-3745tex", "width": 1}, {"from": "ISOCITDEH-RXN", "to": "RXN-8642", "width": 1}, {"from": "ISOCITDEH-RXN", "to": "RXN-9951", "width": 1}, {"from": "RXN-8642", "to": "RXN-9951", "width": 1}, {"from": "KETOACYLCOATHIOL-RXN-CPD-196/ACETYL-COA//CPD0-2123/CO-A.35.", "to": "RXN-13617", "width": 1}, {"from": "OHACYL-COA-DEHYDROG-RXN-POLYMER-INST-L-3-HYDROXYACYL-COA-C14-H28/NAD//CPD-10260/NADH/PROTON.68.", "to": "OHBUTYRYL-COA-EPIM-RXN-CPD-10261//POLYMER-INST-L-3-HYDROXYACYL-COA-C14-H28.52.", "width": 1}, {"from": "OHACYL-COA-DEHYDROG-RXN-POLYMER-INST-L-3-HYDROXYACYL-COA-C14-H28/NAD//CPD-10260/NADH/PROTON.68.", "to": "RXN-9544", "width": 1}, {"from": "OHBUTYRYL-COA-EPIM-RXN-CPD-10261//POLYMER-INST-L-3-HYDROXYACYL-COA-C14-H28.52.", "to": "RXN-9544", "width": 1}, {"from": "PPENTOMUT-RXN-RIBOSE-1P//CPD-15895.21.", "to": "RIB5PISOM-RXN-CPD-15895//RIBULOSE-5P.23.", "width": 1}, {"from": "RXN-11209", "to": "RXN-9530", "width": 1}, {"from": "RXN-11209", "to": "RXN-9660", "width": 1}, {"from": "RXN-11209", "to": "RXN0-6565", "width": 1}, {"from": "RXN-9530", "to": "RXN-9660", "width": 1}, {"from": "RXN-9530", "to": "RXN0-6565", "width": 1}, {"from": "RXN-9660", "to": "RXN0-6565", "width": 1}, {"from": "RXN-11811", "to": "RXN-20084", "width": 1}, {"from": "RXN-12444", "to": "RXN-9510", "width": 1}, {"from": "RXN-12573", "to": "RXN-16010", "width": 1}, {"from": "RXN-12573", "to": "RXN-16011", "width": 1}, {"from": "RXN-12573", "to": "RXN-16012", "width": 1}, {"from": "RXN-16010", "to": "RXN-16011", "width": 1}, {"from": "RXN-16010", "to": "RXN-16012", "width": 1}, {"from": "RXN-16011", "to": "RXN-16012", "width": 1}, {"from": "RXN-13482", "to": "ORNCARBAMTRANSFER-RXN", "width": 1}, {"from": "RXN-14256", "to": "RXN-14257", "width": 1}, {"from": "RXN-14256", "to": "RXN-8769", "width": 1}, {"from": "RXN-14257", "to": "RXN-8769", "width": 1}, {"from": "RXN-161", "to": "ENZRXN-201-RXN", "width": 1}, {"from": "RXN-7968-SHIKIMATE/NAD//3-DEHYDRO-SHIKIMATE/NADH/PROTON.47.", "to": "SHIKIMATE-5-DEHYDROGENASE-RXN", "width": 1}, {"from": "RXN-9515", "to": "RXN-9657", "width": 1}, {"from": "RXN-9516", "to": "RXN-9648", "width": 1}, {"from": "RXN-9521", "to": "RXN-9658", "width": 1}, {"from": "RXN-9523", "to": "RXN-9650", "width": 1}, {"from": "RXN-9526", "to": "RXN-9659", "width": 1}, {"from": "RXN-9527", "to": "RXN-9651", "width": 1}, {"from": "RXN-9531", "to": "RXN-9652", "width": 1}, {"from": "RXN-9534", "to": "RXN-9538", "width": 1}, {"from": "RXN-9534", "to": "RXN-9661", "width": 1}, {"from": "RXN-9534", "to": "RXN-9662", "width": 1}, {"from": "RXN-9538", "to": "RXN-9661", "width": 1}, {"from": "RXN-9538", "to": "RXN-9662", "width": 1}, {"from": "RXN-9661", "to": "RXN-9662", "width": 1}, {"from": "RXN-9535", "to": "RXN-9653", "width": 1}, {"from": "RXN-9539", "to": "RXN-9654", "width": 1}, {"from": "RXN-9542", "to": "RXN-9663", "width": 1}, {"from": "RXN-9632", "to": "RXN3O-1803", "width": 1}, {"from": "RXN-9635", "to": "RXN3O-5293", "width": 1}, {"from": "RXN0-2381", "to": "RXN0-2382", "width": 1}, {"from": "RXN0-2381", "to": "TRYPSYN-RXN", "width": 1}, {"from": "RXN0-2382", "to": "TRYPSYN-RXN", "width": 1}, {"from": "RXN0-5398-CPD-15318/URACIL//PSEUDOURIDINE-5-P/WATER.42.", "to": "RXN0-5398-CPD-16551/URACIL//PSEUDOURIDINE-5-P/WATER.42.", "width": 1}, {"from": "SERINE--GLYOXYLATE-AMINOTRANSFERASE-RXN", "to": "SERINE-GLYOXYLATE-AMINOTRANSFERASE-RXN", "width": 1}, {"from": "SUCCINATE-SEMIALDEHYDE-DEHYDROGENASE-RXN", "to": "SUCCSEMIALDDEHYDROG-RXN", "width": 1}, {"from": "TSA-REDUCT-RXN-GLYCERATE/NAD//TARTRONATE-S-ALD/NADH/PROTON.44.", "to": "TSA-REDUCT-RXN-GLYCERATE/NADP//TARTRONATE-S-ALD/NADPH/PROTON.46.", "width": 1}, {"from": "TYROSINE-AMINOTRANSFERASE-RXN", "to": "RXN-15200", "width": 1}, {"from": "UREASE-RXN", "to": "UREIDOGLYCOLATE-HYDROLASE-RXN", "width": 1}, {"from": "UREASE-RXN", "to": "UREIDOGLYCOLATE-LYASE-RXN", "width": 1}, {"from": "UREIDOGLYCOLATE-HYDROLASE-RXN", "to": "UREIDOGLYCOLATE-LYASE-RXN", "width": 1}, {"from": "RXN-11738", "to": "R230-RXN", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

@@ -2,15 +2,19 @@ import abc
 import json
 import pickle
 import warnings
+import networkx as nx
 import pandas as pd
 from pathlib import Path
 
 import git
 from cobra.manipulation.delete import remove_genes
+from cobra.manipulation.validate import check_mass_balance
 from cobra.core.metabolite import Metabolite
 from cobra.core.model import Model
 from cobra.core.reaction import Reaction
 from cobra.io import read_sbml_model
+from macaw.main import dead_end_test, dilution_test, diphosphate_test, duplicate_test, loop_test
+from pyvis.network import Network
 
 from model_building.biomass import (add_ecoli_core_biomass_to_model,
                                     add_ecoli_full_biomass_to_model,
@@ -469,4 +473,106 @@ class BioCycUpdates(Stage):
         print(f"Removed {len(genes_to_remove)} genes.")
         print(f"Added {len(added_reactions)} reactions, {len(added_metabolites)} metabolites, and {len(genes_added)} genes.")
 
+        return model
+
+
+@register_stage
+class LogMACAW(Stage):
+    DEFAULT = {
+        "outdir": "model/logs/",
+        "substrates": ["EX_glc", "EX_ac"]
+    }
+
+    def process(self, model: Model, params: object) -> Model:
+        if params is None:
+            params = self.DEFAULT
+        elif isinstance(params, dict):
+            params = {**self.DEFAULT, **params}            
+        else:
+            raise ValueError(
+                "LogMACAW stage requires a dictionary with keys 'outdir' to store the logs, and 'substrates' to specify the substrate exchanges.")
+
+        # Create the directory if it doesn't exist
+        Path(params["outdir"]).mkdir(parents=True, exist_ok=True)
+
+        # Check mass balance
+        print("Checking mass balance...")
+        ignore = [
+            "PHB-SYNTHESIS",
+            "PHB-DEGRADATION",
+            "Rpom_hwa_biomass",
+            "DNA-RXN",
+            "RNA-RXN",
+            "PROTEIN-RXN",
+            "LIPID-RXN",
+            "MUREIN-RXN",
+            "COFACTOR-RXN",
+            "IONS-RXN",
+            "PHB-STORAGE-RXN"
+        ]
+        mass_balance = {
+            rxn: elems
+            for rxn, elems in check_mass_balance(model).items()
+            if (rxn not in model.boundary
+                and rxn.id not in ignore)}
+        mass_balance_df = []
+        for rxn, elems in mass_balance.items():
+            mass_balance_df.append({
+                "ID": rxn.id,
+                "reaction": rxn.reaction,
+                "mass_balance": elems})
+        mass_balance_df = pd.DataFrame(mass_balance_df)
+        mass_balance_df.to_csv(
+            Path(params["outdir"]) / "mass_balance.csv",
+            index=False)
+        print(f"Mass balance: {len(mass_balance_df)} reactions with mass balance issues.")
+
+        # Run MACAW tests
+        print("Running MACAW tests...")
+        print("Dead-end test...")
+        with model:
+            for exchange in model.exchanges:
+                exchange.bounds = (-100, 1000)
+            reaction_df, edgelist = dead_end_test(model, verbose=0)
+            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
+            reaction_df.to_csv(
+                Path(params["outdir"]) / "dead_end_test.csv",
+                index=False)
+        
+        print("Running loop test...")
+        reaction_df, edgelist = loop_test(model, verbose=1)
+        reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
+        reaction_df.to_csv(
+            Path(params["outdir"]) / "loop_test.csv",
+            index=False)
+        
+        g = nx.from_edgelist(edgelist)
+        nt = Network()
+        nt.from_nx(g)
+        nt.show_buttons()
+        nt.show(str(Path(params["outdir"]) / "loop_test.html"), notebook=False)
+
+
+        # dead_end_mets = []
+        # for met in model.metabolites:
+        #     if len(met.reactions) == 0:
+        #         dead_end_mets.append(met)
+        #     elif len(met.reactions) == 1:
+        #         coeff = list(met.reactions)[0].metabolites[met]
+        #         l, u =  list(met.reactions)[0].bounds
+        #         if (coeff < 0 and l < 0) or (coeff > 0 and u > 0):
+        #             dead_end_mets.append(met)
+        # dead_end_mets
+                
+
+        # for substrate in params["substrates"]:
+        #     with model:
+        #         ex_substrate = model.reactions.get_by_id(substrate)
+        #         ex_substrate.lower_bound = -10
+        #         reaction_df, edgelist = dead_end_test(model, verbose=0)
+
+        #         reaction_df.to_csv(
+        #             Path(params["outdir"]) / f"{substrate}_dead_end_test.csv",
+        #             index=False)
+        
         return model
