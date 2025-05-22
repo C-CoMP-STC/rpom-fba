@@ -13,5 +13,6 @@
     "RemoveReactions": [
         "model_building/reactions/remove/*.json"
     ],
-    "MaintenanceFlux": 0
+    "MaintenanceFlux": 0,
+    "LogMACAW": null
 }
