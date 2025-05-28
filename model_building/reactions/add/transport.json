@@ -18,7 +18,7 @@
         "id": "CPD0-1265tpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "CPD0-1265[p]" : -1.0,
@@ -77,7 +77,7 @@
         "id": "CARNITINEtpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "CARNITINE[p]" : -1.0,
@@ -164,7 +164,7 @@
         "id": "L-CYSTEATEtpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "L-CYSTEATE[p]" : -1.0,
@@ -360,7 +360,7 @@
         "id": "GLCtpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "GLC[p]" : -1.0,
@@ -389,7 +389,7 @@
         "id": "BETA-D-XYLOSEtpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "BETA-D-XYLOSE[p]" : -1.0,
@@ -420,7 +420,7 @@
         "id": "GLYCEROLtpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "GLYCEROL[p]" : -1.0,
@@ -451,7 +451,7 @@
         "id": "GLYCEROL-3Ptpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "GLYCEROL-3P[p]" : -1.0,
@@ -510,7 +510,7 @@
         "id": "N-ACETYL-D-GLUCOSAMINEtpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "N-ACETYL-D-GLUCOSAMINE[p]" : -1.0,
@@ -529,6 +529,7 @@
 
     "Spermidine, Cadaverine, and Putrescine transport ================================================================",
     "ABC transporter, assuming n=2",
+    "Spermidine tpp already exists as ABC-24-RXN",
     {
         "id": "SPERMIDINEtex",
         "name": "",
@@ -540,23 +541,6 @@
             "SPERMIDINE[p]" : 1.0
         },
         "gene_reaction_rule": ""
-    },
-    {
-        "id": "SPERMIDINEtpp",
-        "name": "",
-        "subsystem": "",
-        "lower_bound": -1000.0,
-        "upper_bound": 1000.0,
-        "metabolites": {
-            "SPERMIDINE[p]" : -1.0,
-            "SPERMIDINE[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
-        },
-        "gene_reaction_rule": "(SPO3466 and SPO3467 and SPO3468 and SPO3469)"
     },
     {
         "id": "CADAVERINEtex",
@@ -574,7 +558,7 @@
         "id": "CADAVERINEtpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "CADAVERINE[p]" : -1.0,
@@ -603,7 +587,7 @@
         "id": "PUTRESCINEtpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "PUTRESCINE[p]" : -1.0,
@@ -635,7 +619,7 @@
         "id": "TAURINEtpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "TAURINE[p]" : -1.0,
@@ -666,7 +650,7 @@
         "id": "THYMIDINEtpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "THYMIDINE[p]" : -1.0,
@@ -698,7 +682,7 @@
         "id": "TRIMETHYLAMINE-N-Otpp",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "TRIMETHYLAMINE-N-O[p]" : -1.0,
@@ -727,7 +711,7 @@
         "id": "ABC-13-RXN{{GLT}}",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": "GLT[p] + 2 ATP[c] + 2 WATER[c] --> GLT[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
         "gene_reaction_rule": "(SPO0519 and SPO0520 and SPO0521 and SPO0522)"
@@ -745,7 +729,7 @@
         "id": "ABC-12-RXN",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": "GLN[p] + 2 ATP[c] + 2 WATER[c] --> GLN[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
         "gene_reaction_rule": "(SPO0519 and SPO0520 and SPO0521 and SPO0522)"
@@ -763,7 +747,7 @@
         "id": "TRANS-RXN0-222",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": "L-ASPARTATE[p] + 2 ATP[c] + 2 WATER[c] --> L-ASPARTATE[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
         "gene_reaction_rule": "(SPO0519 and SPO0520 and SPO0521 and SPO0522)"
@@ -781,14 +765,14 @@
         "id": "RXN1RHL-12",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": "ASN[p] + 2 ATP[c] + 2 WATER[c] --> ASN[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
         "gene_reaction_rule": "(SPO0519 and SPO0520 and SPO0521 and SPO0522)"
     },
-    "Valine transport (guess) =================================================================",
-    "initial guess since biocyc isn't working right now",
-    "ABC transporter, assuming n=2",
+    "Valine transport =================================================================",
+    "inferred from branched-chain amino acid transporter in DSS-3 database",
+    "ABC transporter, assuming n=1",
     {
         "id": "VALtex",
         "name": "",
@@ -802,19 +786,19 @@
         "gene_reaction_rule": ""
     },
     {
-        "id": "VALtpp",
+        "id": "RXN1RHL-12",
         "name": "",
         "subsystem": "",
-        "lower_bound": -1000.0,
+        "lower_bound": 0.0,
         "upper_bound": 1000.0,
         "metabolites": {
             "VAL[p]" : -1.0,
             "VAL[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": ""
     }
