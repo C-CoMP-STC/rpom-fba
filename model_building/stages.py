@@ -217,7 +217,9 @@ class RemoveReactions(Stage):
                     reactions_to_remove += json.load(f)
 
         # Remove reactions
-        model.remove_reactions(reactions_to_remove)
+        print(f"Before removing reactions: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites, {len(model.genes)} genes.")
+        model.remove_reactions(reactions_to_remove, remove_orphans = True)
+        print(f"After removing reactions: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites, {len(model.genes)} genes.")
 
         return model
 
@@ -469,9 +471,10 @@ class BioCycUpdates(Stage):
             gene.annotation["replicon"] = new_genes_row["Replicon"] if not pd.isna(new_genes_row["Replicon"]) else None
         
         print(f"Before updates, had {initial_reactions} reactions, {initial_metabolites} metabolites, and {initial_genes} genes.")
-        print(f"Removed {len(removed_reactions)} reactions.")
-        print(f"Removed {len(genes_to_remove)} genes.")
-        print(f"Added {len(added_reactions)} reactions, {len(added_metabolites)} metabolites, and {len(genes_added)} genes.")
+        print(f"- Removed {len(removed_reactions)} reactions.")
+        print(f"- Removed {len(genes_to_remove)} genes.")
+        print(f"+ Added {len(added_reactions)} reactions, {len(added_metabolites)} metabolites, and {len(genes_added)} genes.")
+        print(f"After updates, have {len(model.reactions)} reactions, {len(model.metabolites)} metabolites, and {len(model.genes)} genes.")
 
         return model
 
