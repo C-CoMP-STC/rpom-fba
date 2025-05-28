@@ -6,5 +6,23 @@
 
     "GCVP-RXN",
     "GCVT-RXN",
-    "RXN-8629"
+    "RXN-8629",
+
+    "TRYPSYN-RXN",
+
+    "RXN-9951",
+    "RXN-8642",
+    
+    "RXN-16010",
+    "RXN-16011",
+    "RXN-16012",
+
+    "3-ISOPROPYLMALISOM-RXN",
+    "RXN-8991",
+
+    "RXN-14257",
+    "RXN-14256",
+
+    "GLUTARYL-COA-DEHYDROG-RXN",
+    "GLUTACONYL-COA-DECARBOXYLASE-RXN"
 ]
