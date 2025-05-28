@@ -1,3 +1,8 @@
+bad annotation.json ===============================================================================
+
+Removed:
+    UREIDOGLYCOLATE-HYDROLASE-RXN
+
 electron transport chain.json =====================================================================
 
 Removed so as to use ubiquinone 10 only:
@@ -24,9 +29,37 @@ Removed as sub-reactions of GCVMULTI-RXN:
     "GCVT-RXN",
     "RXN-8629"
 
+Removed TRYPSYN-RXN as net of RXN0-2382 + RXN0-2381
+    (Sub-units of the tryptophan synthase complex, but each capable of catalyzing the sub-reaction
+    independently)
+
+Removed as sub-reactions of ISOCITDEH-RXN:
+    RXN-9951
+    RXN-8642
+
+Removed as sub-reactions of RXN-12573
+    RXN-16010
+    RXN-16011
+    RXN-16012
+
+Removed as sub-reactions of RXN-13163
+    3-ISOPROPYLMALISOM-RXN
+    RXN-8991
+
+Removed as sub-reactions of RXN-8769
+    RXN-14257
+    RXN-14256
+
+Removed as sub-reactions of GLUTARYL-COA-DEHYDROGENASE-RXN
+    GLUTARYL-COA-DEHYDROG-RXN
+    GLUTACONYL-COA-DECARBOXYLASE-RXN
+
 rename.json =======================================================================================
 
 Removed to rename to PYRUVDEH-RXN: PDH
+Removed to rename to CPD-3745tex: ISETHIONATEtex
+Removed to rename to GLYCEROLtex: GLYCtex
+Removed to rename to SS-DIMETHYL-BETA-PROPIOTHETINtex: DMSPtex
 
 gap_filled.json ===================================================================================
 
@@ -69,6 +102,9 @@ To summarize, the ethylmalonyl-CoA pathway is turned off when growing on acetate
 4. 3-hydroxypropanoyl-CoA is converted to acrylyl-CoA through RXN-6383, which is also a biocyc ETL reaction that is not in the original model.
    However, it is in the acrylate degradation (II) pathway, which is a known pathway in the organism, so it is probably correct.
 
+CARBAMATE-KINASE-RXN - Not present in either database or Moran lab genome
+
+
 tca.json ==========================================================================================
  
 Removed RXN-14047 because it's the net of two reactions catalyzed by the same enzyme
@@ -77,3 +113,21 @@ Removed RXN-14047 because it's the net of two reactions catalyzed by the same en
 glycolysis.json ===================================================================================
 
 Removed RXN-15513 as a duplicate of 3PGAREARR-RXN catalyzed by the same enzyme.
+
+duplicate.json ====================================================================================
+
+Removed SERINE-GLYOXYLATE-AMINOTRANSFERASE-RXN as a duplicate
+of SERINE--GLYOXYLATE-AMINOTRANSFERASE-RXN.
+
+specification.json ================================================================================
+
+Removed RXN-9544 as a specification of a generic reaction catalyzed by phbB.
+When included, allows for a loop with FAO-PWY reactions
+    OHACYL-COA-DEHYDROG-RXN-POLYMER-INST-L-3-HYDROXYACYL-COA-C14-H28/NAD//CPD-10260/NADH/PROTON.68.
+    and OHBUTYRYL-COA-EPIM-RXN-CPD-10261//POLYMER-INST-L-3-HYDROXYACYL-COA-C14-H28.52.
+
+Removed reactions of D-GLUCOSAMINE-6-P[c], which is a class whose one instance is CPD-13469[c],
+in favor of the specialized versions:
+    5.4.2.10-RXN
+    L-GLN-FRUCT-6-P-AMINOTRANS-RXN
+    NAG6PDEACET-RXN

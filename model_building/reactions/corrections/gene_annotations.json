@@ -10,5 +10,24 @@
     {
         "id": "GLUTAMATE-DEHYDROGENASE-RXN",
         "gene_reaction_rule": "SPO1743"
+    },
+    "Tryptophan synthase ========================================================================",
+    {
+        "id": "RXN0-2381",
+        "gene_reaction_rule": "SPO0815"
+    },
+    {
+        "id": "TRYPSYN-RXN",
+        "gene_reaction_rule": "SPO0808"
+    },
+    "3-isopropylmalate dehydratase (leucine biosynthesis) =======================================",
+    {
+        "id": "RXN-13163",
+        "gene_reaction_rule": "(SPO1476 and SPO0216 and SPO1477) or (SPO1477 and SPO0215)"
+    },
+    "Ureidoglycolate lyase =====================================================================",
+    {
+        "id": "UREIDOGLYCOLATE-LYASE-RXN",
+        "gene_reaction_rule": "SPO0873"
     }
 ]

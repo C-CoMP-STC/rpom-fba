@@ -8,4 +8,18 @@ SPO0340, lpdA
 # DMSP cleavage
 SPO0147, acuH
 
-# 
+# Tryptophan synthase
+SPO0815, trpA
+SPO0808, trpB
+
+# 3-isopropylmalate dehydratase
+SPO1476, leuC-2
+SPO1477, leuD-2
+SPO0215, LeuD-1
+SPO0216, leuC-1
+
+# cobyrinic acid a, c-diamide synthase
+SPO2872, cobB
+
+# ureidoglycolate lyase
+SPO0873, allA

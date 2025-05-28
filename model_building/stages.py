@@ -196,10 +196,6 @@ class AddReactions(Stage):
             if reaction["gene_reaction_rule"] != "":
                 rxn.annotation["Gene Source"] = "manual"
 
-            # reactions.append(rxn)
-
-        # Add all new reactions
-        # model.add_reactions(reactions)
 
         return model
 
@@ -245,6 +241,10 @@ class ModifyReactions(Stage):
         for reaction in reactions_to_change:
             # Allows the use of strings as comments:
             if not isinstance(reaction, dict):
+                continue
+
+            if reaction["id"] not in model.reactions:
+                warnings.warn(f"Reaction {reaction['id']} not found in model. Skipping modification.")
                 continue
 
             rxn = model.reactions.get_by_id(reaction["id"])

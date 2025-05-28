@@ -11,5 +11,35 @@
         "lower_bound": -1000.0,
         "upper_bound": 1000.0
     },
-    "DMSP degradation reactions =================="
+    "Fixing loops ================================",
+    {
+        "id": "RXN-2902",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "SUCCSEMIALDDEHYDROG-RXN",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-9653",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-9530",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id": "RXN-9538",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id": "RXN-9534",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    }
 ]
