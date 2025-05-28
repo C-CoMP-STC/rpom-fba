@@ -25,9 +25,14 @@
         "id": "RXN-13163",
         "gene_reaction_rule": "(SPO1476 and SPO0216 and SPO1477) or (SPO1477 and SPO0215)"
     },
-    "Ureidoglycolate lyase =====================================================================",
+    "Ureidoglycolate lyase ======================================================================",
     {
         "id": "UREIDOGLYCOLATE-LYASE-RXN",
         "gene_reaction_rule": "SPO0873"
+    },
+    "SPERMIDINE transporter =====================================================================",
+    {
+        "id": "ABC-24-RXN",
+        "gene_reaction_rule": "(SPO3466 and SPO3467 and SPO3468 and SPO3469)"
     }
 ]

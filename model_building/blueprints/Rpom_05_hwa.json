@@ -14,5 +14,6 @@
         "model_building/reactions/remove/*.json"
     ],
     "MaintenanceFlux": 0,
-    "LogMACAW": null
+    "LogMACAW": null,
+    "SanityChecks": null
 }

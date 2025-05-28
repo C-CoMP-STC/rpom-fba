@@ -540,17 +540,25 @@ class LogMACAW(Stage):
                 index=False)
         
         print("Running loop test...")
-        reaction_df, edgelist = loop_test(model, verbose=1)
-        reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
-        reaction_df.to_csv(
-            Path(params["outdir"]) / "loop_test.csv",
-            index=False)
-        
-        g = nx.from_edgelist(edgelist)
-        nt = Network()
-        nt.from_nx(g)
-        nt.show_buttons()
-        nt.show(str(Path(params["outdir"]) / "loop_test.html"), notebook=False)
+        test_finished = False
+        try:
+            reaction_df, edgelist = loop_test(model, verbose=1)
+            test_finished = True
+        except KeyboardInterrupt:
+            # Loop test takes a long time - building in a lazy escape hatch
+            print("Loop test interrupted. Skipping.")
+
+        if test_finished:
+            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
+            reaction_df.to_csv(
+                Path(params["outdir"]) / "loop_test.csv",
+                index=False)
+            
+            g = nx.from_edgelist(edgelist)
+            nt = Network()
+            nt.from_nx(g)
+            nt.show_buttons()
+            nt.show(str(Path(params["outdir"]) / "loop_test.html"), notebook=False)
 
 
         # dead_end_mets = []
@@ -575,4 +583,67 @@ class LogMACAW(Stage):
         #             Path(params["outdir"]) / f"{substrate}_dead_end_test.csv",
         #             index=False)
         
+        return model
+
+
+@register_stage
+class SanityChecks(Stage):
+    def process(self, model: Model, params: object) -> Model:
+        # Check growth rates on glucose, acetate
+        print("Running sanity checks...")
+        for substrate in ["EX_glc", "EX_ac"]:
+            with model:
+                ex_substrate = model.reactions.get_by_id(substrate)
+                ex_substrate.lower_bound = -10
+                growth_rate = model.optimize().objective_value
+                print(f"Growth rate on 10 mmol/gDCW/hr {substrate}: {growth_rate:.4f} h^-1")
+        
+        # Check that biomass, ATP cannot be generated without carbon
+        with model:
+            # Set all carbon sources to 0
+            for ex in model.exchanges:
+                if "C" in list(ex.metabolites)[0].formula:
+                    ex.lower_bound = 0
+                    ex.upper_bound = 0
+            
+            # Set maintenance flux to 0
+            atpm = model.reactions.get_by_id("ATPM")
+            atpm.bounds = (0, 0)
+            
+            # Check biomass production
+            with model:
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mBiomass production is possible without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
+                else:
+                    print(f"\033[92mBiomass production is not possible without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+
+            # Check ATP production
+            with model:
+                atp_sink = model.add_boundary(
+                    model.metabolites.get_by_id("ATP[c]"),
+                    type="sink",
+                    reaction_id="ATP-sink",
+                    lb= 0,
+                    ub= 1000,)
+                model.objective = atp_sink
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mATP production is possible without carbon sources!  (flux = {sol.objective_value:.2f})\033[0m")
+                else:
+                    print(f"\033[92mATP production is not possible without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+        
+            # Check ATPM
+            with model:
+                atpm.bounds = (0, 1000)
+                model.objective = atpm
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mATPM can sustain flux without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
+                    for rxn in sol.fluxes[sol.fluxes != 0].index:
+                        print(f"\t{rxn}: {sol.fluxes[rxn]:.2f}\n\t\t{model.reactions.get_by_id(rxn).reaction}")
+                else:
+                    print(f"\033[92mATPM cannot sustain flux without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+
+
         return model

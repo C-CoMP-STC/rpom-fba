@@ -28,8 +28,8 @@ class ModelFactory:
         model = None
         for stage, params in self.config.items():
             if verbose:
-                print(f"\nRunning stage {stage} ==================================")
-                print(f"Params: {params}\n")
+                print(f"\n\033[93mRunning stage {stage} ==================================\033[0m")
+                print(f"\033[36mParams: {params}\033[0m\n")
             model = STAGE_REGISTRY[stage]().process(model, params)
 
         # Save cleaned model

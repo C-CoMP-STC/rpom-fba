@@ -3,6 +3,24 @@ bad annotation.json ============================================================
 Removed:
     UREIDOGLYCOLATE-HYDROLASE-RXN
 
+    TRANS-RXN1G48-26-GLT/L-ASPARTATE//GLT/L-ASPARTATE.33.
+    TRANS-RXN1G48-7
+    TRANS-RXN1G48-13-VAL//VAL.9.
+    TRANS-RXN1G48-13-GLN//GLN.9.
+    TRANS-RXN1G48-13-GLT//GLT.9.
+    TRANS-RXN1G48-13-L-ASPARTATE//L-ASPARTATE.25.
+    TRANS-RXN1G48-13-ASN//ASN.9.
+    DMSPtpp
+        Not present in either database, enables ATPM flux on no carbon source
+    
+    TRANS-RXN1G48-20-SUC//SUC.9.
+    TRANS-RXN1RHL-21
+    TRANS-RXN1G48-20-FUM//FUM.9.
+    TRANS-RXN1G48-28-MAL//MAL.9.
+    TRANS-RXN-319
+    ISETHIONATEtpp
+        Present in DSS-3, but proton-gradient succinate transporter is confirmed experimentally
+
 electron transport chain.json =====================================================================
 
 Removed so as to use ubiquinone 10 only:
@@ -103,7 +121,7 @@ To summarize, the ethylmalonyl-CoA pathway is turned off when growing on acetate
    However, it is in the acrylate degradation (II) pathway, which is a known pathway in the organism, so it is probably correct.
 
 CARBAMATE-KINASE-RXN - Not present in either database or Moran lab genome
-
+RXNI-2 - Not present in either database
 
 tca.json ==========================================================================================
  

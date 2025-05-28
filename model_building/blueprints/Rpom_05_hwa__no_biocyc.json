@@ -12,5 +12,6 @@
     ],
     "ModifyReactions": ["model_building/reactions/corrections/*.json"],
     "AnnotateReactions": "model_building/reaction_annotations.pkl",
-    "MaintenanceFlux": 0
+    "MaintenanceFlux": 0,
+    "SanityChecks": null
 }
