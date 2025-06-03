@@ -41,5 +41,20 @@
         "id": "RXN-9534",
         "lower_bound": -1000.0,
         "upper_bound": 0.0
+    },
+    {
+        "id": "RXN-9515",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id": "RXN-9526",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id": "1.5.1.9-RXN",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
     }
 ]

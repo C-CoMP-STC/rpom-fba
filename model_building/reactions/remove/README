@@ -84,6 +84,7 @@ gap_filled.json ================================================================
 Removed for apparently erroneous gap-filling:
 
 VALINE-PYRUVATE-AMINOTRANSFER-RXN
+=================================
 Gap-filled for alanine biosynthesis I. However, gene SPO2014 exists for alanine biosynthesis III
 in both DBs, and as the Biocyc page notes, that the contribution of the alanine biosynthesis I pathway
 is unclear, as it contains reversible reactions involved in other physiological processes. Both
@@ -93,7 +94,7 @@ Reverse blastp on SPO3230 finds E. coli's ydcR as top result (E=4e-36) with avtA
 Alignment of AlphaFold structures shows some homology, but not great RMSD.
 
 RXN-22218
-
+=========
 Removed while fixing an issue where the ethylmalonyl-CoA pathway was not running when expected.
 My notes from that expedition:
 
@@ -123,6 +124,16 @@ To summarize, the ethylmalonyl-CoA pathway is turned off when growing on acetate
 CARBAMATE-KINASE-RXN - Not present in either database or Moran lab genome
 RXNI-2 - Not present in either database
 
+RXN-11691
+Gap-filled for cysteate degradation, in a pathway which converts cysteate --> 3-sulfopyruvate
+--> 3-sulfolactate --> pyruvate (https://biocyc.org/pathway?orgid=RUEGERIA_POMEROYI_DSS3&id=PWY-6642).
+However, (1) there is no gene for this reaction, and  (2) R. pom has the cuyA (SPOA0158) enzyme
+that directly converts cysteate to pyruvate. This enzyme sits in the sulfolactate degradation pathway
+which is basically the reverse of the cysteate degradation pathway described - suggesting that there's
+no reason to go from cysteate to pyruvate through sulfolactate when there's a one-step reaction
+to achieve the same.
+
+
 tca.json ==========================================================================================
  
 Removed RXN-14047 because it's the net of two reactions catalyzed by the same enzyme
@@ -136,6 +147,8 @@ duplicate.json =================================================================
 
 Removed SERINE-GLYOXYLATE-AMINOTRANSFERASE-RXN as a duplicate
 of SERINE--GLYOXYLATE-AMINOTRANSFERASE-RXN.
+
+Removed DMSPtex as a duplicate of SS-DIMETHYL-BETA-PROPIOTHETINtex.
 
 specification.json ================================================================================
 

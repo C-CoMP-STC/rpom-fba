@@ -532,17 +532,27 @@ class LogMACAW(Stage):
 
         # Run MACAW tests
         print("Running MACAW tests...")
-        print("Dead-end test...")
-        with model:
-            for exchange in model.exchanges:
-                exchange.bounds = (-100, 1000)
-            reaction_df, edgelist = dead_end_test(model, verbose=0)
+
+        # Dead ends ===============================================================================
+        print("Dead-end test... (Ctrl+C to skip)")
+        test_finished = False
+        try:
+            with model:
+                for exchange in model.exchanges:
+                    exchange.bounds = (-100, 1000)
+                reaction_df, edgelist = dead_end_test(model, verbose=0)
+                test_finished = True
+        except KeyboardInterrupt:
+            print("Dead-end test interrupted. Skipping.")
+
+        if test_finished:
             reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
             reaction_df.to_csv(
                 Path(params["outdir"]) / "dead_end_test.csv",
                 index=False)
         
-        print("Running loop test...")
+        # Loops ===================================================================================
+        print("Running loop test... (Ctrl+C to skip)")
         test_finished = False
         try:
             reaction_df, edgelist = loop_test(model, verbose=1)
@@ -563,6 +573,24 @@ class LogMACAW(Stage):
             nt.show_buttons()
             nt.show(str(Path(params["outdir"]) / "loop_test.html"), notebook=False)
 
+        # Diphosphate test ========================================================================
+        print("Running diphosphate test... (Ctrl+C to skip)")
+        test_finished = False
+        try:
+            reaction_df = diphosphate_test(model,
+                                           ppi_ids=["PPI[c]", "PPI[p]"],
+                                           pi_ids=["Pi[c]", "Pi[p]", "Pi[e]"],
+                                           verbose=1)
+            test_finished = True
+        except KeyboardInterrupt:
+            # Diphosphate test takes a long time - building in a lazy escape hatch
+            print("Diphosphate test interrupted. Skipping.")
+        
+        if test_finished:
+            reaction_df.to_csv(
+                Path(params["outdir"]) / "diphosphate_test.csv",
+                index=False
+            )
 
         # dead_end_mets = []
         # for met in model.metabolites:
@@ -647,6 +675,84 @@ class SanityChecks(Stage):
                         print(f"\t{rxn}: {sol.fluxes[rxn]:.2f}\n\t\t{model.reactions.get_by_id(rxn).reaction}")
                 else:
                     print(f"\033[92mATPM cannot sustain flux without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+            
+            # Check NADH sink
+            with model:
+                nadh_sink = model.add_boundary(
+                    model.metabolites.get_by_id("NADH[c]"),
+                    type="sink",
+                    reaction_id="NADH-sink",
+                    lb= 0,
+                    ub= 1000,)
+                model.objective = nadh_sink
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mNADH can be produced without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
+                else:
+                    print(f"\033[92mNADH cannot be produced without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+            
+            # Check oxidizing NADH
+            with model:
+                nadhm = Reaction("NADHM", lower_bound=0, upper_bound=1000)
+                nadhm.add_metabolites(
+                    {
+                        model.metabolites.get_by_id("NADH[c]"): -2,
+                        model.metabolites.get_by_id("PROTON[c]") : -2,
+                        model.metabolites.get_by_id("OXYGEN-MOLECULE[c]"): -1,
+                        model.metabolites.get_by_id("NAD[c]"): 2,
+                        model.metabolites.get_by_id("WATER[c]"): 2
+                    }
+                )
+                model.add_reactions([nadhm])
+                model.objective = nadhm
+
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mNADH can be oxidized without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
+                else:
+                    print(f"\033[92mNADH cannot be oxidized without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+            
+            # Check oxidizing NADPH
+            with model:
+                nadphm = Reaction("NADHM", lower_bound=0, upper_bound=1000)
+                nadphm.add_metabolites(
+                    {
+                        model.metabolites.get_by_id("NADPH[c]"): -2,
+                        model.metabolites.get_by_id("PROTON[c]") : -2,
+                        model.metabolites.get_by_id("OXYGEN-MOLECULE[c]"): -1,
+                        model.metabolites.get_by_id("NADP[c]"): 2,
+                        model.metabolites.get_by_id("WATER[c]"): 2
+                    }
+                )
+                model.add_reactions([nadphm])
+                model.objective = nadphm
+
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mNADPH can be oxidized without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
+                else:
+                    print(f"\033[92mNADPH cannot be oxidized without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+            
+            # FADH2
+            with model:
+                fadh2m = Reaction("FADH2M", lower_bound = 0, upper_bound= 1000)
+                fadh2m.add_metabolites(
+                    {
+                        model.metabolites.get_by_id("FADH2[c]"): -2,
+                        model.metabolites.get_by_id("OXYGEN-MOLECULE[c]"): -1,
+                        model.metabolites.get_by_id("FAD[c]"): 2,
+                        model.metabolites.get_by_id("PROTON[c]"): 2,
+                        model.metabolites.get_by_id("WATER[c]"): 2
+                    }
+                )
+                model.add_reactions([fadh2m])
+                model.objective = fadh2m
+
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mFADH2 can be oxidized without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
+                else:
+                    print(f"\033[92mFADH2 cannot be oxidized without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
 
 
         return model
