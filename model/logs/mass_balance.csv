@@ -221,7 +221,7 @@ UDPGLUCEPIM-RXN,CPD-12575[c] <=> CPD-14553[c],"{'C': -14, 'H': -21, 'N': -1, 'O'
 RXN-20400,ATP[c] + CPD0-1942[c] + GLT[c] --> ADP[c] + CPD-22077[c] + PROTON[c] + Pi[c],"{'C': -5, 'H': -6, 'N': -1, 'O': -3}"
 RXN-14790,CPD-15661[c] + NADPH[c] + PROTON[c] --> CPD-15655[c] + NADP[c],{'H': -2}
 4-COUMARATE--COA-LIGASE-RXN,ATP[c] + CO-A[c] + COUMARATE[c] --> AMP[c] + P-COUMAROYL-COA[c] + PPI[c],"{'C': 8, 'H': 6, 'O': 2}"
-RXN0-1603,WATER[c] + XTP[c] <=> PPI[c] + PROTON[c] + XANTHOSINE-5-PHOSPHATE[c],"{'C': 9, 'H': 10, 'N': 3, 'O': 14, 'P': 2}"
+RXN0-1603,WATER[c] + XTP[c] --> PPI[c] + PROTON[c] + XANTHOSINE-5-PHOSPHATE[c],"{'C': 9, 'H': 10, 'N': 3, 'O': 14, 'P': 2}"
 RXN-10907,NOREPINEPHRINE[c] + OXYGEN-MOLECULE[c] + WATER[c] --> AMMONIUM[c] + DIHYDROXYPHENYLGLYCOLALDEHYDE[c] + HYDROGEN-PEROXIDE[c],"{'C': 7, 'H': 11, 'O': 2}"
 RXN-19303,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20830[c] --> CPD-20855[c] + GMP[c] + PROTON[c],"{'C': -57, 'H': -82, 'N': -16, 'O': -12, 'P': -1, 'Co': -1}"
 RXN-10910,CPD-11875[c] + OXYGEN-MOLECULE[c] + WATER[c] --> AMMONIUM[c] + CPD-11876[c] + HYDROGEN-PEROXIDE[c],"{'C': 8, 'H': 13, 'O': 2}"
@@ -292,7 +292,7 @@ RXN-17809,CPD-19179[c] --> PPI[c] + PRECURSOR-Z[c],"{'H': 1, 'O': 7, 'P': 2}"
 RXN-14394,ACETYL-COA[c] + CPD-7221[c] <-- CO-A[c] + CPD-15244[c],"{'C': -2, 'H': -2, 'O': -1}"
 RXN-10908,L-EPINEPHRINE[c] + OXYGEN-MOLECULE[c] + WATER[c] --> DIHYDROXYPHENYLGLYCOLALDEHYDE[c] + HYDROGEN-PEROXIDE[c] + METHYLAMINE[c],"{'C': 8, 'H': 8, 'O': 2}"
 ORNITHINE-RACEMASE-RXN,L-ORNITHINE[c] <=> CPD-217[c],"{'C': -4, 'H': -12, 'N': -1, 'O': -1}"
-RXN0-1602,DITP[c] + WATER[c] <=> DIMP[c] + PPI[c] + PROTON[c],"{'C': -9, 'H': -10, 'N': -3, 'O': -6}"
+RXN0-1602,DITP[c] + WATER[c] --> DIMP[c] + PPI[c] + PROTON[c],"{'C': -9, 'H': -10, 'N': -3, 'O': -6}"
 RXN-8764,CPD-9047[c] + S-ADENOSYLMETHIONINE[c] --> ADENOSYL-HOMO-CYS[c] + CPD-9043[c],"{'C': -1, 'H': -3}"
 RXN-16320,2 CPD-14557[c] --> NITROUS-OXIDE[c] + WATER[c],{'N': -1}
 GALACTOKIN-RXN,ALPHA-D-GALACTOSE[c] + ATP[c] --> ADP[c] + GALACTOSE-1P[c] + PROTON[c],"{'H': 1, 'O': -3}"
