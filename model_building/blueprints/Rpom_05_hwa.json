@@ -7,9 +7,9 @@
     "AddReactions": [
         "model_building/reactions/add/*.json"
     ],
+    "BioCycUpdates" : "model_building/biocyc_update_pipeline/templates/template.xlsx",
     "ModifyReactions": ["model_building/reactions/corrections/*.json"],
     "AnnotateReactions": "model_building/reaction_annotations.pkl",
-    "BioCycUpdates" : "model_building/biocyc_update_pipeline/templates/template.xlsx",
     "RemoveReactions": [
         "model_building/reactions/remove/*.json"
     ],
