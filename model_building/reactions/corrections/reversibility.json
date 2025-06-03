@@ -56,5 +56,46 @@
         "id": "1.5.1.9-RXN",
         "lower_bound": 0.0,
         "upper_bound": 1000.0
+    },
+    "Diphosphate test fixes ======================",
+    {
+        "id": "ADENYLATECYC-RXN",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-16389",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-16401",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-16402",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-16418",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN0-6382",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN0-1603",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN0-1602",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
     }
 ]
