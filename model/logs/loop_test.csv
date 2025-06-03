@@ -20,7 +20,7 @@ reaction_id,reaction_equation,loop_test,pathways
 1.5.1.20-RXN,METHYLENE-THF-GLU-N[c] + NADH[c] + PROTON[c] --> 5-METHYL-THF-GLU-N[c] + NAD[c],ok,[]
 1.5.1.28-RXN,CPD-2022[c] + NAD[c] + WATER[c] <=> L-2-AMINOPENTANOIC-ACID[c] + NADH[c] + PROTON[c] + PYRUVATE[c],ok,[]
 1.5.1.7-RXN,NAD[c] + SACCHAROPINE[c] + WATER[c] <=> 2-KETOGLUTARATE[c] + LYS[c] + NADH[c] + PROTON[c],in loop,[]
-1.5.1.9-RXN,NAD[c] + SACCHAROPINE[c] + WATER[c] <=> ALLYSINE[c] + GLT[c] + NADH[c] + PROTON[c],in loop,[]
+1.5.1.9-RXN,NAD[c] + SACCHAROPINE[c] + WATER[c] --> ALLYSINE[c] + GLT[c] + NADH[c] + PROTON[c],in loop,[]
 1.5.5.1-RXN-ETF-Reduced/UBIQUINONE-10//ETF-Oxidized/CPD-9958/PROTON.56.,ETF-Reduced[c] + UBIQUINONE-10[c] --> CPD-9958[c] + ETF-Oxidized[c] + PROTON[c],ok,[]
 1.6.99.5-RXN-NADH/UBIQUINONE-10/PROTON//NAD/CPD-9958.40.,NADH[c] + 5.0 PROTON[c] + UBIQUINONE-10[c] <=> CPD-9958[c] + NAD[c] + 4.0 PROTON[e],ok,[]
 1.8.4.8-RXN,PAPS[c] + Red-Thioredoxin[c] --> 3-5-ADP[c] + Ox-Thioredoxin[c] + 2.0 PROTON[c] + SO3[c],ok,[]
@@ -279,7 +279,6 @@ DIMETHYLPROPIOTHETIN-DETHIOMETHYLASE-RXN,SS-DIMETHYL-BETA-PROPIOTHETIN[c] --> AC
 DIOHBUTANONEPSYN-RXN,RIBULOSE-5P[c] --> DIHYDROXY-BUTANONE-P[c] + FORMATE[c] + PROTON[c],ok,['RIBOSYN2-PWY']
 DLACTDEHYDROGNAD-RXN,NADH[c] + PROTON[c] + PYRUVATE[c] --> D-LACTATE[c] + NAD[c],ok,[]
 DMBPPRIBOSYLTRANS-RXN,DIMETHYLBENZIMIDAZOLE[c] + NICOTINATE_NUCLEOTIDE[c] --> ALPHA-RIBAZOLE-5-P[c] + NIACINE[c] + PROTON[c],ok,"['COBALSYN-PWY', 'PWY-5509']"
-DMSPtex,SS-DIMETHYL-BETA-PROPIOTHETIN[e] <=> SS-DIMETHYL-BETA-PROPIOTHETIN[p],in loop,[]
 DM_CPD-471,CPD-471[c] --> ,ok,[]
 DTDPKIN-RXN,ATP[c] + TDP[c] --> ADP[c] + DTTP[c],ok,"['PWY-7200', 'PWY-7197', 'PWY-6545']"
 DTMPKI-RXN,ATP[c] + TMP[c] --> ADP[c] + TDP[c],ok,"['PWY-7200', 'PWY-7197', 'PWY-6545']"
@@ -761,7 +760,7 @@ RXN-11743,CPD-5923[c] + Pi[c] <=> ADENINE[c] + CPD-12706[c],ok,[]
 RXN-11811,AMMONIA[c] + PROTON[c] <=> AMMONIUM[c],in loop,[]
 RXN-11832,ATP[c] + CMP[c] <=> ADP[c] + CDP[c],ok,['PWY-7205']
 RXN-11852,ACETYL-COA[c] + CIS-3-HEXENOL[c] <=> CO-A[c] + CPD-12846[c],ok,[]
-RXN-12002,ATP[c] + UMP[c] --> ADP[c] + UDP[c],ok,"['PWY0-162', 'PWY-7176', 'PWY-7208']"
+RXN-12002,ATP[c] + UMP[c] --> ADP[c] + UDP[c],in loop,"['PWY0-162', 'PWY-7176', 'PWY-7208']"
 RXN-12093,AMMONIUM[c] + ATP[c] + CPD-13043[c] --> 7-CYANO-7-DEAZAGUANINE[c] + ADP[c] + PROTON[c] + Pi[c] + WATER[c],ok,['PWY-6703']
 RXN-12107,L-IDONATE[c] + NAD[c] --> 5-DEHYDROGLUCONATE[c] + NADH[c] + PROTON[c],ok,[]
 RXN-12134,Vernolates[c] + WATER[c] <=> CPD-13086[c],ok,[]
@@ -1089,14 +1088,14 @@ RXN-9384,HS[c] + O-SUCCINYL-L-HOMOSERINE[c] <=> HOMO-CYS[c] + PROTON[c] + SUC[c]
 RXN-9387,CPD-10020[c] <=> CPD-10019[c],ok,[]
 RXN-9510,FMNH2[c] + NAD[c] <=> FMN[c] + NADH[c] + 2.0 PROTON[c],in loop,[]
 RXN-9514,Acetoacetyl-ACPs[c] + NADPH[c] + PROTON[c] --> Beta-3-hydroxybutyryl-ACPs[c] + NADP[c],ok,"['PWY-7388', 'PWY-5971', 'PWY-8279']"
-RXN-9515,Butanoyl-ACPs[c] + NADP[c] <=> Crotonyl-ACPs[c] + NADPH[c] + PROTON[c],in loop,"['PWY-7388', 'PWY-8279']"
+RXN-9515,Butanoyl-ACPs[c] + NADP[c] <-- Crotonyl-ACPs[c] + NADPH[c] + PROTON[c],ok,"['PWY-7388', 'PWY-8279']"
 RXN-9516,Butanoyl-ACPs[c] + MALONYL-ACP[c] + PROTON[c] --> 3-oxo-hexanoyl-ACPs[c] + ACP[c] + CARBON-DIOXIDE[c],in loop,"['PWY-7388', 'PWY-5971', 'PWY-8279']"
 RXN-9518,3-oxo-hexanoyl-ACPs[c] + NADPH[c] + PROTON[c] --> NADP[c] + R-3-hydroxyhexanoyl-ACPs[c],ok,"['PWY-7388', 'PWY-5971', 'PWY-8279']"
 RXN-9520,R-3-hydroxyhexanoyl-ACPs[c] --> Hex-2-enoyl-ACPs[c] + WATER[c],ok,"['PWY-7388', 'PWY-5971', 'PWY-8279']"
 RXN-9521,Hexanoyl-ACPs[c] + NADP[c] <=> Hex-2-enoyl-ACPs[c] + NADPH[c] + PROTON[c],in loop,"['PWY-7388', 'PWY-8279']"
 RXN-9523,Hexanoyl-ACPs[c] + MALONYL-ACP[c] + PROTON[c] --> 3-Oxo-octanoyl-ACPs[c] + ACP[c] + CARBON-DIOXIDE[c],in loop,"['PWY-7388', 'PWY-5971', 'PWY-8279']"
 RXN-9524,3-Oxo-octanoyl-ACPs[c] + NADPH[c] + PROTON[c] --> 3-Hydroxy-octanoyl-ACPs[c] + NADP[c],ok,"['PWY-7388', 'PWY-5971', 'PWY-8279']"
-RXN-9526,NADP[c] + Octanoyl-ACPs[c] <=> 2-Octenoyl-ACPs[c] + NADPH[c] + PROTON[c],in loop,"['PWY-7388', 'PWY-8279']"
+RXN-9526,NADP[c] + Octanoyl-ACPs[c] <-- 2-Octenoyl-ACPs[c] + NADPH[c] + PROTON[c],ok,"['PWY-7388', 'PWY-8279']"
 RXN-9527,MALONYL-ACP[c] + Octanoyl-ACPs[c] + PROTON[c] --> 3-oxo-decanoyl-ACPs[c] + ACP[c] + CARBON-DIOXIDE[c],in loop,"['PWY-5971', 'PWY-8279']"
 RXN-9528,3-oxo-decanoyl-ACPs[c] + NADPH[c] + PROTON[c] --> Beta-hydroxydecanoyl-ACPs[c] + NADP[c],ok,"['PWY-5971', 'PWY-8279']"
 RXN-9530,Decanoyl-ACPs[c] + NADP[c] <-- NADPH[c] + PROTON[c] + Trans-D2-decenoyl-ACPs[c],ok,['PWY-8279']
@@ -1131,9 +1130,9 @@ RXN-9652,Decanoyl-ACPs[c] + MALONYL-COA[c] + PROTON[c] <=> 3-oxo-dodecanoyl-ACPs
 RXN-9653,Dodecanoyl-ACPs[c] + MALONYL-COA[c] + PROTON[c] --> 3-oxo-myristoyl-ACPs[c] + CARBON-DIOXIDE[c] + CO-A[c],ok,[]
 RXN-9654,MALONYL-COA[c] + Myristoyl-ACPs[c] + PROTON[c] <=> 3-oxo-palmitoyl-ACPs[c] + CARBON-DIOXIDE[c] + CO-A[c],in loop,[]
 RXN-9655,Beta-hydroxydecanoyl-ACPs[c] --> Trans-D2-decenoyl-ACPs[c] + WATER[c],ok,"['PWY0-862', 'PWY-5971', 'PWY-8279']"
-RXN-9657,Crotonyl-ACPs[c] + NADH[c] + PROTON[c] --> Butanoyl-ACPs[c] + NAD[c],in loop,['PWY-5971']
+RXN-9657,Crotonyl-ACPs[c] + NADH[c] + PROTON[c] --> Butanoyl-ACPs[c] + NAD[c],ok,['PWY-5971']
 RXN-9658,Hex-2-enoyl-ACPs[c] + NADH[c] + PROTON[c] --> Hexanoyl-ACPs[c] + NAD[c],in loop,['PWY-5971']
-RXN-9659,2-Octenoyl-ACPs[c] + NADH[c] + PROTON[c] --> NAD[c] + Octanoyl-ACPs[c],in loop,['PWY-5971']
+RXN-9659,2-Octenoyl-ACPs[c] + NADH[c] + PROTON[c] --> NAD[c] + Octanoyl-ACPs[c],ok,['PWY-5971']
 RXN-9660,NADH[c] + PROTON[c] + Trans-D2-decenoyl-ACPs[c] --> Decanoyl-ACPs[c] + NAD[c],ok,['PWY-5971']
 RXN-9661,Dodec-2-enoyl-ACPs[c] + NADH[c] + PROTON[c] --> Dodecanoyl-ACPs[c] + NAD[c],ok,['PWY-5971']
 RXN-9662,NADH[c] + PROTON[c] + Tetradec-2-enoyl-ACPs[c] --> Myristoyl-ACPs[c] + NAD[c],ok,['PWY-5971']
@@ -1434,7 +1433,7 @@ L-CYSTEATEtex,L-CYSTEATE[e] <=> L-CYSTEATE[p],ok,[]
 L-CYSTEATEtpp,2.0 ATP[c] + L-CYSTEATE[p] + 2.0 WATER[c] --> 2.0 ADP[c] + L-CYSTEATE[c] + 2.0 PROTON[c] + 2.0 Pi[c],ok,[]
 CPD-12693tex,CPD-12693[e] <=> CPD-12693[p],ok,[]
 CPD-12693tpp,CPD-12693[p] + 2.0 PROTON[e] <=> CPD-12693[c] + 2.0 PROTON[c],ok,[]
-SS-DIMETHYL-BETA-PROPIOTHETINtex,SS-DIMETHYL-BETA-PROPIOTHETIN[e] <=> SS-DIMETHYL-BETA-PROPIOTHETIN[p],in loop,[]
+SS-DIMETHYL-BETA-PROPIOTHETINtex,SS-DIMETHYL-BETA-PROPIOTHETIN[e] <=> SS-DIMETHYL-BETA-PROPIOTHETIN[p],ok,[]
 SS-DIMETHYL-BETA-PROPIOTHETINtpp,PROTON[e] + SS-DIMETHYL-BETA-PROPIOTHETIN[p] <=> PROTON[c] + SS-DIMETHYL-BETA-PROPIOTHETIN[c],ok,[]
 ECTOINEtpp,ECTOINE[p] + 2.0 PROTON[e] <=> ECTOINE[c] + 2.0 PROTON[c],ok,[]
 FUMtex,FUM[e] <=> FUM[p],ok,[]
@@ -1583,7 +1582,6 @@ RXN-9382,ACETYL-COA[c] + L-PHOSPHINOTHRICIN[c] --> CO-A[c] + CPD-9999[c] + PROTO
 RXN-22735,AMMONIA[c] + 2 ATP[c] + HCO3[c] --> 2 ADP[c] + CARBAMOYL-P[c] + PROTON[c] + Pi[c],ok,[]
 RXN-20778,3-DE-H-CARNITINE[c] + ACETYL-COA[c] --> 3-KETOBUTYRATE[c] + CPD-22401[c],ok,[]
 RXN-11350,2 CPD-12295[c] <=> CPD-12310[c] + PROTON[c] + UNDECAPRENYL-DIPHOSPHATE[c],ok,[]
-RXN-11691,CPD-367[c] --> PROTON[c] + PYRUVATE[c] + SO3[c],ok,[]
 GST-RXN,1-CHLORO-24-DINITROBENZENE[c] + GLUTATHIONE[c] --> CL-[c] + PROTON[c] + S-24-DINITROPHENYLGLUTATHIONE[c],ok,[]
 RXN-19381,D-CYSTEINE[c] --> 2-AMINOACRYLATE[c] + HS[c],ok,[]
 RXN-11067,CPD-12018[c] + OXYGEN-MOLECULE[c] + WATER[c] --> AMMONIUM[c] + CPD-12019[c] + HYDROGEN-PEROXIDE[c],ok,[]
