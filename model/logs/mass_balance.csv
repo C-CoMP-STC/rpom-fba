@@ -151,7 +151,7 @@ RXN-13290,ATP[c] + CO-A[c] + CPD-14268[c] --> AMP[c] + CPD-14269[c] + PPI[c],"{'
 LINC-RXN,25-DDOL[c] + NAD[c] <=> 25-DICHLOROHYDROQUINONE[c] + NADH[c] + PROTON[c],{'H': 2}
 RXN-12751,ACETYL-COA[c] + CPD-21411[c] <-- CO-A[c] + CPD-13758[c],"{'C': 31, 'H': 45, 'N': 6, 'O': 18, 'P': 2}"
 RXN-16113,CPD-17367[c] <=> CPD-17368[c] + WATER[c],"{'C': -42, 'H': -63, 'N': -6, 'O': -16, 'P': -2}"
-RXN-15714,5-AMINO-LEVULINATE[c] + ATP[c] + CO-A[c] <=> AMP[c] + CPD-16937[c] + PPI[c],"{'C': -25, 'H': -39, 'N': -7, 'O': -17, 'P': -2}"
+RXN-15714,5-AMINO-LEVULINATE[c] + ATP[c] + CO-A[c] --> AMP[c] + CPD-16937[c] + PPI[c],"{'C': -25, 'H': -39, 'N': -7, 'O': -17, 'P': -2}"
 RXN-18897,CPD-20261[c] --> CPD-20264[c] + PROTON[c] + WATER[c],"{'H': 3, 'O': 1}"
 RXN-9766,CPD-7670[c] + NADPH[c] + OXYGEN-MOLECULE[c] + PROTON[c] --> DMSO[c] + NADP[c] + WATER[c],"{'C': -1, 'H': -5}"
 RXN-13313,CPDQT-520[c] + WATER[c] --> CPD-2183[c] + Pi[c],"{'H': -1, 'O': 3, 'P': 1}"
