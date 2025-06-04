@@ -1174,7 +1174,7 @@ RXN0-4401,NADH[c] + WATER[c] <=> AMP[c] + NMNH[c] + 2.0 PROTON[c],ok
 RXN0-4621,ATP[c] + CPD0-882[c] + WATER[c] --> ADP[c] + CPD0-881[c] + PROTON[c],ok
 RXN0-4641,CPD0-881[c] + WATER[c] --> D-LACTATE[c] + N-ACETYL-D-GLUCOSAMINE-6-P[c],ok
 RXN0-5055,ACETYL-COA[c] + carboxybiotin-L-lysine-in-BCCP-dimers[c] --> MALONYL-COA[c] + biotin-L-lysine-in-BCCP-dimers[c],ok
-RXN0-5107,DTTP[c] + WATER[c] <=> PPI[c] + PROTON[c] + TMP[c],should be irreversible
+RXN0-5107,DTTP[c] + WATER[c] --> PPI[c] + PROTON[c] + TMP[c],ok
 RXN0-5114,3-P-SERINE[c] + WATER[c] --> Pi[c] + SER[c],ok
 RXN0-5199,GUANOSINE[c] + Pi[c] --> GUANINE[c] + RIBOSE-1P[c],ok
 RXN0-5222,CARBAMATE[c] + 2.0 PROTON[c] --> AMMONIUM[c] + CARBON-DIOXIDE[c],ok
@@ -1652,7 +1652,7 @@ RXN-12751,ACETYL-COA[c] + CPD-21411[c] <-- CO-A[c] + CPD-13758[c],ok
 RXN-11246,ACETYL-COA[c] + CPD-201[c] <-- CO-A[c] + CPD-10600[c],ok
 RXN-9666,OLEOYL-COA[c] + WATER[c] --> CO-A[c] + OLEATE-CPD[c] + PROTON[c],ok
 RXN-16113,CPD-17367[c] <=> CPD-17368[c] + WATER[c],ok
-RXN-15714,5-AMINO-LEVULINATE[c] + ATP[c] + CO-A[c] <=> AMP[c] + CPD-16937[c] + PPI[c],should be irreversible
+RXN-15714,5-AMINO-LEVULINATE[c] + ATP[c] + CO-A[c] --> AMP[c] + CPD-16937[c] + PPI[c],ok
 RXN-18897,CPD-20261[c] --> CPD-20264[c] + PROTON[c] + WATER[c],ok
 RXN-9766,CPD-7670[c] + NADPH[c] + OXYGEN-MOLECULE[c] + PROTON[c] --> DMSO[c] + NADP[c] + WATER[c],ok
 RXN-13313,CPDQT-520[c] + WATER[c] --> CPD-2183[c] + Pi[c],ok
