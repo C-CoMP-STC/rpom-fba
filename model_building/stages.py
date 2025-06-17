@@ -7,6 +7,7 @@ import pandas as pd
 from pathlib import Path
 
 import git
+from cobra.manipulation import prune_unused_metabolites, prune_unused_reactions
 from cobra.manipulation.delete import remove_genes
 from cobra.manipulation.validate import check_mass_balance
 from cobra.core.metabolite import Metabolite
@@ -754,5 +755,24 @@ class SanityChecks(Stage):
                 else:
                     print(f"\033[92mFADH2 cannot be oxidized without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
 
+
+        return model
+
+@register_stage
+class RemoveOrphans(Stage):
+    def process(self, model: Model, params: object) -> Model:
+        """
+        Remove orphan metabolites, genes, and reactions from the model.
+        """
+        print(f"Before removing orphans: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites, {len(model.genes)} genes.")
+
+        model, removed_mets = prune_unused_metabolites(model)
+        model, removed_reactions = prune_unused_reactions(model)
+        
+        orphan_genes = [gene for gene in model.genes if len(gene.reactions) == 0]
+        remove_genes(model, orphan_genes)
+
+        print(f"Removed {len(removed_mets)} orphan metabolites, {len(removed_reactions)} orphan reactions, and {len(orphan_genes)} orphan genes.")
+        print(f"After removing orphans: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites, {len(model.genes)} genes.")
 
         return model

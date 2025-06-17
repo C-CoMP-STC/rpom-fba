@@ -15,5 +15,6 @@
     ],
     "MaintenanceFlux": 0,
     "LogMACAW": null,
-    "SanityChecks": null
+    "SanityChecks": null,
+    "RemoveOrphans": null
 }
