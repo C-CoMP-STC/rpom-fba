@@ -23,16 +23,16 @@
         "metabolites": {
             "CPD0-1265[p]" : -1.0,
             "CPD0-1265[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO1514)"
     },
     "3-Hydroxybutyrate transport ================================================================",
-    "TRAP transporter, assuming H+ is the ion and n=2",
+    "TRAP transporter, assuming H+ is the ion and n=1",
     {
         "id": "CPD-335tex",
         "name": "",
@@ -53,14 +53,14 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "CPD-335[p]" : -1.0,
-            "PROTON[e]" : -2.0,
+            "PROTON[e]" : -1.0,
             "CPD-335[c]" : 1.0,
-            "PROTON[c]" : 2.0
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO2571 and SPO2572 and SPO2573)"
     },
     "Carnitine transport ================================================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     {
         "id": "CARNITINEtex",
         "name": "",
@@ -82,11 +82,11 @@
         "metabolites": {
             "CARNITINE[p]" : -1.0,
             "CARNITINE[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO2995 and SPO2996 and SPO2997 and SPO2998)"
     },
@@ -147,7 +147,7 @@
         "gene_reaction_rule": "(SPO0184 and SPO0185 and SPO0186)"
     },
     "Cysteate transport ===============================================================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     {
         "id": "L-CYSTEATEtex",
         "name": "",
@@ -169,16 +169,16 @@
         "metabolites": {
             "L-CYSTEATE[p]" : -1.0,
             "L-CYSTEATE[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO3039 and SPO3040 and SPO3041 and SPO3042 and SPO3043)"
     },
     "DHPS transport ===============================================================================",
-    "TRAP transporter, assuming PROTON and n=2",
+    "TRAP transporter, assuming PROTON and n=1",
     {
         "id": "CPD-12693tex",
         "name": "",
@@ -199,9 +199,9 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "CPD-12693[p]" : -1.0,
-            "PROTON[e]" : -2.0,
+            "PROTON[e]" : -1.0,
             "CPD-12693[c]" : 1.0,
-            "PROTON[c]" : 2.0
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO0591 and SPO0592 and SPO0593)"
     },
@@ -235,7 +235,7 @@
         "gene_reaction_rule": "(SPO3186)"
     },
     "Ectoine transport =====================================================================================",
-    "TRAP transporter, assuming PROTON and n=2",
+    "TRAP transporter, assuming PROTON and n=1",
     {
         "id": "ECTOINEtex",
         "name": "",
@@ -256,14 +256,14 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "ECTOINE[p]" : -1.0,
-            "PROTON[e]" : -2.0,
+            "PROTON[e]" : -1.0,
             "ECTOINE[c]" : 1.0,
-            "PROTON[c]" : 2.0
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO1145 and SPO1146 and SPO1147)"
     },
     "Fumarate, Malate, and Succinate transport ================================================================",
-    "TRAP transporter, assuming PROTON and n=2",
+    "TRAP transporter, assuming PROTON and n=1",
     {
         "id": "FUMtex",
         "name": "",
@@ -284,9 +284,9 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "FUM[p]" : -1.0,
-            "PROTON[e]" : -2.0,
+            "PROTON[e]" : -1.0,
             "FUM[c]" : 1.0,
-            "PROTON[c]" : 2.0
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO2626 and SPO2627 and SPO2628 and SPO2629 and SPO2630)"
     },
@@ -310,9 +310,9 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "MAL[p]" : -1.0,
-            "PROTON[e]" : -2.0,
+            "PROTON[e]" : -1.0,
             "MAL[c]" : 1.0,
-            "PROTON[c]" : 2.0
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO2626 and SPO2627 and SPO2628 and SPO2629 and SPO2630)"
     },
@@ -336,14 +336,14 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "SUC[p]" : -1.0,
-            "PROTON[e]" : -2.0,
+            "PROTON[e]" : -1.0,
             "SUC[c]" : 1.0,
-            "PROTON[c]" : 2.0
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO2626 and SPO2627 and SPO2628 and SPO2629 and SPO2630)"
     },
     "Glucose and Xylose transport ================================================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     {
         "id": "GLCtex",
         "name": "",
@@ -365,11 +365,11 @@
         "metabolites": {
             "GLC[p]" : -1.0,
             "GLC[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO0861 and SPO0862 and SPO0863)"
     },
@@ -394,16 +394,16 @@
         "metabolites": {
             "BETA-D-XYLOSE[p]" : -1.0,
             "BETA-D-XYLOSE[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO0861 and SPO0862 and SPO0863)"
     },
     "Glycerol transport ===============================================================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     {
         "id": "GLYCEROLtex",
         "name": "",
@@ -425,16 +425,16 @@
         "metabolites": {
             "GLYCEROL[p]" : -1.0,
             "GLYCEROL[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO0608 and SPO0609 and SPO0610 and SPO0611 and SPO0612)"
     },
     "Glycerol-3-Phosphate transport ===============================================================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     {
         "id": "GLYCEROL-3Ptex",
         "name": "",
@@ -456,16 +456,16 @@
         "metabolites": {
             "GLYCEROL-3P[p]" : -1.0,
             "GLYCEROL-3P[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO0237 and SPO0238 and SPO0239 and SPO0240)"
     },
     "Isethionate transport ===============================================================================",
-    "TRAP transporter, assuming PROTON and n=2",
+    "TRAP transporter, assuming PROTON and n=1",
     {
         "id": "CPD-3745tex",
         "name": "",
@@ -486,14 +486,14 @@
         "upper_bound": 1000.0,
         "metabolites": {
             "CPD-3745[p]" : -1.0,
-            "PROTON[e]" : -2.0,
+            "PROTON[e]" : -1.0,
             "CPD-3745[c]" : 1.0,
-            "PROTON[c]" : 2.0
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO2356 and SPO2357 and SPO2358)"
     },
     "N-acetylglucosamine transport ======================================================================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     {
         "id": "N-ACETYL-D-GLUCOSAMINEtex",
         "name": "",
@@ -515,11 +515,11 @@
         "metabolites": {
             "N-ACETYL-D-GLUCOSAMINE[p]" : -1.0,
             "N-ACETYL-D-GLUCOSAMINE[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO1835 and SPO1836 and SPO1837 and SPO1838 and SPO1839)"
     },
@@ -528,7 +528,7 @@
     "Does not exist on BioCyc!",
 
     "Spermidine, Cadaverine, and Putrescine transport ================================================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     "Spermidine tpp already exists as ABC-24-RXN",
     {
         "id": "SPERMIDINEtex",
@@ -563,11 +563,11 @@
         "metabolites": {
             "CADAVERINE[p]" : -1.0,
             "CADAVERINE[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO3466 and SPO3467 and SPO3468 and SPO3469)"
     },
@@ -592,17 +592,17 @@
         "metabolites": {
             "PUTRESCINE[p]" : -1.0,
             "PUTRESCINE[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO3466 and SPO3467 and SPO3468 and SPO3469)"
     },
 
     "Taurine transport ======================================================================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     {
         "id": "TAURINEtex",
         "name": "",
@@ -624,16 +624,16 @@
         "metabolites": {
             "TAURINE[p]" : -1.0,
             "TAURINE[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO0674 and SPO0675 and SPO0676)"
     },
     "Thymidine transport ======================================================================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     {
         "id": "THYMIDINEtex",
         "name": "",
@@ -655,17 +655,17 @@
         "metabolites": {
             "THYMIDINE[p]" : -1.0,
             "THYMIDINE[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
+            "ATP[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "ADP[c]" : 1.0,
+            "Pi[c]" : 1.0,
+            "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": "(SPO0376 and SPO0377 and SPO0378 and SPO0379)"
     },
     
     "TMAO transport ======================================================================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     {
         "id": "TRIMETHYLAMINE-N-Otex",
         "name": "",
@@ -684,20 +684,12 @@
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
-        "metabolites": {
-            "TRIMETHYLAMINE-N-O[p]" : -1.0,
-            "TRIMETHYLAMINE-N-O[c]" : 1.0,
-            "ATP[c]" : -2.0,
-            "WATER[c]" : -2.0,
-            "ADP[c]" : 2.0,
-            "Pi[c]" : 2.0,
-            "PROTON[c]" : 2.0
-        },
+        "metabolites": "TRIMETHYLAMINE-N-O[p] + ATP[c] + WATER[c] --> TRIMETHYLAMINE-N-O[c] + ADP[c] + Pi[c] + PROTON[c]",
         "gene_reaction_rule": "(SPO1548 and SPO1549 and SPO1550)"
     },
 
     "Glutamate/glutamine/aspartate/asparagine transport (inferred) =======================================",
-    "ABC transporter, assuming n=2",
+    "ABC transporter, assuming n=1",
     {
         "id": "GLTtex",
         "name": "",
@@ -713,7 +705,7 @@
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
-        "metabolites": "GLT[p] + 2 ATP[c] + 2 WATER[c] --> GLT[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
+        "metabolites": "GLT[p] + ATP[c] + WATER[c] --> GLT[c] + ADP[c] + Pi[c] + PROTON[c]",
         "gene_reaction_rule": "(SPO0519 and SPO0520 and SPO0521 and SPO0522)"
     },
     {
@@ -731,7 +723,7 @@
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
-        "metabolites": "GLN[p] + 2 ATP[c] + 2 WATER[c] --> GLN[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
+        "metabolites": "GLN[p] + ATP[c] + WATER[c] --> GLN[c] + ADP[c] + Pi[c] + PROTON[c]",
         "gene_reaction_rule": "(SPO0519 and SPO0520 and SPO0521 and SPO0522)"
     },
     {
@@ -749,7 +741,7 @@
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
-        "metabolites": "L-ASPARTATE[p] + 2 ATP[c] + 2 WATER[c] --> L-ASPARTATE[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
+        "metabolites": "L-ASPARTATE[p] + ATP[c] + WATER[c] --> L-ASPARTATE[c] + ADP[c] + Pi[c] + PROTON[c]",
         "gene_reaction_rule": "(SPO0519 and SPO0520 and SPO0521 and SPO0522)"
     },
     {
@@ -767,7 +759,7 @@
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
-        "metabolites": "ASN[p] + 2 ATP[c] + 2 WATER[c] --> ASN[c] + 2 ADP[c] + 2 Pi[c] + 2 PROTON[c]",
+        "metabolites": "ASN[p] + ATP[c] + WATER[c] --> ASN[c] + ADP[c] + Pi[c] + PROTON[c]",
         "gene_reaction_rule": "(SPO0519 and SPO0520 and SPO0521 and SPO0522)"
     },
     "Valine transport =================================================================",
