@@ -487,7 +487,7 @@ def build_new_metabolites_template(model, candidate_mets, metabolites1, metaboli
         # Get formula, charge
         formula = met_data.get("cml", {}).get("molecule", {}).get(
             "formula", {}).get("@concise", None)
-        line["Formula"] = formula
+        line["Formula"] = "".join(formula.split()) if isinstance(formula, str) else formula
 
         charge = met_data.get("cml", {}).get(
             "molecule", {}).get("@formalCharge", None)

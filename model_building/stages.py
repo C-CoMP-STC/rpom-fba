@@ -13,6 +13,7 @@ from cobra.manipulation.validate import check_mass_balance
 from cobra.core.metabolite import Metabolite
 from cobra.core.model import Model
 from cobra.core.reaction import Reaction
+from cobra.flux_analysis import flux_variability_analysis
 from cobra.io import read_sbml_model
 from macaw.main import dead_end_test, dilution_test, diphosphate_test, duplicate_test, loop_test
 from pyvis.network import Network
@@ -44,7 +45,11 @@ class BaseModel(Stage):
         if not isinstance(params, str):
             raise TypeError(
                 f"BaseModel stage requires a path to a base model (as a str). Got {type(params)}.")
-        return read_sbml_model(params)
+        
+        model = read_sbml_model(params)
+        print("Loaded base model.")
+
+        return model
 
 
 @register_stage
@@ -123,6 +128,9 @@ class SetMedium(Stage):
 
         model.medium = final_medium
 
+        # Print summary of changes
+        print(f"Set medium with {len(final_medium)} exchange reactions.")
+
         return model
 
 
@@ -130,7 +138,6 @@ class SetMedium(Stage):
 class AddMetabolites(Stage):
     def process(self, model: Model, params: object) -> Model:
         model.add_metabolites(ADDED_METABOLITES)
-
         return model
 
 
@@ -197,7 +204,6 @@ class AddReactions(Stage):
             if reaction["gene_reaction_rule"] != "":
                 rxn.annotation["Gene Source"] = "manual"
 
-
         return model
 
 
@@ -218,9 +224,7 @@ class RemoveReactions(Stage):
                     reactions_to_remove += json.load(f)
 
         # Remove reactions
-        print(f"Before removing reactions: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites, {len(model.genes)} genes.")
         model.remove_reactions(reactions_to_remove, remove_orphans = True)
-        print(f"After removing reactions: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites, {len(model.genes)} genes.")
 
         return model
 
@@ -283,8 +287,6 @@ class AddUptakeReactions(Stage):
     def process(self, model: Model, params: object) -> Model:
         # Get uptake rates and genes
         uptake_data = get_uptake_data()
-
-        # Add uptake reactions
         add_uptake_reactions(model, uptake_data)
 
         return model
@@ -317,16 +319,24 @@ class AnnotateReactions(Stage):
 @register_stage
 class BioCycUpdates(Stage):
     def process(self, model: Model, params: object) -> Model:
-        if not isinstance(params, str):
+        if not isinstance(params, dict):
             raise ValueError(
-                "BioCycUpdates stage requires a path to a template, built from our BioCyc ETL pipeline.")
+                "BioCycUpdates stage requires a dictionary of parameters.")
+        
+        try:
+            template = params["template"]
+        except KeyError:
+            raise ValueError(
+                "BioCycUpdates stage requires a 'template' key in the parameters dictionary, pointing to an Excel file with updates.")
+
+        do_warnings = params.get("warnings", True)
 
         # Load templates for existing reactions, new reactions, new metabolites, and new genes
         existing_reactions = pd.read_excel(
-            params, sheet_name="Existing reactions")
-        new_reactions = pd.read_excel(params, sheet_name="New reactions")
-        new_metabolites = pd.read_excel(params, sheet_name="New metabolites")
-        new_genes = pd.read_excel(params, sheet_name="New genes")
+            template, sheet_name="Existing reactions")
+        new_reactions = pd.read_excel(template, sheet_name="New reactions")
+        new_metabolites = pd.read_excel(template, sheet_name="New metabolites")
+        new_genes = pd.read_excel(template, sheet_name="New genes")
 
         # Keep track of initial number of reactions, metabolites, and genes for later logging
         initial_reactions = len(model.reactions)
@@ -404,8 +414,9 @@ class BioCycUpdates(Stage):
                 bounds = eval(bounds)
             else:
                 bounds = (-1000, 1000)
-                warning = f"Bounds not found for reaction {row['Reaction ID']}, assuming reversible."
-                warnings.warn(warning)
+                if do_warnings:
+                    warning = f"Bounds not found for reaction {row['Reaction ID']}, assuming reversible."
+                    warnings.warn(warning)
             
             # Get reaction common name, if any
             name = row["Reaction name 1" if in_db1 else "Reaction name 2"]
@@ -481,6 +492,47 @@ class BioCycUpdates(Stage):
 
 
 @register_stage
+class DeadEnds(Stage):
+    DEFAULT = {
+        "outdir": "model/logs/"
+    }
+    def process(self, model: Model, params: object) -> Model:
+        if params is None:
+            params = self.DEFAULT
+        elif isinstance(params, dict):
+            params = {**self.DEFAULT, **params}
+        else:
+            raise ValueError(
+                "DeadEnds stage requires a dictionary with keys 'outdir' (str) to store the logs, and 'remove' (bool) indicating whether to remove dead-ends.")
+
+        # Dead ends ===============================================================================
+        print("Dead-end test... (Ctrl+C to skip)")
+        test_finished = False
+        try:
+            with model:
+                for exchange in model.exchanges:
+                    exchange.bounds = (-100, 1000)
+                reaction_df, edgelist = dead_end_test(model, verbose=0)
+                test_finished = True
+        except KeyboardInterrupt:
+            print("Dead-end test interrupted. Skipping.")
+
+        if test_finished:
+            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
+            reaction_df.to_csv(
+                Path(params["outdir"]) / "dead_end_test.csv",
+                index=False)
+
+            g = nx.from_edgelist(edgelist)
+            nt = Network()
+            nt.from_nx(g)
+            nt.show_buttons()
+            nt.show(str(Path(params["outdir"]) / "dead_end_test.html"), notebook=False)
+    
+        return model
+        
+
+@register_stage
 class LogMACAW(Stage):
     DEFAULT = {
         "outdir": "model/logs/",
@@ -498,6 +550,12 @@ class LogMACAW(Stage):
 
         # Create the directory if it doesn't exist
         Path(params["outdir"]).mkdir(parents=True, exist_ok=True)
+
+        # Get flux limits on glucose to check if reactions are used
+        with model:
+            ex_glc = model.reactions.get_by_id("EX_glc")
+            ex_glc.lower_bound = -10
+            glc_fva = flux_variability_analysis(model)
 
         # Check mass balance
         print("Checking mass balance...")
@@ -521,10 +579,14 @@ class LogMACAW(Stage):
                 and rxn.id not in ignore)}
         mass_balance_df = []
         for rxn, elems in mass_balance.items():
+            has_unknown_formulas = any([met.formula is None or met.formula == "" for met in rxn.metabolites])
             mass_balance_df.append({
                 "ID": rxn.id,
                 "reaction": rxn.reaction,
-                "mass_balance": elems})
+                "mass_balance": elems,
+                "has_unknown_formulas": has_unknown_formulas,
+                "glucose flux min": glc_fva.loc[rxn.id]["minimum"],
+                "glucose flux max": glc_fva.loc[rxn.id]["maximum"]})
         mass_balance_df = pd.DataFrame(mass_balance_df)
         mass_balance_df.to_csv(
             Path(params["outdir"]) / "mass_balance.csv",
@@ -533,24 +595,6 @@ class LogMACAW(Stage):
 
         # Run MACAW tests
         print("Running MACAW tests...")
-
-        # Dead ends ===============================================================================
-        print("Dead-end test... (Ctrl+C to skip)")
-        test_finished = False
-        try:
-            with model:
-                for exchange in model.exchanges:
-                    exchange.bounds = (-100, 1000)
-                reaction_df, edgelist = dead_end_test(model, verbose=0)
-                test_finished = True
-        except KeyboardInterrupt:
-            print("Dead-end test interrupted. Skipping.")
-
-        if test_finished:
-            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
-            reaction_df.to_csv(
-                Path(params["outdir"]) / "dead_end_test.csv",
-                index=False)
         
         # Loops ===================================================================================
         print("Running loop test... (Ctrl+C to skip)")
@@ -592,28 +636,6 @@ class LogMACAW(Stage):
                 Path(params["outdir"]) / "diphosphate_test.csv",
                 index=False
             )
-
-        # dead_end_mets = []
-        # for met in model.metabolites:
-        #     if len(met.reactions) == 0:
-        #         dead_end_mets.append(met)
-        #     elif len(met.reactions) == 1:
-        #         coeff = list(met.reactions)[0].metabolites[met]
-        #         l, u =  list(met.reactions)[0].bounds
-        #         if (coeff < 0 and l < 0) or (coeff > 0 and u > 0):
-        #             dead_end_mets.append(met)
-        # dead_end_mets
-                
-
-        # for substrate in params["substrates"]:
-        #     with model:
-        #         ex_substrate = model.reactions.get_by_id(substrate)
-        #         ex_substrate.lower_bound = -10
-        #         reaction_df, edgelist = dead_end_test(model, verbose=0)
-
-        #         reaction_df.to_csv(
-        #             Path(params["outdir"]) / f"{substrate}_dead_end_test.csv",
-        #             index=False)
         
         return model
 

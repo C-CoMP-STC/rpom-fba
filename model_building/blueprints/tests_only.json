@@ -1,5 +1,8 @@
 {
     "BaseModel": "model/Rpom_05.xml",
+    "DeadEnds": {
+        "remove": false
+    },
     "LogMACAW": null,
     "SanityChecks": null
 }

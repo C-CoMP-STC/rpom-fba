@@ -2,7 +2,7 @@ import json
 import os
 from argparse import ArgumentParser
 
-from cobra.io import read_sbml_model, write_sbml_model
+from cobra.io import read_sbml_model, write_sbml_model, save_json_model
 from model_building.stages import STAGE_REGISTRY
 
 
@@ -30,12 +30,31 @@ class ModelFactory:
             if verbose:
                 print(f"\n\033[93mRunning stage {stage} ==================================\033[0m")
                 print(f"\033[36mParams: {params}\033[0m\n")
+            
+            # Log model stats before stage
+            n_reactions_before = len(model.reactions) if model else 0
+            n_metabolites_before = len(model.metabolites) if model else 0
+            n_genes_before = len(model.genes) if model else 0
+            
+            # Run stage
             model = STAGE_REGISTRY[stage]().process(model, params)
+
+            # Log model stats after stage
+            n_reactions_after = len(model.reactions) if model else 0
+            n_metabolites_after = len(model.metabolites) if model else 0
+            n_genes_after = len(model.genes) if model else 0
+
+            # Print model stats
+            if verbose:
+                print(f"\033[90mReactions: {n_reactions_before} -> {n_reactions_after} ({n_reactions_after - n_reactions_before})\033[0m")
+                print(f"\033[90mMetabolites: {n_metabolites_before} -> {n_metabolites_after} ({n_metabolites_after - n_metabolites_before})\033[0m")
+                print(f"\033[90mGenes: {n_genes_before} -> {n_genes_after} ({n_genes_after - n_genes_before})\033[0m")
 
         # Save cleaned model
         if out is not None:
             os.makedirs(os.path.dirname(out), exist_ok=True)
             write_sbml_model(model, out)
+            save_json_model(model, out.replace(".xml", ".json"))
 
         return model
 
