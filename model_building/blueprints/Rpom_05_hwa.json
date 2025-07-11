@@ -7,7 +7,10 @@
     "AddReactions": [
         "model_building/reactions/add/*.json"
     ],
-    "BioCycUpdates" : "model_building/biocyc_update_pipeline/templates/template.xlsx",
+    "BioCycUpdates" : {
+        "template": "model_building/biocyc_update_pipeline/templates/template.xlsx",
+        "warnings": false
+    },
     "ModifyReactions": ["model_building/reactions/corrections/*.json"],
     "AnnotateReactions": "model_building/reaction_annotations.pkl",
     "RemoveReactions": [
@@ -16,5 +19,8 @@
     "MaintenanceFlux": 0,
     "LogMACAW": null,
     "SanityChecks": null,
-    "RemoveOrphans": null
+    "RemoveOrphans": null,
+    "DeadEnds": {
+        "remove": true
+    }
 }
