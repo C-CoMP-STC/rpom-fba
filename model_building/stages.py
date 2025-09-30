@@ -142,6 +142,37 @@ class AddMetabolites(Stage):
 
 
 @register_stage
+class RemoveMetabolites(Stage):
+    def process(self, model, params):
+        if not isinstance(params, list):
+            raise ValueError(
+                "RemoveMetabolites stage requires a list of files/folders with reactions to add.")
+
+        root = Path(r".")
+
+        # Collect metabolites from all files
+        mets_to_remove = []
+        for path in params:
+            for filepath in root.glob(path):
+                with open(filepath, "r") as f:
+                    met_ids = json.load(f)
+                    for met_id in met_ids:
+                        try:
+                            met = model.metabolites.get_by_id(met_id)
+                            mets_to_remove.append(met)
+                        except KeyError:
+                            warnings.warn(f"Cannot remove {met_id}, since it is not present in the model.")
+
+        # Remove metabolites AND associated reactions (destructive=True).
+        n_reactions = len(model.reactions)
+        model.remove_metabolites(mets_to_remove, destructive=True)
+
+        print(f"Removed {len(mets_to_remove)} metabolites, and {n_reactions - len(model.reactions)} associated reactions.")
+
+        return model
+
+
+@register_stage
 class AddReactions(Stage):
     def process(self, model: Model, params: object) -> Model:
         if not isinstance(params, list):
@@ -262,12 +293,25 @@ class ModifyReactions(Stage):
             rxn.upper_bound = reaction.get("upper_bound", rxn.upper_bound)
 
             if "metabolites" in reaction:
-                metabolites = {
-                    model.metabolites.get_by_id(met): coeff
-                    for met, coeff in reaction["metabolites"].items()
-                }
+                # Remove current metabolites to overwrite
                 rxn.subtract_metabolites(rxn.metabolites)
-                rxn.add_metabolites(metabolites)
+
+                # reaction["metabolites"] may be a dict of metabolite ids : coefficients,
+                # or a reaction string like "A + B <=> C + D"
+                if isinstance(reaction["metabolites"], dict):
+                    metabolites = {
+                        model.metabolites.get_by_id(m): v
+                        for m, v in reaction["metabolites"].items()
+                    }
+                    rxn.add_metabolites(metabolites)
+                elif isinstance(reaction["metabolites"], str):
+                    # Parse the reaction string
+                    reaction_str = reaction["metabolites"]
+                    rxn.build_reaction_from_string(reaction_str)
+                else:
+                    raise ValueError(
+                        f"Invalid format for metabolites in reaction {reaction['id']}.")
+                
 
             if "annotation" in reaction:
                 rxn.annotation.update(reaction["annotation"])
@@ -650,7 +694,9 @@ class SanityChecks(Stage):
                 ex_substrate = model.reactions.get_by_id(substrate)
                 ex_substrate.lower_bound = -10
                 growth_rate = model.optimize().objective_value
-                print(f"Growth rate on 10 mmol/gDCW/hr {substrate}: {growth_rate:.4f} h^-1")
+                
+                message = f"Growth rate on 10 mmol/gDCW/hr {substrate}: {growth_rate:.4f} h^-1"
+                print(f"\033[91m{message}\033[0m" if growth_rate < 1e-2 else message)
         
         # Check that biomass, ATP cannot be generated without carbon
         with model:

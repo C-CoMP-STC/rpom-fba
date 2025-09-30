@@ -1,0 +1,12 @@
+[
+    "Needed to produce DCMP. Gene inferred from BLASTing against E coli enzyme.",
+    {
+        "id": "RXN0-5292",
+        "name": "",
+        "subsystem" : "",
+        "lower_bound" : 0.0,
+        "upper_bound": 1000.0,
+        "metabolites" : "DCMP[c] + WATER[c] --> DEOXYCYTIDINE[c] + Pi[c]",
+        "gene_reaction_rule" : "(SPO2028)"
+    }
+]

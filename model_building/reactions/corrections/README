@@ -5,6 +5,11 @@ we can't expect never to be surprised.
 
 Seeing as, in the end, I'm not 100% sure that these are irreversible, I'm leaving them as-is for now.
 
+EDIT (9/29): Later investigation found the issue behind why RXN-16013 couldn't be made irreversible
+(needed to run in reverse on glucose in order to produce b-alanine.)
+Adding an upstream reaction producing deoxycytidine from dCMP fixed the issue.
+Now: should I review the reversibilities of these other reactions?
+
 {
     "id": "RXN-12571",
     "lower_bound": 0.0,

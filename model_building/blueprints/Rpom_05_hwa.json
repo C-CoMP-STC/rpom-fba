@@ -4,6 +4,9 @@
     "BiomassObjective": "hwa",
     "SetMedium": "data/media/L1_minimal_medium.json",
     "AddMetabolites": null,
+    "RemoveMetabolites": [
+        "model_building/metabolites/remove/*.json"
+    ],
     "AddReactions": [
         "model_building/reactions/add/*.json"
     ],
@@ -11,7 +14,10 @@
         "template": "model_building/biocyc_update_pipeline/templates/template.xlsx",
         "warnings": false
     },
-    "ModifyReactions": ["model_building/reactions/corrections/*.json"],
+    "ModifyReactions": [
+        "model_building/reactions/corrections/*.json"
+    ],
+
     "AnnotateReactions": "model_building/reaction_annotations.pkl",
     "RemoveReactions": [
         "model_building/reactions/remove/*.json"
