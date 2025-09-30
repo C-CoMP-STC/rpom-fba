@@ -1,0 +1,27 @@
+[
+    {
+        "id": "RIBULP3EPIM-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RIB5PISOM-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "1TRANSKETO-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "TRANSALDOL-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "2TRANSKETO-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    }
+]
