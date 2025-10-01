@@ -759,7 +759,38 @@ class SanityChecks(Stage):
                     print(f"\033[91mNADH can be produced without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
                 else:
                     print(f"\033[92mNADH cannot be produced without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+
+            # Check NADPH sink
+            with model:
+                nadph_sink = model.add_boundary(
+                    model.metabolites.get_by_id("NADPH[c]"),
+                    type="sink",
+                    reaction_id="NADPH-sink",
+                    lb= 0,
+                    ub= 1000,)
+                model.objective = nadph_sink
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mNADPH can be produced without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
+                else:
+                    print(f"\033[92mNADPH cannot be produced without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
             
+            # Check FADH2 sink
+            with model:
+                fadh2_sink = model.add_boundary(
+                    model.metabolites.get_by_id("FADH2[c]"),
+                    type="sink",
+                    reaction_id="FADH2-sink",
+                    lb= 0,
+                    ub= 1000,)
+                model.objective = fadh2_sink
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mFADH2 can be produced without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
+                else:
+                    print(f"\033[92mFADH2 cannot be produced without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+
+
             # Check oxidizing NADH
             with model:
                 nadhm = Reaction("NADHM", lower_bound=0, upper_bound=1000)
@@ -825,6 +856,7 @@ class SanityChecks(Stage):
 
 
         return model
+
 
 @register_stage
 class RemoveOrphans(Stage):
