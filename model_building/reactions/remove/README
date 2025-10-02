@@ -135,6 +135,7 @@ to achieve the same.
 
 6PFRUCTPHOS-RXN
 RXN-9952
+PEPSYNTH-RXN
 Removed by manual review of gap-filling in central metabolism pathways. Confirmed by Mary Ann.
 
 
@@ -142,6 +143,13 @@ RXN-7745
 Gap-filled for L-isoleucine biosynthesis II (R. pom has all genes for the more typical L-isoleucine
 biosynthesis I pathway). Identified by generating a list of all reactions with no genes across both
 databases, and ranking by growth defect of knockout (on glucose).
+
+
+ACETALD-DEHYDROG-RXN
+FHLMULTI-RXN
+PYRUVFORMLY-RXN
+DLACTDEHYDROGNAD-RXN
+Identified by automated assembly of list of reactions with no associated genes, ranked by growth impact on glucose. Cross-checked with KEGG sil database.
 
 
 tca.json ==========================================================================================
