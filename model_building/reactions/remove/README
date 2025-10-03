@@ -149,6 +149,8 @@ ACETALD-DEHYDROG-RXN
 FHLMULTI-RXN
 PYRUVFORMLY-RXN
 DLACTDEHYDROGNAD-RXN
+GLUCOSAMINE-6-P-DEAMIN-RXN
+DIHYDROFOLATEREDUCT-RXN
 Identified by automated assembly of list of reactions with no associated genes, ranked by growth impact on glucose. Cross-checked with KEGG sil database.
 
 

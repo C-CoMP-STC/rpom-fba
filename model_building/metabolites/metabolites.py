@@ -287,5 +287,11 @@ ADDED_METABOLITES = [
                formula="C5H11NO2",
                charge=0,
                name="L-valine",
-               compartment="e")
+               compartment="e"),
+    # Tetrahydrofolate biosynthesis ====================================
+    Metabolite(id="CPD-9020[c]",
+               formula="C14H15N6O3",
+               charge=0,
+               name="tetrahydropteroate",
+               compartment="c")
 ]
