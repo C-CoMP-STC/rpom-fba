@@ -345,15 +345,21 @@
     "Glucose and Xylose transport ================================================================",
     "ABC transporter, assuming n=1",
     {
+        "id": "EX_glc",
+        "name": "Glucose exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "Glucopyranose[e] -->",
+        "gene_reaction_rule": ""
+    },
+    {
         "id": "GLCtex",
         "name": "",
         "subsystem": "",
         "lower_bound": -1000.0,
         "upper_bound": 1000.0,
-        "metabolites": {
-            "GLC[e]" : -1.0,
-            "GLC[p]" : 1.0
-        },
+        "metabolites": "Glucopyranose[e] <=> Glucopyranose[p]",
         "gene_reaction_rule": ""
     },
     {
@@ -362,15 +368,7 @@
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
-        "metabolites": {
-            "GLC[p]" : -1.0,
-            "GLC[c]" : 1.0,
-            "ATP[c]" : -1.0,
-            "WATER[c]" : -1.0,
-            "ADP[c]" : 1.0,
-            "Pi[c]" : 1.0,
-            "PROTON[c]" : 1.0
-        },
+        "metabolites": "ATP[c] + Glucopyranose[p] + WATER[c] --> ADP[c] + Glucopyranose[c] + PROTON[c] + Pi[c]",
         "gene_reaction_rule": "(SPO0861 and SPO0862 and SPO0863)"
     },
     {

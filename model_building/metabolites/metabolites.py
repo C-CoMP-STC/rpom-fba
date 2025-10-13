@@ -293,5 +293,16 @@ ADDED_METABOLITES = [
                formula="C14H15N6O3",
                charge=0,
                name="tetrahydropteroate",
-               compartment="c")
+               compartment="c"),
+    # Correcting glucose to only use Glucopyranose[c] form
+    Metabolite(id="Glucopyranose[p]",
+               formula="C6H12O6",
+               charge=0,
+               name="D-glucopyranose",
+               compartment="p"),
+    Metabolite(id="Glucopyranose[e]",
+               formula="C6H12O6",
+               charge=0,
+               name="D-glucopyranose",
+               compartment="p"),
 ]
