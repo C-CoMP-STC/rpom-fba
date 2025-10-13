@@ -895,12 +895,12 @@ class NetworkChecks(Stage):
         components_log = []
         for i, component in enumerate(components):
             for elem in component:
-                components_log.append([
+                components_log.append(
                     {
                         "ID" : elem,
                         "Component" : i
                     }
-                ])
+                )
         components_log = pd.DataFrame(components_log)
 
         with open(Path(params["outdir"]) / "connected_components.csv", "w") as f:

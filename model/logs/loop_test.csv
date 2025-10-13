@@ -97,7 +97,7 @@ reaction_id,reaction_equation,loop_test,pathways
 5.4.2.10-RXN-CPD-13469//GLUCOSAMINE-1P.26.,CPD-13469[c] <=> GLUCOSAMINE-1P[c],ok,"['UDPNAGSYN-PWY', 'PWY0-1261']"
 5.5.1.2-RXN,CPD-245[c] + PROTON[c] --> CPD-7737[c],ok,['PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY']
 6-OXOHEXANOATE-OXIDATION-RXN,6-OXO-HEXANOATE[c] + NADP[c] + WATER[c] --> ADIPATE[c] + NADPH[c] + 2.0 PROTON[c],ok,[]
-6.3.2.10-RXN,ATP[c] + CPD-209[c] + D-ALA-D-ALA[c] --> ADP[c] + C3[c] + PROTON[c] + Pi[c],ok,[]
+6.3.2.10-RXN,ATP[c] + CPD-209[c] + D-ALA-D-ALA[c] --> ADP[c] + C3[c] + PROTON[c] + Pi[c],in loop,[]
 6PGLUCONOLACT-RXN,D-6-P-GLUCONO-DELTA-LACTONE[c] + WATER[c] --> CPD-2961[c] + PROTON[c],ok,"['OXIDATIVEPENT-PWY', 'PWY-8004']"
 AACPS4,ACP[c] + ATP[c] + hdcea[c] <=> AMP[c] + PPI[c] + hdeACP[c],ok,[]
 ABC-19-RXN,ATP[c] + CPD-3[p] + WATER[c] --> ADP[c] + CPD-3[c] + PROTON[c] + Pi[c],ok,['PWY-8171']
