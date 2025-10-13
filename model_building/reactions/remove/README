@@ -185,3 +185,10 @@ in favor of the specialized versions:
     5.4.2.10-RXN
     L-GLN-FRUCT-6-P-AMINOTRANS-RXN
     NAG6PDEACET-RXN
+
+
+glucose_forms.json
+================================================================================
+
+Removed so as to only use Glucopyranose[-] forms of glucose:
+ALDOSE-1-EPIMERASE-RXN

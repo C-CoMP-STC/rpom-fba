@@ -24,6 +24,7 @@ from model_building.biomass import (add_ecoli_core_biomass_to_model,
 from model_building.metabolites.metabolites import ADDED_METABOLITES
 from model_building.uptake_rxns import add_uptake_reactions, get_uptake_data
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
+from utils.network import model_to_network
 
 STAGE_REGISTRY = {}
 
@@ -854,6 +855,56 @@ class SanityChecks(Stage):
                 else:
                     print(f"\033[92mFADH2 cannot be oxidized without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
 
+
+        return model
+
+
+@register_stage
+class NetworkChecks(Stage):
+    DEFAULT = {
+        "outdir": "model/logs/"
+    }
+
+    def process(self, model, params) -> Model:
+        """
+        Conduct network-based checks (just checking number of connected components for now.)
+        """
+        if params is None:
+            params = self.DEFAULT
+        elif isinstance(params, dict):
+            params = {**self.DEFAULT, **params}            
+        else:
+            raise ValueError(
+                "NetworkChecks stage requires a dictionary with key 'outdir' to store the logs.")
+
+        # Create the directory if it doesn't exist
+        Path(params["outdir"]).mkdir(parents=True, exist_ok=True)
+
+        # Create graph representation of model
+        g = model_to_network(model)
+
+        # Get number of connected components and warn if there are >1.
+        components = list(nx.connected_components(g))
+
+        if len(components) == 1:
+            print("\033[92mNetwork has one connected component.\033[0m")
+        else:
+            print(f"\033[91mNetwork has {len(components)} connected components!\033[0m")
+            print("\033[91mCheck logs for component memberships.\033[0m")
+        
+        components_log = []
+        for i, component in enumerate(components):
+            for elem in component:
+                components_log.append([
+                    {
+                        "ID" : elem,
+                        "Component" : i
+                    }
+                ])
+        components_log = pd.DataFrame(components_log)
+
+        with open(Path(params["outdir"]) / "connected_components.csv", "w") as f:
+            components_log.to_csv(f, index=False)
 
         return model
 

@@ -24,6 +24,7 @@
     ],
     "MaintenanceFlux": 0,
     "LogMACAW": null,
+    "NetworkChecks": null,
     "SanityChecks": null,
     "RemoveOrphans": null,
     "DeadEnds": {

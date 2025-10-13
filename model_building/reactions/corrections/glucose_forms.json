@@ -1,0 +1,8 @@
+[
+    "Out of several forms of glucose, I'm electing to use Glucopyranose only.",
+    "This means changing several reactions to use this form:",
+    {
+        "id": "GLUCOKIN-RXN",
+        "metabolites": "ATP[c] + Glucopyranose[c] --> ADP[c] + D-glucopyranose-6-phosphate[c] + PROTON[c]"
+    }
+]
