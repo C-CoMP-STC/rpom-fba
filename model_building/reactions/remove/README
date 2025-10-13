@@ -34,6 +34,9 @@ Removed so as to use ubiquinone 10 only:
     "RXN66-550-ETF-Reduced/UBIQUINONE-8//ETF-Oxidized/CPD-9956/PROTON.55.",
     "SUCCINATE-DEHYDROGENASE-UBIQUINONE6-RXN"
 
+Removed to replace with NADH-DEHYDROG-A-RXN:
+1.6.99.5-RXN-NADH/UBIQUINONE-10/PROTON//NAD/CPD-9958.40.
+
 sub-reactions.json ================================================================================
 
 Removed as sub-reactions (and sub-sub-reactions) of PDH:
