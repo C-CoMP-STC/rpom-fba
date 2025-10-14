@@ -1,0 +1,5 @@
+{
+    "BaseModel": "base_model/Rpom_05.xml",
+    "AnnotateReactions": "model_building/reaction_annotations.pkl",
+    "SaveModel": "base_model/Rpom_05.xml"
+}
