@@ -1,5 +1,6 @@
 import abc
 import json
+import os
 import pickle
 import warnings
 import networkx as nx
@@ -14,7 +15,7 @@ from cobra.core.metabolite import Metabolite
 from cobra.core.model import Model
 from cobra.core.reaction import Reaction
 from cobra.flux_analysis import flux_variability_analysis
-from cobra.io import read_sbml_model
+from cobra.io import read_sbml_model, write_sbml_model, save_json_model
 from macaw.main import dead_end_test, dilution_test, diphosphate_test, duplicate_test, loop_test
 from pyvis.network import Network
 
@@ -57,9 +58,9 @@ class BaseModel(Stage):
 class MetaData(Stage):
     def process(self, model: Model, params: object) -> Model:
         # Store config and git hash in annotation
-        # model.annotation["config-file"] = self.config_file
-        # model.annotation["config"] = json.dumps(self.config)
-        model.annotation["git-hash"] = self.get_git_hash()
+        # model.notes["config-file"] = self.config_file
+        # model.notes["config"] = json.dumps(self.config)
+        model.notes["git-hash"] = self.get_git_hash()
 
         return model
 
@@ -86,7 +87,7 @@ class BiomassObjective(Stage):
             case "ecoli-full":
                 add_ecoli_full_biomass_to_model(model)
             case "hwa":
-                add_ecoli_full_biomass_to_model(model)  # Debugging
+                # add_ecoli_full_biomass_to_model(model)  # Debugging
                 add_hwa_biomass_to_model(model)
 
         return model
@@ -232,9 +233,9 @@ class AddReactions(Stage):
             rxn.gene_reaction_rule = reaction["gene_reaction_rule"]
 
             # Annotate reaction, gene source as manual
-            rxn.annotation["source"] = "manual"
+            rxn.notes["source"] = "manual"
             if reaction["gene_reaction_rule"] != "":
-                rxn.annotation["Gene Source"] = "manual"
+                rxn.notes["Gene Source"] = "manual"
 
         return model
 
@@ -315,13 +316,13 @@ class ModifyReactions(Stage):
                 
 
             if "annotation" in reaction:
-                rxn.annotation.update(reaction["annotation"])
+                rxn.notes.update(reaction["annotation"])
 
             # Update gene reaction rule if provided,
             # recording the source as manual to prevent downstream overrides
             if "gene_reaction_rule" in reaction:
                 rxn.gene_reaction_rule = reaction["gene_reaction_rule"]
-                rxn.annotation["Gene Source"] = "manual"
+                rxn.notes["Gene Source"] = "manual"
 
         return model
 
@@ -354,8 +355,8 @@ class AnnotateReactions(Stage):
         pathways = annotations["pathways"]
 
         for reaction in model.reactions:
-            reaction.annotation["stem"] = stems.get(reaction.id, "")
-            reaction.annotation["pathways"] = list(
+            reaction.notes["stem"] = stems.get(reaction.id, "")
+            reaction.notes["pathways"] = list(
                 pathways.get(reaction.id, []))
 
         return model
@@ -391,7 +392,7 @@ class BioCycUpdates(Stage):
         # First, clear existing genes and gene rules (which use bad ids)
         # (except for manually annotated genes)
         for reaction in model.reactions:
-            if reaction.annotation.get("Gene Source") != "manual":
+            if reaction.notes.get("Gene Source") != "manual":
                 reaction.gene_reaction_rule = ""
         genes_to_remove = []
         for gene in model.genes:
@@ -428,17 +429,17 @@ class BioCycUpdates(Stage):
             # Update gene rule if we have one (do not overwrite manual annotations)
             # (Also skipping empty gene rules of the form "()" since the parser doesn't like them)
             if not pd.isna(gene_reaction_rule) and gene_reaction_rule != "()":
-                if reaction.annotation.get("Gene Source") != "manual":
+                if reaction.notes.get("Gene Source") != "manual":
                     reaction.gene_reaction_rule = gene_reaction_rule
                     genes_added.update(reaction.genes)
                     for gene in reaction.genes:
-                        gene.annotation["source"] = ("Ruegeria pomeroyi DSS-3"
+                        gene.notes["source"] = ("Ruegeria pomeroyi DSS-3"
                                                     if in_db1
                                                     else "Ruegeria pomeroyi DSS-3 representative genome")
 
             # Remove reaction if unused and not manually added
             if (row["Recommendation"] == "Delete"
-                and reaction.annotation.get("source") != "manual"):
+                and reaction.notes.get("source") != "manual"):
                 model.remove_reactions([reaction])
                 removed_reactions.append(row["Reaction ID"])
         
@@ -475,7 +476,7 @@ class BioCycUpdates(Stage):
             
             # Add gene-reaction-rule (do not overwrite manual annotations)
             gene_reaction_rule = row["Gene-reaction rule 1" if in_db1 else "Gene-reaction rule 2"]
-            if reaction.annotation.get("Gene Source") != "manual":
+            if reaction.notes.get("Gene Source") != "manual":
                 if not pd.isna(gene_reaction_rule) and gene_reaction_rule != "()":
                     reaction.gene_reaction_rule = gene_reaction_rule
             
@@ -498,7 +499,7 @@ class BioCycUpdates(Stage):
             reaction.add_metabolites(metabolites)
 
             # Keep track of which database the reaction came from
-            reaction.annotation["source"] = ("Ruegeria pomeroyi DSS-3"
+            reaction.notes["source"] = ("Ruegeria pomeroyi DSS-3"
                                             if in_db1
                                             else "Ruegeria pomeroyi DSS-3 representative genome")
             
@@ -513,19 +514,19 @@ class BioCycUpdates(Stage):
             
             # Name, synonyms
             gene.name = new_genes_row["Gene Name"] if not pd.isna(new_genes_row["Gene Name"]) else ""
-            gene.annotation["synonyms"] = new_genes_row["Synonyms"] if not pd.isna(new_genes_row["Synonyms"]) else []
+            gene.notes["synonyms"] = new_genes_row["Synonyms"] if not pd.isna(new_genes_row["Synonyms"]) else []
 
             # database of origin
-            gene.annotation["source"] = ("Ruegeria pomeroyi DSS-3"
+            gene.notes["source"] = ("Ruegeria pomeroyi DSS-3"
                                         if new_genes_row["In DB1?"]
                                         else "Ruegeria pomeroyi DSS-3 representative genome")
             
             # Position
-            gene.annotation["left-end-position"] = str(new_genes_row["Left-Position"]) if not pd.isna(new_genes_row["Left-Position"]) else None
-            gene.annotation["right-end-position"] = str(new_genes_row["Right-Position"]) if not pd.isna(new_genes_row["Right-Position"]) else None
+            gene.notes["left-end-position"] = str(new_genes_row["Left-Position"]) if not pd.isna(new_genes_row["Left-Position"]) else None
+            gene.notes["right-end-position"] = str(new_genes_row["Right-Position"]) if not pd.isna(new_genes_row["Right-Position"]) else None
 
             # Replicon
-            gene.annotation["replicon"] = new_genes_row["Replicon"] if not pd.isna(new_genes_row["Replicon"]) else None
+            gene.notes["replicon"] = new_genes_row["Replicon"] if not pd.isna(new_genes_row["Replicon"]) else None
         
         print(f"Before updates, had {initial_reactions} reactions, {initial_metabolites} metabolites, and {initial_genes} genes.")
         print(f"- Removed {len(removed_reactions)} reactions.")
@@ -563,7 +564,7 @@ class DeadEnds(Stage):
             print("Dead-end test interrupted. Skipping.")
 
         if test_finished:
-            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
+            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).notes.get("pathways", []) for rxn in reaction_df["reaction_id"]]
             reaction_df.to_csv(
                 Path(params["outdir"]) / "dead_end_test.csv",
                 index=False)
@@ -652,7 +653,7 @@ class LogMACAW(Stage):
             print("Loop test interrupted. Skipping.")
 
         if test_finished:
-            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
+            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).notes.get("pathways", []) for rxn in reaction_df["reaction_id"]]
             reaction_df.to_csv(
                 Path(params["outdir"]) / "loop_test.csv",
                 index=False)
@@ -898,6 +899,7 @@ class NetworkChecks(Stage):
                 components_log.append(
                     {
                         "ID" : elem,
+                        "Reaction": g.nodes[elem]["reaction"] if g.nodes[elem]["node_type"] == "Reaction" else None,
                         "Component" : i
                     }
                 )
@@ -926,4 +928,34 @@ class RemoveOrphans(Stage):
         print(f"Removed {len(removed_mets)} orphan metabolites, {len(removed_reactions)} orphan reactions, and {len(orphan_genes)} orphan genes.")
         print(f"After removing orphans: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites, {len(model.genes)} genes.")
 
+        return model
+
+
+@register_stage
+class SaveModel(Stage):
+    def process(self, model, params) -> Model:
+        # Save cleaned model. This is currently redundant with the default
+        # behavior of the model_factory itself, but I plan to make this stage the only
+        # way to save.
+
+        if isinstance(params, str):
+            out = [params]
+        elif isinstance(params, list):
+            if any(map(lambda f: not isinstance(f, str), params)):
+                raise ValueError("SaveModel stage expects either a string filepath, or list of string filepaths.")
+            out = params
+        else:
+            raise ValueError("SaveModel stage expects either a string filepath, or list of string filepaths.")
+        
+        for f in out:
+            os.makedirs(os.path.dirname(f), exist_ok=True)
+
+            ext = f[f.rindex("."):].strip().lower()
+            match ext:
+                case ".xml":
+                    write_sbml_model(model, f)
+                case ".json":
+                    save_json_model(model, f)
+                case _:
+                    warnings.warn(f"Unrecognized extension to save model: {ext}")
         return model

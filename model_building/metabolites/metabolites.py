@@ -305,4 +305,15 @@ ADDED_METABOLITES = [
                charge=0,
                name="D-glucopyranose",
                compartment="p"),
+    # Correcting external fructose to just use the beta form
+    Metabolite(id="BETA-D-FRUCTOSE[e]",
+               formula="C6H12O6",
+               charge=0,
+               name="beta-D-fructofuranose",
+               compartment="e"),
+    Metabolite(id="BETA-D-FRUCTOSE[p]",
+               formula="C6H12O6",
+               charge=0,
+               name="beta-D-fructofuranose",
+               compartment="p"),
 ]

@@ -54,7 +54,7 @@ def to_paintable(model : Model, collection : str = "reactions", pbar : bool = Fa
 
     for i, item in enumerate(objects if not pbar else tqdm(objects)):
         result.append({
-            "id": item.id if not isinstance(item, Reaction) else item.annotation["stem"],
+            "id": item.id if not isinstance(item, Reaction) else item.notes["stem"],
             **{
                 colname: value[i] if isinstance(value, list) else value
                 for colname, value in data.items()

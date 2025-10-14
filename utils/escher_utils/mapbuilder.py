@@ -50,7 +50,7 @@ class MapBuilder:
     def serialize_reaction(self, reaction):
         return {
             # Biological attributes
-            "name": reaction.name,  # reaction.annotation["bigg.reaction"]?
+            "name": reaction.name,  # reaction.notes["bigg.reaction"]?
             "bigg_id": reaction.id,
             "reversibility": reaction.reversibility,
             "gene_reaction_rule": reaction.gene_reaction_rule,
@@ -68,7 +68,7 @@ class MapBuilder:
         metabolite, coefficient = metabolite_coeff_pair
         return {
             "coefficient": coefficient,
-            # metabolite.annotation["bigg.metabolite"]?
+            # metabolite.notes["bigg.metabolite"]?
             "bigg_id": metabolite.id
         }
 

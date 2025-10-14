@@ -791,5 +791,17 @@
             "PROTON[c]" : 1.0
         },
         "gene_reaction_rule": ""
+    },
+    "Fructose transport ===============================================================",
+    "Not experimentally confirmed to be present, as far as I know",
+    "(but there's a number of annotated ABC tranporters for sugars)",
+    {
+        "id": "FRUtpp",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "ATP[c] + BETA-D-FRUCTOSE[p] + WATER[c] --> ADP[c] + BETA-D-FRUCTOSE[c] + PROTON[c] + Pi[c]",
+        "gene_reaction_rule": ""
     }
 ]

@@ -35,7 +35,7 @@ def main():
         with model:
             # Get exchange reaction and calculated rate for the given carbon source
             exchange_rxn = get_or_create_exchange(model, carbon_source_id)
-            experimental_rate = abs(float(exchange_rxn.annotation["Experimental rate"]))
+            experimental_rate = abs(float(exchange_rxn.notes["Experimental rate"]))
             set_active_bound(exchange_rxn, 10)
 
             # Sweep oxygen bound, keeping track of objective value

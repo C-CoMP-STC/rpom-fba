@@ -11,7 +11,7 @@ class TestBlockedComponents():
     model = read_sbml_model(TEST_MODEL)
 
     ex_glc = model.reactions.get_by_id("EX_glc")
-    set_active_bound(ex_glc, abs(float(ex_glc.annotation["Experimental rate"])))
+    set_active_bound(ex_glc, abs(float(ex_glc.notes["Experimental rate"])))
 
     def test_blocked_biomass(self):
         # Returns True if biomass can be produced, otherwise a
