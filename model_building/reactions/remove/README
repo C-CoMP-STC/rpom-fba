@@ -20,6 +20,11 @@ Removed:
     TRANS-RXN-319
     ISETHIONATEtpp
         Present in DSS-3, but proton-gradient succinate transporter is confirmed experimentally
+    
+    RXNN-386
+        Found by connected components analysis.
+        Part of napthalene degradation, but neither of the upstream or downstream reaction in
+        that pathway is in R. pom (checked ECs from MetaCyc against KEGG).
 
 electron transport chain.json =====================================================================
 
