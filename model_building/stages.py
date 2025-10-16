@@ -257,7 +257,7 @@ class RemoveReactions(Stage):
                     reactions_to_remove += json.load(f)
 
         # Remove reactions
-        model.remove_reactions(reactions_to_remove, remove_orphans = True)
+        model.remove_reactions(reactions_to_remove, remove_orphans = False)
 
         return model
 

@@ -372,32 +372,21 @@
         "gene_reaction_rule": "(SPO0861 and SPO0862 and SPO0863)"
     },
     {
-        "id": "BETA-D-XYLOSEtex",
+        "id": "XYLOSEtex",
         "name": "",
         "subsystem": "",
         "lower_bound": -1000.0,
         "upper_bound": 1000.0,
-        "metabolites": {
-            "BETA-D-XYLOSE[e]" : -1.0,
-            "BETA-D-XYLOSE[p]" : 1.0
-        },
+        "metabolites": "D-Xylopyranose[e] <=> D-Xylopyranose[p]",
         "gene_reaction_rule": ""
     },
     {
-        "id": "BETA-D-XYLOSEtpp",
+        "id": "XYLOSEtpp",
         "name": "",
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
-        "metabolites": {
-            "BETA-D-XYLOSE[p]" : -1.0,
-            "BETA-D-XYLOSE[c]" : 1.0,
-            "ATP[c]" : -1.0,
-            "WATER[c]" : -1.0,
-            "ADP[c]" : 1.0,
-            "Pi[c]" : 1.0,
-            "PROTON[c]" : 1.0
-        },
+        "metabolites": "ATP[c] + D-Xylopyranose[p] + WATER[c] --> ADP[c] + D-Xylopyranose[c] + PROTON[c] + Pi[c]",
         "gene_reaction_rule": "(SPO0861 and SPO0862 and SPO0863)"
     },
     "Glycerol transport ===============================================================================",
