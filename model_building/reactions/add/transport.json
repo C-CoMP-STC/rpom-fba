@@ -803,5 +803,16 @@
         "upper_bound": 1000.0,
         "metabolites": "ATP[c] + BETA-D-FRUCTOSE[p] + WATER[c] --> ADP[c] + BETA-D-FRUCTOSE[c] + PROTON[c] + Pi[c]",
         "gene_reaction_rule": ""
+    },
+    "Nitrate transport ================================================================",
+    "Connected components analysis found Nitrate[e] was disconnected, inferring free entry into periplasm",
+    {
+        "id": "NITRATEtex",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0,
+        "metabolites": "NITRATE[e] <=> NITRATE[p]",
+        "gene_reaction_rule": ""
     }
 ]

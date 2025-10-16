@@ -34,5 +34,10 @@
     {
         "id": "ABC-24-RXN",
         "gene_reaction_rule": "(SPO3466 and SPO3467 and SPO3468 and SPO3469)"
+    },
+    "glyceraldehyde-3-phosphate dehydrogenase, type I ===========================================",
+    {
+        "id" : "GAPOXNPHOSPHN-RXN",
+        "gene_reaction_rule": "(SPO2198 or SPO0875 or SPO0701)"
     }
 ]
