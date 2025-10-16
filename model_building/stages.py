@@ -959,3 +959,69 @@ class SaveModel(Stage):
                 case _:
                     warnings.warn(f"Unrecognized extension to save model: {ext}")
         return model
+    
+
+@register_stage
+class ModelToSpreadsheet(Stage):
+    DEFAULTS = {
+        "out" : "model/model_spreadsheet.xlsx",
+        "substrates" : [("EX_glc", 5.44), ("EX_ac", 10.0)]
+    }
+    def process(self, model, params) -> Model:
+        if params is None:
+            params = self.DEFAULTS
+        elif isinstance(params, dict):
+            params = params = {**self.DEFAULTS, **params}
+        else:
+            raise ValueError("ModelToSpreadsheet stage expects either null or a dictionary with " \
+                             "keys `out` for the output file path, and `substrates` for" \
+                             "substrates on which to evaluate fluxes (see defaults).")
+        
+        sols = {}
+        ko_fcs = {}
+        for ex, lb in params["substrates"]:
+            with model:
+                model.reactions.get_by_id(ex).bounds = (-lb, 1000.0)
+                sol = model.optimize()
+                sols[ex] = sol.fluxes
+
+                # Get fold-changes
+                baseline = sol.objective_value
+                ko_fcs[ex] = {}
+                for rxn in model.reactions:
+                    with model:
+                        rxn.bounds = (0., 0.)
+                        ko_fcs[ex][rxn] = model.slim_optimize() / baseline
+
+        # Build reactions sheet
+        reactions = pd.DataFrame([
+            {
+                "ID" : rxn.id,
+                "Stem" : rxn.notes.get("stem", None),
+                "Name" : rxn.name,
+                "EC": rxn.notes.get("EC Number", None),
+                "Kegg": rxn.notes.get("Kegg ID", None),
+                "Reaction" : rxn.reaction,
+                "Pathways": rxn.notes.get("pathways", None),
+                "Lower" : rxn.lower_bound,
+                "Upper" : rxn.upper_bound,
+                "GPR": rxn.gene_reaction_rule,
+                **{
+                    f"{ex} flux" : fluxes[rxn.id]
+                    for ex, fluxes in sols.items()
+                },
+                **{
+                    f"Abs {ex} flux" : abs(fluxes[rxn.id])
+                    for ex, fluxes in sols.items()
+                },
+                **{
+                    f"{ex} FC" : fcs[rxn]
+                    for ex, fcs in ko_fcs.items()
+                }
+            }
+            for rxn in model.reactions
+        ])
+
+        reactions.to_excel(params["out"], index=False)
+
+        return model
