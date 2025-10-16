@@ -1,0 +1,29 @@
+[
+    {
+        "id": "EX_ribose",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "D-Ribofuranose[e] -->",
+        "gene_reaction_rule": ""
+    },
+    {
+        "id" : "RIBOSEtex",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0,
+        "metabolites" : "D-Ribofuranose[e] <=> D-Ribofuranose[p]",
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "TRANS-RXN-332",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "ATP[c] + D-Ribofuranose[p] + WATER[c] --> ADP[c] + PROTON[c] + Pi[c] + D-Ribofuranose[c]",
+        "gene_reaction_rule": ""
+    }
+]

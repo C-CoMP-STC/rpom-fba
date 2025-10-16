@@ -197,3 +197,11 @@ glucose_forms.json
 
 Removed so as to only use Glucopyranose[-] forms of glucose:
 ALDOSE-1-EPIMERASE-RXN
+
+
+ribose_forms.json
+================================================================================
+
+Removed so as to only use D-Ribofuranose form of ribose:
+RXN0-5305
+RXN-14904

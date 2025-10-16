@@ -636,7 +636,7 @@ def main():
                              "EX_FUM",
                              "EX_MAL",
                              "EX_SUC",
-                             "EX_BETA-D-XYLOSE",
+                             "EX_xylose",
                              "EX_GLYCEROL",
                              "EX_GLYCEROL-3P",
                              "EX_CPD-3745",
