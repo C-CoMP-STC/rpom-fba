@@ -648,9 +648,16 @@ class SanityChecks(Stage):
         for substrate in ["EX_glc", "EX_ac"]:
             with model:
                 ex_substrate = model.reactions.get_by_id(substrate)
-                ex_substrate.lower_bound = -10
-                growth_rate = model.optimize().objective_value
-                print(f"Growth rate on 10 mmol/gDCW/hr {substrate}: {growth_rate:.4f} h^-1")
+
+                # Heena: Change uptake for glucose to 5 mmol
+                if substrate == "EX_glc":
+                    ex_substrate.lower_bound = -5
+                    growth_rate = model.optimize().objective_value
+                    print(f"Growth rate on 5 mmol/gDCW/hr {substrate}: {growth_rate:.4f} h^-1")
+                else:
+                    ex_substrate.lower_bound = -10  # this is the max uptake for nutrient. lower bound is producing
+                    growth_rate = model.optimize().objective_value
+                    print(f"Growth rate on 10 mmol/gDCW/hr {substrate}: {growth_rate:.4f} h^-1")
         
         # Check that biomass, ATP cannot be generated without carbon
         with model:

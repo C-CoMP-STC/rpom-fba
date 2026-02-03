@@ -34,5 +34,533 @@
     {
         "id": "ABC-24-RXN",
         "gene_reaction_rule": "(SPO3466 and SPO3467 and SPO3468 and SPO3469)"
+    },
+    "Glucose gene review =====================================================================",
+    {
+        "id": "METHENYLTHFCYCLOHYDRO-RXN",
+        "gene_reaction_rule": "SPO1559 or SPO1560 or SPO3101"
+    },
+    {
+        "id": "METHYLENETHFDEHYDROG-NADP-RXN",
+        "gene_reaction_rule": "SPO1559 or SPO1560 or SPO3101"
+    },
+    {
+        "id": "1.2.1.2-RXN",
+        "gene_reaction_rule": "(SPO0834 or SPO1556 or SPO1796) and (SPO0833 or SPO1555)"
+    },
+    {
+        "id": "GLUTAMATESYN-RXN",
+        "gene_reaction_rule": "SPO3768 and SPO3770"
+    },
+    {
+        "id": "PSERTRANSAM-RXN",
+        "gene_reaction_rule": "SPO3354"
+    },
+    {
+        "id": "GCVMULTI-RXN",
+        "gene_reaction_rule": "SPOA0058 or SPOA0310 or SPO0878 or SPOA0057"
+    },
+    {
+        "id": "RXN0-5224",
+        "gene_reaction_rule": "SPO3715"
+    },
+    {
+        "id": "ACETYL-COA-ACETYLTRANSFER-RXN",
+        "gene_reaction_rule": "SPO0326 or SPO1013 or SPOA0425 or SPO0773 or SPO2918 or SPO3408"
+    },
+    {
+        "id": "RXN-11662",
+        "gene_reaction_rule": "SPO0739 or SPO0772 or SPO2920 or SPOA0424"
+    },
+    {
+        "id": "BIOTIN-CARBOXYL-RXN",
+        "gene_reaction_rule": "SPO1010"
+    },
+    {
+        "id": "RXN0-5055",
+        "gene_reaction_rule": "SPO3616 and (SPO3817 or SPO1094)"
+    },
+    {
+        "id": "1.5.5.1-RXN-ETF-Reduced/UBIQUINONE-10//ETF-Oxidized/CPD-9958/PROTON.56.",
+        "gene_reaction_rule": "SPO0316"
+    },
+    {
+        "id": "FUMHYDR-RXN",
+        "gene_reaction_rule": "SPO1498 or SPO1905"
+    },
+    {
+        "id": "MALATE--COA-LIGASE-RXN",
+        "gene_reaction_rule": "SPO1568 and SPO1569"
+    },
+    {
+        "id": "METHYLMALONYL-COA-EPIM-RXN",
+        "gene_reaction_rule": "SPO0932"
+    },
+    {
+        "id": "METHYLMALONYL-COA-MUT-RXN",
+        "gene_reaction_rule": "SPO1105"
+    },
+    {
+        "id": "PROPIONYL-COA-CARBOXY-RXN",
+        "gene_reaction_rule": "SPO1094 and SPO1101"
+    },
+    {
+        "id": "3-HYDROXBUTYRYL-COA-DEHYDRATASE-RXN",
+        "gene_reaction_rule": "SPO3152"
+    },
+    {
+        "id": "RXN-16391",
+        "gene_reaction_rule": "SPO0932"
+    },
+    {
+        "id": "RXN-8957",
+        "gene_reaction_rule": "SPO0370"
+    },
+    {
+        "id": "RXN-8958",
+        "gene_reaction_rule": "SPO0368"
+    },
+    {
+        "id": "RXN-8959",
+        "gene_reaction_rule": "SPO0693"
+    },
+    {
+        "id": "RXN-8960",
+        "gene_reaction_rule": "SPO0355"
+    },
+    {
+        "id": "ASPARTATEKIN-RXN",
+        "gene_reaction_rule": "SPO3035"
+    },
+    {
+        "id": "SUCCCOASYN-RXN",
+        "gene_reaction_rule": "SPO0346 and SPO0347"
+    },
+    {
+        "id": "ACETOLACTSYN-RXN",
+        "gene_reaction_rule": "(SPO2578 or SPO2885 or SPOA0418) and SPO2579"
+    },
+    {
+        "id": "DIHYDROXYISOVALDEHYDRAT-RXN",
+        "gene_reaction_rule": "SPO3314"
+    },
+    {
+        "id": "RXN-8",
+        "gene_reaction_rule": "SPO3471 or SPOA0113"
+    },
+    {
+        "id": "SUCCINATE-SEMIALDEHYDE-DEHYDROGENASE-RXN",
+        "gene_reaction_rule": "SPOA0275 and SPO3328 and SPO1137"
+    },
+    {
+        "id": "CARBPSYN-RXN",
+        "gene_reaction_rule": "SPO0923 or SPO1377"
+    },
+    {
+        "id": "2-ISOPROPYLMALATESYN-RXN",
+        "gene_reaction_rule": "SPO0422 or SPO2130"
+    },
+    {
+        "id": "BRANCHED-CHAINAMINOTRANSFERLEU-RXN",
+        "gene_reaction_rule": "SPOA0291 or SPO0253 or SPO0388"
+    },
+    {
+        "id": "2TRANSKETO-RXN",
+        "gene_reaction_rule": "SPO1865"
+    },
+    {
+        "id": "BRANCHED-CHAINAMINOTRANSFERVAL-RXN",
+        "gene_reaction_rule": "SPOA0291 or SPO0253 or SPO0388"
+    },
+    {
+        "id": "DAHPSYN-RXN",
+        "gene_reaction_rule": "SPO1942"
+    },
+    {
+        "id": "SHIKIMATE-5-DEHYDROGENASE-RXN",
+        "gene_reaction_rule": "SPO3891"
+    },
+    {
+        "id": "SHIKIMATE-KINASE-RXN",
+        "gene_reaction_rule": "SPO1634"
+    },
+    {
+        "id": "RXN-14014-DELTA1-PIPERIDEINE-2-6-DICARBOXYLATE/NAD/WATER//CPD-14443/NADH/PROTON.70.",
+        "gene_reaction_rule": "SPO3834"
+    },
+    {
+        "id": "SUCCINYLDIAMINOPIMTRANS-RXN",
+        "gene_reaction_rule": "SPO0962"
+    },
+    {
+        "id": "2.3.1.180-RXN",
+        "gene_reaction_rule": "SPO2494"
+    },
+    {
+        "id": "CHORISMATEMUT-RXN",
+        "gene_reaction_rule": "SPO3252"
+    },
+    {
+        "id": "AICARTRANSFORM-RXN",
+        "gene_reaction_rule": "SPO3374"
+    },
+    {
+        "id": "IMPCYCLOHYDROLASE-RXN",
+        "gene_reaction_rule": "SPO3374"
+    },
+    {
+        "id": "ACETOOHBUTSYN-RXN",
+        "gene_reaction_rule": "(SPO2578 and SPO2579) or SPOA0418 or SPO2883"
+    },
+    {
+        "id": "BRANCHED-CHAINAMINOTRANSFERILEU-RXN",
+        "gene_reaction_rule": "SPO0253 or SPO0388 or SPOA0291"
+    },
+    {
+        "id": "DIHYDROXYMETVALDEHYDRAT-RXN",
+        "gene_reaction_rule": "SPO3314"
+    },
+    {
+        "id": "HOMOSERDEAM-RXN",
+        "gene_reaction_rule": "SPO3344"
+    },
+    {
+        "id": "HOMOSERKIN-RXN",
+        "gene_reaction_rule": "SPOA0355"
+    },
+    {
+        "id": "ACETATE--COA-LIGASE-RXN",
+        "gene_reaction_rule": "SPO1813 or SPO2791 "
+    },
+    {
+        "id": "ADENYLYLSULFKIN-RXN",
+        "gene_reaction_rule": "SPO0900"
+    },
+    {
+        "id": "SULFITE-REDUCT-RXN",
+        "gene_reaction_rule": "SPO2634"
+    },
+    {
+        "id": "ORNITHINE-CYCLODEAMINASE-RXN",
+        "gene_reaction_rule": "SPO2121"
+    },
+    {
+        "id": "PREPHENATEDEHYDRAT-RXN",
+        "gene_reaction_rule": "SPO3539"
+    },
+    {
+        "id": "RXN-17897",
+        "gene_reaction_rule": "SPO2637"
+    },
+    {
+        "id": "DIHYDROOROT-RXN",
+        "gene_reaction_rule": "SPO2653 or SPO0284"
+    },
+    {
+        "id": "ACETYLHOMOSER-CYS-RXN",
+        "gene_reaction_rule": "SPO1431"
+    },
+    {
+        "id": "HOMOSERINE-O-ACETYLTRANSFERASE-RXN",
+        "gene_reaction_rule": "SPO1729"
+    },
+    {
+        "id": "PREPHENATEDEHYDROG-RXN",
+        "gene_reaction_rule": "SPO3176"
+    },
+    {
+        "id": "ATPPHOSPHORIBOSYLTRANS-RXN",
+        "gene_reaction_rule": "SPO0669"
+    },
+    {
+        "id": "HISTIDPHOS-RXN",
+        "gene_reaction_rule": "SPO2958"
+    },
+    {
+        "id": "HISTPRATPHYD-RXN",
+        "gene_reaction_rule": "SPO1155"
+    },
+    {
+        "id": "PRIBFAICARPISOM-RXN",
+        "gene_reaction_rule": "SPO2272 or SPO1158"
+    },
+    {
+        "id": "1-ACYLGLYCEROL-3-P-ACYLTRANSFER-RXN",
+        "gene_reaction_rule": "SPO0339 or SPO2451"
+    },
+    {
+        "id": "RXN-10462",
+        "gene_reaction_rule": "SPO0369"
+    },
+    {
+        "id": "RXN0-2382",
+        "gene_reaction_rule": "SPO0815 or SPO0808"
+    },
+    {
+        "id": "1TRANSKETO-RXN",
+        "gene_reaction_rule": "SPOA0319 or SPO1865"
+    },
+    {
+        "id": "TRANSALDOL-RXN",
+        "gene_reaction_rule": "SPO3128"
+    },
+    {
+        "id": "RIBONUCLEOSIDE-DIP-REDUCTII-RXN",
+        "gene_reaction_rule": "SPO2136 or SPOSPO3194"
+
+    },
+    {
+        "id": "RXN0-748",
+        "gene_reaction_rule": "SPO2136 or SPOSPO3194"
+
+    },
+    {
+        "id": "RXN0-747",
+        "gene_reaction_rule": "SPO2136 or SPOSPO3194"
+
+    },
+    {
+        "id": "RXN0-722",
+        "gene_reaction_rule": "SPO2136 or SPOSPO3194"
+    },
+    {
+        "id": "RXN-9772",
+        "gene_reaction_rule": "(SPO1585 and SPO1586 and SPO1587 and SPO1588) or (SPO1744 and SPO1745 and SPO1476 and SPO1747)"
+    },
+    {
+        "id": "D-ALANINE-AMINOTRANSFERASE-RXN",
+        "gene_reaction_rule": "SPO3604"
+    },
+    {
+        "id": "DIOHBUTANONEPSYN-RXN",
+        "gene_reaction_rule": "SPO1761"
+    },
+    {
+        "id": "NACGLCTRANS-RXN",
+        "gene_reaction_rule": "SPO1195"
+    },
+    {
+        "id": "UNDECAPRENYL-DIPHOSPHATASE-RXN",
+        "gene_reaction_rule": "SPO3771"
+    },
+    {
+        "id": "ADCLY-RXN",
+        "gene_reaction_rule": "SPO0925"
+    },
+    {
+        "id": "GLYCOLATEDEHYDRO-RXN",
+        "gene_reaction_rule": "SPO3480"
+    },
+    {
+        "id": "GTP-CYCLOHYDRO-I-RXN",
+        "gene_reaction_rule": "SPO1352"
+    },
+    {
+        "id": "H2NEOPTERINALDOL-RXN",
+        "gene_reaction_rule": "SPO1362"
+    },
+    {
+        "id": "H2NEOPTERINP3PYROPHOSPHOHYDRO-RXN",
+        "gene_reaction_rule": "SPO0803"
+    },
+    {
+        "id": "METHYLACYLYLCOA-HYDROXY-RXN",
+        "gene_reaction_rule": "SPO0147"
+    },
+    {
+        "id": "BETA-UREIDOPROPIONASE-RXN",
+        "gene_reaction_rule": "SPO1781 or SPO3304"
+    },
+    {
+        "id": "DCTP-PYROPHOSPHATASE-RXN",
+        "gene_reaction_rule": "SPO02469"
+    },
+    {
+        "id": "DIHYDROPYRIMIDINASE-RXN",
+        "gene_reaction_rule": "SPO1783"
+    },
+    {
+        "id": "DIHYDROURACIL-DEHYDROGENASE-NAD+-RXN",
+        "gene_reaction_rule": "SPO1777 and SPO1776"
+    },
+    {
+        "id": "PANTOTHENATE-KIN-RXN",
+        "gene_reaction_rule": "SPO2761"
+    },
+    {
+        "id": "RXN66-3",
+        "gene_reaction_rule": "SPO3368 or SPO3382 or SPO0097"
+    },
+    {
+        "id": "NAD-KIN-RXN",
+        "gene_reaction_rule": "SPO2939"
+    },
+    {
+        "id": "GTP-CYCLOHYDRO-II-RXN",
+        "gene_reaction_rule": "SPO3427"
+    },
+    {
+        "id": "RXN-16659",
+        "gene_reaction_rule": "SPO0417 or SPO1181 or SPO0451"
+    },
+    {
+        "id": "IPPISOM-RXN",
+        "gene_reaction_rule": "SPO0131"
+    },
+    {
+        "id": "PNPOXI-RXN",
+        "gene_reaction_rule": "SPO2141"
+    },
+    {
+        "id": "PROTOPORGENOXI-RXN",
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "PSERTRANSAMPYR-RXN",
+        "gene_reaction_rule": "SPO3354"
+    },
+    {
+        "id": "THIAMIN-PYROPHOSPHOKINASE-RXN",
+        "gene_reaction_rule": "SPO1321"
+    },
+    {
+        "id": "UROGENIIISYN-RXN",
+        "gene_reaction_rule": "SPO3853"
+    },
+    {
+        "id": "PYRROLINECARBREDUCT-RXN-PRO/NADP//L-DELTA1-PYRROLINE_5-CARBOXYLATE/NADPH/PROTON.56.",
+        "gene_reaction_rule": "SPO0165 or SPO0911"
+    },
+    {
+        "id": "RXN-2425",
+        "gene_reaction_rule": "SPO0147"
+    },
+    {
+        "id": "RXN-3641",
+        "gene_reaction_rule": "SPO0758"
+    },
+    {
+        "id": "RXN0-2044",
+        "gene_reaction_rule": "SPO0739 or SPO0772"
+    },
+    {
+        "id": "RXN-2003",
+        "gene_reaction_rule": "SPO0739 or SPO0772"
+    },
+    {
+        "id": "RXN-2401",
+        "gene_reaction_rule": "SPO3701 and SPO3703"
+    },
+    {
+        "id": "RXN-2002",
+        "gene_reaction_rule": "SPO0147 or SPO1687"
+    },
+    {
+        "id": "RXN-11054",
+        "gene_reaction_rule": "SPO3700"
+    },
+    {
+        "id": "RXN-2424",
+        "gene_reaction_rule": "SPO3327"
+    },
+    {
+        "id": "RXN-13141",
+        "gene_reaction_rule": "SPO2293"
+    },
+    {
+        "id": "RXN-13142",
+        "gene_reaction_rule": "SPO3060"
+    },
+    {
+        "id": "RXN0-2361",
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "2KETO-3METHYLVALERATE-RXN",
+        "gene_reaction_rule": "SPO0585 and SPO0340 and SPO2222"
+    },
+    {
+        "id": "R313-RXN",
+        "gene_reaction_rule": "SPO1314 and SPO1315"
+    },
+    {
+        "id": "RXN-14266",
+        "gene_reaction_rule": "SPO0147"
+    },
+    {
+        "id": "OHMETPYRKIN-RXN",
+        "gene_reaction_rule": "SPO0045"
+    },
+    {
+        "id": "THI-P-SYN-RXN",
+        "gene_reaction_rule": "SPO0048 or SPO2056"
+    },
+    {
+        "id": "1.1.1.8-RXN",
+        "gene_reaction_rule": "SPO3855"
+    },
+    {
+        "id": "1.13.11.6-RXN",
+        "gene_reaction_rule": "SPO1774"
+    },
+    {
+        "id": "1.14.11.1-RXN",
+        "gene_reaction_rule": "SPO3380"
+    },
+    {
+        "id": "1.2.7.8-RXN",
+        "gene_reaction_rule": "SPOA0110 or SPOA0111 or SPO1459"
+    },
+    {
+        "id": "1.3.1.2-RXN",
+        "gene_reaction_rule": "SPO1777"
+    },
+    {
+        "id": "1.5.1.28-RXN",
+        "gene_reaction_rule": "SPO1466"
+    },
+    {
+        "id": "2-OCTAPRENYL-6-METHOXYPHENOL-HYDROX-RXN",
+        "gene_reaction_rule": "SPO1371"
+    },
+    {
+        "id": "2.7.1.156-RXN-ITP/ADENOSYLCOBINAMIDE//ADENOSYLCOBINAMIDE-P/IDP/PROTON.56.",
+        "gene_reaction_rule": "SPO0405"
+    },
+    {
+        "id": "2.7.3.9-RXN",
+        "gene_reaction_rule": "SPO3034"
+    },
+    {
+        "id": "2.7.9.3-RXN",
+        "gene_reaction_rule": "SPO2899"
+    },
+    {
+        "id": "3-HYDROXYBENZOATE-6-MONOOXYGENASE-RXN",
+        "gene_reaction_rule": "SPO3692"
+    },
+    {
+        "id": "3-HYDROXYBUTYRATE-DEHYDROGENASE-RXN",
+        "gene_reaction_rule": "SPO1015 or SPO2065"
+    },
+    {
+        "id": "3-OXOADIPATE-COA-TRANSFERASE-RXN",
+        "gene_reaction_rule": "SPO3082 and SPO2083"
+    },
+    {
+        "id": "3.5.2.17-RXN",
+        "gene_reaction_rule": "SPO0871 or SPO2386"
+    },
+    {
+        "id": "4-CARBOXYMUCONOLACTONE-DECARBOXYLASE-RXN",
+        "gene_reaction_rule": "SPO2768 or SPOA0045"
+    },
+    {
+        "id": "4.3.1.15-RXN",
+        "gene_reaction_rule": "SPO2196"
+    },
+    {
+        "id": "RXN-10085",
+        "gene_reaction_rule": "SPO3082 and SPO3083"
     }
 ]
