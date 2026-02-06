@@ -18,7 +18,7 @@ def model_to_excel(model, outfile):
     for met in model.metabolites:
         metabolites["id"].append(met.id)
         metabolites["name"].append(met.name)
-        metabolites["annotation"].append(met.annotation)
+        metabolites["annotation"].append(met.notes)
         metabolites["charge"].append(met.charge)
         metabolites["compartment"].append(met.compartment)
         metabolites["elements"].append(met.elements)
@@ -39,7 +39,7 @@ def model_to_excel(model, outfile):
     for gene in model.genes:
         genes["id"].append(gene.id)
         genes["name"].append(gene.name)
-        genes["annotation"].append(gene.annotation)
+        genes["annotation"].append(gene.notes)
         genes["functional"].append(gene.functional)
         genes["notes"].append(gene.notes)
         genes["reactions"].append("{" + ", ".join(rxn.id for rxn in gene.reactions) + "}")
@@ -66,7 +66,7 @@ def model_to_excel(model, outfile):
     for rxn in model.reactions:
         reactions["id"].append(rxn.id)
         reactions["name"].append(rxn.name)
-        reactions["annotation"].append(rxn.annotation)
+        reactions["annotation"].append(rxn.notes)
         reactions["boundary"].append(rxn.boundary)
         reactions["lower_bound"].append(rxn.lower_bound)
         reactions["upper_bound"].append(rxn.upper_bound)

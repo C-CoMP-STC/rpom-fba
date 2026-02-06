@@ -562,5 +562,10 @@
     {
         "id": "RXN-10085",
         "gene_reaction_rule": "SPO3082 and SPO3083"
+    },
+    "glyceraldehyde-3-phosphate dehydrogenase, type I ===========================================",
+    {
+        "id" : "GAPOXNPHOSPHN-RXN",
+        "gene_reaction_rule": "(SPO2198 or SPO0875 or SPO0701)"
     }
 ]

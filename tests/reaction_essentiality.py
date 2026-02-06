@@ -42,7 +42,7 @@ def main():
             ex = get_or_create_exchange(model, carbon_source_id)
             growth_rate = growth_rates[carbon_source].mean()
 
-            set_active_bound(ex, abs(float(ex.annotation["Experimental rate"])))
+            set_active_bound(ex, abs(float(ex.notes["Experimental rate"])))
             
             baseline_fluxes = model.optimize().fluxes
             biomass = model.reactions.get_by_id("RPOM_provisional_biomass")
@@ -60,7 +60,7 @@ def main():
             # Set growth on substrate
             carbon_source_id = carbon_source_ids[carbon_source]
             ex = get_or_create_exchange(model, carbon_source_id)
-            set_active_bound(ex, abs(float(ex.annotation["Experimental rate"])))
+            set_active_bound(ex, abs(float(ex.notes["Experimental rate"])))
 
             # Baseline growth
             baseline = model.optimize().objective_value

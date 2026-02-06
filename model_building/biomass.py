@@ -31,7 +31,7 @@ def ecoli_biomass_to_rpom(r_pom_model, ecoli_biomass, manual_matches={}):
     n_manual_matches = 0
     for metabolite, coefficient in ecoli_biomass.items():
         # Get annotations to do linking
-        kegg = metabolite.annotation.get("kegg.compound", "!!NO_KEGG_ID!!")
+        kegg = metabolite.notes.get("kegg.compound", "!!NO_KEGG_ID!!")
         formula = metabolite.formula
         compartment = metabolite.compartment
 
@@ -43,7 +43,7 @@ def ecoli_biomass_to_rpom(r_pom_model, ecoli_biomass, manual_matches={}):
             matching_metabolites = set()
             for id in kegg:
                 query_result = r_pom_model.metabolites.query(
-                    lambda m: m.annotation.get('Kegg ID') == id and
+                    lambda m: m.notes.get('Kegg ID') == id and
                     m.compartment == compartment
                 )
 
@@ -54,7 +54,7 @@ def ecoli_biomass_to_rpom(r_pom_model, ecoli_biomass, manual_matches={}):
         else:
             # kegg is a str, just need to search one id
             matching_metabolites = r_pom_model.metabolites.query(
-                lambda m: m.annotation.get('Kegg ID') == kegg and
+                lambda m: m.notes.get('Kegg ID') == kegg and
                 m.compartment == compartment
             )
 

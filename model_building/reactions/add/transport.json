@@ -345,15 +345,21 @@
     "Glucose and Xylose transport ================================================================",
     "ABC transporter, assuming n=1",
     {
+        "id": "EX_glc",
+        "name": "Glucose exchange",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "Glucopyranose[e] -->",
+        "gene_reaction_rule": ""
+    },
+    {
         "id": "GLCtex",
         "name": "",
         "subsystem": "",
         "lower_bound": -1000.0,
         "upper_bound": 1000.0,
-        "metabolites": {
-            "GLC[e]" : -1.0,
-            "GLC[p]" : 1.0
-        },
+        "metabolites": "Glucopyranose[e] <=> Glucopyranose[p]",
         "gene_reaction_rule": ""
     },
     {
@@ -362,44 +368,25 @@
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
-        "metabolites": {
-            "GLC[p]" : -1.0,
-            "GLC[c]" : 1.0,
-            "ATP[c]" : -1.0,
-            "WATER[c]" : -1.0,
-            "ADP[c]" : 1.0,
-            "Pi[c]" : 1.0,
-            "PROTON[c]" : 1.0
-        },
+        "metabolites": "ATP[c] + Glucopyranose[p] + WATER[c] --> ADP[c] + Glucopyranose[c] + PROTON[c] + Pi[c]",
         "gene_reaction_rule": "(SPO0861 and SPO0862 and SPO0863)"
     },
     {
-        "id": "BETA-D-XYLOSEtex",
+        "id": "XYLOSEtex",
         "name": "",
         "subsystem": "",
         "lower_bound": -1000.0,
         "upper_bound": 1000.0,
-        "metabolites": {
-            "BETA-D-XYLOSE[e]" : -1.0,
-            "BETA-D-XYLOSE[p]" : 1.0
-        },
+        "metabolites": "D-Xylopyranose[e] <=> D-Xylopyranose[p]",
         "gene_reaction_rule": ""
     },
     {
-        "id": "BETA-D-XYLOSEtpp",
+        "id": "XYLOSEtpp",
         "name": "",
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 1000.0,
-        "metabolites": {
-            "BETA-D-XYLOSE[p]" : -1.0,
-            "BETA-D-XYLOSE[c]" : 1.0,
-            "ATP[c]" : -1.0,
-            "WATER[c]" : -1.0,
-            "ADP[c]" : 1.0,
-            "Pi[c]" : 1.0,
-            "PROTON[c]" : 1.0
-        },
+        "metabolites": "ATP[c] + D-Xylopyranose[p] + WATER[c] --> ADP[c] + D-Xylopyranose[c] + PROTON[c] + Pi[c]",
         "gene_reaction_rule": "(SPO0861 and SPO0862 and SPO0863)"
     },
     "Glycerol transport ===============================================================================",
@@ -792,6 +779,29 @@
             "Pi[c]" : 1.0,
             "PROTON[c]" : 1.0
         },
+        "gene_reaction_rule": ""
+    },
+    "Fructose transport ===============================================================",
+    "Not experimentally confirmed to be present, as far as I know",
+    "(but there's a number of annotated ABC tranporters for sugars)",
+    {
+        "id": "FRUtpp",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "ATP[c] + BETA-D-FRUCTOSE[p] + WATER[c] --> ADP[c] + BETA-D-FRUCTOSE[c] + PROTON[c] + Pi[c]",
+        "gene_reaction_rule": ""
+    },
+    "Nitrate transport ================================================================",
+    "Connected components analysis found Nitrate[e] was disconnected, inferring free entry into periplasm",
+    {
+        "id": "NITRATEtex",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0,
+        "metabolites": "NITRATE[e] <=> NITRATE[p]",
         "gene_reaction_rule": ""
     }
 ]

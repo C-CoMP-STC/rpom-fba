@@ -1,5 +1,6 @@
 import abc
 import json
+import os
 import pickle
 import warnings
 import networkx as nx
@@ -14,7 +15,7 @@ from cobra.core.metabolite import Metabolite
 from cobra.core.model import Model
 from cobra.core.reaction import Reaction
 from cobra.flux_analysis import flux_variability_analysis
-from cobra.io import read_sbml_model
+from cobra.io import read_sbml_model, write_sbml_model, save_json_model
 from macaw.main import dead_end_test, dilution_test, diphosphate_test, duplicate_test, loop_test
 from pyvis.network import Network
 
@@ -24,6 +25,7 @@ from model_building.biomass import (add_ecoli_core_biomass_to_model,
 from model_building.metabolites.metabolites import ADDED_METABOLITES
 from model_building.uptake_rxns import add_uptake_reactions, get_uptake_data
 from utils.cobra_utils import get_or_create_exchange, set_active_bound
+from utils.network import model_to_network
 
 STAGE_REGISTRY = {}
 
@@ -56,9 +58,9 @@ class BaseModel(Stage):
 class MetaData(Stage):
     def process(self, model: Model, params: object) -> Model:
         # Store config and git hash in annotation
-        # model.annotation["config-file"] = self.config_file
-        # model.annotation["config"] = json.dumps(self.config)
-        model.annotation["git-hash"] = self.get_git_hash()
+        # model.notes["config-file"] = self.config_file
+        # model.notes["config"] = json.dumps(self.config)
+        model.notes["git-hash"] = self.get_git_hash()
 
         return model
 
@@ -85,7 +87,7 @@ class BiomassObjective(Stage):
             case "ecoli-full":
                 add_ecoli_full_biomass_to_model(model)
             case "hwa":
-                add_ecoli_full_biomass_to_model(model)  # Debugging
+                # add_ecoli_full_biomass_to_model(model)  # Debugging
                 add_hwa_biomass_to_model(model)
 
         return model
@@ -138,6 +140,37 @@ class SetMedium(Stage):
 class AddMetabolites(Stage):
     def process(self, model: Model, params: object) -> Model:
         model.add_metabolites(ADDED_METABOLITES)
+        return model
+
+
+@register_stage
+class RemoveMetabolites(Stage):
+    def process(self, model, params):
+        if not isinstance(params, list):
+            raise ValueError(
+                "RemoveMetabolites stage requires a list of files/folders with reactions to add.")
+
+        root = Path(r".")
+
+        # Collect metabolites from all files
+        mets_to_remove = []
+        for path in params:
+            for filepath in root.glob(path):
+                with open(filepath, "r") as f:
+                    met_ids = json.load(f)
+                    for met_id in met_ids:
+                        try:
+                            met = model.metabolites.get_by_id(met_id)
+                            mets_to_remove.append(met)
+                        except KeyError:
+                            warnings.warn(f"Cannot remove {met_id}, since it is not present in the model.")
+
+        # Remove metabolites AND associated reactions (destructive=True).
+        n_reactions = len(model.reactions)
+        model.remove_metabolites(mets_to_remove, destructive=True)
+
+        print(f"Removed {len(mets_to_remove)} metabolites, and {n_reactions - len(model.reactions)} associated reactions.")
+
         return model
 
 
@@ -200,9 +233,9 @@ class AddReactions(Stage):
             rxn.gene_reaction_rule = reaction["gene_reaction_rule"]
 
             # Annotate reaction, gene source as manual
-            rxn.annotation["source"] = "manual"
+            rxn.notes["source"] = "manual"
             if reaction["gene_reaction_rule"] != "":
-                rxn.annotation["Gene Source"] = "manual"
+                rxn.notes["Gene Source"] = "manual"
 
         return model
 
@@ -224,7 +257,7 @@ class RemoveReactions(Stage):
                     reactions_to_remove += json.load(f)
 
         # Remove reactions
-        model.remove_reactions(reactions_to_remove, remove_orphans = True)
+        model.remove_reactions(reactions_to_remove, remove_orphans = False)
 
         return model
 
@@ -262,21 +295,34 @@ class ModifyReactions(Stage):
             rxn.upper_bound = reaction.get("upper_bound", rxn.upper_bound)
 
             if "metabolites" in reaction:
-                metabolites = {
-                    model.metabolites.get_by_id(met): coeff
-                    for met, coeff in reaction["metabolites"].items()
-                }
+                # Remove current metabolites to overwrite
                 rxn.subtract_metabolites(rxn.metabolites)
-                rxn.add_metabolites(metabolites)
+
+                # reaction["metabolites"] may be a dict of metabolite ids : coefficients,
+                # or a reaction string like "A + B <=> C + D"
+                if isinstance(reaction["metabolites"], dict):
+                    metabolites = {
+                        model.metabolites.get_by_id(m): v
+                        for m, v in reaction["metabolites"].items()
+                    }
+                    rxn.add_metabolites(metabolites)
+                elif isinstance(reaction["metabolites"], str):
+                    # Parse the reaction string
+                    reaction_str = reaction["metabolites"]
+                    rxn.build_reaction_from_string(reaction_str)
+                else:
+                    raise ValueError(
+                        f"Invalid format for metabolites in reaction {reaction['id']}.")
+                
 
             if "annotation" in reaction:
-                rxn.annotation.update(reaction["annotation"])
+                rxn.notes.update(reaction["annotation"])
 
             # Update gene reaction rule if provided,
             # recording the source as manual to prevent downstream overrides
             if "gene_reaction_rule" in reaction:
                 rxn.gene_reaction_rule = reaction["gene_reaction_rule"]
-                rxn.annotation["Gene Source"] = "manual"
+                rxn.notes["Gene Source"] = "manual"
 
         return model
 
@@ -309,8 +355,8 @@ class AnnotateReactions(Stage):
         pathways = annotations["pathways"]
 
         for reaction in model.reactions:
-            reaction.annotation["stem"] = stems.get(reaction.id, "")
-            reaction.annotation["pathways"] = list(
+            reaction.notes["stem"] = stems.get(reaction.id, "")
+            reaction.notes["pathways"] = list(
                 pathways.get(reaction.id, []))
 
         return model
@@ -346,7 +392,7 @@ class BioCycUpdates(Stage):
         # First, clear existing genes and gene rules (which use bad ids)
         # (except for manually annotated genes)
         for reaction in model.reactions:
-            if reaction.annotation.get("Gene Source") != "manual":
+            if reaction.notes.get("Gene Source") != "manual":
                 reaction.gene_reaction_rule = ""
         genes_to_remove = []
         for gene in model.genes:
@@ -383,17 +429,17 @@ class BioCycUpdates(Stage):
             # Update gene rule if we have one (do not overwrite manual annotations)
             # (Also skipping empty gene rules of the form "()" since the parser doesn't like them)
             if not pd.isna(gene_reaction_rule) and gene_reaction_rule != "()":
-                if reaction.annotation.get("Gene Source") != "manual":
+                if reaction.notes.get("Gene Source") != "manual":
                     reaction.gene_reaction_rule = gene_reaction_rule
                     genes_added.update(reaction.genes)
                     for gene in reaction.genes:
-                        gene.annotation["source"] = ("Ruegeria pomeroyi DSS-3"
+                        gene.notes["source"] = ("Ruegeria pomeroyi DSS-3"
                                                     if in_db1
                                                     else "Ruegeria pomeroyi DSS-3 representative genome")
 
             # Remove reaction if unused and not manually added
             if (row["Recommendation"] == "Delete"
-                and reaction.annotation.get("source") != "manual"):
+                and reaction.notes.get("source") != "manual"):
                 model.remove_reactions([reaction])
                 removed_reactions.append(row["Reaction ID"])
         
@@ -430,7 +476,7 @@ class BioCycUpdates(Stage):
             
             # Add gene-reaction-rule (do not overwrite manual annotations)
             gene_reaction_rule = row["Gene-reaction rule 1" if in_db1 else "Gene-reaction rule 2"]
-            if reaction.annotation.get("Gene Source") != "manual":
+            if reaction.notes.get("Gene Source") != "manual":
                 if not pd.isna(gene_reaction_rule) and gene_reaction_rule != "()":
                     reaction.gene_reaction_rule = gene_reaction_rule
             
@@ -453,7 +499,7 @@ class BioCycUpdates(Stage):
             reaction.add_metabolites(metabolites)
 
             # Keep track of which database the reaction came from
-            reaction.annotation["source"] = ("Ruegeria pomeroyi DSS-3"
+            reaction.notes["source"] = ("Ruegeria pomeroyi DSS-3"
                                             if in_db1
                                             else "Ruegeria pomeroyi DSS-3 representative genome")
             
@@ -468,19 +514,19 @@ class BioCycUpdates(Stage):
             
             # Name, synonyms
             gene.name = new_genes_row["Gene Name"] if not pd.isna(new_genes_row["Gene Name"]) else ""
-            gene.annotation["synonyms"] = new_genes_row["Synonyms"] if not pd.isna(new_genes_row["Synonyms"]) else []
+            gene.notes["synonyms"] = new_genes_row["Synonyms"] if not pd.isna(new_genes_row["Synonyms"]) else []
 
             # database of origin
-            gene.annotation["source"] = ("Ruegeria pomeroyi DSS-3"
+            gene.notes["source"] = ("Ruegeria pomeroyi DSS-3"
                                         if new_genes_row["In DB1?"]
                                         else "Ruegeria pomeroyi DSS-3 representative genome")
             
             # Position
-            gene.annotation["left-end-position"] = str(new_genes_row["Left-Position"]) if not pd.isna(new_genes_row["Left-Position"]) else None
-            gene.annotation["right-end-position"] = str(new_genes_row["Right-Position"]) if not pd.isna(new_genes_row["Right-Position"]) else None
+            gene.notes["left-end-position"] = str(new_genes_row["Left-Position"]) if not pd.isna(new_genes_row["Left-Position"]) else None
+            gene.notes["right-end-position"] = str(new_genes_row["Right-Position"]) if not pd.isna(new_genes_row["Right-Position"]) else None
 
             # Replicon
-            gene.annotation["replicon"] = new_genes_row["Replicon"] if not pd.isna(new_genes_row["Replicon"]) else None
+            gene.notes["replicon"] = new_genes_row["Replicon"] if not pd.isna(new_genes_row["Replicon"]) else None
         
         print(f"Before updates, had {initial_reactions} reactions, {initial_metabolites} metabolites, and {initial_genes} genes.")
         print(f"- Removed {len(removed_reactions)} reactions.")
@@ -518,7 +564,7 @@ class DeadEnds(Stage):
             print("Dead-end test interrupted. Skipping.")
 
         if test_finished:
-            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
+            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).notes.get("pathways", []) for rxn in reaction_df["reaction_id"]]
             reaction_df.to_csv(
                 Path(params["outdir"]) / "dead_end_test.csv",
                 index=False)
@@ -607,7 +653,7 @@ class LogMACAW(Stage):
             print("Loop test interrupted. Skipping.")
 
         if test_finished:
-            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).annotation.get("pathways", []) for rxn in reaction_df["reaction_id"]]
+            reaction_df["pathways"] = [model.reactions.get_by_id(rxn).notes.get("pathways", []) for rxn in reaction_df["reaction_id"]]
             reaction_df.to_csv(
                 Path(params["outdir"]) / "loop_test.csv",
                 index=False)
@@ -720,7 +766,38 @@ class SanityChecks(Stage):
                     print(f"\033[91mNADH can be produced without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
                 else:
                     print(f"\033[92mNADH cannot be produced without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+
+            # Check NADPH sink
+            with model:
+                nadph_sink = model.add_boundary(
+                    model.metabolites.get_by_id("NADPH[c]"),
+                    type="sink",
+                    reaction_id="NADPH-sink",
+                    lb= 0,
+                    ub= 1000,)
+                model.objective = nadph_sink
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mNADPH can be produced without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
+                else:
+                    print(f"\033[92mNADPH cannot be produced without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
             
+            # Check FADH2 sink
+            with model:
+                fadh2_sink = model.add_boundary(
+                    model.metabolites.get_by_id("FADH2[c]"),
+                    type="sink",
+                    reaction_id="FADH2-sink",
+                    lb= 0,
+                    ub= 1000,)
+                model.objective = fadh2_sink
+                sol = model.optimize()
+                if sol.objective_value > 0:
+                    print(f"\033[91mFADH2 can be produced without carbon sources! (flux = {sol.objective_value:.2f})\033[0m")
+                else:
+                    print(f"\033[92mFADH2 cannot be produced without carbon sources. (flux = {sol.objective_value:.2f})\033[0m")
+
+
             # Check oxidizing NADH
             with model:
                 nadhm = Reaction("NADHM", lower_bound=0, upper_bound=1000)
@@ -787,6 +864,58 @@ class SanityChecks(Stage):
 
         return model
 
+
+@register_stage
+class NetworkChecks(Stage):
+    DEFAULT = {
+        "outdir": "model/logs/"
+    }
+
+    def process(self, model, params) -> Model:
+        """
+        Conduct network-based checks (just checking number of connected components for now.)
+        """
+        if params is None:
+            params = self.DEFAULT
+        elif isinstance(params, dict):
+            params = {**self.DEFAULT, **params}            
+        else:
+            raise ValueError(
+                "NetworkChecks stage requires a dictionary with key 'outdir' to store the logs.")
+
+        # Create the directory if it doesn't exist
+        Path(params["outdir"]).mkdir(parents=True, exist_ok=True)
+
+        # Create graph representation of model
+        g = model_to_network(model)
+
+        # Get number of connected components and warn if there are >1.
+        components = list(nx.connected_components(g))
+
+        if len(components) == 1:
+            print("\033[92mNetwork has one connected component.\033[0m")
+        else:
+            print(f"\033[91mNetwork has {len(components)} connected components!\033[0m")
+            print("\033[91mCheck logs for component memberships.\033[0m")
+        
+        components_log = []
+        for i, component in enumerate(components):
+            for elem in component:
+                components_log.append(
+                    {
+                        "ID" : elem,
+                        "Reaction": g.nodes[elem]["reaction"] if g.nodes[elem]["node_type"] == "Reaction" else None,
+                        "Component" : i
+                    }
+                )
+        components_log = pd.DataFrame(components_log)
+
+        with open(Path(params["outdir"]) / "connected_components.csv", "w") as f:
+            components_log.to_csv(f, index=False)
+
+        return model
+
+
 @register_stage
 class RemoveOrphans(Stage):
     def process(self, model: Model, params: object) -> Model:
@@ -803,5 +932,101 @@ class RemoveOrphans(Stage):
 
         print(f"Removed {len(removed_mets)} orphan metabolites, {len(removed_reactions)} orphan reactions, and {len(orphan_genes)} orphan genes.")
         print(f"After removing orphans: {len(model.reactions)} reactions, {len(model.metabolites)} metabolites, {len(model.genes)} genes.")
+
+        return model
+
+
+@register_stage
+class SaveModel(Stage):
+    def process(self, model, params) -> Model:
+        # Save cleaned model. This is currently redundant with the default
+        # behavior of the model_factory itself, but I plan to make this stage the only
+        # way to save.
+
+        if isinstance(params, str):
+            out = [params]
+        elif isinstance(params, list):
+            if any(map(lambda f: not isinstance(f, str), params)):
+                raise ValueError("SaveModel stage expects either a string filepath, or list of string filepaths.")
+            out = params
+        else:
+            raise ValueError("SaveModel stage expects either a string filepath, or list of string filepaths.")
+        
+        for f in out:
+            os.makedirs(os.path.dirname(f), exist_ok=True)
+
+            ext = f[f.rindex("."):].strip().lower()
+            match ext:
+                case ".xml":
+                    write_sbml_model(model, f)
+                case ".json":
+                    save_json_model(model, f)
+                case _:
+                    warnings.warn(f"Unrecognized extension to save model: {ext}")
+        return model
+    
+
+@register_stage
+class ModelToSpreadsheet(Stage):
+    DEFAULTS = {
+        "out" : "model/model_spreadsheet.xlsx",
+        "substrates" : [("EX_glc", 5.44), ("EX_ac", 10.0)]
+    }
+    def process(self, model, params) -> Model:
+        if params is None:
+            params = self.DEFAULTS
+        elif isinstance(params, dict):
+            params = params = {**self.DEFAULTS, **params}
+        else:
+            raise ValueError("ModelToSpreadsheet stage expects either null or a dictionary with " \
+                             "keys `out` for the output file path, and `substrates` for" \
+                             "substrates on which to evaluate fluxes (see defaults).")
+        
+        sols = {}
+        ko_fcs = {}
+        for ex, lb in params["substrates"]:
+            with model:
+                model.reactions.get_by_id(ex).bounds = (-lb, 1000.0)
+                sol = model.optimize()
+                sols[ex] = sol.fluxes
+
+                # Get fold-changes
+                baseline = sol.objective_value
+                ko_fcs[ex] = {}
+                for rxn in model.reactions:
+                    with model:
+                        rxn.bounds = (0., 0.)
+                        ko_fcs[ex][rxn] = model.slim_optimize() / baseline
+
+        # Build reactions sheet
+        reactions = pd.DataFrame([
+            {
+                "ID" : rxn.id,
+                "Stem" : rxn.notes.get("stem", None),
+                "Name" : rxn.name,
+                "EC": rxn.notes.get("EC Number", None),
+                "Kegg": rxn.notes.get("Kegg ID", None),
+                "Reaction" : rxn.reaction,
+                "Pathways": rxn.notes.get("pathways", None),
+                "Lower" : rxn.lower_bound,
+                "Upper" : rxn.upper_bound,
+                "GPR": rxn.gene_reaction_rule,
+                **{
+                    f"{ex} flux" : fluxes[rxn.id]
+                    for ex, fluxes in sols.items()
+                },
+                **{
+                    f"Abs {ex} flux" : abs(fluxes[rxn.id])
+                    for ex, fluxes in sols.items()
+                },
+                **{
+                    f"{ex} FC" : fcs[rxn]
+                    for ex, fcs in ko_fcs.items()
+                }
+            }
+            for rxn in model.reactions
+        ])
+
+        reactions.to_excel(params["out"], index=False)
 
         return model

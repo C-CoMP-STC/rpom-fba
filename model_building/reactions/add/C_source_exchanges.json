@@ -132,13 +132,13 @@
         "gene_reaction_rule": ""
     },
     {
-        "id": "EX_BETA-D-XYLOSE",
+        "id": "EX_xylose",
         "name": "Xylose exchange",
         "subsystem": "",
         "lower_bound": 0.0,
         "upper_bound": 0.0,
         "metabolites": {
-            "BETA-D-XYLOSE[e]" : -1.0
+            "D-Xylopyranose[e]" : -1.0
         },
         "gene_reaction_rule": ""
     },

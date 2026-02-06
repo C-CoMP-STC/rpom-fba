@@ -12,5 +12,17 @@
         "annotation": {
             "pathways" : "PYRUVDEHYD-PWY"
         }
+    },
+    "As part of loop fixes, removed RXN-13482 which is a duplicate of this reaction added in biocyc stage.",
+    "However, we need to add it back in before running full pipeline so that the baseline model before biocyc updates",
+    "grows - effectively a rename operation.",
+    {
+        "id": "ORNCARBAMTRANSFER-RXN",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0,
+        "metabolites": "CARBAMOYL-P[c] + L-ORNITHINE[c] <=> L-CITRULLINE[c] + PROTON[c] + Pi[c]",
+        "gene_reaction_rule": "(SPO0963)"
     }
 ]

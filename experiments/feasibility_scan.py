@@ -38,7 +38,7 @@ def main():
             # Get exchange reaction and calculated rate for the given carbon source
             exchange_rxn = get_or_create_exchange(model, carbon_source_id)
             experimental_rate = abs(
-                float(exchange_rxn.annotation["Experimental rate"]))
+                float(exchange_rxn.notes["Experimental rate"]))
 
             growth_rate = (growth_rates[carbon_source].mean()
                            if carbon_source in growth_rates.columns

@@ -1,0 +1,92 @@
+[
+      {
+        "id": "RXN-9654",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN0-300",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id": "RXN-13617",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id" : "RXN-11667",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id": "RXN-9648",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-9542",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id": "RXN-12444",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id": "RXN-9510",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id": "FUMHYDR-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-2902",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN-16013",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "ACETALD-DEHYDROG-RXN",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN3O-5293",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0
+    },
+    {
+        "id": "PPENTOMUT-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RIB5PISOM-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "1TRANSKETO-RXN",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "RXN0-5398",
+        "metabolites": "PSEUDOURIDINE-5-P[c] + WATER[c] <--> RIBOSE-5P[c] + URACIL[c]",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0
+    },
+    {
+        "id": "AMP-NUCLEOSID-RXN",
+        "metabolites": "AMP[c] + WATER[c] --> ADENINE[c] + RIBOSE-5P[c]"
+    }
+]

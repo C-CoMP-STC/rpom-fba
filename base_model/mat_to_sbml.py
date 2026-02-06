@@ -103,8 +103,8 @@ def convert_model(model):
         try:
             # gene index - 1 since matlab does 1-based indexing
             clean_rule = re.sub(
-                "x\((?P<gene>\d+)\)", lambda g: gene_names[int(g["gene"]) - 1], rule)
-            clean_rule = re.sub("\|", " or ", clean_rule)
+                r"x\((?P<gene>\d+)\)", lambda g: gene_names[int(g["gene"]) - 1], rule)
+            clean_rule = re.sub(r"\|", " or ", clean_rule)
         except IndexError:
             raise IndexError(rule)
 
@@ -115,13 +115,13 @@ def convert_model(model):
     for metabolite, charge, kegg in zip(metabolites, met_charges, met_kegg):
         metabolite.charge = charge
         if kegg is not None:
-            metabolite.annotation["Kegg ID"] = kegg
+            metabolite.notes["Kegg ID"] = kegg
 
     # Store EC numbers, Kegg IDs in reactions
     for rxn, ec, kegg in zip(reactions, rxn_ec, rxn_kegg):
-        rxn.annotation["EC Number"] = ec
+        rxn.notes["EC Number"] = ec
         if kegg is not None:
-            rxn.annotation["Kegg ID"] = kegg
+            rxn.notes["Kegg ID"] = kegg
 
     # Load reactions into model
     sbml_model.add_reactions(reactions)

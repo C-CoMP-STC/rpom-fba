@@ -1,0 +1,25 @@
+[project]
+name = "rpom-fba"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "cobra>=0.30.0",
+    "gitpython>=3.1.45",
+    "marimo>=0.17.7",
+    "markupsafe>=3.0.3",
+    "matplotlib>=3.10.7",
+    "memote>=0.17.0",
+    "molmass>=2025.9.4",
+    "parse>=1.20.2",
+    "pint>=0.25.2",
+    "plotly>=6.4.0",
+    "pytest>=9.0.1",
+    "pyvis>=0.3.2",
+    "scikit-learn>=1.7.2",
+    "scipy>=1.16.3",
+    "seaborn>=0.13.2",
+    "setuptools>=80.9.0",
+    "tqdm>=4.67.1",
+]
