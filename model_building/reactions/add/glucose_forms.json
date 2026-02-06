@@ -1,0 +1,13 @@
+[
+    "Out of several forms of glucose, I'm electing to use Glucopyranose only.",
+    "This means changing several reactions to use this form.",
+    {
+        "id": "GLUCOKIN-RXN",
+        "name": "",
+        "subsystem" : "",
+        "lower_bound" : 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": "ATP[c] + Glucopyranose[c] --> ADP[c] + D-glucopyranose-6-phosphate[c] + PROTON[c]",
+        "gene_reaction_rule" : "(SPO0864)"
+    }
+]

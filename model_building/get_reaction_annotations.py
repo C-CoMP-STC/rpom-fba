@@ -174,7 +174,7 @@ def get_pathways_of_genes_of_reaction(reaction, orgid=RPOM_ORGID, session=None):
 
 
 def main():
-    MODEL = "model/Rpom_05.xml"
+    MODEL = "base_model/Rpom_05.xml"
     model = read_sbml_model(MODEL)
 
     # Get bicyc credentials

@@ -20,6 +20,11 @@ Removed:
     TRANS-RXN-319
     ISETHIONATEtpp
         Present in DSS-3, but proton-gradient succinate transporter is confirmed experimentally
+    
+    RXNN-386
+        Found by connected components analysis.
+        Part of napthalene degradation, but neither of the upstream or downstream reaction in
+        that pathway is in R. pom (checked ECs from MetaCyc against KEGG).
 
 electron transport chain.json =====================================================================
 
@@ -33,6 +38,9 @@ Removed so as to use ubiquinone 10 only:
     "RXN3O-102",
     "RXN66-550-ETF-Reduced/UBIQUINONE-8//ETF-Oxidized/CPD-9956/PROTON.55.",
     "SUCCINATE-DEHYDROGENASE-UBIQUINONE6-RXN"
+
+Removed to replace with NADH-DEHYDROG-A-RXN:
+1.6.99.5-RXN-NADH/UBIQUINONE-10/PROTON//NAD/CPD-9958.40.
 
 sub-reactions.json ================================================================================
 
@@ -143,6 +151,26 @@ which is basically the reverse of the cysteate degradation pathway described - s
 no reason to go from cysteate to pyruvate through sulfolactate when there's a one-step reaction
 to achieve the same.
 
+6PFRUCTPHOS-RXN
+RXN-9952
+PEPSYNTH-RXN
+Removed by manual review of gap-filling in central metabolism pathways. Confirmed by Mary Ann.
+
+
+RXN-7745
+Gap-filled for L-isoleucine biosynthesis II (R. pom has all genes for the more typical L-isoleucine
+biosynthesis I pathway). Identified by generating a list of all reactions with no genes across both
+databases, and ranking by growth defect of knockout (on glucose).
+
+
+ACETALD-DEHYDROG-RXN
+FHLMULTI-RXN
+PYRUVFORMLY-RXN
+DLACTDEHYDROGNAD-RXN
+GLUCOSAMINE-6-P-DEAMIN-RXN
+DIHYDROFOLATEREDUCT-RXN
+Identified by automated assembly of list of reactions with no associated genes, ranked by growth impact on glucose. Cross-checked with KEGG sil database.
+
 
 tca.json ==========================================================================================
  
@@ -172,6 +200,22 @@ in favor of the specialized versions:
     5.4.2.10-RXN
     L-GLN-FRUCT-6-P-AMINOTRANS-RXN
     NAG6PDEACET-RXN
+
+
+glucose_forms.json
+================================================================================
+
+Removed so as to only use Glucopyranose[-] forms of glucose:
+ALDOSE-1-EPIMERASE-RXN
+
+
+ribose_forms.json
+================================================================================
+
+Removed so as to only use D-Ribofuranose form of ribose:
+RXN0-5305
+RXN-14904
+
 
 gluco_gene_review.json ===========================================================================
 

@@ -16,18 +16,13 @@
         "gene_reaction_rule": ""
     },
     {
-        "id": "RXN-14970",
-        "name": "RXN-14970",
+        "id": "SUCCINATE-DEHYDROGENASE-UBIQUINONE-RXN",
+        "name": "SUCCINATE-DEHYDROGENASE-UBIQUINONE-RXN",
         "subsystem": "",
         "lower_bound": -1000.0,
-        "upper_bound": 0.0,
-        "metabolites": {
-            "SUC[c]": 1.0,
-            "FUM[c]" : -1.0,
-            "UBIQUINONE-10[c]": 1.0,
-            "CPD-9958[c]" : -1.0
-        },
-        "gene_reaction_rule": ""
+        "upper_bound": 1000.0,
+        "metabolites": "SUC[c] + UBIQUINONE-10[c] <=> FUM[c] + CPD-9958[c]",
+        "gene_reaction_rule": "SPO0361 and SPO0360 and SPO0359 and SPO0358"
     },
     {
         "id": "RXN-20992",
@@ -42,5 +37,21 @@
             "WATER[c]" : 2.0
         },
         "gene_reaction_rule": ""
+    },
+    {
+        "id" : "NADH-DEHYDROG-A-RXN",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0,
+        "metabolites" : {
+            "NADH[c]" : -1.0,
+            "PROTON[c]" : -5.0,
+            "UBIQUINONE-10[c]" : -1.0,
+            "CPD-9958[c]" : 1.0,
+            "NAD[c]" : 1.0,
+            "PROTON[e]" : 4.0
+        },
+        "gene_reaction_rule": "SPO2786 and SPO2785 and SPO2782 and SPO2774 and SPO2772 and SPO2770 and SPO2767 and SPO2766 and SPO2765 and SPO2764 and SPO2763"
     }
 ]

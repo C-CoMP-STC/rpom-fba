@@ -1,0 +1,20 @@
+[
+    {
+        "id": "RXN2DNV-42",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "gene_reaction_rule": "(SPO1363)",
+        "metabolites": "7-8-DIHYDROPTEROATE[c] + FADH2[c] --> CPD-9020[c] + FAD[c] + PROTON[c]"
+    },
+    {
+        "id": "RXN2DNV-43",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "gene_reaction_rule": "(SPO3818)",
+        "metabolites": "ATP[c] + CPD-9020[c] + GLT[c] --> ADP[c] + PROTON[c] + Pi[c] + THF-GLU-N[c]"
+    }
+]

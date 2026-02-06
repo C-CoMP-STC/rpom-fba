@@ -1,0 +1,10 @@
+[
+    {
+        "id": "EX_fru",
+        "metabolites": "BETA-D-FRUCTOSE[e] -->"
+    },
+    {
+        "id": "FRUtex",
+        "metabolites": "BETA-D-FRUCTOSE[e] <=> BETA-D-FRUCTOSE[p]"
+    }
+]

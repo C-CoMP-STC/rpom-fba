@@ -1,9 +1,0 @@
-#field 7 DB:Reference errors: 0 errors
-
-#field 8 Evidence Code errors: 0 errors
-
-#field 9 With/From errors: 2 errors
-Rpom246200Cyc	G1G48-3556-MONOMER	RS17735		GO:0005829	PMID:26602691	IEA	ERROR:reqd-but-missing	C	30S ribosomal protein S12	SPO_RS17735|SPO3501|RS17735	protein	taxon:246200	20171106	Rpom246200Cyc
-Rpom246200Cyc	G1G48-3556-MONOMER	RS17735		GO:0005829	PMID:26602691	IEA	ERROR:reqd-but-missing	C	30S ribosomal protein S12	SPO_RS17735|SPO3501|RS17735	protein	taxon:246200	20171009	Rpom246200Cyc
-#field 15 no date/curator errors: 0 errors
-

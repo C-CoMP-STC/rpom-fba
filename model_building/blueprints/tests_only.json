@@ -4,5 +4,6 @@
         "remove": false
     },
     "LogMACAW": null,
+    "NetworkChecks": null,
     "SanityChecks": null
 }

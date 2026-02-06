@@ -250,8 +250,8 @@ def build_existing_reactions_template(model,
 
         # Check if the reaction is present in either biocyc database,
         # and retrieve data if so.
-        reaction_db1 = reactions1.get(reaction.annotation.get("stem", reaction.id), None)
-        reaction_db2 = reactions2.get(reaction.annotation.get("stem", reaction.id), None)
+        reaction_db1 = reactions1.get(reaction.notes.get("stem", reaction.id), None)
+        reaction_db2 = reactions2.get(reaction.notes.get("stem", reaction.id), None)
         line["In DB1?"] = reaction_db1 is not None
         line["In DB2?"] = reaction_db2 is not None
 
@@ -304,7 +304,7 @@ def build_new_reactions_template(
     # Look only at reactions not in model
     reactions_db1 = set(reactions1.keys())
     reactions_db2 = set(reactions2.keys())
-    reactions_model = set([rxn.annotation.get("stem", rxn.id) for rxn in model.reactions])
+    reactions_model = set([rxn.notes.get("stem", rxn.id) for rxn in model.reactions])
     reactions_to_add = (reactions_db1 | reactions_db2) - reactions_model
 
     for reaction in reactions_to_add:
@@ -636,7 +636,7 @@ def main():
                              "EX_FUM",
                              "EX_MAL",
                              "EX_SUC",
-                             "EX_BETA-D-XYLOSE",
+                             "EX_xylose",
                              "EX_GLYCEROL",
                              "EX_GLYCEROL-3P",
                              "EX_CPD-3745",

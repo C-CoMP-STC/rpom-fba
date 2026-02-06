@@ -23,3 +23,8 @@ SPO2872, cobB
 
 # ureidoglycolate lyase
 SPO0873, allA
+
+# type I glyceraldehyde-3-phosphate dehydrogenase: gap
+SPO2198, gap-3
+SPO0875, gap-2
+SPO0701, gap-1
