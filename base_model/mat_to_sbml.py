@@ -78,11 +78,11 @@ def convert_model(model):
     # Add metabolites to reactions using stoichiometry
     for c in range(S.shape[1]):
         rxn_stoich = S[:, c]
-        rxn_mets, _ = rxn_stoich.nonzero()
+        rxn_mets = rxn_stoich.nonzero()[0]
 
         reactions[c].add_metabolites(
             {
-                metabolites[met]: rxn_stoich[met, 0]
+                metabolites[met]: S[met, c]
                 for met in rxn_mets
             }
         )
