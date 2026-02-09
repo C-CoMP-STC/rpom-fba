@@ -80,6 +80,16 @@ Removed as sub-reactions of GLUTARYL-COA-DEHYDROGENASE-RXN
     GLUTARYL-COA-DEHYDROG-RXN
     GLUTACONYL-COA-DECARBOXYLASE-RXN
 
+Removed as sub-reactions of GLUTAMATESYN-RXN
+    GLUTAMIN-RXN
+    GLUTDEHYD-RXN
+
+Removed as sub-reactions of CARBPSYN-RXN
+    RXN-13202
+        RXN-16909
+        RXN-16910
+        RXN-14196
+
 rename.json =======================================================================================
 
 Removed to rename to PYRUVDEH-RXN: PDH
@@ -205,3 +215,106 @@ ribose_forms.json
 Removed so as to only use D-Ribofuranose form of ribose:
 RXN0-5305
 RXN-14904
+
+
+gluco_gene_review.json ===========================================================================
+
+Removed ORNITHINE-GLU-AMINOTRANSFERASE-RXN.
+The existence of this reaction is only supported by the rep BioCyc DB; in addition, the documentation
+remains lacking - no enzyme was associated with this reaction. KEGG ARGININE AND PROLINE METABOLISM pathway
+have this reaction (EC 2.6.13) but lacks enzyme support. As a result, this reaction may produce extra
+Glutamate that's not supported by R.pom.
+
+Removed AMINOBUTDEHYDROG-RXN.
+Can't find metabolite 4-AMINO-BUTYRALDEHYDE and reaction name in either rep or non-rep DB. However,
+the reaction seems to be related to putrescine degradation.
+
+Removed ORNDECARBOX-RXN.
+This existence of this reaction is supported by KEGG only. It shows up in ARGININE AND PROLINE
+METABOLOSIM pathway with EC ID 4.1.1.17 and enzyme SPO0364. However, this reaction and associated
+enzyme doesn't have any info on BIOCYC.
+
+Removed AIRCARBOXY-RXN.
+This is a rare instance where we remove the parent reaction and keep the subreaction. This is
+becase the subreactions are noted in KEGG but not the parent reaction.
+
+Removed RXN-16025.
+Reaction and reactant CPD0-2113 not found on the two databases.
+
+Removed RXN-16032-PALMITYL-COA/CPD0-2113//CPD-17273/CO-A.39.
+Reaction and reactant CPD0-2113 not found on the two databases.
+
+Removed RXN-5061
+Reaction and EC number not found in none of rep, non-rep db, and KEGG.
+
+Removed RXN-17018
+Reaction not found, even when tracing reactions that used Palmitoyl-ACPs
+
+Removed RXN0-6705
+Reaction not found, even when tracing reactions that used Palmitoyl-ACPs
+
+Removed 1.2.1.25-RXN
+No KEGG found
+
+Removed 3-HYDROXYISOBUTYRYL-COA-HYDROLASE-RXN
+No KEGG found
+
+Removed RXN-22713
+No KEGG entry found but is a subreaction of E.C. 2.6.1.85 which has keg entry associated with gene SPO0924
+
+Removed MEPROPCOA-FAD-RXN
+No KEGG entr; seems to be involved in valine/isoleucine degradation pathway, E.C. described as 1.3.8
+with a flavin as acceptor
+
+Removed RXN-8447
+Not found in either database or metacyc
+
+Removed RXN-21315
+No enzyme or pathway found on KEGG
+
+Removed RXN-21316
+No enzyme or pathway found on KEGG
+
+Removed THI-P-KIN-RXN
+No enzyme found, and pathway indicated by both db are none r.pom. Planning on removing. It's likely a curation
+error by BioCyc.
+
+Removed 2-METHYLACYL-COA-DEHYDROGENASE-RXN
+No enzyme on non-rep, no entry on KEGG and rep
+
+Removed THIAZOLSYN3-RXN
+Found in rep dbs but not in either non-rep or KEGG. Don't trust reaction source
+
+Removed 1.1.1.178-RXN
+Found in non-rep dbs but not in kegg or rep dbs. Don't trust reaction source
+
+Removed 1.13.11.25-RXN
+Found in non-rep dbs but not in kegg or rep dbs. Don't trust reaction source
+
+Removed 1.2.7.4-RXN
+No entry on KEGG. No-rep indicates (SPO1518 AND SPO1519) OR (SPO2397 AND SPO2398 AND SPO2399).
+Don't trust reaction source
+
+Removed 1.5.1.9-RXN
+No EC entry on KEGG and gene entries do not match. Don't trust reaction source
+
+Removed 2-METHYLCITRATE-DEHYDRATASE-RXN
+No such reaction and reactant CPD-622 in R.pom
+
+Removed 2-METHYLCITRATE-SYNTHASE-RXN
+No such reaction and reactant CPD-622 in R.pom
+
+Removed 2.5.1.32-RXN
+No such reaction and reactant CPD-464 in R.pom
+
+Removed 2.6.1.22-RXN
+No enzyme on non-rep, no entry on rep. Don't trust reaction source
+
+Removed 3.6.3.16-RXN
+No enzyme on non-rep, no entry on rep. Don't trust reaction source
+
+Removed 4.1.1.81-RXN
+No such reaction and reactant CPD-1136 in R.pom
+
+Removed 4.2.1.99-RXN
+No comment was given for this one.

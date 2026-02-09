@@ -1,4 +1,5 @@
 .python-version
 scraps
 __pycache__
-
+.*
+~$*.xlsx
