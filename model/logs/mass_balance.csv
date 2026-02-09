@@ -1,38 +1,38 @@
 ID,reaction,mass_balance,has_unknown_formulas,glucose flux min,glucose flux max
-RXN-4261,CPD-3745[c] + NADPH[c] + OXYGEN-MOLECULE[c] + PROTON[c] --> NADP[c] + SULFOACETALDEHYDE[c] + 2.0 WATER[c],{'charge': -1.0},False,0.0,1.1866070206477425e-11
-SPONT1-RXN,DIHYDROFOLATE[c] <=> DIHYDROFOLATE-GLU-N[c],{'charge': 1.0},False,0.0006329321459380069,0.0006329321449361376
-RXN-11951,Cytochromes-C-Oxidized[c] + S2O3[c] + SoxZY-L-Cysteine[c] --> Cytochromes-C-Reduced[c] + 2.0 PROTON[c] + SoxY-Thiocysteine-Sulfate[c],"{'charge': 3.0, 'H': 1.0, 'O': -3.0, 'S': -2.0}",True,0.0,0.0
-RXN-11952,SoxY-Thiocysteine-Sulfate[c] + WATER[c] --> PROTON[c] + SULFATE[c] + SoxY-S-Thiocysteine[c],"{'charge': -1.0, 'H': -1.0, 'O': 3.0, 'S': 1.0}",True,0.0,-5.486277205983262e-13
-RXN-18796,2.0 Cytochromes-C-Oxidized[c] + S2O3[c] + SoxY-S-Thiocysteine[c] --> 2.0 Cytochromes-C-Reduced[c] + 2.0 PROTON[c] + SoxY-Thiocysteine-S-Sulfate[c],"{'charge': 3.0, 'H': 1.0, 'O': -3.0, 'S': -2.0}",True,0.0,-4.2492883846738497e-13
-RXN-18797,SoxY-Thiocysteine-S-Sulfate[c] + WATER[c] --> 2.0 PROTON[c] + SULFATE[c] + SoxY-S-S-Thiocysteine[c],"{'O': 3.0, 'S': 1.0}",True,0.0,-4.249288384673849e-13
-RXN-18798,6.0 Cytochromes-C-Oxidized[c] + SoxY-S-S-Thiocysteine[c] + 3.0 WATER[c] --> 6.0 Cytochromes-C-Reduced[c] + 6.0 PROTON[c] + SoxY-Thiocysteine-Sulfate[c],"{'charge': 6.0, 'O': -3.0}",True,0.0,-4.249288384673849e-13
-CYTOCHROME-C-PEROXIDASE-RXN,2.0 Cytochromes-C-Reduced[c] + HYDROGEN-PEROXIDE[c] + 2.0 PROTON[c] --> 2.0 Cytochromes-C-Oxidized[c] + 2.0 WATER[c],{'charge': -2.0},True,0.0,-1.6997153538695399e-12
-RXN2DNV-42,7-8-DIHYDROPTEROATE[c] + FADH2[c] --> CPD-9020[c] + FAD[c] + PROTON[c],{'charge': 1},False,0.0,5.355058742261932e-12
-RXN-19296,ADENOSYLCOBINAMIDE-GDP[c] + CPD-15539[c] --> CPD-20827[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
-RXN-19612,CPD-21212[c] + WATER[c] --> CL-[c] + GLUTATHIONE[c] + GLYOX[c] + PROTON[c],"{'C': -1, 'L': -1, 'Cl': 1}",False,0.0,0.0
-RXN-19303,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20830[c] --> CPD-20855[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
-RXN-8768,CPD-9045[c] --> CPD-9049[c] + PROTON[c],"{'C': -1, 'O': -1, 'Co': 1}",False,0.0,0.0
-RXN-20645,GERANYLGERANYL-PP[c] + PROTOHEME[c] + WATER[c] --> CPD-22272[c] + PPI[c],"{'Fe': -1, 'F': 1, 'E': 1}",False,0.0,0.0
-RXN-22316,CPD-763[c] <=> CPD-24319[c] + PROTON[c],"{'As': -1, 'A': 1, 'S': 1}",False,0.0,0.0
-RXN-19611,CPD-9674[c] + GLUTATHIONE[c] --> CL-[c] + CPD-21212[c] + PROTON[c],"{'L': -1, 'Cl': 1}",False,0.0,0.0
+RXN-4261,CPD-3745[c] + NADPH[c] + OXYGEN-MOLECULE[c] + PROTON[c] --> NADP[c] + SULFOACETALDEHYDE[c] + 2.0 WATER[c],{'charge': -1.0},False,0.0,6.9097645627524376e-12
+SPONT1-RXN,DIHYDROFOLATE[c] <=> DIHYDROFOLATE-GLU-N[c],{'charge': 1.0},False,0.0006329321367926628,0.0006329321449360679
+RXN-11951,Cytochromes-C-Oxidized[c] + S2O3[c] + SoxZY-L-Cysteine[c] --> Cytochromes-C-Reduced[c] + 2.0 PROTON[c] + SoxY-Thiocysteine-Sulfate[c],"{'charge': 3.0, 'H': 1.0, 'O': -3.0, 'S': -2.0}",True,0.0,1.3962751351589994e-11
+RXN-11952,SoxY-Thiocysteine-Sulfate[c] + WATER[c] --> PROTON[c] + SULFATE[c] + SoxY-S-Thiocysteine[c],"{'charge': -1.0, 'H': -1.0, 'O': 3.0, 'S': 1.0}",True,0.0,2.5325837613784783e-11
+RXN-18796,2.0 Cytochromes-C-Oxidized[c] + S2O3[c] + SoxY-S-Thiocysteine[c] --> 2.0 Cytochromes-C-Reduced[c] + 2.0 PROTON[c] + SoxY-Thiocysteine-S-Sulfate[c],"{'charge': 3.0, 'H': 1.0, 'O': -3.0, 'S': -2.0}",True,0.0,8.108145541453247e-12
+RXN-18797,SoxY-Thiocysteine-S-Sulfate[c] + WATER[c] --> 2.0 PROTON[c] + SULFATE[c] + SoxY-S-S-Thiocysteine[c],"{'O': 3.0, 'S': 1.0}",True,0.0,6.39247924875068e-12
+RXN-18798,6.0 Cytochromes-C-Oxidized[c] + SoxY-S-S-Thiocysteine[c] + 3.0 WATER[c] --> 6.0 Cytochromes-C-Reduced[c] + 6.0 PROTON[c] + SoxY-Thiocysteine-Sulfate[c],"{'charge': 6.0, 'O': -3.0}",True,0.0,6.392479248750681e-12
+CYTOCHROME-C-PEROXIDASE-RXN,2.0 Cytochromes-C-Reduced[c] + HYDROGEN-PEROXIDE[c] + 2.0 PROTON[c] --> 2.0 Cytochromes-C-Oxidized[c] + 2.0 WATER[c],{'charge': -2.0},True,0.0,2.557332399731619e-11
+RXN2DNV-42,7-8-DIHYDROPTEROATE[c] + FADH2[c] --> CPD-9020[c] + FAD[c] + PROTON[c],{'charge': 1},False,0.0,2.1269534239107368e-13
 RXN-19307,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20838[c] --> CPD-20839[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
-RXN-19308,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20826[c] --> CPD-20856[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,-3.35816265108751e-13
-RXN-19318,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20851[c] --> CPD-20852[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
-DHLBXANAU-RXN,CHLOROACETIC-ACID[c] + WATER[c] <=> CL-[c] + GLYCOLLATE[c] + PROTON[c],"{'C': -1, 'L': -1, 'Cl': 1}",False,0.0,0.0
-RXN-19609,CPD-9674[c] + WATER[c] --> 2 CL-[c] + GLYOX[c] + 2 PROTON[c],"{'C': -1, 'L': -2, 'Cl': 2}",False,0.0,0.0
-RXN-19302,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20829[c] --> CPD-20833[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
-RXN-22315,CPD0-2040[c] <=> CPD-763[c] + PROTON[c],"{'A': -1, 'S': -1, 'As': 1}",False,0.0,0.0
-RXN-19305,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20832[c] --> CPD-20836[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
-4.99.1.3-RXN,CO+2[c] + SIROHYDROCHLORIN[c] --> COBALT-SIROHYDROCHLORIN[c] + 2 PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
-RXN-19573,CPD-21167[c] + GLUTATHIONE[c] --> CL-[c] + CPD-21160[c] + PROTON[c],"{'C': -1, 'L': -1, 'Cl': 1}",False,0.0,0.0
-RXN-19304,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20831[c] --> CPD-13940[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
-RXN-19297,ADENOSYLCOBINAMIDE-GDP[c] + CPD-18105[c] --> CPD-20828[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
-RXN-17393,CPD-18807[c] --> CPD-17986[c] + CPD-18808[c],"{'C': 92, 'H': 147, 'N': 7, 'O': 27, 'P': 2}",True,0.0,0.0
-RXN-16690,CPD-17947[c] --> CPD-17988[c] + PROTON[c] + UNDECAPRENYL-DIPHOSPHATE[c],"{'C': 55, 'H': 90, 'O': 7, 'P': 2}",True,0.0,0.0
 RXN-19600,CPD-21168[c] + GLUTATHIONE[c] --> CL-[c] + CPD-21192[c] + PROTON[c],"{'L': -1, 'Cl': 1}",False,0.0,0.0
-RXN-14481,CPD-15360[c] + S-ADENOSYLMETHIONINE[c] --> ADENOSYL-HOMO-CYS[c] + CPD-11592[c] + PROTON[c],"{'C': -1, 'H': -2}",True,0.0,0.0
-RXN-18407,236-TRICHLOROHYDROQUINONE[c] + GLUTATHIONE[c] --> CL-[c] + CPD-19761[c],"{'L': -1, 'Cl': 1}",False,0.0,0.0
+RXN-19573,CPD-21167[c] + GLUTATHIONE[c] --> CL-[c] + CPD-21160[c] + PROTON[c],"{'C': -1, 'L': -1, 'Cl': 1}",False,0.0,0.0
+RXN-14481,CPD-15360[c] + S-ADENOSYLMETHIONINE[c] --> ADENOSYL-HOMO-CYS[c] + CPD-11592[c] + PROTON[c],"{'C': -1, 'H': -2}",True,0.0,5.608938521171334e-12
+RXN-19318,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20851[c] --> CPD-20852[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
+RXN-8768,CPD-9045[c] --> CPD-9049[c] + PROTON[c],"{'C': -1, 'O': -1, 'Co': 1}",False,0.0,0.0
 RXN-16688,CPD-17968[c] --> CPD-17987[c] + PROTON[c] + UNDECAPRENYL-DIPHOSPHATE[c],"{'C': 55, 'H': 90, 'O': 7, 'P': 2}",True,0.0,0.0
-GST-RXN,1-CHLORO-24-DINITROBENZENE[c] + GLUTATHIONE[c] --> CL-[c] + PROTON[c] + S-24-DINITROPHENYLGLUTATHIONE[c],"{'C': -1, 'L': -1, 'Cl': 1}",False,0.0,0.0
-RXN-18405,GLUTATHIONE[c] + PROTON[c] + TETRACHLOROHYDROQUINONE[c] --> CL-[c] + CPD-19763[c],"{'L': -1, 'Cl': 1}",False,0.0,0.0
+RXN-19609,CPD-9674[c] + WATER[c] --> 2 CL-[c] + GLYOX[c] + 2 PROTON[c],"{'C': -1, 'L': -2, 'Cl': 2}",False,0.0,0.0
+RXN-19612,CPD-21212[c] + WATER[c] --> CL-[c] + GLUTATHIONE[c] + GLYOX[c] + PROTON[c],"{'C': -1, 'L': -1, 'Cl': 1}",False,0.0,0.0
+RXN-16690,CPD-17947[c] --> CPD-17988[c] + PROTON[c] + UNDECAPRENYL-DIPHOSPHATE[c],"{'C': 55, 'H': 90, 'O': 7, 'P': 2}",True,0.0,0.0
+RXN-19297,ADENOSYLCOBINAMIDE-GDP[c] + CPD-18105[c] --> CPD-20828[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
+RXN-19305,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20832[c] --> CPD-20836[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
+DHLBXANAU-RXN,CHLOROACETIC-ACID[c] + WATER[c] <=> CL-[c] + GLYCOLLATE[c] + PROTON[c],"{'C': -1, 'L': -1, 'Cl': 1}",False,0.0,0.0
+RXN-17393,CPD-18807[c] --> CPD-17986[c] + CPD-18808[c],"{'C': 92, 'H': 147, 'N': 7, 'O': 27, 'P': 2}",True,0.0,0.0
+RXN-22316,CPD-763[c] <=> CPD-24319[c] + PROTON[c],"{'As': -1, 'A': 1, 'S': 1}",False,0.0,0.0
+RXN-19304,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20831[c] --> CPD-13940[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,5.621315561366502e-12
 RXN-16691,CPD-17969[c] --> CPD-18809[c] + PROTON[c] + UNDECAPRENYL-DIPHOSPHATE[c],"{'H': 90, 'C': 55, 'O': 7, 'P': 2}",True,0.0,0.0
+RXN-19302,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20829[c] --> CPD-20833[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
+4.99.1.3-RXN,CO+2[c] + SIROHYDROCHLORIN[c] --> COBALT-SIROHYDROCHLORIN[c] + 2 PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
+RXN-19303,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20830[c] --> CPD-20855[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
+RXN-18405,GLUTATHIONE[c] + PROTON[c] + TETRACHLOROHYDROQUINONE[c] --> CL-[c] + CPD-19763[c],"{'L': -1, 'Cl': 1}",False,0.0,0.0
+RXN-20645,GERANYLGERANYL-PP[c] + PROTOHEME[c] + WATER[c] --> CPD-22272[c] + PPI[c],"{'Fe': -1, 'F': 1, 'E': 1}",False,0.0,0.0
+GST-RXN,1-CHLORO-24-DINITROBENZENE[c] + GLUTATHIONE[c] --> CL-[c] + PROTON[c] + S-24-DINITROPHENYLGLUTATHIONE[c],"{'C': -1, 'L': -1, 'Cl': 1}",False,0.0,0.0
+RXN-19308,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20826[c] --> CPD-20856[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,-2.1570127435558263e-12
+RXN-19611,CPD-9674[c] + GLUTATHIONE[c] --> CL-[c] + CPD-21212[c] + PROTON[c],"{'L': -1, 'Cl': 1}",False,0.0,0.0
+RXN-18407,236-TRICHLOROHYDROQUINONE[c] + GLUTATHIONE[c] --> CL-[c] + CPD-19761[c],"{'L': -1, 'Cl': 1}",False,0.0,0.0
+RXN-19296,ADENOSYLCOBINAMIDE-GDP[c] + CPD-15539[c] --> CPD-20827[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
+RXN-22315,CPD0-2040[c] <=> CPD-763[c] + PROTON[c],"{'A': -1, 'S': -1, 'As': 1}",False,0.0,0.0

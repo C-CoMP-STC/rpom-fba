@@ -306,22 +306,22 @@
     },
     {
         "id": "RIBONUCLEOSIDE-DIP-REDUCTII-RXN",
-        "gene_reaction_rule": "SPO2136 or SPOSPO3194"
+        "gene_reaction_rule": "SPO2136 or SPO3194"
 
     },
     {
         "id": "RXN0-748",
-        "gene_reaction_rule": "SPO2136 or SPOSPO3194"
+        "gene_reaction_rule": "SPO2136 or SPO3194"
 
     },
     {
         "id": "RXN0-747",
-        "gene_reaction_rule": "SPO2136 or SPOSPO3194"
+        "gene_reaction_rule": "SPO2136 or SPO3194"
 
     },
     {
         "id": "RXN0-722",
-        "gene_reaction_rule": "SPO2136 or SPOSPO3194"
+        "gene_reaction_rule": "SPO2136 or SPO3194"
     },
     {
         "id": "RXN-9772",
