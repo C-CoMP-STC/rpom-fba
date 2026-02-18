@@ -6,6 +6,10 @@ from cobra.io import read_sbml_model, write_sbml_model, save_json_model
 from model_building.stages import STAGE_REGISTRY
 
 
+# step 1: run with nobiocyc
+# step 2: regenerate biocyc templates (model_building/biocyc_update_pipeline/transform/build_templates.py)
+# step 3: run with biocyc 
+
 # DEFAULT_CONFIG = "model_building/blueprints/Rpom_05_hwa__no_biocyc.json"
 DEFAULT_CONFIG = "model_building/blueprints/Rpom_05_hwa.json"
 DEFAULT_MODEL = "model/Rpom_05.xml"
