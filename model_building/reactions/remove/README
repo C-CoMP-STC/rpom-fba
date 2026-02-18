@@ -321,3 +321,6 @@ No comment was given for this one.
 
 Removed FACOAE161, RXN-10462, ENOYL-COA-DELTA-ISOM-RXN-POLYMER-INST-CIS-DELTA3-ENOYL-COA-C12-H24//CPD0-2117.53.
 Either non-canonical or unneeded reactions for L-PHOSPHATIDATE[c] generation from GLYCEROL-3P[c]
+
+Removed GLYCOLALD-DEHYDROG-RXN 
+Non-canonical reaction for GLYCOLALDEHYDE[c] consumption. 
