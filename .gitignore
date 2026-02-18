@@ -3,3 +3,4 @@ scraps
 __pycache__
 .*
 ~$*.xlsx
+notes.txt
