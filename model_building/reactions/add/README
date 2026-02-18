@@ -1,1 +1,3 @@
-Added RXN_2.3.1.15, RXN_2.3.1.51 as a new pathway for L-PHOSPHATIDATE[c] generation from GLYCEROL-3P[c]
+Added RXN_2.3.1.15, RXN_2.3.1.51 as a new pathway (in biocyc) for L-PHOSPHATIDATE[c] generation from GLYCEROL-3P[c].
+
+Added RXN_1.2.1.4 as a new pathway (in biocyc) for GLYCOLALDEHYDE[c] sinking.
