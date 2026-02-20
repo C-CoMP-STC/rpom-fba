@@ -105,7 +105,7 @@ def add_sink(rxn_id, to_sink_id, model=model):
         print(f"Growth rate with new reaction: {sol.objective_value:.2f} 1/hr")
         print()
 
-def get_metabolite_reactions(met_id, model=model): 
+def get_metabolite_reactions(met_id, model=model, verbose=True): 
     met = model.metabolites.get_by_id(met_id)
 
     rxns = list(met.reactions)          # list of reactions
@@ -113,14 +113,15 @@ def get_metabolite_reactions(met_id, model=model):
     consuming = [r for r in met.reactions if r.metabolites[met] < 0]
     producing = [r for r in met.reactions if r.metabolites[met] > 0]
 
-    print(f"Consuming reactions:")
-    for rxn in consuming:
-        print(f"\t{rxn.id}: {rxn.reaction}")
-
-    print(f"Producing reactions:")
-    for rxn in producing:
-        print(f"\t{rxn.id}: {rxn.reaction}")
-    print()
+    if verbose:
+        print(f"Consuming reactions:")
+        for rxn in consuming:
+            print(f"\t{rxn.id}: {rxn.reaction}")
+        print(f"Producing reactions:")
+        for rxn in producing:
+            print(f"\t{rxn.id}: {rxn.reaction}")
+        print()
+        
     return consuming, producing
         
         
