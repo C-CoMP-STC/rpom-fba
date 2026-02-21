@@ -338,4 +338,16 @@ ADDED_METABOLITES = [
                charge=0,
                name="D-ribofuranose",
                compartment="p"),
+    # explicitly adding coumarate for canonical 4-hydroxybenzoate synthesis
+    Metabolite(id="COUMARATE[c]",
+               formula="C9H7O3",
+               charge=0,
+               name="4-coumarate",
+               compartment="c"),
+    # explicitly adding dimethylsulfoniopropioyl-CoA in canonical 4-hydroxybenzoate synthesis
+    Metabolite(id="CPD-10473[c]",
+               formula="C26H41N7O17P3S2",
+               charge=0,
+               name="dimethylsulfoniopropioyl-CoA",
+               compartment="c"),
 ]
