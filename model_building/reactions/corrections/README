@@ -40,3 +40,6 @@ Now: should I review the reversibilities of these other reactions?
     "lower_bound": 0.0,
     "upper_bound": 1000.0
 }
+
+Modified COFACTOR-RXN to include CPD-9867[c] (3-(all-trans-decaprenyl)benzene-1,2-diol) instead of 2-OCTAPRENYL-6-HYDROXYPHENOL[c] (3-(all-trans-octaprenyl)benzene-1,2-diol) for ubiquinol 10 synthesis and primary ubiquinone 10 usage.
+Note that we assume the same cofactor usage of CPD-9867[c] as 2-OCTAPRENYL-6-HYDROXYPHENOL[c] in the original COFACTOR-RXN.

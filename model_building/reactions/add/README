@@ -5,3 +5,5 @@ Added RXN_1.2.1.4 as a new pathway (in biocyc) for GLYCOLALDEHYDE[c] sinking.
 Added RXN_4.3.1.23 as a Tyrosine to Coumarate pathway (for canonical 4-hydroxybenzoate synthesis). 
 
 Added RXN_3.1.2.20, RXN_3.1.6.1 to complete canonical Coumarate to 4-hydroxybenzoate pathway. Note that RXN_3.1.2.20 uses dimethylsulfoniopropanoate but this is not actually generated in the model flux, but the reaction is kept for completeness
+
+Added RXN_4.1.1.98, RXN_2.1.1.222, RXN_1.14.13.M56, RXN_2.1.1.201, RXN_1.14.99.60_NADH, and RXN_1.14.99.60_NADPH, RXN-9232, RXN-9230, RXN-9237, and RXN-9106 to explicitly complete the ubiquinol-10 synthesis pathway from 4-hydroxybenzoate[c] and DELTA3-ISOPENTENYL-PP[c] + FARNESYL-PP[c]. 

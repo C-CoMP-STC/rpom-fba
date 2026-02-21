@@ -327,3 +327,17 @@ Non-canonical reaction for GLYCOLALDEHYDE[c] consumption.
 
 Removed CHORPYRLY-RXN
 Non-canonical reaction for 4-hydroxybenzoate synthesis from chorismate. The enzyme for this reaction (chorismate lyase) does not exist in R Pom. 
+
+Removed 
+    4OHBENZOATE-OCTAPRENYLTRANSFER-RXN, 
+    3-OCTAPRENYL-4-OHBENZOATE-DECARBOX-RXN, 
+    2-OCTAPRENYLPHENOL-HYDROX-RXN, 
+    2-OCTAPRENYL-6-OHPHENOL-METHY-RXN,
+    2-OCTAPRENYL-6-METHOXYPHENOL-HYDROX-RXN,
+    2-OCTAPRENYL-METHOXY-BENZOQ-METH-RXN,
+    OCTAPRENYL-METHYL-METHOXY-BENZOQ-OH-RXN,
+    RXN0-5330-YEAST,
+    RXN0-5258-Yeast,
+    GLYC3PDEHYDROG-RXN, 
+    RXN-9229
+These are all reactions associated with ubiquinol/ubiquinone 6,7,8 or their synthesis. 

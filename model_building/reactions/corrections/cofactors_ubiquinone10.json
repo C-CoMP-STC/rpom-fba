@@ -1,0 +1,20 @@
+[
+    "Modified COFACTOR RXN in light of ubiquinone 10 usage =============================",
+    {
+        "id": "COFACTOR-RXN",
+        "metabolites": {
+            "CPD-9867[c]": -0.14627036,
+            "CO-A[c]": -0.377810437,
+            "FAD[c]": -0.14627036,
+            "FORMYL-THF-GLU-N[c]": -0.14627036,
+            "METHYLENE-THF-GLU-N[c]": -0.14627036,
+            "PROTOHEME[c]": -0.14627036,
+            "PYRIDOXAL_PHOSPHATE[c]": -0.14627036,
+            "RIBOFLAVIN[c]": -0.14627036,
+            "S-ADENOSYLMETHIONINE[c]": -0.14627036,
+            "THF-GLU-N[c]": -0.14627036,
+            "THIAMINE-PYROPHOSPHATE[c]": -0.14627036,
+            "COFACTORS[c]": 1.0
+        }
+    }
+]
