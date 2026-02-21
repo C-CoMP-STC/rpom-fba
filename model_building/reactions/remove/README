@@ -324,3 +324,6 @@ Either non-canonical or unneeded reactions for L-PHOSPHATIDATE[c] generation fro
 
 Removed GLYCOLALD-DEHYDROG-RXN 
 Non-canonical reaction for GLYCOLALDEHYDE[c] consumption. 
+
+Removed CHORPYRLY-RXN
+Non-canonical reaction for 4-hydroxybenzoate synthesis from chorismate. The enzyme for this reaction (chorismate lyase) does not exist in R Pom. 

@@ -1,0 +1,109 @@
+[
+    "===============================================================================",
+    "Canonical reaction for Tyrosine to Coumarate sink in biocyc database.",
+    {
+        "id": "RXN_4.3.1.23",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "TYR[c]" : -1.0,
+            "COUMARATE[c]" : 1.0,
+            "AMMONIUM[c]" : 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    "===============================================================================",
+    "Canonical reaction for 4-hydroxybenzoate synthesis from dimethylsulfoniopropanoate and 4-hydroxybenzoyl-CoA in biocyc database.",
+    "NB: dimethylsulfoniopropanoate not actually generated in model flux for rxn RXN_3.1.2.20, but kept for completeness",
+    {
+        "id": "RXN_3.1.2.20",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "SS-DIMETHYL-BETA-PROPIOTHETIN[c]" : -1.0,
+            "CPD-201[c]" : -1.0,
+            "4-hydroxybenzoate[c]" : 1.0,
+            "CPD-10473[c]" : 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "RXN_3.1.6.1",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CPD-201[c]" : -1.0,
+            "WATER[c]" : -1.0,
+            "CO-A[c]" : 1.0,
+            "4-hydroxybenzoate[c]" : 1.0,
+            "PROTON[c]" : 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    "===============================================================================",
+    "Full canonical 4-hydroxybenzoate synthesis pathwa from Coumarate",
+    {
+        "id": "4-COUMARATE--COA-LIGASE-RXN",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "ATP[c]" : -1.0,
+            "CO-A[c]" : -1.0,
+            "COUMARATE[c]" : -1.0,
+            "AMP[c]" : 1.0,
+            "P-COUMAROYL-COA[c]" : 1.0,
+            "PPI[c]" : 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "RXN-11244",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CPD-12199[c]" : -1.0,
+            "P-COUMAROYL-COA[c]" : 1.0,
+            "WATER[c]" : 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "RXN-11245",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CPD-12199[c]" : -1.0,
+            "NAD[c]" : -1.0,
+            "CPD-10600[c]" : 1.0,
+            "NADH[c]" : 1.0,
+            "PROTON[c]" : 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "RXN-11246",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": -1000.0,
+        "upper_bound": 0.0,
+        "metabolites": {
+            "ACETYL-COA[c]" : -1.0,
+            "CPD-201[c]" : -1.0,
+            "CPD-10600[c]" : 1.0,
+            "CO-A[c]" : 1.0
+        },
+        "gene_reaction_rule": ""
+    }
+]
