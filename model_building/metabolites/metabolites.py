@@ -341,13 +341,13 @@ ADDED_METABOLITES = [
     # explicitly adding coumarate for canonical 4-hydroxybenzoate synthesis
     Metabolite(id="COUMARATE[c]",
                formula="C9H7O3",
-               charge=0,
+               charge=-1,
                name="4-coumarate",
                compartment="c"),
     # explicitly adding dimethylsulfoniopropioyl-CoA in canonical 4-hydroxybenzoate synthesis
     Metabolite(id="CPD-10473[c]",
                formula="C26H41N7O17P3S2",
-               charge=0,
+               charge=-3,
                name="dimethylsulfoniopropioyl-CoA",
                compartment="c"),
     # adding intermediate metabolites for ubiquinol/ubiquinone 10 synthesis
@@ -357,7 +357,7 @@ ADDED_METABOLITES = [
                compartment='c'),
     Metabolite(id='CPD-9869[c]',
                formula='C57H88O3',
-               name="ArithmeticError2-methoxy-6-(all-trans-decaprenyl)benzene-1,4-diol",
+               name="2-methoxy-6-(all-trans-decaprenyl)benzene-1,4-diol",
                compartment='c'),
     Metabolite(id='CPD-9871[c]',
                formula='C58H90O3',
@@ -370,6 +370,7 @@ ADDED_METABOLITES = [
                compartment='c'),
     Metabolite(id='CPD-9864[c]',
                formula='C57H85O3',
+               charge=-1,
                name="3-decaprenyl-4-hydroxybenzoate",
                compartment='c'),
     Metabolite(id='CPD-9862[c]',
@@ -378,6 +379,7 @@ ADDED_METABOLITES = [
                compartment='c'),
     Metabolite(id='CPD-9610[c]',
                formula='C50H81O7P2',
+               charge=-3,
                name="all-trans-decaprenyl diphosphate",
                compartment='c'),
 ]
