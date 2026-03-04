@@ -10,7 +10,7 @@ from model_building.stages import STAGE_REGISTRY
 # step 2: regenerate biocyc templates (model_building/biocyc_update_pipeline/transform/build_templates.py)
 # step 3: run with biocyc 
 
-# DEFAULT_CONFIG = "model_building/blueprints/Rpom_05_hwa__no_biocyc.json"
+#DEFAULT_CONFIG = "model_building/blueprints/Rpom_05_hwa__no_biocyc.json"
 DEFAULT_CONFIG = "model_building/blueprints/Rpom_05_hwa.json"
 DEFAULT_MODEL = "model/Rpom_05.xml"
 
