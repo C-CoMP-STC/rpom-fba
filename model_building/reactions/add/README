@@ -1,0 +1,9 @@
+Added RXN-1381-GLYCEROL-3P/CPD0-2117//CO-A/ACYL-SN-GLYCEROL-3P, RXN-1623-ACYL-SN-GLYCEROL-3P/CPD0-2117//CO-A/L-PHOSPHATIDATE as a new pathway (in biocyc) for L-PHOSPHATIDATE[c] generation from GLYCEROL-3P[c].
+
+Added ALDEHYDE-DEHYDROGENASE-NADP+-RXN-GLYCOLALDEHYDE/NADP/WATER//GLYCOLATE/NADPH/PROTON as a new pathway (in biocyc) for GLYCOLALDEHYDE[c] sinking.
+
+Added RXN-9697 as a Tyrosine to Coumarate pathway (for canonical 4-hydroxybenzoate synthesis). 
+
+Added RXN-9760-SS-DIMETHYL-BETA-PROPIOTHETIN/CPD-201//4-HYDROXYBENZOATE/CPD-10473, ACYL-COA-HYDROLASE-RXN-CPD-201/WATER//CO-A/4-HYDROXYBENZOATE/PROTON, 4-COUMARATE--COA-LIGASE-RXN, RXN-11244, RXN-11245, RXN-11246 to complete canonical Coumarate to 4-hydroxybenzoate pathway. Note that RXN-9760-SS-DIMETHYL-BETA-PROPIOTHETIN/CPD-201//4-HYDROXYBENZOATE/CPD-10473 uses dimethylsulfoniopropanoate but this is not actually generated in the model flux, but the reaction is kept for completeness. Reactions for this pathway exist in BioCyc database, other than the Tyrosine to Coumarate reaction. However, we have an 88% hit in BLAST between Tyrosine ammonia-lyase in Streptomyces globisporus with R Pom's Histidine ammonia-lyase enzyme. Given no sequence similarity from bacterial chorismate lyase enzymes, it seems much more likely that the Tyrosine to Coumarate-based pathway is occurring in R Pom.
+
+Added RXN-9231, RXN-9233, RXN-9234, RXN-9235, RXN-9236-CPD-9871/NADH/OXYGEN-MOLECULE//CPD-9873/NAD/WATER, RXN-9237-CPD-9871/NADPH/OXYGEN-MOLECULE//CPD-9873/NADP/WATER, RXN-9232, RXN-9230, RXN-9237, and RXN-9106 to explicitly complete the ubiquinol-10 synthesis pathway from 4-hydroxybenzoate[c] and DELTA3-ISOPENTENYL-PP[c] + FARNESYL-PP[c]. Note that this is in light of literature suggesting R Pom primarily uses ubiquinol-10 and ubiquinone-10. Ubiquinol-10 synthesis pathway based on suggested MetaCyc pathway, with corresponding annotated genes for Ubi8 synthesis from bioCyc's R Pom database used. 
