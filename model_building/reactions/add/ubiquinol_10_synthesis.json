@@ -2,7 +2,7 @@
     "===============================================================================",
     "Metacyc-based reactions for ubiquinol 10 synthesis",
     {
-        "id": "RXN_4.1.1.98",
+        "id": "RXN-9231",
         "name": "",
         "subsystem": "",
         "lower_bound": 0,
@@ -13,10 +13,10 @@
             "CPD-9862[c]": 1.0,
             "CARBON-DIOXIDE[c]": 1.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "" 
     },
     {
-        "id": "RXN_2.1.1.222",
+        "id": "RXN-9233",
         "name": "",
         "subsystem": "",
         "lower_bound": 0,
@@ -28,10 +28,10 @@
             "ADENOSYL-HOMO-CYS[c]": 1.0,
             "PROTON[c]": 1.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "SPO0067"
     },
     {
-        "id": "RXN_1.14.13.M56",
+        "id": "RXN-9234",
         "name": "",
         "subsystem": "",
         "lower_bound": 0,
@@ -45,10 +45,10 @@
             "NADP[c]": 1.0,
             "WATER[c]": 1.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "SPO1371"
     },
     {
-        "id": "RXN_2.1.1.201",
+        "id": "RXN-9235",
         "name": "",
         "subsystem": "",
         "lower_bound": 0,
@@ -60,10 +60,10 @@
             "ADENOSYL-HOMO-CYS[c]": 1.0,
             "PROTON[c]": 1.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "SPO0145"
     },
     {
-        "id": "RXN_1.14.99.60_NADH",
+        "id": "RXN-9236-CPD-9871/NADH/OXYGEN-MOLECULE//CPD-9873/NAD/WATER",
         "name": "",
         "subsystem": "",
         "lower_bound": 0,
@@ -76,10 +76,10 @@
             "NAD[c]": 1.0,
             "WATER[c]": 1.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "SPO1371"
     },
     {
-        "id": "RXN_1.14.99.60_NADPH",
+        "id": "RXN-9237-CPD-9871/NADPH/OXYGEN-MOLECULE//CPD-9873/NADP/WATER",
         "name": "",
         "subsystem": "",
         "lower_bound": 0,
@@ -92,7 +92,7 @@
             "NADP[c]": 1.0,
             "WATER[c]": 1.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "SPO1371"
     },
     {
         "id": "RXN-9232",
@@ -108,7 +108,7 @@
             "NADP[c]": 1.0,
             "WATER[c]": 1.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "SPO0144"
     },
     {
         "id": "RXN-9230",
@@ -122,7 +122,7 @@
             "CPD-9864[c]": 1.0,
             "PPI[c]": 1.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "SPO3630"
     },
     {
         "id": "RXN-9237",
@@ -137,7 +137,7 @@
             "CPD-9958[c]": 1.0,
             "PROTON[c]": 1.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "SPO0067"
     },
     {
         "id": "RXN-9106",
@@ -151,6 +151,6 @@
             "CPD-9610[c]": 1.0,
             "PPI[c]": 7.0
         },
-        "gene_reaction_rule": ""
+        "gene_reaction_rule": "SPO0319"
     }
 ]
