@@ -1,0 +1,32 @@
+[
+    "L-PHOSPHATIDATE generation ===============================================================================",
+    "New L-PHOSPHATIDATE generation pathway from canonical reactions RXN-1381-GLYCEROL-3P/CPD0-2117//CO-A/ACYL-SN-GLYCEROL-3P and RXN-1623-ACYL-SN-GLYCEROL-3P/CPD0-2117//CO-A/L-PHOSPHATIDATE",
+    {
+        "id": "RXN-1381-GLYCEROL-3P/CPD0-2117//CO-A/ACYL-SN-GLYCEROL-3P",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "GLYCEROL-3P[c]" : -1.0,
+            "CPD0-2117[c]" : -1.0,
+            "CO-A[c]" : 1.0,
+            "ACYL-SN-GLYCEROL-3P[c]" : 1.0
+        },
+        "gene_reaction_rule": "SPO0283"
+    },
+    {
+        "id": "RXN-1623-ACYL-SN-GLYCEROL-3P/CPD0-2117//CO-A/L-PHOSPHATIDATE",
+        "name": "",
+        "subsystem": "",
+        "lower_bound": 0.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "ACYL-SN-GLYCEROL-3P[c]" : -1.0,
+            "CPD0-2117[c]" : -1.0,
+            "CO-A[c]" : 1.0,
+            "L-PHOSPHATIDATE[c]" : 1.0
+        },
+        "gene_reaction_rule": "SPO1979 or SPO0369 or SPO2451 or SPO0339"
+    }
+]

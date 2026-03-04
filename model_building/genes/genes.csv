@@ -28,3 +28,34 @@ SPO0873, allA
 SPO2198, gap-3
 SPO0875, gap-2
 SPO0701, gap-1
+
+# aldehyde dehydrogenase (NADP(+))
+SPOA0243, RS21050
+SPOA0260, RS21135
+
+# glycerol-3-phosphate 1-O-acyltransferase 
+SPO0283, plsY
+
+# 1-acyl-sn-glycerol-3-phosphate acyltransferase
+SPO1979, RS10045
+SPO0369, RS01870
+
+# phenylalanine/tyrosine ammonia-lyase
+G-17792, PAL
+
+# acyl-CoA thioesterase
+SPO0435, G1RHL-291
+SPO1958, G1RHL-1474	
+
+# enoyl-CoA hydratase
+SPOA0404, G1RHL-3262
+
+# 3-hydroxyacyl-CoA dehydrogenase, type II
+SPO2487, G1RHL-1876	
+
+# UbiH/UbiF family hydroxylase	
+SPO1371, RS06995
+
+# 2-(octa/deca) prenyl-6-methoxyphenol hydroxylase,
+SPO1371, G1RHL-999
+
