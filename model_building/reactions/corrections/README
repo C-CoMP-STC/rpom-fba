@@ -43,3 +43,13 @@ Now: should I review the reversibilities of these other reactions?
 
 Modified COFACTOR-RXN to include CPD-9867[c] (3-(all-trans-decaprenyl)benzene-1,2-diol) instead of 2-OCTAPRENYL-6-HYDROXYPHENOL[c] (3-(all-trans-octaprenyl)benzene-1,2-diol) for ubiquinol 10 synthesis and primary ubiquinone 10 usage.
 Note that we assume the same cofactor usage of CPD-9867[c] as 2-OCTAPRENYL-6-HYDROXYPHENOL[c] in the original COFACTOR-RXN.
+
+### Lipid Biomass Pseudoreaction (LIPID-RXN-RPOM)
+
+Replaced the original LIPID-RXN with LIPID-RXN-RPOM using IM/OM-resolved lipid composition from Stirrup et al. 2022, grown in ½ YTSS P-replete medium. Assumes 2:1 IM:OM mass ratio. Composition reported as mole percent; coefficients are g LIPID per mmol component (TO CHECK). See RPom_membrane_lipid_comp.xlsx for calculations. 
+
+Lipid species included: PG, PE, MMPE, DMPE, lyso-PE, OL, QL, SAL, each split between [c] (IM) and [p] (OM).
+
+### NADH Dehydrogenase Fix
+
+NADH-DEHYDROG-A-RXN: Original reaction involved pumping protons to the extracellular space instead of the periplasm which is biologically incorrect. Moreover, this resulted in abnormally higher proton influx from the extracellular space. 

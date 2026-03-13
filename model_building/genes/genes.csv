@@ -59,3 +59,52 @@ SPO1371, RS06995
 # 2-(octa/deca) prenyl-6-methoxyphenol hydroxylase,
 SPO1371, G1RHL-999
 
+# below are genes for the new lipid biosynthesis pathway. not all of these have locus tags, worth discussing proper notation in this case. Using NCBI region name otherwise.  
+
+# bifunctional 3-hydroxydecanoyl-ACP dehydratase/trans-2-decenoyl-ACP isomerase WP_011242221.1
+PRK05174, FabA
+
+# beta-ketoacyl-ACP synthase II WP_011047991.1
+PRK07314, FabF
+
+# acyl-CoA thioesterase WP_011047689.1
+TesB, COG1946
+
+# acyl-CoA synthetase WP_011046428.1
+PRK08162, PRK08162
+
+# glycerol-3-phosphate 1-O-acyltransferase (E. Coli.)
+EG10740, plsB
+
+# 1-acylglycerol-3-phosphate O-acyltransferase (E. Coli.)
+EG11833, yihG
+
+# aminophospholipid-translocating P4-type ATPase (Saccharomyces cerevisiae)	
+G3O-29698, DNF2
+
+# L-ornithine N 3-hydroxy acyltransferase (Sinorhizobium meliloti 1021)
+G-14520, olsB
+
+# lyso-ornithine lipid O-acyltransferase (Sinorhizobium meliloti 1021)
+G-14521, olsA
+
+# glycine N-acyltransferase (Phocaeicola vulgatus)
+G-58278, glsB
+
+# phosphatidylethanolamine N-methyltransferase	
+SPOA0294, SPOA0294
+
+# amino acid exporter YddG (E. Coli.)
+EG12713, yddG
+
+# aminophospholipid-translocating P4-type ATPase (Saccharomyces cerevisiae)
+G3O-29698, DNF2 
+
+# Ligand-Effect Modulator (Saccharomyces cerevisiae)
+G3O-33308, LEM3
+
+# outer membrane phospholipase A (E. Coli.)
+EG10738, pldA 
+
+# lysophospholipid transporter (E. Coli.)
+EG12455, lplT

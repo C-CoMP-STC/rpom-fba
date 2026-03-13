@@ -341,3 +341,55 @@ Removed
     GLYC3PDEHYDROG-RXN, 
     RXN-9229
 These are all reactions associated with ubiquinol/ubiquinone 6,7,8 or their synthesis. 
+
+## NADPH/NADH Cycling Knockouts
+
+METHYLENETHFDEHYDROG-NADP-RXN: Methylenetetrahydrofolate dehydrogenase (NADP+). Knocked out to prevent unrealistic NADPH generation via THF cycling.
+
+RXN0-300: Knocked out to prevent unrealistic NADPH/NADH interconversion.
+
+NADH-KINASE-RXN: NADH kinase. Knocked out to prevent free NADPH generation from NADH + ATP, which created an unrealistic transhydrogenase bypass.
+
+RXN0-3962: Knocked out to prevent unrealistic redox cofactor cycling.
+
+1.4.1.21-RXN-L-ASPARTATE/NAD/WATER//OXALACETIC_ACID/AMMONIUM/NADH/PROTON.60.: Aspartate dehydrogenase (NAD+ variant). Knocked out because this reaction created an unrealistic NADH-generating cycle between aspartate and oxaloacetate.
+
+1.4.1.21-RXN-L-ASPARTATE/NADP/WATER//OXALACETIC_ACID/AMMONIUM/NADPH/PROTON.62.: Aspartate dehydrogenase (NADP+ variant). Knocked out for the same reason as the NAD+ variant.
+
+R501-RXN-CPD-821/NADPH/OXYGEN-MOLECULE/PROTON//CPD-904/FORMALDEHYDE/NADP/WATER.70.: Knocked out to prevent unrealistic NADPH consumption/cycling.
+
+R501-RXN-CPD-821/NADH/OXYGEN-MOLECULE/PROTON//CPD-904/FORMALDEHYDE/NAD/WATER.68.: Knocked out to prevent unrealistic NADH consumption/cycling.
+
+## Glycerate Dehydrogenase Knockout
+
+GLYCERATE-DEHYDROGENASE-RXN: Glycerate dehydrogenase. Knocked out to prevent unrealistic flux through glycerate metabolism that inflated growth predictions.
+
+## Old C16 Glycerophospholipid Pathway Knockouts
+
+These reactions were knocked out because they use C16 (palmitate) acyl chains. They are replaced by the new C18:1 (cis-vaccenate) pathway reactions.
+
+RXN_2.3.1.15: PlsB acyltransferase (C16). Replaced by RXN-1381-GLYCEROL-3P/CPD-18346//LYSO-PA-C18/CO-A.
+
+RXN_2.3.1.51: PlsC acyltransferase (C16). Replaced by RXN-1623-LYSO-PA-C18/CPD-18346//PA-C18/CO-A.
+
+1-ACYLGLYCEROL-3-P-ACYLTRANSFER-RXN: Alternative acylglycerol-3-phosphate acyltransferase (C16).
+
+CDPDIGLYSYN-RXN: CDP-diacylglycerol synthase (C16). Replaced by CDPDIGLYSYN-RXN-PA-C18/CTP/PROTON//CDP-DAG-C18/PPI.
+
+CDPDIGLYSYN-RXN-2: CDP-diacylglycerol synthase variant (C16).
+
+PHOSPHASERSYN-RXN: Phosphatidylserine synthase (C16). Replaced by PHOSPHASERSYN-RXN-CDP-DAG-C18/SER//PS-C18/CMP/PROTON.
+
+PHOSPHASERSYN-RXN-2: Phosphatidylserine synthase variant (C16).
+
+PHOSPHASERDECARB-RXN: Phosphatidylserine decarboxylase (C16). Replaced by PHOSPHASERDECARB-RXN-PS-C18/PROTON//PE-C18/CARBON-DIOXIDE.
+
+PHOSPHASERDECARB-RXN-2: Phosphatidylserine decarboxylase variant (C16).
+
+3.6.3.1-RXN: PE flippase (C16). Replaced by 3.6.3.1-RXN-PE-C18[c]/ATP/WATER//PE-C18[p]/ADP/PROTON/Pi.
+
+3.6.3.1-RXN-2: PG flippase (C16). Replaced by TRANS-RXN-1533-PG-C18[c]/PG-C18[e].
+
+PHOSPHAGLYPSYN-RXN: Phosphatidylglycerophosphate synthase (C16). Replaced by PHOSPHAGLYPSYN-RXN-CDP-DAG-C18/GLYCEROL-3P//PGP-C18/CMP/PROTON.
+
+

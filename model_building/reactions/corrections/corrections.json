@@ -53,5 +53,38 @@
             "CO-A[c]" : 1.0,
             "PHB-MONOMER[c]" : 1.0
         }
+    },
+    {
+        "id": "LIPID-RXN",
+        "metabolites": {
+            "PG-C18[c]": -0.5415,
+            "PG-C18[p]": -0.2024,
+            "PE-C18[c]": -0.0409,
+            "PE-C18[p]": -0.0264,
+            "MMPE-C18[c]": -0.1110,
+            "MMPE-C18[p]": -0.0864,
+            "DMPE-C18[c]": -0.0089,
+            "DMPE-C18[p]": -0.0072,
+            "LYSO-PE-C18[c]": -0.0044,
+            "LYSO-PE-C18[p]": -0.0013,
+            "OL-LIPID-C41[c]": -0.0595,
+            "OL-LIPID-C41[p]": -0.0116,
+            "QL-LIPID-C41[c]": -0.1217,
+            "QL-LIPID-C41[p]": -0.1088,
+            "SAL-LIPID[p]": -0.0036,
+            "UNDECAPRENYL-DIPHOSPHATE[c]": -0.000573,
+            "LIPID[c]": 1.0
+        }
+    },
+    {
+        "id": "NADH-DEHYDROG-A-RXN",
+        "metabolites": {
+            "NADH[c]": -1.0,
+            "PROTON[c]": -5.0,
+            "UBIQUINONE-10[c]": -1.0,
+            "CPD-9958[c]": 1.0,
+            "NAD[c]": 1.0,
+            "PROTON[p]": 4.0
+        }
     }
 ]
