@@ -328,7 +328,7 @@
 
     "--- LIPID TRANSPORT (FLIPPASES) ---",
     {
-        "id": "TRANS-RXN-1533-PG-C18[c]/PG-C18[e]",
+        "id": "TRANS-RXN-1533-PG-C18[c]/PG-C18[p]",
         "name": "PG transbilayer movement C18:1 (passive)",
         "subsystem": "Lipid transport",
         "lower_bound": 0,

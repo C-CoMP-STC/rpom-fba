@@ -88,7 +88,7 @@ Added 2.1.1.71-RXN-MMPE-C18/SAM//DMPE-C18/SAH/PROTON (PmtA step 2, EC 2.1.1.71, 
 
 ## Lipid Transport (Flippases)
 
-Added TRANS-RXN-1533-PG-C18[c]/PG-C18[e]. PG passive transbilayer movement [c]→[p]. Not in biocyc for R. pomeroyi.
+Added TRANS-RXN-1533-PG-C18[c]/PG-C18[p]. PG passive transbilayer movement [c]→[p]. Not in biocyc for R. pomeroyi.
 
 Added TRANS-RXN0-265-OL-C41[c]//OL-C41[p]. OL passive transbilayer movement [c]→[p]. Not in biocyc for R. pomeroyi.
 
