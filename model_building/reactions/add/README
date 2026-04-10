@@ -7,3 +7,101 @@ Added RXN-9697 as a Tyrosine to Coumarate pathway (for canonical 4-hydroxybenzoa
 Added RXN-9760-SS-DIMETHYL-BETA-PROPIOTHETIN/CPD-201//4-HYDROXYBENZOATE/CPD-10473, ACYL-COA-HYDROLASE-RXN-CPD-201/WATER//CO-A/4-HYDROXYBENZOATE/PROTON, 4-COUMARATE--COA-LIGASE-RXN, RXN-11244, RXN-11245, RXN-11246 to complete canonical Coumarate to 4-hydroxybenzoate pathway. Note that RXN-9760-SS-DIMETHYL-BETA-PROPIOTHETIN/CPD-201//4-HYDROXYBENZOATE/CPD-10473 uses dimethylsulfoniopropanoate but this is not actually generated in the model flux, but the reaction is kept for completeness. Reactions for this pathway exist in BioCyc database, other than the Tyrosine to Coumarate reaction. However, we have an 88% hit in BLAST between Tyrosine ammonia-lyase in Streptomyces globisporus with R Pom's Histidine ammonia-lyase enzyme. Given no sequence similarity from bacterial chorismate lyase enzymes, it seems much more likely that the Tyrosine to Coumarate-based pathway is occurring in R Pom.
 
 Added RXN-9231, RXN-9233, RXN-9234, RXN-9235, RXN-9236-CPD-9871/NADH/OXYGEN-MOLECULE//CPD-9873/NAD/WATER, RXN-9237-CPD-9871/NADPH/OXYGEN-MOLECULE//CPD-9873/NADP/WATER, RXN-9232, RXN-9230, RXN-9237, and RXN-9106 to explicitly complete the ubiquinol-10 synthesis pathway from 4-hydroxybenzoate[c] and DELTA3-ISOPENTENYL-PP[c] + FARNESYL-PP[c]. Note that this is in light of literature suggesting R Pom primarily uses ubiquinol-10 and ubiquinone-10. Ubiquinol-10 synthesis pathway based on suggested MetaCyc pathway, with corresponding annotated genes for Ubi8 synthesis from bioCyc's R Pom database used. 
+
+## Lipid Biosynthesis Pathway Reconstruction
+
+- Rebuilt the entire lipid biosynthesis pathway for R. pomeroyi DSS-3 to use C18:1 (cis-vaccenic acid) acyl chains instead of the previous C16 pathway. 
+- Added aminolipid (OL, QL, SAL), N-methylated PE (MMPE, DMPE), and lyso-PE pathways. 
+- Implemented a new Inner Membrane and Outer-Membrane-resolved lipid biomass reaction.
+
+Smith, A.F., Rihtman, B., Stirrup, R. et al. Elucidation of glutamine lipid biosynthesis in marine bacteria reveals its importance under phosphorus deplete growth in Rhodobacteraceae. ISME J 13, 39–49 (2019). https://doi.org/10.1038/s41396-018-0249-z
+
+Silvano, Eleonora. Uncovering the biosynthetic pathway and function of unusual aminolipids found in the marine heterotrophic bacterium Ruegeria Pomeroyi. PhD thesis, University of Warwick (2021). http://webcat.warwick.ac.uk/record=b3821574
+
+Rachel Stirrup, Michaela A Mausz, Eleonora Silvano, Andrew Murphy, Richard Guillonneau, Mussa Quareshy, Branko Rihtman, Maria Aguilo Ferretjans, Ruo He, Jonathan D Todd, Feng Chen, David J Scanlan, Yin Chen, Aminolipids elicit functional trade-offs between competitiveness and bacteriophage attachment in Ruegeria pomeroyi, The ISME Journal, Volume 17, Issue 3, March 2023, Pages 315–325, https://doi.org/10.1038/s41396-022-01346-0
+
+### FAS II Fixes to Enable C18:1 Acyl Chains
+
+Added 5.3.3.14-RXN (FabA isomerase, NCBI Reference Sequence: WP_011242221.1) to connect the saturated and unsaturated FAS II branches via trans-2-decenoyl-ACP <=> cis-3-decenoyl-ACP isomerization.
+
+Added 3-OXOACYL-ACP-SYNTH-RXN-Palmitoleoyl-ACPs/MALONYL-ACP/PROTON//3-OXO-CIS-VACCENOYL-ACPS/CARBON-DIOXIDE/ACP (FabF, NCBI Reference Sequence: WP_011047991.1) for C16:1 -> C18:1 elongation.
+
+Added RXN-21818-Cis-vaccenoyl-ACPs/WATER//ACP/CPD-9247/PROTON (thioesterase, NCBI Reference Sequence: WP_011047689.1) to release cis-vaccenate from the ACP cycle.
+
+Added RXN-19960-CPD-9247[c]/ATP[c]/COA[c]//CPD-18346[c]/AMP[c]/PPI[c] (CoA ligase, NCBI Reference Sequence: WP_011046428.1) for cytoplasmic activation of cis-vaccenate to cis-vaccenoyl-CoA.
+
+### C18:1 Glycerophospholipid Pathway (CoA-based)
+
+The reactions added below are based on the Metacyc GLYCEROPHOSPHOLIPID and PHOSPHATIDYLETHANOLAMINE (CoA-based) synthesis pathways. See https://metacyc.org/pathway?orgid=META&id=PWY4FS-8. If not in biocyc, using other bacterial genes as a proxy. 
+
+Added RXN-1381-GLYCEROL-3P/CPD-18346//LYSO-PA-C18/CO-A (PlsB acyltransferase) for lyso-PA synthesis from G3P + vaccenoyl-CoA. Not in biocyc for R. pomeroyi. 
+
+Added RXN-1623-LYSO-PA-C18/CPD-18346//PA-C18/CO-A (PlsC acyltransferase) for PA synthesis from lyso-PA + vaccenoyl-CoA. Not in biocyc for R. pomeroyi.
+
+Added CDPDIGLYSYN-RXN-PA-C18/CTP/PROTON//CDP-DAG-C18/PPI (CdsA) for CDP-DAG synthesis.
+
+Added PHOSPHASERSYN-RXN-CDP-DAG-C18/SER//PS-C18/CMP/PROTON (PssA) for PS synthesis.
+
+Added PHOSPHASERDECARB-RXN-PS-C18/PROTON//PE-C18/CARBON-DIOXIDE (Psd) for PE synthesis via PS decarboxylation.
+
+Added 3.6.3.1-RXN-PE-C18[c]/ATP/WATER//PE-C18[p]/ADP/PROTON/Pi (PE flippase). Not in biocyc for R. pomeroyi.
+
+Added PHOSPHAGLYPSYN-RXN-CDP-DAG-C18/GLYCEROL-3P//PGP-C18/CMP/PROTON (PgsA) for PGP synthesis.
+
+Added PGPPHOSPHA-RXN-PGP-C18/WATER//PG-C18/Pi/PROTON (PgpA) for PG synthesis.
+
+### Free 3-Hydroxy Fatty Acid Release
+
+Added THIOESTER-RXN-CPD-10261/WATER//3R-OH-STEARATE/COA/PROTON to release free 3-OH-stearate from 3-OH-stearoyl-CoA for use in aminolipid biosynthesis. Based on Smith et al. 2019 Fig 1 and Silvano 2021 Fig 4.7's proposed free fatty acid route for aminolipid synthesis.
+
+Note that according to Stirrup et al., 2022, we expect to see OL, QL, and SAL aminolipids in Ruegeria Pomeroyi. We also expect to see MMPE, DMPE, and lyso-PE in Ruegeria Pomeroyi.
+
+### Ornithine Lipid (OL) Pathway — Free Fatty Acid Route
+
+Added RXN-OLSB-PUTATIVE-L-ORNITHINE/3R-OH-STEARATE//LYSO-OL-C23/WATER (OlsB N-acyltransferase). Condenses L-ornithine with free 3-OH-stearate to form lyso-OL. Not in biocyc for R. pomeroyi.
+
+Added RXN-OLSA-PUTATIVE-LYSO-OL-C23/CPD-9247//OL-LIPID-C41/WATER (OlsA O-acyltransferase). Esterifies lyso-OL with free cis-vaccenate to form OL. Not in biocyc for R. pomeroyi.
+
+See Silvano 2021 Fig 4.7 or Smith et al. 2019 Fig 1. Enzymes known to exist in R Pom from these papers. 
+
+### Glutamine Lipid (QL) Pathway — Free Fatty Acid Route
+
+Added RXN-GLSB-PUTATIVE-GLN/3R-OH-STEARATE//LYSO-QL-C23/WATER (GlsB N-acyltransferase). Condenses L-glutamine with free 3-OH-stearate to form lyso-QL. Not in biocyc for R. pomeroyi.
+
+Added RXN-OLSA-PUTATIVE-LYSO-QL-C23/CPD-9247//QL-LIPID-C41/WATER (OlsA O-acyltransferase). Esterifies lyso-QL with free cis-vaccenate to form QL. Not in biocyc for R. pomeroyi.
+
+See Smith et al. 2019 Fig 1.
+
+### Sulfur-Containing Aminolipid (SAL) Pathway
+
+There are unknown genes here. Such unknown genes have not been added to the model. 
+
+Added RXN-SALB-PUTATIVE-CYSTEATE/3R-OH-STEARATE//LYSO-SAL-C21/WATER (unknown N-acyltransferase). Condenses L-cysteate with free 3-OH-stearate to form lyso-SAL. The actual SAL headgroup is uncertain. L-cysteate used as a producible sulfonated amino acid proxy. See Fig 4.7 in Silvano 2021.
+
+Added RXN-SALA-PUTATIVE-LYSO-SAL-C21/CPD-9247//SAL-LIPID-C39/WATER (SalA lyso-lipid acyltransferase). Esterifies lyso-SAL with free cis-vaccenate to form SAL. See Fig 4.7 in Silvano 2021. Not in biocyc for R. pomeroyi. Biocyc/metacyc gene could not be found. 
+
+### N-Methylation Pathway (PE → MMPE → DMPE)
+
+Added 2.1.1.17-RXN-PE-C18/SAM//MMPE-C18/SAH/PROTON (PmtA step 1, EC 2.1.1.17, SPOA0294). Methylates PE to MMPE using SAM.
+
+Added 2.1.1.71-RXN-MMPE-C18/SAM//DMPE-C18/SAH/PROTON (PmtA step 2, EC 2.1.1.71, SPOA0294). Methylates MMPE to DMPE using SAM.
+
+## Lipid Transport (Flippases)
+
+Added TRANS-RXN-1533-PG-C18[c]/PG-C18[p]. PG passive transbilayer movement [c]→[p]. Not in biocyc for R. pomeroyi.
+
+Added TRANS-RXN0-265-OL-C41[c]//OL-C41[p]. OL passive transbilayer movement [c]→[p]. Not in biocyc for R. pomeroyi.
+
+Added TRANS-RXN0-265-QL-C41[c]//QL-C41[p]. QL passive transbilayer movement [c]→[p]. Not in biocyc for R. pomeroyi.
+
+Added TRANS-RXN0-265-SAL[c]//SAL[p]. SAL passive transbilayer movement [c]→[p]. Not in biocyc for R. pomeroyi.
+
+Added 3.6.3.1-RXN-MMPE-C18[c]/ATP/WATER//MMPE-C18[p]/ADP/PROTON/Pi. MMPE flippase, ATP-dependent, consistent with existing PE flippase convention. Not in biocyc for R. pomeroyi.
+
+Added 3.6.3.1-RXN-DMPE-C18[c]/ATP/WATER//DMPE-C18[p]/ADP/PROTON/Pi. DMPE flippase, ATP-dependent, consistent with existing PE flippase convention. Not in biocyc for R. pomeroyi.
+
+### Lyso-PE Synthesis & Recycling Pathway
+
+Added RXN0-6952-PE-C18[p]/WATER[p]//LYSO-PE-C18[p]/CPD-9247[p]/PROTON[p]. PldA-like outer membrane phospholipase A (EC 3.1.1.32). Cleaves PE[p] to lyso-PE[p] + vaccenate[p]. No PldA homolog found in R. pomeroyi by BLAST; reaction is a gap-fill justified by lyso-PE detection in Stirrup 2022. (Not in biocyc for R. pomeroyi.)
+
+Added TRANS-RXN-294-LYSO-PE-C18[p]//LYSO-PE-C18[c]. LplT-like lysophospholipid transporter (MFS family). Energy-independent transport of lyso-PE from [p] to [c]. No LplT homolog found in R. pomeroyi by BLAST; reaction is a gap-fill. (Not in biocyc for R. pomeroyi.)

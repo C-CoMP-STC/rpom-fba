@@ -239,7 +239,29 @@ def add_sources(rxn_id, metabolite_ids, model=model):
         print(f"Growth rate with new reaction: {sol.objective_value:.2f} 1/hr")
         print()
             
-            
-            
         sol = model.optimize()
         print(f"Growth rate {sol.objective_value:.4f} 1/hr")
+
+def search_reactions(words, model=model):
+    if isinstance(words, str):
+        words = [words.lower()]
+    else:
+        words = [w.lower() for w in words]
+    cand = []
+    for r in model.reactions:
+        s = (r.id + " " + r.name).lower()
+        if any(k in s for k in words):
+            cand.append(r)
+    rows = [(r.id or "", r.name or "", r.build_reaction_string() or "",
+             r.gene_reaction_rule or "",
+             str(r.lower_bound), str(r.upper_bound)) for r in cand]
+    w_id   = max([len("id"),       *(len(r[0]) for r in rows)] or [2])
+    w_name = max([len("name"),     *(len(r[1]) for r in rows)] or [4])
+    w_rxn  = max([len("reaction"), *(len(r[2]) for r in rows)] or [8])
+    w_gpr  = max([len("GPR"),      *(len(r[3]) for r in rows)] or [3])
+    w_lb   = max([len("LB"),       *(len(r[4]) for r in rows)] or [2])
+    w_ub   = max([len("UB"),       *(len(r[5]) for r in rows)] or [2])
+    print(f"{'id':<{w_id}} | {'name':<{w_name}} | {'reaction':<{w_rxn}} | {'GPR':<{w_gpr}} | {'LB':<{w_lb}} | {'UB':<{w_ub}}")
+    print(f"{'-'*w_id}-+-{'-'*w_name}-+-{'-'*w_rxn}-+-{'-'*w_gpr}-+-{'-'*w_lb}-+-{'-'*w_ub}")
+    for rid, name, rxn, gpr, lb, ub in rows:
+        print(f"{rid:<{w_id}} | {name:<{w_name}} | {rxn:<{w_rxn}} | {gpr:<{w_gpr}} | {lb:<{w_lb}} | {ub:<{w_ub}}")

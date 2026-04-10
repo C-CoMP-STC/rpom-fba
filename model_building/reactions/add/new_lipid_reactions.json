@@ -1,0 +1,441 @@
+[
+    "===============================================================================",
+    "C18:1 lipid biosynthesis pathway for R. pomeroyi DSS-3",
+    "FAS II fixes, glycerophospholipid, aminolipid, SAL, N-methylation, transport, lyso-PE",
+    "References: Smith 2019, Smith 2021, Stirrup/Mausz 2022, Silvano 2021 thesis",
+    "===============================================================================",
+
+    "--- FAS II FIXES ---",
+    {
+        "id": "5.3.3.14-RXN",
+        "name": "FabA isomerase (EC 4.2.1.60)",
+        "subsystem": "Fatty acid biosynthesis",
+        "lower_bound": -1000.0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "Trans-D2-decenoyl-ACPs[c]": -1.0,
+            "Cis-delta-3-decenoyl-ACPs[c]": 1.0
+        },
+        "gene_reaction_rule": "PRK05174"
+    },
+    {
+        "id": "3-OXOACYL-ACP-SYNTH-RXN-Palmitoleoyl-ACPs/MALONYL-ACP/PROTON//3-OXO-CIS-VACCENOYL-ACPS/CARBON-DIOXIDE/ACP",
+        "name": "FabF C16:1→C18:1 elongation (EC 2.3.1.179)",
+        "subsystem": "Fatty acid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "Palmitoleoyl-ACPs[c]": -1.0,
+            "MALONYL-ACP[c]": -1.0,
+            "PROTON[c]": -1.0,
+            "3-oxo-cis-vaccenoyl-ACPs[c]": 1.0,
+            "ACP[c]": 1.0,
+            "CARBON-DIOXIDE[c]": 1.0
+        },
+        "gene_reaction_rule": "PRK07314"
+    },
+    {
+        "id": "RXN-21818-Cis-vaccenoyl-ACPs/WATER//ACP/CPD-9247/PROTON",
+        "name": "cis-vaccenoyl-ACP thioesterase (EC 3.1.2.14)",
+        "subsystem": "Fatty acid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "Cis-vaccenoyl-ACPs[c]": -1.0,
+            "WATER[c]": -1.0,
+            "ACP[c]": 1.0,
+            "CPD-9247[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule": "TesB"
+    },
+    {
+        "id": "RXN-19960-CPD-9247[c]/ATP[c]/COA[c]//CPD-18346[c]/AMP[c]/PPI[c]",
+        "name": "cis-vaccenate--CoA ligase (EC 6.2.1.3)",
+        "subsystem": "Fatty acid activation",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CPD-9247[c]": -1.0,
+            "ATP[c]": -1.0,
+            "CO-A[c]": -1.0,
+            "CPD-18346[c]": 1.0,
+            "AMP[c]": 1.0,
+            "PPI[c]": 1.0
+        },
+        "gene_reaction_rule": "PRK08162"
+    },
+
+    "--- C18:1 GLYCEROPHOSPHOLIPID PATHWAY ---",
+    {
+        "id": "RXN-1381-GLYCEROL-3P/CPD-18346//LYSO-PA-C18/CO-A",
+        "name": "PlsB acyltransferase C18:1 (EC 2.3.1.15)",
+        "subsystem": "Glycerophospholipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "GLYCEROL-3P[c]": -1.0,
+            "CPD-18346[c]": -1.0,
+            "LYSO-PA-C18[c]": 1.0,
+            "CO-A[c]": 1.0
+        },
+        "gene_reaction_rule": "EG10740"
+    },
+    {
+        "id": "RXN-1623-LYSO-PA-C18/CPD-18346//PA-C18/CO-A",
+        "name": "PlsC acyltransferase C18:1 (EC 2.3.1.51)",
+        "subsystem": "Glycerophospholipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "LYSO-PA-C18[c]": -1.0,
+            "CPD-18346[c]": -1.0,
+            "PA-C18[c]": 1.0,
+            "CO-A[c]": 1.0
+        },
+        "gene_reaction_rule": "EG11833"
+    },
+    {
+        "id": "CDPDIGLYSYN-RXN-PA-C18/CTP/PROTON//CDP-DAG-C18/PPI",
+        "name": "CdsA CDP-diacylglycerol synthase C18:1 (EC 2.7.7.41)",
+        "subsystem": "Glycerophospholipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "PA-C18[c]": -1.0,
+            "CTP[c]": -1.0,
+            "PROTON[c]": -1.0,
+            "CDP-DAG-C18[c]": 1.0,
+            "PPI[c]": 1.0
+        },
+        "gene_reaction_rule": "SPO1666"
+    },
+    {
+        "id": "PHOSPHASERSYN-RXN-CDP-DAG-C18/SER//PS-C18/CMP/PROTON",
+        "name": "PssA phosphatidylserine synthase C18:1 (EC 2.7.8.8)",
+        "subsystem": "Glycerophospholipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CDP-DAG-C18[c]": -1.0,
+            "SER[c]": -1.0,
+            "PS-C18[c]": 1.0,
+            "CMP[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule": "SPOA0293"
+    },
+    {
+        "id": "PHOSPHASERDECARB-RXN-PS-C18/PROTON//PE-C18/CARBON-DIOXIDE",
+        "name": "Psd phosphatidylserine decarboxylase C18:1 (EC 4.1.1.65)",
+        "subsystem": "Glycerophospholipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "PS-C18[c]": -1.0,
+            "PROTON[c]": -1.0,
+            "PE-C18[c]": 1.0,
+            "CARBON-DIOXIDE[c]": 1.0
+        },
+        "gene_reaction_rule": "SPOA0292"
+    },
+    {
+        "id": "3.6.3.1-RXN-PE-C18[c]/ATP/WATER//PE-C18[p]/ADP/PROTON/Pi",
+        "name": "PE flippase C18:1 (ATP-dependent, model convention)",
+        "subsystem": "Lipid transport",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "PE-C18[c]": -1.0,
+            "ATP[c]": -1.0,
+            "WATER[c]": -1.0,
+            "PE-C18[p]": 1.0,
+            "ADP[c]": 1.0,
+            "PROTON[c]": 1.0,
+            "Pi[c]": 1.0
+        },
+        "gene_reaction_rule": "G3O-29698"
+    },
+    {
+        "id": "PHOSPHAGLYPSYN-RXN-CDP-DAG-C18/GLYCEROL-3P//PGP-C18/CMP/PROTON",
+        "name": "PgsA phosphatidylglycerophosphate synthase C18:1 (EC 2.7.8.5)",
+        "subsystem": "Glycerophospholipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CDP-DAG-C18[c]": -1.0,
+            "GLYCEROL-3P[c]": -1.0,
+            "PGP-C18[c]": 1.0,
+            "CMP[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule": "SPO3635"
+    },
+    {
+        "id": "PGPPHOSPHA-RXN-PGP-C18/WATER//PG-C18/Pi/PROTON",
+        "name": "PgpA phosphatidylglycerophosphatase C18:1 (EC 3.1.3.27)",
+        "subsystem": "Glycerophospholipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "PGP-C18[c]": -1.0,
+            "WATER[c]": -1.0,
+            "PG-C18[c]": 1.0,
+            "Pi[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule": "G1RHL-1576"
+    },
+
+    "--- FREE 3-OH FATTY ACID RELEASE ---",
+    {
+        "id": "THIOESTER-RXN-CPD-10261/WATER//3R-OH-STEARATE/COA/PROTON",
+        "name": "3-OH-stearoyl-CoA thioesterase (EC 3.1.2.-)",
+        "subsystem": "Aminolipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "CPD-10261[c]": -1.0,
+            "WATER[c]": -1.0,
+            "3R-OH-STEARATE[c]": 1.0,
+            "CO-A[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule": "G1RHL-1474 or G1RHL-291"
+    },
+
+    "--- ORNITHINE LIPID (OL) PATHWAY ---",
+    {
+        "id": "RXN-OLSB-PUTATIVE-L-ORNITHINE/3R-OH-STEARATE//LYSO-OL-C23/WATER",
+        "name": "OlsB N-acyltransferase (SPO1980, free acid route)",
+        "subsystem": "Aminolipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "L-ORNITHINE[c]": -1.0,
+            "3R-OH-STEARATE[c]": -1.0,
+            "LYSO-OL-C23[c]": 1.0,
+            "WATER[c]": 1.0
+        },
+        "gene_reaction_rule": "G-14520"
+    },
+    {
+        "id": "RXN-OLSA-PUTATIVE-LYSO-OL-C23/CPD-9247//OL-LIPID-C41/WATER",
+        "name": "OlsA O-acyltransferase for OL (SPO1979, free acid route)",
+        "subsystem": "Aminolipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "LYSO-OL-C23[c]": -1.0,
+            "CPD-9247[c]": -1.0,
+            "OL-LIPID-C41[c]": 1.0,
+            "WATER[c]": 1.0
+        },
+        "gene_reaction_rule": "G-14521"
+    },
+
+    "--- GLUTAMINE LIPID (QL) PATHWAY ---",
+    {
+        "id": "RXN-GLSB-PUTATIVE-GLN/3R-OH-STEARATE//LYSO-QL-C23/WATER",
+        "name": "GlsB N-acyltransferase (SPO2489, free acid route)",
+        "subsystem": "Aminolipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "GLN[c]": -1.0,
+            "3R-OH-STEARATE[c]": -1.0,
+            "LYSO-QL-C23[c]": 1.0,
+            "WATER[c]": 1.0
+        },
+        "gene_reaction_rule": "G-58278"
+    },
+    {
+        "id": "RXN-OLSA-PUTATIVE-LYSO-QL-C23/CPD-9247//QL-LIPID-C41/WATER",
+        "name": "OlsA O-acyltransferase for QL (SPO1979, free acid route)",
+        "subsystem": "Aminolipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "LYSO-QL-C23[c]": -1.0,
+            "CPD-9247[c]": -1.0,
+            "QL-LIPID-C41[c]": 1.0,
+            "WATER[c]": 1.0
+        },
+        "gene_reaction_rule": "G-14521"
+    },
+
+    "--- SAL PATHWAY ---",
+    {
+        "id": "RXN-SALB-PUTATIVE-CYSTEATE/3R-OH-STEARATE//LYSO-SAL-C21/WATER",
+        "name": "SalB-like N-acyltransferase (unknown enzyme, cysteate headgroup)",
+        "subsystem": "Aminolipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "L-CYSTEATE[c]": -1.0,
+            "3R-OH-STEARATE[c]": -1.0,
+            "LYSO-SAL[c]": 1.0,
+            "WATER[c]": 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+    {
+        "id": "RXN-SALA-PUTATIVE-LYSO-SAL-C21/CPD-9247//SAL-LIPID-C39/WATER",
+        "name": "SalA lyso-lipid acyltransferase (SPO0716)",
+        "subsystem": "Aminolipid biosynthesis",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "LYSO-SAL[c]": -1.0,
+            "CPD-9247[c]": -1.0,
+            "SAL-LIPID[c]": 1.0,
+            "WATER[c]": 1.0
+        },
+        "gene_reaction_rule": ""
+    },
+
+    "--- N-METHYLATION PATHWAY ---",
+    {
+        "id": "2.1.1.17-RXN-PE-C18/SAM//MMPE-C18/SAH/PROTON",
+        "name": "PmtA step 1: PE → MMPE (EC 2.1.1.17)",
+        "subsystem": "Phospholipid methylation",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "PE-C18[c]": -1.0,
+            "S-ADENOSYLMETHIONINE[c]": -1.0,
+            "MMPE-C18[c]": 1.0,
+            "ADENOSYL-HOMO-CYS[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule": "SPOA0294"
+    },
+    {
+        "id": "2.1.1.71-RXN-MMPE-C18/SAM//DMPE-C18/SAH/PROTON",
+        "name": "PmtA step 2: MMPE → DMPE (EC 2.1.1.71)",
+        "subsystem": "Phospholipid methylation",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "MMPE-C18[c]": -1.0,
+            "S-ADENOSYLMETHIONINE[c]": -1.0,
+            "DMPE-C18[c]": 1.0,
+            "ADENOSYL-HOMO-CYS[c]": 1.0,
+            "PROTON[c]": 1.0
+        },
+        "gene_reaction_rule": "2.1.1.71-RXN"
+    },
+
+    "--- LIPID TRANSPORT (FLIPPASES) ---",
+    {
+        "id": "TRANS-RXN-1533-PG-C18[c]/PG-C18[p]",
+        "name": "PG transbilayer movement C18:1 (passive)",
+        "subsystem": "Lipid transport",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "PG-C18[c]": -1.0,
+            "PG-C18[p]": 1.0
+        },
+        "gene_reaction_rule": "EG12713"
+    },
+    {
+        "id": "TRANS-RXN0-265-OL-C41[c]//OL-C41[p]",
+        "name": "OL transbilayer movement (passive)",
+        "subsystem": "Lipid transport",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "OL-LIPID-C41[c]": -1.0,
+            "OL-LIPID-C41[p]": 1.0
+        },
+        "gene_reaction_rule": "EG12713"
+    },
+    {
+        "id": "TRANS-RXN0-265-QL-C41[c]//QL-C41[p]",
+        "name": "QL transbilayer movement (passive)",
+        "subsystem": "Lipid transport",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "QL-LIPID-C41[c]": -1.0,
+            "QL-LIPID-C41[p]": 1.0
+        },
+        "gene_reaction_rule": "EG12713"
+    },
+    {
+        "id": "TRANS-RXN0-265-SAL[c]//SAL[p]",
+        "name": "SAL transbilayer movement (passive)",
+        "subsystem": "Lipid transport",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "SAL-LIPID[c]": -1.0,
+            "SAL-LIPID[p]": 1.0
+        },
+        "gene_reaction_rule": "EG12713"
+    },
+    {
+        "id": "3.6.3.1-RXN-MMPE-C18[c]/ATP/WATER//MMPE-C18[p]/ADP/PROTON/Pi",
+        "name": "MMPE flippase C18:1 (ATP-dependent, model convention)",
+        "subsystem": "Lipid transport",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "MMPE-C18[c]": -1.0,
+            "ATP[c]": -1.0,
+            "WATER[c]": -1.0,
+            "MMPE-C18[p]": 1.0,
+            "ADP[c]": 1.0,
+            "PROTON[c]": 1.0,
+            "Pi[c]": 1.0
+        },
+        "gene_reaction_rule": "G3O-29698 and G3O-33308"
+    },
+    {
+        "id": "3.6.3.1-RXN-DMPE-C18[c]/ATP/WATER//DMPE-C18[p]/ADP/PROTON/Pi",
+        "name": "DMPE flippase C18:1 (ATP-dependent, model convention)",
+        "subsystem": "Lipid transport",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "DMPE-C18[c]": -1.0,
+            "ATP[c]": -1.0,
+            "WATER[c]": -1.0,
+            "DMPE-C18[p]": 1.0,
+            "ADP[c]": 1.0,
+            "PROTON[c]": 1.0,
+            "Pi[c]": 1.0
+        },
+        "gene_reaction_rule": "G3O-29698 and G3O-33308"
+    },
+
+    "--- LYSO-PE PATHWAY ---",
+    {
+        "id": "RXN0-6952-PE-C18[p]/WATER[p]//LYSO-PE-C18[p]/CPD-9247[p]/PROTON[p]",
+        "name": "PldA-like outer membrane phospholipase A (EC 3.1.1.32, gap-fill)",
+        "subsystem": "Phospholipid turnover",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "PE-C18[p]": -1.0,
+            "WATER[p]": -1.0,
+            "LYSO-PE-C18[p]": 1.0,
+            "CPD-9247[p]": 1.0,
+            "PROTON[p]": 1.0
+        },
+        "gene_reaction_rule": "EG10738"
+    },
+    {
+        "id": "TRANS-RXN-294-LYSO-PE-C18[p]//LYSO-PE-C18[c]",
+        "name": "LplT-like lysophospholipid transporter (MFS, gap-fill)",
+        "subsystem": "Lipid transport",
+        "lower_bound": 0,
+        "upper_bound": 1000.0,
+        "metabolites": {
+            "LYSO-PE-C18[p]": -1.0,
+            "LYSO-PE-C18[c]": 1.0
+        },
+        "gene_reaction_rule": "EG12455"
+    }
+]
