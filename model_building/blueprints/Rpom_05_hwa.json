@@ -29,5 +29,6 @@
     },
     "LogMACAW": null,
     "NetworkChecks": null,
+    "CheckCompartments": null,
     "SanityChecks": null
 }

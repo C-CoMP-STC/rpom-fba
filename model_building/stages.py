@@ -687,6 +687,21 @@ class LogMACAW(Stage):
 
 
 @register_stage
+class CheckCompartments(Stage):
+    def process(self, model: Model, params: object) -> Model:
+        found_errors = False
+        for metabolite in model.metabolites:
+            compartment_tag = metabolite.id[-2]
+            if compartment_tag != metabolite.compartment:
+                print(f"\033[91mCompartment tag {metabolite.id[-3:]} for metabolite with ID {metabolite.id} does not match internal value ({metabolite.compartment})!\033[0m")
+                found_errors = True
+        
+        if not found_errors:
+            print("\033[92mAll metabolite ID compartment tags match internally stored compartments.\033[0m")
+            
+        return model
+
+@register_stage
 class SanityChecks(Stage):
     def process(self, model: Model, params: object) -> Model:
         # Check growth rates on glucose, acetate
@@ -697,11 +712,11 @@ class SanityChecks(Stage):
 
                 # Heena: Change uptake for glucose to 5 mmol
                 if substrate == "EX_glc":
-                    ex_substrate.lower_bound = -5
+                    ex_substrate.lower_bound = -5.44
                     growth_rate = model.optimize().objective_value
                     print(f"Growth rate on 5 mmol/gDCW/hr {substrate}: {growth_rate:.4f} h^-1")
                 else:
-                    ex_substrate.lower_bound = -10  # this is the max uptake for nutrient. lower bound is producing
+                    ex_substrate.lower_bound = -15  # this is the max uptake for nutrient. lower bound is producing
                     growth_rate = model.optimize().objective_value
                     print(f"Growth rate on 10 mmol/gDCW/hr {substrate}: {growth_rate:.4f} h^-1")
         
