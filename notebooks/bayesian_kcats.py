@@ -121,6 +121,24 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Non-probabilistic analysis
+
+    In the simplest case, let's first $f=\mathbf 1$ and assume some $K_{ij}$'s are measured:
+
+    $$
+    S \underbrace{(\hat K + K^?)}_{K} [E] \approx 0
+    $$
+
+    where we've decomposed $K$ into $\hat K$, the matrix of measured $k_{cat}$'s, and $K^?$, the unknown $k_{cat}$ values. Both these are $\mathbb R_{\ge 0}^{m \times p}$ matrices, and while we don't know the entries of $K^?$, we do know which entries are non-zero.
+
+    In particular, some columns
+    """)
+    return
+
+
 @app.cell
 def _():
     return
