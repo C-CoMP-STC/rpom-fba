@@ -16,10 +16,13 @@ def _():
     import numpy as np
     import matplotlib.pyplot as plt
     import pandas as pd
+    import pymc as pm
+    import arviz as az
 
     from cobra.io import load_model
+    from scipy.stats import norm
 
-    return load_model, pd
+    return az, load_model, norm, np, pd, plt, pm
 
 
 @app.cell
@@ -43,7 +46,7 @@ def _(load_model, pd):
     prot = pd.read_csv("notebooks/data/schmidt2015_javier_table.tsv", sep="\t")
     prot = prot.merge(ecocyc_genes_to_accessions, left_on="EcoCycID", right_on="Gene Name")
     prot
-    return ecoli, kcats, prot
+    return ecocyc_genes_to_accessions, ecoli, kcats, prot
 
 
 @app.cell
@@ -53,13 +56,17 @@ def _(kcats):
 
 
 @app.cell
+def _(ecocyc_genes_to_accessions):
+    ecocyc_genes_to_accessions
+    return
+
+
+@app.cell
 def _(ecoli, prot):
     rxn_to_enzyme_counts = []
 
     for rxn in ecoli.reactions:
         matches = prot[prot["Accession-1"].isin([str(g) for g in rxn.genes])]
-
-
     return
 
 
@@ -152,6 +159,144 @@ def _(mo):
     1. Check how well $f=1$ captures _E. coli_ dataset
         1. Take S
     """)
+    return
+
+
+@app.cell
+def _(ecoli):
+    ecoli.genes
+    return
+
+
+@app.cell
+def _(kcats, norm, np, plt):
+    _fig, _ax = plt.subplots()
+
+    _ax.hist(np.log(kcats["effective_kcat_s"]), bins=50, density=True)
+
+    _mu, _s = norm.fit(np.log(kcats["effective_kcat_s"]))
+    _x = np.linspace(np.log(kcats["effective_kcat_s"]).min(), np.log(kcats["effective_kcat_s"]).max(), 100)
+    _ax.plot(_x, norm(_mu, _s).pdf(_x))
+    print(f"{_mu=}")
+    print(f"{_s=}")
+
+    _fig
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    # Toy PyMC example
+
+    Let's take the following simple bifurcating and merging reaction network:
+
+    $$
+    \begin{align*}
+    \emptyset \stackrel{v_1}\rightarrow A\\
+    A \stackrel{v_2}\rightarrow B\\
+    A \stackrel{v_3}\rightarrow C\\
+    B \stackrel{v_4}\rightarrow X\\
+    C \stackrel{v_5}\rightarrow X\\
+    X \stackrel{v_6}\rightarrow \emptyset.
+    \end{align*}
+    $$
+
+    We'll fix $v_1=10$, and observe $k_{cat}$'s for $v_4$ and $v_5$, leaving $k_{cat}$'s for $v_1, v_2, v_3,$ and $v_6$ unknown. We'll observe protein concentrations $E_i$ for all reactions. Ideally, as we vary $k_{cat}^{(4)}$ and $k_{cat}^{(5)}$, we should see $k_{cat}^{(2)}$ and $k_{cat}^{(3)}$ vary accordingly.
+
+    Our stoichiometric matrix and bounds vectors are, respectively:
+
+    $$
+    \begin{align*}
+    S &= \begin{pmatrix}
+        1 & -1 & -1 &    &    &   \\
+          &  1 &    & -1 &    &   \\
+          &    &  1 &    & -1 &   \\
+          &    &    &  1 &  1 & -1
+    \end{pmatrix},\\
+    \ell &= \begin{pmatrix} 10 & 0 & 0 & 0 & 0 & 0\end{pmatrix}\\
+    u &=    \begin{pmatrix} 10 & - & - & - & - & -\end{pmatrix}
+    \end{align*}
+    $$
+
+    (where the omitted values in $u$ represent some suitably large upper bounds).
+
+    Each reaction will further have two associated random variables, $k_{cat}^{(i)}$ and $f_i$. For unobserved $k_{cat}$'s, we'll start with the uninformative prior $\log k_{cat}^{(i)} \sim \mathcal N(0.5, 2.5^2)$, informed by the marginal $k_{cat}$ distribution from above. For the $f_i$'s, we'll use $\text{Beta}$ priors. We'll first consider the case of a single shared $f$, then see how identifiability may be lost with individual $f_i$'s per reaction. Observed $k_{cat}$'s will be treated as deterministic.
+    """)
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _(np, pm):
+    # Stoichiometric matrix
+    _S = np.array([
+        [1, -1, -1, 0, 0, 0],
+        [0, 1, 0, -1, 0, 0],
+        [0, 0, 1, 0, -1, 0],
+        [0, 0, 0, 1, 1, -1]
+    ])
+
+    # Observed enzyme concentrations
+    _E = np.array([1, 1, 1, 1, 1, 1])
+
+    # Observed kcats
+    _observed_kcats = np.array([10, 20])
+    _observed_kcat_indices = np.array([3, 4])
+
+    # Observed (fixed) fluxes
+    _observed_fluxes = np.array([10])
+    _observed_flux_indices = np.array([0])
+
+    _coords = {
+        "reactions": np.arange(_S.shape[1]),
+        "metabolites": np.arange(_S.shape[0]),
+    }
+    with pm.Model(coords=_coords) as model:
+        # Priors for log-kcats
+        _logkcat = pm.Normal("log_kcat", mu=0.5, sigma=2.5, dims="reactions")
+        _kcat = pm.Deterministic("kcat", np.exp(_logkcat), dims="reactions")
+
+        # Prior for saturation f
+        _f = pm.Beta("f", alpha=5, beta=1)
+
+        # Fluxes and metabolite rates of change
+        _v = pm.Deterministic("v", np.exp(_logkcat) * _f * _E, dims="reactions")
+        _dm_dt = pm.Deterministic("dm_dt", _S @ _v, dims="metabolites")
+
+        # Create observed variables for observed kcats, fixed fluxes, all metabolite dm_dts
+        _logkcat_obs = pm.Normal("log_kcat_obs", mu=_logkcat[_observed_kcat_indices], sigma=0.1, observed=np.log(_observed_kcats))
+        _v_obs = pm.Normal("v_obs", mu=_v[_observed_flux_indices], sigma=0.1, observed=_observed_fluxes)
+        _dm_dt_obs = pm.Normal("dm_dt_obs", mu=_dm_dt, sigma=0.1, observed=np.zeros(4))
+
+        # Sample
+        idata_1 = pm.sample(draws=1000, chains=2)
+    return (idata_1,)
+
+
+@app.cell
+def _(az, idata_1, plt):
+    _axs = az.plot_trace(idata_1, combined=True)
+    _fig = plt.gcf()
+
+    _fig.tight_layout()
+    _fig
+    return
+
+
+@app.cell
+def _(az, idata_1):
+    az.plot_pair(idata_1, var_names=["kcat", "f"], kind="scatter", marginals=True)
+    return
+
+
+@app.cell
+def _(az, idata_1):
+    az.plot_posterior(idata_1, var_names=["kcat", "f", "v", "dm_dt"])
     return
 
 
