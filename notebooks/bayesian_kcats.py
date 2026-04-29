@@ -20,9 +20,9 @@ def _():
     import arviz as az
 
     from cobra.io import load_model
-    from scipy.stats import norm
+    from scipy.stats import norm, lognorm, beta
 
-    return az, load_model, norm, np, pd, plt, pm
+    return az, beta, load_model, lognorm, norm, np, pd, plt, pm
 
 
 @app.cell
@@ -168,22 +168,6 @@ def _(ecoli):
     return
 
 
-@app.cell
-def _(kcats, norm, np, plt):
-    _fig, _ax = plt.subplots()
-
-    _ax.hist(np.log(kcats["effective_kcat_s"]), bins=50, density=True)
-
-    _mu, _s = norm.fit(np.log(kcats["effective_kcat_s"]))
-    _x = np.linspace(np.log(kcats["effective_kcat_s"]).min(), np.log(kcats["effective_kcat_s"]).max(), 100)
-    _ax.plot(_x, norm(_mu, _s).pdf(_x))
-    print(f"{_mu=}")
-    print(f"{_s=}")
-
-    _fig
-    return
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -226,13 +210,63 @@ def _(mo):
     return
 
 
-@app.cell
-def _():
-    return
+@app.cell(hide_code=True)
+def _(kcats, lognorm, norm, np, plt):
+    # Fit marginal distribution for log-kcats
+    logkcat_marginal = norm(*norm.fit(np.log(kcats["effective_kcat_s"])))
+    kcat_marginal = lognorm(s = logkcat_marginal.std(), scale = np.exp(logkcat_marginal.mean()))
+
+    _fig, (_ax1, _ax2) = plt.subplots(1, 2)
+
+    _ax1.hist(np.log(kcats["effective_kcat_s"]), bins=50, density=True)
+    _x = np.linspace(np.log(kcats["effective_kcat_s"]).min(), np.log(kcats["effective_kcat_s"]).max(), 100)
+    _ax1.plot(_x, logkcat_marginal.pdf(_x))
+    _ax1.set_xlabel(r"$\log k_{cat}$")
+    _ax1.set_ylabel("Density")
+    _ax1.set_title(rf"Marginal $\log k_{{cat}} \sim N ({logkcat_marginal.mean():.2f}, {logkcat_marginal.std():.2f})$")
+
+    _ax2.hist(kcats["effective_kcat_s"], bins=50, density=True)
+    _x = np.linspace(kcats["effective_kcat_s"].min(), kcats["effective_kcat_s"].max(), 100)
+    _ax2.plot(_x, kcat_marginal.pdf(_x))
+    _ax2.set_xlabel(r"$k_{cat}$")
+    _ax2.set_yscale("log")
+    _ax2.set_title(r"Marginal $k_{{cat}} \sim \log N(\cdot)$")
+
+    _fig.set_size_inches(8,2.5)
+    _fig.tight_layout()
+    _fig
+    return kcat_marginal, logkcat_marginal
 
 
-@app.cell
-def _(np, pm):
+@app.cell(hide_code=True)
+def _(mo):
+    alpha_1 = mo.ui.slider(0.01, 10, 0.01, value=5, label=r"$\alpha$", show_value=True)
+    beta_1 = mo.ui.slider(0.01, 10, 0.01, value=1, label=r"$\beta$", show_value=True)
+    return alpha_1, beta_1
+
+
+@app.cell(hide_code=True)
+def _(alpha_1, beta, beta_1, mo, np, plt):
+    f_prior_1 = beta(a=alpha_1.value, b=beta_1.value)
+
+    _fig, _ax = plt.subplots()
+
+    _x = np.linspace(0, 1, 100)
+    _y = f_prior_1.pdf(_x)
+    _ax.plot(_x, _y)
+    _ax.set_ylim(-0.1, _y[~np.isnan(_y) & np.isfinite(_y)].max())
+    _ax.set_xlabel("$f$")
+    _ax.set_ylabel("Density")
+
+    _fig.set_size_inches(3, 1.5)
+    _fig.tight_layout()
+
+    mo.vstack([alpha_1, beta_1, _fig], heights="equal")
+    return (f_prior_1,)
+
+
+@app.cell(hide_code=True)
+def _(alpha_1, beta_1, logkcat_marginal, np, pm):
     # Stoichiometric matrix
     _S = np.array([
         [1, -1, -1, 0, 0, 0],
@@ -258,11 +292,11 @@ def _(np, pm):
     }
     with pm.Model(coords=_coords) as model:
         # Priors for log-kcats
-        _logkcat = pm.Normal("log_kcat", mu=0.5, sigma=2.5, dims="reactions")
+        _logkcat = pm.Normal("log_kcat", mu=logkcat_marginal.mean(), sigma=logkcat_marginal.std(), dims="reactions")
         _kcat = pm.Deterministic("kcat", np.exp(_logkcat), dims="reactions")
 
         # Prior for saturation f
-        _f = pm.Beta("f", alpha=5, beta=1)
+        _f = pm.Beta("f", alpha=alpha_1.value, beta=beta_1.value)
 
         # Fluxes and metabolite rates of change
         _v = pm.Deterministic("v", np.exp(_logkcat) * _f * _E, dims="reactions")
@@ -278,11 +312,104 @@ def _(np, pm):
     return (idata_1,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(az, idata_1, plt):
     _axs = az.plot_trace(idata_1, combined=True)
     _fig = plt.gcf()
 
+    _fig.set_size_inches(8, 6)
+    _fig.tight_layout()
+    _fig
+    return
+
+
+@app.cell(hide_code=True)
+def _(f_prior_1, idata_1, np, plt):
+    _fig, _ax = plt.subplots()
+
+    _f_samples = idata_1.posterior["f"].data.flatten()
+
+    _ax.hist(_f_samples, bins=50, density=True, label="Posterior")
+    _ax.set_xlabel("$f$")
+    _ax.set_ylabel("Density")
+
+    _x = np.linspace(_f_samples.min(), _f_samples.max(), 100)
+    _y = f_prior_1.pdf(_x)
+    _ax_prior = _ax.twinx()
+    _ax_prior.plot(_x, _y, color="tab:orange", label="Prior")
+    _ax_prior.set_yticks([])
+
+    _fig.legend(loc = "outside center right")
+    _fig.suptitle("Prior-Posterior Plot for $f$")
+    _fig.set_size_inches(4, 3)
+    _fig.tight_layout()
+    _fig
+    return
+
+
+@app.cell(hide_code=True)
+def _(idata_1, kcat_marginal, logkcat_marginal, np, plt):
+    # TODO: make these globals?
+    _observed_kcats = np.array([10, 20])
+    _observed_kcat_indices = np.array([3, 4])
+
+    # Plot kcat prior-posterior plots
+    _fig, (_logkcat_axs, _kcat_axs) = plt.subplots(2, 6)
+
+    for _i, (_ax, _samples) in enumerate(
+        zip(
+            _logkcat_axs,
+            idata_1.posterior["log_kcat"]
+            .transpose("reactions", "chain", "draw")
+            .data,
+        )
+    ):
+        # Plot posterior histogram
+        _samples = _samples.flatten()
+        _ax.hist(_samples, bins=50, density=True)
+
+        # Plot prior distribution
+        _ax_prior = _ax.twinx()
+        _x = np.linspace(_samples.min(), _samples.max(), 100)
+        _y = logkcat_marginal.pdf(_x)
+        _ax_prior.plot(_x, _y, color="tab:orange")
+
+        # If there was an observed value, plot that
+        if _i in _observed_kcat_indices:
+            _ax_prior.vlines(np.log(_observed_kcats[_observed_kcat_indices == _i]), 0, _y.max(), color="r", linestyle="--")
+
+        _ax.set_xlabel(rf"$\log k_{{cat}}^{{({_i})}}$")
+        _ax_prior.set_yticks([])
+
+    for _i, (_ax, _samples) in enumerate(
+        zip(
+            _kcat_axs,
+            idata_1.posterior["kcat"]
+            .transpose("reactions", "chain", "draw")
+            .data,
+        )
+    ):
+        # Plot posterior histogram
+        _samples = _samples.flatten()
+        _ax.hist(_samples, bins=50, density=True)
+
+        # Plot prior distribution
+        _ax_prior = _ax.twinx()
+        _x = np.linspace(_samples.min(), _samples.max(), 100)
+        _ax_prior.plot(_x, kcat_marginal.pdf(_x), color="tab:orange")
+
+        # If there was an observed value, plot that
+        if _i in _observed_kcat_indices:
+            _ax_prior.vlines(_observed_kcats[_observed_kcat_indices == _i], 0, _y.max(), color="r", linestyle="--")
+
+        _ax.set_xlabel(rf"$k_{{cat}}^{{({_i})}}$")
+        _ax_prior.set_yticks([])
+
+    _logkcat_axs[0].set_ylabel("Density")
+    _kcat_axs[0].set_ylabel("Density")
+
+    _fig.suptitle(r"Prior-Posterior Plots for $\log k_{cat}$, $k_{cat}$")
+    _fig.set_size_inches(12, 5)
     _fig.tight_layout()
     _fig
     return
@@ -291,12 +418,6 @@ def _(az, idata_1, plt):
 @app.cell
 def _(az, idata_1):
     az.plot_pair(idata_1, var_names=["kcat", "f"], kind="scatter", marginals=True)
-    return
-
-
-@app.cell
-def _(az, idata_1):
-    az.plot_posterior(idata_1, var_names=["kcat", "f", "v", "dm_dt"])
     return
 
 
