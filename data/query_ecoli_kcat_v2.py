@@ -77,6 +77,7 @@ from itertools import product as iproduct
 from pathlib import Path
 from typing import Any, Dict, FrozenSet, List, Optional, Set, Tuple
 
+import cobra
 import pandas as pd
 import requests
 
@@ -419,6 +420,11 @@ def fetch_sabiork_reaction_participants(
 # Download page: https://www.metanetx.org/mnxdoc/mnxref.html
 _METANETX_CHEM_XREF_URL = "https://www.metanetx.org/cgi-bin/mnxget/mnxref/chem_xref.tsv"
 
+# IDs in iJO1366 may be outdated, so need to be mapped to latest MetaNetX IDs
+# METANETX chem_depr.tsv: columns are deprecated_ID, ID, version
+# (where `version` refers to the MNXref version in which the deprecated_ID was deprecated)
+_METANETX_CHEM_DEPR_URL = "https://www.metanetx.org/cgi-bin/mnxget/mnxref/chem_depr.tsv"
+
 
 def build_metanetx_chebi_map(
     cache_dir: Path = Path("."),
@@ -750,7 +756,54 @@ class BiggIndex:
         self.rxn_details: Dict[str, Dict] = {}
 
 
-def _bigg_map_cobra(model_path: Path) -> BiggIndex:
+def _update_model_mnx(model: cobra.Model, cache_dir: Path = Path(".")) -> cobra.Model:
+    """
+    Update the metabolite MetaNetX ids to the latest version.
+    Downloads (once) and parses MetaNetX ``chem_depr.tsv``.
+    """
+
+    # Fetch chem_depr.tsv
+    cache_path = cache_dir / "chem_depr.tsv"
+    if not cache_path.exists():
+        log.info("  Downloading MetaNetX chem_depr.tsv …")
+        resp = requests.get(_METANETX_CHEM_DEPR_URL, timeout=300, stream=True)
+        resp.raise_for_status()
+        with cache_path.open("wb") as fh:
+            for chunk in resp.iter_content(1 << 16):
+                fh.write(chunk)
+        log.info("    Cached → %s", cache_path)
+    else:
+        log.info("  Using cached MetaNetX chem_depr.tsv at %s", cache_path)
+
+    # Parse into mapping
+    mnx_old_to_new = {}
+    with cache_path.open(encoding="utf-8", errors="replace") as f:
+        for line in f:
+            if line.startswith("#") or not line.strip():
+                continue
+            parts = line.rstrip("\n").split("\t")
+            old_mnx, new_mnx = parts[0].strip(), parts[1].strip()
+            mnx_old_to_new[old_mnx] = new_mnx
+
+    # Update model
+    n_updated_ids = 0
+    for met in model.metabolites:
+        mnx_old = met.annotation.get("metanetx.chemical")
+        if mnx_old is None:
+            continue
+        
+        mnx_new = mnx_old_to_new.get(mnx_old)
+        if mnx_new is None:
+            continue
+
+        met.annotation["metanetx.chemical"] = mnx_new
+        n_updated_ids += 1
+    
+    log.info("  Updated %d MetaNetX IDs to their latest versions.", n_updated_ids)
+    return model
+
+
+def _bigg_map_cobra(model_path: Path, cache_dir: Path = Path(".")) -> BiggIndex:
     """
     Build a ``BiggIndex`` from the iJO1366 SBML model using COBRApy.
 
@@ -764,6 +817,9 @@ def _bigg_map_cobra(model_path: Path) -> BiggIndex:
 
     log.info("Parsing iJO1366 SBML with COBRApy …")
     model = cobra.io.read_sbml_model(str(model_path))
+
+    # Update MetaNetX IDs to latest version
+    model = _update_model_mnx(model, cache_dir)
 
     # Build gene-id → UniProt lookup first
     gene_id_to_uniprot: Dict[str, str] = {}
@@ -988,7 +1044,7 @@ def build_bigg_maps(cache_dir: Path = Path(".")) -> BiggIndex:
         log.info("Using cached iJO1366 model at %s", model_path)
 
     try:
-        return _bigg_map_cobra(model_path)
+        return _bigg_map_cobra(model_path, cache_dir)
     except ImportError:
         log.warning("COBRApy not found; falling back to lxml SBML parser.")
         return _bigg_map_lxml(model_path)
@@ -1441,6 +1497,8 @@ def main() -> None:
 
     # ── BiGG mapping ──────────────────────────────────────
     if not args.skip_bigg:
+        # Since metabolite IDs in iJO1366 may be outdated, map to latest IDs
+
         bigg_index = build_bigg_maps(cache_dir)
         combined = add_bigg_ids(combined, bigg_index, precedence=precedence)
     else:
