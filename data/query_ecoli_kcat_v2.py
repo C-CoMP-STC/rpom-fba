@@ -387,7 +387,7 @@ def fetch_sabiork_reaction_participants(
 #              "bigg.metabolite:atp"
 # Download page: https://www.metanetx.org/mnxdoc/mnxref.html
 _METANETX_CHEM_XREF_URL = (
-    "https://www.metanetx.org/cgi-bin/mnxweb/export/MetaNetX_e_chem_xref.tsv"
+    "https://www.metanetx.org/cgi-bin/mnxget/mnxref/chem_xref.tsv"
 )
 
 
@@ -958,18 +958,53 @@ def build_bigg_maps(cache_dir: Path = Path(".")) -> BiggIndex:
 # ============================================================
 
 _VALID_STRATEGIES = ("uniprot", "metabolites", "ec")
-_DEFAULT_PRECEDENCE = ("metabolites", "uniprot", "ec")
+_DEFAULT_PRECEDENCE = ("ec", "uniprot", "metabolites")
 
 
-def _match_uniprot(row: pd.Series, index: BiggIndex) -> List[str]:
+# def _match_uniprot(row: pd.Series, index: BiggIndex) -> List[str]:
+#     """Return BiGG reaction IDs whose GPR contains the row's UniProt ID."""
+#     uid = str(row.get("uniprot_id", "")).strip()
+#     if uid and uid != "nan":
+#         return index.uniprot_to_rxns.get(uid, [])
+#     return []
+
+def _match_uniprot(row: pd.Series, index: BiggIndex, candidates:Optional[List]=None) -> List[str]:
     """Return BiGG reaction IDs whose GPR contains the row's UniProt ID."""
     uid = str(row.get("uniprot_id", "")).strip()
     if uid and uid != "nan":
-        return index.uniprot_to_rxns.get(uid, [])
-    return []
+        hits = index.uniprot_to_rxns.get(uid, [])
+        return (hits
+                if candidates is None
+                else sorted(set(candidates) & set(hits)))
+    return candidates if candidates is not None else []
 
 
-def _match_metabolites(row: pd.Series, index: BiggIndex) -> List[str]:
+# def _match_metabolites(row: pd.Series, index: BiggIndex) -> List[str]:
+#     """
+#     Return BiGG reaction IDs whose substrate/product MetaNetX sets contain
+#     the row's measured substrates and products as subsets.
+
+#     Matching rule:
+#       sab_sub ⊆ rxn_sub  AND  sab_prod ⊆ rxn_prod
+#       (also checks the reversed direction for reversible reactions)
+#       At least one of sab_sub / sab_prod must be non-empty.
+
+#     Uses the inverted index (``sub_mnx_to_rxns``) for efficiency:
+#     the intersection of per-metabolite candidate sets is computed first,
+#     then the subset condition is verified.
+#     """
+#     def _parse_mnx(cell: Any) -> FrozenSet[str]:
+#         raw = str(cell) if pd.notna(cell) else ""
+#         ids = {x.strip() for x in raw.split(";") if x.strip() and x.strip() != "nan"}
+#         return frozenset(ids)
+
+#     sab_sub  = _parse_mnx(row.get("substrate_mnx",  ""))
+#     sab_prod = _parse_mnx(row.get("product_mnx",    ""))
+
+#     if not sab_sub and not sab_prod:
+#         return []
+
+def _match_metabolites(row: pd.Series, index: BiggIndex, candidates:Optional[List]=None) -> List[str]:
     """
     Return BiGG reaction IDs whose substrate/product MetaNetX sets contain
     the row's measured substrates and products as subsets.
@@ -1046,10 +1081,27 @@ def _match_metabolites(row: pd.Series, index: BiggIndex) -> List[str]:
             if index.rxn_details.get(rid, {}).get("reversible", False)
         }
 
-    return sorted(hits)
+    return (sorted(hits)
+            if candidates is None
+            else sorted(set(hits) & set(candidates)))
 
 
-def _match_ec(row: pd.Series, index: BiggIndex) -> List[str]:
+# def _match_ec(row: pd.Series, index: BiggIndex) -> List[str]:
+#     """Return BiGG reaction IDs sharing the row's EC number (exact + prefix)."""
+#     ec_raw = str(row.get("ec_number", "")).strip()
+#     if not ec_raw or ec_raw == "nan":
+#         return []
+#     if ec_raw in index.ec_to_rxns:
+#         return index.ec_to_rxns[ec_raw]
+#     # Prefix match for partial ECs (e.g. "1.2.3.-")
+#     stem = ec_raw.rstrip("-").rstrip(".")
+#     hits: Set[str] = set()
+#     for stored_ec, rxn_ids in index.ec_to_rxns.items():
+#         if stored_ec.startswith(stem):
+#             hits.update(rxn_ids)
+#     return sorted(hits)
+
+def _match_ec(row: pd.Series, index: BiggIndex, candidates:Optional[List]=None) -> List[str]:
     """Return BiGG reaction IDs sharing the row's EC number (exact + prefix)."""
     ec_raw = str(row.get("ec_number", "")).strip()
     if not ec_raw or ec_raw == "nan":
@@ -1062,7 +1114,9 @@ def _match_ec(row: pd.Series, index: BiggIndex) -> List[str]:
     for stored_ec, rxn_ids in index.ec_to_rxns.items():
         if stored_ec.startswith(stem):
             hits.update(rxn_ids)
-    return sorted(hits)
+    return (sorted(hits)
+            if candidates is None
+            else sorted(set(hits) & set(candidates)))
 
 
 _STRATEGY_FN = {
@@ -1080,16 +1134,18 @@ def add_bigg_ids(
     """
     Add ``bigg_reaction_ids`` and ``bigg_match_basis`` columns.
 
-    For each row the strategies in ``precedence`` are tried in order.
-    The first strategy that returns ≥ 1 match is used; its name is recorded
-    in ``bigg_match_basis``.  All matched BiGG reaction IDs are joined with
-    semicolons.
+    For each row the strategies in ``precedence`` are tried in order,
+    filtering the results from the previous stage. The last strategy
+    that returns > 0 matches is used, and the strategies tried are
+    recorded in order in ``bigg_match_basis``.
+
+    All matched BiGG reaction IDs are joined with semicolons.
 
     Parameters
     ----------
     precedence : tuple of strategy names in priority order.
         Valid values: "uniprot", "metabolites", "ec".
-        Default: ("uniprot", "metabolites", "ec").
+        Default: ("metabolites", "uniprot", "ec").
     """
     unknown = set(precedence) - set(_VALID_STRATEGIES)
     if unknown:
@@ -1100,24 +1156,31 @@ def add_bigg_ids(
 
     for _, row in df.iterrows():
         matched_ids:   List[str] = []
-        matched_basis: str       = "none"
+        matched_basis: List[str] = []
 
+        hits = None
         for strategy in precedence:
             fn      = _STRATEGY_FN[strategy]
-            results = fn(row, index)
-            if results:
-                matched_ids   = results
-                matched_basis = strategy
+            next_hits = fn(row, index, candidates=hits)
+            if len(next_hits) > 0:
+                hits = next_hits
+                matched_basis.append(strategy)
+            else:
                 break
+        matched_ids = hits if hits is not None else []
 
         bigg_ids_col.append(";".join(sorted(set(matched_ids))))
-        match_basis_col.append(matched_basis)
+        match_basis_col.append(">".join(matched_basis) if len(matched_basis) > 0 else "none")
 
     n_matched = sum(b != "none" for b in match_basis_col)
     basis_counts = pd.Series(match_basis_col).value_counts().to_dict()
     log.info(
         "BiGG mapping: %d/%d rows matched. Basis breakdown: %s",
         n_matched, len(df), basis_counts,
+    )
+    log.info(
+        "%d unique reactions mapped.",
+        len(set(bigg_ids_col))
     )
 
     df = df.copy()
@@ -1204,8 +1267,8 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Skip BiGG ID mapping (avoids downloading iJO1366).",
     )
     p.add_argument(
-        "--bigg-cache-dir", default="data/",
-        help="Directory to cache the iJO1366 SBML model.",
+        "--cache-dir", default="data/",
+        help="Directory to cache stored data from previous runs.",
     )
     p.add_argument(
         "--output", default="data/ecoli_kcat.tsv",
@@ -1252,7 +1315,7 @@ def main() -> None:
     if unknown:
         raise SystemExit(f"Unknown matching strategies: {unknown}")
 
-    cache_dir = Path(args.bigg_cache_dir)
+    cache_dir = Path(args.cache_dir)
     cache_dir.mkdir(parents=True, exist_ok=True)
 
     frames: List[pd.DataFrame] = []
