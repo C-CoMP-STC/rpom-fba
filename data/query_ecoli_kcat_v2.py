@@ -1058,14 +1058,6 @@ _VALID_STRATEGIES = ("uniprot", "metabolites", "ec")
 _DEFAULT_PRECEDENCE = ("ec", "uniprot", "metabolites")
 
 
-# def _match_uniprot(row: pd.Series, index: BiggIndex) -> List[str]:
-#     """Return BiGG reaction IDs whose GPR contains the row's UniProt ID."""
-#     uid = str(row.get("uniprot_id", "")).strip()
-#     if uid and uid != "nan":
-#         return index.uniprot_to_rxns.get(uid, [])
-#     return []
-
-
 def _match_uniprot(
     row: pd.Series, index: BiggIndex, candidates: Optional[List] = None
 ) -> List[str]:
@@ -1075,32 +1067,6 @@ def _match_uniprot(
         hits = index.uniprot_to_rxns.get(uid, [])
         return hits if candidates is None else sorted(set(candidates) & set(hits))
     return candidates if candidates is not None else []
-
-
-# def _match_metabolites(row: pd.Series, index: BiggIndex) -> List[str]:
-#     """
-#     Return BiGG reaction IDs whose substrate/product MetaNetX sets contain
-#     the row's measured substrates and products as subsets.
-
-#     Matching rule:
-#       sab_sub ⊆ rxn_sub  AND  sab_prod ⊆ rxn_prod
-#       (also checks the reversed direction for reversible reactions)
-#       At least one of sab_sub / sab_prod must be non-empty.
-
-#     Uses the inverted index (``sub_mnx_to_rxns``) for efficiency:
-#     the intersection of per-metabolite candidate sets is computed first,
-#     then the subset condition is verified.
-#     """
-#     def _parse_mnx(cell: Any) -> FrozenSet[str]:
-#         raw = str(cell) if pd.notna(cell) else ""
-#         ids = {x.strip() for x in raw.split(";") if x.strip() and x.strip() != "nan"}
-#         return frozenset(ids)
-
-#     sab_sub  = _parse_mnx(row.get("substrate_mnx",  ""))
-#     sab_prod = _parse_mnx(row.get("product_mnx",    ""))
-
-#     if not sab_sub and not sab_prod:
-#         return []
 
 
 def _match_metabolites(
@@ -1193,22 +1159,6 @@ def _match_metabolites(
     return sorted(hits) if candidates is None else sorted(set(hits) & set(candidates))
 
 
-# def _match_ec(row: pd.Series, index: BiggIndex) -> List[str]:
-#     """Return BiGG reaction IDs sharing the row's EC number (exact + prefix)."""
-#     ec_raw = str(row.get("ec_number", "")).strip()
-#     if not ec_raw or ec_raw == "nan":
-#         return []
-#     if ec_raw in index.ec_to_rxns:
-#         return index.ec_to_rxns[ec_raw]
-#     # Prefix match for partial ECs (e.g. "1.2.3.-")
-#     stem = ec_raw.rstrip("-").rstrip(".")
-#     hits: Set[str] = set()
-#     for stored_ec, rxn_ids in index.ec_to_rxns.items():
-#         if stored_ec.startswith(stem):
-#             hits.update(rxn_ids)
-#     return sorted(hits)
-
-
 def _match_ec(
     row: pd.Series, index: BiggIndex, candidates: Optional[List] = None
 ) -> List[str]:
@@ -1217,7 +1167,9 @@ def _match_ec(
     if not ec_raw or ec_raw == "nan":
         return []
     if ec_raw in index.ec_to_rxns:
-        return index.ec_to_rxns[ec_raw]
+        hits = index.ec_to_rxns[ec_raw]
+        return sorted(hits) if candidates is None else sorted(set(hits) & set(candidates))
+
     # Prefix match for partial ECs (e.g. "1.2.3.-")
     stem = ec_raw.rstrip("-").rstrip(".")
     hits: Set[str] = set()
