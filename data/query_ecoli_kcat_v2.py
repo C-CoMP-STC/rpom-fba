@@ -90,9 +90,7 @@ log = logging.getLogger(__name__)
 _SABIORK_ENTRY_IDS_URL = (
     "https://sabiork.h-its.org/sabioRestWebServices/searchKineticLaws/entryIDs"
 )
-_SABIORK_EXPORT_URL = (
-    "https://sabiork.h-its.org/entry/exportToExcelCustomizable"
-)
+_SABIORK_EXPORT_URL = "https://sabiork.h-its.org/entry/exportToExcelCustomizable"
 _SABIORK_PARTICIPANTS_URL = (
     "https://sabiork.h-its.org/sabioRestWebServices/searchReactionParticipants"
 )
@@ -104,7 +102,7 @@ _SABIORK_FIELDS = [
     "Organism",
     "UniprotID",
     "ECNumber",
-    "Parameter",          # kinetic parameter block; see _parse_sabiork_parameter()
+    "Parameter",  # kinetic parameter block; see _parse_sabiork_parameter()
     "Substrate",
     "Product",
     "pH",
@@ -134,13 +132,13 @@ def _sabiork_entry_ids(organism: str) -> List[int]:
     entries and we filter post-hoc.
     """
     base_query = {
-        "Organism":      f'"{organism}"',
+        "Organism": f'"{organism}"',
         "parameterType": "kcat",
     }
 
     for attempt, extra in enumerate([{"EnzymeType": "wildtype"}, {}]):
         q_dict = {**base_query, **extra}
-        q_str  = " AND ".join(f"{k}:{v}" for k, v in q_dict.items())
+        q_str = " AND ".join(f"{k}:{v}" for k, v in q_dict.items())
         log.info("SABIO-RK entryID query: %s", q_str)
 
         resp = requests.get(
@@ -151,11 +149,7 @@ def _sabiork_entry_ids(organism: str) -> List[int]:
         resp.raise_for_status()
         text = resp.text.strip()
 
-        ids = [
-            int(x)
-            for x in text.splitlines()
-            if x.strip().lstrip("-").isdigit()
-        ]
+        ids = [int(x) for x in text.splitlines() if x.strip().lstrip("-").isdigit()]
         if ids:
             log.info("  → %d entry IDs", len(ids))
             return ids
@@ -184,7 +178,9 @@ def _sabiork_fetch_tsv(entry_ids: List[int], batch_size: int = 500) -> pd.DataFr
         batch = entry_ids[i : i + batch_size]
         log.info(
             "  Fetching batch %d/%d (%d entries) …",
-            i // batch_size + 1, n_batches, len(batch),
+            i // batch_size + 1,
+            n_batches,
+            len(batch),
         )
         resp = requests.post(
             _SABIORK_EXPORT_URL,
@@ -197,7 +193,7 @@ def _sabiork_fetch_tsv(entry_ids: List[int], batch_size: int = 500) -> pd.DataFr
         if raw:
             df = pd.read_csv(StringIO(raw), sep="\t", dtype=str)
             frames.append(df)
-        time.sleep(0.4)   # be polite to the SABIO-RK servers
+        time.sleep(0.4)  # be polite to the SABIO-RK servers
 
     return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
 
@@ -212,19 +208,24 @@ def _parse_sabiork_parameter(df: pd.DataFrame) -> pd.DataFrame:
     # Layout A: already split by SABIO-RK into dotted columns
     if "parameter.type" in df.columns or "parameter.startValue" in df.columns:
         rename = {
-            "parameter.type":             "param_type",
-            "parameter.startValue":       "kcat_value",
-            "parameter.endValue":         "kcat_value_end",
-            "parameter.unit":             "kcat_unit",
-            "parameter.associatedSpecies":"substrate_param",
+            "parameter.type": "param_type",
+            "parameter.startValue": "kcat_value",
+            "parameter.endValue": "kcat_value_end",
+            "parameter.unit": "kcat_unit",
+            "parameter.associatedSpecies": "substrate_param",
         }
         df = df.rename(columns={k: v for k, v in rename.items() if k in df.columns})
 
     # Layout B: single 'Parameter' column (pipe-delimited)
     elif "Parameter" in df.columns:
         parts = df["Parameter"].str.split("|", expand=True)
-        col_names = ["param_type", "kcat_value", "kcat_value_end",
-                     "kcat_unit", "substrate_param"]
+        col_names = [
+            "param_type",
+            "kcat_value",
+            "kcat_value_end",
+            "kcat_unit",
+            "substrate_param",
+        ]
         for j, cname in enumerate(col_names):
             if j < parts.shape[1]:
                 df[cname] = parts[j]
@@ -242,23 +243,23 @@ def _parse_sabiork_parameter(df: pd.DataFrame) -> pd.DataFrame:
 def _standardise_sabiork(df: pd.DataFrame) -> pd.DataFrame:
     """Rename SABIO-RK columns to the canonical output schema."""
     rename = {
-        "ECNumber":           "ec_number",
-        "Organism":           "organism",
-        "UniprotID":          "uniprot_id",
-        "Substrate":          "substrate",
-        "pH":                 "pH",
-        "Temperature":        "temperature_C",
-        "Buffer":             "buffer",
-        "CellularLocation":   "cellular_location",
-        "SabioReactionID":    "sabiork_reaction_id",
-        "KeggReactionID":     "kegg_reaction_id",
+        "ECNumber": "ec_number",
+        "Organism": "organism",
+        "UniprotID": "uniprot_id",
+        "Substrate": "substrate",
+        "pH": "pH",
+        "Temperature": "temperature_C",
+        "Buffer": "buffer",
+        "CellularLocation": "cellular_location",
+        "SabioReactionID": "sabiork_reaction_id",
+        "KeggReactionID": "kegg_reaction_id",
         "ReactomeReactionID": "reactome_reaction_id",
-        "PubMedID":           "pubmed_id",
-        "EntryID":            "sabiork_entry_id",
-        "kcat_value":         "kcat_value",
-        "kcat_value_end":     "kcat_value_end",
-        "kcat_unit":          "kcat_unit",
-        "substrate_param":    "substrate_from_param",
+        "PubMedID": "pubmed_id",
+        "EntryID": "sabiork_entry_id",
+        "kcat_value": "kcat_value",
+        "kcat_value_end": "kcat_value_end",
+        "kcat_unit": "kcat_unit",
+        "substrate_param": "substrate_from_param",
     }
     df = df.rename(columns={k: v for k, v in rename.items() if k in df.columns})
 
@@ -280,8 +281,26 @@ def _standardise_sabiork(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def fetch_sabiork(organism: str = "Escherichia coli") -> pd.DataFrame:
-    """Full SABIO-RK pipeline → canonical DataFrame."""
+def fetch_sabiork(
+    organism: str = "Escherichia coli",
+    cache_dir: Path = Path("."),
+    use_cached: bool = False,
+) -> pd.DataFrame:
+    """
+    Full SABIO-RK pipeline → canonical DataFrame.
+
+    Results are cached to ``<cache_dir>/sabiork_df.tsv`` so
+    subsequent runs can skip fetching (if use_cached option selected.)
+    """
+    cache_path = cache_dir / "sabiork_df.tsv"
+    if use_cached:
+        if cache_path.exists():
+            df = pd.read_csv(cache_path, sep="\t")
+            log.info("Read cached SABIO-RK kcat values.")
+            return df
+        else:
+            log.warning("No cached kcat values from SABIO-RK found! Fetching...")
+    
     ids = _sabiork_entry_ids(organism)
     if not ids:
         return pd.DataFrame()
@@ -294,12 +313,18 @@ def fetch_sabiork(organism: str = "Escherichia coli") -> pd.DataFrame:
     df = _standardise_sabiork(df)
     df.insert(0, "source", "SABIO-RK")
     log.info("SABIO-RK: %d rows in final table", len(df))
+
+    # Save to cache
+    df.to_csv(cache_path, sep="\t", index=False)
+    log.info(f"Saved SABIO-RK results to {cache_path}.")
+
     return df
 
 
 # ============================================================
 # SABIO-RK reaction participants  (NEW in v2)
 # ============================================================
+
 
 def fetch_sabiork_reaction_participants(
     reaction_ids: List[int],
@@ -328,7 +353,8 @@ def fetch_sabiork_reaction_participants(
     to_fetch = [rid for rid in reaction_ids if str(rid) not in cache]
     log.info(
         "Fetching SABIO-RK participants: %d new reactions (%d already cached)",
-        len(to_fetch), len(reaction_ids) - len(to_fetch),
+        len(to_fetch),
+        len(reaction_ids) - len(to_fetch),
     )
 
     for i, rid in enumerate(to_fetch):
@@ -341,8 +367,13 @@ def fetch_sabiork_reaction_participants(
             _SABIORK_PARTICIPANTS_URL,
             params={
                 "SabioReactionID": str(rid),
-                "fields[]": ["Name", "Role", "ChebiID",
-                             "KeggCompoundID", "SabioCompoundID"],
+                "fields[]": [
+                    "Name",
+                    "Role",
+                    "ChebiID",
+                    "KeggCompoundID",
+                    "SabioCompoundID",
+                ],
             },
             timeout=30,
         )
@@ -354,9 +385,9 @@ def fetch_sabiork_reaction_participants(
                 for _, row in pdf.iterrows():
                     role = str(row.get("Role", "")).strip().lower()
                     c = {
-                        "name":  str(row.get("Name", "")).strip(),
+                        "name": str(row.get("Name", "")).strip(),
                         "chebi": str(row.get("ChebiID", "")).strip(),
-                        "kegg":  str(row.get("KeggCompoundID", "")).strip(),
+                        "kegg": str(row.get("KeggCompoundID", "")).strip(),
                     }
                     # Roles include 'substrate', 'product',
                     # 'cofactor_substrate', 'cofactor_product', etc.
@@ -386,9 +417,7 @@ def fetch_sabiork_reaction_participants(
 #              "kegg.compound:C00002"
 #              "bigg.metabolite:atp"
 # Download page: https://www.metanetx.org/mnxdoc/mnxref.html
-_METANETX_CHEM_XREF_URL = (
-    "https://www.metanetx.org/cgi-bin/mnxget/mnxref/chem_xref.tsv"
-)
+_METANETX_CHEM_XREF_URL = "https://www.metanetx.org/cgi-bin/mnxget/mnxref/chem_xref.tsv"
 
 
 def build_metanetx_chebi_map(
@@ -416,7 +445,7 @@ def build_metanetx_chebi_map(
         log.info("Using cached MetaNetX xref at %s", xref_path)
 
     chebi_to_mnx: Dict[str, str] = {}
-    kegg_to_mnx:  Dict[str, str] = {}
+    kegg_to_mnx: Dict[str, str] = {}
 
     with xref_path.open(encoding="utf-8", errors="replace") as fh:
         for line in fh:
@@ -432,7 +461,7 @@ def build_metanetx_chebi_map(
             if xref.startswith("chebi:"):
                 # MNXref format: "chebi:1234" (bare number).
                 # We store as "CHEBI:1234" to match SABIO-RK's output.
-                num = xref[6:]          # strip "chebi:"
+                num = xref[6:]  # strip "chebi:"
                 chebi_to_mnx[f"CHEBI:{num}"] = mnx_id
                 chebi_to_mnx[num] = mnx_id  # also bare number fallback
             elif xref.startswith("kegg.compound:") or xref.startswith("kegg:"):
@@ -441,7 +470,7 @@ def build_metanetx_chebi_map(
 
     log.info(
         "MetaNetX: %d ChEBI → MNXM, %d KEGG → MNXM",
-        len(chebi_to_mnx) // 2,   # divided by 2 because we store with/without prefix
+        len(chebi_to_mnx) // 2,  # divided by 2 because we store with/without prefix
         len(kegg_to_mnx),
     )
     return chebi_to_mnx, kegg_to_mnx
@@ -451,7 +480,7 @@ def enrich_sabiork_with_mnx(
     df: pd.DataFrame,
     participants: Dict[int, Dict],
     chebi_to_mnx: Dict[str, str],
-    kegg_to_mnx:  Dict[str, str],
+    kegg_to_mnx: Dict[str, str],
 ) -> pd.DataFrame:
     """
     Add ``substrate_mnx`` and ``product_mnx`` columns to a SABIO-RK DataFrame.
@@ -460,11 +489,12 @@ def enrich_sabiork_with_mnx(
     the measured reaction's substrates / products, resolved via the
     MetaNetX ChEBI/KEGG cross-reference.  Missing mappings produce empty strings.
     """
+
     def _compounds_to_mnx(compounds: List[Dict]) -> Set[str]:
         mnx_ids: Set[str] = set()
         for c in compounds:
             chebi = c.get("chebi", "").strip()
-            kegg  = c.get("kegg",  "").strip()
+            kegg = c.get("kegg", "").strip()
 
             # Normalise SABIO-RK ChEBI IDs: accept "CHEBI:1234", "1234"
             if chebi and chebi not in ("nan", ""):
@@ -493,9 +523,9 @@ def enrich_sabiork_with_mnx(
         if pd.notna(rid_raw):
             try:
                 rid = int(float(rid_raw))
-                p   = participants.get(rid, {})
-                sub_mnx  = _compounds_to_mnx(p.get("substrates", []))
-                prod_mnx = _compounds_to_mnx(p.get("products",   []))
+                p = participants.get(rid, {})
+                sub_mnx = _compounds_to_mnx(p.get("substrates", []))
+                prod_mnx = _compounds_to_mnx(p.get("products", []))
             except (ValueError, TypeError):
                 pass
         sub_mnx_col.append(";".join(sorted(sub_mnx)))
@@ -503,9 +533,8 @@ def enrich_sabiork_with_mnx(
 
     df = df.copy()
     df["substrate_mnx"] = sub_mnx_col
-    df["product_mnx"]   = prod_mnx_col
+    df["product_mnx"] = prod_mnx_col
     return df
-
 
 
 # ============================================================
@@ -521,7 +550,7 @@ def _brenda_credentials(email: str, password: str) -> str:
     SHA-256 is required by the current BRENDA API; MD5 is no longer accepted.
     """
     pw_hash = hashlib.sha256(password.encode("utf-8")).hexdigest()
-    return (email, pw_hash) # f"{email},{pw_hash}"
+    return (email, pw_hash)  # f"{email},{pw_hash}"
 
 
 def _parse_brenda_entry(entry: str) -> Optional[Dict]:
@@ -547,19 +576,21 @@ def _parse_brenda_entry(entry: str) -> Optional[Dict]:
         return None
 
     return {
-        "ec_number":    fields.get("ecNumber"),
-        "organism":     fields.get("organism"),
-        "kcat_value":   fields.get("turnoverNumber"),
+        "ec_number": fields.get("ecNumber"),
+        "organism": fields.get("organism"),
+        "kcat_value": fields.get("turnoverNumber"),
         "kcat_maximum": fields.get("turnoverNumberMaximum"),
-        "kcat_unit":    "1/s",
-        "substrate":    fields.get("substrate"),
-        "pubmed_id":    fields.get("literature"),
-        "commentary":   commentary,
-        "textmining":   fields.get("textmining"),
+        "kcat_unit": "1/s",
+        "substrate": fields.get("substrate"),
+        "pubmed_id": fields.get("literature"),
+        "commentary": commentary,
+        "textmining": fields.get("textmining"),
     }
 
 
-def fetch_brenda(email: str, password: str, organism: str = "Escherichia coli") -> pd.DataFrame:
+def fetch_brenda(
+    email: str, password: str, organism: str = "Escherichia coli"
+) -> pd.DataFrame:
     """
     Query BRENDA via SOAP for turnover numbers in E. coli.
 
@@ -606,7 +637,9 @@ def fetch_brenda(email: str, password: str, organism: str = "Escherichia coli") 
         return pd.DataFrame()
 
     if not result_str:
-        log.warning("BRENDA returned an empty result (check credentials / organism name).")
+        log.warning(
+            "BRENDA returned an empty result (check credentials / organism name)."
+        )
         return pd.DataFrame()
 
     rows = [
@@ -636,6 +669,7 @@ _IJO1366_URL = "http://bigg.ucsd.edu/static/models/iJO1366.xml"
 # GPR catalyst extraction  (NEW helper, from user-supplied snippet)
 # ---------------------------------------------------------------------------
 
+
 def _catalysts_from_gpr(gpr: Any) -> Optional[List]:
     """
     Parse a COBRApy GPR object and return catalyst gene-ID lists.
@@ -650,6 +684,7 @@ def _catalysts_from_gpr(gpr: Any) -> Optional[List]:
 
     Returns ``None`` for reactions with no GPR (spontaneous / exchange).
     """
+
     def _catalysts_in(node: ast.expr) -> List:
         match type(node):
             case ast.BoolOp:
@@ -658,9 +693,9 @@ def _catalysts_from_gpr(gpr: Any) -> Optional[List]:
                         "Nested OR in GPR — not expected in iJO1366"
                     )
                 elif isinstance(node.op, ast.And):
-                    return list(iproduct(*(
-                        _catalysts_in(child) for child in node.values
-                    )))
+                    return list(
+                        iproduct(*(_catalysts_in(child) for child in node.values))
+                    )
             case ast.Name:
                 return [node.id]
             case _:
@@ -682,6 +717,7 @@ def _catalysts_from_gpr(gpr: Any) -> Optional[List]:
 # ---------------------------------------------------------------------------
 # BiGG index dataclass  (NEW)
 # ---------------------------------------------------------------------------
+
 
 class BiggIndex:
     """
@@ -705,12 +741,13 @@ class BiggIndex:
                           # a complex is a frozenset of all subunit UniProt IDs
                   }
     """
+
     def __init__(self):
-        self.ec_to_rxns:       Dict[str, List[str]]      = {}
-        self.uniprot_to_rxns:  Dict[str, List[str]]      = {}
-        self.sub_mnx_to_rxns:  Dict[str, Set[str]]       = {}
-        self.prod_mnx_to_rxns: Dict[str, Set[str]]       = {}
-        self.rxn_details:      Dict[str, Dict]           = {}
+        self.ec_to_rxns: Dict[str, List[str]] = {}
+        self.uniprot_to_rxns: Dict[str, List[str]] = {}
+        self.sub_mnx_to_rxns: Dict[str, Set[str]] = {}
+        self.prod_mnx_to_rxns: Dict[str, Set[str]] = {}
+        self.rxn_details: Dict[str, Dict] = {}
 
 
 def _bigg_map_cobra(model_path: Path) -> BiggIndex:
@@ -755,22 +792,18 @@ def _bigg_map_cobra(model_path: Path) -> BiggIndex:
             raw_ec = rxn.annotation.get(ann_key)
             if raw_ec is None:
                 continue
-            for ec in ([raw_ec] if isinstance(raw_ec, str) else raw_ec):
+            for ec in [raw_ec] if isinstance(raw_ec, str) else raw_ec:
                 ec = ec.strip()
                 if ec:
                     ec_set.add(ec)
                     index.ec_to_rxns.setdefault(ec, []).append(rid)
 
         # --- Metabolites ---
-        sub_mnx:  FrozenSet[str] = frozenset(
-            mnx
-            for met in rxn.reactants
-            for mnx in _met_mnx(met)
+        sub_mnx: FrozenSet[str] = frozenset(
+            mnx for met in rxn.reactants for mnx in _met_mnx(met)
         )
         prod_mnx: FrozenSet[str] = frozenset(
-            mnx
-            for met in rxn.products
-            for mnx in _met_mnx(met)
+            mnx for met in rxn.products for mnx in _met_mnx(met)
         )
         for mnx in sub_mnx:
             index.sub_mnx_to_rxns.setdefault(mnx, set()).add(rid)
@@ -803,18 +836,20 @@ def _bigg_map_cobra(model_path: Path) -> BiggIndex:
                 index.uniprot_to_rxns.setdefault(uid, []).append(rid)
 
         index.rxn_details[rid] = {
-            "ec_numbers":       ec_set,
-            "sub_mnx":          sub_mnx,
-            "prod_mnx":         prod_mnx,
-            "reversible":       rxn.lower_bound < 0,
+            "ec_numbers": ec_set,
+            "sub_mnx": sub_mnx,
+            "prod_mnx": prod_mnx,
+            "reversible": rxn.lower_bound < 0,
             "catalyst_uniprots": catalyst_uniprots,
         }
 
     log.info(
         "  iJO1366 (COBRApy): %d reactions, %d EC entries, "
         "%d UniProt entries, %d substrate-MNXM entries",
-        len(model.reactions), len(index.ec_to_rxns),
-        len(index.uniprot_to_rxns), len(index.sub_mnx_to_rxns),
+        len(model.reactions),
+        len(index.ec_to_rxns),
+        len(index.uniprot_to_rxns),
+        len(index.sub_mnx_to_rxns),
     )
     return index
 
@@ -839,13 +874,13 @@ def _bigg_map_lxml(model_path: Path) -> BiggIndex:
     tree = etree.parse(str(model_path))
     root = tree.getroot()
 
-    SBML  = "http://www.sbml.org/sbml/level3/version1/core"
-    RDF   = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    BQ    = "http://biomodels.net/biology-qualifiers/"
-    FBC   = "http://www.sbml.org/sbml/level3/version1/fbc/version2"
+    SBML = "http://www.sbml.org/sbml/level3/version1/core"
+    RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    BQ = "http://biomodels.net/biology-qualifiers/"
+    FBC = "http://www.sbml.org/sbml/level3/version1/fbc/version2"
 
     def _strip_prefix(raw_id: str, prefix: str) -> str:
-        return raw_id[len(prefix):] if raw_id.startswith(prefix) else raw_id
+        return raw_id[len(prefix) :] if raw_id.startswith(prefix) else raw_id
 
     # --- Build species MetaNetX map ---
     species_mnx: Dict[str, Set[str]] = {}
@@ -875,7 +910,7 @@ def _bigg_map_lxml(model_path: Path) -> BiggIndex:
 
     for rxn_el in root.findall(f".//{{{SBML}}}reaction"):
         raw_id = rxn_el.get("id", "")
-        rid    = _strip_prefix(raw_id, "R_")
+        rid = _strip_prefix(raw_id, "R_")
         reversible = rxn_el.get("reversible", "false").lower() == "true"
 
         # EC numbers from reaction CVTerms
@@ -891,14 +926,18 @@ def _bigg_map_lxml(model_path: Path) -> BiggIndex:
         # Metabolites: reactants (negative stoichiometry) and products
         sub_mnx: Set[str] = set()
         prod_mnx: Set[str] = set()
-        for sr in rxn_el.findall(f".//{{{SBML}}}listOfReactants/{{{SBML}}}speciesReference"):
+        for sr in rxn_el.findall(
+            f".//{{{SBML}}}listOfReactants/{{{SBML}}}speciesReference"
+        ):
             sp_id = sr.get("species", "")
             sub_mnx.update(species_mnx.get(sp_id, set()))
-        for sr in rxn_el.findall(f".//{{{SBML}}}listOfProducts/{{{SBML}}}speciesReference"):
+        for sr in rxn_el.findall(
+            f".//{{{SBML}}}listOfProducts/{{{SBML}}}speciesReference"
+        ):
             sp_id = sr.get("species", "")
             prod_mnx.update(species_mnx.get(sp_id, set()))
 
-        sub_fs  = frozenset(sub_mnx)
+        sub_fs = frozenset(sub_mnx)
         prod_fs = frozenset(prod_mnx)
         for mnx in sub_fs:
             index.sub_mnx_to_rxns.setdefault(mnx, set()).add(rid)
@@ -908,23 +947,25 @@ def _bigg_map_lxml(model_path: Path) -> BiggIndex:
         # Gene products (any gene in the reaction)
         for gpr_ref in rxn_el.findall(f".//{{{FBC}}}geneProductRef"):
             raw_gp = gpr_ref.get("geneProduct", "")
-            uid    = gp_uniprot.get(raw_gp)
+            uid = gp_uniprot.get(raw_gp)
             if uid:
                 index.uniprot_to_rxns.setdefault(uid, []).append(rid)
 
         index.rxn_details[rid] = {
-            "ec_numbers":        ec_set,
-            "sub_mnx":           sub_fs,
-            "prod_mnx":          prod_fs,
-            "reversible":        reversible,
-            "catalyst_uniprots": None,   # not parsed without COBRApy
+            "ec_numbers": ec_set,
+            "sub_mnx": sub_fs,
+            "prod_mnx": prod_fs,
+            "reversible": reversible,
+            "catalyst_uniprots": None,  # not parsed without COBRApy
         }
 
     log.info(
         "  iJO1366 (lxml): %d reactions, %d EC entries, "
         "%d UniProt entries, %d substrate-MNXM entries",
-        len(index.rxn_details), len(index.ec_to_rxns),
-        len(index.uniprot_to_rxns), len(index.sub_mnx_to_rxns),
+        len(index.rxn_details),
+        len(index.ec_to_rxns),
+        len(index.uniprot_to_rxns),
+        len(index.sub_mnx_to_rxns),
     )
     return index
 
@@ -968,14 +1009,15 @@ _DEFAULT_PRECEDENCE = ("ec", "uniprot", "metabolites")
 #         return index.uniprot_to_rxns.get(uid, [])
 #     return []
 
-def _match_uniprot(row: pd.Series, index: BiggIndex, candidates:Optional[List]=None) -> List[str]:
+
+def _match_uniprot(
+    row: pd.Series, index: BiggIndex, candidates: Optional[List] = None
+) -> List[str]:
     """Return BiGG reaction IDs whose GPR contains the row's UniProt ID."""
     uid = str(row.get("uniprot_id", "")).strip()
     if uid and uid != "nan":
         hits = index.uniprot_to_rxns.get(uid, [])
-        return (hits
-                if candidates is None
-                else sorted(set(candidates) & set(hits)))
+        return hits if candidates is None else sorted(set(candidates) & set(hits))
     return candidates if candidates is not None else []
 
 
@@ -1004,7 +1046,10 @@ def _match_uniprot(row: pd.Series, index: BiggIndex, candidates:Optional[List]=N
 #     if not sab_sub and not sab_prod:
 #         return []
 
-def _match_metabolites(row: pd.Series, index: BiggIndex, candidates:Optional[List]=None) -> List[str]:
+
+def _match_metabolites(
+    row: pd.Series, index: BiggIndex, candidates: Optional[List] = None
+) -> List[str]:
     """
     Return BiGG reaction IDs whose substrate/product MetaNetX sets contain
     the row's measured substrates and products as subsets.
@@ -1018,19 +1063,21 @@ def _match_metabolites(row: pd.Series, index: BiggIndex, candidates:Optional[Lis
     the intersection of per-metabolite candidate sets is computed first,
     then the subset condition is verified.
     """
+
     def _parse_mnx(cell: Any) -> FrozenSet[str]:
         raw = str(cell) if pd.notna(cell) else ""
         ids = {x.strip() for x in raw.split(";") if x.strip() and x.strip() != "nan"}
         return frozenset(ids)
 
-    sab_sub  = _parse_mnx(row.get("substrate_mnx",  ""))
-    sab_prod = _parse_mnx(row.get("product_mnx",    ""))
+    sab_sub = _parse_mnx(row.get("substrate_mnx", ""))
+    sab_prod = _parse_mnx(row.get("product_mnx", ""))
 
     if not sab_sub and not sab_prod:
         return []
 
-    def _candidates_from_index(mnx_set: FrozenSet[str],
-                                inv: Dict[str, Set[str]]) -> Optional[Set[str]]:
+    def _candidates_from_index(
+        mnx_set: FrozenSet[str], inv: Dict[str, Set[str]]
+    ) -> Optional[Set[str]]:
         """Intersect candidate sets for each MNXM in mnx_set."""
         cands: Optional[Set[str]] = None
         for mnx in mnx_set:
@@ -1038,9 +1085,10 @@ def _match_metabolites(row: pd.Series, index: BiggIndex, candidates:Optional[Lis
             cands = rxns if cands is None else cands & rxns
         return cands  # None means mnx_set was empty
 
-    def _check_direction(sub: FrozenSet, prod: FrozenSet,
-                          sub_inv: Dict, prod_inv: Dict) -> Set[str]:
-        cands_s = _candidates_from_index(sub,  sub_inv)
+    def _check_direction(
+        sub: FrozenSet, prod: FrozenSet, sub_inv: Dict, prod_inv: Dict
+    ) -> Set[str]:
+        cands_s = _candidates_from_index(sub, sub_inv)
         cands_p = _candidates_from_index(prod, prod_inv)
 
         # Intersect substrate and product candidate sets
@@ -1055,9 +1103,9 @@ def _match_metabolites(row: pd.Series, index: BiggIndex, candidates:Optional[Lis
 
         # Verify subset condition
         hits: Set[str] = set()
-        for rid in (merged or set()):
+        for rid in merged or set():
             d = index.rxn_details.get(rid, {})
-            sub_ok  = (not sub)  or sub.issubset(d.get("sub_mnx",  frozenset()))
+            sub_ok = (not sub) or sub.issubset(d.get("sub_mnx", frozenset()))
             prod_ok = (not prod) or prod.issubset(d.get("prod_mnx", frozenset()))
             if sub_ok and prod_ok:
                 hits.add(rid)
@@ -1065,25 +1113,28 @@ def _match_metabolites(row: pd.Series, index: BiggIndex, candidates:Optional[Lis
 
     # Forward direction
     hits = _check_direction(
-        sab_sub, sab_prod,
-        index.sub_mnx_to_rxns, index.prod_mnx_to_rxns,
+        sab_sub,
+        sab_prod,
+        index.sub_mnx_to_rxns,
+        index.prod_mnx_to_rxns,
     )
 
     # Reverse direction (substrates ↔ products) for reversible reactions
     if not hits and (sab_sub or sab_prod):
         rev_hits = _check_direction(
-            sab_prod, sab_sub,
-            index.sub_mnx_to_rxns, index.prod_mnx_to_rxns,
+            sab_prod,
+            sab_sub,
+            index.sub_mnx_to_rxns,
+            index.prod_mnx_to_rxns,
         )
         # Only accept reverse hits if the matched reaction is flagged reversible
         hits = {
-            rid for rid in rev_hits
+            rid
+            for rid in rev_hits
             if index.rxn_details.get(rid, {}).get("reversible", False)
         }
 
-    return (sorted(hits)
-            if candidates is None
-            else sorted(set(hits) & set(candidates)))
+    return sorted(hits) if candidates is None else sorted(set(hits) & set(candidates))
 
 
 # def _match_ec(row: pd.Series, index: BiggIndex) -> List[str]:
@@ -1101,7 +1152,10 @@ def _match_metabolites(row: pd.Series, index: BiggIndex, candidates:Optional[Lis
 #             hits.update(rxn_ids)
 #     return sorted(hits)
 
-def _match_ec(row: pd.Series, index: BiggIndex, candidates:Optional[List]=None) -> List[str]:
+
+def _match_ec(
+    row: pd.Series, index: BiggIndex, candidates: Optional[List] = None
+) -> List[str]:
     """Return BiGG reaction IDs sharing the row's EC number (exact + prefix)."""
     ec_raw = str(row.get("ec_number", "")).strip()
     if not ec_raw or ec_raw == "nan":
@@ -1114,15 +1168,13 @@ def _match_ec(row: pd.Series, index: BiggIndex, candidates:Optional[List]=None) 
     for stored_ec, rxn_ids in index.ec_to_rxns.items():
         if stored_ec.startswith(stem):
             hits.update(rxn_ids)
-    return (sorted(hits)
-            if candidates is None
-            else sorted(set(hits) & set(candidates)))
+    return sorted(hits) if candidates is None else sorted(set(hits) & set(candidates))
 
 
 _STRATEGY_FN = {
-    "uniprot":    _match_uniprot,
+    "uniprot": _match_uniprot,
     "metabolites": _match_metabolites,
-    "ec":         _match_ec,
+    "ec": _match_ec,
 }
 
 
@@ -1151,16 +1203,16 @@ def add_bigg_ids(
     if unknown:
         raise ValueError(f"Unknown matching strategies: {unknown}")
 
-    bigg_ids_col:   List[str] = []
+    bigg_ids_col: List[str] = []
     match_basis_col: List[str] = []
 
     for _, row in df.iterrows():
-        matched_ids:   List[str] = []
+        matched_ids: List[str] = []
         matched_basis: List[str] = []
 
         hits = None
         for strategy in precedence:
-            fn      = _STRATEGY_FN[strategy]
+            fn = _STRATEGY_FN[strategy]
             next_hits = fn(row, index, candidates=hits)
             if len(next_hits) > 0:
                 hits = next_hits
@@ -1170,22 +1222,23 @@ def add_bigg_ids(
         matched_ids = hits if hits is not None else []
 
         bigg_ids_col.append(";".join(sorted(set(matched_ids))))
-        match_basis_col.append(">".join(matched_basis) if len(matched_basis) > 0 else "none")
+        match_basis_col.append(
+            ">".join(matched_basis) if len(matched_basis) > 0 else "none"
+        )
 
     n_matched = sum(b != "none" for b in match_basis_col)
     basis_counts = pd.Series(match_basis_col).value_counts().to_dict()
     log.info(
         "BiGG mapping: %d/%d rows matched. Basis breakdown: %s",
-        n_matched, len(df), basis_counts,
+        n_matched,
+        len(df),
+        basis_counts,
     )
-    log.info(
-        "%d unique reactions mapped.",
-        len(set(bigg_ids_col))
-    )
+    log.info("%d unique reactions mapped.", len(set(bigg_ids_col)))
 
     df = df.copy()
-    df["bigg_reaction_ids"]  = bigg_ids_col
-    df["bigg_match_basis"]   = match_basis_col
+    df["bigg_reaction_ids"] = bigg_ids_col
+    df["bigg_match_basis"] = match_basis_col
     return df
 
 
@@ -1204,9 +1257,9 @@ _LEAD_COLS = [
     "organism",
     "uniprot_id",
     "bigg_reaction_ids",
-    "bigg_match_basis",        # NEW
-    "substrate_mnx",           # NEW
-    "product_mnx",             # NEW
+    "bigg_match_basis",  # NEW
+    "substrate_mnx",  # NEW
+    "product_mnx",  # NEW
     "pH",
     "temperature_C",
     "buffer",
@@ -1223,14 +1276,13 @@ _LEAD_COLS = [
 
 def save_tsv(df: pd.DataFrame, path: str) -> None:
     """Coerce numeric columns and write to TSV with canonical column ordering."""
-    for col in ("kcat_value", "kcat_value_end", "kcat_maximum",
-                "pH", "temperature_C"):
+    for col in ("kcat_value", "kcat_value_end", "kcat_maximum", "pH", "temperature_C"):
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
     present_lead = [c for c in _LEAD_COLS if c in df.columns]
-    rest         = [c for c in df.columns if c not in present_lead]
-    df           = df[present_lead + rest]
+    rest = [c for c in df.columns if c not in present_lead]
+    df = df[present_lead + rest]
 
     df.to_csv(path, sep="\t", index=False)
     log.info("Saved %d rows → %s", len(df), path)
@@ -1239,6 +1291,7 @@ def save_tsv(df: pd.DataFrame, path: str) -> None:
 # ============================================================
 # CLI  (MODIFIED: added --match-precedence, --skip-participants)
 # ============================================================
+
 
 def _build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
@@ -1249,33 +1302,41 @@ def _build_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     p.add_argument(
-        "--brenda-email", default=None,
+        "--brenda-email",
+        default=None,
         help="BRENDA account e-mail. Required for BRENDA queries.",
     )
     p.add_argument(
-        "--brenda-password", default=None,
+        "--brenda-password",
+        default=None,
         help="BRENDA account password.",
     )
     p.add_argument(
-        "--organism", default="Escherichia coli",
+        "--organism",
+        default="Escherichia coli",
         help="Organism name as it appears in BRENDA/SABIO-RK.",
     )
-    p.add_argument("--skip-brenda",   action="store_true", help="Skip BRENDA query.")
-    p.add_argument("--skip-sabiork",  action="store_true", help="Skip SABIO-RK query.")
+    p.add_argument("--use-cached", action="store_true", help="Use cached kcat values (if they exist).")
+    p.add_argument("--skip-brenda", action="store_true", help="Skip BRENDA query.")
+    p.add_argument("--skip-sabiork", action="store_true", help="Skip SABIO-RK query.")
     p.add_argument(
-        "--skip-bigg", action="store_true",
+        "--skip-bigg",
+        action="store_true",
         help="Skip BiGG ID mapping (avoids downloading iJO1366).",
     )
     p.add_argument(
-        "--cache-dir", default="data/",
+        "--cache-dir",
+        default="data/",
         help="Directory to cache stored data from previous runs.",
     )
     p.add_argument(
-        "--output", default="data/ecoli_kcat.tsv",
+        "--output",
+        default="data/ecoli_kcat.tsv",
         help="Output TSV file.",
     )
     p.add_argument(
-        "--log-level", default="INFO",
+        "--log-level",
+        default="INFO",
         choices=["DEBUG", "INFO", "WARNING", "ERROR"],
     )
     # NEW arguments
@@ -1323,7 +1384,7 @@ def main() -> None:
     # ── SABIO-RK ──────────────────────────────────────────
     sab: pd.DataFrame = pd.DataFrame()
     if not args.skip_sabiork:
-        sab = fetch_sabiork(args.organism)
+        sab = fetch_sabiork(args.organism, cache_dir, args.use_cached)
         if not sab.empty:
             frames.append(sab)
 
@@ -1359,12 +1420,12 @@ def main() -> None:
         and "sabiork_reaction_id" in sab.columns
     ):
         rid_series = (
-            combined["sabiork_reaction_id"]
-            .dropna()
-            .apply(lambda x: int(float(x)))
+            combined["sabiork_reaction_id"].dropna().apply(lambda x: int(float(x)))
         )
         unique_rids = sorted(rid_series.unique().tolist())
-        log.info("Fetching participants for %d unique SABIO-RK reactions …", len(unique_rids))
+        log.info(
+            "Fetching participants for %d unique SABIO-RK reactions …", len(unique_rids)
+        )
 
         participants = fetch_sabiork_reaction_participants(unique_rids, cache_dir)
         chebi_to_mnx, kegg_to_mnx = build_metanetx_chebi_map(cache_dir)
@@ -1381,10 +1442,10 @@ def main() -> None:
     # ── BiGG mapping ──────────────────────────────────────
     if not args.skip_bigg:
         bigg_index = build_bigg_maps(cache_dir)
-        combined   = add_bigg_ids(combined, bigg_index, precedence=precedence)
+        combined = add_bigg_ids(combined, bigg_index, precedence=precedence)
     else:
         combined["bigg_reaction_ids"] = ""
-        combined["bigg_match_basis"]  = "none"
+        combined["bigg_match_basis"] = "none"
 
     save_tsv(combined, args.output)
     log.info("Done.")
