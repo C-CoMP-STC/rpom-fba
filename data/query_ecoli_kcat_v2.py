@@ -13,10 +13,7 @@ the iJO1366 E. coli K-12 genome-scale metabolic model for downstream FBA use.
 
 Dependencies
 ------------
-    pip install requests pandas zeep lxml
-
-Optional (preferred for BiGG mapping):
-    pip install cobra          # COBRApy; falls back to lxml SBML parser if absent
+    pip install cobra          # COBRApy
 
 Usage
 -----
@@ -813,7 +810,6 @@ def _bigg_map_cobra(model_path: Path, cache_dir: Path = Path(".")) -> BiggIndex:
     - Catalyst UniProt IDs by resolving GPR gene b-numbers via
       ``gene.annotation["uniprot"]`` (s0001 is skipped — empty annotation)
     """
-    import cobra.io  # type: ignore
 
     log.info("Parsing iJO1366 SBML with COBRApy …")
     model = cobra.io.read_sbml_model(str(model_path))
@@ -910,122 +906,6 @@ def _bigg_map_cobra(model_path: Path, cache_dir: Path = Path(".")) -> BiggIndex:
     return index
 
 
-def _bigg_map_lxml(model_path: Path) -> BiggIndex:
-    """
-    Fallback BiGG index builder using lxml only (no COBRApy needed).
-
-    Extracts MetaNetX IDs from SBML species CVTerm annotations
-    (``identifiers.org/metanetx.chemical/…``) and UniProt IDs from gene-
-    product annotations (``identifiers.org/uniprot/…``).
-    EC numbers come from reaction CVTerms (``identifiers.org/ec-code/…``).
-
-    Note: GPR parsing for catalyst-level UniProt grouping is not attempted
-    here — the ``catalyst_uniprots`` field will be ``None`` for all reactions.
-    UniProt-based matching still works at the any-gene-in-reaction level via
-    ``uniprot_to_rxns``.
-    """
-    from lxml import etree  # type: ignore
-
-    log.info("Parsing iJO1366 SBML with lxml …")
-    tree = etree.parse(str(model_path))
-    root = tree.getroot()
-
-    SBML = "http://www.sbml.org/sbml/level3/version1/core"
-    RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    BQ = "http://biomodels.net/biology-qualifiers/"
-    FBC = "http://www.sbml.org/sbml/level3/version1/fbc/version2"
-
-    def _strip_prefix(raw_id: str, prefix: str) -> str:
-        return raw_id[len(prefix) :] if raw_id.startswith(prefix) else raw_id
-
-    # --- Build species MetaNetX map ---
-    species_mnx: Dict[str, Set[str]] = {}
-    for sp in root.findall(f".//{{{SBML}}}species"):
-        sp_id = sp.get("id", "")
-        mnx_ids: Set[str] = set()
-        for li in sp.findall(f".//{{{BQ}}}is//{{{RDF}}}li"):
-            uri = li.get(f"{{{RDF}}}resource", "")
-            if "metanetx.chemical" in uri:
-                mnx_ids.add(uri.rstrip("/").rsplit("/", 1)[-1])
-        if mnx_ids:
-            species_mnx[sp_id] = mnx_ids
-
-    # --- Build gene-product UniProt map ---
-    gp_uniprot: Dict[str, str] = {}
-    for gp in root.findall(f".//{{{FBC}}}geneProduct"):
-        gp_id = gp.get("id", "")
-        for li in gp.findall(f".//{{{BQ}}}is//{{{RDF}}}li"):
-            uri = li.get(f"{{{RDF}}}resource", "")
-            if "uniprot" in uri.lower():
-                uniprot = uri.rstrip("/").rsplit("/", 1)[-1]
-                gp_uniprot[gp_id] = uniprot
-                break
-
-    # --- Parse reactions ---
-    index = BiggIndex()
-
-    for rxn_el in root.findall(f".//{{{SBML}}}reaction"):
-        raw_id = rxn_el.get("id", "")
-        rid = _strip_prefix(raw_id, "R_")
-        reversible = rxn_el.get("reversible", "false").lower() == "true"
-
-        # EC numbers from reaction CVTerms
-        ec_set: Set[str] = set()
-        for li in rxn_el.findall(f".//{{{BQ}}}is//{{{RDF}}}li"):
-            uri = li.get(f"{{{RDF}}}resource", "")
-            if "ec-code" in uri or "enzyme" in uri:
-                ec = uri.rstrip("/").rsplit("/", 1)[-1]
-                if ec:
-                    ec_set.add(ec)
-                    index.ec_to_rxns.setdefault(ec, []).append(rid)
-
-        # Metabolites: reactants (negative stoichiometry) and products
-        sub_mnx: Set[str] = set()
-        prod_mnx: Set[str] = set()
-        for sr in rxn_el.findall(
-            f".//{{{SBML}}}listOfReactants/{{{SBML}}}speciesReference"
-        ):
-            sp_id = sr.get("species", "")
-            sub_mnx.update(species_mnx.get(sp_id, set()))
-        for sr in rxn_el.findall(
-            f".//{{{SBML}}}listOfProducts/{{{SBML}}}speciesReference"
-        ):
-            sp_id = sr.get("species", "")
-            prod_mnx.update(species_mnx.get(sp_id, set()))
-
-        sub_fs = frozenset(sub_mnx)
-        prod_fs = frozenset(prod_mnx)
-        for mnx in sub_fs:
-            index.sub_mnx_to_rxns.setdefault(mnx, set()).add(rid)
-        for mnx in prod_fs:
-            index.prod_mnx_to_rxns.setdefault(mnx, set()).add(rid)
-
-        # Gene products (any gene in the reaction)
-        for gpr_ref in rxn_el.findall(f".//{{{FBC}}}geneProductRef"):
-            raw_gp = gpr_ref.get("geneProduct", "")
-            uid = gp_uniprot.get(raw_gp)
-            if uid:
-                index.uniprot_to_rxns.setdefault(uid, []).append(rid)
-
-        index.rxn_details[rid] = {
-            "ec_numbers": ec_set,
-            "sub_mnx": sub_fs,
-            "prod_mnx": prod_fs,
-            "reversible": reversible,
-            "catalyst_uniprots": None,  # not parsed without COBRApy
-        }
-
-    log.info(
-        "  iJO1366 (lxml): %d reactions, %d EC entries, "
-        "%d UniProt entries, %d substrate-MNXM entries",
-        len(index.rxn_details),
-        len(index.ec_to_rxns),
-        len(index.uniprot_to_rxns),
-        len(index.sub_mnx_to_rxns),
-    )
-    return index
-
-
 def build_bigg_maps(cache_dir: Path = Path(".")) -> BiggIndex:
     """
     Download (once) and cache iJO1366, then build and return a ``BiggIndex``.
@@ -1043,11 +923,7 @@ def build_bigg_maps(cache_dir: Path = Path(".")) -> BiggIndex:
     else:
         log.info("Using cached iJO1366 model at %s", model_path)
 
-    try:
-        return _bigg_map_cobra(model_path, cache_dir)
-    except ImportError:
-        log.warning("COBRApy not found; falling back to lxml SBML parser.")
-        return _bigg_map_lxml(model_path)
+    return _bigg_map_cobra(model_path, cache_dir)
 
 
 # ============================================================
