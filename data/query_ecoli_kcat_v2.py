@@ -1325,8 +1325,6 @@ def main() -> None:
 
     # ── BiGG mapping ──────────────────────────────────────
     if not args.skip_bigg:
-        # Since metabolite IDs in iJO1366 may be outdated, map to latest IDs
-
         bigg_index = build_bigg_maps(cache_dir)
         combined = add_bigg_ids(combined, bigg_index, precedence=precedence)
     else:
