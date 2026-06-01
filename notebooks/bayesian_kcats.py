@@ -184,6 +184,12 @@ def _(Counter, add, ecoli, reduce):
 
 
 @app.cell
+def _(Counter, add, ecoli, reduce):
+    reduce(add, [Counter(_met.annotation.keys()) for _met in ecoli.metabolites])
+    return
+
+
+@app.cell
 def _(ecoli):
     ecoli.genes.get_by_id("s0001")
     return
@@ -192,6 +198,58 @@ def _(ecoli):
 @app.cell
 def _(ecoli):
     [_gene for _gene in ecoli.genes if "uniprot" not in _gene.annotation]
+    return
+
+
+@app.cell
+def _(ecoli):
+    ecoli.reactions.get_by_id("CYSTRS")
+
+    for _r in ecoli.metabolites.pyr_c.reactions:
+        if ecoli.metabolites.aspsa_c in _r.metabolites:
+            print(f"{_r}")
+
+    # [m for m in ecoli.metabolites if "semialdehyde" in m.name.lower()]
+    return
+
+
+@app.cell
+def _(ecoli):
+    ecoli.reactions.DHDPS
+    return
+
+
+@app.cell
+def _(ecoli):
+    ecoli.genes.b2478.annotation
+    return
+
+
+@app.cell
+def _(ecoli):
+    [(met.name, met.annotation["metanetx.chemical"]) for met in ecoli.reactions.get_by_id("DHDPS").metabolites]
+    return
+
+
+@app.cell
+def _(ecoli):
+    ecoli.genes.get_by_id("b0526").annotation
+    return
+
+
+@app.cell
+def _(Counter, ecoli):
+    prefs = Counter()
+    for _r in ecoli.reactions:
+        _ec = _r.annotation.get("ec-code", [])
+        if isinstance(_ec, str):
+            _ec = [_ec]
+        prefs += Counter(
+            ".".join(_e.split(".")[:2])
+            for _e in _ec
+        )
+
+    prefs
     return
 
 
