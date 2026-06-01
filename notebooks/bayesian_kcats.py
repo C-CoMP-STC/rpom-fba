@@ -79,7 +79,6 @@ def _(mo):
 @app.cell
 def _(load_model):
     ecoli = load_model("iJO1366")
-
     return (ecoli,)
 
 
@@ -250,6 +249,14 @@ def _(Counter, ecoli):
         )
 
     prefs
+    return
+
+
+@app.cell
+def _(ecoli):
+    _s = ecoli.optimize()
+
+    _s.fluxes[_s.fluxes >= 0.9]
     return
 
 

@@ -842,6 +842,18 @@ def _bigg_map_cobra(model_path: Path, cache_dir: Path = Path(".")) -> BiggIndex:
         return {raw} if isinstance(raw, str) else set(raw)
 
     for rxn in model.reactions:
+        # Skip boundary reactions (demands and exchanges)
+        if rxn.boundary:
+            continue
+
+        # Skip ATP maintenance and biomass reactions
+        if rxn.id in {"ATPM", "BIOMASS_Ec_iJO1366_core_53p95M"}:
+            continue
+
+        # Skip simple diffusion reactions from external to periplasmic compartment
+        if rxn.id.endswith("tex") and len(rxn.metabolites) == 2:
+            continue
+        
         rid = rxn.id
 
         # --- EC numbers ---
@@ -975,21 +987,28 @@ def _ec_matches(ec_raw: str, ec_set: Set[str]) -> bool:
     return any(stored.startswith(stem) for stored in ec_set)
 
 
-def _score_ec(ec_raw: str, sab_has_ec: bool, rxn_detail: Dict) -> float:
+def _score_ec(sab_ecs: list[str], sab_has_ec: bool, rxn_detail: Dict) -> float:
     """
     EC score:
       • 0  if SABIO has no EC, or iJO1366 reaction has no EC
-      • 1 * n/4 for a full match (or including against a partial EC number),
+      • 1 * n/4 for a full match (including against a partial EC number),
         where n is the number of parts to the EC number supplied on the SABIO side.
     """
     rxn_has_ec = bool(rxn_detail["ec_numbers"])
     if not sab_has_ec or not rxn_has_ec:
         return 0.0
     
-    score = 1.0 if _ec_matches(ec_raw, rxn_detail["ec_numbers"]) else 0.0
+    max_score = 0
+    for ec in sab_ecs:
+        score = 1.0 if _ec_matches(ec, rxn_detail["ec_numbers"]) else 0.0
+        parts_sabio = ec.rstrip(".-").split(".")
 
-    parts_sabio = ec_raw.rstrip(".-").split(".")
-    return score * len(parts_sabio) / 4
+        score *= len(parts_sabio) / 4
+
+        if score > max_score:
+            max_score = score
+
+    return max_score
 
 
 def _score_uniprot(sab_up: FrozenSet[str], rxn_detail: Dict) -> float:
@@ -1054,9 +1073,8 @@ def add_bigg_ids(
 
     Strategy score definitions
     --------------------------
-    S_ec         Binary (0 or 1).  1 if the EC numbers match (exact or prefix
-                 match), or if either side lacks an EC annotation.  0 only when
-                 both sides have EC numbers that disagree.
+    S_ec         1 * n/4 points for a full match (including against a partial EC number),
+                 where n is the number of parts to the EC number supplied on the SABIO side.
 
     S_uniprot    Jaccard(sab_uniprot_set, rxn_uniprot_set).  The SABIO side is
                  at most a singleton (one UniProt ID per kinetic entry).  J(∅,∅)
@@ -1095,9 +1113,10 @@ def add_bigg_ids(
         # ── Pre-parse row-level data ──────────────────────────────────────
         ec_raw      = str(row.get("ec_number", "")).strip()
         sab_has_ec  = bool(ec_raw) and ec_raw != "nan"
+        sab_ecs     = ec_raw.split(" ")
 
         uid_raw = str(row.get("uniprot_id", "")).strip()
-        sab_up  = frozenset({uid_raw}) if uid_raw and uid_raw != "nan" else frozenset()
+        sab_up  = frozenset(uid_raw.split(" ")) if uid_raw and uid_raw != "nan" else frozenset()
 
         sab_sub  = _parse_mnx_set(row.get("substrate_mnx", ""))
         sab_prod = _parse_mnx_set(row.get("product_mnx",   ""))
@@ -1113,8 +1132,8 @@ def add_bigg_ids(
         for rid in all_rxn_ids:
             d = index.rxn_details[rid]
 
-            s_ec  = _score_ec(ec_raw, sab_has_ec, d)        if w_ec  > 0 else 0.0
-            s_up  = _score_uniprot(sab_up, d)               if w_up  > 0 else 0.0
+            s_ec  = _score_ec(sab_ecs, sab_has_ec, d)        if w_ec  > 0 else 0.0
+            s_up  = _score_uniprot(sab_up, d)                if w_up  > 0 else 0.0
             s_met = _score_metabolites(sab_sub, sab_prod, d) if w_met > 0 else 0.0
 
             s_ec_arr.append(s_ec)
