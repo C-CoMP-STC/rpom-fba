@@ -13,16 +13,27 @@ def _():
 
 @app.cell
 def _():
+    import re
     import numpy as np
     import matplotlib.pyplot as plt
     import pandas as pd
     import pymc as pm
     import arviz as az
 
+    from collections import defaultdict
     from cobra.io import load_model
     from scipy.stats import norm, lognorm, beta, gmean
+    from sklearn.decomposition import PCA
 
-    return load_model, pd
+    return PCA, defaultdict, load_model, np, pd, plt, re
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    # Exploratory Analysis and Data Cleaning
+    """)
+    return
 
 
 @app.cell
@@ -30,20 +41,127 @@ def _(pd):
     # Load kcats, subset to E. coli wild-type
     kcats = pd.read_csv("data/ecoli_kcat.tsv", sep="\t")
 
-    # Load mapping of ecocyc gene ids to accessions, reactions
-    ecocyc_genes_to_accessions = pd.read_csv("notebooks/data/EcoCyc_genes_to_reactions.tsv", sep="\t")
-    ecocyc_genes_to_accessions["Reactions of gene"] = ecocyc_genes_to_accessions["Reactions of gene"].str.split(" // ")
+    # # Load mapping of ecocyc gene ids to accessions, reactions
+    # ecocyc_genes_to_accessions = pd.read_csv("notebooks/data/EcoCyc_genes_to_reactions.tsv", sep="\t")
+    # ecocyc_genes_to_accessions["Reactions of gene"] = ecocyc_genes_to_accessions["Reactions of gene"].str.split(" // ")
 
-    # Load Schmidt proteome dataset, merge in accessions
-    prot = pd.read_csv("notebooks/data/schmidt2015_javier_table.tsv", sep="\t")
-    prot = prot.merge(ecocyc_genes_to_accessions, left_on="EcoCycID", right_on="Gene Name")
-    prot
+    # # Load Schmidt proteome dataset, merge in accessions
+    # prot = pd.read_csv("notebooks/data/schmidt2015_javier_table.tsv", sep="\t")
+    # prot = prot.merge(ecocyc_genes_to_accessions, left_on="EcoCycID", right_on="Gene Name")
+    # prot
     return (kcats,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### Matches per Entry
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    n_entries_cutoff = mo.ui.slider(1, 300, 1, 10, label="Cutoff", show_value=True)
+    n_entries_cutoff
+    return (n_entries_cutoff,)
+
+
+@app.cell(hide_code=True)
+def _(kcats, n_entries_cutoff, np, plt):
+    _n_matches = kcats["bigg_reaction_ids"].str.split(";").apply(lambda x: len(x) if isinstance(x, list) else 0)
+    kcats["exclude"] = _n_matches > n_entries_cutoff.value
+
+    _fig, _ax = plt.subplots()
+    (_hist, _, _) = _ax.hist(_n_matches[_n_matches <= n_entries_cutoff.value], bins=np.arange(_n_matches.max() + 1))
+    _ax.hist(_n_matches[_n_matches > n_entries_cutoff.value], bins=np.arange(_n_matches.max() + 1), color="tab:red")
+    _ax.vlines(n_entries_cutoff.value, 0, _hist.max(), color="tab:orange", linestyle="--")
+    # _ax.set_xlim(1, 20)
+    _ax.set_yscale("log")
+
+    _ax.set_xlabel("# Matching BiGG rxns")
+    _ax.set_ylabel("# SABIO-RK Entries")
+
+    _fig.set_size_inches(4, 2)
+    _fig.tight_layout()
+    _fig
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### Kcats per reaction
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### Score Distributions
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(defaultdict, kcats, pd, plt, re):
+    def unroll_bigg_match_basis(basis):
+        pat = "(ec:(?P<ec>\d\.\d+))?\+?(uniprot:(?P<up>\d\.\d+))?\+?(metabolites:(?P<met>\d\.\d+))?=(?P<score>\d\.\d+)"
+
+        match = re.match(pat, basis)
+        if match is None:
+            return defaultdict(int)
+        else:
+            return defaultdict(
+                int,
+                **{
+                    group: float(value) if value is not None else 0.0
+                    for group, value in match.groupdict().items()
+                },
+            )
+
+    kcat_scores = pd.json_normalize(kcats["bigg_match_basis"].apply(unroll_bigg_match_basis))
+
+    _fig, _axs = plt.subplots(2, 1)
+    _axs[0].hist(kcat_scores["ec"].values, bins=20, alpha=0.75, label="EC #")
+    _axs[0].hist(kcat_scores["up"].values, bins=20, alpha=0.75, label="Uniprot")
+    _axs[0].hist(kcat_scores["met"].values, bins=20, alpha=0.75, label="Metabolites", zorder=-1)
+
+    _axs[1].hist(kcat_scores["score"].values, bins=50, label="Total Score")
+    _ax_box = _axs[1].twinx()
+    _ax_box.boxplot(kcat_scores["score"][~kcat_scores["score"].isna()], orientation="horizontal", boxprops={"color": "tab:red"})
+
+    _axs[0].legend()
+    _axs[1].legend()
+    _fig.set_size_inches(6, 3)
+    _fig.tight_layout()
+    _fig
+    return (kcat_scores,)
+
+
+@app.cell(hide_code=True)
+def _(PCA, kcat_scores, plt):
+    _pca = PCA(n_components=2).fit(kcat_scores[["ec", "up", "met"]].dropna())
+    _scores_reduced = _pca.transform(kcat_scores[["ec", "up", "met"]].dropna())
+
+    _fig, _ax = plt.subplots()
+    _ax.scatter(_scores_reduced[:,0], _scores_reduced[:,1], alpha = 0.25 * kcat_scores["ec"].dropna(), label="ec")
+    _ax.scatter(_scores_reduced[:,0], _scores_reduced[:,1], alpha = 0.25 * kcat_scores["up"].dropna(), label="up")
+    _ax.scatter(_scores_reduced[:,0], _scores_reduced[:,1], alpha = 0.5 * kcat_scores["met"].dropna(), label="met", zorder=-1)
+
+    _ax.set_title("Scores PCA")
+    _ax.legend()
+
+    _fig.set_size_inches(3, 3)
+    _fig.tight_layout()
+    _fig
+    return
 
 
 @app.cell
 def _(kcats):
-    kcats["bigg_reaction_ids"].value_counts()
+    kcats
     return
 
 

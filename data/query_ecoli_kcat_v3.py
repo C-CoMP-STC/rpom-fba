@@ -983,8 +983,22 @@ def _ec_matches(ec_raw: str, ec_set: Set[str]) -> bool:
     """True if ec_raw exactly equals, or is a prefix of, any EC in ec_set."""
     if ec_raw in ec_set:
         return True
-    stem = ec_raw.rstrip("-").rstrip(".")
-    return any(stored.startswith(stem) for stored in ec_set)
+    # stem = ec_raw.rstrip("-").rstrip(".")
+    # return any(stored.startswith(stem) for stored in ec_set)
+
+    has_match = False
+    for ec_right in ec_set:
+        matches = True
+        for part_left, part_right in zip(ec_raw.split("."), ec_right.split(".")):
+            if part_left == "-":
+                break
+            if part_left != part_right:
+                matches = False
+        
+        if matches:
+            has_match = True
+    
+    return has_match
 
 
 def _score_ec(sab_ecs: list[str], sab_has_ec: bool, rxn_detail: Dict) -> float:
