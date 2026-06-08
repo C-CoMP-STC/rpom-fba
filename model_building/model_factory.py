@@ -1,5 +1,7 @@
 import json
 import os
+import pandas as pd
+
 from argparse import ArgumentParser
 
 from cobra.io import read_sbml_model, write_sbml_model, save_json_model
@@ -60,8 +62,58 @@ class ModelFactory:
             os.makedirs(os.path.dirname(out), exist_ok=True)
             write_sbml_model(model, out)
             save_json_model(model, out.replace(".xml", ".json"))
+            
+            # Save spreadsheet version of model
+            reactions_df, metabolites_df, genes_df = model_to_dfs(model)
+            with pd.ExcelWriter(out.replace(".xml", ".xlsx")) as writer:
+                reactions_df.to_excel(writer, sheet_name="Reactions", index=False)
+                metabolites_df.to_excel(writer, sheet_name="Metabolites", index=False)
+                genes_df.to_excel(writer, sheet_name="Genes", index=False)
 
         return model
+
+
+def model_to_dfs(model):
+    reactions_df = pd.DataFrame([
+        {
+            "ID": reaction.id,
+            "name": reaction.name,
+            "gpr": reaction.gene_reaction_rule,
+            "reaction": reaction.reaction,
+            "lb": reaction.lower_bound,
+            "ub": reaction.upper_bound,
+            **{f"notes__{key}" : value for key, value in reaction.notes.items()},
+            **{f"annotation__{key}" : value for key, value in reaction.annotation.items()}
+        }
+        for reaction in model.reactions
+    ])
+
+    metabolites_df = pd.DataFrame([
+        {
+            "ID": metabolite.id,
+            "name": metabolite.name,
+            "formula": metabolite.formula,
+            "compartment": metabolite.compartment,
+            "charge": metabolite.charge,
+            "reactions": ", ".join(rxn.id for rxn in metabolite.reactions),
+            **{f"notes__{key}": value for key, value in metabolite.notes.items()},
+            **{f"annotation__{key}": value for key, value in metabolite.annotation.items()}
+        }
+        for metabolite in model.metabolites
+    ])
+
+    genes_df = pd.DataFrame([
+        {
+            "ID": gene.id,
+            "name": gene.name,
+            "reactions": ", ".join(rxn.id for rxn in gene.reactions),
+            **{f"notes__{key}": value for key, value in gene.notes.items()},
+            **{f"annotation__{key}": value for key, value in gene.annotation.items()}
+        }
+        for gene in model.genes
+    ])
+
+    return reactions_df, metabolites_df, genes_df
 
 
 def rebuild_and_get_model(config_file=DEFAULT_CONFIG, model_out=DEFAULT_MODEL):

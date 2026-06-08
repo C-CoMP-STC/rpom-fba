@@ -3,7 +3,7 @@
   <model metaid="meta_Rpom_05" id="Rpom_05" fbc:strict="true">
     <notes>
       <html xmlns="http://www.w3.org/1999/xhtml">
-        <p>git-hash: 94be78c245e0c3c897c01c220f0eecd3919b99f7</p>
+        <p>git-hash: 838269c1b442f441d752bc6259fbbf9e399ec7e3</p>
       </html>
     </notes>
     <listOfUnitDefinitions>
@@ -43931,101 +43931,79 @@
     </fbc:listOfObjectives>
     <fbc:listOfGeneProducts>
       <fbc:geneProduct fbc:id="G_SPO0283" fbc:name="G_SPO0283" fbc:label="G_SPO0283"/>
-      <fbc:geneProduct fbc:id="G_SPO0369" fbc:name="G_SPO0369" fbc:label="G_SPO0369"/>
-      <fbc:geneProduct fbc:id="G_SPO0339" fbc:name="G_SPO0339" fbc:label="G_SPO0339"/>
       <fbc:geneProduct fbc:id="G_SPO1979" fbc:name="G_SPO1979" fbc:label="G_SPO1979"/>
+      <fbc:geneProduct fbc:id="G_SPO0369" fbc:name="G_SPO0369" fbc:label="G_SPO0369"/>
       <fbc:geneProduct fbc:id="G_SPO2451" fbc:name="G_SPO2451" fbc:label="G_SPO2451"/>
-      <fbc:geneProduct fbc:id="G_SPOA0260" fbc:name="G_SPOA0260" fbc:label="G_SPOA0260"/>
+      <fbc:geneProduct fbc:id="G_SPO0339" fbc:name="G_SPO0339" fbc:label="G_SPO0339"/>
       <fbc:geneProduct fbc:id="G_SPOA0243" fbc:name="G_SPOA0243" fbc:label="G_SPOA0243"/>
+      <fbc:geneProduct fbc:id="G_SPOA0260" fbc:name="G_SPOA0260" fbc:label="G_SPOA0260"/>
       <fbc:geneProduct fbc:id="G_SPO1514" fbc:name="G_SPO1514" fbc:label="G_SPO1514"/>
       <fbc:geneProduct fbc:id="G_SPO2572" fbc:name="G_SPO2572" fbc:label="G_SPO2572"/>
       <fbc:geneProduct fbc:id="G_SPO2573" fbc:name="G_SPO2573" fbc:label="G_SPO2573"/>
       <fbc:geneProduct fbc:id="G_SPO2571" fbc:name="G_SPO2571" fbc:label="G_SPO2571"/>
       <fbc:geneProduct fbc:id="G_SPO2997" fbc:name="G_SPO2997" fbc:label="G_SPO2997"/>
-      <fbc:geneProduct fbc:id="G_SPO2995" fbc:name="G_SPO2995" fbc:label="G_SPO2995"/>
       <fbc:geneProduct fbc:id="G_SPO2996" fbc:name="G_SPO2996" fbc:label="G_SPO2996"/>
+      <fbc:geneProduct fbc:id="G_SPO2995" fbc:name="G_SPO2995" fbc:label="G_SPO2995"/>
       <fbc:geneProduct fbc:id="G_SPO2998" fbc:name="G_SPO2998" fbc:label="G_SPO2998"/>
       <fbc:geneProduct fbc:id="G_SPO1087" fbc:name="G_SPO1087" fbc:label="G_SPO1087"/>
       <fbc:geneProduct fbc:id="G_SPO0184" fbc:name="G_SPO0184" fbc:label="G_SPO0184"/>
-      <fbc:geneProduct fbc:id="G_SPO0186" fbc:name="G_SPO0186" fbc:label="G_SPO0186"/>
       <fbc:geneProduct fbc:id="G_SPO0185" fbc:name="G_SPO0185" fbc:label="G_SPO0185"/>
-      <fbc:geneProduct fbc:id="G_SPO3041" fbc:name="G_SPO3041" fbc:label="G_SPO3041"/>
+      <fbc:geneProduct fbc:id="G_SPO0186" fbc:name="G_SPO0186" fbc:label="G_SPO0186"/>
       <fbc:geneProduct fbc:id="G_SPO3042" fbc:name="G_SPO3042" fbc:label="G_SPO3042"/>
-      <fbc:geneProduct fbc:id="G_SPO3040" fbc:name="G_SPO3040" fbc:label="G_SPO3040"/>
       <fbc:geneProduct fbc:id="G_SPO3043" fbc:name="G_SPO3043" fbc:label="G_SPO3043"/>
+      <fbc:geneProduct fbc:id="G_SPO3040" fbc:name="G_SPO3040" fbc:label="G_SPO3040"/>
+      <fbc:geneProduct fbc:id="G_SPO3041" fbc:name="G_SPO3041" fbc:label="G_SPO3041"/>
       <fbc:geneProduct fbc:id="G_SPO3039" fbc:name="G_SPO3039" fbc:label="G_SPO3039"/>
       <fbc:geneProduct fbc:id="G_SPO0592" fbc:name="G_SPO0592" fbc:label="G_SPO0592"/>
-      <fbc:geneProduct fbc:id="G_SPO0593" fbc:name="G_SPO0593" fbc:label="G_SPO0593"/>
       <fbc:geneProduct fbc:id="G_SPO0591" fbc:name="G_SPO0591" fbc:label="G_SPO0591"/>
+      <fbc:geneProduct fbc:id="G_SPO0593" fbc:name="G_SPO0593" fbc:label="G_SPO0593"/>
       <fbc:geneProduct fbc:id="G_SPO3186" fbc:name="G_SPO3186" fbc:label="G_SPO3186"/>
+      <fbc:geneProduct fbc:id="G_SPO1146" fbc:name="G_SPO1146" fbc:label="G_SPO1146"/>
       <fbc:geneProduct fbc:id="G_SPO1145" fbc:name="G_SPO1145" fbc:label="G_SPO1145"/>
       <fbc:geneProduct fbc:id="G_SPO1147" fbc:name="G_SPO1147" fbc:label="G_SPO1147"/>
-      <fbc:geneProduct fbc:id="G_SPO1146" fbc:name="G_SPO1146" fbc:label="G_SPO1146"/>
       <fbc:geneProduct fbc:id="G_SPO2627" fbc:name="G_SPO2627" fbc:label="G_SPO2627"/>
-      <fbc:geneProduct fbc:id="G_SPO2628" fbc:name="G_SPO2628" fbc:label="G_SPO2628"/>
       <fbc:geneProduct fbc:id="G_SPO2630" fbc:name="G_SPO2630" fbc:label="G_SPO2630"/>
       <fbc:geneProduct fbc:id="G_SPO2629" fbc:name="G_SPO2629" fbc:label="G_SPO2629"/>
       <fbc:geneProduct fbc:id="G_SPO2626" fbc:name="G_SPO2626" fbc:label="G_SPO2626"/>
+      <fbc:geneProduct fbc:id="G_SPO2628" fbc:name="G_SPO2628" fbc:label="G_SPO2628"/>
       <fbc:geneProduct fbc:id="G_SPO0861" fbc:name="G_SPO0861" fbc:label="G_SPO0861"/>
       <fbc:geneProduct fbc:id="G_SPO0863" fbc:name="G_SPO0863" fbc:label="G_SPO0863"/>
       <fbc:geneProduct fbc:id="G_SPO0862" fbc:name="G_SPO0862" fbc:label="G_SPO0862"/>
-      <fbc:geneProduct fbc:id="G_SPO0610" fbc:name="G_SPO0610" fbc:label="G_SPO0610"/>
-      <fbc:geneProduct fbc:id="G_SPO0612" fbc:name="G_SPO0612" fbc:label="G_SPO0612"/>
-      <fbc:geneProduct fbc:id="G_SPO0611" fbc:name="G_SPO0611" fbc:label="G_SPO0611"/>
       <fbc:geneProduct fbc:id="G_SPO0609" fbc:name="G_SPO0609" fbc:label="G_SPO0609"/>
       <fbc:geneProduct fbc:id="G_SPO0608" fbc:name="G_SPO0608" fbc:label="G_SPO0608"/>
-      <fbc:geneProduct fbc:id="G_SPO0238" fbc:name="G_SPO0238" fbc:label="G_SPO0238"/>
+      <fbc:geneProduct fbc:id="G_SPO0612" fbc:name="G_SPO0612" fbc:label="G_SPO0612"/>
+      <fbc:geneProduct fbc:id="G_SPO0611" fbc:name="G_SPO0611" fbc:label="G_SPO0611"/>
+      <fbc:geneProduct fbc:id="G_SPO0610" fbc:name="G_SPO0610" fbc:label="G_SPO0610"/>
       <fbc:geneProduct fbc:id="G_SPO0237" fbc:name="G_SPO0237" fbc:label="G_SPO0237"/>
-      <fbc:geneProduct fbc:id="G_SPO0239" fbc:name="G_SPO0239" fbc:label="G_SPO0239"/>
       <fbc:geneProduct fbc:id="G_SPO0240" fbc:name="G_SPO0240" fbc:label="G_SPO0240"/>
+      <fbc:geneProduct fbc:id="G_SPO0238" fbc:name="G_SPO0238" fbc:label="G_SPO0238"/>
+      <fbc:geneProduct fbc:id="G_SPO0239" fbc:name="G_SPO0239" fbc:label="G_SPO0239"/>
       <fbc:geneProduct fbc:id="G_SPO2356" fbc:name="G_SPO2356" fbc:label="G_SPO2356"/>
-      <fbc:geneProduct fbc:id="G_SPO2358" fbc:name="G_SPO2358" fbc:label="G_SPO2358"/>
       <fbc:geneProduct fbc:id="G_SPO2357" fbc:name="G_SPO2357" fbc:label="G_SPO2357"/>
+      <fbc:geneProduct fbc:id="G_SPO2358" fbc:name="G_SPO2358" fbc:label="G_SPO2358"/>
       <fbc:geneProduct fbc:id="G_SPO1838" fbc:name="G_SPO1838" fbc:label="G_SPO1838"/>
-      <fbc:geneProduct fbc:id="G_SPO1836" fbc:name="G_SPO1836" fbc:label="G_SPO1836"/>
       <fbc:geneProduct fbc:id="G_SPO1835" fbc:name="G_SPO1835" fbc:label="G_SPO1835"/>
-      <fbc:geneProduct fbc:id="G_SPO1837" fbc:name="G_SPO1837" fbc:label="G_SPO1837"/>
+      <fbc:geneProduct fbc:id="G_SPO1836" fbc:name="G_SPO1836" fbc:label="G_SPO1836"/>
       <fbc:geneProduct fbc:id="G_SPO1839" fbc:name="G_SPO1839" fbc:label="G_SPO1839"/>
-      <fbc:geneProduct fbc:id="G_SPO3469" fbc:name="G_SPO3469" fbc:label="G_SPO3469"/>
+      <fbc:geneProduct fbc:id="G_SPO1837" fbc:name="G_SPO1837" fbc:label="G_SPO1837"/>
       <fbc:geneProduct fbc:id="G_SPO3466" fbc:name="G_SPO3466" fbc:label="G_SPO3466"/>
+      <fbc:geneProduct fbc:id="G_SPO3469" fbc:name="G_SPO3469" fbc:label="G_SPO3469"/>
       <fbc:geneProduct fbc:id="G_SPO3467" fbc:name="G_SPO3467" fbc:label="G_SPO3467"/>
       <fbc:geneProduct fbc:id="G_SPO3468" fbc:name="G_SPO3468" fbc:label="G_SPO3468"/>
-      <fbc:geneProduct fbc:id="G_SPO0676" fbc:name="G_SPO0676" fbc:label="G_SPO0676"/>
-      <fbc:geneProduct fbc:id="G_SPO0674" fbc:name="G_SPO0674" fbc:label="G_SPO0674"/>
       <fbc:geneProduct fbc:id="G_SPO0675" fbc:name="G_SPO0675" fbc:label="G_SPO0675"/>
-      <fbc:geneProduct fbc:id="G_SPO0379" fbc:name="G_SPO0379" fbc:label="G_SPO0379"/>
-      <fbc:geneProduct fbc:id="G_SPO0376" fbc:name="G_SPO0376" fbc:label="G_SPO0376"/>
-      <fbc:geneProduct fbc:id="G_SPO0378" fbc:name="G_SPO0378" fbc:label="G_SPO0378"/>
+      <fbc:geneProduct fbc:id="G_SPO0674" fbc:name="G_SPO0674" fbc:label="G_SPO0674"/>
+      <fbc:geneProduct fbc:id="G_SPO0676" fbc:name="G_SPO0676" fbc:label="G_SPO0676"/>
       <fbc:geneProduct fbc:id="G_SPO0377" fbc:name="G_SPO0377" fbc:label="G_SPO0377"/>
-      <fbc:geneProduct fbc:id="G_SPO1548" fbc:name="G_SPO1548" fbc:label="G_SPO1548"/>
+      <fbc:geneProduct fbc:id="G_SPO0378" fbc:name="G_SPO0378" fbc:label="G_SPO0378"/>
+      <fbc:geneProduct fbc:id="G_SPO0376" fbc:name="G_SPO0376" fbc:label="G_SPO0376"/>
+      <fbc:geneProduct fbc:id="G_SPO0379" fbc:name="G_SPO0379" fbc:label="G_SPO0379"/>
       <fbc:geneProduct fbc:id="G_SPO1550" fbc:name="G_SPO1550" fbc:label="G_SPO1550"/>
+      <fbc:geneProduct fbc:id="G_SPO1548" fbc:name="G_SPO1548" fbc:label="G_SPO1548"/>
       <fbc:geneProduct fbc:id="G_SPO1549" fbc:name="G_SPO1549" fbc:label="G_SPO1549"/>
       <fbc:geneProduct fbc:id="G_SPO0520" fbc:name="G_SPO0520" fbc:label="G_SPO0520"/>
       <fbc:geneProduct fbc:id="G_SPO0521" fbc:name="G_SPO0521" fbc:label="G_SPO0521"/>
       <fbc:geneProduct fbc:id="G_SPO0522" fbc:name="G_SPO0522" fbc:label="G_SPO0522"/>
       <fbc:geneProduct fbc:id="G_SPO0519" fbc:name="G_SPO0519" fbc:label="G_SPO0519"/>
-      <fbc:geneProduct fbc:id="G_SPO0358" fbc:name="G_SPO0358" fbc:label="G_SPO0358">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: []</p>
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>left-end-position: 370463</p>
-            <p>right-end-position: 370849</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO0361" fbc:name="G_SPO0361" fbc:label="G_SPO0361">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: []</p>
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>left-end-position: 373340</p>
-            <p>right-end-position: 374119</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO0360" fbc:name="G_SPO0360" fbc:label="G_SPO0360">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44048,17 +44026,39 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2763" fbc:name="G_SPO2763" fbc:label="G_SPO2763"/>
-      <fbc:geneProduct fbc:id="G_SPO2786" fbc:name="G_SPO2786" fbc:label="G_SPO2786"/>
+      <fbc:geneProduct fbc:id="G_SPO0358" fbc:name="G_SPO0358" fbc:label="G_SPO0358">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: []</p>
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>left-end-position: 370463</p>
+            <p>right-end-position: 370849</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO0361" fbc:name="G_SPO0361" fbc:label="G_SPO0361">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: []</p>
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>left-end-position: 373340</p>
+            <p>right-end-position: 374119</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO2782" fbc:name="G_SPO2782" fbc:label="G_SPO2782"/>
-      <fbc:geneProduct fbc:id="G_SPO2772" fbc:name="G_SPO2772" fbc:label="G_SPO2772"/>
-      <fbc:geneProduct fbc:id="G_SPO2765" fbc:name="G_SPO2765" fbc:label="G_SPO2765"/>
-      <fbc:geneProduct fbc:id="G_SPO2764" fbc:name="G_SPO2764" fbc:label="G_SPO2764"/>
-      <fbc:geneProduct fbc:id="G_SPO2766" fbc:name="G_SPO2766" fbc:label="G_SPO2766"/>
-      <fbc:geneProduct fbc:id="G_SPO2785" fbc:name="G_SPO2785" fbc:label="G_SPO2785"/>
-      <fbc:geneProduct fbc:id="G_SPO2774" fbc:name="G_SPO2774" fbc:label="G_SPO2774"/>
-      <fbc:geneProduct fbc:id="G_SPO2770" fbc:name="G_SPO2770" fbc:label="G_SPO2770"/>
       <fbc:geneProduct fbc:id="G_SPO2767" fbc:name="G_SPO2767" fbc:label="G_SPO2767"/>
+      <fbc:geneProduct fbc:id="G_SPO2763" fbc:name="G_SPO2763" fbc:label="G_SPO2763"/>
+      <fbc:geneProduct fbc:id="G_SPO2785" fbc:name="G_SPO2785" fbc:label="G_SPO2785"/>
+      <fbc:geneProduct fbc:id="G_SPO2764" fbc:name="G_SPO2764" fbc:label="G_SPO2764"/>
+      <fbc:geneProduct fbc:id="G_SPO2774" fbc:name="G_SPO2774" fbc:label="G_SPO2774"/>
+      <fbc:geneProduct fbc:id="G_SPO2786" fbc:name="G_SPO2786" fbc:label="G_SPO2786"/>
+      <fbc:geneProduct fbc:id="G_SPO2770" fbc:name="G_SPO2770" fbc:label="G_SPO2770"/>
+      <fbc:geneProduct fbc:id="G_SPO2766" fbc:name="G_SPO2766" fbc:label="G_SPO2766"/>
+      <fbc:geneProduct fbc:id="G_SPO2765" fbc:name="G_SPO2765" fbc:label="G_SPO2765"/>
+      <fbc:geneProduct fbc:id="G_SPO2772" fbc:name="G_SPO2772" fbc:label="G_SPO2772"/>
       <fbc:geneProduct fbc:id="G_SPO2028" fbc:name="G_SPO2028" fbc:label="G_SPO2028"/>
       <fbc:geneProduct fbc:id="G_SPO1363" fbc:name="G_SPO1363" fbc:label="G_SPO1363">
         <notes>
@@ -44099,8 +44099,8 @@
       <fbc:geneProduct fbc:id="G_SPO1562" fbc:name="G_SPO1562" fbc:label="G_SPO1562"/>
       <fbc:geneProduct fbc:id="G_SPO0997" fbc:name="G_SPO0997" fbc:label="G_SPO0997"/>
       <fbc:geneProduct fbc:id="G_SPO0330" fbc:name="G_SPO0330" fbc:label="G_SPO0330"/>
-      <fbc:geneProduct fbc:id="G_SPO2241" fbc:name="G_SPO2241" fbc:label="G_SPO2241"/>
       <fbc:geneProduct fbc:id="G_SPO2240" fbc:name="G_SPO2240" fbc:label="G_SPO2240"/>
+      <fbc:geneProduct fbc:id="G_SPO2241" fbc:name="G_SPO2241" fbc:label="G_SPO2241"/>
       <fbc:geneProduct fbc:id="G_SPO2242" fbc:name="G_SPO2242" fbc:label="G_SPO2242">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44124,30 +44124,19 @@
         </notes>
       </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO0340" fbc:name="G_SPO0340" fbc:label="G_SPO0340"/>
-      <fbc:geneProduct fbc:id="G_SPOA0190" fbc:name="G_SPOA0190" fbc:label="G_SPOA0190"/>
-      <fbc:geneProduct fbc:id="G_SPO3524" fbc:name="G_SPO3524" fbc:label="G_SPO3524"/>
+      <fbc:geneProduct fbc:id="G_SPO3526" fbc:name="G_SPO3526" fbc:label="G_SPO3526"/>
       <fbc:geneProduct fbc:id="G_SPO0623" fbc:name="G_SPO0623" fbc:label="G_SPO0623"/>
+      <fbc:geneProduct fbc:id="G_SPO3525" fbc:name="G_SPO3525" fbc:label="G_SPO3525"/>
+      <fbc:geneProduct fbc:id="G_SPOA0188" fbc:name="G_SPOA0188" fbc:label="G_SPOA0188"/>
       <fbc:geneProduct fbc:id="G_SPO3523" fbc:name="G_SPO3523" fbc:label="G_SPO3523"/>
       <fbc:geneProduct fbc:id="G_SPO1383" fbc:name="G_SPO1383" fbc:label="G_SPO1383"/>
-      <fbc:geneProduct fbc:id="G_SPO3076" fbc:name="G_SPO3076" fbc:label="G_SPO3076"/>
-      <fbc:geneProduct fbc:id="G_SPO3526" fbc:name="G_SPO3526" fbc:label="G_SPO3526"/>
-      <fbc:geneProduct fbc:id="G_SPO3525" fbc:name="G_SPO3525" fbc:label="G_SPO3525"/>
-      <fbc:geneProduct fbc:id="G_SPOA0187" fbc:name="G_SPOA0187" fbc:label="G_SPOA0187"/>
       <fbc:geneProduct fbc:id="G_SPO0303" fbc:name="G_SPO0303" fbc:label="G_SPO0303"/>
+      <fbc:geneProduct fbc:id="G_SPO3076" fbc:name="G_SPO3076" fbc:label="G_SPO3076"/>
+      <fbc:geneProduct fbc:id="G_SPOA0187" fbc:name="G_SPOA0187" fbc:label="G_SPOA0187"/>
       <fbc:geneProduct fbc:id="G_SPO3073" fbc:name="G_SPO3073" fbc:label="G_SPO3073"/>
       <fbc:geneProduct fbc:id="G_SPOA0189" fbc:name="G_SPOA0189" fbc:label="G_SPOA0189"/>
-      <fbc:geneProduct fbc:id="G_SPOA0188" fbc:name="G_SPOA0188" fbc:label="G_SPOA0188"/>
-      <fbc:geneProduct fbc:id="G_SPO0271" fbc:name="G_SPO0271" fbc:label="G_SPO0271">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 288197</p>
-            <p>right-end-position: 288760</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO3524" fbc:name="G_SPO3524" fbc:label="G_SPO3524"/>
+      <fbc:geneProduct fbc:id="G_SPOA0190" fbc:name="G_SPOA0190" fbc:label="G_SPOA0190"/>
       <fbc:geneProduct fbc:id="G_SPO0273" fbc:name="G_SPO0273" fbc:label="G_SPO0273">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44170,6 +44159,17 @@
           </html>
         </notes>
       </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO0271" fbc:name="G_SPO0271" fbc:label="G_SPO0271">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 288197</p>
+            <p>right-end-position: 288760</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO2222" fbc:name="G_SPO2222" fbc:label="G_SPO2222"/>
       <fbc:geneProduct fbc:id="G_SPO0963" fbc:name="G_SPO0963" fbc:label="G_SPO0963"/>
       <fbc:geneProduct fbc:id="G_G__45__17792" fbc:name="G_G__45__17792" fbc:label="G_G__45__17792"/>
@@ -44184,8 +44184,8 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO1958" fbc:name="G_SPO1958" fbc:label="G_SPO1958"/>
       <fbc:geneProduct fbc:id="G_SPO0435" fbc:name="G_SPO0435" fbc:label="G_SPO0435"/>
+      <fbc:geneProduct fbc:id="G_SPO1958" fbc:name="G_SPO1958" fbc:label="G_SPO1958"/>
       <fbc:geneProduct fbc:id="G_SPO0801" fbc:name="G_SPO0801" fbc:label="G_SPO0801">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44197,8 +44197,8 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO0758" fbc:name="G_SPO0758" fbc:label="G_SPO0758"/>
       <fbc:geneProduct fbc:id="G_SPO2918" fbc:name="G_SPO2918" fbc:label="G_SPO2918"/>
+      <fbc:geneProduct fbc:id="G_SPO0758" fbc:name="G_SPO0758" fbc:label="G_SPO0758"/>
       <fbc:geneProduct fbc:id="G_SPO0773" fbc:name="G_SPO0773" fbc:label="G_SPO0773"/>
       <fbc:geneProduct fbc:id="G_SPO0067" fbc:name="G_SPO0067" fbc:label="G_SPO0067">
         <notes>
@@ -44367,17 +44367,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO0966" fbc:name="G_SPO0966" fbc:label="G_SPO0966">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 1017415</p>
-            <p>right-end-position: 1018410</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO1601" fbc:name="G_SPO1601" fbc:label="G_SPO1601">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44385,6 +44374,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 1696588</p>
             <p>right-end-position: 1697523</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO0966" fbc:name="G_SPO0966" fbc:label="G_SPO0966">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 1017415</p>
+            <p>right-end-position: 1018410</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -44609,17 +44609,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2213" fbc:name="G_SPO2213" fbc:label="G_SPO2213">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2352518</p>
-            <p>right-end-position: 2353390</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO3097" fbc:name="G_SPO3097" fbc:label="G_SPO3097">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44627,6 +44616,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 3306964</p>
             <p>right-end-position: 3307773</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2213" fbc:name="G_SPO2213" fbc:label="G_SPO2213">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2352518</p>
+            <p>right-end-position: 2353390</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -44752,17 +44752,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPOA0330" fbc:name="G_SPOA0330" fbc:label="G_SPOA0330">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 4480333</p>
-            <p>right-end-position: 4480992</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO3031" fbc:name="G_SPO3031" fbc:label="G_SPO3031">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44774,13 +44763,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2596" fbc:name="G_SPO2596" fbc:label="G_SPO2596">
+      <fbc:geneProduct fbc:id="G_SPOA0330" fbc:name="G_SPOA0330" fbc:label="G_SPOA0330">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 2751610</p>
-            <p>right-end-position: 2752833</p>
+            <p>left-end-position: 4480333</p>
+            <p>right-end-position: 4480992</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -44792,6 +44781,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 4314386</p>
             <p>right-end-position: 4315627</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2596" fbc:name="G_SPO2596" fbc:label="G_SPO2596">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2751610</p>
+            <p>right-end-position: 2752833</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -44906,17 +44906,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2791" fbc:name="G_SPO2791" fbc:label="G_SPO2791">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2978553</p>
-            <p>right-end-position: 2980085</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__3247" fbc:name="G_G1RHL__45__3247" fbc:label="G_G1RHL__45__3247">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44924,6 +44913,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 4545763</p>
             <p>right-end-position: 4547835</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2791" fbc:name="G_SPO2791" fbc:label="G_SPO2791">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2978553</p>
+            <p>right-end-position: 2980085</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -44961,6 +44961,28 @@
           </html>
         </notes>
       </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO0326" fbc:name="G_SPO0326" fbc:label="G_SPO0326">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 336736</p>
+            <p>right-end-position: 337911</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2214" fbc:name="G_G1RHL__45__2214" fbc:label="G_G1RHL__45__2214">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 3116026</p>
+            <p>right-end-position: 3117237</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__518" fbc:name="G_G1RHL__45__518" fbc:label="G_G1RHL__45__518">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44979,28 +45001,6 @@
             <p>synonyms: []</p>
             <p>left-end-position: 805904</p>
             <p>right-end-position: 807079</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2214" fbc:name="G_G1RHL__45__2214" fbc:label="G_G1RHL__45__2214">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 3116026</p>
-            <p>right-end-position: 3117237</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO0326" fbc:name="G_SPO0326" fbc:label="G_SPO0326">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 336736</p>
-            <p>right-end-position: 337911</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45027,17 +45027,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__397" fbc:name="G_G1RHL__45__397" fbc:label="G_G1RHL__45__397">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 592192</p>
-            <p>right-end-position: 594174</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO1011" fbc:name="G_SPO1011" fbc:label="G_SPO1011">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45045,6 +45034,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 1061192</p>
             <p>right-end-position: 1061686</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO3817" fbc:name="G_SPO3817" fbc:label="G_SPO3817">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 4033519</p>
+            <p>right-end-position: 4034463</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45060,13 +45060,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO3817" fbc:name="G_SPO3817" fbc:label="G_SPO3817">
+      <fbc:geneProduct fbc:id="G_G1RHL__45__397" fbc:name="G_G1RHL__45__397" fbc:label="G_G1RHL__45__397">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 4033519</p>
-            <p>right-end-position: 4034463</p>
+            <p>left-end-position: 592192</p>
+            <p>right-end-position: 594174</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45181,24 +45181,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__1483" fbc:name="G_G1RHL__45__1483" fbc:label="G_G1RHL__45__1483">
+      <fbc:geneProduct fbc:id="G_G1RHL__45__3261" fbc:name="G_G1RHL__45__3261" fbc:label="G_G1RHL__45__3261">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 2097735</p>
-            <p>right-end-position: 2098850</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPOA0288" fbc:name="G_SPOA0288" fbc:label="G_SPOA0288">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 4427074</p>
-            <p>right-end-position: 4428234</p>
+            <p>left-end-position: 4558688</p>
+            <p>right-end-position: 4559830</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45225,24 +45214,24 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__3261" fbc:name="G_G1RHL__45__3261" fbc:label="G_G1RHL__45__3261">
+      <fbc:geneProduct fbc:id="G_SPOA0288" fbc:name="G_SPOA0288" fbc:label="G_SPOA0288">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 4558688</p>
-            <p>right-end-position: 4559830</p>
+            <p>left-end-position: 4427074</p>
+            <p>right-end-position: 4428234</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__3161" fbc:name="G_G1RHL__45__3161" fbc:label="G_G1RHL__45__3161">
+      <fbc:geneProduct fbc:id="G_G1RHL__45__1483" fbc:name="G_G1RHL__45__1483" fbc:label="G_G1RHL__45__1483">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 4424979</p>
-            <p>right-end-position: 4426991</p>
+            <p>left-end-position: 2097735</p>
+            <p>right-end-position: 2098850</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45254,6 +45243,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 2849544</p>
             <p>right-end-position: 2851637</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__3161" fbc:name="G_G1RHL__45__3161" fbc:label="G_G1RHL__45__3161">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 4424979</p>
+            <p>right-end-position: 4426991</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45357,6 +45357,28 @@
           </html>
         </notes>
       </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2632" fbc:name="G_G1RHL__45__2632" fbc:label="G_G1RHL__45__2632">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 3658912</p>
+            <p>right-end-position: 3660489</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2262" fbc:name="G_G1RHL__45__2262" fbc:label="G_G1RHL__45__2262">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 3174601</p>
+            <p>right-end-position: 3175590</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__2767" fbc:name="G_G1RHL__45__2767" fbc:label="G_G1RHL__45__2767">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45390,35 +45412,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2262" fbc:name="G_G1RHL__45__2262" fbc:label="G_G1RHL__45__2262">
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2627" fbc:name="G_G1RHL__45__2627" fbc:label="G_G1RHL__45__2627">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 3174601</p>
-            <p>right-end-position: 3175590</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__632" fbc:name="G_G1RHL__45__632" fbc:label="G_G1RHL__45__632">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 956355</p>
-            <p>right-end-position: 958052</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2632" fbc:name="G_G1RHL__45__2632" fbc:label="G_G1RHL__45__2632">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 3658912</p>
-            <p>right-end-position: 3660489</p>
+            <p>left-end-position: 3653454</p>
+            <p>right-end-position: 3654830</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45434,17 +45434,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2627" fbc:name="G_G1RHL__45__2627" fbc:label="G_G1RHL__45__2627">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 3653454</p>
-            <p>right-end-position: 3654830</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__472" fbc:name="G_G1RHL__45__472" fbc:label="G_G1RHL__45__472">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45452,6 +45441,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 717597</p>
             <p>right-end-position: 718844</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__632" fbc:name="G_G1RHL__45__632" fbc:label="G_G1RHL__45__632">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 956355</p>
+            <p>right-end-position: 958052</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45467,17 +45467,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2431" fbc:name="G_G1RHL__45__2431" fbc:label="G_G1RHL__45__2431">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 3405487</p>
-            <p>right-end-position: 3407769</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO2136" fbc:name="G_SPO2136" fbc:label="G_SPO2136">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45489,35 +45478,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO0599" fbc:name="G_SPO0599" fbc:label="G_SPO0599">
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2431" fbc:name="G_G1RHL__45__2431" fbc:label="G_G1RHL__45__2431">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 617618</p>
-            <p>right-end-position: 618466</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__465" fbc:name="G_G1RHL__45__465" fbc:label="G_G1RHL__45__465">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 708545</p>
-            <p>right-end-position: 709504</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__3119" fbc:name="G_G1RHL__45__3119" fbc:label="G_G1RHL__45__3119">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 4365528</p>
-            <p>right-end-position: 4366526</p>
+            <p>left-end-position: 3405487</p>
+            <p>right-end-position: 3407769</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45533,6 +45500,17 @@
           </html>
         </notes>
       </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO0599" fbc:name="G_SPO0599" fbc:label="G_SPO0599">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 617618</p>
+            <p>right-end-position: 618466</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPOA0235" fbc:name="G_SPOA0235" fbc:label="G_SPOA0235">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45544,6 +45522,17 @@
           </html>
         </notes>
       </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__3119" fbc:name="G_G1RHL__45__3119" fbc:label="G_G1RHL__45__3119">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 4365528</p>
+            <p>right-end-position: 4366526</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO2464" fbc:name="G_SPO2464" fbc:label="G_SPO2464">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45551,6 +45540,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 2616797</p>
             <p>right-end-position: 2617744</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__465" fbc:name="G_G1RHL__45__465" fbc:label="G_G1RHL__45__465">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 708545</p>
+            <p>right-end-position: 709504</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45610,17 +45610,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2670" fbc:name="G_SPO2670" fbc:label="G_SPO2670">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2824890</p>
-            <p>right-end-position: 2826023</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__2960" fbc:name="G_G1RHL__45__2960" fbc:label="G_G1RHL__45__2960">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45628,6 +45617,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 4126215</p>
             <p>right-end-position: 4127387</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2670" fbc:name="G_SPO2670" fbc:label="G_SPO2670">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2824890</p>
+            <p>right-end-position: 2826023</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45709,17 +45709,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS12825" fbc:name="G_SPO_RS12825" fbc:label="G_SPO_RS12825">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS12825&apos;]</p>
-            <p>left-end-position: 2675133</p>
-            <p>right-end-position: 2676572</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS13105" fbc:name="G_SPO_RS13105" fbc:label="G_SPO_RS13105">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45738,6 +45727,17 @@
             <p>synonyms: [&apos;RS17305&apos;]</p>
             <p>left-end-position: 3621374</p>
             <p>right-end-position: 3622702</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS12825" fbc:name="G_SPO_RS12825" fbc:label="G_SPO_RS12825">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>synonyms: [&apos;RS12825&apos;]</p>
+            <p>left-end-position: 2675133</p>
+            <p>right-end-position: 2676572</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -45808,13 +45808,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2982" fbc:name="G_G1RHL__45__2982" fbc:label="G_G1RHL__45__2982">
+      <fbc:geneProduct fbc:id="G_SPO1264" fbc:name="G_SPO1264" fbc:label="G_SPO1264">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 4175111</p>
-            <p>right-end-position: 4176298</p>
+            <p>left-end-position: 1333070</p>
+            <p>right-end-position: 1334272</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45841,13 +45841,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO1264" fbc:name="G_SPO1264" fbc:label="G_SPO1264">
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2982" fbc:name="G_G1RHL__45__2982" fbc:label="G_G1RHL__45__2982">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 1333070</p>
-            <p>right-end-position: 1334272</p>
+            <p>left-end-position: 4175111</p>
+            <p>right-end-position: 4176298</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45863,17 +45863,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2021" fbc:name="G_G1RHL__45__2021" fbc:label="G_G1RHL__45__2021">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2816517</p>
-            <p>right-end-position: 2817974</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__2978" fbc:name="G_G1RHL__45__2978" fbc:label="G_G1RHL__45__2978">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45885,13 +45874,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO1137" fbc:name="G_SPO1137" fbc:label="G_SPO1137">
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2021" fbc:name="G_G1RHL__45__2021" fbc:label="G_G1RHL__45__2021">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 1192816</p>
-            <p>right-end-position: 1194291</p>
+            <p>left-end-position: 2816517</p>
+            <p>right-end-position: 2817974</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -45903,6 +45892,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 3923784</p>
             <p>right-end-position: 3924806</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO1137" fbc:name="G_SPO1137" fbc:label="G_SPO1137">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 1192816</p>
+            <p>right-end-position: 1194291</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -46050,17 +46050,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPOA0285" fbc:name="G_SPOA0285" fbc:label="G_SPOA0285">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 4423585</p>
-            <p>right-end-position: 4424370</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO2706" fbc:name="G_SPO2706" fbc:label="G_SPO2706">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46068,6 +46057,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 2859724</p>
             <p>right-end-position: 2860545</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPOA0285" fbc:name="G_SPOA0285" fbc:label="G_SPOA0285">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 4423585</p>
+            <p>right-end-position: 4424370</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -46149,17 +46149,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2214" fbc:name="G_SPO2214" fbc:label="G_SPO2214">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2353969</p>
-            <p>right-end-position: 2355465</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__553" fbc:name="G_G1RHL__45__553" fbc:label="G_G1RHL__45__553">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46182,6 +46171,17 @@
           </html>
         </notes>
       </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2214" fbc:name="G_SPO2214" fbc:label="G_SPO2214">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2353969</p>
+            <p>right-end-position: 2355465</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO0267" fbc:name="G_SPO0267" fbc:label="G_SPO0267">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46193,17 +46193,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO0352" fbc:name="G_SPO0352" fbc:label="G_SPO0352">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 366147</p>
-            <p>right-end-position: 367004</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__1167" fbc:name="G_G1RHL__45__1167" fbc:label="G_G1RHL__45__1167">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46211,6 +46200,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 1655644</p>
             <p>right-end-position: 1656621</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO0352" fbc:name="G_SPO0352" fbc:label="G_SPO0352">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 366147</p>
+            <p>right-end-position: 367004</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -46369,17 +46369,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2420" fbc:name="G_SPO2420" fbc:label="G_SPO2420">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2571463</p>
-            <p>right-end-position: 2572377</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__3191" fbc:name="G_G1RHL__45__3191" fbc:label="G_G1RHL__45__3191">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46387,6 +46376,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 4480971</p>
             <p>right-end-position: 4481918</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2420" fbc:name="G_SPO2420" fbc:label="G_SPO2420">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2571463</p>
+            <p>right-end-position: 2572377</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -46479,17 +46479,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2843" fbc:name="G_G1RHL__45__2843" fbc:label="G_G1RHL__45__2843">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 3950446</p>
-            <p>right-end-position: 3952449</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__1268" fbc:name="G_G1RHL__45__1268" fbc:label="G_G1RHL__45__1268">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46497,6 +46486,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 1806319</p>
             <p>right-end-position: 1807968</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2843" fbc:name="G_G1RHL__45__2843" fbc:label="G_G1RHL__45__2843">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 3950446</p>
+            <p>right-end-position: 3952449</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -46666,17 +46666,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__3262" fbc:name="G_G1RHL__45__3262" fbc:label="G_G1RHL__45__3262">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 4559883</p>
-            <p>right-end-position: 4560686</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__98" fbc:name="G_G1RHL__45__98" fbc:label="G_G1RHL__45__98">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46684,6 +46673,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 162522</p>
             <p>right-end-position: 163298</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__3262" fbc:name="G_G1RHL__45__3262" fbc:label="G_G1RHL__45__3262">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 4559883</p>
+            <p>right-end-position: 4560686</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -46754,17 +46754,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO1888" fbc:name="G_SPO1888" fbc:label="G_SPO1888">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2012152</p>
-            <p>right-end-position: 2012382</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO1870" fbc:name="G_SPO1870" fbc:label="G_SPO1870">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46787,13 +46776,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO1557" fbc:name="G_SPO1557" fbc:label="G_SPO1557">
+      <fbc:geneProduct fbc:id="G_SPO1888" fbc:name="G_SPO1888" fbc:label="G_SPO1888">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 1646654</p>
-            <p>right-end-position: 1648330</p>
+            <p>left-end-position: 2012152</p>
+            <p>right-end-position: 2012382</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -46805,6 +46794,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 3313288</p>
             <p>right-end-position: 3314964</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO1557" fbc:name="G_SPO1557" fbc:label="G_SPO1557">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 1646654</p>
+            <p>right-end-position: 1648330</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -47018,17 +47018,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2156" fbc:name="G_SPO2156" fbc:label="G_SPO2156">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2292174</p>
-            <p>right-end-position: 2293580</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO0430" fbc:name="G_SPO0430" fbc:label="G_SPO0430">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47036,6 +47025,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 445622</p>
             <p>right-end-position: 446953</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2156" fbc:name="G_SPO2156" fbc:label="G_SPO2156">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2292174</p>
+            <p>right-end-position: 2293580</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -47161,28 +47161,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS02100" fbc:name="G_SPO_RS02100" fbc:label="G_SPO_RS02100">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS02100&apos;]</p>
-            <p>left-end-position: 427642</p>
-            <p>right-end-position: 428574</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS04600" fbc:name="G_SPO_RS04600" fbc:label="G_SPO_RS04600">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS04600&apos;]</p>
-            <p>left-end-position: 966936</p>
-            <p>right-end-position: 967889</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS07990" fbc:name="G_SPO_RS07990" fbc:label="G_SPO_RS07990">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47205,6 +47183,28 @@
           </html>
         </notes>
       </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS04600" fbc:name="G_SPO_RS04600" fbc:label="G_SPO_RS04600">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>synonyms: [&apos;RS04600&apos;]</p>
+            <p>left-end-position: 966936</p>
+            <p>right-end-position: 967889</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS02100" fbc:name="G_SPO_RS02100" fbc:label="G_SPO_RS02100">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>synonyms: [&apos;RS02100&apos;]</p>
+            <p>left-end-position: 427642</p>
+            <p>right-end-position: 428574</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO0104" fbc:name="G_SPO0104" fbc:label="G_SPO0104">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47212,6 +47212,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 106644</p>
             <p>right-end-position: 108122</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO3529" fbc:name="G_SPO3529" fbc:label="G_SPO3529">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 3736979</p>
+            <p>right-end-position: 3738274</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -47234,17 +47245,6 @@
             <p>synonyms: []</p>
             <p>left-end-position: 1664625</p>
             <p>right-end-position: 1665920</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO3529" fbc:name="G_SPO3529" fbc:label="G_SPO3529">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 3736979</p>
-            <p>right-end-position: 3738274</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -47315,17 +47315,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO0787" fbc:name="G_SPO0787" fbc:label="G_SPO0787">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 819425</p>
-            <p>right-end-position: 820081</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO2796" fbc:name="G_SPO2796" fbc:label="G_SPO2796">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47333,6 +47322,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 2983502</p>
             <p>right-end-position: 2984164</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO0787" fbc:name="G_SPO0787" fbc:label="G_SPO0787">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 819425</p>
+            <p>right-end-position: 820081</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -47568,13 +47568,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__1194" fbc:name="G_G1RHL__45__1194" fbc:label="G_G1RHL__45__1194">
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2733" fbc:name="G_G1RHL__45__2733" fbc:label="G_G1RHL__45__2733">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 1690384</p>
-            <p>right-end-position: 1691487</p>
+            <p>left-end-position: 3812070</p>
+            <p>right-end-position: 3813035</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -47590,24 +47590,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2733" fbc:name="G_G1RHL__45__2733" fbc:label="G_G1RHL__45__2733">
+      <fbc:geneProduct fbc:id="G_G1RHL__45__1194" fbc:name="G_G1RHL__45__1194" fbc:label="G_G1RHL__45__1194">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 3812070</p>
-            <p>right-end-position: 3813035</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__3237" fbc:name="G_G1RHL__45__3237" fbc:label="G_G1RHL__45__3237">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 4533413</p>
-            <p>right-end-position: 4534516</p>
+            <p>left-end-position: 1690384</p>
+            <p>right-end-position: 1691487</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -47619,6 +47608,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 4583972</p>
             <p>right-end-position: 4585198</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__3237" fbc:name="G_G1RHL__45__3237" fbc:label="G_G1RHL__45__3237">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 4533413</p>
+            <p>right-end-position: 4534516</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -47744,17 +47744,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2800" fbc:name="G_SPO2800" fbc:label="G_SPO2800">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2987953</p>
-            <p>right-end-position: 2989251</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__2623" fbc:name="G_G1RHL__45__2623" fbc:label="G_G1RHL__45__2623">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47762,6 +47751,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 3647707</p>
             <p>right-end-position: 3648936</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2800" fbc:name="G_SPO2800" fbc:label="G_SPO2800">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2987953</p>
+            <p>right-end-position: 2989251</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -48514,17 +48514,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__110" fbc:name="G_G1RHL__45__110" fbc:label="G_G1RHL__45__110">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 184467</p>
-            <p>right-end-position: 185198</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO0911" fbc:name="G_SPO0911" fbc:label="G_SPO0911">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48532,6 +48521,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 965769</p>
             <p>right-end-position: 966605</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__110" fbc:name="G_G1RHL__45__110" fbc:label="G_G1RHL__45__110">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 184467</p>
+            <p>right-end-position: 185198</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -48613,17 +48613,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS19985" fbc:name="G_SPO_RS19985" fbc:label="G_SPO_RS19985">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS19985&apos;]</p>
-            <p>left-end-position: 37538</p>
-            <p>right-end-position: 38389</p>
-            <p>replicon: NC_006569</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS10170" fbc:name="G_SPO_RS10170" fbc:label="G_SPO_RS10170">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48635,14 +48624,14 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS13710" fbc:name="G_SPO_RS13710" fbc:label="G_SPO_RS13710">
+      <fbc:geneProduct fbc:id="G_SPO_RS19985" fbc:name="G_SPO_RS19985" fbc:label="G_SPO_RS19985">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS13710&apos;]</p>
-            <p>left-end-position: 2856697</p>
-            <p>right-end-position: 2857587</p>
-            <p>replicon: NC_003911</p>
+            <p>synonyms: [&apos;RS19985&apos;]</p>
+            <p>left-end-position: 37538</p>
+            <p>right-end-position: 38389</p>
+            <p>replicon: NC_006569</p>
           </html>
         </notes>
       </fbc:geneProduct>
@@ -48653,6 +48642,17 @@
             <p>synonyms: [&apos;RS07145&apos;]</p>
             <p>left-end-position: 1469683</p>
             <p>right-end-position: 1470441</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS13710" fbc:name="G_SPO_RS13710" fbc:label="G_SPO_RS13710">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>synonyms: [&apos;RS13710&apos;]</p>
+            <p>left-end-position: 2856697</p>
+            <p>right-end-position: 2857587</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -48690,17 +48690,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__689" fbc:name="G_G1RHL__45__689" fbc:label="G_G1RHL__45__689">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 1030330</p>
-            <p>right-end-position: 1031028</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO2872" fbc:name="G_SPO2872" fbc:label="G_SPO2872">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48708,6 +48697,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 3070231</p>
             <p>right-end-position: 3071547</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__689" fbc:name="G_G1RHL__45__689" fbc:label="G_G1RHL__45__689">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 1030330</p>
+            <p>right-end-position: 1031028</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -48734,17 +48734,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO3180" fbc:name="G_SPO3180" fbc:label="G_SPO3180">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 3389204</p>
-            <p>right-end-position: 3389653</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO1327" fbc:name="G_SPO1327" fbc:label="G_SPO1327">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48752,6 +48741,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 1389137</p>
             <p>right-end-position: 1389925</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO3180" fbc:name="G_SPO3180" fbc:label="G_SPO3180">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 3389204</p>
+            <p>right-end-position: 3389653</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -48789,17 +48789,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS11595" fbc:name="G_SPO_RS11595" fbc:label="G_SPO_RS11595">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS11595&apos;]</p>
-            <p>left-end-position: 2424012</p>
-            <p>right-end-position: 2424872</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS01885" fbc:name="G_SPO_RS01885" fbc:label="G_SPO_RS01885">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48807,6 +48796,17 @@
             <p>synonyms: [&apos;RS01885&apos;]</p>
             <p>left-end-position: 386685</p>
             <p>right-end-position: 387323</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS11595" fbc:name="G_SPO_RS11595" fbc:label="G_SPO_RS11595">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>synonyms: [&apos;RS11595&apos;]</p>
+            <p>left-end-position: 2424012</p>
+            <p>right-end-position: 2424872</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -48844,17 +48844,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2494" fbc:name="G_SPO2494" fbc:label="G_SPO2494">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2643224</p>
-            <p>right-end-position: 2644195</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO2271" fbc:name="G_SPO2271" fbc:label="G_SPO2271">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48862,6 +48851,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 2410611</p>
             <p>right-end-position: 2411876</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2494" fbc:name="G_SPO2494" fbc:label="G_SPO2494">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2643224</p>
+            <p>right-end-position: 2644195</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -48899,17 +48899,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2142" fbc:name="G_SPO2142" fbc:label="G_SPO2142">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2276979</p>
-            <p>right-end-position: 2277785</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPOA0439" fbc:name="G_SPOA0439" fbc:label="G_SPOA0439">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48917,6 +48906,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 4595383</p>
             <p>right-end-position: 4596174</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2142" fbc:name="G_SPO2142" fbc:label="G_SPO2142">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2276979</p>
+            <p>right-end-position: 2277785</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -49075,17 +49075,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__1552" fbc:name="G_G1RHL__45__1552" fbc:label="G_G1RHL__45__1552">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2188787</p>
-            <p>right-end-position: 2189407</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO0048" fbc:name="G_SPO0048" fbc:label="G_SPO0048">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49093,6 +49082,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 48842</p>
             <p>right-end-position: 49438</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__1552" fbc:name="G_G1RHL__45__1552" fbc:label="G_G1RHL__45__1552">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2188787</p>
+            <p>right-end-position: 2189407</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -49152,17 +49152,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPOA0246" fbc:name="G_SPOA0246" fbc:label="G_SPOA0246">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 4380008</p>
-            <p>right-end-position: 4381033</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO2457" fbc:name="G_SPO2457" fbc:label="G_SPO2457">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49170,6 +49159,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 2611281</p>
             <p>right-end-position: 2612240</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPOA0246" fbc:name="G_SPOA0246" fbc:label="G_SPOA0246">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 4380008</p>
+            <p>right-end-position: 4381033</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -49218,17 +49218,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__156" fbc:name="G_G1RHL__45__156" fbc:label="G_G1RHL__45__156">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 255034</p>
-            <p>right-end-position: 255972</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__2836" fbc:name="G_G1RHL__45__2836" fbc:label="G_G1RHL__45__2836">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49236,6 +49225,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 3944003</p>
             <p>right-end-position: 3944761</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__156" fbc:name="G_G1RHL__45__156" fbc:label="G_G1RHL__45__156">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 255034</p>
+            <p>right-end-position: 255972</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -49306,17 +49306,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__382" fbc:name="G_G1RHL__45__382" fbc:label="G_G1RHL__45__382">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 562897</p>
-            <p>right-end-position: 563526</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO1191" fbc:name="G_SPO1191" fbc:label="G_SPO1191">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49335,6 +49324,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 3504818</p>
             <p>right-end-position: 3505432</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__382" fbc:name="G_G1RHL__45__382" fbc:label="G_G1RHL__45__382">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 562897</p>
+            <p>right-end-position: 563526</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -49405,17 +49405,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS02360" fbc:name="phnG" fbc:label="G_SPO_RS02360">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS02360&apos;]</p>
-            <p>left-end-position: 475557</p>
-            <p>right-end-position: 476012</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS02365" fbc:name="phnH" fbc:label="G_SPO_RS02365">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49423,6 +49412,17 @@
             <p>synonyms: [&apos;RS02365&apos;]</p>
             <p>left-end-position: 476012</p>
             <p>right-end-position: 476587</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS02360" fbc:name="phnG" fbc:label="G_SPO_RS02360">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>synonyms: [&apos;RS02360&apos;]</p>
+            <p>left-end-position: 475557</p>
+            <p>right-end-position: 476012</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -49471,17 +49471,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO0633" fbc:name="G_SPO0633" fbc:label="G_SPO0633">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 654248</p>
-            <p>right-end-position: 656041</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__604" fbc:name="G_G1RHL__45__604" fbc:label="G_G1RHL__45__604">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49489,6 +49478,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 918038</p>
             <p>right-end-position: 919828</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO0633" fbc:name="G_SPO0633" fbc:label="G_SPO0633">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 654248</p>
+            <p>right-end-position: 656041</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -49526,17 +49526,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO3561" fbc:name="G_SPO3561" fbc:label="G_SPO3561">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 3773619</p>
-            <p>right-end-position: 3775409</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__3174" fbc:name="G_G1RHL__45__3174" fbc:label="G_G1RHL__45__3174">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49544,6 +49533,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 4449461</p>
             <p>right-end-position: 4451140</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO3561" fbc:name="G_SPO3561" fbc:label="G_SPO3561">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 3773619</p>
+            <p>right-end-position: 3775409</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -49724,17 +49724,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO2093" fbc:name="G_SPO2093" fbc:label="G_SPO2093">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 2230808</p>
-            <p>right-end-position: 2232103</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO3723" fbc:name="G_SPO3723" fbc:label="G_SPO3723">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49742,6 +49731,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 3934716</p>
             <p>right-end-position: 3936044</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO2093" fbc:name="G_SPO2093" fbc:label="G_SPO2093">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2230808</p>
+            <p>right-end-position: 2232103</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -49900,17 +49900,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO3353" fbc:name="G_SPO3353" fbc:label="G_SPO3353">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 3551100</p>
-            <p>right-end-position: 3552008</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO2363" fbc:name="G_SPO2363" fbc:label="G_SPO2363">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49922,13 +49911,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2094" fbc:name="G_G1RHL__45__2094" fbc:label="G_G1RHL__45__2094">
+      <fbc:geneProduct fbc:id="G_SPO3353" fbc:name="G_SPO3353" fbc:label="G_SPO3353">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>synonyms: []</p>
-            <p>left-end-position: 2938815</p>
-            <p>right-end-position: 2939882</p>
+            <p>left-end-position: 3551100</p>
+            <p>right-end-position: 3552008</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -49944,6 +49933,17 @@
           </html>
         </notes>
       </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2094" fbc:name="G_G1RHL__45__2094" fbc:label="G_G1RHL__45__2094">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 2938815</p>
+            <p>right-end-position: 2939882</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__841" fbc:name="G_G1RHL__45__841" fbc:label="G_G1RHL__45__841">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49955,17 +49955,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__291" fbc:name="G_G1RHL__45__291" fbc:label="G_G1RHL__45__291">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 451448</p>
-            <p>right-end-position: 452083</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__1474" fbc:name="G_G1RHL__45__1474" fbc:label="G_G1RHL__45__1474">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49973,6 +49962,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 2088283</p>
             <p>right-end-position: 2089152</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__291" fbc:name="G_G1RHL__45__291" fbc:label="G_G1RHL__45__291">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 451448</p>
+            <p>right-end-position: 452083</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -49999,17 +49999,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__1050" fbc:name="G_G1RHL__45__1050" fbc:label="G_G1RHL__45__1050">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 1504400</p>
-            <p>right-end-position: 1504798</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__2827" fbc:name="G_G1RHL__45__2827" fbc:label="G_G1RHL__45__2827">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -50017,6 +50006,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 3931362</p>
             <p>right-end-position: 3932216</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__1050" fbc:name="G_G1RHL__45__1050" fbc:label="G_G1RHL__45__1050">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 1504400</p>
+            <p>right-end-position: 1504798</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -50263,17 +50263,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2406" fbc:name="G_G1RHL__45__2406" fbc:label="G_G1RHL__45__2406">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>synonyms: []</p>
-            <p>left-end-position: 3363637</p>
-            <p>right-end-position: 3364674</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__3058" fbc:name="G_G1RHL__45__3058" fbc:label="G_G1RHL__45__3058">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -50281,6 +50270,17 @@
             <p>synonyms: []</p>
             <p>left-end-position: 4266255</p>
             <p>right-end-position: 4267418</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2406" fbc:name="G_G1RHL__45__2406" fbc:label="G_G1RHL__45__2406">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>synonyms: []</p>
+            <p>left-end-position: 3363637</p>
+            <p>right-end-position: 3364674</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -50560,39 +50560,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS13665" fbc:name="G_SPO_RS13665" fbc:label="G_SPO_RS13665">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS13665&apos;]</p>
-            <p>left-end-position: 2846272</p>
-            <p>right-end-position: 2846715</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS05710" fbc:name="G_SPO_RS05710" fbc:label="G_SPO_RS05710">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS05710&apos;]</p>
-            <p>left-end-position: 1182017</p>
-            <p>right-end-position: 1182460</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS05720" fbc:name="G_SPO_RS05720" fbc:label="G_SPO_RS05720">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS05720&apos;]</p>
-            <p>left-end-position: 1182903</p>
-            <p>right-end-position: 1183301</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS20945" fbc:name="G_SPO_RS20945" fbc:label="G_SPO_RS20945">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -50604,24 +50571,24 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS20920" fbc:name="G_SPO_RS20920" fbc:label="G_SPO_RS20920">
+      <fbc:geneProduct fbc:id="G_SPO_RS19330" fbc:name="G_SPO_RS19330" fbc:label="G_SPO_RS19330">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS20920&apos;]</p>
-            <p>left-end-position: 239096</p>
-            <p>right-end-position: 239548</p>
-            <p>replicon: NC_006569</p>
+            <p>synonyms: [&apos;RS19330&apos;]</p>
+            <p>left-end-position: 4023398</p>
+            <p>right-end-position: 4023892</p>
+            <p>replicon: NC_003911</p>
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS10645" fbc:name="G_SPO_RS10645" fbc:label="G_SPO_RS10645">
+      <fbc:geneProduct fbc:id="G_SPO_RS13665" fbc:name="G_SPO_RS13665" fbc:label="G_SPO_RS13665">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS10645&apos;]</p>
-            <p>left-end-position: 2236207</p>
-            <p>right-end-position: 2236683</p>
+            <p>synonyms: [&apos;RS13665&apos;]</p>
+            <p>left-end-position: 2846272</p>
+            <p>right-end-position: 2846715</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -50637,13 +50604,13 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS19330" fbc:name="G_SPO_RS19330" fbc:label="G_SPO_RS19330">
+      <fbc:geneProduct fbc:id="G_SPO_RS10645" fbc:name="G_SPO_RS10645" fbc:label="G_SPO_RS10645">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
             <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>synonyms: [&apos;RS19330&apos;]</p>
-            <p>left-end-position: 4023398</p>
-            <p>right-end-position: 4023892</p>
+            <p>synonyms: [&apos;RS10645&apos;]</p>
+            <p>left-end-position: 2236207</p>
+            <p>right-end-position: 2236683</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -50656,6 +50623,39 @@
             <p>left-end-position: 2236742</p>
             <p>right-end-position: 2237626</p>
             <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS05720" fbc:name="G_SPO_RS05720" fbc:label="G_SPO_RS05720">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>synonyms: [&apos;RS05720&apos;]</p>
+            <p>left-end-position: 1182903</p>
+            <p>right-end-position: 1183301</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS05710" fbc:name="G_SPO_RS05710" fbc:label="G_SPO_RS05710">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>synonyms: [&apos;RS05710&apos;]</p>
+            <p>left-end-position: 1182017</p>
+            <p>right-end-position: 1182460</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS20920" fbc:name="G_SPO_RS20920" fbc:label="G_SPO_RS20920">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>synonyms: [&apos;RS20920&apos;]</p>
+            <p>left-end-position: 239096</p>
+            <p>right-end-position: 239548</p>
+            <p>replicon: NC_006569</p>
           </html>
         </notes>
       </fbc:geneProduct>
@@ -50824,17 +50824,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS04855" fbc:name="G_SPO_RS04855" fbc:label="G_SPO_RS04855">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: [&apos;RS04855&apos;]</p>
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>left-end-position: 1017415</p>
-            <p>right-end-position: 1018410</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS08145" fbc:name="G_SPO_RS08145" fbc:label="G_SPO_RS08145">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -50842,6 +50831,17 @@
             <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
             <p>left-end-position: 1696588</p>
             <p>right-end-position: 1697523</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS04855" fbc:name="G_SPO_RS04855" fbc:label="G_SPO_RS04855">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: [&apos;RS04855&apos;]</p>
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>left-end-position: 1017415</p>
+            <p>right-end-position: 1018410</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -50857,17 +50857,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS13505" fbc:name="G_SPO_RS13505" fbc:label="G_SPO_RS13505">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: [&apos;RS13505&apos;]</p>
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>left-end-position: 2816517</p>
-            <p>right-end-position: 2817974</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS20085" fbc:name="G_SPO_RS20085" fbc:label="G_SPO_RS20085">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -50876,6 +50865,17 @@
             <p>left-end-position: 59846</p>
             <p>right-end-position: 60544</p>
             <p>replicon: NC_006569</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS13505" fbc:name="G_SPO_RS13505" fbc:label="G_SPO_RS13505">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: [&apos;RS13505&apos;]</p>
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>left-end-position: 2816517</p>
+            <p>right-end-position: 2817974</p>
+            <p>replicon: NC_003911</p>
           </html>
         </notes>
       </fbc:geneProduct>
@@ -50901,17 +50901,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__2403" fbc:name="G_G1RHL__45__2403" fbc:label="G_G1RHL__45__2403">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: []</p>
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>left-end-position: 3359715</p>
-            <p>right-end-position: 3360209</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__560" fbc:name="G_G1RHL__45__560" fbc:label="G_G1RHL__45__560">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -50919,6 +50908,17 @@
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>left-end-position: 847598</p>
             <p>right-end-position: 848041</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__2403" fbc:name="G_G1RHL__45__2403" fbc:label="G_G1RHL__45__2403">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: []</p>
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>left-end-position: 3359715</p>
+            <p>right-end-position: 3360209</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -51099,6 +51099,28 @@
           </html>
         </notes>
       </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS11510" fbc:name="mltG" fbc:label="G_SPO_RS11510">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: [&apos;RS11510&apos;]</p>
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>left-end-position: 2409457</p>
+            <p>right-end-position: 2410611</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS17665" fbc:name="G_SPO_RS17665" fbc:label="G_SPO_RS17665">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: [&apos;RS17665&apos;]</p>
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>left-end-position: 3691674</p>
+            <p>right-end-position: 3692945</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS18325" fbc:name="G_SPO_RS18325" fbc:label="G_SPO_RS18325">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -51117,28 +51139,6 @@
             <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
             <p>left-end-position: 2433947</p>
             <p>right-end-position: 2434789</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS17665" fbc:name="G_SPO_RS17665" fbc:label="G_SPO_RS17665">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: [&apos;RS17665&apos;]</p>
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>left-end-position: 3691674</p>
-            <p>right-end-position: 3692945</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS11510" fbc:name="mltG" fbc:label="G_SPO_RS11510">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: [&apos;RS11510&apos;]</p>
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>left-end-position: 2409457</p>
-            <p>right-end-position: 2410611</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -51517,17 +51517,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS07195" fbc:name="G_SPO_RS07195" fbc:label="G_SPO_RS07195">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: [&apos;RS07195&apos;]</p>
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>left-end-position: 1480688</p>
-            <p>right-end-position: 1481866</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS16160" fbc:name="G_SPO_RS16160" fbc:label="G_SPO_RS16160">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -51535,6 +51524,17 @@
             <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
             <p>left-end-position: 3401517</p>
             <p>right-end-position: 3402497</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS07195" fbc:name="G_SPO_RS07195" fbc:label="G_SPO_RS07195">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: [&apos;RS07195&apos;]</p>
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>left-end-position: 1480688</p>
+            <p>right-end-position: 1481866</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -51583,6 +51583,28 @@
           </html>
         </notes>
       </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS14035" fbc:name="nuoN" fbc:label="G_SPO_RS14035">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: [&apos;RS14035&apos;]</p>
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>left-end-position: 2953204</p>
+            <p>right-end-position: 2954646</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS14140" fbc:name="G_SPO_RS14140" fbc:label="G_SPO_RS14140">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: [&apos;RS14140&apos;]</p>
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>left-end-position: 2970878</p>
+            <p>right-end-position: 2971480</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS14040" fbc:name="G_SPO_RS14040" fbc:label="G_SPO_RS14040">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -51605,17 +51627,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS14035" fbc:name="nuoN" fbc:label="G_SPO_RS14035">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: [&apos;RS14035&apos;]</p>
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>left-end-position: 2953204</p>
-            <p>right-end-position: 2954646</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_SPO_RS14055" fbc:name="G_SPO_RS14055" fbc:label="G_SPO_RS14055">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -51623,28 +51634,6 @@
             <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
             <p>left-end-position: 2958738</p>
             <p>right-end-position: 2959340</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS14070" fbc:name="nuoI" fbc:label="G_SPO_RS14070">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: [&apos;RS14070&apos;]</p>
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>left-end-position: 2960619</p>
-            <p>right-end-position: 2961113</p>
-            <p>replicon: NC_003911</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO_RS14140" fbc:name="G_SPO_RS14140" fbc:label="G_SPO_RS14140">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: [&apos;RS14140&apos;]</p>
-            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
-            <p>left-end-position: 2970878</p>
-            <p>right-end-position: 2971480</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -51667,6 +51656,17 @@
             <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
             <p>left-end-position: 2958354</p>
             <p>right-end-position: 2958659</p>
+            <p>replicon: NC_003911</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO_RS14070" fbc:name="nuoI" fbc:label="G_SPO_RS14070">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: [&apos;RS14070&apos;]</p>
+            <p>source: Ruegeria pomeroyi DSS-3 representative genome</p>
+            <p>left-end-position: 2960619</p>
+            <p>right-end-position: 2961113</p>
             <p>replicon: NC_003911</p>
           </html>
         </notes>
@@ -51781,17 +51781,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_G1RHL__45__3144" fbc:name="G_G1RHL__45__3144" fbc:label="G_G1RHL__45__3144">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: []</p>
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>left-end-position: 4401637</p>
-            <p>right-end-position: 4402578</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__411" fbc:name="G_G1RHL__45__411" fbc:label="G_G1RHL__45__411">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -51799,6 +51788,17 @@
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>left-end-position: 626168</p>
             <p>right-end-position: 627193</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_G1RHL__45__3144" fbc:name="G_G1RHL__45__3144" fbc:label="G_G1RHL__45__3144">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: []</p>
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>left-end-position: 4401637</p>
+            <p>right-end-position: 4402578</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -51869,17 +51869,6 @@
           </html>
         </notes>
       </fbc:geneProduct>
-      <fbc:geneProduct fbc:id="G_SPO3532" fbc:name="G_SPO3532" fbc:label="G_SPO3532">
-        <notes>
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>synonyms: []</p>
-            <p>source: Ruegeria pomeroyi DSS-3</p>
-            <p>left-end-position: 3740154</p>
-            <p>right-end-position: 3741509</p>
-            <p>replicon: DSS3</p>
-          </html>
-        </notes>
-      </fbc:geneProduct>
       <fbc:geneProduct fbc:id="G_G1RHL__45__2" fbc:name="G_G1RHL__45__2" fbc:label="G_G1RHL__45__2">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -51887,6 +51876,17 @@
             <p>source: Ruegeria pomeroyi DSS-3</p>
             <p>left-end-position: 4536</p>
             <p>right-end-position: 5693</p>
+            <p>replicon: DSS3</p>
+          </html>
+        </notes>
+      </fbc:geneProduct>
+      <fbc:geneProduct fbc:id="G_SPO3532" fbc:name="G_SPO3532" fbc:label="G_SPO3532">
+        <notes>
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <p>synonyms: []</p>
+            <p>source: Ruegeria pomeroyi DSS-3</p>
+            <p>left-end-position: 3740154</p>
+            <p>right-end-position: 3741509</p>
             <p>replicon: DSS3</p>
           </html>
         </notes>
@@ -51929,36 +51929,36 @@
       <fbc:geneProduct fbc:id="G_SPO1743" fbc:name="G_SPO1743" fbc:label="G_SPO1743"/>
       <fbc:geneProduct fbc:id="G_SPO0815" fbc:name="G_SPO0815" fbc:label="G_SPO0815"/>
       <fbc:geneProduct fbc:id="G_SPO0808" fbc:name="G_SPO0808" fbc:label="G_SPO0808"/>
-      <fbc:geneProduct fbc:id="G_SPO0216" fbc:name="G_SPO0216" fbc:label="G_SPO0216"/>
+      <fbc:geneProduct fbc:id="G_SPO1476" fbc:name="G_SPO1476" fbc:label="G_SPO1476"/>
       <fbc:geneProduct fbc:id="G_SPO1477" fbc:name="G_SPO1477" fbc:label="G_SPO1477"/>
       <fbc:geneProduct fbc:id="G_SPO0215" fbc:name="G_SPO0215" fbc:label="G_SPO0215"/>
-      <fbc:geneProduct fbc:id="G_SPO1476" fbc:name="G_SPO1476" fbc:label="G_SPO1476"/>
+      <fbc:geneProduct fbc:id="G_SPO0216" fbc:name="G_SPO0216" fbc:label="G_SPO0216"/>
       <fbc:geneProduct fbc:id="G_SPO0873" fbc:name="G_SPO0873" fbc:label="G_SPO0873"/>
       <fbc:geneProduct fbc:id="G_SPO1560" fbc:name="G_SPO1560" fbc:label="G_SPO1560"/>
       <fbc:geneProduct fbc:id="G_SPO1559" fbc:name="G_SPO1559" fbc:label="G_SPO1559"/>
       <fbc:geneProduct fbc:id="G_SPO3101" fbc:name="G_SPO3101" fbc:label="G_SPO3101"/>
+      <fbc:geneProduct fbc:id="G_SPO1796" fbc:name="G_SPO1796" fbc:label="G_SPO1796"/>
+      <fbc:geneProduct fbc:id="G_SPO1555" fbc:name="G_SPO1555" fbc:label="G_SPO1555"/>
       <fbc:geneProduct fbc:id="G_SPO0834" fbc:name="G_SPO0834" fbc:label="G_SPO0834"/>
       <fbc:geneProduct fbc:id="G_SPO0833" fbc:name="G_SPO0833" fbc:label="G_SPO0833"/>
       <fbc:geneProduct fbc:id="G_SPO1556" fbc:name="G_SPO1556" fbc:label="G_SPO1556"/>
-      <fbc:geneProduct fbc:id="G_SPO1555" fbc:name="G_SPO1555" fbc:label="G_SPO1555"/>
-      <fbc:geneProduct fbc:id="G_SPO1796" fbc:name="G_SPO1796" fbc:label="G_SPO1796"/>
       <fbc:geneProduct fbc:id="G_SPO3770" fbc:name="G_SPO3770" fbc:label="G_SPO3770"/>
       <fbc:geneProduct fbc:id="G_SPO3768" fbc:name="G_SPO3768" fbc:label="G_SPO3768"/>
       <fbc:geneProduct fbc:id="G_SPO3354" fbc:name="G_SPO3354" fbc:label="G_SPO3354"/>
-      <fbc:geneProduct fbc:id="G_SPOA0310" fbc:name="G_SPOA0310" fbc:label="G_SPOA0310"/>
       <fbc:geneProduct fbc:id="G_SPOA0057" fbc:name="G_SPOA0057" fbc:label="G_SPOA0057"/>
+      <fbc:geneProduct fbc:id="G_SPOA0310" fbc:name="G_SPOA0310" fbc:label="G_SPOA0310"/>
       <fbc:geneProduct fbc:id="G_SPO3715" fbc:name="G_SPO3715" fbc:label="G_SPO3715"/>
       <fbc:geneProduct fbc:id="G_SPO1013" fbc:name="G_SPO1013" fbc:label="G_SPO1013"/>
-      <fbc:geneProduct fbc:id="G_SPO3408" fbc:name="G_SPO3408" fbc:label="G_SPO3408"/>
       <fbc:geneProduct fbc:id="G_SPOA0425" fbc:name="G_SPOA0425" fbc:label="G_SPOA0425"/>
+      <fbc:geneProduct fbc:id="G_SPO3408" fbc:name="G_SPO3408" fbc:label="G_SPO3408"/>
       <fbc:geneProduct fbc:id="G_SPO0772" fbc:name="G_SPO0772" fbc:label="G_SPO0772"/>
       <fbc:geneProduct fbc:id="G_SPOA0424" fbc:name="G_SPOA0424" fbc:label="G_SPOA0424"/>
       <fbc:geneProduct fbc:id="G_SPO0739" fbc:name="G_SPO0739" fbc:label="G_SPO0739"/>
       <fbc:geneProduct fbc:id="G_SPO1094" fbc:name="G_SPO1094" fbc:label="G_SPO1094"/>
       <fbc:geneProduct fbc:id="G_SPO0316" fbc:name="G_SPO0316" fbc:label="G_SPO0316"/>
       <fbc:geneProduct fbc:id="G_SPO1498" fbc:name="G_SPO1498" fbc:label="G_SPO1498"/>
-      <fbc:geneProduct fbc:id="G_SPO1568" fbc:name="G_SPO1568" fbc:label="G_SPO1568"/>
       <fbc:geneProduct fbc:id="G_SPO1569" fbc:name="G_SPO1569" fbc:label="G_SPO1569"/>
+      <fbc:geneProduct fbc:id="G_SPO1568" fbc:name="G_SPO1568" fbc:label="G_SPO1568"/>
       <fbc:geneProduct fbc:id="G_SPO0932" fbc:name="G_SPO0932" fbc:label="G_SPO0932"/>
       <fbc:geneProduct fbc:id="G_SPO1105" fbc:name="G_SPO1105" fbc:label="G_SPO1105"/>
       <fbc:geneProduct fbc:id="G_SPO1101" fbc:name="G_SPO1101" fbc:label="G_SPO1101"/>
@@ -51968,17 +51968,17 @@
       <fbc:geneProduct fbc:id="G_SPO0693" fbc:name="G_SPO0693" fbc:label="G_SPO0693"/>
       <fbc:geneProduct fbc:id="G_SPO0355" fbc:name="G_SPO0355" fbc:label="G_SPO0355"/>
       <fbc:geneProduct fbc:id="G_SPO3035" fbc:name="G_SPO3035" fbc:label="G_SPO3035"/>
-      <fbc:geneProduct fbc:id="G_SPO0347" fbc:name="G_SPO0347" fbc:label="G_SPO0347"/>
       <fbc:geneProduct fbc:id="G_SPO0346" fbc:name="G_SPO0346" fbc:label="G_SPO0346"/>
+      <fbc:geneProduct fbc:id="G_SPO0347" fbc:name="G_SPO0347" fbc:label="G_SPO0347"/>
+      <fbc:geneProduct fbc:id="G_SPO2578" fbc:name="G_SPO2578" fbc:label="G_SPO2578"/>
+      <fbc:geneProduct fbc:id="G_SPO2885" fbc:name="G_SPO2885" fbc:label="G_SPO2885"/>
       <fbc:geneProduct fbc:id="G_SPOA0418" fbc:name="G_SPOA0418" fbc:label="G_SPOA0418"/>
       <fbc:geneProduct fbc:id="G_SPO2579" fbc:name="G_SPO2579" fbc:label="G_SPO2579"/>
-      <fbc:geneProduct fbc:id="G_SPO2885" fbc:name="G_SPO2885" fbc:label="G_SPO2885"/>
-      <fbc:geneProduct fbc:id="G_SPO2578" fbc:name="G_SPO2578" fbc:label="G_SPO2578"/>
       <fbc:geneProduct fbc:id="G_SPOA0275" fbc:name="G_SPOA0275" fbc:label="G_SPOA0275"/>
       <fbc:geneProduct fbc:id="G_SPO3328" fbc:name="G_SPO3328" fbc:label="G_SPO3328"/>
       <fbc:geneProduct fbc:id="G_SPO2130" fbc:name="G_SPO2130" fbc:label="G_SPO2130"/>
-      <fbc:geneProduct fbc:id="G_SPOA0291" fbc:name="G_SPOA0291" fbc:label="G_SPOA0291"/>
       <fbc:geneProduct fbc:id="G_SPO0388" fbc:name="G_SPO0388" fbc:label="G_SPO0388"/>
+      <fbc:geneProduct fbc:id="G_SPOA0291" fbc:name="G_SPOA0291" fbc:label="G_SPOA0291"/>
       <fbc:geneProduct fbc:id="G_SPO1942" fbc:name="G_SPO1942" fbc:label="G_SPO1942"/>
       <fbc:geneProduct fbc:id="G_SPO3834" fbc:name="G_SPO3834" fbc:label="G_SPO3834"/>
       <fbc:geneProduct fbc:id="G_SPO3252" fbc:name="G_SPO3252" fbc:label="G_SPO3252"/>
@@ -51999,13 +51999,13 @@
       <fbc:geneProduct fbc:id="G_SPO2272" fbc:name="G_SPO2272" fbc:label="G_SPO2272"/>
       <fbc:geneProduct fbc:id="G_SPOA0319" fbc:name="G_SPOA0319" fbc:label="G_SPOA0319"/>
       <fbc:geneProduct fbc:id="G_SPO3194" fbc:name="G_SPO3194" fbc:label="G_SPO3194"/>
-      <fbc:geneProduct fbc:id="G_SPO1588" fbc:name="G_SPO1588" fbc:label="G_SPO1588"/>
-      <fbc:geneProduct fbc:id="G_SPO1585" fbc:name="G_SPO1585" fbc:label="G_SPO1585"/>
-      <fbc:geneProduct fbc:id="G_SPO1745" fbc:name="G_SPO1745" fbc:label="G_SPO1745"/>
-      <fbc:geneProduct fbc:id="G_SPO1586" fbc:name="G_SPO1586" fbc:label="G_SPO1586"/>
-      <fbc:geneProduct fbc:id="G_SPO1747" fbc:name="G_SPO1747" fbc:label="G_SPO1747"/>
       <fbc:geneProduct fbc:id="G_SPO1587" fbc:name="G_SPO1587" fbc:label="G_SPO1587"/>
+      <fbc:geneProduct fbc:id="G_SPO1747" fbc:name="G_SPO1747" fbc:label="G_SPO1747"/>
       <fbc:geneProduct fbc:id="G_SPO1744" fbc:name="G_SPO1744" fbc:label="G_SPO1744"/>
+      <fbc:geneProduct fbc:id="G_SPO1585" fbc:name="G_SPO1585" fbc:label="G_SPO1585"/>
+      <fbc:geneProduct fbc:id="G_SPO1586" fbc:name="G_SPO1586" fbc:label="G_SPO1586"/>
+      <fbc:geneProduct fbc:id="G_SPO1588" fbc:name="G_SPO1588" fbc:label="G_SPO1588"/>
+      <fbc:geneProduct fbc:id="G_SPO1745" fbc:name="G_SPO1745" fbc:label="G_SPO1745"/>
       <fbc:geneProduct fbc:id="G_SPO3604" fbc:name="G_SPO3604" fbc:label="G_SPO3604"/>
       <fbc:geneProduct fbc:id="G_SPO1761" fbc:name="G_SPO1761" fbc:label="G_SPO1761"/>
       <fbc:geneProduct fbc:id="G_SPO1195" fbc:name="G_SPO1195" fbc:label="G_SPO1195"/>
@@ -52016,15 +52016,15 @@
       <fbc:geneProduct fbc:id="G_SPO1362" fbc:name="G_SPO1362" fbc:label="G_SPO1362"/>
       <fbc:geneProduct fbc:id="G_SPO0803" fbc:name="G_SPO0803" fbc:label="G_SPO0803"/>
       <fbc:geneProduct fbc:id="G_SPO0147" fbc:name="G_SPO0147" fbc:label="G_SPO0147"/>
-      <fbc:geneProduct fbc:id="G_SPO3304" fbc:name="G_SPO3304" fbc:label="G_SPO3304"/>
       <fbc:geneProduct fbc:id="G_SPO1781" fbc:name="G_SPO1781" fbc:label="G_SPO1781"/>
+      <fbc:geneProduct fbc:id="G_SPO3304" fbc:name="G_SPO3304" fbc:label="G_SPO3304"/>
       <fbc:geneProduct fbc:id="G_SPO02469" fbc:name="G_SPO02469" fbc:label="G_SPO02469"/>
       <fbc:geneProduct fbc:id="G_SPO1776" fbc:name="G_SPO1776" fbc:label="G_SPO1776"/>
       <fbc:geneProduct fbc:id="G_SPO1777" fbc:name="G_SPO1777" fbc:label="G_SPO1777"/>
       <fbc:geneProduct fbc:id="G_SPO2761" fbc:name="G_SPO2761" fbc:label="G_SPO2761"/>
-      <fbc:geneProduct fbc:id="G_SPO3382" fbc:name="G_SPO3382" fbc:label="G_SPO3382"/>
-      <fbc:geneProduct fbc:id="G_SPO0097" fbc:name="G_SPO0097" fbc:label="G_SPO0097"/>
       <fbc:geneProduct fbc:id="G_SPO3368" fbc:name="G_SPO3368" fbc:label="G_SPO3368"/>
+      <fbc:geneProduct fbc:id="G_SPO0097" fbc:name="G_SPO0097" fbc:label="G_SPO0097"/>
+      <fbc:geneProduct fbc:id="G_SPO3382" fbc:name="G_SPO3382" fbc:label="G_SPO3382"/>
       <fbc:geneProduct fbc:id="G_SPO2939" fbc:name="G_SPO2939" fbc:label="G_SPO2939"/>
       <fbc:geneProduct fbc:id="G_SPO0417" fbc:name="G_SPO0417" fbc:label="G_SPO0417"/>
       <fbc:geneProduct fbc:id="G_SPO1181" fbc:name="G_SPO1181" fbc:label="G_SPO1181"/>
@@ -52045,19 +52045,19 @@
       <fbc:geneProduct fbc:id="G_SPO2056" fbc:name="G_SPO2056" fbc:label="G_SPO2056"/>
       <fbc:geneProduct fbc:id="G_SPO1774" fbc:name="G_SPO1774" fbc:label="G_SPO1774"/>
       <fbc:geneProduct fbc:id="G_SPO3380" fbc:name="G_SPO3380" fbc:label="G_SPO3380"/>
-      <fbc:geneProduct fbc:id="G_SPO1459" fbc:name="G_SPO1459" fbc:label="G_SPO1459"/>
       <fbc:geneProduct fbc:id="G_SPOA0110" fbc:name="G_SPOA0110" fbc:label="G_SPOA0110"/>
       <fbc:geneProduct fbc:id="G_SPOA0111" fbc:name="G_SPOA0111" fbc:label="G_SPOA0111"/>
+      <fbc:geneProduct fbc:id="G_SPO1459" fbc:name="G_SPO1459" fbc:label="G_SPO1459"/>
       <fbc:geneProduct fbc:id="G_SPO1466" fbc:name="G_SPO1466" fbc:label="G_SPO1466"/>
       <fbc:geneProduct fbc:id="G_SPO0405" fbc:name="G_SPO0405" fbc:label="G_SPO0405"/>
       <fbc:geneProduct fbc:id="G_SPO3034" fbc:name="G_SPO3034" fbc:label="G_SPO3034"/>
       <fbc:geneProduct fbc:id="G_SPO2899" fbc:name="G_SPO2899" fbc:label="G_SPO2899"/>
       <fbc:geneProduct fbc:id="G_SPO3692" fbc:name="G_SPO3692" fbc:label="G_SPO3692"/>
       <fbc:geneProduct fbc:id="G_SPO1015" fbc:name="G_SPO1015" fbc:label="G_SPO1015"/>
-      <fbc:geneProduct fbc:id="G_SPO3082" fbc:name="G_SPO3082" fbc:label="G_SPO3082"/>
       <fbc:geneProduct fbc:id="G_SPO2083" fbc:name="G_SPO2083" fbc:label="G_SPO2083"/>
-      <fbc:geneProduct fbc:id="G_SPO0871" fbc:name="G_SPO0871" fbc:label="G_SPO0871"/>
+      <fbc:geneProduct fbc:id="G_SPO3082" fbc:name="G_SPO3082" fbc:label="G_SPO3082"/>
       <fbc:geneProduct fbc:id="G_SPO2386" fbc:name="G_SPO2386" fbc:label="G_SPO2386"/>
+      <fbc:geneProduct fbc:id="G_SPO0871" fbc:name="G_SPO0871" fbc:label="G_SPO0871"/>
       <fbc:geneProduct fbc:id="G_SPO2768" fbc:name="G_SPO2768" fbc:label="G_SPO2768"/>
       <fbc:geneProduct fbc:id="G_SPO2196" fbc:name="G_SPO2196" fbc:label="G_SPO2196"/>
       <fbc:geneProduct fbc:id="G_SPO3083" fbc:name="G_SPO3083" fbc:label="G_SPO3083"/>
