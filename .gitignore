@@ -4,3 +4,5 @@ __pycache__
 .*
 ~$*.xlsx
 notes.txt
+data/MetaNetX_e_chem_xref.tsv
+out/
