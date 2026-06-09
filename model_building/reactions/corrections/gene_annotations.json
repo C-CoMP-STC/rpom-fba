@@ -567,5 +567,19 @@
     {
         "id" : "GAPOXNPHOSPHN-RXN",
         "gene_reaction_rule": "(SPO2198 or SPO0875 or SPO0701)"
+    },
+    "4-hydroxy-tetrahydrodipicolinate reductase (lysine biosynthesis) ===========================",
+    {
+        "id": "RXN-14014-DELTA1-PIPERIDEINE-2-6-DICARBOXYLATE/NAD/WATER//CPD-14443/NADH/PROTON.70.",
+        "gene_reaction_rule": "SPO3834"
+    },
+    {
+        "id": "RXN-14014-DELTA1-PIPERIDEINE-2-6-DICARBOXYLATE/NADP/WATER//CPD-14443/NADPH/PROTON.72.",
+        "gene_reaction_rule": "SPO3834"
+    },
+    "ATP synthase ===============================================================================",
+    {
+        "id": "ATPSYN-RXN",
+        "gene_reaction_rule": "SPO0183 and SPO3165 and SPO3164 and SPO3163 and SPO3162 and SPO3161 and SPO3237 and SPO3236 and SPO3235 and SPO3234 and SPO3233"
     }
 ]

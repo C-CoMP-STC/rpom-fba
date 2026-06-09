@@ -27,6 +27,7 @@
     "DeadEnds": {
         "remove": true
     },
+    "StandardizeGenes": null,
     "LogMACAW": null,
     "NetworkChecks": null,
     "CheckCompartments": null,

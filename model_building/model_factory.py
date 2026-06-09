@@ -1,10 +1,12 @@
 import json
 import os
 import pandas as pd
+import numpy as np
 
 from argparse import ArgumentParser
 
 from cobra.io import read_sbml_model, write_sbml_model, save_json_model
+from cobra.flux_analysis import pfba
 from model_building.stages import STAGE_REGISTRY
 
 
@@ -74,6 +76,16 @@ class ModelFactory:
 
 
 def model_to_dfs(model):
+    with model:
+        ex_glc = model.reactions.get_by_id("EX_glc")
+        ex_glc.lower_bound = -5.44
+        sol_glc = pfba(model)
+    
+    with model:
+        ex_ac = model.reactions.get_by_id("EX_ac")
+        ex_ac.lower_bound = -15
+        sol_ac = pfba(model)
+
     reactions_df = pd.DataFrame([
         {
             "ID": reaction.id,
@@ -82,6 +94,10 @@ def model_to_dfs(model):
             "reaction": reaction.reaction,
             "lb": reaction.lower_bound,
             "ub": reaction.upper_bound,
+            "glucose normalized flux": abs(sol_glc.fluxes[reaction.id] / sol_glc.fluxes["Rpom_hwa_biomass"]),
+            "glucose sign": np.sign(sol_glc.fluxes[reaction.id]),
+            "acetate normalized flux": abs(sol_ac.fluxes[reaction.id] / sol_glc.fluxes["Rpom_hwa_biomass"]),
+            "acetate sign": np.sign(sol_ac.fluxes[reaction.id]),
             **{f"notes__{key}" : value for key, value in reaction.notes.items()},
             **{f"annotation__{key}" : value for key, value in reaction.annotation.items()}
         }

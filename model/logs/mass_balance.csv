@@ -1,16 +1,16 @@
 ID,reaction,mass_balance,has_unknown_formulas,glucose flux min,glucose flux max
-RXN-4261,CPD-3745[c] + NADPH[c] + OXYGEN-MOLECULE[c] + PROTON[c] --> NADP[c] + SULFOACETALDEHYDE[c] + 2.0 WATER[c],{'charge': -1.0},False,0.0,1.074498898571385e-12
-SPONT1-RXN,DIHYDROFOLATE[c] <=> DIHYDROFOLATE-GLU-N[c],{'charge': 1.0},False,0.0006344020573656325,0.0006344020563589477
-RXN2DNV-42,7-8-DIHYDROPTEROATE[c] + FADH2[c] --> CPD-9020[c] + FAD[c] + PROTON[c],{'charge': 1},False,0.0,4.984737032248632e-11
+RXN-4261,CPD-3745[c] + NADPH[c] + OXYGEN-MOLECULE[c] + PROTON[c] --> NADP[c] + SULFOACETALDEHYDE[c] + 2.0 WATER[c],{'charge': -1.0},False,0.0,5.057007952088304e-10
+SPONT1-RXN,DIHYDROFOLATE[c] <=> DIHYDROFOLATE-GLU-N[c],{'charge': 1.0},False,0.0006309963585398962,0.0006309971672616052
+RXN2DNV-42,7-8-DIHYDROPTEROATE[c] + FADH2[c] --> CPD-9020[c] + FAD[c] + PROTON[c],{'charge': 1},False,0.0,3.525622918952583e-10
 RXN-11951,Cytochromes-C-Oxidized[c] + S2O3[c] + SoxZY-L-Cysteine[c] --> Cytochromes-C-Reduced[c] + 2.0 PROTON[c] + SoxY-Thiocysteine-Sulfate[c],"{'charge': 3.0, 'H': 1.0, 'O': -3.0, 'S': -2.0}",True,0.0,0.0
-RXN-11952,SoxY-Thiocysteine-Sulfate[c] + WATER[c] --> PROTON[c] + SULFATE[c] + SoxY-S-Thiocysteine[c],"{'charge': -1.0, 'H': -1.0, 'O': 3.0, 'S': 1.0}",True,0.0,9.86918347375772e-12
-RXN-18796,2.0 Cytochromes-C-Oxidized[c] + S2O3[c] + SoxY-S-Thiocysteine[c] --> 2.0 Cytochromes-C-Reduced[c] + 2.0 PROTON[c] + SoxY-Thiocysteine-S-Sulfate[c],"{'charge': 3.0, 'H': 1.0, 'O': -3.0, 'S': -2.0}",True,0.0,1.3689679217624135e-11
-RXN-18797,SoxY-Thiocysteine-S-Sulfate[c] + WATER[c] --> 2.0 PROTON[c] + SULFATE[c] + SoxY-S-S-Thiocysteine[c],"{'O': 3.0, 'S': 1.0}",True,0.0,1.3017223593653898e-11
-RXN-18798,6.0 Cytochromes-C-Oxidized[c] + SoxY-S-S-Thiocysteine[c] + 3.0 WATER[c] --> 6.0 Cytochromes-C-Reduced[c] + 6.0 PROTON[c] + SoxY-Thiocysteine-Sulfate[c],"{'charge': 6.0, 'O': -3.0}",True,0.0,1.0901224297391723e-11
-CYTOCHROME-C-PEROXIDASE-RXN,2.0 Cytochromes-C-Reduced[c] + HYDROGEN-PEROXIDE[c] + 2.0 PROTON[c] --> 2.0 Cytochromes-C-Oxidized[c] + 2.0 WATER[c],{'charge': -2.0},True,0.0,4.360665657985062e-11
-RXN-9236-CPD-9871/NADH/OXYGEN-MOLECULE//CPD-9873/NAD/WATER,CPD-9871[c] + NADH[c] + OXYGEN-MOLECULE[c] --> CPD-9873[c] + NAD[c] + WATER[c],"{'H': 1.0, 'charge': 1.0}",False,0.0,-1.1532437909763875e-18
-RXN-9237-CPD-9871/NADPH/OXYGEN-MOLECULE//CPD-9873/NADP/WATER,CPD-9871[c] + NADPH[c] + OXYGEN-MOLECULE[c] --> CPD-9873[c] + NADP[c] + WATER[c],"{'H': 1.0, 'charge': 1.0}",False,0.0,0.0
-RXN-9232,CPD-9862[c] + NADPH[c] + OXYGEN-MOLECULE[c] --> CPD-9867[c] + NADP[c] + WATER[c],"{'H': 1.0, 'charge': 1.0}",False,0.00021146735211970916,0.00021146735211967105
+RXN-11952,SoxY-Thiocysteine-Sulfate[c] + WATER[c] --> PROTON[c] + SULFATE[c] + SoxY-S-Thiocysteine[c],"{'charge': -1.0, 'H': -1.0, 'O': 3.0, 'S': 1.0}",True,0.0,7.291168881586754e-11
+RXN-18796,2.0 Cytochromes-C-Oxidized[c] + S2O3[c] + SoxY-S-Thiocysteine[c] --> 2.0 Cytochromes-C-Reduced[c] + 2.0 PROTON[c] + SoxY-Thiocysteine-S-Sulfate[c],"{'charge': 3.0, 'H': 1.0, 'O': -3.0, 'S': -2.0}",True,0.0,7.329608483932184e-11
+RXN-18797,SoxY-Thiocysteine-S-Sulfate[c] + WATER[c] --> 2.0 PROTON[c] + SULFATE[c] + SoxY-S-S-Thiocysteine[c],"{'O': 3.0, 'S': 1.0}",True,0.0,7.329608483932184e-11
+RXN-18798,6.0 Cytochromes-C-Oxidized[c] + SoxY-S-S-Thiocysteine[c] + 3.0 WATER[c] --> 6.0 Cytochromes-C-Reduced[c] + 6.0 PROTON[c] + SoxY-Thiocysteine-Sulfate[c],"{'charge': 6.0, 'O': -3.0}",True,0.0,7.329608483932185e-11
+CYTOCHROME-C-PEROXIDASE-RXN,2.0 Cytochromes-C-Reduced[c] + HYDROGEN-PEROXIDE[c] + 2.0 PROTON[c] --> 2.0 Cytochromes-C-Oxidized[c] + 2.0 WATER[c],{'charge': -2.0},True,0.0,2.931843393572874e-10
+RXN-9236-CPD-9871/NADH/OXYGEN-MOLECULE//CPD-9873/NAD/WATER,CPD-9871[c] + NADH[c] + OXYGEN-MOLECULE[c] --> CPD-9873[c] + NAD[c] + WATER[c],"{'H': 1.0, 'charge': 1.0}",False,0.0,1.4131197158013157e-11
+RXN-9237-CPD-9871/NADPH/OXYGEN-MOLECULE//CPD-9873/NADP/WATER,CPD-9871[c] + NADPH[c] + OXYGEN-MOLECULE[c] --> CPD-9873[c] + NADP[c] + WATER[c],"{'H': 1.0, 'charge': 1.0}",False,0.0,1.4119441391929917e-11
+RXN-9232,CPD-9862[c] + NADPH[c] + OXYGEN-MOLECULE[c] --> CPD-9867[c] + NADP[c] + WATER[c],"{'H': 1.0, 'charge': 1.0}",False,0.0002103323890848109,0.00021033240321585679
 RXN-19297,ADENOSYLCOBINAMIDE-GDP[c] + CPD-18105[c] --> CPD-20828[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
 RXN-19303,ADENOSYLCOBINAMIDE-GDP[c] + CPD-20830[c] --> CPD-20855[c] + GMP[c] + PROTON[c],"{'C': 1, 'O': 1, 'Co': -1}",False,0.0,0.0
 RXN-22315,CPD0-2040[c] <=> CPD-763[c] + PROTON[c],"{'A': -1, 'S': -1, 'As': 1}",False,0.0,0.0

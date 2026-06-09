@@ -18,5 +18,6 @@
     ],
     "AnnotateReactions": "model_building/reaction_annotations.pkl",
     "MaintenanceFlux": 0,
+    "StandardizeGenes": null,
     "SanityChecks": null
 }

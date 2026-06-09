@@ -5,12 +5,15 @@ import pickle
 import warnings
 import networkx as nx
 import pandas as pd
+import numpy as np
 from pathlib import Path
 
 import git
+from collections import Counter
 from cobra.manipulation import prune_unused_metabolites, prune_unused_reactions
 from cobra.manipulation.delete import remove_genes
 from cobra.manipulation.validate import check_mass_balance
+from cobra.manipulation.modify import rename_genes
 from cobra.core.metabolite import Metabolite
 from cobra.core.model import Model
 from cobra.core.reaction import Reaction
@@ -534,6 +537,62 @@ class BioCycUpdates(Stage):
         print(f"+ Added {len(added_reactions)} reactions, {len(added_metabolites)} metabolites, and {len(genes_added)} genes.")
         print(f"After updates, have {len(model.reactions)} reactions, {len(model.metabolites)} metabolites, and {len(model.genes)} genes.")
 
+        return model
+    
+
+@register_stage
+class StandardizeGenes(Stage):
+    DEFAULT = {
+        "gene_table": "model_building/genes/gene_synonyms.tsv"
+    }
+    def process(self, model, params):
+        if params is None:
+            params = self.DEFAULT
+        elif isinstance(params, dict):
+            params = {**self.DEFAULT, **params}
+        else:
+            raise ValueError(
+                "StandardizeGenes stage requires a dictionary with key 'gene_table' (str path to tsv) to source annotations.")
+
+        # Build mappers from synonyms to standard name and vice-versa
+        gene_table = pd.read_csv(params["gene_table"], sep="\t")
+        synonym_to_standard_name = {}
+        standard_name_to_synonyms = {}
+        for _, row in gene_table.iterrows():
+            standard_name = row.values[0]
+            synonyms = [s for s in row.values[1:] if isinstance(s, str)]
+
+            standard_name_to_synonyms[standard_name] = list(synonyms)
+            for synonym in synonyms:
+                synonym_to_standard_name[synonym] = standard_name
+        
+        # Rename genes
+        rename_dict = {}
+        for gene in model.genes:
+            standard_name = synonym_to_standard_name.get(gene.id, None)
+            if isinstance(standard_name, float):
+                standard_name = None
+            if standard_name is not None and standard_name != gene.id:
+                rename_dict[gene.id] = standard_name
+        print(f"Renaming {len(rename_dict)} genes...")
+        for final_name, count in Counter(rename_dict.values()).items():
+            if count > 1:
+                print(f"\t{count} genes will be collapsed to a single name ({final_name})!")
+        rename_genes(model, rename_dict)
+
+        # Add synonyms, common name to annotation
+        for gene in model.genes:
+            synonyms = gene.notes.get("synonyms", [])
+            common_name = gene_table[gene_table["ID"] == gene.id]["Common-Name"]
+            if len(common_name) >= 1:
+                common_name = common_name.values[0]
+            else:
+                common_name = None
+
+            gene.notes["synonyms"] = list(set(synonyms) | set(standard_name_to_synonyms.get(gene.id, [])))
+            if isinstance(common_name, str) and (gene.name is None or len(gene.name) == 0):
+                gene.name = common_name
+            
         return model
 
 
